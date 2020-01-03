@@ -1,0 +1,55 @@
+.$(prefix)-menu {
+    overflow: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-scroll-thumb) transparent;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--c-scroll-thumb);
+    }
+
+    &:hover {
+        overflow: auto;
+        overflow: overlay;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    /* &__item,
+    &__item > .a-link,
+    &__item > .a-button {
+        @apply py-2 px-4;
+    }
+
+    &__item > .a-link,
+    &__item > .a-button {
+        @apply -my-2 -mx-4 block text-left;
+        width: calc(100% + theme('spacing.8')); */
+
+        /* &:hover,
+        &:focus {
+            @apply bg-muted-100;
+        } */
+    /* }
+
+    &__item > .a-link {
+
+        &:not([class*="text-"]) {
+            color: inherit;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+
+    &__item > .a-button {
+        border-radius: 0;
+        font: inherit;
+        text-transform: inherit;
+    } */
+}

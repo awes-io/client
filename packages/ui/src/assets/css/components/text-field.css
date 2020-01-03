@@ -1,0 +1,228 @@
+.aw-text-field {
+    position: relative;
+
+    &__element {
+        @apply w-full p-3 border rounded-sm;
+        background-color: var(--c-surface, inherit);
+        transition: 200ms border-color;
+
+        /* reset autofill (firefox)*/
+        filter: none;
+
+        /* reset autofill (chrome) */
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+            animation-name: autoFillStart;
+            -webkit-text-fill-color: var(--c-on-surface, black);
+            -webkit-box-shadow: 0 0 0px 1000px var(--c-surface, white) inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        &:not(:-webkit-autofill) {
+            animation-name: autoFillEnd;
+        }
+
+        /* reset :invalid (firefox) */
+        box-shadow: none;
+
+        /* reset ouline (chrome) */
+        &:focus {
+            @apply border-info;
+            outline: none;
+        }
+
+        /* &[readonly]:focus {
+            border-color: theme('colors.info.100');
+        } */
+
+        &::placeholder {
+            color: inherit;
+            opacity: .5;
+        }
+    }
+
+    /**
+     * Tel styles (overwrite vue-tel-input)
+     */
+    &.is-tel .vue-tel-input {
+        border-color: theme('borderColor.default');
+        border-radius: theme('borderRadius.sm');
+
+        input {
+            /* background-color: transparent; */
+            box-shadow: none;
+        }
+
+        &:focus-within {
+            box-shadow: none !important;
+            border-color: theme('borderColor.info');
+        }
+
+        ul {
+            top: 48px;
+        }
+
+        .dropdown-item {
+            padding: 4px 7px;
+        }
+    }
+
+    &.is-tel.has-error .vue-tel-input {
+        @apply border-error;
+
+        input::placeholder {
+            @apply text-error opacity-100;
+        }
+    }
+
+
+    /**
+     * Textarea styles
+     */
+
+    &.is-textarea &__element {
+        resize: vertical;
+    }
+
+
+    /**
+     * Label styles
+     */
+
+    &.has-label &__element {
+        @apply pt-4 pb-2;
+
+        &::placeholder {
+            opacity: 0;
+        }
+
+        &:not([readonly]):focus::placeholder {
+            opacity: .5;
+        }
+    }
+
+    &__label {
+        @apply absolute opacity-50;
+        left: theme('spacing.3', 0.75rem);
+        top: theme('spacing.3', 0.75rem);
+        transform-origin: left top;
+        transition: 100ms transform ease-out-sine;
+    }
+
+    &__element:not([readonly]):focus + &__label,
+    .is-filled &__element + &__label {
+        transform: scale(0.67) translateY(-50%);
+    }
+
+
+    /**
+     * Icon styles
+     */
+
+    &.has-icon &__element {
+        @apply pr-10;
+    }
+
+    &__icon {
+        @apply absolute right-0 top-0 mt-px mr-px rounded-r-sm;
+
+        &:before {
+            content: '';
+            @apply absolute inset-0 bgcolor-overlay opacity-10;
+        }
+    }
+
+    &__icon svg {
+        fill: currentColor;
+    }
+
+
+    /**
+     * Error styles
+     */
+
+    &.has-error {
+        animation: 700ms shake ease-out-quad;
+    }
+
+    &.has-error & {
+
+        &__element {
+            @apply border-error;
+            /* animation: 700ms shake ease-out-quad; */
+        }
+
+        &__label {
+            @apply text-error opacity-100;
+        }
+    }
+
+
+    /**
+     * Disabled style
+     */
+
+    &__element[disabled],
+    &__element[disabled] + &__label {
+        cursor: not-allowed;
+        user-select: none;
+        opacity: .5;
+    }
+
+    &.is-disabled {
+        pointer-events: none;
+    }
+}
+
+@keyframes shake {
+ 0%,
+ 100% {
+  transform:translateX(0)
+ }
+ 10% {
+  transform:translateX(-9px)
+ }
+ 20% {
+  transform:translateX(8px)
+ }
+ 30% {
+  transform:translateX(-7px)
+ }
+ 40% {
+  transform:translateX(6px)
+ }
+ 50% {
+  transform:translateX(-5px)
+ }
+ 60% {
+  transform:translateX(4px)
+ }
+ 70% {
+  transform:translateX(-3px)
+ }
+ 80% {
+  transform:translateX(2px)
+ }
+ 90% {
+  transform:translateX(-1px)
+ }
+}
+
+@keyframes autoFillStart {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes autoFillEnd {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 1
+    }
+}

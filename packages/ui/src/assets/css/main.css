@@ -1,0 +1,38 @@
+/**
+ * Root variables
+ */
+@import './variables.css';
+
+/**
+ * Tailwind reset and base styles
+ */
+@import 'tailwindcss/base';
+
+/**
+ * Awes UI base styles
+ */
+@import './base.css';
+
+/**
+ * Tailwind components
+ */
+@import 'tailwindcss/components';
+
+/**
+ * Awes UI components
+ */
+@import './components/_index.css';
+
+/**
+ * Tailwind utilities, MUST be last
+ */
+@import 'tailwindcss/utilities';
+
+/**
+ * Prism highlight
+ */
+@import 'prismjs/themes/prism.css';
+pre[class*="language-"] {
+    margin-top: 0;
+    margin-bottom: 0;
+}

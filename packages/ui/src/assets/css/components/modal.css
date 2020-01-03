@@ -1,0 +1,350 @@
+$gap: 16px;
+$button-height: 40px;
+$container-width: 1200px;
+
+$modal-width: 600px;
+$modal-aside-width: 320px;
+$modal-aside-width-medium: 50vw;
+$modal-aside-width-large: 75vw;
+
+aw-modal {
+    display: none;
+}
+
+body.has-modal-default,
+body.has-modal-fullscreen,
+body.has-modal-bottom {
+    overflow: hidden;
+}
+
+.aw-modal {
+    @apply z-100 fixed inset-0;
+    overflow: auto;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:before {
+        content: '';
+        @apply absolute block inset-0 bg-overlay opacity-50;
+    }
+
+    &__dialog {
+        @apply relative max-w-full m-auto bg-muted;
+    }
+
+    &__header {
+        @apply flex items-center p-4;
+    }
+
+    &__content {
+        @apply mx-auto p-8;
+        max-width: var(--ui-container-width, $container-width)
+    }
+
+
+    &__back,
+    &__close {
+        @apply p-2 flex-shrink-0;
+        height: $button-height;
+        width: $button-height;
+        line-height: $button-height - $gap;
+        opacity: .5;
+        transition: 200ms opacity;
+
+        > svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+
+    &__title {
+        @apply m-0 leading-loose text-xl flex-grow truncate;
+    }
+
+    /**
+     * Modifiers
+     */
+
+    &.is-default &__dialog {
+        @apply p-2 h-full;
+    }
+
+    &.is-default &__back {
+        @apply hidden;
+    }
+
+    &.is-default &__header {
+        @apply pb-0
+    }
+
+
+    &.is-fullscreen,
+    &[class*="is-aside"] {
+        @apply p-0 overflow-hidden;
+    }
+
+    &.is-fullscreen &,
+    &[class*="is-aside"] & {
+        &__dialog {
+            @apply flex flex-col w-full max-w-full p-0 h-full overflow-hidden;
+        }
+
+        &__header {
+            @apply bg-muted shadow-md;
+        }
+
+        &__body {
+            overflow: auto;
+        }
+    }
+
+    &[class*="is-aside"] {
+        left: auto;
+        min-width: $modal-aside-width;
+        width: $modal-aside-width;
+        max-width: 100vw;
+        z-index: 99;
+        box-shadow: 0 0 20px rgba(0,0,0,.1);
+    }
+
+    &[class*="is-aside"] &__back {
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+    &.is-aside-medium {
+        width: $modal-aside-width-medium;
+    }
+
+    &.is-aside-large {
+        width: $modal-aside-width-large;
+    }
+
+    &.is-bottom {
+        @apply overflow-hidden;
+    }
+
+    &.is-bottom &__header {
+        box-shadow: 0 0 theme('spacing.6') theme('spacing.6') var(--c-muted);
+        z-index: 1;
+    }
+
+    &.is-bottom &__dialog {
+        @apply absolute bottom-0 left-0 w-full flex flex-col overflow-hidden;
+        top: 50%;
+    }
+
+    &.is-bottom &__back {
+        @apply hidden;
+    }
+
+    &.is-bottom &__body {
+        @apply overflow-auto;
+    }
+}
+
+@media (max-width: theme('sceens.sm')) {
+    .aw-modal {
+
+        &.is-fullscreen &__title {
+            text-align: center;
+        }
+
+        &[class*="is-aside"] &__back {
+            display: none;
+        }
+    }
+}
+
+@screen md {
+
+    .aw-modal {
+
+        &__title {
+            @apply text-center;
+        }
+
+        &.is-default {
+            @apply flex pt-16 px-16;
+        }
+
+        &.is-default &__back,
+        &.is-bottom &__back {
+            @apply block h-0 invisible overflow-hidden;
+        }
+
+        &.is-default &__dialog {
+            @apply h-auto;
+            width: $modal-width;
+        }
+    }
+}
+/**
+ * Transitions
+ */
+
+$modal-t-dur: 250ms;
+
+.modal-transition-default {
+
+    &-enter,
+    &-leave-to {
+        opacity: 0;
+    }
+
+    &-enter-active,
+    &-leave-active {
+        pointer-events: none;
+        backface-visibility: hidden;
+        transform: translate3d(0,0,0);
+    }
+
+
+    &-enter-active {
+        transition: $modal-t-dur opacity ease-out-quart;
+    }
+
+    &-leave-active {
+        transition: $modal-t-dur opacity;
+    }
+}
+
+@screen md {
+    .modal-transition-default {
+
+        &-enter,
+        &-leave-to {
+            .aw-modal__dialog {
+                opacity: 0;
+                transform: translateY(calc(-2 * $gap));
+            }
+        }
+
+        &-enter-active {
+            transition: calc($modal-t-dur * 1.5) opacity;
+
+            .aw-modal__dialog {
+                transition: $modal-t-dur transform calc($modal-t-dur * .5) ease-out-quart, calc($modal-t-dur * .5) opacity calc($modal-t-dur * .5);
+            }
+        }
+
+        &-leave-active {
+            transition: $modal-t-dur opacity calc($modal-t-dur * .5);
+
+            .aw-modal__dialog {
+                transition: $modal-t-dur transform, $modal-t-dur opacity;
+            }
+        }
+    }
+}
+
+
+/* fullscreen */
+.modal-transition-fullscreen {
+
+    &-enter,
+    &-leave-to {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+
+    &-enter-active {
+        transition: $modal-t-dur transform ease-out-quart, $modal-t-dur opacity ease-out-quart;
+    }
+
+    &-leave-active {
+        transition: $modal-t-dur transform, calc($modal-t-dur * .67) opacity calc($modal-t-dur * .33);
+    }
+}
+
+
+/* aside */
+.modal-transition-aside {
+
+    &-enter,
+    &-leave-to {
+        transform: translateX(100%);
+    }
+
+    &-enter-active {
+        transition: $modal-t-dur transform ease-out-quart;
+    }
+
+    &-leave-active {
+        transition: $modal-t-dur transform;
+    }
+}
+
+
+.modal-transition-aside-medium,
+.modal-transition-aside-large {
+
+    &-enter {
+        transform: translateX($modal-aside-width);
+        opacity: 0;
+    }
+
+    &-leave-to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    &-enter-active {
+        transition: $modal-t-dur transform ease-out-quart, calc($modal-t-dur *.67) opacity ease-out-quart;
+    }
+
+    &-leave-active {
+        transition: $modal-t-dur transform, calc($modal-t-dur *.67) opacity calc($modal-t-dur *.33);
+    }
+}
+
+@screen md {
+
+    .modal-transition-aside-medium,
+    .modal-transition-aside-large {
+        &-enter {
+            transition-duration: calc($modal-t-dur * 2);
+        }
+
+        &-leave-to {
+            transition-duration: calc($modal-t-dur * 1.5);
+        }
+    }
+}
+
+/* aside */
+.modal-transition-bottom {
+
+    &-enter,
+    &-leave-to {
+        opacity: 0;
+
+        .aw-modal__dialog {
+            transform: translateY(100%);
+        }
+    }
+
+    &-enter-active {
+        transition: $modal-t-dur opacity ease-out-quart;
+
+        .aw-modal__dialog {
+            transition: $modal-t-dur transform ease-out-quart;
+        }
+    }
+
+    &-leave-active {
+        transition: $modal-t-dur opacity ease-out-quart;
+
+        .aw-modal__dialog {
+            transition: $modal-t-dur transform;
+        }
+    }
+}

@@ -1,0 +1,228 @@
+.layout {
+
+    &&--default {
+        position: relative;
+    }
+
+    &__aside-logo {
+        @apply p-1 flex items-center flex-shrink-0;
+        min-height: theme('spacing.12');
+    }
+
+
+    &__container {
+        @apply min-h-screen flex flex-col px-4 py-8 items-center justify-center;
+        max-width: 30rem;
+    }
+
+    &__nav {
+        @apply flex flex-col w-64 z-20;
+        box-shadow: 5px 0 10px -3px rgba(0, 0, 0, 0.25), 2px 0 5px -2px rgba(0, 0, 0, 0.05);
+        max-width: 100%;
+
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    &__menu {
+        @apply relative flex-grow;
+        overflow: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--c-fade-brand) transparent;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--c-fade-brand);
+        }
+
+        &:hover {
+            overflow: auto;
+            overflow: overlay;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        &:before {
+            content: '';
+            @apply absolute inset-0 h-full;
+            background-image: linear-gradient(rgba(255,255,255,0.05), var(--c-brand));
+        }
+    }
+
+    &__menu-caret {
+        right: .5rem;
+        top: .5rem;
+    }
+
+    &__menu-caret .aw-icon {
+        transition: 300ms transform ease-out-sine;
+    }
+
+    &__menu-item.is-opened &__menu-caret .aw-icon {
+        transform: rotate(90deg);
+    }
+
+    &__menu-item {
+        @apply relative;
+    }
+
+    &__header {
+        @apply flex items-center bg-surface sticky top-0 z-20 bg-brand p-1;
+        min-height: theme('spacing.12');
+        transition: 200ms box-shadow;
+    }
+
+    &__content {
+        @apply flex flex-col min-h-screen;
+    }
+}
+
+@supports (mix-blend-mode: saturation) {
+    .layout__menu:before {
+        background-image: linear-gradient(rgba(0,25,50,.1), rgba(0,0,0,0));
+        mix-blend-mode: luminosity;
+    }
+}
+
+@media (min-width: 35rem) {
+
+    .layout {
+
+        &&--frame-center &__frame {
+            @apply bg-surface p-12 shadow-lg;
+        }
+
+        &&--frame-left &__frame {
+            @apply bg-surface w-2/3 shadow-lg;
+        }
+    }
+}
+
+@media (max-width: 35rem) {
+    .layout {
+
+        &&--frame-center,
+        &&--frame-left {
+            background-image: none !important;
+        }
+    }
+}
+
+/**
+ * Collapsible menu
+ */
+$squish-transition: 250ms ease-out-quad;
+$sqush-base: transform $squish-transition, opacity $squish-transition;
+
+@media (max-width: theme('screens.md')) {
+    .layout {
+        &__nav {
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: 200ms transform, 0ms opacity 200ms;
+        }
+
+        &__nav.is-visible {
+            transform: none;
+            opacity: 1;
+            transition: 250ms transform ease-out-quad;
+        }
+    }
+}
+
+@screen md {
+    .layout {
+        &__nav {
+            transition: width $squish-transition;
+
+            &.is-thin {
+                @apply w-16;
+            }
+        }
+
+        &__aside-logo-inner {
+            transition: $sqush-base;
+        }
+
+        &__nav.is-thin &__aside-logo-inner {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        &__menu-item {
+            max-width: theme('spacing.64');
+            transition: max-width $squish-transition;
+        }
+
+        &__menu-item.is-icon {
+            max-width: theme('spacing.16');
+        }
+
+        &__menu-item.is-icon .aw-button {
+            text-overflow: clip;
+        }
+
+        &__menu-item .aw-button__text {
+            transition: $sqush-base;
+            transform-origin: left center;
+        }
+
+        &__menu-item.is-icon .aw-button__text {
+            transform: scaleX(0);
+            opacity: 0;
+        }
+
+        &__content {
+            padding-left: theme('spacing.64');
+            transition: padding-left $squish-transition;
+
+            &.is-wide {
+                padding-left: theme('spacing.16');
+            }
+        }
+    }
+}
+
+@screen md {
+
+    .layout {
+
+        &&--default {
+            @apply flex min-h-screen;
+        }
+
+        &__content {
+            @apply flex-grow max-w-full;
+        }
+
+        &__logo {
+            @apply mb-16;
+        }
+
+        &__aside-logo {
+            @apply p-4 justify-center;
+            background-color: rgba(0,0,0,0.5);
+            min-height: theme('spacing.32');
+        }
+
+        &__header {
+            @apply bg-surface p-0;
+        }
+    }
+}
+
+@screen lg {
+
+    .layout {
+
+        &&--frame-left &__frame {
+            @apply w-1/2;
+        }
+    }
+}

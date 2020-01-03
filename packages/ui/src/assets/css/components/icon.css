@@ -1,0 +1,13 @@
+.aw-icon {
+    &.size-sm {
+        @apply text-base;
+    }
+
+    &.size-md {
+        @apply text-lg;
+    }
+
+    &.size-lg {
+        @apply text-xl;
+    }
+}

@@ -1,0 +1,45 @@
+.$(prefix)-form {
+    /* loading state */
+    &.is-loading {
+        .$(prefix)-text-field,
+        .$(prefix)-switch-field {
+            opacity: .5;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .$(prefix)-button[type="submit"] {
+            pointer-events: none;
+
+            &[data-loading] {
+                .$(prefix)-button__content {
+                    display: none;
+                }
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    vertical-align: middle;
+                    border-radius: 50%;
+                    width: 1rem;
+                    height: 1rem;
+                    border: 1px dashed currentColor;
+                    border-right-style: solid;
+                    border-bottom: none;
+                    animation: 1s rotate linear infinite;
+                }
+
+                &:after {
+                    padding-left: .5rem;
+                    content: attr(data-loading);
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(1turn);
+    }
+}

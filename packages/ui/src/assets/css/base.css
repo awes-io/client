@@ -1,0 +1,16 @@
+html, body {
+    @apply bg-surface font-body;
+
+    scrollbar-width: thick;
+    scrollbar-color: var(--c-fade-surface) transparent;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--c-fade-surface);
+    }
+}

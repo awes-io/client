@@ -1,0 +1,43 @@
+.$(prefix)-dropdown {
+    @apply shadow-lg bg-surface;
+    min-width: 160px;
+    max-height: 75vh;
+    overflow: auto;
+
+    @media (min-width: theme('screens.md')) {
+        max-height: 50vh;
+    }
+}
+
+/**
+ * Transition
+ */
+
+.fade {
+
+    &-enter,
+    &-leave-to {
+        opacity: 0;
+    }
+
+    &-enter-active,
+    &-leave-active {
+        transition: opacity 200ms ease;
+    }
+}
+
+.caret {
+    transition: 200ms transform ease-out
+}
+
+.rotate-90 {
+    transform: rotate(90deg)
+}
+
+.rotate-180 {
+    transform: rotate(180deg)
+}
+
+.transition-200 {
+    transition: 200ms transform
+}

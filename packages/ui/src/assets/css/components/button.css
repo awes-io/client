@@ -1,0 +1,292 @@
+.aw-button {
+    @apply inline-block cursor-pointer relative; /* shape */
+    @apply text-center text-xs font-medium leading-loose tracking-wider uppercase no-underline; /* text */
+    vertical-align: middle;
+    transition: 100ms opacity;
+
+    &:focus {
+        outline: none;
+    }
+
+    &__overlay,
+    &__ripple {
+        @apply absolute inset-0 overflow-hidden;
+    }
+
+    &__overlay {
+        @apply opacity-0;
+        background-color: currentColor;
+        transition: 100ms opacity;
+    }
+
+    &__ripple,
+    &__ripple:after {
+        pointer-events: none;
+        backface-visibility: hidden;
+    }
+
+    &__ripple:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 200%;
+        background-color: currentColor;
+        border-radius: 50%;
+        padding-bottom: 200%;
+        left: var(--ripple-x, 50%);
+        top: var(--ripple-y, 50%);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+        visibility: hidden;
+        transform-origin: center;
+    }
+
+    &__content {
+        @apply relative;
+        transition: 100ms opacity;
+    }
+
+    &:hover > &__overlay {
+        opacity: 0.1;
+    }
+
+    &:focus > &__overlay {
+        opacity: 0.15;
+    }
+
+
+    /**
+     * JS ripple
+     */
+    &.is-pressed > &__ripple:after {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: .3;
+        transition: none;
+    }
+
+    &.has-ripple > &__ripple:after {
+        visibility: visible;
+        transition: 0ms visiblity, 350ms transform ease-out-sine, 350ms opacity ease-out-sine;
+    }
+
+    &.is-pressed.has-ripple > &__ripple:after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: .3;
+    }
+
+    &:not(.is-pressed).has-ripple > &__ripple:after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+
+    /**
+     * Sizes
+     */
+    &_xs {
+        @apply px-2 text-xxs;
+        min-width: 90px;
+    }
+
+    &_xs.theme-icon {
+        width: theme('spacing.6');
+        height: theme('spacing.6');
+    }
+
+    &_sm {
+        @apply px-3 py-1;
+        min-width: 90px;
+    }
+
+    &_sm.theme-icon {
+        width: theme('spacing.8');
+        height: theme('spacing.8');
+    }
+
+    &_md {
+        @apply px-4 py-3;
+        min-width: 120px;
+    }
+
+    &_md.theme-icon {
+        width: theme('spacing.12');
+        height: theme('spacing.12');
+    }
+
+    &_lg {
+        @apply px-6 py-4;
+        min-width: 150px;
+    }
+
+    &_lg.theme-icon {
+        width: theme('spacing.16');
+        height: theme('spacing.16');
+    }
+
+    /**
+     * Disabled style
+     */
+
+    &[disabled] {
+        cursor: not-allowed;
+        user-select: none;
+        opacity: .5;
+    }
+}
+
+
+/**
+ * No-JS ripple
+ */
+
+.no-js .aw-button:active > .aw-button__ripple:after {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: .5;
+    transition: none;
+}
+
+
+/**
+ * Colors
+ */
+@each $color in (info, success, warning, error) {
+    .aw-button {
+
+        /**
+         * Types
+         */
+
+        /* Solid */
+        &.theme-solid.color-$(color) {
+            @apply bg-$(color);
+        }
+
+        /* Outline */
+        /* Link */
+        &.theme-outline.color-$(color),
+        &.theme-ghost.color-$(color) {
+            @apply text-$(color);
+        }
+    }
+}
+
+/**
+ * Types
+ */
+.aw-button {
+
+    &.theme-solid,
+    &.theme-outline,
+    &.theme-ghost,
+    &.theme-solid &__overlay,
+    &.theme-outline &__overlay,
+    &.theme-ghost &__overlay,
+    &.theme-solid &__ripple,
+    &.theme-outline &__ripple,
+    &.theme-ghost &__ripple {
+        @apply rounded-sm;
+    }
+
+    &.theme-solid {
+        @apply shadow-md;
+
+        &:hover {
+            @apply shadow-lg;
+        }
+    }
+
+    &.theme-solid &__overlay {
+        @apply bg-overlay;
+    }
+
+    &.theme-solid &__content {
+        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    &.theme-outline {
+        border: 1px solid currentColor
+    }
+
+    &.theme-ghost &__overlay {
+        @apply rounded-sm;
+    }
+
+    &.theme-toggle &__overlay {
+        @apply bg-overlay;
+    }
+
+    &.theme-toggle:hover &__overlay,
+    &.theme-toggle:focus &__overlay {
+        @apply opacity-0;
+    }
+
+    &.theme-toggle.is-active &__overlay {
+        @apply opacity-10;
+    }
+
+    &.theme-icon {
+        @apply p-0 min-w-0;
+    }
+
+    &.theme-icon &__overlay {
+        @apply hidden;
+    }
+
+    /* &.theme-icon &__ripple {
+        @apply rounded-full;
+        left: .25rem;
+        top: .25rem;
+        width: calc(100% - .5rem);
+        height: calc(100% - .5rem);
+    } */
+
+    &.theme-toggle &__content,
+    &.theme-icon &__content {
+        @apply opacity-40;
+    }
+
+    &.theme-toggle.is-text-active &__content {
+        @apply opacity-100;
+    }
+
+    &.theme-toggle:hover &__content,
+    &.theme-icon:hover &__content,
+    &.theme-toggle:focus &__content,
+    &.theme-icon:focus &__content {
+        @apply opacity-90;
+    }
+}
+
+/**
+ * Button group
+ */
+.aw-button-group {
+    @apply flex;
+
+    .aw-button {
+        margin: 0;
+
+        &:first-child {
+            @apply rounded-r-none;
+        }
+
+        &:last-child {
+            @apply rounded-l-none;
+        }
+
+        &:not(:last-child):not(:first-child) {
+            @apply rounded-none;
+        }
+
+        /* Outlined group */
+        &.theme-outline {
+
+            &:hover {
+                @apply z-1;
+            }
+
+            &:not(:first-child) {
+                @apply -ml-px;
+            }
+        }
+    }
+}

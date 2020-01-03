@@ -1,0 +1,23 @@
+@import './transition.css';
+
+@import './button.css';
+@import './dropdown.css';
+
+@import './icon.css';
+
+@import './error.css';
+@import './form.css';
+@import './switch-field.css';
+@import './text-field.css';
+
+@import './layout.css';
+@import './page.css';
+
+@import './menu.css';
+
+@import './modal.css';
+
+@import './tabs.css';
+
+/* last because of @keyframes lowers performance */
+@import './animation.css';

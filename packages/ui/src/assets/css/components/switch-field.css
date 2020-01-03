@@ -1,0 +1,157 @@
+.aw-switch-field {
+    @apply relative py-2;
+
+    &__element {
+        @apply bg-surface border;
+        cursor: pointer;
+        appearance: none;
+        vertical-align: middle;
+        width: theme('spacing.5', 1.25rem);
+        height: theme('spacing.5', 1.25rem);
+        /* border: 1px solid theme('colors.muted');
+        color: theme('colors.secondary', blue);
+        background: theme('colors.white', white); */
+
+        /* reset :invalid (firefox) */
+        box-shadow: none;
+
+        &:checked {
+            @apply bg-success;
+            border-color: inherit;
+            background-size: 100% 100%;
+        }
+
+        &:focus {
+            @apply border-info;
+            outline: none;
+        }
+
+        /* &:checked:focus {
+            border-color: theme('colors.info.700');
+        } */
+    }
+
+
+    /**
+     * Checkbox
+     */
+
+    &.is-checkbox &__element {
+        border-radius: theme('borderRadius.default', 0.25rem);
+
+        &:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+        }
+    }
+
+
+    /**
+     * Radio
+     */
+
+    &.is-radio &__element {
+        border-radius: 50%;
+
+        &:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+        }
+    }
+
+
+    /**
+     * Switcher
+     */
+
+    &.is-switcher &__label {
+        @apply block relative z-1 opacity-50;
+        padding-left: 2.75rem;
+        user-select: none;
+        transition: 200ms opacity;
+    }
+
+    &__switch {
+        @apply block absolute opacity-50;
+        width: 2rem;
+        height: 1rem;
+        left: .125rem;
+        top: .85rem;
+        border-radius: .625rem;
+        transition: 200ms opacity;
+
+        &:before {
+            content: '';
+            @apply block absolute inset-0 opacity-20;
+            border-radius: .625rem;
+            background-color: currentColor;
+            transition: 200ms opacity;
+        }
+    }
+
+    &__toggle {
+        @apply bg-muted block;
+        width: 1.25rem;
+        height: 1.25rem;
+        margin: -0.125rem 0 0 -0.125rem;
+        background-color: currentColor;
+        border-radius: .625rem;
+        transition: 200ms color, 200ms background-color, 200ms transform;
+    }
+
+    &.is-switcher &__element:checked + &__label {
+        @apply opacity-100;
+    }
+
+    &.is-switcher &__element:checked ~ &__switch {
+        @apply opacity-100;
+    }
+
+    &.is-switcher &__element:checked ~ &__switch:before {
+        @apply opacity-10;
+    }
+
+    &.is-switcher &__element:checked ~ &__switch > &__toggle {
+        @apply bg-success;
+        transform: translateX(80%);
+    }
+
+
+    /**
+     * Label styles
+     */
+    &__element + &__label {
+        padding-left: theme('spacing.2', 0.5rem);
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+
+    /**
+     * Error styles
+     */
+
+    &.has-error &__element {
+        @apply text-error;
+    }
+
+
+    /**
+     * Disabled style
+     */
+
+    &__element[disabled],
+    &__element[disabled] + &__label {
+        cursor: not-allowed;
+        user-select: none;
+        opacity: .5;
+    }
+
+    &.is-switcher &__element[disabled] ~ &__switch {
+        cursor: not-allowed;
+        user-select: none;
+        opacity: 0.3;
+    }
+
+    &.is-switcher &__element[disabled] ~ &__label {
+        opacity: 0.3;
+    }
+}

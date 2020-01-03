@@ -1,0 +1,10 @@
+/* select uses */
+.animation-rotate {
+    animation: aw-rotate 1s linear infinite;
+}
+
+@keyframes aw-rotate {
+    to {
+        transform: rotate(1turn)
+    }
+}

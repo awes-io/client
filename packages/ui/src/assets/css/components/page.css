@@ -1,0 +1,31 @@
+.$(prefix)-page {
+    @apply flex flex-col flex-grow overflow-x-hidden;
+
+    &__title {
+        @apply flex items-center text-3xl leading-tight font-heading py-4;
+        min-height: theme('spacing.20');
+    }
+
+    &__subnav {
+        @apply relative bg-muted;
+
+        &:after {
+            content: '';
+            @apply absolute bottom-0 pb-4 left-0 w-full border-t;
+        }
+    }
+
+    &__tabs:after {
+        display: none;
+    }
+
+    &__content {
+        @apply py-4 flex-grow bg-muted;
+    }
+}
+
+@screen lg {
+    .$(prefix)-page__content {
+        @apply py-8;
+    }
+}
