@@ -30,7 +30,8 @@
         <AwGrid :col="{ lg: 2 }">
             <AwCodeSnippet v-text="code" />
             <blockquote class="border border-error rounded p-4">
-                Note! that you must specify <code class="code">col</code> implicitly for each
+                Note! that you must specify
+                <code class="code">col</code> implicitly for each
                 <code class="code">span</code> value, in order to use the span
                 propery
             </blockquote>

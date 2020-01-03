@@ -51,6 +51,7 @@ fs.writeFileSync(
             compact: false,
             breakLength: Infinity,
             depth: Infinity
-        }) + '\n',
+        }) +
+        '\n',
     'utf-8'
 )

@@ -19,11 +19,7 @@
                     class="mt-4"
                     @input="setText"
                 />
-                <AwButton
-                    class="mt-4"
-                    text="add filed"
-                    @click="++buttons"
-                />
+                <AwButton class="mt-4" text="add filed" @click="++buttons" />
                 <p class="h3">Response</p>
                 <AwCodeSnippet v-text="text" />
             </div>

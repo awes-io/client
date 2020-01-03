@@ -2,7 +2,12 @@
     <main>
         <!-- text inputs -->
         <AwInput placeholder="Text input" />
-        <AwInput class="mt-2" label="With label" placeholder="Text input" :disabled="null" />
+        <AwInput
+            class="mt-2"
+            label="With label"
+            placeholder="Text input"
+            :disabled="null"
+        />
         <AwInput
             class="mt-2"
             label="With icon"
