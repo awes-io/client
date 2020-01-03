@@ -12,7 +12,8 @@
     },
     "homepage": "https://www.awes.io",
     "workspaces": [
-        "packages/*"
+        "packages/*",
+        "examples/*"
     ],
     "keywords": [
         "ui",
@@ -29,8 +30,8 @@
         "dev-lib": "yarn clean && yarn build-icons && rollup -c ./build/rollup.config.lib.js -w",
         "reload": "browser-sync start -c browser-sync.config.js",
         "watch": "yarn clean && yarn build-icons && concurrently -k --restart-tries=5 --restart-after=500 \"yarn dev\" \"yarn reload\"",
-        "lint": "eslint --ext .vue ./packages",
-        "lint:fix": "eslint --ext .vue ./packages --fix",
+        "lint": "eslint --ext .js,.vue .",
+        "lint:fix": "eslint --ext .js,.vue . --fix",
         "test": "jest",
         "prepublishOnly": "yarn run build",
         "test:watch": "jest -w",
@@ -164,8 +165,6 @@
         "codecov": "^3.6.1",
         "consola": "^2.11.3",
         "cross-spawn": "^7.0.1",
-        "eslint": "6.8.0",
-        "eslint-multiplexer": "^2.0.0",
         "esm": "^3.2.25",
         "execa": "^3.4.0",
         "express": "^4.17.1",

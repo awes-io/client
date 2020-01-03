@@ -1,0 +1,17 @@
+{
+    "name": "basic-ui",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "post-update": "yarn upgrade --latest"
+    },
+    "dependencies": {
+        "nuxt": "^2.0.0",
+        "@nuxtjs/axios": "^5.0.0",
+        "nuxt-i18n": "^6.3.0",
+        "@awes-io/ui": "^1.x.x"
+    }
+}

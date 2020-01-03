@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue'
 import { flip, pathOr, filter, sortBy, isEmpty, includes, all, values, reduce } from 'rambdax'
 
