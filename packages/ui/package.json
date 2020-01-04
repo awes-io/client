@@ -112,5 +112,6 @@
         "vue-mc": "^0.6.0",
         "vue-template-compiler": "^2.6.10",
         "webfonts-generator": "^0.4.0"
-    }
+    },
+    "gitHead": "622541e915694e40ec0036c900e264f6766d45f5"
 }

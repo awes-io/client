@@ -33,7 +33,6 @@
         "lint": "eslint --ext .js,.vue .",
         "lint:fix": "eslint --ext .js,.vue . --fix",
         "test": "jest",
-        "prepublishOnly": "yarn run build",
         "test:watch": "jest -w",
         "space": "jest",
         "commitmsg": "commitlint -e $GIT_PARAMS"
