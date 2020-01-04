@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.34.2](https://git.awescode.com/awes-io/ui/compare/v1.34.1...v1.34.2) (2020-01-04)
+
+
+### Bug Fixes
+
+* removed trash from index ([11fee69](https://git.awescode.com/awes-io/ui/commits/11fee69565e80f730bb61485bf6972217d737397))
+
+
+
+
+
 ## [1.34.1](https://git.awescode.com/awes-io/ui/compare/v1.34.0...v1.34.1) (2020-01-04)
 
 
