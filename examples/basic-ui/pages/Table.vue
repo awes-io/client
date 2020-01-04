@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import tasksCollection from '~/../tests/mock/tasks-collection'
+import tasksCollection from './../tests/mock/tasks-collection'
 
 export default {
     name: 'TablePage',

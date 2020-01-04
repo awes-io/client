@@ -4,7 +4,6 @@ import VueI18n from 'vue-i18n'
 import Vuex from 'vuex'
 import AwesUi from './entry'
 import App from './App.vue'
-import { menu, default as routes } from '../pages'
 import lang from '../lang/en'
 import axios from 'axios'
 
@@ -16,8 +15,7 @@ Vue.use(AwesUi)
 Vue.prototype.$axios = axios
 
 const router = new VueRouter({
-    mode: 'history',
-    routes
+    mode: 'history'
 })
 
 const i18n = new VueI18n({
@@ -28,31 +26,7 @@ const i18n = new VueI18n({
 })
 
 const store = new Vuex.Store({
-    modules: {
-        awesIo: {
-            state: {
-                menu,
-                caption: 'Awes.io <strong>UI</strong>',
-                navbarItems: [],
-                userMenu: [
-                    {
-                        component: 'AwLink',
-                        props: {
-                            text: 'Profile',
-                            href: '/profile'
-                        }
-                    },
-                    {
-                        component: 'AwLink',
-                        props: {
-                            text: 'Logout'
-                        }
-                    }
-                ]
-            },
-            namespaced: true
-        }
-    }
+    modules: {}
 })
 
 window.app = new Vue({

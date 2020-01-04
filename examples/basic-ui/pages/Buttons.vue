@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage title="Examples / Buttons">
         <h3>Links</h3>
         Lorem ipsum dolor sit amet, <AwLink>Default link</AwLink> consectetur
         adipisicing elit. Blanditiis expedita autem quo aspernatur
@@ -87,7 +87,7 @@
                 button {{ i }}
             </AwButton>
         </div>
-    </main>
+    </AwPage>
 </template>
 
 <script>

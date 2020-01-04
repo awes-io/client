@@ -5,7 +5,7 @@ module.exports = {
         browser: true,
         es6: true
     },
-    extends: [
+    'extends': [
         'plugin:prettier/recommended',
         'plugin:vue/essential',
         'eslint:recommended'
@@ -19,9 +19,6 @@ module.exports = {
     parserOptions: {
         parser: 'babel-eslint',
         ecmaVersion: 6,
-        sourceType: 'module',
-        ecmaFeatures: {
-            experimentalObjectRestSpread: true
-        }
+        sourceType: 'module'
     }
 }

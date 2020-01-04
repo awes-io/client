@@ -2,11 +2,8 @@
 import Vue from 'vue'
 import { flip, pathOr, filter, sortBy, isEmpty, includes, all, values, reduce } from 'rambdax'
 
-<% if (options.dev) { %>
-import AwesUI from '@awes-io/ui/dist/js/dev.js'
-<% } else { %>
+
 import AwesUI from '@awes-io/ui'
-<% } %>
 import config from '@awes-io/ui/nuxt/ui-config.js'
 import { state, mutations } from '@awes-io/ui/nuxt/store'
 

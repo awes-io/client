@@ -3,8 +3,3 @@ node_modules
 dist
 .nuxt
 coverage
-
-# Examples
-
-## plugin
-packages/ui/nuxt/plugin.js

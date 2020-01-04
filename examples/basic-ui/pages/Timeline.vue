@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import activityCollection from '~/../tests/mock/activity-collection'
+import activityCollection from './../tests/mock/activity-collection'
 
 export default {
     name: 'Timeline',

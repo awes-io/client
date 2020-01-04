@@ -10,6 +10,7 @@ export { default as AwDropdown } from './AwDropdown.vue'
 export { default as AwCalendar } from './AwCalendar.vue'
 export { default as AwCalendarDays } from './AwCalendarDays.vue'
 export { default as AwCalendarNav } from './AwCalendarNav.vue'
+export { default as AwCard } from './AwCard.vue'
 
 export { default as AwChart } from './AwChart.vue'
 export { default as AwChip } from './AwChip.vue'
