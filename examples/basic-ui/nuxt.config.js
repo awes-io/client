@@ -31,5 +31,7 @@ export default {
         },
         locales: [{ code: 'en', iso: 'en-US' }],
         defaultLocale: 'en'
-    }
+    },
+
+    serverMiddleware: ['~/api/index.js']
 }

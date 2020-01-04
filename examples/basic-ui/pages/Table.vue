@@ -44,14 +44,13 @@
             <h2 class="h3">Table builder with Vue-MC</h2>
 
             <AwTableBuilder @click:row="clickRow" :collection="tasksCollection">
-                <AwTableCol field="id" />
+                <AwTableCol vertical-align="top" field="id" />
 
                 <AwTableCol visible="md" title="User name" field="name" />
 
                 <AwTableCol
                     visible="lg"
                     title-align="center"
-                    vertical-align="center"
                     field="done"
                     class="text-center"
                 >

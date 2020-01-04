@@ -7,6 +7,7 @@
             key="table"
             :rows="items"
             :style="collection.loading ? 'filter: blur(2px);' : null"
+            :vertical-align="verticalAlign"
             @click:row="$emit('click:row', $event)"
         >
             <template #thead="{ thead }">
@@ -58,6 +59,7 @@
 <script>
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '~/assets/js/router'
+import { AwTable as config } from './_config'
 
 export default {
     name: 'AwTableBuilder',
@@ -66,7 +68,7 @@ export default {
         collection: {
             type: Object,
             required: true,
-            validation(obj) {
+            validator(obj) {
                 return (
                     Array.isArray(obj.models) &&
                     typeof obj.fetch === 'function' &&
@@ -83,6 +85,14 @@ export default {
         scrollOnPage: {
             type: Boolean,
             default: true
+        },
+
+        verticalAlign: {
+            type: String,
+            default: 'middle',
+            validator(value) {
+                return config.valignValues.includes(value)
+            }
         }
     },
 

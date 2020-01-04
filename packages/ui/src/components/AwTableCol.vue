@@ -13,6 +13,7 @@
 
 <script>
 import { path } from 'rambdax'
+import { AwTable as config } from './_config'
 
 export default {
     name: 'AwTableCol',
@@ -42,7 +43,10 @@ export default {
 
         verticalAlign: {
             type: String,
-            default: 'top'
+            default: 'top',
+            validator(value) {
+                return config.valignValues.includes(value)
+            }
         },
 
         isHidden: {

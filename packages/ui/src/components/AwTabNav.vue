@@ -54,10 +54,10 @@ export default {
         items: {
             type: Array,
             required: true,
-            validation(items) {
+            validator(items) {
                 return (
-                    items.each(item => typeof item === 'string') ||
-                    items.each(item => item && item.text && item.href)
+                    items.every(item => typeof item === 'string') ||
+                    items.every(item => item && item.text && item.href)
                 )
             }
         },
