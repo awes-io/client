@@ -3,3 +3,8 @@ node_modules
 dist
 .nuxt
 coverage
+
+
+# TODO
+packages/ui/nuxt/layouts/LayoutFrameCenter.vue
+packages/ui/nuxt/plugin.js

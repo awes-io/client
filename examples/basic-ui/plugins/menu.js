@@ -1,4 +1,4 @@
-export default function({ store, app }) {
+export default function({ store }) {
     // adding menu item with child element
     store.commit('awesIo/SET_MENU_ITEM', {
         key: 'dashboard',

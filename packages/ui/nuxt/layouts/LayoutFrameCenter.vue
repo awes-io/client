@@ -1,7 +1,7 @@
 <template>
     <AwLayoutFrameCenter
-        :logo='<%= JSON.stringify(options.logo) %>'
-        :background='<%= JSON.stringify(options.backgroundFrameCenter) %>'
+        :logo="<%= JSON.stringify(options.logo) %>"
+        :background="<%= JSON.stringify(options.backgroundFrameCenter) %>"
     >
         <Nuxt />
     </AwLayoutFrameCenter>
