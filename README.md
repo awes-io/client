@@ -38,7 +38,7 @@
 #### Content
 1. 📦 [Packages](#packages)
 2. 🌱 [Local installation](#how-to-install-client-to-your-local-machine)
-3. 📖 [How build a new component for UI](#how-build-a-new-component-for-UI)
+3. 📖 [How build a new component for UI](#how-build-a-new-component-for-ui)
 4. 🎉 [Release new versions](#release-new-versions)
 
 ## Packages
