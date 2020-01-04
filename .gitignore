@@ -13,7 +13,7 @@ package-lock.json
 packages/*/LICENSE
 
 # Distributions
-distributions/*/LICENSE
+examples/*/LICENSE
 
 # Other
 .nuxt*
@@ -58,4 +58,3 @@ coverage
 Network Trash Folder
 Temporary Items
 .apdisk
-CHANGELOG.md

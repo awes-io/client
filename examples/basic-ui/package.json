@@ -1,6 +1,6 @@
 {
     "name": "basic-ui",
-    "version": "0.1.0",
+    "version": "1.33.0",
     "private": true,
     "scripts": {
         "dev": "nuxt",
@@ -9,10 +9,10 @@
         "post-update": "yarn upgrade --latest"
     },
     "dependencies": {
-        "nuxt": "^2.0.0",
+        "@awes-io/ui": "1.33.0",
         "@nuxtjs/axios": "^5.0.0",
+        "nuxt": "^2.0.0",
         "nuxt-i18n": "^6.3.0",
-        "@awes-io/ui": "^1.x.x",
         "vue-api-query": "^1.5.1",
         "vue-mc": "^0.6.0",
         "vue-sweetalert2": "^2.1.1"

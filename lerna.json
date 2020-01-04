@@ -1,10 +1,12 @@
 {
-    "version": "1.32.3",
+    "version": "1.33.0",
     "npmClient": "yarn",
     "useWorkspaces": true,
     "conventionalCommits": true,
     "exact": true,
-    "packages": ["packages/*"],
+    "packages": [
+        "packages/*"
+    ],
     "command": {
         "publish": {
             "npmClient": "npm"
