@@ -128,7 +128,8 @@ export const AwForm = {
 }
 
 export const AwInput = {
-    baseClass: 'aw-text-field'
+    baseClass: 'aw-text-field',
+    sizes: ['sm', 'md']
 }
 
 export const AwIcon = {

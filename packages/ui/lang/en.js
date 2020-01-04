@@ -92,6 +92,10 @@ export const AwUploader = {
     errorSize: 'File {fileName} is too big'
 }
 
+export const AwSearch = {
+    text: 'Search'
+}
+
 export default {
     AwModal,
     AwCalendar,
@@ -106,5 +110,6 @@ export default {
     AwSelect,
     AwTableBuilder,
     AwTimelineBuilder,
-    AwUploader
+    AwUploader,
+    AwSearch
 }

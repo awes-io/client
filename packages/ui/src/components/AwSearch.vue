@@ -1,8 +1,29 @@
 <template>
-    <AwInput v-bind="$attrs" v-model="text" autocomplete="off" />
+    <AwInput
+        size="sm"
+        v-bind="$attrs"
+        v-model="text"
+        autocomplete="off"
+        :placeholder="$t('AwSearch.text')"
+    >
+        <template #icon>
+            <AwIcon
+                v-if="!$route.query[param]"
+                name="search"
+                class="h-full w-10 p-3"
+            />
+            <AwIcon
+                v-else
+                @click="clear"
+                name="close"
+                class="h-full w-10 p-3 cursor-pointer"
+            />
+        </template>
+    </AwInput>
 </template>
 
 <script>
+import { isEmpty } from 'rambdax'
 import { mergeRouteQuery } from '~/assets/js/router'
 
 export default {
@@ -60,6 +81,12 @@ export default {
                 .catch(e => {
                     console.log(e)
                 })
+        },
+
+        clear() {
+            if (!isEmpty(this.$route.query)) {
+                this.$router.push({ path: this.$route.path })
+            }
         }
     }
 }

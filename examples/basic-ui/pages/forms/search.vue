@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="flex mb-4">
-            <div class="bg-gray-400 h-12">
+            <div class="bg-gray-400 h-10">
                 <AwButtonNav :items="filters" />
             </div>
-            <div class="ml-auto flex bg-gray-500 h-12">
+            <div class="ml-auto flex bg-gray-500 h-10">
                 <AwButton @click="clear" text="Clear" />
                 <AwSearch name="search" />
             </div>
@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import { isEmpty } from 'rambdax'
-
 export default {
     name: 'SelectSearchPage',
 
@@ -60,14 +58,6 @@ export default {
                     bla: undefined
                 }
             ]
-        }
-    },
-
-    methods: {
-        clear() {
-            if (!isEmpty(this.$route.query)) {
-                this.$router.push({ path: this.$route.path })
-            }
         }
     }
 }
