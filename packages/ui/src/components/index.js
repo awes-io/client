@@ -2,6 +2,8 @@ export { default as AwAccordionFold } from './AwAccordionFold.vue'
 
 export { default as AwAvatar } from './AwAvatar.vue'
 
+export { default as AwHello } from './AwHello.vue'
+
 export { default as AwButton } from './AwButton.vue'
 export { default as AwButtonNav } from './AwButtonNav.vue'
 export { default as AwLink } from './AwLink.vue'

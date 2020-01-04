@@ -13,12 +13,7 @@ export default {
     modules: [
         // ...
         '@nuxtjs/axios',
-        [
-            '@awes-io/ui/nuxt',
-            {
-                dev: false
-            }
-        ],
+        '@awes-io/ui/nuxt',
         // other @awes-io modules, which add custom routes should go before nuxt-i18n
         'nuxt-i18n'
     ],

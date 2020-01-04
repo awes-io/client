@@ -1,12 +1,30 @@
 export default function({ store }) {
     // adding menu item with child element
     store.commit('awesIo/SET_MENU_ITEM', {
-        key: 'dashboard',
+        key: 'examples',
         order: 10,
         props: {
-            text: 'Components',
+            text: 'Examples',
             href: '/',
-            icon: 'dashboard'
+            icon: 'intelligence'
+        }
+    })
+
+    store.commit('awesIo/SET_MENU_ITEM', {
+        key: 'buttons',
+        order: 10,
+        props: {
+            text: 'Buttons',
+            href: '/buttons'
+        }
+    })
+
+    store.commit('awesIo/SET_MENU_ITEM', {
+        key: 'chart',
+        order: 10,
+        props: {
+            text: 'Chart',
+            href: '/chart'
         }
     })
 }

@@ -8,6 +8,7 @@
                 :text="example.text"
                 :link="example.link || ''"
             />
+            <AwHello />
         </AwGrid>
     </AwPage>
 </template>
