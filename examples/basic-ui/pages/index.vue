@@ -9,7 +9,6 @@
                 :link="example.link || ''"
             />
         </AwGrid>
-        <p>adsasd: <AwXxx /></p>
     </AwPage>
 </template>
 
