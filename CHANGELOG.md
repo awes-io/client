@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.34.1](https://git.awescode.com/awes-io/client/compare/v1.34.0...v1.34.1) (2020-01-04)
+
+
+### Bug Fixes
+
+* removed prepublish tag from package.json ([1d7c983](https://git.awescode.com/awes-io/client/commits/1d7c9834339702837633e113ca08571cba30141d))
+
+
+
+
+
 # 1.34.0 (2020-01-04)
 
 
