@@ -1,5 +1,4 @@
 export default {
-    mode: 'spa',
     head: {
         link: [
             {
@@ -17,7 +16,7 @@ export default {
         // other @awes-io modules, which add custom routes should go before nuxt-i18n
         'nuxt-i18n'
     ],
-    plugins: ['~/plugins/menu'],
+    plugins: ['~/plugins/menu', '~/plugins/helper'],
     // add page default transition (if needed)
     pageTransition: {
         name: 'fade',

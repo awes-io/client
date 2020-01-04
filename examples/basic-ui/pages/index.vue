@@ -8,32 +8,27 @@
                 :text="example.text"
                 :link="example.link || ''"
             />
-            <AwHello />
         </AwGrid>
     </AwPage>
 </template>
 
 <script>
+import { navigation } from '../config/navigation'
+
 export default {
     name: 'Examples',
 
-    data() {
-        return {
-            examples: [
-                {
-                    title: 'Buttons',
-                    text: 'abc',
-                    link: '/Buttons'
-                },
-                {
-                    title: 'Charts',
-                    text: 'abc'
-                },
-                {
-                    title: '123',
-                    text: 'abc'
-                }
-            ]
+    computed: {
+        examples() {
+            let items = []
+            for (var i = 0; i < navigation.length; i++) {
+                items.push({
+                    title: navigation[i].title,
+                    text: navigation[i].description,
+                    link: '/' + navigation[i].title.toLowerCase()
+                })
+            }
+            return items
         }
     }
 }

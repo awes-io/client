@@ -1,5 +1,5 @@
 <template>
-    <AwPage title="Examples / Buttons">
+    <AwPage :title="headline">
         <h3>Links</h3>
         Lorem ipsum dolor sit amet, <AwLink>Default link</AwLink> consectetur
         adipisicing elit. Blanditiis expedita autem quo aspernatur
@@ -94,8 +94,16 @@
 export default {
     data() {
         return {
+            title: 'AwButton',
+            headline: this._getTitle('AwButton'),
             sizes: ['sm', 'md', 'lg'],
             colors: ['', 'info', 'success', 'warning', 'error']
+        }
+    },
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

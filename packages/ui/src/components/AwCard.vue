@@ -1,5 +1,5 @@
 <template>
-    <div class="rounded overflow-hidden shadow-lg">
+    <div :class="'rounded overflow-hidden shadow-lg ' + backgroundCss">
         <div class="px-6 py-4">
             <div class="text-xl mb-2" v-if="title != ''">
                 <div v-if="link == ''" class="font-bold">
@@ -12,6 +12,7 @@
             <p class="text-gray-700 text-base" v-if="text != ''">
                 {{ text }}
             </p>
+            <slot />
         </div>
     </div>
 </template>
@@ -19,6 +20,12 @@
 export default {
     name: 'AwCard',
     props: {
+        background: {
+            type: String,
+            default() {
+                return ''
+            }
+        },
         title: {
             type: String,
             default() {
@@ -36,6 +43,14 @@ export default {
             default() {
                 return ''
             }
+        }
+    },
+    computed: {
+        backgroundCss() {
+            if (this.background != '') {
+                return 'bg-' + this.background
+            }
+            return 'bg-surface'
         }
     }
 }

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { AwCode } from '../config/awes-io'
+import { AwCode } from '../../config/awes-io'
 
 export default {
     name: 'FormCodePage',

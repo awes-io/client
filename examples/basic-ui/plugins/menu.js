@@ -1,3 +1,5 @@
+import { navigation } from '../config/navigation'
+
 export default function({ store }) {
     // adding menu item with child element
     store.commit('awesIo/SET_MENU_ITEM', {
@@ -6,25 +8,46 @@ export default function({ store }) {
         props: {
             text: 'Examples',
             href: '/',
-            icon: 'intelligence'
+            icon: 'settings'
         }
     })
 
-    store.commit('awesIo/SET_MENU_ITEM', {
-        key: 'buttons',
-        order: 10,
-        props: {
-            text: 'Buttons',
-            href: '/buttons'
-        }
-    })
+    for (var i = 0; i < navigation.length; i++) {
+        if (typeof navigation[i].childs === 'undefined') {
+            store.commit('awesIo/SET_MENU_ITEM', {
+                key: navigation[i].title.toLowerCase(),
+                order: 10,
+                props: {
+                    text: navigation[i].title,
+                    href: '/' + navigation[i].title.toLowerCase()
+                }
+            })
+        } else {
+            store.commit('awesIo/SET_MENU_ITEM', {
+                key: navigation[i].title.toLowerCase(),
+                order: 10,
+                props: {
+                    text: navigation[i].title,
+                    href: '/' + navigation[i].title.toLowerCase()
+                }
+            })
 
-    store.commit('awesIo/SET_MENU_ITEM', {
-        key: 'chart',
-        order: 10,
-        props: {
-            text: 'Chart',
-            href: '/chart'
+            for (var j = 0; j < navigation[i].childs.length; j++) {
+                store.commit('awesIo/SET_MENU_ITEM', [
+                    {
+                        parent: navigation[i].title.toLowerCase(),
+                        order: 5,
+                        props: {
+                            text: navigation[i].childs[j],
+                            href:
+                                '/' +
+                                navigation[i].title.toLowerCase() +
+                                '/' +
+                                navigation[i].childs[j].toLowerCase()
+                        }
+                    }
+                ])
+            }
         }
-    })
+    }
 }
