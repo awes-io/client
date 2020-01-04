@@ -11,7 +11,7 @@
 
 <p align="center">
     <a href="https://www.awes.io/?utm_source=github&amp;utm_medium=shields">
-        <img src="https://img.shields.io/github/package-json/v/awes-io/client/:branch" alt="Last version" >
+        <img src="https://img.shields.io/github/package-json/v/awes-io/client/master" alt="Last version" >
     </a>
     <a href="https://www.awes.io/?utm_source=github&amp;utm_medium=shields">
         <img src="https://img.shields.io/github/license/awes-io/form-builder.svg" alt="License" />
