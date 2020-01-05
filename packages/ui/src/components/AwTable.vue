@@ -56,6 +56,7 @@ import { ucFirst, toPascal } from '~/assets/js/string'
 import AwTableCol from './AwTableCol.vue'
 import AwTableColHidden from './AwTableColHidden.vue'
 import AwTableRowHidden from './AwTableRowHidden.vue'
+import { AwTable as config } from './_config'
 
 const RESIZE_DEBOUNCE = 500
 
@@ -72,6 +73,14 @@ export default {
         rows: {
             type: Array,
             required: true
+        },
+
+        verticalAlign: {
+            type: String,
+            default: 'middle',
+            validator(value) {
+                return config.valignValues.includes(value)
+            }
         }
     },
 
@@ -87,10 +96,22 @@ export default {
             const _slots = this.$slots.default
 
             return Array.isArray(_slots)
-                ? _slots.filter(this._isColumnComponent)
+                ? _slots.filter(this._isColumnComponent).map(col => {
+                      if (!col.componentOptions.propsData.verticalAlign) {
+                          col.componentOptions.propsData = {
+                              ...col.componentOptions.propsData,
+                              verticalAlign: this.verticalAlign
+                          }
+                      }
+                      return col
+                  })
                 : keys(this.rows[0]).map((field, priority) =>
                       this.$createElement(AwTableCol, {
-                          props: { field, priority }
+                          props: {
+                              field,
+                              priority,
+                              verticalAlign: this.verticalAlign
+                          }
                       })
                   )
         },

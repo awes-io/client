@@ -57,7 +57,7 @@ export default {
         collection: {
             type: Object,
             required: true,
-            validation(obj) {
+            validator(obj) {
                 return (
                     Array.isArray(obj.models) &&
                     typeof obj.fetch === 'function' &&

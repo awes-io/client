@@ -11,8 +11,10 @@
     "dependencies": {
         "@awes-io/ui": "1.34.2",
         "@nuxtjs/axios": "^5.0.0",
+        "express": "^4.17.1",
         "nuxt": "^2.0.0",
         "nuxt-i18n": "^6.3.0",
+        "querystring": "^0.2.0",
         "vue-api-query": "^1.5.1",
         "vue-mc": "^0.6.0",
         "vue-sweetalert2": "^2.1.1"
