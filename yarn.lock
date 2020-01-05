@@ -15620,6 +15620,11 @@ svgpath@^2.1.5:
   resolved "https://registry.npmjs.org/svgpath/-/svgpath-2.2.2.tgz#1c70d44e27f7b6bd42a74ed3c960be93e411def3"
   integrity sha512-7cXFbkZvPkZpKLC+3QIfyUd3/Un/CvJONjTD3Gz5qLuEa73StPOt8kZjTi9apxO6zwCaza0bPNnmzTyrQ4qQlw==
 
+sweetalert2@8.x:
+  version "8.19.0"
+  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-8.19.0.tgz#692269bc8ddc5760e2b5070da2cf5e9e278bac0b"
+  integrity sha512-nFL++N3bitkEkd487Tv4i5ZxusmnoAAXHjtk7lp603Opxb8wlvVnz3hqa7qiIw6QFL04JC810E6qVQNf8s0vYQ==
+
 symbol-observable@1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.0.1.tgz#8340fc4702c3122df5d22288f88283f513d3fdd4"
@@ -16557,6 +16562,11 @@ void-elements@^2.0.1:
   resolved "https://registry.npmjs.org/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
+vue-api-query@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npmjs.org/vue-api-query/-/vue-api-query-1.5.1.tgz#7abfd61f06fe3f22712c5c63bc101a53fd4147a8"
+  integrity sha512-9VAGugAe0idKZF7xmXzlOThvyBTpkv6YT4ihkbzwpIwLedCyLczr1LOKQ1m0qpK7EPFP4vHzN/zrY5HFfX/rMw==
+
 vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
@@ -16682,6 +16692,13 @@ vue-style-loader@^4.1.0:
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
+
+vue-sweetalert2@^2.1.1:
+  version "2.1.5"
+  resolved "https://registry.npmjs.org/vue-sweetalert2/-/vue-sweetalert2-2.1.5.tgz#5a23c89cef3633af67d4a0d80bdb7641cac67aaf"
+  integrity sha512-7sYg0NHz9Tj9GbkzCRBwe/rUBsq49gr/aQLh0cZjK1bqMd5UucmxGGn2AKhSdXyqswlHElAGWXI0Yub9l3ZrRQ==
+  dependencies:
+    sweetalert2 "8.x"
 
 vue-template-compiler@^2.6.10, vue-template-compiler@^2.6.11:
   version "2.6.11"

@@ -1,7 +1,8 @@
 <template>
-    <main>
+    <AwPage :title="headline">
+        <h3>Button</h3>
         <AwButton @click="$refs.drop1.toggle()">
-            Drop
+            Button drop
         </AwButton>
         <AwDropdown ref="drop1">
             <AwButton theme="toggle" class="block p-4">
@@ -20,6 +21,8 @@
                 In list button
             </AwLink>
         </AwDropdown>
+
+        <h3>Link</h3>
         <AwLink class="ml-8" @click="$refs.drop2.toggle()">
             Link drop
         </AwLink>
@@ -42,7 +45,7 @@
                 </AwLink>
             </AwGrid>
         </AwDropdown>
-        <p class="mt-4">Text below</p>
+        <h4>Text below</h4>
         <p class="mt-4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo
             doloribus, vitae perspiciatis, vel eveniet ullam culpa pariatur
@@ -50,5 +53,22 @@
             earum quis, ab a voluptates mollitia, expedita similique error odit
             numquam! Molestiae recusandae, labore.
         </p>
-    </main>
+    </AwPage>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            title: 'AwDropdown',
+            headline: this._getTitle('AwDropdown')
+        }
+    },
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
+        }
+    }
+}
+</script>

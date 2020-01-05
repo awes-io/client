@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <div class="border p-4 my-8">
             <p class="font-bold mb-4">Pattern</p>
             <AwInput v-model="pattern" label="Pattern" />
@@ -23,7 +23,7 @@
 
         <!-- result -->
         <pre class="py-8">{{ submitData }}</pre>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -34,6 +34,8 @@ export default {
 
     data() {
         return {
+            title: 'AwCode',
+            headline: this._getTitle('AwCode'),
             pattern: AwCode.pattern,
             errorText: 'This is an error',
             submitData: {}
@@ -63,6 +65,13 @@ export default {
             }
 
             this.submitData = result
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

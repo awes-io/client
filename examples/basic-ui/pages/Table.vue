@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <section>
             <h2 class="h3">Table simple</h2>
 
@@ -104,7 +104,7 @@
                 </AwTableCol>
             </AwTableBuilder>
         </section>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -115,6 +115,8 @@ export default {
 
     data() {
         return {
+            title: 'AwTableBuilder',
+            headline: this._getTitle('AwTableBuilder'),
             rows: [
                 {
                     one: 'Lorem ipsum dolor sit amet.',
@@ -136,6 +138,13 @@ export default {
     methods: {
         clickRow(val) {
             console.log(val)
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

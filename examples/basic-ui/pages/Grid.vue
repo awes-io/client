@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <!-- config panel -->
         <div class="bg-surface border rounded p-4 mb-4">
             <AwSwitcher v-model="responsive" label="Responsive" />
@@ -56,7 +56,7 @@
                 <div class="border p-2">Example</div>
             </AwGrid>
         </AwGrid>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -70,6 +70,8 @@ export default {
 
     data() {
         return {
+            title: 'AwGrid',
+            headline: this._getTitle('AwGrid'),
             responsive: false,
             col: 3,
             resCol: {
@@ -115,6 +117,13 @@ export default {
     methods: {
         getColor(index) {
             return colors[index % colorsLength]
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

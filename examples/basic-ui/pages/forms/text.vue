@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <!-- text inputs -->
         <AwInput placeholder="Text input" />
         <AwInput
@@ -56,7 +56,7 @@
             :error="inputError"
             placeholder="Textarea"
         />
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -65,6 +65,8 @@ import copyFn from 'clipboard-copy'
 export default {
     data() {
         return {
+            title: 'AwInput',
+            headline: this._getTitle('AwInput'),
             input: 'Value',
             inputError: 'Field error',
             copyValue: 'Input with icon'
@@ -74,6 +76,13 @@ export default {
     methods: {
         copyToClipboard() {
             copyFn(this.copyValue)
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

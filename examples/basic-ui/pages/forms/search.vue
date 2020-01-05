@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <div class="flex mb-4">
             <div class="bg-gray-400 h-12">
                 <AwButtonNav :items="filters" />
@@ -27,7 +27,7 @@
                 </AwTable>
             </div>
         </div>
-    </div>
+    </AwPage>
 </template>
 
 <script>
@@ -38,6 +38,8 @@ export default {
 
     data() {
         return {
+            title: 'AwSearch',
+            headline: this._getTitle('AwSearch'),
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
             selected: 'three',
@@ -68,6 +70,13 @@ export default {
             if (!isEmpty(this.$route.query)) {
                 this.$router.push({ path: this.$route.path })
             }
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

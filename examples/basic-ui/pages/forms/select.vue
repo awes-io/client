@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <AwSelect
             :options="options"
             :disabled="disabled"
@@ -25,7 +25,7 @@
             label="Select something"
             v-model="selected"
         />
-    </div>
+    </AwPage>
 </template>
 
 <script>
@@ -34,9 +34,18 @@ export default {
 
     data() {
         return {
+            title: 'AwSelect',
+            headline: this._getTitle('AwSelect'),
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
             selected: 'three'
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

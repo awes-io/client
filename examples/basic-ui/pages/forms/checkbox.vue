@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <div class="flex -mx-4">
             <div class="px-4">
                 <AwCheckbox
@@ -62,7 +62,7 @@
             </div>
         </div>
         <pre class="mt-4">Switcher value: {{ switcher }}</pre>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -71,10 +71,19 @@ export default {
 
     data() {
         return {
+            title: 'AwCheckbox',
+            headline: this._getTitle('AwCheckbox'),
             inputError: 'Field error',
             checkbox: [],
             switcher: [],
             checkboxNumber: 1
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

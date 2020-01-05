@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <!-- default usage -->
         <AwTimelineBuilder :collection="activityCollection" />
 
@@ -14,7 +14,7 @@
                 </ul>
             </template>
         </AwTimelineBuilder>
-    </div>
+    </AwPage>
 </template>
 
 <script>
@@ -25,7 +25,16 @@ export default {
 
     data() {
         return {
+            title: 'AwTimelineBuilder',
+            headline: this._getTitle('AwTimelineBuilder'),
             activityCollection
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

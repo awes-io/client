@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage>
         <!-- form control -->
         <div class="border mb-8 p-4">
             <p class="font-bold">Loading:</p>
@@ -75,7 +75,7 @@
                 <pre>{{ recieved }}</pre>
             </div>
         </div>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -84,6 +84,8 @@ export default {
 
     data() {
         return {
+            title: 'Forms',
+            headline: this._getTitle('Forms'),
             loading: false,
             loadingText: 'Loading...',
             method: 'POST',
@@ -104,6 +106,13 @@ export default {
     watch: {
         loading(isLoading) {
             this.$refs.form.loading = isLoading
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }
