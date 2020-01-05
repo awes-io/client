@@ -6,6 +6,15 @@ export default {
                 href:
                     'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu:400,500&display=swap'
             }
+        ],
+        meta: [
+            { charset: 'utf-8' },
+            {
+                hid: 'viewport',
+                name: 'viewport',
+                content:
+                    'width=device-width, initial-scale=1, maximum-scale=1.0'
+            }
         ]
     },
 
