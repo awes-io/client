@@ -382,7 +382,7 @@ export default {
 
             clearTimeout(this._tm)
 
-            if (text.length > 2) {
+            if (text.length > 0) {
                 this._tm = setTimeout(this.fetch, this.debounce)
             } else {
                 this.cancelRequest()
