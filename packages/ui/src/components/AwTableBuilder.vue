@@ -7,6 +7,7 @@
             key="table"
             :rows="items"
             :style="collection.loading ? 'filter: blur(2px);' : null"
+            :vertical-align="verticalAlign"
             @click:row="$emit('click:row', $event)"
         >
             <template #thead="{ thead }">
@@ -66,7 +67,7 @@ export default {
         collection: {
             type: Object,
             required: true,
-            validation(obj) {
+            validator(obj) {
                 return (
                     Array.isArray(obj.models) &&
                     typeof obj.fetch === 'function' &&
@@ -83,7 +84,9 @@ export default {
         scrollOnPage: {
             type: Boolean,
             default: true
-        }
+        },
+
+        verticalAlign: String
     },
 
     data() {

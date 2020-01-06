@@ -27,7 +27,6 @@
         "build": "yarn clean && yarn build-icons && cross-env NODE_ENV=production rollup -c ./build/rollup.config.production.js",
         "build-icons": "node build/icons/font.js && node build/icons/json.js",
         "dev": "rollup -c ./build/rollup.config.js -w",
-        "dev-lib": "yarn clean && yarn build-icons && rollup -c ./build/rollup.config.lib.js -w",
         "reload": "browser-sync start -c browser-sync.config.js",
         "watch": "yarn clean && yarn build-icons && concurrently -k --restart-tries=5 --restart-after=500 \"yarn dev\" \"yarn reload\"",
         "lint": "eslint --ext .js,.vue .",

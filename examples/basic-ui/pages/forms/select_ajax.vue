@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <AwSelect
             v-model="selected"
             ref="select"
@@ -35,7 +35,7 @@
         </AwSelect>
 
         <AwSwitcher label="Disable" v-model="disabled" />
-    </div>
+    </AwPage>
 </template>
 
 <script>
@@ -44,6 +44,8 @@ export default {
 
     data() {
         return {
+            title: 'AwSelect',
+            headline: this._getTitle('AwSelect'),
             disabled: false,
             selected: 5
         }
@@ -72,6 +74,13 @@ export default {
             await this.$refs.select.fetch()
 
             this.selected = data.data.id
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

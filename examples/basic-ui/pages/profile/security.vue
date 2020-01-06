@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <!-- change password -->
         <h3 class="h4 mb-4">Change password</h3>
         <AwForm url="/api/profile">
@@ -35,7 +35,7 @@
         <AwModal theme="fullscreen" name="info" title="Activation info">
             <img src="//placehold.it/250" alt="" />
         </AwModal>
-    </div>
+    </AwPage>
 </template>
 
 <script>
@@ -44,6 +44,8 @@ export default {
 
     data() {
         return {
+            title: 'AwForm',
+            headline: this._getTitle(''),
             twoFactorEnabled: true
         }
     },
@@ -53,6 +55,13 @@ export default {
             if (!isEnabled) {
                 // this.$axios.delete('/api/twofactor')
             }
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

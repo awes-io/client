@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <AwButton @click="$root.$emit('modal::form:open')">Show modal</AwButton>
         <AwModal title="Form modal" name="form">
             <AwInput label="Name" name="name" />
@@ -41,5 +41,25 @@
             />
             <AwButton class="mt-2" type="submit">Submit</AwButton>
         </AwModal>
-    </main>
+    </AwPage>
 </template>
+
+<script>
+export default {
+    name: 'ModalWindows',
+
+    data() {
+        return {
+            title: 'AwModal',
+            headline: this._getTitle('AwModal')
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
+        }
+    }
+}
+</script>

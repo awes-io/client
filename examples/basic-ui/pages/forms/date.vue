@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <h2>Calendar</h2>
         <AwCalendar />
 
@@ -12,5 +12,25 @@
                 :value="new Date()"
             />
         </AwForm>
-    </div>
+    </AwPage>
 </template>
+
+<script>
+export default {
+    name: 'FormsCalendarPage',
+
+    data() {
+        return {
+            title: 'AwCalendar',
+            headline: this._getTitle('AwCalendar')
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
+        }
+    }
+}
+</script>

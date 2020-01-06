@@ -72,7 +72,9 @@ export default {
         rows: {
             type: Array,
             required: true
-        }
+        },
+
+        verticalAlign: String
     },
 
     data() {
@@ -87,10 +89,22 @@ export default {
             const _slots = this.$slots.default
 
             return Array.isArray(_slots)
-                ? _slots.filter(this._isColumnComponent)
+                ? _slots.filter(this._isColumnComponent).map(col => {
+                      if (!col.componentOptions.propsData.verticalAlign) {
+                          col.componentOptions.propsData = {
+                              ...col.componentOptions.propsData,
+                              verticalAlign: this.verticalAlign
+                          }
+                      }
+                      return col
+                  })
                 : keys(this.rows[0]).map((field, priority) =>
                       this.$createElement(AwTableCol, {
-                          props: { field, priority }
+                          props: {
+                              field,
+                              priority,
+                              verticalAlign: this.verticalAlign
+                          }
                       })
                   )
         },

@@ -11,7 +11,7 @@ export const navigation = [
     {
         title: 'Forms',
         description: '',
-        childs: [
+        children: [
             'Address',
             'Checkbox',
             'Code',
@@ -19,8 +19,8 @@ export const navigation = [
             'Radio',
             'Search',
             'Select',
-            'Select_Ajax',
-            'Select_Object',
+            'Select Ajax',
+            'Select Object',
             'Text'
         ]
     },
@@ -28,7 +28,7 @@ export const navigation = [
     { title: 'Icons', description: '' },
     { title: 'Markdown', description: '' },
     { title: 'Modals', description: '' },
-    { title: 'Profile', description: '', childs: ['Security'] },
+    { title: 'Profile', description: '', children: ['Security'] },
     { title: 'Table', description: '' },
     { title: 'Tabs', description: '' },
     { title: 'Timeline', description: '' },

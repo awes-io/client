@@ -1,12 +1,16 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <section>
             <h2 class="h3">Table simple</h2>
 
-            <AwTable :rows="rows">
+            <AwTable :rows="rows" vertical-align="middle">
                 <!-- https://tailwindcss.com/docs/word-break/#app -->
                 <AwTableCol field="one" class="break-all" :priority="4" />
-                <AwTableCol field="two with long name" title="Two" />
+                <AwTableCol
+                    field="two with long name"
+                    title="Two"
+                    vertical-align="top"
+                />
                 <AwTableCol field="three" title="Three" title-align="center" />
                 <AwTableCol>
                     <template #default="{ cell }">
@@ -44,14 +48,13 @@
             <h2 class="h3">Table builder with Vue-MC</h2>
 
             <AwTableBuilder @click:row="clickRow" :collection="tasksCollection">
-                <AwTableCol field="id" />
+                <AwTableCol vertical-align="top" field="id" />
 
                 <AwTableCol visible="md" title="User name" field="name" />
 
                 <AwTableCol
                     visible="lg"
                     title-align="center"
-                    vertical-align="center"
                     field="done"
                     class="text-center"
                 >
@@ -104,7 +107,7 @@
                 </AwTableCol>
             </AwTableBuilder>
         </section>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -115,6 +118,8 @@ export default {
 
     data() {
         return {
+            title: 'AwTableBuilder',
+            headline: this._getTitle('AwTableBuilder'),
             rows: [
                 {
                     one: 'Lorem ipsum dolor sit amet.',
@@ -136,6 +141,13 @@ export default {
     methods: {
         clickRow(val) {
             console.log(val)
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

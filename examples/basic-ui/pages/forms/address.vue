@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <Transition name="fade-from-bottom" mode="out-in">
             <div v-if="!key || !showAddress" key="key">
                 <AwInput v-model="key" label="Enter maps API key" />
@@ -41,7 +41,7 @@
             <AwButton type="submit" class="mt-2" text="Submit" />
         </AwForm>
         <AwCodeSnippet v-text="phone" class="mt-4" />
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -50,6 +50,8 @@ export default {
 
     data() {
         return {
+            title: 'AwAddress',
+            headline: this._getTitle('AwAddress'),
             phone: null,
             text: 'Response will show up here...',
             key: '',
@@ -62,6 +64,13 @@ export default {
     methods: {
         setText(obj) {
             this.text = JSON.stringify(obj, null, 2)
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

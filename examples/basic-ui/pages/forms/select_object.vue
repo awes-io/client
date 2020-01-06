@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <AwPage :title="headline">
         <AwSelect
             :options="options"
             :disabled="disabled"
@@ -23,7 +23,7 @@
                 <pre>{{ markup }}</pre>
             </div>
         </div>
-    </div>
+    </AwPage>
 </template>
 
 <script>
@@ -51,6 +51,8 @@ export default {
 
     data() {
         return {
+            title: 'AwSelect',
+            headline: this._getTitle('AwSelect'),
             disabled: false,
             options,
             selected: options[1],
@@ -81,6 +83,13 @@ ${this.optionValue ? '    option-value="value"\n/>' : '/>'}`
                     ({ value }) => value === this.selected
                 )
             }
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

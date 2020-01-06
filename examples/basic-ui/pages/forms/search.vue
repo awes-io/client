@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <div class="flex mb-4">
-            <div class="bg-gray-400 h-10">
-                <AwButtonNav :items="filters" />
-            </div>
-            <div class="ml-auto flex bg-gray-500 h-10">
-                <AwButton @click="clear" text="Clear" />
+    <AwPage :title="headline">
+        <AwGrid :col="{ lg: 2 }">
+            <AwButtonNav :items="filters" />
+            <div class="flex lg:justify-end">
+                <AwButton @click="clear" text="Clear" size="sm" class="mr-2" />
                 <AwSearch name="search" />
             </div>
-        </div>
-        <div class="flex mb-4">
+        </AwGrid>
+        <div class="flex my-4">
             <div class="w-full bg-gray-500 h-12">
                 <AwTable :rows="rows">
                     <AwTableCol field="one" />
@@ -27,15 +25,19 @@
                 </AwTable>
             </div>
         </div>
-    </div>
+    </AwPage>
 </template>
 
 <script>
+import { isEmpty } from 'rambdax'
+
 export default {
     name: 'SelectSearchPage',
 
     data() {
         return {
+            title: 'AwSearch',
+            headline: this._getTitle('AwSearch'),
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
             selected: 'three',
@@ -58,6 +60,21 @@ export default {
                     bla: undefined
                 }
             ]
+        }
+    },
+
+    methods: {
+        clear() {
+            if (!isEmpty(this.$route.query)) {
+                this.$router.push({ path: this.$route.path })
+            }
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

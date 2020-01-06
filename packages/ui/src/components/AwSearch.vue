@@ -1,5 +1,6 @@
 <template>
     <AwInput
+        ref="input"
         size="sm"
         v-bind="$attrs"
         v-model="text"
@@ -12,18 +13,14 @@
                 name="search"
                 class="h-full w-10 p-3"
             />
-            <AwIcon
-                v-else
-                @click="clear"
-                name="close"
-                class="h-full w-10 p-3 cursor-pointer"
-            />
+            <button v-else @click="clear">
+                <AwIcon name="close" class="h-full w-10 p-3" />
+            </button>
         </template>
     </AwInput>
 </template>
 
 <script>
-import { isEmpty } from 'rambdax'
 import { mergeRouteQuery } from '~/assets/js/router'
 
 export default {
@@ -84,9 +81,8 @@ export default {
         },
 
         clear() {
-            if (!isEmpty(this.$route.query)) {
-                this.$router.push({ path: this.$route.path })
-            }
+            this.setSearchParam('')
+            this.$refs.input.focus()
         }
     }
 }

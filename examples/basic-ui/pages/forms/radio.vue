@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <div class="flex -mx-4">
             <div class="px-4">
                 <AwRadio v-model="radio" label="Radio input one" value="one" />
@@ -21,7 +21,7 @@
             </div>
         </div>
         <pre class="mt-4">Radio value: {{ radio }}</pre>
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -30,8 +30,17 @@ export default {
 
     data() {
         return {
+            title: 'AwRadio',
+            headline: this._getTitle('AwRadio'),
             inputError: 'Field error',
             radio: null
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }

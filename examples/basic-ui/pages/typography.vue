@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <h2>Headings</h2>
         <hr />
         <Component v-for="level in 6" :key="level" :is="`h${level}`">
@@ -62,5 +62,28 @@ function sum(a, b) {
             </p>
             <cite>Lorem ipsum.</cite>
         </blockquote>
-    </main>
+    </AwPage>
 </template>
+
+<script>
+import activityCollection from './../tests/mock/activity-collection'
+
+export default {
+    name: 'Typography',
+
+    data() {
+        return {
+            title: 'Typography',
+            headline: this._getTitle(''),
+            activityCollection
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
+        }
+    }
+}
+</script>

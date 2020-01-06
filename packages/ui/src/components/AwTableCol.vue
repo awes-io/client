@@ -42,7 +42,12 @@ export default {
 
         verticalAlign: {
             type: String,
-            default: 'top'
+            default: 'top',
+            validator(value) {
+                return ['align-bottom', 'align-middle', 'align-top'].includes(
+                    `align-${value}`
+                )
+            }
         },
 
         isHidden: {

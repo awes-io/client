@@ -1,11 +1,11 @@
 <template>
-    <main>
+    <AwPage :title="headline">
         <h2>Router links</h2>
         <AwTabNav :items="routes" />
 
         <h2>Buttons</h2>
         <AwTabNav :items="['One', 'Two', 'Three']" :active.sync="active" />
-    </main>
+    </AwPage>
 </template>
 
 <script>
@@ -14,6 +14,8 @@ export default {
 
     data() {
         return {
+            title: 'AwTabNav',
+            headline: this._getTitle('AwTabNav'),
             routes: [
                 { text: 'Order default', href: { query: { orderBy: null } } },
                 { text: 'Order by name', href: { query: { orderBy: 'name' } } },
@@ -28,6 +30,13 @@ export default {
             return items.findIndex(
                 ({ href }) => href.query.orderBy == this.$route.query.orderBy
             )
+        }
+    },
+
+    head() {
+        return {
+            title: this._getMetaTitle(this.title),
+            meta: [this._getMetaDescription(this.title)]
         }
     }
 }
