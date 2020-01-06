@@ -33,10 +33,9 @@
         "tailwind.config.js"
     ],
     "scripts": {
-        "clean": "rimraf dist",
-        "build": "yarn clean && yarn build-icons && cross-env NODE_ENV=production rollup -c ./build/rollup.config.js",
+        "build": "rimraf dist && yarn build-icons && cross-env NODE_ENV=production rollup -c",
         "build-icons": "node build/icons/font.js && node build/icons/json.js",
-        "dev": "yarn clean && yarn build-icons && cross-env NODE_ENV=development rollup -wc ./build/rollup.config.js",
+        "dev": "rimraf dist && yarn build-icons && rollup -wc",
         "test": "jest",
         "test:watch": "jest -w"
     },
