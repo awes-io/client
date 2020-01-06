@@ -35,7 +35,7 @@ export default {
             default() {
                 return conf(this, 'method')
             },
-            validatior(method) {
+            validator(method) {
                 return ['get', 'post', 'delete', 'patch'].includes(
                     method.toLowerCase()
                 )
