@@ -17,11 +17,7 @@
         /><label v-if="!!label" :class="elClasses.label" :for="id || defaultId">
             {{ label }}
         </label>
-        <span
-            v-if="$slots.icon"
-            v-on="$slots.icon[0].componentOptions.listeners"
-            :class="elClasses.icon"
-        >
+        <span v-if="$slots.icon" :class="elClasses.icon">
             <slot name="icon" />
         </span>
         <slot name="error" v-if="errorText" :error="errorText">
