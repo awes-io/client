@@ -148,10 +148,6 @@ export const AwModal = {
     bgClickClose: true
 }
 
-export const AwTable = {
-    valignValues: ['bottom', 'middle', 'top']
-}
-
 export default {
     AwButton,
     AwLink,
@@ -162,6 +158,5 @@ export default {
     AwInput,
     AwIcon,
     AwPage,
-    AwModal,
-    AwTable
+    AwModal
 }

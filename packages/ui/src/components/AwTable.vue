@@ -56,7 +56,6 @@ import { ucFirst, toPascal } from '~/assets/js/string'
 import AwTableCol from './AwTableCol.vue'
 import AwTableColHidden from './AwTableColHidden.vue'
 import AwTableRowHidden from './AwTableRowHidden.vue'
-import { AwTable as config } from './_config'
 
 const RESIZE_DEBOUNCE = 500
 
@@ -75,13 +74,7 @@ export default {
             required: true
         },
 
-        verticalAlign: {
-            type: String,
-            default: 'middle',
-            validator(value) {
-                return config.valignValues.includes(value)
-            }
-        }
+        verticalAlign: String
     },
 
     data() {

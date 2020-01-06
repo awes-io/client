@@ -3,10 +3,14 @@
         <section>
             <h2 class="h3">Table simple</h2>
 
-            <AwTable :rows="rows">
+            <AwTable :rows="rows" vertical-align="middle">
                 <!-- https://tailwindcss.com/docs/word-break/#app -->
                 <AwTableCol field="one" class="break-all" :priority="4" />
-                <AwTableCol field="two with long name" title="Two" />
+                <AwTableCol
+                    field="two with long name"
+                    title="Two"
+                    vertical-align="top"
+                />
                 <AwTableCol field="three" title="Three" title-align="center" />
                 <AwTableCol>
                     <template #default="{ cell }">
