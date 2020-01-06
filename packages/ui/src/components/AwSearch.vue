@@ -1,5 +1,23 @@
 <template>
-    <AwInput v-bind="$attrs" v-model="text" autocomplete="off" />
+    <AwInput
+        ref="input"
+        size="sm"
+        v-bind="$attrs"
+        v-model="text"
+        autocomplete="off"
+        :placeholder="$t('AwSearch.text')"
+    >
+        <template #icon>
+            <AwIcon
+                v-if="!$route.query[param]"
+                name="search"
+                class="h-full w-10 p-3"
+            />
+            <button v-else @click="clear">
+                <AwIcon name="close" class="h-full w-10 p-3" />
+            </button>
+        </template>
+    </AwInput>
 </template>
 
 <script>
@@ -60,6 +78,11 @@ export default {
                 .catch(e => {
                     console.log(e)
                 })
+        },
+
+        clear() {
+            this.setSearchParam('')
+            this.$refs.input.focus()
         }
     }
 }

@@ -2,13 +2,13 @@
     <div
         :class="[
             elClasses.base,
-            `is-${this.type}`,
+            `is-${type}`,
             ...wrapperClasses,
             { 'has-icon': $slots.icon }
         ]"
     >
         <input
-            :class="elClasses.el"
+            :class="[elClasses.el, paddingClass]"
             v-bind="{ type, value: inputValue, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
@@ -54,6 +54,20 @@ export default {
                 }
                 return true
             }
+        },
+
+        size: {
+            type: String,
+            default: 'md',
+            validator(type) {
+                if (_config.sizes.includes(type)) {
+                    return true
+                }
+                console.error(
+                    `You must use only one from ${_config.sizes.join(', ')}`
+                )
+                return false
+            }
         }
     },
 
@@ -67,6 +81,10 @@ export default {
                 label: `${base}__label`,
                 icon: `${base}__icon`
             }
+        },
+
+        paddingClass() {
+            return this.size === 'md' ? 'p-3' : 'p-2'
         }
     }
 }

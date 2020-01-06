@@ -2,7 +2,7 @@
     position: relative;
 
     &__element {
-        @apply w-full p-3 border rounded-sm;
+        @apply w-full border rounded-sm;
         background-color: var(--c-surface, inherit);
         transition: 200ms border-color;
 
@@ -126,11 +126,6 @@
 
     &__icon {
         @apply absolute right-0 top-0 mt-px mr-px rounded-r-sm;
-
-        &:before {
-            content: '';
-            @apply absolute inset-0 bgcolor-overlay opacity-10;
-        }
     }
 
     &__icon svg {

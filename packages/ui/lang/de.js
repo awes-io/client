@@ -41,6 +41,10 @@ export const AwTableBuilder = {
     loading: 'Wird geladen...'
 }
 
+export const AwSearch = {
+    text: 'Suche'
+}
+
 export default {
     AwModal,
     AwCropper,
@@ -49,5 +53,6 @@ export default {
     AwLayoutFrameCenter,
     AwPagination,
     AwSelect,
-    AwTableBuilder
+    AwTableBuilder,
+    AwSearch
 }
