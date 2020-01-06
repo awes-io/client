@@ -59,7 +59,6 @@
 <script>
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '~/assets/js/router'
-import { AwTable as config } from './_config'
 
 export default {
     name: 'AwTableBuilder',
@@ -87,13 +86,7 @@ export default {
             default: true
         },
 
-        verticalAlign: {
-            type: String,
-            default: 'middle',
-            validator(value) {
-                return config.valignValues.includes(value)
-            }
-        }
+        verticalAlign: String
     },
 
     data() {

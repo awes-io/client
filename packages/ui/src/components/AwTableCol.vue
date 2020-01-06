@@ -13,7 +13,6 @@
 
 <script>
 import { path } from 'rambdax'
-import { AwTable as config } from './_config'
 
 export default {
     name: 'AwTableCol',
@@ -45,7 +44,9 @@ export default {
             type: String,
             default: 'top',
             validator(value) {
-                return config.valignValues.includes(value)
+                return ['align-bottom', 'align-middle', 'align-top'].includes(
+                    `align-${value}`
+                )
             }
         },
 
