@@ -7,7 +7,7 @@ import license from 'rollup-plugin-license'
 import postcss from 'rollup-plugin-postcss'
 import css from 'rollup-plugin-css-only'
 import alias from 'rollup-plugin-alias'
-import path from 'path'
+import { resolve } from 'path'
 import visualizer from 'rollup-plugin-visualizer'
 
 const isProd = !(process.env.NODE_ENV !== 'production')
@@ -32,7 +32,7 @@ const headPlugins = [
         entries: [
             {
                 find: /^~/,
-                replacement: path.resolve(__dirname, '../src')
+                replacement: resolve(__dirname, '../src')
             }
         ]
     }),

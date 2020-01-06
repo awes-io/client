@@ -36,7 +36,7 @@
         "clean": "rimraf dist",
         "build": "yarn clean && yarn build-icons && cross-env NODE_ENV=production rollup -c ./build/rollup.config.js",
         "build-icons": "node build/icons/font.js && node build/icons/json.js",
-        "dev": "NODE_ENV=development rollup -c ./build/rollup.config.js -w",
+        "dev": "yarn clean && yarn build-icons && cross-env NODE_ENV=development rollup -wc ./build/rollup.config.js",
         "test": "jest",
         "test:watch": "jest -w"
     },
