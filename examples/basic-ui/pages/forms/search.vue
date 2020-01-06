@@ -1,15 +1,13 @@
 <template>
     <AwPage :title="headline">
-        <div class="flex mb-4">
-            <div class="bg-gray-400 h-12">
-                <AwButtonNav :items="filters" />
-            </div>
-            <div class="ml-auto flex bg-gray-500 h-12">
-                <AwButton @click="clear" text="Clear" />
+        <AwGrid :col="{ lg: 2 }">
+            <AwButtonNav :items="filters" />
+            <div class="flex lg:justify-end">
+                <AwButton @click="clear" text="Clear" size="sm" class="mr-2" />
                 <AwSearch name="search" />
             </div>
-        </div>
-        <div class="flex mb-4">
+        </AwGrid>
+        <div class="flex my-4">
             <div class="w-full bg-gray-500 h-12">
                 <AwTable :rows="rows">
                     <AwTableCol field="one" />
