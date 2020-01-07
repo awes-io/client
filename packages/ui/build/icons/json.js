@@ -3,11 +3,8 @@ const path = require('path')
 const util = require('util')
 const DOMParser = require('dom-parser')
 
-const ICONS_FOLDER = path.resolve(__dirname, '../../src/assets/svg')
-const COMPILED_FILE_NAME = path.resolve(
-    __dirname,
-    '../../src/assets/js/icons.js'
-)
+const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg')
+const COMPILED_FILE_NAME = path.resolve(__dirname, '../../assets/js/icons.js')
 const SVGRe = /\.svg$/
 
 let icons = {}
