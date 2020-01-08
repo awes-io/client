@@ -66,7 +66,9 @@ export const AwMarkdownEditor = {
 }
 
 export const AwPagination = {
-    info: 'Show {from}-{to} of {total}'
+    info: 'Show {from}-{to} of {total}',
+    page: 'Page {page} of {pagesTotal}',
+    limit: '{limit} per page'
 }
 
 export const AwSelect = {

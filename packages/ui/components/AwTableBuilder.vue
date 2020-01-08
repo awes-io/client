@@ -39,7 +39,15 @@
         </AwTable>
 
         <!-- pagination -->
-        <AwPagination v-if="total !== null" :total="total" class="mt-4" />
+        <AwPagination
+            v-if="pagination.total !== null"
+            v-bind="pagination"
+            :page="page"
+            :limits="limitsMerged"
+            @click:page="page = $event"
+            @click:limit="limit = $event"
+            class="mt-4"
+        />
 
         <!-- loading overlay -->
         <div
@@ -60,6 +68,8 @@
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 
+const DEFAULT_LIMITS = [15, 50, 100]
+
 export default {
     name: 'AwTableBuilder',
 
@@ -73,6 +83,24 @@ export default {
                     typeof obj.fetch === 'function' &&
                     typeof obj.on === 'function'
                 )
+            }
+        },
+
+        pageParam: {
+            type: String,
+            default: 'page'
+        },
+
+        limitParam: {
+            type: String,
+            default: 'limit'
+        },
+
+        limits: {
+            type: Array,
+            default: () => DEFAULT_LIMITS,
+            validator(arr) {
+                return arr.every(el => typeof el === 'number')
             }
         },
 
@@ -91,17 +119,52 @@ export default {
 
     data() {
         return {
-            total: null
+            pagination: {
+                total: null,
+                limit: DEFAULT_LIMITS[0]
+            }
         }
     },
 
     computed: {
-        page() {
-            return Number(this.$route.query.page || 1)
+        page: {
+            get() {
+                return Number(this.$route.query[this.pageParam] || 1)
+            },
+
+            set(val) {
+                this.$router.replace(
+                    mergeRouteQuery(
+                        {
+                            [this.pageParam]: val === 1 ? null : String(val)
+                        },
+                        this.$route
+                    )
+                )
+            }
         },
 
-        limit() {
-            return Number(this.$route.query.limit || 15)
+        limit: {
+            get() {
+                return Number(
+                    this.$route.query[this.limitParam] || DEFAULT_LIMITS[0]
+                )
+            },
+
+            set(val) {
+                const limit =
+                    parseInt(val) === this.limits[0] ? null : String(val)
+
+                this.$router.replace(
+                    mergeRouteQuery(
+                        {
+                            [this.pageParam]: null,
+                            [this.limitParam]: limit
+                        },
+                        this.$route
+                    )
+                )
+            }
         },
 
         items() {
@@ -128,6 +191,14 @@ export default {
             }
 
             return params
+        },
+
+        limitsMerged() {
+            return this.limits.includes(this.pagination.limit)
+                ? this.limits
+                : this.limits
+                      .concat(this.pagination.limit)
+                      .sort((a, b) => a > b)
         }
     },
 
@@ -163,10 +234,10 @@ export default {
     },
 
     methods: {
-        fetch() {
+        fetch(params) {
             this.collection
-                .fetch({ params: this.fetchQuery })
-                .then(this._setTotal)
+                .fetch({ params: { ...this.fetchQuery, ...params } })
+                .then(this._setPagination)
                 .then(this._scrollTop)
         },
 
@@ -189,16 +260,26 @@ export default {
             this.fetch()
         },
 
-        _setTotal(fetched) {
+        _setPagination(fetched) {
             const total = pathOr(null, 'response.data.meta.total', fetched)
-            this.total = total
+            const limit = pathOr(
+                DEFAULT_LIMITS[0],
+                'response.data.meta.per_page',
+                fetched
+            )
+
+            if (this.limit !== limit) {
+                this.limit = limit
+            }
+
+            this.pagination = { total, limit }
         },
 
         _scrollTop() {
             if (!this.scrollOnPage) return
 
             const table = this.$refs.table.$el
-            const sizes = table.getBoundingClientRect()
+            const sizes = table ? table.getBoundingClientRect() : { y: 0 }
 
             if (sizes.y < 0) {
                 table.scrollIntoView({

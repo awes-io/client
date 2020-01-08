@@ -1,5 +1,5 @@
 <template>
-    <AwPage title="Text inputs">
+    <div>
         <!-- text inputs -->
         <AwInput placeholder="Text input" />
         <AwInput
@@ -56,7 +56,7 @@
             :error="inputError"
             placeholder="Textarea"
         />
-    </AwPage>
+    </div>
 </template>
 
 <script>

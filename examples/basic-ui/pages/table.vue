@@ -36,12 +36,7 @@
         <section class="mt-8">
             <h2 class="h3">Pagination simple</h2>
 
-            <AwPagination
-                class="mt-4"
-                :total="1000"
-                page-param="_page"
-                limit-param="_limit"
-            />
+            <AwPagination class="mt-4" :page="8" :limit="15" :total="150" />
         </section>
 
         <section class="mt-8">

@@ -2,6 +2,7 @@
     "name": "@awes-io/client",
     "description": "The Awes.io Frontend Framework #vue #nuxt #ui",
     "version": "0.1.0",
+    "license": "MIT",
     "private": true,
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
     "contributors": [
@@ -11,10 +12,6 @@
         "url": "https://github.com/awes-io/client/issues"
     },
     "homepage": "https://www.awes.io",
-    "workspaces": [
-        "packages/*",
-        "examples/*"
-    ],
     "keywords": [
         "ui",
         "vue",
@@ -22,110 +19,19 @@
         "awes-io",
         "material design"
     ],
-    "scripts": {
-        "lint": "eslint --ext .js,.vue .",
-        "lint:fix": "eslint --ext .js,.vue . --fix",
-        "test": "jest",
-        "test:watch": "jest -w",
-        "space": "jest",
-        "commitmsg": "commitlint -e $GIT_PARAMS"
-    },
-    "commitlint": {
-        "extends": [
-            "@commitlint/config-conventional"
-        ]
-    },
     "repository": {
         "type": "git",
         "url": "git@git.awescode.com:awes-io/client.git"
     },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-            "pre-commit": "yarn lint"
-        }
+    "scripts": {
+        "dev": "lerna run dev-nuxt --scope @awes-io/ui --stream"
     },
-    "release": {
-        "extends": "@semantic-release/gitlab-config",
-        "plugins": [
-            "@semantic-release/commit-analyzer",
-            "@semantic-release/release-notes-generator",
-            [
-                "@semantic-release/changelog",
-                {
-                    "changelogTitle": "Release Notes for Awes.io UI"
-                }
-            ],
-            [
-                "@semantic-release/gitlab",
-                {
-                    "gitlabUrl": "https://git.awescode.com"
-                }
-            ],
-            "@semantic-release/npm",
-            [
-                "@semantic-release/git",
-                {
-                    "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-                }
-            ]
-        ]
+    "dependencies": {
+        "lerna": "^3.16.4"
     },
-    "license": "MIT",
-    "devDependencies": {
-        "@babel/core": "^7.5.5",
-        "@babel/preset-env": "^7.5.5",
-        "@commitlint/cli": "^8.1.0",
-        "@commitlint/config-conventional": "^8.1.0",
-        "@hutson/npm-deploy-git-tag": "^5.0.2",
-        "@hutson/semantic-delivery-gitlab": "^9.0.4",
-        "@semantic-release/changelog": "^3.0.4",
-        "@semantic-release/git": "^7.0.16",
-        "@semantic-release/gitlab-config": "^5.0.0",
-        "@vue/test-utils": "^1.0.0-beta.29",
-        "auto-changelog": "^1.14.1",
-        "autoprefixer": "^9.6.1",
-        "babel-core": "7.0.0-bridge.0",
-        "babel-eslint": "^10.0.2",
-        "babel-jest": "^24.8.0",
-        "chroma-js": "^2.0.6",
-        "conventional-changelog-eslint": "^3.0.1",
-        "cross-env": "^5.2.0",
-        "eslint-config-prettier": "^6.0.0",
-        "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-vue": "^5.2.3",
-        "husky": "^3.0.1",
-        "jest": "^24.8.0",
-        "jest-serializer-vue": "^2.0.2",
-        "jest-transform-stub": "^2.0.0",
-        "prettier": "^1.18.2",
-        "semantic-release": "^15.13.24",
-        "vue-jest": "^3.0.4",
-        "vue-template-compiler": "^2.6.10",
-        "webfonts-generator": "^0.4.0",
-        "@nuxtjs/eslint-config": "^2.0.0",
-        "@vue/server-test-utils": "^1.0.0-beta.30",
-        "codecov": "^3.6.1",
-        "consola": "^2.11.3",
-        "cross-spawn": "^7.0.1",
-        "esm": "^3.2.25",
-        "execa": "^3.4.0",
-        "express": "^4.17.1",
-        "finalhandler": "^1.1.2",
-        "fs-extra": "^8.1.0",
-        "get-port": "^5.1.0",
-        "glob": "^7.1.6",
-        "got": "^10.2.1",
-        "is-wsl": "^2.1.1",
-        "jest-junit": "^10.0.0",
-        "jsdom": "^15.2.1",
-        "klaw-sync": "^6.0.0",
-        "lerna": "^3.20.1",
-        "lodash": "^4.17.15",
-        "node-fetch": "^2.6.0",
-        "puppeteer-core": "^2.0.0",
-        "request": "^2.88.0",
-        "sort-package-json": "^1.35.0",
-        "vue": "^2.6.10"
-    }
+    "workspaces": [
+        "packages/*",
+        "examples/*",
+        "development/*"
+    ]
 }

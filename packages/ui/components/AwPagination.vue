@@ -1,196 +1,210 @@
 <template>
-    <div
-        v-if="pages.length > 1"
-        class="flex flex-wrap items-center justify-center"
-    >
+    <div v-if="pagesTotal > 1" class="flex items-center">
         <!-- info text -->
-        <span class="pr-4 lg:pr-0 lg:flex-1 text-sm opacity-50">{{
+        <span class="flex-1 text-sm opacity-50 hidden lg:block">{{
             $t('AwPagination.info', {
-                from: currentPage.from,
-                to: currentPage.to,
+                ...itemsRange,
                 total
             })
         }}</span>
 
         <!-- pagination -->
         <div
-            class="order-first md:order-none w-full md:w-auto mb-2 md:mb-0 flex-grow flex justify-center"
+            class="flex-grow flex justify-between lg:justify-center items-center"
+            @click="_onPageClick"
         >
-            <AwButtonNav :items="pageButtons" />
+            <button
+                :data-page="prevPage"
+                :disabled="prevPage === null"
+                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none mr-1"
+            >
+                <AwIcon name="arrow-l" />
+            </button>
+
+            <span class="lg:hidden">
+                {{ $t('AwPagination.page', { page, pagesTotal }) }}
+            </span>
+            <div class="hidden lg:block py-1 pr-1 bg-muted-dark rounded">
+                <Component
+                    v-for="({ component, text }, i) in pageButtons"
+                    :is="component"
+                    :key="`${i}-${text}`"
+                    :data-page="component === 'button' ? text : null"
+                    :class="{ 'bg-surface': text === page }"
+                    class="px-2 py-1 rounded min-w-8 ml-1"
+                >
+                    {{ text }}
+                </Component>
+            </div>
+
+            <button
+                :data-page="nextPage"
+                :disabled="nextPage === null"
+                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none ml-1"
+            >
+                <AwIcon name="arrow-r" />
+            </button>
         </div>
 
         <!-- limit -->
-        <div class="pl-4 lg:pl-0 lg:flex-1 flex justify-end">
-            <button
-                class="opacity-50 text-sm hover:opacity-100 focus:opacity-100"
-                @click="$refs.dropdown.toggle()"
-            >
-                {{ limit }} <AwIcon name="triangle-d" />
-            </button>
-            <AwDropdown
-                ref="dropdown"
-                class="w-32"
-                :options="{
-                    placement: 'bottom-end',
-                    modifiers: {
-                        preventOverflow: { enabled: false },
-                        hide: { enabled: false }
-                    }
-                }"
-                close-on-action
-            >
-                <AwGrid :gap="0">
-                    <AwButton
-                        v-for="{ key, ...button } in limitButtons"
-                        :key="key"
-                        theme="toggle"
-                        class="w-full text-left"
-                        v-bind="button"
-                    />
-                </AwGrid>
-            </AwDropdown>
+        <div class="flex-1 hidden lg:block">
+            <div class="flex justify-end">
+                <template v-if="limits">
+                    <button
+                        class="opacity-50 text-sm hover:opacity-100 focus:opacity-100"
+                        @click="$refs.dropdown.toggle()"
+                    >
+                        {{ limit }} <AwIcon name="triangle-d" />
+                    </button>
+                    <AwDropdown
+                        ref="dropdown"
+                        class="w-32"
+                        :options="{
+                            placement: 'bottom-end',
+                            modifiers: {
+                                preventOverflow: { enabled: false },
+                                hide: { enabled: false }
+                            }
+                        }"
+                        close-on-action
+                    >
+                        <AwGrid :gap="0">
+                            <AwButton
+                                v-for="_limit in limits"
+                                :key="_limit"
+                                :active="_limit === limit"
+                                theme="toggle"
+                                class="w-full text-left"
+                                @click="$emit('click:limit', _limit)"
+                            >
+                                {{ _limit }}
+                            </AwButton>
+                        </AwGrid>
+                    </AwDropdown>
+                </template>
+                <span v-else class="text-sm opacity-50">
+                    {{ $t('AwPagination.limit', { limit }) }}
+                </span>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import { mergeRouteQuery } from '../assets/js/router'
+import { isNil, range } from 'rambdax'
 
 export default {
     name: 'AwPagination',
 
     props: {
+        /**
+         * Total number of items
+         */
         total: {
             type: Number,
             required: true
         },
 
+        /**
+         * Current page
+         */
+        page: {
+            type: Number,
+            default: 1
+        },
+
+        /**
+         * Limit of items per page
+         */
+        limit: {
+            type: Number,
+            required: true
+        },
+
+        /**
+         * Default limit variants
+         */
         limits: {
             type: Array,
-            default: () => [15, 50, 100]
-        },
-
-        pageParam: {
-            type: String,
-            default: 'page'
-        },
-
-        limitParam: {
-            type: String,
-            default: 'limit'
+            default: null
         }
     },
 
     computed: {
-        limitButtons() {
-            return this.limits.map(this._getLimitButtonProps)
-        },
-
-        limit() {
-            return Number(this.$route.query[this.limitParam] || this.limits[0])
-        },
-
         pageButtons() {
-            return this.pagesFiltered.map(this._getButtonProps)
+            return this.pages.map(this._getButtonProps)
         },
 
-        page() {
-            return Number(this.$route.query[this.pageParam] || 1)
+        pagesTotal() {
+            return Math.ceil(this.total / this.limit)
         },
 
         pages() {
-            const pages = []
-            const limit = this.limit
-            const total = this.total
-            let index = 1
-
-            do {
-                const fromItem = (index - 1) * limit + 1
-                const toItem = index * limit < total ? index * limit : total
-
-                pages.push({
-                    index,
-                    from: fromItem,
-                    to: toItem
-                })
-                index += 1
-            } while ((index - 1) * limit < total)
-
-            return pages
-        },
-
-        pagesFiltered() {
-            if (this.pages.length < 8) {
-                return this.pages
+            if (this.pagesTotal < 9) {
+                return range(1, this.pagesTotal + 1)
             } else {
-                const currentIndex = this.page
-                const lastIndex = this.lastPage.index
-                let middle
+                const current = this.page
+                const last = this.pagesTotal
 
-                if (currentIndex < 5) {
-                    middle = [...this.pages.slice(1, 5), null]
-                } else if (lastIndex - currentIndex < 4) {
-                    middle = [
-                        null,
-                        ...this.pages.slice(lastIndex - 5, lastIndex - 1)
-                    ]
+                if (current < 6) {
+                    return [...range(1, 7), null, last]
+                } else if (last - current < 5) {
+                    return [1, null, ...range(last - 5, last + 1)]
                 } else {
-                    middle = [
+                    return [
+                        1,
                         null,
-                        ...this.pages.slice(currentIndex - 2, currentIndex + 1),
-                        null
+                        ...range(current - 2, current + 2),
+                        null,
+                        last
                     ]
                 }
-
-                return [this.firstPage, ...middle, this.lastPage]
             }
         },
 
-        firstPage() {
-            return this.pages[0]
+        nextPage() {
+            const next = this.page + 1
+            return next < this.pagesTotal + 1 ? next : null
         },
 
-        currentPage() {
-            return this.pages.find(({ index }) => index === this.page)
+        prevPage() {
+            const prev = this.page - 1
+            return prev > 0 ? prev : null
         },
 
-        lastPage() {
-            return this.pages[this.pages.length - 1]
+        itemsRange() {
+            const index = this.page
+            const lastItem = index * this.limit
+
+            return {
+                from: (index - 1) * this.limit + 1,
+                to: lastItem < this.total ? lastItem : this.total
+            }
         }
     },
 
     methods: {
         _getButtonProps(page) {
-            if (page) {
-                const pageStr = String(page.index)
+            if (!isNil(page)) {
                 return {
-                    text: pageStr,
-                    href: {
-                        query: {
-                            [this.pageParam]: page.index > 1 ? pageStr : null
-                        }
-                    }
+                    component: 'button',
+                    text: page
                 }
             } else {
-                return { text: '...' }
+                return { component: 'span', text: '...' }
             }
         },
 
-        _getLimitButtonProps(limit, i) {
-            const limitStr = String(limit)
+        _onPageClick($event) {
+            let target = $event.target
 
-            return {
-                href: mergeRouteQuery(
-                    {
-                        [this.pageParam]: null,
-                        [this.limitParam]: i > 0 ? limitStr : null
-                    },
-                    this.$route
-                ),
-                key: `${limitStr}-${i}`,
-                text: limitStr,
-                active: limit === this.limit
+            if (target && !target.hasAttribute('data-page')) {
+                target = target.closest('[data-page]')
             }
+
+            if (!target) return
+
+            this.$emit('click:page', parseInt(target.getAttribute('data-page')))
         }
     }
 }

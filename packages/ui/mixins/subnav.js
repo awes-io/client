@@ -78,7 +78,7 @@ export default {
 
     methods: {
         moveMarker() {
-            let activeItem = this.$el.querySelector('.js-active')
+            let activeItem = this.$el && this.$el.querySelector('.js-active')
             let width = 0
             let left = 0
 

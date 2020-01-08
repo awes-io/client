@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { ucFirst } from '../assets/js/string'
+
 const getName = (children = []) => {
     const empty = children.find(({ path }) => !path)
     return empty && empty.name
@@ -12,10 +14,9 @@ const getName = (children = []) => {
 
 const toMenuItem = (path, name = '', parentPath = '') => {
     const routeName = name.split('___')[0].replace(/-/g, ' ')
-    const text = routeName.charAt(0).toUpperCase() + routeName.substring(1)
 
     return {
-        text,
+        text: ucFirst(routeName),
         href: parentPath + (parentPath ? '/' : '') + path
     }
 }

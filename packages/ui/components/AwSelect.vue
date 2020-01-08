@@ -198,6 +198,11 @@ export default {
             default: true
         },
 
+        searchMin: {
+            type: Number,
+            default: 0
+        },
+
         debounce: {
             type: Number,
             default: 400
@@ -382,7 +387,7 @@ export default {
 
             clearTimeout(this._tm)
 
-            if (text.length > 0) {
+            if (text.length > this.searchMin) {
                 this._tm = setTimeout(this.fetch, this.debounce)
             } else {
                 this.cancelRequest()

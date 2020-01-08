@@ -36,11 +36,24 @@
         <section class="mt-8">
             <h2 class="h3">Pagination simple</h2>
 
+            <AwInput
+                v-model.number="pagination.total"
+                label="Total"
+                class="mt-4"
+            />
+            <AwInput
+                v-model.number="pagination.limit"
+                label="Limit"
+                class="mt-4"
+            />
+            <AwCheckbox v-model="limits" label="Limits" class="mt-2" />
+
             <AwPagination
                 class="mt-4"
-                :total="1000"
-                page-param="_page"
-                limit-param="_limit"
+                v-bind="pagination"
+                :limits="limits ? [15, 50, 100] : undefined"
+                @click:page="pagination.page = $event"
+                @click:limit="pagination.limit = $event"
             />
         </section>
     </AwPage>
@@ -58,6 +71,12 @@ export default {
 
     data() {
         return {
+            pagination: {
+                page: 1,
+                total: 1000,
+                limit: 15
+            },
+            limits: true,
             rows: [
                 {
                     one: 'Lorem ipsum dolor sit amet.',

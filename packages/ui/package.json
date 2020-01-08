@@ -35,7 +35,8 @@
     "scripts": {
         "build": "rimraf dist && yarn build-icons && cross-env NODE_ENV=production rollup -c ./build/rollup.config.js",
         "build-icons": "node build/icons/font.js && node build/icons/json.js",
-        "dev": "yarn build-icons && nuxt",
+        "dev": "rimraf dist && yarn build-icons && rollup -wc ./build/rollup.config.js",
+        "dev-nuxt": "yarn build-icons && nuxt",
         "test": "jest",
         "test:watch": "jest -w"
     },

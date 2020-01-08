@@ -21,9 +21,18 @@ export default {
     data() {
         return {
             routes: [
-                { text: 'Order default', href: { query: { orderBy: null } } },
-                { text: 'Order by name', href: { query: { orderBy: 'name' } } },
-                { text: 'Order by id', href: { query: { orderBy: 'id' } } }
+                {
+                    text: 'Order default',
+                    href: { query: { orderBy: null, limit: 50 } }
+                },
+                {
+                    text: 'Order by name',
+                    href: { query: { orderBy: 'name', limit: null } }
+                },
+                {
+                    text: 'Order by id',
+                    href: { query: { orderBy: 'id', limit: 5 } }
+                }
             ],
             active: 2
         }
