@@ -55,3 +55,18 @@ export function hasRouteQuery(query, route) {
         cleanRouteQuery(query)
     )
 }
+
+/**
+ * Trims slash from url
+ *
+ * @param  {String} path - url to modify
+ *
+ * @return {String} - modified url
+ */
+export function trimSlash(path = '') {
+    if (typeof path !== 'string') {
+        throw new TypeError('Path must be a string')
+    }
+
+    return path.replace(/\/$/, '')
+}

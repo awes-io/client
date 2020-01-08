@@ -16,7 +16,7 @@
                     :key="key"
                     :href="route.fullPath"
                     :class="classes"
-                    @click.prevent="$router.replace(route)"
+                    @click.prevent="navigate(route)"
                 >
                     {{ text }}
                 </a>
@@ -35,7 +35,7 @@
 
 <script>
 import { pathOr } from 'rambdax'
-import { mergeQueries, hasRouteQuery } from '../assets/js/router'
+import { mergeQueries, hasRouteQuery, cleanRouteQuery, trimSlash } from '../assets/js/router'
 
 export default {
     name: 'AwTabNav',
@@ -91,14 +91,24 @@ export default {
         _routeNormalizer() {
             return href => {
                 if (typeof href === 'object') {
-                    return this.$router.resolve({
-                        path: pathOr(this.$route.path, 'path', href),
-                        query: mergeQueries(
-                            pathOr({}, 'query', href),
-                            this.$route.query
-                        ),
-                        hash: this.$route.hash
-                    }).route
+                    const currentPath = trimSlash(this.$route.path)
+                    const path = trimSlash(pathOr(currentPath, 'path', href))
+
+                    if (path === currentPath) {
+                        return this.$router.resolve({
+                            path,
+                            query: mergeQueries(
+                                pathOr({}, 'query', href),
+                                this.$route.query
+                            ),
+                            hash: this.$route.hash
+                        }).route
+                    } else {
+                        return this.$router.resolve({
+                            ...href,
+                            query: cleanRouteQuery(pathOr({}, 'query', href))
+                        }).route
+                    }
                 } else {
                     return this.$router.resolve(href).route
                 }
@@ -139,6 +149,16 @@ export default {
                     ]
                 }
             })
+        }
+    },
+
+    methods: {
+        navigate(route) {
+            try {
+                this.$router.push(route)
+            } catch (e) {
+                // current route
+            }
         }
     }
 }
