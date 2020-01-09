@@ -1,6 +1,6 @@
 {
   "name": "tabs-routing",
-  "version": "1.0.0",
+  "version": "1.35.0",
   "description": "Awes.io AwTabNav routing example",
   "author": "illjah42",
   "private": true,
@@ -20,8 +20,8 @@
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.16.4"
   }
