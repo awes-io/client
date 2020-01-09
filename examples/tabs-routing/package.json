@@ -1,28 +1,29 @@
 {
-  "name": "tabs-routing",
-  "version": "1.35.0",
-  "description": "Awes.io AwTabNav routing example",
-  "author": "illjah42",
-  "private": true,
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
-  },
-  "dependencies": {
-    "nuxt": "^2.0.0",
-    "nuxt-i18n": "^6.3.0"
-  },
-  "devDependencies": {
-    "@nuxtjs/eslint-config": "^1.0.1",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
-  }
+    "name": "tabs-routing",
+    "version": "1.35.0",
+    "description": "Awes.io AwTabNav routing example",
+    "author": "illjah42",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "generate": "nuxt generate",
+        "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    },
+    "dependencies": {
+        "nuxt": "^2.0.0",
+        "nuxt-i18n": "^6.3.0"
+    },
+    "devDependencies": {
+        "@awes-io/ui": "^1.x.x",
+        "@nuxtjs/eslint-config": "^1.0.1",
+        "@nuxtjs/eslint-module": "^1.0.0",
+        "babel-eslint": "^10.0.1",
+        "eslint": "^6.1.0",
+        "eslint-config-prettier": "^4.1.0",
+        "eslint-plugin-nuxt": ">=0.4.2",
+        "eslint-plugin-prettier": "^3.0.1",
+        "prettier": "^1.16.4"
+    }
 }

@@ -9,7 +9,7 @@
         "post-update": "yarn upgrade --latest"
     },
     "dependencies": {
-        "@awes-io/ui": "1.35.0",
+        "@awes-io/ui": "^1.x.x",
         "@nuxtjs/axios": "^5.0.0",
         "express": "^4.17.1",
         "nuxt": "^2.0.0",
