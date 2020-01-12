@@ -4,9 +4,10 @@ stages:
 
 test:
   before_script:
+    - apk update && apk add git
     - yarn install --frozen-lockfile
     - yarn build
-  image: node:8
+  image: node:12-alpine
   cache:
     key: ${CI_BUILD_REF_NAME}
     paths:
