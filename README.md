@@ -69,15 +69,10 @@ lerna bootstrap
 
 ##### 1. Run development mode for Awes.io/Ui
 ```bash
-lerna run dev --scope @awes-io/ui --stream
+yarn dev
 ```
 
-##### 2. Run development mode for Basic Ui example 
-```bash
-lerna run dev --scope basic-ui --stream
-```
-
-##### 3. Now you are ready 🙌
+##### 2. Now you are ready 🙌
 
 
 ## Release new versions

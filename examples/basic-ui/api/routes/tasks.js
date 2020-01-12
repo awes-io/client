@@ -15,7 +15,8 @@ router.get('/tasks', function(req, res) {
             JSON.stringify({
                 data: tasksData.slice((page - 1) * limit, page * limit),
                 meta: {
-                    total: tasksData.length
+                    total: tasksData.length,
+                    per_page: limit
                 }
             })
         )

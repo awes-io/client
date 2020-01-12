@@ -204,6 +204,9 @@ module.exports = {
             minHeight: {
                 xxs: '10rem'
             },
+            minWidth: {
+                '8': '2rem'
+            },
             maxHeight: {
                 '75vh': '75vh'
             },

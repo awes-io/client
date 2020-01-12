@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.35.1](https://git.awescode.com/awes-io/client/compare/v1.35.0...v1.35.1) (2020-01-09)
+
+
+### Bug Fixes
+
+* added ui to packages in examples ([f42b352](https://git.awescode.com/awes-io/client/commits/f42b352551ea230b4c83534f3db7942f1ca451d8))
+
+
+
+
+
+# [1.35.0](https://git.awescode.com/awes-io/client/compare/v1.34.2...v1.35.0) (2020-01-09)
+
+
+### Bug Fixes
+
+* add build-icons command to dev ([f340c2f](https://git.awescode.com/awes-io/client/commits/f340c2f82cb5ac1a445518a4f8255d41edaf18f5))
+* added viewport for mobile in basic-ui example ([3c3908b](https://git.awescode.com/awes-io/client/commits/3c3908bc6805b1881f40be9cbbae4f4038affa03))
+* component examples pages fixes ([c31235b](https://git.awescode.com/awes-io/client/commits/c31235b585035855192bab5137de8ea3c9c13d17))
+* move vertical align class names to validator for purgecss ([de004f9](https://git.awescode.com/awes-io/client/commits/de004f9147a486765364a60aed656c08770ba04d))
+
+
+### Features
+
+* **aw-table-builder:** use limit param from response ([017a758](https://git.awescode.com/awes-io/client/commits/017a758bea1741a8e17f264256a9c1b3babc1105))
+* **aws-639:** made vertical align ([b26dea2](https://git.awescode.com/awes-io/client/commits/b26dea24ff00a5f1eae9ac684ac96616633a1c9c))
+* **aws-671:** refreshed AwSearch ([0140d46](https://git.awescode.com/awes-io/client/commits/0140d46e984e5e7742833214ed493d8784098e73))
+
+
+
+
+
 ## [1.34.2](https://git.awescode.com/awes-io/client/compare/v1.34.1...v1.34.2) (2020-01-04)
 
 
