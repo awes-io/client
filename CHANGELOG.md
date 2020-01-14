@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.36.1](https://git.awescode.com/awes-io/client/compare/v1.36.0...v1.36.1) (2020-01-14)
+
+
+### Bug Fixes
+
+* removed watched dir for dev ([f79fd34](https://git.awescode.com/awes-io/client/commits/f79fd348cc42b4e4fe3a77cac3dcbb0aa24229bc))
+
+
+
+
+
 # [1.36.0](https://git.awescode.com/awes-io/client/compare/v1.35.1...v1.36.0) (2020-01-14)
 
 
