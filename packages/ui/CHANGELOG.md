@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.36.1](https://git.awescode.com/awes-io/ui/compare/v1.36.0...v1.36.1) (2020-01-14)
+
+**Note:** Version bump only for package @awes-io/ui
+
+
+
+
+
+# [1.36.0](https://git.awescode.com/awes-io/ui/compare/v1.35.1...v1.36.0) (2020-01-14)
+
+
+### Features
+
+* **aws-671:** fixed prop method validation of AwForm ([403f3cf](https://git.awescode.com/awes-io/ui/commits/403f3cf3c9e2067d39139488af12c2c55fd450f6))
+* **aws-671:** refreshed AwSearch ([9f3a213](https://git.awescode.com/awes-io/ui/commits/9f3a2136dfa53dab519da7fbe821fbece0ee2c5c))
+
+
+
+
+
 ## [1.35.1](https://git.awescode.com/awes-io/ui/compare/v1.35.0...v1.35.1) (2020-01-09)
 
 

@@ -31,7 +31,6 @@
     },
     "workspaces": [
         "packages/*",
-        "examples/*",
-        "development/*"
+        "examples/*"
     ]
 }
