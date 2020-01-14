@@ -26,9 +26,8 @@
         "nuxt/*",
         "lang/*",
         "tailwind/*",
-        "src/mixins/*",
-        "src/assets/*",
-        "src/entry.js",
+        "mixins/*",
+        "assets/*",
         "docs/*",
         "tailwind.config.js"
     ],
