@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.36.2](https://git.awescode.com/awes-io/client/compare/v1.36.1...v1.36.2) (2020-01-14)
+
+
+### Bug Fixes
+
+* **aws-671:** fixed LayoutFrameCenter ([ffb6fe2](https://git.awescode.com/awes-io/client/commits/ffb6fe2648af3a713e6970bb2b2ff3f19d78a2bf))
+* **aws-671:** fixed package.json files ([4270b60](https://git.awescode.com/awes-io/client/commits/4270b605de47f7dba55e5578b67b028a2cd62b8d))
+
+
+
+
+
 ## [1.36.1](https://git.awescode.com/awes-io/client/compare/v1.36.0...v1.36.1) (2020-01-14)
 
 
