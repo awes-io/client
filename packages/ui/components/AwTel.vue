@@ -42,7 +42,7 @@ export default {
                               ...this.$attrs,
                               placeholder:
                                   this.$attrs.label || this.$attrs.placeholder,
-                              inputClasses: 'aw-text-field__element'
+                              inputClasses: 'aw-text-field__element p-3'
                           },
                           on: {
                               ...this.$listeners,
