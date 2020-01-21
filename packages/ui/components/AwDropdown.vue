@@ -149,7 +149,10 @@ export default {
             this.closeOutside &&
                 document.body.removeEventListener('click', this._onClickOutside)
         },
-
+        /**
+         * @vuese
+         * toggle the dropdown
+         */
         toggle() {
             this.visible = !this.visible
         }

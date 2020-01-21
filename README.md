@@ -8,7 +8,6 @@
 
 > <p align="center">The Awes.io Frontend Framework. Сonsists of UI, Profile, Auth and else.</p>
 
-
 <p align="center">
     <a href="https://www.awes.io/?utm_source=github&amp;utm_medium=shields">
         <img src="https://img.shields.io/github/package-json/v/awes-io/client/master" alt="Last version" >
@@ -79,7 +78,6 @@ yarn dev:eg:basic-ui
 ```bash
 yarn dev:ui
 ```
-
 
 ## Release new versions
 

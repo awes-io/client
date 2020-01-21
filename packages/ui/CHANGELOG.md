@@ -5,56 +5,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.36.2](https://git.awescode.com/awes-io/ui/compare/v1.36.1...v1.36.2) (2020-01-14)
 
-
 ### Bug Fixes
 
 * **aws-671:** fixed LayoutFrameCenter ([ffb6fe2](https://git.awescode.com/awes-io/ui/commits/ffb6fe2648af3a713e6970bb2b2ff3f19d78a2bf))
 * **aws-671:** fixed package.json files ([4270b60](https://git.awescode.com/awes-io/ui/commits/4270b605de47f7dba55e5578b67b028a2cd62b8d))
 
-
-
-
-
 ## [1.36.1](https://git.awescode.com/awes-io/ui/compare/v1.36.0...v1.36.1) (2020-01-14)
 
 **Note:** Version bump only for package @awes-io/ui
 
-
-
-
-
 # [1.36.0](https://git.awescode.com/awes-io/ui/compare/v1.35.1...v1.36.0) (2020-01-14)
-
 
 ### Features
 
 * **aws-671:** fixed prop method validation of AwForm ([403f3cf](https://git.awescode.com/awes-io/ui/commits/403f3cf3c9e2067d39139488af12c2c55fd450f6))
 * **aws-671:** refreshed AwSearch ([9f3a213](https://git.awescode.com/awes-io/ui/commits/9f3a2136dfa53dab519da7fbe821fbece0ee2c5c))
 
-
-
-
-
 ## [1.35.1](https://git.awescode.com/awes-io/ui/compare/v1.35.0...v1.35.1) (2020-01-09)
-
 
 ### Bug Fixes
 
 * updated fonts ([2c913e5](https://git.awescode.com/awes-io/ui/commits/2c913e5985e5c7b20b81263a52d88f25c694a272))
 
-
-
-
-
 # [1.35.0](https://git.awescode.com/awes-io/ui/compare/v1.34.2...v1.35.0) (2020-01-09)
-
 
 ### Bug Fixes
 
 * add build-icons command to dev ([f340c2f](https://git.awescode.com/awes-io/ui/commits/f340c2f82cb5ac1a445518a4f8255d41edaf18f5))
 * fixed select autocomplete event ([576313f](https://git.awescode.com/awes-io/ui/commits/576313fd88e60c47d240b5786530bb3cf9b82d6a))
 * move vertical align class names to validator for purgecss ([de004f9](https://git.awescode.com/awes-io/ui/commits/de004f9147a486765364a60aed656c08770ba04d))
-
 
 ### Features
 
@@ -63,34 +42,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * added a new component AwInfo ([1fd0998](https://git.awescode.com/awes-io/ui/commits/1fd099889f0635a375c5665429b93b408fef1075))
 * **aws-639:** made vertical align ([b26dea2](https://git.awescode.com/awes-io/ui/commits/b26dea24ff00a5f1eae9ac684ac96616633a1c9c))
 
-
-
-
-
 ## [1.34.2](https://git.awescode.com/awes-io/ui/compare/v1.34.1...v1.34.2) (2020-01-04)
-
 
 ### Bug Fixes
 
 * removed trash from index ([11fee69](https://git.awescode.com/awes-io/ui/commits/11fee69565e80f730bb61485bf6972217d737397))
 
-
-
-
-
 ## [1.34.1](https://git.awescode.com/awes-io/ui/compare/v1.34.0...v1.34.1) (2020-01-04)
-
 
 ### Bug Fixes
 
 * removed prepublish tag from package.json ([1d7c983](https://git.awescode.com/awes-io/ui/commits/1d7c9834339702837633e113ca08571cba30141d))
 
-
-
-
-
 # 1.34.0 (2020-01-04)
-
 
 ### Bug Fixes
 
@@ -100,7 +64,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * eslint fixes ([974c349](https://git.awescode.com/awes-io/ui/commits/974c3490362b82defeedf37b35fb4d90d8f4e1ec))
 * excluded CHANGELOG from gitignore ([399843b](https://git.awescode.com/awes-io/ui/commits/399843b70c71e7d14bf8da9e72bf34b45543c8a6))
 
-
 ### Features
 
 * added examples for components ([323f75f](https://git.awescode.com/awes-io/ui/commits/323f75f49550cb9cba06b551ab13bbc025737ef5))
@@ -108,12 +71,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * alpha version of client frontend package ([ded2c50](https://git.awescode.com/awes-io/ui/commits/ded2c5089f3d6fbb39f6850def4d5f5eb8423e9e))
 * eslint fixed files ([3c84c10](https://git.awescode.com/awes-io/ui/commits/3c84c10e741092970e42489fb84e5afab10fd3b5))
 
-
-
-
-
 # 1.33.0 (2020-01-04)
-
 
 ### Bug Fixes
 
@@ -121,7 +79,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * added vue-mc in dependency ([9ad28da](https://git.awescode.com/awes-io/ui/commits/9ad28dae88403619edefed89750fe14cf8eb8b4e))
 * eslint fixes ([a793207](https://git.awescode.com/awes-io/ui/commits/a7932079a5ef1ef881ad3e6bc038b3ca296e1baa))
 * eslint fixes ([974c349](https://git.awescode.com/awes-io/ui/commits/974c3490362b82defeedf37b35fb4d90d8f4e1ec))
-
 
 ### Features
 

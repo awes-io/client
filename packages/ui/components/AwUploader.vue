@@ -78,7 +78,7 @@ export default {
         },
 
         max: {
-            type: Number, // Mb
+            type: Number,
             default: 2
         },
 
