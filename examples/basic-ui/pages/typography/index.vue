@@ -7,15 +7,17 @@
         </Component>
 
         <!-- eslint-disable prettier/prettier -->
-        <AwCodeSnippet class="my-4" language="javascript">/**
- * Sum function with very very very very very very long description
- */
+        <AwCodeSnippet class="my-4" language="javascript"
+            >/** * Sum function with very very very very very very long
+            description */ function sum(a, b) { return a + b };</AwCodeSnippet
+        >
 
-function sum(a, b) {
-    return a + b
-};</AwCodeSnippet>
-
-<AwCodeSnippet class="my-4" v-text="'<!-- Markup example -->\n\n<AwButton>\n\tClick me!\n</AwButton>'" />
+        <AwCodeSnippet
+            class="my-4"
+            v-text="
+                '<!-- Markup example -->\n\n<AwButton>\n\tClick me!\n</AwButton>'
+            "
+        />
         <!-- eslint-enable prettier/prettier -->
 
         <h2>Example content <code>heading 2</code></h2>
@@ -66,7 +68,7 @@ function sum(a, b) {
 </template>
 
 <script>
-import activityCollection from './../tests/mock/activity-collection'
+import activityCollection from './../../tests/mock/activity-collection'
 
 export default {
     name: 'Typography',

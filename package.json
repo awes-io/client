@@ -24,7 +24,8 @@
         "url": "git@git.awescode.com:awes-io/client.git"
     },
     "scripts": {
-        "dev": "lerna run dev-nuxt --scope @awes-io/ui --stream"
+        "dev:ui": "lerna run dev-nuxt --scope @awes-io/ui --stream",
+        "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream"
     },
     "dependencies": {
         "lerna": "^3.16.4"

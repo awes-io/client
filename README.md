@@ -65,14 +65,20 @@ yarn install
 lerna bootstrap
 ```
 
-## How build a new component for UI
+## Examples
 
-##### 1. Run development mode for Awes.io/Ui
+### Basic UI in `dev` mode
 ```bash
-yarn dev
+yarn dev:eg:basic-ui
 ```
 
-##### 2. Now you are ready 🙌
+## Components
+
+### UI Interfaces
+
+```bash
+yarn dev:ui
+```
 
 
 ## Release new versions

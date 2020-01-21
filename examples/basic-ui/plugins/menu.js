@@ -17,7 +17,7 @@ export default function({ store }) {
     for (var i = 0; i < navigation.length; i++) {
         const item = navigation[i]
         const key = urlify(item.title)
-        const href = `/${key}`
+        const href = item.url
 
         let children
 

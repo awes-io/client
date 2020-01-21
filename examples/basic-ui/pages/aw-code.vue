@@ -27,8 +27,6 @@
 </template>
 
 <script>
-import { AwCode } from '../../config/awes-io'
-
 export default {
     name: 'FormCodePage',
 
@@ -36,7 +34,7 @@ export default {
         return {
             title: 'AwCode',
             headline: this._getTitle('AwCode'),
-            pattern: AwCode.pattern,
+            pattern: 'XXX-XXX',
             errorText: 'This is an error',
             submitData: {}
         }

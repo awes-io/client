@@ -19,11 +19,13 @@ export default {
 
     computed: {
         examples() {
-            return navigation.map(({ title = '', description = '' }) => ({
-                title,
-                text: description,
-                link: urlify(title)
-            }))
+            return navigation.map(
+                ({ title = '', description = '', url = '' }) => ({
+                    title,
+                    text: description,
+                    link: url
+                })
+            )
         }
     }
 }
