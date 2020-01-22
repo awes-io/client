@@ -1,68 +1,58 @@
-<template>
-    <td
-        v-show="!isHidden"
-        class="py-3 px-4 lg:py-5 lg:px-6"
-        :class="[`align-${verticalAlign}`, { 'border-t': rowIndex }]"
-        :data-priority="rowIndex ? null : priority"
-    >
-        <slot v-bind="{ cell: cellData, title, index: rowIndex }">
-            {{ cellData }}
-        </slot>
-    </td>
-</template>
-
 <script>
-import { path } from 'rambdax'
-
 export default {
     name: 'AwTableCol',
 
     props: {
         /**
-         * Path to prop in rowData object
+         * Path to prop in `rowData` object
          *
          * @example `field="some.nested.0.prop"`
-         *
-         * @type {String}
          */
         field: {
             type: String,
             default: null
         },
 
+        /**
+         * Column title in `thead`
+         */
         title: {
             type: String,
             default: null
         },
 
+        /**
+         * Text align of column title in `thead`
+         */
         titleAlign: {
+            // 'left' / 'center' / 'right'
             type: String,
-            default: 'left'
-        },
-
-        verticalAlign: {
-            type: String,
-            default: 'top',
+            default: 'left',
             validator(value) {
-                return ['align-bottom', 'align-middle', 'align-top'].includes(
-                    `align-${value}`
+                return ['text-left', 'text-center', 'text-right'].includes(
+                    `text-${value}`
                 )
             }
         },
 
-        isHidden: {
-            type: Boolean
-        },
-
-        rowData: {},
-
-        rowIndex: {
-            type: Number,
-            default: 0
+        /**
+         * Vertical align of text in cells
+         * @type {Object}
+         */
+        verticalAlign: {
+            // 'bottom' / 'middle' / 'top'
+            type: String,
+            validator(value) {
+                return ['align-bottom', 'align-middle', 'align-top'].includes(
+                    `align-${value}`
+                )
+            },
+            // The default value is inherited from table component
+            default: 'top'
         },
 
         /**
-         * the higher priority goes to mobile view earlier
+         * The higher priority goes to mobile view earlier
          *
          * @example `:priority="-1"`
          *
@@ -74,12 +64,6 @@ export default {
         }
     },
 
-    computed: {
-        cellData() {
-            return this.rowData && this.field
-                ? path(this.field, this.rowData)
-                : this.rowData
-        }
-    }
+    render: h => h('td', {}, 'stub')
 }
 </script>

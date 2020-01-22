@@ -1,74 +1,143 @@
 <script>
+import { path } from 'rambdax'
+import { TABLE_PRIORITY_ATTR, TABLE_INDEX_ATTR } from '../assets/js/constants'
 import AwTableRowToggler from './AwTableRowToggler.vue'
+import AwTableRowHidden from './AwTableRowHidden.vue'
+
+function getCellData(field, rowData) {
+    return field ? path(field, rowData) : rowData
+}
+
+function getContent(cell, slot, index) {
+    return slot ? slot({ cell, index }) : cell
+}
 
 export default {
     name: 'AwTableRow',
 
+    functional: true,
+
     props: {
-        row: {},
+        rowData: {},
 
         rowIndex: {
             required: true
         },
 
-        openedRow: {
-            type: Number,
-            default: null
-        },
+        active: Boolean,
 
-        showToggler: Boolean,
+        hasRowClickListener: Boolean,
 
-        columns: {
+        visibleColumns: {
             type: Array,
             required: true
+        },
+
+        hiddenColumns: {
+            type: Array,
+            default: () => []
         }
     },
 
-    render(h) {
-        return h(
-            'tr',
-            {
-                staticClass:
-                    'bg-surface hover:bgcolor-muted hover:text-on-muted',
-                class: {
-                    'border-t': this.rowIndex > 0,
-                    'cursor-pointer': this.$listeners['click:row']
+    render(h, { props }) {
+        const {
+            rowData,
+            rowIndex: index,
+            active,
+            hasRowClickListener,
+            visibleColumns,
+            hiddenColumns
+        } = props
+
+        const hasHidden = !!hiddenColumns.length
+
+        return [
+            // visible row
+            h(
+                'tr',
+                {
+                    staticClass:
+                        'bg-surface hover:bgcolor-muted hover:text-on-muted',
+                    class: { 'cursor-pointer': hasRowClickListener },
+                    attrs: {
+                        [TABLE_INDEX_ATTR]: hasRowClickListener ? index : null
+                    }
                 },
-                on: this.$listeners['click:row']
-                    ? {
-                          click: $event => {
-                              this.$emit('click:row', {
-                                  ...this.$props,
-                                  $event
-                              })
-                          }
-                      }
-                    : {}
-            },
-            this.columns
-                .map(vNode => {
-                    const props = vNode.componentOptions.propsData
-
-                    props.rowData = this.row
-                    props.rowIndex = this.rowIndex
-
-                    return vNode
-                })
-                .concat(
-                    h(AwTableRowToggler, {
-                        class: { 'border-t': this.rowIndex > 0 },
-                        props: {
-                            show: this.showToggler,
-                            active: this.openedRow === this.rowIndex
-                        },
-                        on: {
-                            click: () => {
-                                this.$emit('click:toggle', this.rowIndex)
-                            }
-                        }
+                visibleColumns
+                    .map(({ field, slot, verticalAlign, priority }) => {
+                        return h(
+                            'td',
+                            {
+                                staticClass: 'py-3 px-4 lg:py-5 lg:px-6',
+                                class: [
+                                    `align-${verticalAlign}`,
+                                    { 'border-t': index > 0 }
+                                ],
+                                attrs: {
+                                    [TABLE_PRIORITY_ATTR]:
+                                        index > 0 ? null : priority
+                                }
+                            },
+                            getContent(getCellData(field, rowData), slot, index)
+                        )
                     })
-                )
-        )
+                    .concat(
+                        h(AwTableRowToggler, {
+                            props: {
+                                show: hasHidden,
+                                active,
+                                index
+                            }
+                        })
+                    )
+            ),
+
+            // hidden row
+            h(
+                'tr',
+                {
+                    class: { 'cursor-pointer': hasRowClickListener },
+                    attrs: {
+                        [TABLE_INDEX_ATTR]: hasRowClickListener ? index : null
+                    }
+                },
+                [
+                    h(
+                        'AwAccordionFold',
+                        {
+                            props: { tag: 'td', show: active },
+                            staticClass: 'bg-surface border-t',
+                            attrs: { colspan: visibleColumns.length + 1 }
+                        },
+                        [
+                            h('table', { staticClass: 'm-2 lg:mx-4' }, [
+                                h(
+                                    'tbody',
+                                    {},
+                                    hiddenColumns.map(
+                                        ({ field, title, slot }) => {
+                                            return h(AwTableRowHidden, {
+                                                props: {
+                                                    title,
+                                                    cell: getCellData(
+                                                        field,
+                                                        rowData
+                                                    ),
+                                                    index
+                                                },
+                                                scopedSlots: {
+                                                    default: slot
+                                                }
+                                            })
+                                        }
+                                    )
+                                )
+                            ])
+                        ]
+                    )
+                ]
+            )
+        ]
     }
 }
 </script>

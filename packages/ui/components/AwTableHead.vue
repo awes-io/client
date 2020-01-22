@@ -1,14 +1,14 @@
 <template functional>
-    <thead v-if="props.columns">
+    <thead v-if="props.columns.length">
         <tr class="bg-muted-dark border-b">
             <th
                 v-for="(column, key) in props.columns"
                 :key="key"
                 class="py-3 px-4 lg:py-5 lg:px-6 text-left font-normal"
-                :class="column.align ? `text-${column.align}` : ''"
+                :class="column.align"
             >
                 <slot name="th" v-bind="{ column, key }">
-                    {{ $options._getTitle(column) }}
+                    {{ column.text }}
                 </slot>
             </th>
         </tr>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { pathOr } from 'rambdax'
+import { isValid } from 'rambdax'
 
 export default {
     name: 'AwTableHead',
@@ -24,12 +24,15 @@ export default {
     props: {
         columns: {
             type: Array,
-            default: null
+            default: () => [],
+            validator: columns =>
+                isValid({
+                    input: { columns },
+                    schema: {
+                        columns: [{ text: 'string', 'align?': 'string' }]
+                    }
+                })
         }
-    },
-
-    _getTitle(titleObj) {
-        return pathOr(titleObj, 'text', titleObj)
     }
 }
 </script>

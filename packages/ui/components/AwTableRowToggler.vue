@@ -1,12 +1,11 @@
 <template functional>
     <td
         v-show="props.show"
-        class="w-12 px-5 border-l cursor-pointer text-center align-middle"
-        :class="{ 'bg-muted': props.active }"
-        data-priority="-Infinity"
+        class="w-12 px-5 border-l cursor-pointer outline-none text-center align-middle"
+        :class="{ 'bg-muted': props.active, 'border-t': props.index > 0 }"
         role="button"
-        tabindex="0"
-        @click.stop="listeners.click"
+        :tabindex="props.show ? 0 : -1"
+        v-bind="$options.dataAttrs(props)"
     >
         <AwIcon
             name="chevron-d"
@@ -18,13 +17,27 @@
 </template>
 
 <script>
+import { TABLE_PRIORITY_ATTR, TABLE_TOGGLER_ATTR } from '../assets/js/constants'
+
 export default {
     name: 'AwTableRowToggler',
 
     props: {
         show: Boolean,
 
-        active: Boolean
+        active: Boolean,
+
+        index: {
+            type: Number,
+            required: true
+        }
+    },
+
+    dataAttrs(props) {
+        return {
+            [TABLE_PRIORITY_ATTR]: '-Infinity',
+            [TABLE_TOGGLER_ATTR]: props.index
+        }
     }
 }
 </script>

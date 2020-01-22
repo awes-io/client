@@ -35,7 +35,12 @@
 
 <script>
 import { pathOr } from 'rambdax'
-import { mergeQueries, hasRouteQuery, cleanRouteQuery, trimSlash } from '../assets/js/router'
+import {
+    mergeQueries,
+    hasRouteQuery,
+    cleanRouteQuery,
+    trimSlash
+} from '../assets/js/router'
 
 export default {
     name: 'AwTabNav',

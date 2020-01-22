@@ -3,9 +3,14 @@
         <section>
             <h2 class="h3">Table simple</h2>
 
+            <div class="aw-button-group my-4">
+                <AwButton text="Add" @click="addColumn" />
+                <AwButton text="Remove" @click="removeColumn" />
+            </div>
+
             <AwTable :rows="rows" vertical-align="middle">
                 <!-- https://tailwindcss.com/docs/word-break/#app -->
-                <AwTableCol field="one" class="break-all" :priority="4" />
+                <AwTableCol field="one" class="break-all" :priority="5" />
                 <AwTableCol
                     field="two with long name"
                     title="Two"
@@ -17,6 +22,7 @@
                         {{ cell.one }} / <span v-html="cell.three"></span>
                     </template>
                 </AwTableCol>
+                <AwTableCol field="one" class="break-all" />
             </AwTable>
         </section>
 
@@ -26,7 +32,7 @@
                 <code class="code">thead</code> slot
             </h2>
 
-            <AwTable :rows="rows">
+            <AwTable :rows="rows" @click:row="clickRow">
                 <template #thead>
                     <thead></thead>
                 </template>
@@ -89,6 +95,18 @@ export default {
                     'two with long name': 'Lorem <br>ipsum dolor sit amet.',
                     three: 'Three',
                     bla: undefined
+                },
+                {
+                    one: 'Lorem ipsum dolor sit amet.',
+                    'two with long name': 'Two',
+                    three: '<strong>Three</strong>',
+                    bla: null
+                },
+                {
+                    one: 'One',
+                    'two with long name': 'Lorem <br>ipsum dolor sit amet.',
+                    three: 'Three',
+                    bla: undefined
                 }
             ]
         }
@@ -97,6 +115,19 @@ export default {
     methods: {
         clickRow(val) {
             console.log(val)
+        },
+
+        addColumn() {
+            this.rows.push({
+                one: 'Pushed',
+                'two with long name': 'Pushed <br>ipsum dolor sit amet.',
+                three: 'Three Pushed',
+                bla: 'undefined'
+            })
+        },
+
+        removeColumn() {
+            this.rows.pop()
         }
     }
 }

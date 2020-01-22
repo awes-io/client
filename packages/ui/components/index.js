@@ -54,8 +54,6 @@ export { default as AwTabNav } from './AwTabNav.vue'
 export { default as AwTable } from './AwTable.vue'
 export { default as AwTableBuilder } from './AwTableBuilder.vue'
 export { default as AwTableCol } from './AwTableCol.vue'
-export { default as AwTableHead } from './AwTableHead.vue'
-export { default as AwTableRow } from './AwTableRow.vue'
 
 export { default as AwUploader } from './AwUploader.vue'
 export { default as AwUploaderFiles } from './AwUploaderFiles.vue'

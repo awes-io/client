@@ -1,42 +1,26 @@
 <template>
-    <table class="w-full text-sm leading-snug max-w-full overflow-hidden">
-        <!-- head -->
+    <table
+        class="w-full text-sm leading-snug overflow-hidden max-w-full shadow-md"
+    >
+        <!-- Table head, passes `thead` object to the scope -->
         <slot name="thead" :thead="theadVisible">
+            <!-- `AwTableHead` component -->
             <AwTableHead :columns="theadVisible" />
         </slot>
 
         <!-- body -->
-        <tbody class="shadow-md">
+        <tbody @click="handleRowClick">
+            <!-- Table row component, recieves `rows` prop -->
             <slot name="tr" :rows="rows">
-                <template v-for="(row, rowIndex) in rows">
+                <template v-for="(rowData, rowIndex) in rows">
                     <AwTableRow
-                        :key="row.id || rowIndex"
+                        :key="rowData.id || rowIndex"
                         v-bind="{
-                            row,
+                            rowData,
                             rowIndex,
-                            showToggler: !!hiddenColsIndexes.length,
-                            openedRow,
-                            columns: visibleColumns
-                        }"
-                        v-on="
-                            $listeners['click:row']
-                                ? {
-                                      'click:row': $event =>
-                                          $emit('click:row', $event)
-                                  }
-                                : {}
-                        "
-                        @click:toggle="toggleRow"
-                    />
-                    <AwTableRowHidden
-                        :key="`hr-${row.id || rowIndex}`"
-                        v-bind="{
-                            row,
-                            rowIndex,
-                            hiddenColsIndexes,
-                            colspan,
-                            columns: hiddenColumns,
-                            open: openedRow === rowIndex
+                            active: openedRow === rowIndex,
+                            hasRowClickListener,
+                            ...groupedColumns
                         }"
                     />
                 </template>
@@ -51,21 +35,27 @@
 </template>
 
 <script>
-import { keys, path, isNil, pathOr } from 'rambdax'
+import { keys, path, pathOr } from 'rambdax'
 import { ucFirst, toPascal } from '../assets/js/string'
+import {
+    TABLE_PRIORITY_ATTR,
+    TABLE_TOGGLER_ATTR,
+    TABLE_INDEX_ATTR,
+    TABLE_ROW_CLICK_EVENT
+} from '../assets/js/constants'
+import AwTableHead from './AwTableHead.vue'
 import AwTableCol from './AwTableCol.vue'
-import AwTableColHidden from './AwTableColHidden.vue'
-import AwTableRowHidden from './AwTableRowHidden.vue'
+import AwTableRow from './AwTableRow.vue'
 
-const RESIZE_DEBOUNCE = 500
-
-const PRIORITY_ATTR = 'data-priority'
+const WIDTH_THRESHOLD = 50 // px
+const RESIZE_DEBOUNCE = 500 // ms
 
 export default {
     name: 'AwTable',
 
     components: {
-        AwTableRowHidden
+        AwTableHead,
+        AwTableRow
     },
 
     props: {
@@ -74,7 +64,15 @@ export default {
             required: true
         },
 
-        verticalAlign: String
+        verticalAlign: {
+            type: String,
+            validator(value) {
+                return ['align-bottom', 'align-middle', 'align-top'].includes(
+                    `align-${value}`
+                )
+            },
+            default: 'top'
+        }
     },
 
     data() {
@@ -88,113 +86,149 @@ export default {
         columns() {
             const _slots = this.$slots.default
 
-            return Array.isArray(_slots)
-                ? _slots.filter(this._isColumnComponent).map(col => {
-                      if (!col.componentOptions.propsData.verticalAlign) {
-                          col.componentOptions.propsData = {
-                              ...col.componentOptions.propsData,
-                              verticalAlign: this.verticalAlign
-                          }
-                      }
-                      return col
-                  })
-                : keys(this.rows[0]).map((field, priority) =>
-                      this.$createElement(AwTableCol, {
-                          props: {
-                              field,
-                              priority,
-                              verticalAlign: this.verticalAlign
-                          }
-                      })
-                  )
+            if (Array.isArray(_slots)) {
+                return _slots
+                    .filter(this._isColumnComponent)
+                    .map(({ componentOptions, data }, i) => {
+                        const props = componentOptions.propsData
+                        const slot = path('scopedSlots.default', data)
+                        const field = path('field', props)
+                        const title = pathOr(
+                            field ? ucFirst(field) : '',
+                            'title',
+                            props
+                        )
+
+                        return {
+                            field,
+                            verticalAlign: pathOr(
+                                this.verticalAlign,
+                                'verticalAlign',
+                                props
+                            ),
+                            priority: pathOr(i, 'priority', props),
+                            title,
+                            titleAlign: path('titleAlign', props),
+                            slot
+                        }
+                    })
+            } else {
+                return keys(this.rows[0]).map((field, priority) => ({
+                    field,
+                    title: ucFirst(field),
+                    priority,
+                    verticalAlign: this.verticalAlign
+                }))
+            }
         },
 
-        thead() {
-            return this.columns.map(column => {
-                const _key = path('componentOptions.propsData.field', column)
+        groupedColumns() {
+            const columns = this.columns
+            const visibleColumns = []
+            const hiddenColumns = []
 
-                const _title = path('componentOptions.propsData.title', column)
-
-                const align = path(
-                    'componentOptions.propsData.titleAlign',
-                    column
-                )
-
-                return {
-                    text: isNil(_title) ? ucFirst(_key) : _title,
-                    align
+            for (let i = 0, max = columns.length; i < max; i++) {
+                if (this.hiddenColsIndexes.includes(i)) {
+                    hiddenColumns.push(columns[i])
+                } else {
+                    visibleColumns.push(columns[i])
                 }
-            })
-        },
+            }
 
-        visibleColumns() {
-            return this.columns.map((vNode, i) => {
-                const isHidden = this.hiddenColsIndexes.includes(i)
-
-                vNode.componentOptions.propsData.isHidden = isHidden
-
-                return vNode
-            })
-        },
-
-        hiddenColumns() {
-            return this.columns.map((vNode, i) => {
-                return this.$createElement(AwTableColHidden, {
-                    props: {
-                        field: path('componentOptions.propsData.field', vNode),
-                        title: path([i, 'text'], this.thead)
-                    },
-                    scopedSlots: path('data.scopedSlots', vNode)
-                })
-            })
+            return { visibleColumns, hiddenColumns }
         },
 
         theadVisible() {
-            const hidden = this.hiddenColsIndexes
-            return this.thead
-                .filter((el, i) => !hidden.includes(i))
-                .concat(hidden.length ? [{ text: '' }] : [])
+            const { visibleColumns, hiddenColumns } = this.groupedColumns
+
+            return visibleColumns
+                .map(({ title, titleAlign }) => ({
+                    text: title,
+                    align: titleAlign && `text-${titleAlign}`
+                }))
+                .concat(hiddenColumns.length ? [{ text: '' }] : [])
         },
 
-        colspan() {
-            return this.theadVisible.length
+        hasRowClickListener() {
+            return TABLE_ROW_CLICK_EVENT in this.$listeners
         }
     },
 
     watch: {
         rows() {
             this.openedRow = null
-        },
-
-        hiddenColsIndexes(arr) {
-            if (!arr.length) this.openedRow = null
         }
     },
 
     mounted() {
-        let resizeTm
-
-        const onResize = () => {
-            clearTimeout(resizeTm)
-            resizeTm = setTimeout(async () => {
-                this.hiddenColsIndexes = this._getHiddenColsIndexes()
-            }, RESIZE_DEBOUNCE)
+        if (!this.$scopedSlots.tr) {
+            this.setResizeListener()
         }
-
-        // call with setTimeout, kind of nextTick
-        onResize()
-
-        window.addEventListener('resize', onResize)
-
-        this.$once('hook:beforeDestroy', () => {
-            clearTimeout(resizeTm)
-            window.removeEventListener('resize', onResize)
-        })
     },
 
     methods: {
         toggleRow(index) {
             this.openedRow = this.openedRow === index ? null : index
+        },
+
+        setResizeListener() {
+            let resizeTm
+
+            const onResize = () => {
+                clearTimeout(resizeTm)
+                resizeTm = setTimeout(async () => {
+                    // reset indexes if needed and await DOM update
+                    if (this.hiddenColsIndexes.length) {
+                        this.hiddenColsIndexes = []
+                        await this.$nextTick()
+                    }
+
+                    // get calculated columns
+                    const newIndexes = this._getHiddenColsIndexes()
+
+                    if (!newIndexes.length) {
+                        this.openedRow = null
+                    }
+                    this.hiddenColsIndexes = newIndexes
+                }, RESIZE_DEBOUNCE)
+            }
+
+            // first time calculations
+            this.$nextTick(() => {
+                this.hiddenColsIndexes = this._getHiddenColsIndexes()
+            })
+
+            window.addEventListener('resize', onResize)
+
+            this.$once('hook:beforeDestroy', () => {
+                clearTimeout(resizeTm)
+                window.removeEventListener('resize', onResize)
+            })
+        },
+
+        handleRowClick($event) {
+            const target = $event.target
+            const toggler = target.hasAttribute(TABLE_TOGGLER_ATTR)
+                ? target
+                : target.closest(`[${TABLE_TOGGLER_ATTR}]`)
+
+            // hidden row toggler click
+            if (toggler) {
+                const index = parseInt(toggler.getAttribute(TABLE_TOGGLER_ATTR))
+                this.toggleRow(index)
+                return
+            }
+
+            // if table has no row click listener exit
+            if (!this.hasRowClickListener) return
+
+            const row = target.closest(`[${TABLE_INDEX_ATTR}]`)
+
+            if (row) {
+                const index = parseInt(row.getAttribute(TABLE_INDEX_ATTR))
+                const data = this.rows[index]
+                this.$emit(TABLE_ROW_CLICK_EVENT, { data, index, $event })
+            }
         },
 
         // Filters only AwTableCol components from scoped slot
@@ -212,7 +246,7 @@ export default {
         _getFirstRow() {
             return Array.from(
                 this.$el.querySelectorAll(
-                    `tbody > :first-child > [${PRIORITY_ATTR}]`
+                    `tbody > :first-child > [${TABLE_PRIORITY_ATTR}]`
                 )
             )
         },
@@ -221,7 +255,7 @@ export default {
             const parent = this._getParentEl()
 
             if (parent) {
-                return parent.clientWidth < this.$el.clientWidth
+                return parent.clientWidth < this.$el.scrollWidth
             } else {
                 return false
             }
@@ -231,22 +265,21 @@ export default {
             return columns
                 .map((el, index) => ({ el, index }))
                 .sort((a, b) => {
-                    const aPrior = parseFloat(a.el.getAttribute(PRIORITY_ATTR))
-                    const bPrior = parseFloat(b.el.getAttribute(PRIORITY_ATTR))
+                    // parseFloat accepts Infinity value
+                    const aPrior = parseFloat(
+                        a.el.getAttribute(TABLE_PRIORITY_ATTR)
+                    )
+                    const bPrior = parseFloat(
+                        b.el.getAttribute(TABLE_PRIORITY_ATTR)
+                    )
 
                     return aPrior - bPrior
                 })
         },
 
-        _toggleColDisplay(col, on = true) {
-            col.style.display = on ? null : 'none'
-        },
-
         _getHiddenColsIndexes() {
             // manipulate only first row
             const columns = this._getFirstRow()
-
-            columns.forEach(col => this._toggleColDisplay(col))
 
             let hiddenIndexes = []
 
@@ -260,17 +293,8 @@ export default {
                     // subtract el width from global width
                     maxWidth -= el.offsetWidth
 
-                    if (maxWidth < 0) {
-                        acc.push(index)
-                        this._toggleColDisplay(columns[index], false)
-                    }
-
-                    return acc
+                    return maxWidth < WIDTH_THRESHOLD ? acc.concat(index) : acc
                 }, [])
-            }
-
-            if (!hiddenIndexes.length) {
-                this._toggleColDisplay(columns[columns.length - 1], false)
             }
 
             return hiddenIndexes
