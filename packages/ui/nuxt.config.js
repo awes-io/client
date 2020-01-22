@@ -1,7 +1,7 @@
 import lang from './lang/en'
 
 export default {
-    mode: 'universal',
+    mode: 'spa',
 
     head: {
         title: 'Awes.io UI',
@@ -19,7 +19,8 @@ export default {
                 href:
                     'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu:400,500&display=swap'
             }
-        ]
+        ],
+        script: [{ src: 'https://unpkg.com/gsap@2.0.1/umd/TweenMax.js' }]
     },
 
     loading: { color: '#fff' },

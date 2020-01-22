@@ -6369,6 +6369,11 @@ hable@^2.3.2:
   resolved "https://registry.npmjs.org/hable/-/hable-2.3.2.tgz#7867ffec0b67e63136937613d9a0bc646ac9d7fe"
   integrity sha512-qJ9WoXl/15LNlG1KeAuBjCNGStUb+MCQ5biPxOmwRyESH8CSWwZB4xEnzCduuQ3I/mlgui28t8/oMAGT1Rpb2g==
 
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npmjs.org/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
+
 handlebars@^4.0.5, handlebars@^4.1.2, handlebars@^4.4.0:
   version "4.5.3"
   resolved "https://registry.npmjs.org/handlebars/-/handlebars-4.5.3.tgz#5cf75bd8714f7605713511a56be7c349becb0482"

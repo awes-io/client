@@ -226,7 +226,7 @@ module.exports = {
         container: false
     },
     variants: {
-        // borderWidth: ['responsive', 'first', 'hover', 'focus'],
+        borderWidth: ['focus'],
         opacity: ['responsive', 'hover', 'focus', 'group-hover']
     },
     plugins: [
