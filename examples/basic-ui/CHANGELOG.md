@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.37.0](https://git.awescode.com/awes-io/client/compare/v1.36.2...v1.37.0) (2020-01-23)
+
+
+### Bug Fixes
+
+* changed name of the page ([5d4af43](https://git.awescode.com/awes-io/client/commits/5d4af437db2ce4578558954dbf58fd9599edf734))
+* changed navigation; fixed dependency ([ab8b2ae](https://git.awescode.com/awes-io/client/commits/ab8b2ae32cfa350e5b5cf68dbfce9bfd846b0922))
+
+
+### Features
+
+* added generator for documentation ([dbba524](https://git.awescode.com/awes-io/client/commits/dbba524fdb6858bd1541997580b6635ac91a19d7))
+* connected examples with documentation ([4a0f48b](https://git.awescode.com/awes-io/client/commits/4a0f48b030a1fb8687f112fe57884352def04b1b))
+
+
+
+
+
 ## [1.36.2](https://git.awescode.com/awes-io/client/compare/v1.36.1...v1.36.2) (2020-01-14)
 
 **Note:** Version bump only for package basic-ui
