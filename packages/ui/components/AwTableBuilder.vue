@@ -67,11 +67,16 @@
 <script>
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
+import AwTableHead from './AwTableHead.vue'
 
 const DEFAULT_LIMITS = [15, 50, 100]
 
 export default {
     name: 'AwTableBuilder',
+
+    components: {
+        AwTableHead
+    },
 
     props: {
         collection: {

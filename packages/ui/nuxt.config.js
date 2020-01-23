@@ -41,7 +41,12 @@ export default {
                 'postcss-easings': {},
                 tailwindcss: {}
             }
-        }
+        },
+        transpile: [/\/basic-ui\/api\//]
+    },
+
+    axios: {
+        proxy: true
     },
 
     tailwindcss: {
@@ -63,5 +68,9 @@ export default {
 
     server: {
         host: '0.0.0.0'
+    },
+
+    proxy: {
+        '/api/': 'http://localhost:3030'
     }
 }

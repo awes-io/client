@@ -6,7 +6,26 @@ const managersCollection = new Managers(managersData)
 
 const managers = express.Router()
 
-managers.use(express.urlencoded({ extended: false }))
+function getError(message, status) {
+    const error = new Error(message)
+    error.status = status
+    return error
+}
+
+function sendError(res, error) {
+    res.status(error.status || 500).json({
+        message: error.message,
+        success: false,
+        data: { error: JSON.stringify(error) }
+    })
+}
+
+managers.use(
+    express.urlencoded({
+        extended: false,
+        type: ['application/x-www-form-urlencoded', 'application/json']
+    })
+)
 
 managers.get('/', function(req, res) {
     const page = Number(req.query.page) || 1
@@ -33,20 +52,27 @@ managers.get('/:id', function(req, res) {
         const manager = managersCollection.find({ id })
 
         if (!id || !manager) {
-            throw new Error('Manager not found')
+            throw getError('Manager not found', 404)
         }
 
         setTimeout(() => {
             res.json({ data: manager })
         }, 250)
-    } catch (error) {
-        console.log(error)
+    } catch (e) {
+        sendError(res, e)
+    }
+})
 
-        res.status(404).json({
-            message: error.message,
-            success: false,
-            data: { error: JSON.stringify(error) }
-        })
+managers.post('/', function(req, res) {
+    try {
+        // wierd transformation for array in the root
+        const models = JSON.parse(Object.keys(req.body)[0])
+
+        managersCollection.replace(models)
+
+        res.json(models)
+    } catch (e) {
+        sendError(res, e)
     }
 })
 
@@ -58,7 +84,7 @@ managers.post('/:id', function(req, res) {
         const manager = managersCollection.find({ id })
 
         if (!id || !manager) {
-            throw new Error('Manager not found')
+            throw getError('Manager not found', 404)
         }
 
         // validate
@@ -69,12 +95,8 @@ managers.post('/:id', function(req, res) {
         setTimeout(() => {
             res.json({ data: manager })
         }, 250)
-    } catch (error) {
-        res.status(404).json({
-            message: error.message,
-            success: false,
-            data: { error: JSON.stringify(error) }
-        })
+    } catch (e) {
+        sendError(res, e)
     }
 })
 
@@ -90,12 +112,8 @@ managers.post('/add', async function(req, res) {
         setTimeout(() => {
             res.json({ success: true, data: { id } })
         }, 250)
-    } catch (error) {
-        res.status(403).json({
-            message: error.message,
-            success: false,
-            data: { error: JSON.stringify(error) }
-        })
+    } catch (e) {
+        sendError(res, e)
     }
 })
 
@@ -106,7 +124,7 @@ managers.get('/remove/:id', function(req, res) {
         const manager = managersCollection.find({ id })
 
         if (!id || !manager) {
-            throw new Error('Manager not found')
+            throw getError('Manager not found', 404)
         }
 
         managersCollection.remove(manager)
@@ -114,14 +132,8 @@ managers.get('/remove/:id', function(req, res) {
         setTimeout(() => {
             res.json({ data: { success: true, id } })
         }, 250)
-    } catch (error) {
-        console.log(error)
-
-        res.status(403).json({
-            message: error.message,
-            success: false,
-            data: { error: JSON.stringify(error) }
-        })
+    } catch (e) {
+        sendError(res, e)
     }
 })
 

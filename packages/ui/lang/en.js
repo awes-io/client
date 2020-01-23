@@ -65,6 +65,13 @@ export const AwMarkdownEditor = {
     quote: 'Quote'
 }
 
+export const AwMultiBlockBuilder = {
+    title: '{title} #{iteration}',
+    add: '+ Add {title}',
+    remove: 'Remove {title}',
+    save: 'Save'
+}
+
 export const AwPagination = {
     info: 'Show {from}-{to} of {total}',
     page: 'Page {page} of {pagesTotal}',
@@ -108,6 +115,7 @@ export default {
     AwLayoutError,
     AwLayoutFrameCenter,
     AwMarkdownEditor,
+    AwMultiBlockBuilder,
     AwPagination,
     AwSelect,
     AwTableBuilder,

@@ -49,6 +49,8 @@ export { default as AwMarkdownEditor } from './AwMarkdownEditor.vue'
 
 export { default as AwModal } from './AwModal.vue'
 
+export { default as AwMultiBlockBuilder } from './AwMultiBlockBuilder.vue'
+
 export { default as AwTabNav } from './AwTabNav.vue'
 
 export { default as AwTable } from './AwTable.vue'

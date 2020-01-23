@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { isValid } from 'rambdax'
+import { validateBySchema } from '../assets/js/component'
 
 export default {
     name: 'AwTableHead',
@@ -25,13 +25,9 @@ export default {
         columns: {
             type: Array,
             default: () => [],
-            validator: columns =>
-                isValid({
-                    input: { columns },
-                    schema: {
-                        columns: [{ text: 'string', 'align?': 'string' }]
-                    }
-                })
+            validator: validateBySchema([
+                { text: 'string', 'align?': 'string' }
+            ])
         }
     }
 }
