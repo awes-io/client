@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.37.0](https://git.awescode.com/awes-io/ui/compare/v1.36.2...v1.37.0) (2020-01-23)
+
+
+### Bug Fixes
+
+* updated fonts ([13392a0](https://git.awescode.com/awes-io/ui/commits/13392a02b0a37f8d8339a5ee129c04ad54c63a74))
+* **aws-671:** fixed padding of AwTel component ([a4a6dee](https://git.awescode.com/awes-io/ui/commits/a4a6deec6dd736ee2c9d9805503437f6a85b7f35))
+* **ui:** aw-table responsiveness works on ios ([82719eb](https://git.awescode.com/awes-io/ui/commits/82719eb20f853a46043c9b5d1417a1016af11291))
+
+
+### Features
+
+* added generator for documentation ([dbba524](https://git.awescode.com/awes-io/ui/commits/dbba524fdb6858bd1541997580b6635ac91a19d7))
+
+
+
+
+
 ## [1.36.2](https://git.awescode.com/awes-io/ui/compare/v1.36.1...v1.36.2) (2020-01-14)
 
 ### Bug Fixes
