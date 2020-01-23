@@ -1,25 +1,20 @@
-const querystring = require('querystring')
 const { Router } = require('express')
 const tasksData = require('../../tests/mock/tasks.json')
 
 const router = Router()
 
 router.get('/tasks', function(req, res) {
-    const query = querystring.parse(req._parsedUrl.query)
-    const page = Number(query.page) || 1
-    const limit = Number(query.limit) || 15
+    const page = Number(req.query.page) || 1
+    const limit = Number(req.query.limit) || 15
 
     setTimeout(() => {
-        res.setHeader('Content-Type', 'application/json')
-        res.end(
-            JSON.stringify({
-                data: tasksData.slice((page - 1) * limit, page * limit),
-                meta: {
-                    total: tasksData.length,
-                    per_page: limit
-                }
-            })
-        )
+        res.json({
+            data: tasksData.slice((page - 1) * limit, page * limit),
+            meta: {
+                total: tasksData.length,
+                per_page: limit
+            }
+        })
     }, 1000)
 })
 

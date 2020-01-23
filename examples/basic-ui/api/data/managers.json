@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "Smith",
+        "position": "Chief",
+        "phones": ["555-11-22-333", "555-11-22-443"]
+    },
+    {
+        "id": 2,
+        "first_name": "John",
+        "last_name": "Doe",
+        "position": "Engeneer",
+        "phones": ["555-22-22-333", "555-11-55-443"]
+    }
+]
