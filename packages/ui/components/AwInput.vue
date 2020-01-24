@@ -9,7 +9,7 @@
     >
         <input
             :class="[elClasses.el, paddingClass]"
-            v-bind="{ type, value: inputValue, ...$attrs }"
+            v-bind="{ type, value: inputValue, ...skipAttr, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
             v-on="mergedListeners"

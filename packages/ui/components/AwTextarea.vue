@@ -2,7 +2,7 @@
     <div class="aw-text-field is-textarea" :class="wrapperClasses">
         <textarea
             class="aw-text-field__element p-3"
-            v-bind="{ value: inputValue, ...$attrs }"
+            v-bind="{ value: inputValue, ...skipAttr, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
             v-on="mergedListeners"

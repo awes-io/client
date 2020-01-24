@@ -20,6 +20,7 @@
                     autocomplete="off"
                     :value="codeValue[i]"
                     :class="[elClasses.element, 'text-center']"
+                    v-bind="skipAttr"
                     @input="_onInput($event, i)"
                     @keydown.left="_focus($event.target, -1)"
                     @keydown.right="_focus($event.target)"

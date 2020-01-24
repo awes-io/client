@@ -18,7 +18,7 @@
                 ref="element"
                 class="aw-switch-field__element sr-only"
                 type="checkbox"
-                v-bind="{ value, checked: isChecked, ...$attrs }"
+                v-bind="{ value, checked: isChecked, ...skipAttr, ...$attrs }"
                 :id="id || defaultId"
                 :aria-describedby="errorText ? errorId : null"
                 v-on="mergedListeners"
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import fieldMixin from '../mixins/field'
 import AwCheckbox from './AwCheckbox.vue'
 
 const THRESHOLD = 5 // pixels
@@ -56,6 +57,8 @@ export default {
     name: 'AwSwitcher',
 
     extends: AwCheckbox,
+
+    mixins: [fieldMixin],
 
     data() {
         return {

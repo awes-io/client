@@ -3,7 +3,7 @@
         <input
             class="aw-switch-field__element"
             type="radio"
-            v-bind="{ value, checked: isChecked, ...$attrs }"
+            v-bind="{ value, checked: isChecked, ...skipAttr, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
             v-on="mergedListeners"

@@ -20,7 +20,8 @@
 <script>
 import { AwForm as _config } from './_config'
 import { conf } from '../assets/js/component'
-import { isFalsy } from 'rambdax'
+import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
+import { isFalsy, path } from 'rambdax'
 
 export default {
     name: 'AwForm',
@@ -62,6 +63,7 @@ export default {
             return {
                 mousedown: this._onSubmitBtnClick,
                 submit: this._submit,
+                keydown: this._onEnterKeydown,
                 ...this.$listeners
             }
         },
@@ -78,6 +80,35 @@ export default {
         _onSubmitBtnClick(e) {
             if (e.target && e.target.closest('[type="submit"]')) {
                 this.resetErrors()
+            }
+        },
+
+        _onEnterKeydown(e) {
+            const target = path('target', e)
+            const targetTag = path('target.tagName', e)
+            const keyCode = path('keyCode', e)
+
+            if (keyCode !== 13 || targetTag !== 'INPUT') return
+
+            const elements = Array.from(
+                this.$el.querySelectorAll(`
+                    input:not([${FORM_ENTER_SKIP_ATTR}]):not([type="hidden"]):not([type="file"]),
+                    select:not([${FORM_ENTER_SKIP_ATTR}]),
+                    textarea:not([${FORM_ENTER_SKIP_ATTR}])
+                `)
+            )
+
+            const index = elements.indexOf(target)
+
+            if (index < 0) return
+
+            e.preventDefault()
+
+            if (index === elements.length - 1 || e.ctrlKey || e.shiftKey) {
+                const submitBtn = this.$el.querySelector('[type="submit"]')
+                submitBtn.click()
+            } else {
+                elements[index + 1].focus()
             }
         },
 
