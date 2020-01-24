@@ -26,7 +26,7 @@ export default async function({ app: { i18n } }) {
                     )
 
                     // merge in case some translations missing
-                    lang = mergeDeep(loadedLang.default || loadedLang, lang)
+                    lang = mergeDeep(lang, loadedLang.default || loadedLang)
                 }
             } catch (e) {
                 console.log(

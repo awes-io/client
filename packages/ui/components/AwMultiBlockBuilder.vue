@@ -71,7 +71,7 @@ import { validateBySchema } from '../assets/js/component'
 /**
  * Serves for VueMC collection visualization. Pass the collection to `collection` prop, and form fields that you need to default slot.
  *
- * ```
+ * ```vue
  * <AwMultiBlockBuilder title="Manager" :collection="managers">
  *    <template #default="{ model }">
  *      <AwInput
