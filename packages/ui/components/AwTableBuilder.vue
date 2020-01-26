@@ -68,11 +68,14 @@
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 import AwTableHead from './AwTableHead.vue'
+import WatchParams from '../mixins/watch-params'
 
 const DEFAULT_LIMITS = [15, 50, 100]
 
 export default {
     name: 'AwTableBuilder',
+
+    mixins: [WatchParams],
 
     components: {
         AwTableHead
@@ -107,11 +110,6 @@ export default {
             validator(arr) {
                 return arr.every(el => typeof el === 'number')
             }
-        },
-
-        watchParams: {
-            type: Array,
-            default: null
         },
 
         scrollOnPage: {
@@ -180,22 +178,12 @@ export default {
             return [...Array(this.limit).keys()].map(() => ({}))
         },
 
-        fetchQuery() {
-            const params = {
+        fetchAllQuery() {
+            return {
                 page: this.page,
-                limit: this.limit
+                limit: this.limit,
+                ...this.fetchQuery()
             }
-
-            if (this.watchParams) {
-                this.watchParams.forEach(name => {
-                    const value = this.$route.query[name]
-                    if (value) {
-                        params[name] = value
-                    }
-                })
-            }
-
-            return params
         },
 
         limitsMerged() {
@@ -218,22 +206,6 @@ export default {
 
     created() {
         if (this.watchParams) {
-            const unwatchers = []
-
-            this.$once('hook:beforeDestroy', () => {
-                unwatchers.forEach(unwatch => {
-                    unwatch()
-                })
-            })
-
-            this.watchParams.forEach(param => {
-                const unwatcher = this.$watch(
-                    `$route.query.${param}`,
-                    this._fetchFromWatcher
-                )
-                unwatchers.push(unwatcher)
-            })
-
             this.collection.on('delete', this._fetchOnDelete)
         }
     },
@@ -241,7 +213,7 @@ export default {
     methods: {
         fetch(params) {
             this.collection
-                .fetch({ params: { ...this.fetchQuery, ...params } })
+                .fetch({ params: { ...this.fetchAllQuery, ...params } })
                 .then(this._setPagination)
                 .then(this._scrollTop)
         },
