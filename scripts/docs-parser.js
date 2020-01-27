@@ -8,7 +8,18 @@ const dirPathUi = path.dirname(path.resolve(__dirname)) + '/packages/ui/'
 const dirPathComponents = dirPathUi + 'components/'
 const dirPathDocs = dirPathUi + 'docs/'
 
+try {
+    if (fs.existsSync(dirPathComponents + 'index.js')) {
+        //file exists
+        console.log('File exists')
+    }
+} catch (err) {
+    console.error(err)
+    return
+}
+
 fs.readFile(dirPathComponents + 'index.js', 'utf8', function(err, content) {
+    console.log(content)
     const matchAll = Array.from(content.matchAll(/\/Aw(.+?)\.vue/gim))
     matchAll.forEach(function(match) {
         const file = match[0].replace('/', '')
