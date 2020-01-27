@@ -15,9 +15,6 @@ release:
   only:
     - master
   script:
-    - git fetch origin +refs/heads/master:refs/remotes/origin/master
-    - git checkout master
-    - git pull origin master
     - yarn lerna version --conventional-commits --no-git-tag-version --no-push --tag-version-prefix='' --yes
     - yarn build:ui
     - yarn build:ui:docs
