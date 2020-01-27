@@ -19,7 +19,7 @@ release:
     - yarn build:ui
     - yarn build:ui:docs
     - git add .
-    - git commit -m "chore(release): released a new version [skiprelease]"
+    - git commit -m "chore:\ released a new version [skiprelease]"
     - git push origin master
     - yarn lerna publish from-git --no-changelog --tag-version-prefix='' --yes
   stage: release
