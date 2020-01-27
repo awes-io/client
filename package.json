@@ -25,6 +25,7 @@
     },
     "scripts": {
         "dev:ui": "lerna run dev-nuxt --scope @awes-io/ui --stream",
+        "build:ui": "lerna run build --scope @awes-io/ui",
         "build:ui:docs": "node -r esm scripts/docs-parser.js",
         "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream"
     },
