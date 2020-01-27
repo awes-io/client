@@ -1,6 +1,6 @@
 <template>
     <component :is="tag">
-        <!-- default -->
+        <!-- any external component -->
         <slot v-bind="{ data }"></slot>
     </component>
 </template>
@@ -14,11 +14,17 @@ export default {
     mixins: [WatchParams],
 
     props: {
+        /**
+         * The tag of parent node
+         */
         tag: {
             type: String,
             default: 'div'
         },
 
+        /**
+         * POST request url for fetching data from a server
+         */
         url: {
             type: String,
             required: true

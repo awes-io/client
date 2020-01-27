@@ -55,6 +55,11 @@ Below is a collection of Vue **slots** for the `AwSwitcher` component.
 <!-- @vuese:AwSwitcher:slots:end -->
 
 
+
+
+
+
+
 ### Events
 Below is a collection of Vue **events** for the `AwSwitcher` component.
 <!-- @vuese:AwSwitcher:events:start -->
@@ -63,6 +68,11 @@ Below is a collection of Vue **events** for the `AwSwitcher` component.
 |change|-|-|
 
 <!-- @vuese:AwSwitcher:events:end -->
+
+
+
+
+
 
 
 ## Examples

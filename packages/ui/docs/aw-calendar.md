@@ -50,6 +50,11 @@ Below is a collection of Vue **props** for the `AwCalendar` component.
 <!-- @vuese:AwCalendar:props:end -->
 
 
+
+
+
+
+
 ### Events
 Below is a collection of Vue **events** for the `AwCalendar` component.
 <!-- @vuese:AwCalendar:events:start -->
@@ -58,6 +63,11 @@ Below is a collection of Vue **events** for the `AwCalendar` component.
 |input|-|-|
 
 <!-- @vuese:AwCalendar:events:end -->
+
+
+
+
+
 
 
 ## Examples

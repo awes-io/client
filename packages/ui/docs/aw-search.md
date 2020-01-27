@@ -47,6 +47,11 @@ Below is a collection of Vue **props** for the `AwSearch` component.
 
 <!-- @vuese:AwSearch:props:end -->
 
+
+
+
+
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwSearch` component.
 <!-- @vuese:AwSearch:slots:start -->
