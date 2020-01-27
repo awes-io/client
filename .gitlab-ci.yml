@@ -13,7 +13,6 @@ release:
   only:
     - master
   script:
-    - yarn test
     - yarn lerna version --conventional-commits --no-git-tag-version --no-push --tag-version-prefix='' --yes
     - yarn build:ui
     - yarn build:ui:docs
