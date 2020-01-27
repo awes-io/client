@@ -19,7 +19,7 @@
                     maxlength="1"
                     autocomplete="off"
                     :value="codeValue[i]"
-                    :class="[elClasses.element, 'text-center']"
+                    :class="[elClasses.element, 'text-center p-3']"
                     v-bind="skipAttr"
                     @input="_onInput($event, i)"
                     @keydown.left="_focus($event.target, -1)"

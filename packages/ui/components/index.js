@@ -20,6 +20,7 @@ export { default as AwChip } from './AwChip.vue'
 export { default as AwCropper } from './AwCropper.vue'
 
 export { default as AwCodeSnippet } from './AwCodeSnippet.vue'
+export { default as AwContentWrapper } from './AwContentWrapper.vue'
 
 export { default as AwGrid } from './AwGrid.vue'
 
