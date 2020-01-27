@@ -51,6 +51,7 @@ Below is a collection of Vue **props** for the `AwUploader` component.
 
 <!-- @vuese:AwUploader:props:end -->
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwUploader` component.
 <!-- @vuese:AwUploader:slots:start -->
@@ -62,6 +63,7 @@ Below is a collection of Vue **slots** for the `AwUploader` component.
 <!-- @vuese:AwUploader:slots:end -->
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwUploader` component.
 <!-- @vuese:AwUploader:events:start -->
@@ -70,6 +72,7 @@ Below is a collection of Vue **events** for the `AwUploader` component.
 |error|-|-|
 
 <!-- @vuese:AwUploader:events:end -->
+
 
 
 ## Examples

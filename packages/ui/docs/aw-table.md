@@ -43,28 +43,34 @@ Below is a collection of Vue **props** for the `AwTable` component.
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |rows|-|`Array`|`true`|-|
-|verticalAlign|-|`String`|`false`|-|
+|verticalAlign|-|`String`|`false`|top|
 
 <!-- @vuese:AwTable:props:end -->
+
 
 ### Slots
 Below is a collection of Vue **slots** for the `AwTable` component.
 <!-- @vuese:AwTable:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
-|thead|head|-|
-|tr|-|-|
+|thead|Table head, passes `thead` object to the scope|`AwTableHead` component|
+|tr|Table row component, recieves `rows` prop|-|
 |tfoot|footer|<AwTableFoot />|
 |default|-|-|
 
 <!-- @vuese:AwTable:slots:end -->
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwTable` component.
 <!-- @vuese:AwTable:events:start -->
+|Event Name|Description|Parameters|
+|---|---|---|
+|`TABLE_ROW_CLICK_EVENT`|-|-|
 
 <!-- @vuese:AwTable:events:end -->
+
 ## Examples
 Below is a collection of simple to complex examples.
 

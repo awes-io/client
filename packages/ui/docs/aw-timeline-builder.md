@@ -46,6 +46,7 @@ Below is a collection of Vue **props** for the `AwTimelineBuilder` component.
 
 <!-- @vuese:AwTimelineBuilder:props:end -->
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwTimelineBuilder` component.
 <!-- @vuese:AwTimelineBuilder:slots:start -->
@@ -54,6 +55,7 @@ Below is a collection of Vue **slots** for the `AwTimelineBuilder` component.
 |default|-|info|
 
 <!-- @vuese:AwTimelineBuilder:slots:end -->
+
 
 
 ### Events

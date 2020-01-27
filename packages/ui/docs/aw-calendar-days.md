@@ -28,6 +28,7 @@ The `AwCalendarDays` component is used to render days for calendar.
 <!-- @vuese:AwCalendarDays:props:end -->
 
 
+
 ## Events
 
 <!-- @vuese:AwCalendarDays:events:start -->
@@ -36,6 +37,7 @@ The `AwCalendarDays` component is used to render days for calendar.
 |click:date|-|-|
 
 <!-- @vuese:AwCalendarDays:events:end -->
+
 
 
 ## Slots
@@ -48,5 +50,6 @@ The `AwCalendarDays` component is used to render days for calendar.
 |after|-|-|
 
 <!-- @vuese:AwCalendarDays:slots:end -->
+
 
 
