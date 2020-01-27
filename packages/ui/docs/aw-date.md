@@ -49,6 +49,7 @@ Below is a collection of Vue **props** for the `AwDate` component.
 
 
 
+
   
 ### Slots
 Below is a collection of Vue **slots** for the `AwDate` component.
@@ -64,6 +65,7 @@ Below is a collection of Vue **events** for the `AwDate` component.
 |input|-|-|
 
 <!-- @vuese:AwDate:events:end -->
+
 
 
 

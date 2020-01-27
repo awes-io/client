@@ -51,6 +51,7 @@ Below is a collection of Vue **props** for the `AwPagination` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwPagination` component.
 <!-- @vuese:AwPagination:slots:start -->
@@ -65,6 +66,7 @@ Below is a collection of Vue **events** for the `AwPagination` component.
 |click:page|-|-|
 
 <!-- @vuese:AwPagination:events:end -->
+
 
 
 

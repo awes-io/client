@@ -53,6 +53,7 @@ Below is a collection of Vue **props** for the `AwCropper` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwCropper` component.
 <!-- @vuese:AwCropper:slots:start -->
@@ -66,6 +67,7 @@ Below is a collection of Vue **slots** for the `AwCropper` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwCropper` component.
 <!-- @vuese:AwCropper:events:start -->
@@ -75,6 +77,7 @@ Below is a collection of Vue **events** for the `AwCropper` component.
 |cancel|-|-|
 
 <!-- @vuese:AwCropper:events:end -->
+
 
 
 

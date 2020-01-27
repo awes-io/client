@@ -49,6 +49,7 @@ Below is a collection of Vue **props** for the `AwGrid` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwGrid` component.
 <!-- @vuese:AwGrid:slots:start -->

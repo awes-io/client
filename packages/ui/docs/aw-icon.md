@@ -50,6 +50,7 @@ Below is a collection of Vue **props** for the `AwIcon` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwIcon` component.
 <!-- @vuese:AwIcon:slots:start -->

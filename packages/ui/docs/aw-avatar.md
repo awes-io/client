@@ -51,6 +51,7 @@ Below is a collection of Vue **props** for the `AwAvatar` component.
 
 
 
+
 ## Examples
 Below is a collection of simple to complex examples.
 

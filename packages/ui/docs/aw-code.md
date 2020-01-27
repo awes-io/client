@@ -49,6 +49,7 @@ Below is a collection of Vue **props** for the `AwCode` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwCode` component.
 <!-- @vuese:AwCode:slots:start -->
@@ -57,6 +58,7 @@ Below is a collection of Vue **slots** for the `AwCode` component.
 |error|-|-|
 
 <!-- @vuese:AwCode:slots:end -->
+
 
 
 
@@ -70,6 +72,7 @@ Below is a collection of Vue **events** for the `AwCode` component.
 |change|-|-|
 
 <!-- @vuese:AwCode:events:end -->
+
 
 
 

@@ -15,7 +15,6 @@ try {
     }
 } catch (err) {
     console.error(err)
-    return
 }
 
 fs.readFile(dirPathComponents + 'index.js', 'utf8', function(err, content) {

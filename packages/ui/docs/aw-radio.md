@@ -49,6 +49,7 @@ Below is a collection of Vue **props** for the `AwRadio` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwRadio` component.
 <!-- @vuese:AwRadio:slots:start -->
@@ -62,6 +63,7 @@ Below is a collection of Vue **slots** for the `AwRadio` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwRadio` component.
 <!-- @vuese:AwRadio:events:start -->
@@ -70,6 +72,7 @@ Below is a collection of Vue **events** for the `AwRadio` component.
 |change|-|-|
 
 <!-- @vuese:AwRadio:events:end -->
+
 
 
 
