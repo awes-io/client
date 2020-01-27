@@ -29,39 +29,7 @@
         "build:ui:docs": "node -r esm scripts/docs-parser.js",
         "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream"
     },
-    "release": {
-        "extends": "@semantic-release/gitlab-config",
-        "plugins": [
-            [
-                "@semantic-release/gitlab",
-                {
-                    "gitlabUrl": "https://git.awescode.com"
-                }
-            ],
-            [
-                "@semantic-release/git",
-                {
-                    "assets": [
-                        "packages/ui/dist/**/*",
-                        "packages/ui/docs/**/*",
-                        "packages/ui/CHANGELOG.md",
-                        "packages/ui/package.json",
-                        "examples/basic-ui/CHANGELOG.md",
-                        "packages/basic-ui/package.json",
-                        "packages/tabs-routing/CHANGELOG.md",
-                        "packages/tabs-routing/package.json",
-                        "CHANGELOG.md",
-                        "package.json"
-                    ],
-                    "message": "chore(release): ${nextRelease.version} [skiprelease]\n\n${nextRelease.notes}"
-                }
-            ]
-        ]
-    },
     "dependencies": {
-        "@semantic-release/exec": "^4.0.0",
-        "@semantic-release/git": "^7.0.16",
-        "@semantic-release/gitlab-config": "^5.0.0",
         "@vuese/markdown-render": "^2.5.3",
         "@vuese/parser": "^2.4.3",
         "change-case": "^4.1.1",
