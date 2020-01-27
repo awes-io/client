@@ -50,10 +50,6 @@ Below is a collection of Vue **props** for the `AwCard` component.
 <!-- @vuese:AwCard:props:end -->
 
 
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwCard` component.
 <!-- @vuese:AwCard:slots:start -->
@@ -62,10 +58,6 @@ Below is a collection of Vue **slots** for the `AwCard` component.
 |default|-|-|
 
 <!-- @vuese:AwCard:slots:end -->
-
-
-
-
 
 
 

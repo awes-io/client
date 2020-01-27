@@ -51,10 +51,6 @@ Below is a collection of Vue **props** for the `AwChart` component.
 <!-- @vuese:AwChart:props:end -->
 
 
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwChart` component.
 <!-- @vuese:AwChart:slots:start -->

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.38.0](https://git.awescode.com/awes-io/client/compare/v1.37.0...v1.38.0) (2020-01-27)
+
+
+### Bug Fixes
+
+* **translations:** loaded langs fix ([d9f5803](https://git.awescode.com/awes-io/client/commits/d9f5803138cd1c82321a8b28cce64babab52823c))
+
+
+### Features
+
+* **ui:** aw-form listener to switch fields and send form ([85fac02](https://git.awescode.com/awes-io/client/commits/85fac029ddb7c98dbe2673d2dc2c1076a0ee2c8b))
+* **ui:** aw-multi-block-builder added ([f8a1e0d](https://git.awescode.com/awes-io/client/commits/f8a1e0df35cfc0ac84c9a162b27a1ed39b57279a))
+
+
+
+
+
 # [1.37.0](https://git.awescode.com/awes-io/client/compare/v1.36.2...v1.37.0) (2020-01-23)
 
 

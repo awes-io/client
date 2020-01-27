@@ -53,10 +53,6 @@ Below is a collection of Vue **props** for the `AwModal` component.
 <!-- @vuese:AwModal:props:end -->
 
 
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwModal` component.
 <!-- @vuese:AwModal:slots:start -->
@@ -68,10 +64,6 @@ Below is a collection of Vue **slots** for the `AwModal` component.
 
 
 
-
-
-
-
 ### Events
 Below is a collection of Vue **events** for the `AwModal` component.
 <!-- @vuese:AwModal:events:start -->
@@ -80,10 +72,6 @@ Below is a collection of Vue **events** for the `AwModal` component.
 |closed|-|-|
 
 <!-- @vuese:AwModal:events:end -->
-
-
-
-
 
 
 

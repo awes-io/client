@@ -12,10 +12,6 @@
 
 
 
-
-
-
-
 ## Slots
 
 <!-- @vuese:AwLayoutDefault:slots:start -->
@@ -25,10 +21,6 @@
 |default|content|-|
 
 <!-- @vuese:AwLayoutDefault:slots:end -->
-
-
-
-
 
 
 

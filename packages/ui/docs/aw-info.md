@@ -48,10 +48,6 @@ Below is a collection of Vue **props** for the `AwInfo` component.
 <!-- @vuese:AwInfo:props:end -->
 
 
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwInfo` component.
 <!-- @vuese:AwInfo:slots:start -->
@@ -60,10 +56,6 @@ Below is a collection of Vue **slots** for the `AwInfo` component.
 |default|-|-|
 
 <!-- @vuese:AwInfo:slots:end -->
-
-
-
-
 
 
 

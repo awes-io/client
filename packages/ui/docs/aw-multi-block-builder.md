@@ -14,10 +14,6 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 <!-- @vuese:AwMultiBlockBuilder:props:end -->
 
 
-
-
-
-
 ## Events
 
 <!-- @vuese:AwMultiBlockBuilder:events:start -->
@@ -29,10 +25,6 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 |save:collection|Fire on collection save|1.`collection`, passed to props 2. VueMC event object|
 
 <!-- @vuese:AwMultiBlockBuilder:events:end -->
-
-
-
-
 
 
 ## Slots
@@ -48,10 +40,6 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 <!-- @vuese:AwMultiBlockBuilder:slots:end -->
 
 
-
-
-
-
 ## Methods
 
 <!-- @vuese:AwMultiBlockBuilder:methods:start -->
@@ -61,9 +49,5 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 |remove|Remove model and emit `remove:model` event|The model object, required|
 
 <!-- @vuese:AwMultiBlockBuilder:methods:end -->
-
-
-
-
 
 
