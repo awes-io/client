@@ -9,11 +9,11 @@
 |pageParam|-|`String`|`false`|page|
 |limitParam|-|`String`|`false`|limit|
 |limits|-|`Array`|`false`|-|
-|watchParams|-|`Array`|`false`|-|
 |scrollOnPage|-|`Boolean`|`false`|-|
 |verticalAlign|-|`String`|`false`|-|
 
 <!-- @vuese:AwTableBuilder:props:end -->
+
 
 
 
@@ -26,6 +26,7 @@
 |loading|-|-|
 
 <!-- @vuese:AwTableBuilder:slots:end -->
+
 
 
 

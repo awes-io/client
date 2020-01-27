@@ -1,7 +1,7 @@
 {
     "name": "@awes-io/ui",
     "description": "User Interface (UI) components",
-    "version": "1.38.0",
+    "version": "1.39.0",
     "main": "dist/js/ui.ssr.js",
     "module": "dist/js/ui.esm.js",
     "unpkg": "dist/js/ui.min.js",

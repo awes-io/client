@@ -1,26 +1,11 @@
 stages:
-  - test
   - release
-
-test:
-  before_script:
-    - apk update && apk add git
-    - yarn install --frozen-lockfile
-    - yarn build
-  image: node:12-alpine
-  cache:
-    key: ${CI_BUILD_REF_NAME}
-    paths:
-      - node_modules
-  script:
-    - yarn test
-  stage: test
 
 release:
   before_script:
     - yarn install --frozen-lockfile
-    - yarn build
-  image: node:8
+    - apk add --no-cache git
+  image: node:11.15.0-alpine
   cache:
     key: ${CI_BUILD_REF_NAME}
     paths:
@@ -28,6 +13,14 @@ release:
   only:
     - master
   script:
-    - NPM_TOKEN=${NPM_TOKEN} GITLAB_TOKEN=${GITLAB_TOKEN} npx semantic-release --branch master
+    - yarn test
+    - yarn lerna version --conventional-commits --no-git-tag-version --no-push --tag-version-prefix='' --yes
+    - yarn build:ui
+    - yarn build:ui:docs
+    - GITLAB_TOKEN=${GITLAB_TOKEN} npx semantic-release --branch master
+    - yarn lerna publish from-git --no-changelog --tag-version-prefix='' --yes
   stage: release
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[skiprelease\]/i
   when: on_success
