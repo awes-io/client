@@ -10,6 +10,7 @@ release:
     - git status
     - git remote set-url origin https://gitlab-ci-token:${GITLAB_TOKEN}@git.awescode.com/awes-io/client.git
     - git checkout master
+    - git pull origin master
     - git status
   image: node:12-alpine
   cache:
