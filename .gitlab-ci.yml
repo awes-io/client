@@ -32,3 +32,5 @@ release:
     variables:
       - $CI_COMMIT_MESSAGE =~ /\[skiprelease\]/i
   when: on_success
+
+  

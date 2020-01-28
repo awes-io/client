@@ -31,12 +31,59 @@
         "changelog": "node -r esm scripts/changelog.js",
         "pkg": "node -r esm ./scripts/package"
     },
+    "release": {
+        "extends": "@semantic-release/gitlab-config",
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogTitle": "Release Notes for EasyWeek SaaS"
+                }
+            ],
+            [
+                "@semantic-release/npm",
+                {
+                    "npmPublish": false,
+                    "tarballDir": "dist"
+                }
+            ],
+            [
+                "@semantic-release/exec",
+                {
+                    "prepareCmd": "yarn build:ui"
+                }
+            ],
+            [
+                "@semantic-release/gitlab",
+                {
+                    "gitlabUrl": "https://git.awescode.com"
+                }
+            ],
+            [
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "CHANGELOG.md",
+                        "package.json"
+                    ],
+                    "message": "chore(release): ${nextRelease.version} [skiprelease]\n\n${nextRelease.notes}"
+                }
+            ]
+        ]
+    },
     "dependencies": {
         "@rollup/plugin-alias": "^3.0.0",
         "@rollup/plugin-commonjs": "^11.0.1",
         "@rollup/plugin-json": "^4.0.1",
         "@rollup/plugin-node-resolve": "^7.0.0",
         "@rollup/plugin-replace": "^2.3.0",
+        "@semantic-release/exec": "^5.0.0",
+        "@semantic-release/changelog": "^3.0.4",
+        "@semantic-release/git": "^7.0.16",
+        "@semantic-release/gitlab-config": "^5.0.0",
+        "@semantic-release/npm": "^5.3.4",
         "@vuese/markdown-render": "^2.5.3",
         "@vuese/parser": "^2.4.3",
         "change-case": "^4.1.1",

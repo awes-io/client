@@ -7,19 +7,22 @@
     "packages": ["packages/*"],
     "command": {
         "publish": {
-            "npmClient": "npm"
+            "npmClient": "yarn",
+            "ignoreChanges": ["ignored-file", "*.md"],
+            "message": "chore(release): new version [skiprelease]"
         },
         "init": {
             "exact": true
         }
     },
+
     "changelog": {
         "labels": {
-            "feat": "New Feature",
-            "fix": "Bug Fix",
-            "docs": "Documentation",
-            "perf": "Performance",
-            "refactor": "Code Refactoring"
+            "feat": "🚀 Features",
+            "fix": "🐛 Bug Fixes",
+            "docs": "📝 Documents",
+            "perf": "🔥 Performance",
+            "refactor": "💅 Refactors"
         }
     }
 }
