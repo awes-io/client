@@ -116,7 +116,12 @@ export default {
         max: {
             type: Number,
             default: Infinity
-        }
+        },
+
+        /**
+         * Fetch collection immediately when component mounted
+         */
+        fetch: Boolean
     },
 
     data() {
@@ -157,7 +162,9 @@ export default {
         })
 
         // initial fetch
-        this.collection.fetch()
+        if (this.fetch) {
+            this.collection.fetch()
+        }
     },
 
     methods: {

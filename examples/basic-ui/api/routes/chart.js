@@ -5,7 +5,7 @@ const router = Router()
 
 router.post('/chart', function(req, res) {
     setTimeout(() => {
-        res.json(chartData.chart)
+        res.json(chartData)
     }, 800)
 })
 

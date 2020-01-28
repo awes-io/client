@@ -1,4 +1,4 @@
-export const chart = {
+module.exports = {
     labels: [
         '10.31',
         '11.31',
