@@ -23,6 +23,16 @@ import { conf } from '../assets/js/component'
 import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
 import { isFalsy, path } from 'rambdax'
 
+const FIELDS_SELECTOR = [
+    'input:not([type="hidden"]):not([type="file"])',
+    'select',
+    'textarea'
+]
+    .map(
+        selector => `${selector}:not([${FORM_ENTER_SKIP_ATTR}]):not([disabled])`
+    )
+    .join(', ')
+
 export default {
     name: 'AwForm',
 
@@ -91,11 +101,7 @@ export default {
             if (keyCode !== 13 || targetTag !== 'INPUT') return
 
             const elements = Array.from(
-                this.$el.querySelectorAll(`
-                    input:not([${FORM_ENTER_SKIP_ATTR}]):not([type="hidden"]):not([type="file"]),
-                    select:not([${FORM_ENTER_SKIP_ATTR}]),
-                    textarea:not([${FORM_ENTER_SKIP_ATTR}])
-                `)
+                this.$el.querySelectorAll(FIELDS_SELECTOR)
             )
 
             const index = elements.indexOf(target)
