@@ -110,7 +110,12 @@ export default {
 
             e.preventDefault()
 
-            if (index === elements.length - 1 || e.ctrlKey || e.shiftKey) {
+            if (
+                index === elements.length - 1 ||
+                e.ctrlKey ||
+                e.shiftKey ||
+                e.metaKey
+            ) {
                 const submitBtn = this.$el.querySelector('[type="submit"]')
                 submitBtn.click()
             } else {

@@ -6,18 +6,25 @@ export default {
     inheritAttrs: false,
 
     props: {
+        /**
+         * Text in label element of field block
+         */
         label: {
             type: String,
             default: ''
         },
 
+        /**
+         * Field id attribute
+         */
         id: {
             type: String,
+            // `input-${uniqId}`
             default: ''
         },
 
         /**
-         * Skip field on enter click
+         * Skip field on enter key press on previous field
          */
         enterSkip: Boolean
     },
@@ -43,6 +50,10 @@ export default {
     },
 
     methods: {
+        /**
+         * @vuese
+         * Focus on current field
+         */
         focus() {
             if (this.$refs.element) {
                 this.$refs.element.focus()
