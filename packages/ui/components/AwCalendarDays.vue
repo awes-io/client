@@ -1,43 +1,45 @@
 <template>
-    <div :class="css.wrap" @click="clickHandler">
+    <div class="calendar" @click="clickHandler">
         <slot name="before" v-bind="{ month, year }" />
 
         <!-- weekdays names -->
         <span
             v-for="weekDay in weekDays"
             :key="weekDay"
-            :class="[css.cell, css.weekday]"
+            class="calendar__weekday"
         >
             {{ weekDay }}
         </span>
 
         <!-- days -->
-        <button
-            v-for="({ date, day, timestamp, isOutside, isDisabled, isActive },
-            i) in dates"
-            :key="timestamp"
-            type="button"
-            :data-index="i"
-            :class="[
-                css.cell,
-                _getStateClasses(isOutside, isDisabled, isActive)
-            ]"
-        >
-            <slot v-bind="{ date, day, timestamp, isOutside, isDisabled }">
-                {{ day }}
+        <template v-for="({ timestamp, ...dayProps }, index) in dates">
+            <slot v-bind="{ ...dayProps, timestamp, index }">
+                <AwCalendarDay
+                    :key="timestamp"
+                    v-bind="{ ...dayProps, index }"
+                />
             </slot>
-        </button>
+        </template>
 
         <slot name="after" />
     </div>
 </template>
 
 <script>
-import { F, split, uniq } from 'rambdax'
+import { F, isFalsy, reject } from 'rambdax'
 import dayjs from 'dayjs'
+import AwCalendarDay from './AwCalendarDay.vue'
+
+const { isDayjs } = dayjs
+
+const isSameDay = date => day => day.isSame(date, 'day')
 
 export default {
     name: 'AwCalendarDays',
+
+    components: {
+        AwCalendarDay
+    },
 
     props: {
         year: {
@@ -72,23 +74,17 @@ export default {
         },
 
         selected: {
-            type: [String, Number, Object, Date],
-            default: null
+            type: [Object, Array],
+            default: null,
+            validator(selected) {
+                return Array.isArray(selected)
+                    ? selected.every(isDayjs)
+                    : isDayjs(selected)
+            }
         }
     },
 
     computed: {
-        css() {
-            return {
-                wrap: 'flex flex-wrap py-2 bg-surface',
-                cell: 'block text-center w-1/7 p-1',
-                weekday: 'uppercase text-xs pb-3 border-b opacity-80',
-                dayOutside: 'opacity-20 pointer-events-none cursor-default',
-                dayDisabled: 'opacity-20 pointer-events-none cursor-default',
-                dayActive: 'bg-success'
-            }
-        },
-
         dates() {
             return this.getCalendarDates(
                 this.year,
@@ -112,10 +108,6 @@ export default {
             return this.dates.slice(0, 7).map(({ date }) => {
                 return this.weekdays[date.getDay()]
             })
-        },
-
-        selectedDayJs() {
-            return this.selected && dayjs(this.selected)
         }
     },
 
@@ -157,30 +149,40 @@ export default {
 
             // get original button
             if (button && !button.hasAttribute('data-index')) {
-                button = button.closest('data-index')
+                button = button.closest('[data-index]')
             }
 
             // break if no button found
             if (!button) return
 
             const index = parseInt(button.getAttribute('data-index'))
-            this.$emit('click:date', this.dates[index])
+            const dateObject = this.dates[index]
+
+            // break if day is disabled
+            if (dateObject.isDisabled) return
+
+            const date = dateObject.date
+            let _date
+
+            if (Array.isArray(this.selected)) {
+                if (dateObject.isActive) {
+                    _date = reject(isSameDay(date), this.selected)
+                } else {
+                    _date = this.selected.concat(dayjs(date))
+                }
+            } else {
+                _date = dayjs(date)
+            }
+
+            this.$emit('click:date', _date)
         },
 
         isActive(date) {
-            return this.selected
-                ? this.selectedDayJs.isSame(date, 'day')
-                : false
-        },
+            if (isFalsy(this.selected)) return false
 
-        _getStateClasses(isOutside, isDisabled, isActive) {
-            const css = this.css
-            const classes = []
-                .concat(isOutside ? split(' ', css.dayOutside) : [])
-                .concat(isDisabled ? split(' ', css.dayDisabled) : [])
-                .concat(isActive ? split(' ', css.dayActive) : [])
-
-            return uniq(classes)
+            return Array.isArray(this.selected)
+                ? this.selected.some(isSameDay(date))
+                : this.selected.isSame(date, 'day')
         }
     }
 }

@@ -1,25 +1,23 @@
 <template>
-    <div class="flex items-center">
+    <div class="calendar__nav">
         <AwButton
             theme="icon"
-            icon="arrow-l"
+            icon="chevron-l"
             :disabled="disabledPrev"
             @click="$emit('click:prev')"
         />
-        <div class="flex-grow text-center">
+        <div class="calendar__nav-title">
             <!-- <AwButton theme="toggle" class="min-w-0 px-2">
                 {{ months[month] }}
             </AwButton>
             <AwButton theme="toggle" class="min-w-0 px-2">
                 {{ year }}
             </AwButton> -->
-            <span class="text-sm opacity-50">
-                {{ months[month] }} {{ year }}
-            </span>
+            {{ months[month] }} {{ year }}
         </div>
         <AwButton
             theme="icon"
-            icon="arrow-r"
+            icon="chevron-r"
             :disabled="disabledNext"
             @click="$emit('click:next')"
         />

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Calendar</h2>
-        <AwCalendar />
+        <AwCalendar v-model="dates" output-format="DD-MM-YYYY" />
 
         <h2>Date input</h2>
         <AwForm>
@@ -9,7 +9,7 @@
                 name="date"
                 :min="new Date().setDate(20)"
                 :max="new Date().setDate(25)"
-                :value="new Date()"
+                :value="new Date().setDate(23)"
             />
         </AwForm>
     </div>
@@ -22,6 +22,12 @@ export default {
     head() {
         return {
             title: 'AwCalendar'
+        }
+    },
+
+    data() {
+        return {
+            dates: [new Date(2018, 0, 20)]
         }
     }
 }

@@ -192,6 +192,20 @@ module.exports = {
                 }
             }
         }),
+        calendar: {
+            default: {
+                borderTop: '2px solid var(--c-success)'
+            },
+            nav: {
+                backgroundColor: 'var(--c-success)',
+                color: 'var(--c-on-success)',
+                marginTop: '-2px'
+            },
+            'day_active > span': {
+                backgroundColor: 'var(--c-success)',
+                color: 'var(--c-on-success)'
+            }
+        },
         extend: {
             width: {
                 '1/7': `${(Math.floor(10000 / 7) / 100).toFixed(2)}%`
@@ -235,6 +249,7 @@ module.exports = {
             componentPrefix: ''
         }),
         require('./tailwind/colors'),
-        require('./tailwind/container')
+        require('./tailwind/container'),
+        require('./tailwind/calendar')
     ]
 }

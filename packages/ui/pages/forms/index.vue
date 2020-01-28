@@ -53,6 +53,19 @@
                     @error="recieved = $event"
                 >
                     <AwInput name="name" label="Name" />
+                    <AwInput
+                        name="name_disabled"
+                        label="Name disabled"
+                        class="mt-2"
+                        disabled
+                    />
+                    <AwInput name="last_name" label="Last name" class="mt-2" />
+                    <AwSelect
+                        name="gender"
+                        label="Gender"
+                        :options="['Male', 'Female']"
+                        class="mt-2"
+                    />
                     <AwPassword class="mt-2" name="password" label="Password" />
                     <AwUploader
                         name="file"
