@@ -50,6 +50,7 @@ Below is a collection of Vue **props** for the `AwCheckbox` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwCheckbox` component.
 <!-- @vuese:AwCheckbox:slots:start -->
@@ -65,6 +66,7 @@ Below is a collection of Vue **slots** for the `AwCheckbox` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwCheckbox` component.
 <!-- @vuese:AwCheckbox:events:start -->
@@ -73,6 +75,7 @@ Below is a collection of Vue **events** for the `AwCheckbox` component.
 |change|-|-|
 
 <!-- @vuese:AwCheckbox:events:end -->
+
 
 
 

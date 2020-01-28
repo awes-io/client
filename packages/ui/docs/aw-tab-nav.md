@@ -50,6 +50,7 @@ Below is a collection of Vue **props** for the `AwTabNav` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwTabNav` component.
 <!-- @vuese:AwTabNav:slots:start -->
@@ -58,6 +59,7 @@ Below is a collection of Vue **slots** for the `AwTabNav` component.
 |default|-|-|
 
 <!-- @vuese:AwTabNav:slots:end -->
+
 
 
 

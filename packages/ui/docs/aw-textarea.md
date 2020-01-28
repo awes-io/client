@@ -56,6 +56,7 @@ Below is a collection of Vue **slots** for the `AwTextarea` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwTextarea` component.
 <!-- @vuese:AwTextarea:events:start -->

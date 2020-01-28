@@ -7,11 +7,6 @@ release:
     - apk add --no-cache git
     - git config --global user.email "yevhenlisovenko@gmail.com"
     - git config --global user.name "Yevhen L."
-    - git status
-    - git remote set-url origin https://gitlab-ci-token:${GITLAB_TOKEN}@git.awescode.com/awes-io/client.git
-    - git checkout master
-    - git pull origin master
-    - git status
   image: node:12-alpine
   cache:
     key: ${CI_BUILD_REF_NAME}
@@ -20,13 +15,9 @@ release:
   only:
     - master
   script:
-    - yarn lerna version --conventional-commits --no-git-tag-version --no-push --tag-version-prefix='' --yes
     - yarn build:ui
     - yarn build:ui:docs
-    - git add .
-    - git commit -m "chore:\ released a new version [skiprelease]"
-    - git push origin master
-    - yarn lerna publish from-git --no-changelog --tag-version-prefix='' --yes
+    - GL_TOKEN=${GITLAB_TOKEN} GL_API_URL=https://git.awescode.com/api/v4 yarn lerna version --amend --conventional-commits --create-release gitlab --yes
   stage: release
   except:
     variables:

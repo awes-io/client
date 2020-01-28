@@ -9,10 +9,10 @@
         "publish": {
             "npmClient": "yarn",
             "ignoreChanges": ["ignored-file", "*.md"],
-            "message": "chore(release): new version [skiprelease]"
+            "message": "chore(release): new version %s [skiprelease]"
         },
-        "init": {
-            "exact": true
+        "version": {
+            "allowBranch": "master"
         }
     },
 
