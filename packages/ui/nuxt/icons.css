@@ -1,7 +1,7 @@
 @font-face {
     font-family: "aw-icons";
-    src: url("../dist/fonts/aw-icons.woff2?09103bebe404cc59dad6a82808e18ba1") format("woff2"),
-url("../dist/fonts/aw-icons.woff?09103bebe404cc59dad6a82808e18ba1") format("woff");
+    src: url("../dist/fonts/aw-icons.woff2?a4188492a181b05e2e06cac9155f2d65") format("woff2"),
+url("../dist/fonts/aw-icons.woff?a4188492a181b05e2e06cac9155f2d65") format("woff");
 }
 
 .aw-icon {

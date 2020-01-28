@@ -54,6 +54,7 @@ Below is a collection of Vue **props** for the `AwDropdown` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwDropdown` component.
 <!-- @vuese:AwDropdown:slots:start -->
@@ -67,6 +68,7 @@ Below is a collection of Vue **slots** for the `AwDropdown` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwDropdown` component.
 <!-- @vuese:AwDropdown:events:start -->
@@ -75,6 +77,7 @@ Below is a collection of Vue **events** for the `AwDropdown` component.
 |update:show|sync show prop|-|
 
 <!-- @vuese:AwDropdown:events:end -->
+
 
 
 
@@ -113,6 +116,7 @@ export default {
 |toggle|toggle the dropdown|-|
 
 <!-- @vuese:AwDropdown:methods:end -->
+
 
 
 

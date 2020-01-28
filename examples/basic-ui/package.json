@@ -1,25 +1,25 @@
 {
-    "name": "basic-ui",
-    "version": "1.40.0",
-    "private": true,
-    "scripts": {
-        "dev": "nuxt",
-        "dev:api": "nodemon ./api/dev.js",
-        "build": "nuxt build",
-        "start": "nuxt start",
-        "post-update": "yarn upgrade --latest"
-    },
-    "dependencies": {
-        "@awes-io/ui": "1.40.0",
-        "@nuxtjs/axios": "^5.0.0",
-        "express": "^4.17.1",
-        "nuxt": "^2.0.0",
-        "nuxt-i18n": "^6.3.0",
-        "vue-api-query": "^1.5.1",
-        "vue-mc": "^0.6.0",
-        "vue-sweetalert2": "^2.1.1"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.2"
-    }
+  "name": "basic-ui",
+  "version": "1.40.0",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt",
+    "dev:api": "nodemon ./api/dev.js",
+    "post-update": "yarn upgrade --latest",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "@awes-io/ui": "1.40.0",
+    "@nuxtjs/axios": "^5.0.0",
+    "express": "^4.17.1",
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.3.0",
+    "vue-api-query": "^1.5.1",
+    "vue-mc": "^0.6.0",
+    "vue-sweetalert2": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
 }

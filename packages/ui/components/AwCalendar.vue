@@ -35,7 +35,7 @@
 <script>
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-import { F, anyPass, isFalsy, startsWith } from 'rambdax'
+import { F, anyPass, isNil, startsWith } from 'rambdax'
 import AwCalendarDays from './AwCalendarDays.vue'
 import AwCalendarNav from './AwCalendarNav.vue'
 
@@ -60,7 +60,9 @@ export default {
 
         /**
          * Custom parse format for string dates,
-         * for example `YYYY-MM-DD[T]HH:mm:sszz`
+         * for example `YYYY-MM-DD[T]HH:mm:sszz`.
+         * When working with `v-model`, this value may be omited,
+         * and used only with `outputFormat`
          */
         parseFormat: {
             type: String,
@@ -69,6 +71,8 @@ export default {
 
         /**
          * Which type the output value should be
+         * When working with `v-model`, this value is used for parsing
+         * `String` dates, if no `parseFormat` specified
          */
         outputFormat: {
             // toDayjs / toDate / toJSON / format string
@@ -157,6 +161,10 @@ export default {
             return anyPass(fns)
         },
 
+        format() {
+            return this.parseFormat || this.outputFormat
+        },
+
         fromDayjs() {
             if (this.outputFormat === 'toDayjs') {
                 return _dayjs => _dayjs
@@ -184,20 +192,29 @@ export default {
         },
 
         resetViewDate() {
-            const current = isFalsy(this.value)
-                ? new Date()
-                : Array.isArray(this.value)
-                ? new Date(this.value[0])
-                : new Date(this.value)
+            const current = Array.isArray(this.value)
+                ? this.value[0]
+                : this.value
 
-            if (this.toDayjs(current).isValid()) {
-                this.viewDate = current
+            // view current month if value is empty
+            if (isNil(current)) {
+                this.viewDate = new Date()
+                return
+            }
+
+            const date = this.toDayjs(this.value)
+
+            // validate date, or fallback to current
+            if (date.isValid()) {
+                this.viewDate = date.toDate()
+            } else {
+                this.viewDate = new Date()
             }
         },
 
         toDayjs(input) {
-            if (this.parseFormat && typeof input === 'string') {
-                return dayjs(input, this.parseFormat)
+            if (this.format && typeof input === 'string') {
+                return dayjs(input, this.format)
             }
 
             return dayjs(input)

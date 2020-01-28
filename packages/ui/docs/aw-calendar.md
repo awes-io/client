@@ -42,12 +42,15 @@ Below is a collection of Vue **props** for the `AwCalendar` component.
 <!-- @vuese:AwCalendar:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|value|-|`String` /  `Number` /  `Object` /  `Date`|`false`|-|
-|min|-|`String` /  `Number` /  `Object` /  `Date`|`false`|-|
-|max|-|`String` /  `Number` /  `Object` /  `Date`|`false`|-|
-|disabledDays|-|`Function`|`false`|-|
+|value|The date or dates in calendar|`String` /  `Number` /  `Object` /  `Date` /  `Array`|`false`|-|
+|parseFormat|Custom parse format for string dates, for example `YYYY-MM-DD[T]HH:mm:sszz`. When working with `v-model`, this value may be omited, and used only with `outputFormat`|`String`|`false`|-|
+|outputFormat|Which type the output value should be When working with `v-model`, this value is used for parsing `String` dates, if no `parseFormat` specified|toDayjs / toDate / toJSON / format string|`false`|toDate|
+|min|The minimum available date|`String` /  `Number` /  `Object` /  `Date`|`false`|-|
+|max|The maximum available date|`String` /  `Number` /  `Object` /  `Date`|`false`|-|
+|disabledDays|Function to filter available dates|`Function`|`false`|`() => false`|
 
 <!-- @vuese:AwCalendar:props:end -->
+
 
 
 
@@ -58,9 +61,10 @@ Below is a collection of Vue **events** for the `AwCalendar` component.
 <!-- @vuese:AwCalendar:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
-|input|-|-|
+|input|Fire on date click, returns picked date. If an array is provided as value, adds/removes picked day from array.|date in `outputFormat` or array of dates|
 
 <!-- @vuese:AwCalendar:events:end -->
+
 
 
 
