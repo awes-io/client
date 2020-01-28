@@ -5,7 +5,7 @@
             class="layout__content"
             :class="{ 'is-wide': menuThin, 'relative z-0': showMobileMenu }"
         >
-            <div class="layout__header" :class="{ 'shadow-md': scrollTop > 0 }">
+            <div class="layout__header">
                 <!-- mobile menu toggler -->
                 <AwButton
                     theme="icon"
@@ -24,8 +24,10 @@
                     v-html="$t('AwLayoutDefault.caption')"
                 />
 
-                <!-- navbar-->
-                <slot name="navbar" />
+                <div class="container flex">
+                    <!-- navbar-->
+                    <slot name="navbar" />
+                </div>
             </div>
 
             <!-- content -->
@@ -103,11 +105,7 @@
                 >
                     <!-- default button -->
                     <AwButton
-                        v-bind="
-                            children && children.length
-                                ? { ...buttonAttrs }
-                                : { href, ...buttonAttrs }
-                        "
+                        v-bind="{ ...buttonAttrs }"
                         theme="toggle"
                         size="lg"
                         class="w-full truncate text-left text-base normal-case font-normal tracking-normal"
@@ -122,7 +120,7 @@
                         v-on="
                             children && children.length
                                 ? { click: () => toggle(i) }
-                                : {}
+                                : { click: () => goToPage(href) }
                         "
                     />
 
@@ -201,8 +199,7 @@ export default {
         return {
             toggled: [],
             menuThin: false,
-            showMobileMenu: false,
-            scrollTop: 0
+            showMobileMenu: false
         }
     },
 
@@ -244,28 +241,11 @@ export default {
         }
     },
 
-    mounted() {
-        this._setScrollTop()
-        window.addEventListener('scroll', this._setScrollTop)
-    },
-
-    beforeDestroy() {
-        clearTimeout(this._tm)
-        window.removeEventListener('scroll', this._setScrollTop)
-    },
-
     methods: {
         toggle(index) {
             this.toggled = this.toggled.includes(index)
                 ? difference(this.toggled, [index])
                 : this.toggled.concat([index])
-        },
-
-        _setScrollTop() {
-            clearTimeout(this._tm)
-            this._tm = setTimeout(() => {
-                this.scrollTop = window.pageYOffset
-            }, 150)
         },
 
         isActive({ href, children, i }) {
@@ -278,6 +258,11 @@ export default {
                             child => child.href === this.$route.path
                         )))
             )
+        },
+
+        goToPage(href) {
+            this.showMobileMenu = false
+            this.$router.push(href)
         }
     }
 }

@@ -4,19 +4,18 @@
         <template slot="navbar">
             <!-- profile button -->
             <template v-if="userMenu && userMenu.length">
-                <AwButton
-                    theme="icon"
-                    class="ml-auto bg-muted"
+                <button
+                    class="aw-button aw-button_md theme-icon rounded-full ml-auto bg-muted"
                     @click="$refs.userMenu.toggle()"
                 >
                     <img
                         v-if="user.avatar"
-                        class="w-12 h-12"
+                        class="rounded-full w-12 h-12"
                         :src="user.avatar.w96"
                         :alt="user.name"
                     />
                     <AwIcon v-else name="user" />
-                </AwButton>
+                </button>
                 <AwDropdown
                     ref="userMenu"
                     close-on-action

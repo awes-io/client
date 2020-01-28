@@ -73,7 +73,7 @@
     }
 
     &__header {
-        @apply flex items-center bg-surface sticky top-0 z-20 bg-brand p-1;
+        @apply flex items-center bg-surface top-0 z-20 bg-brand p-1;
         min-height: theme('spacing.12');
         transition: 200ms box-shadow;
     }
