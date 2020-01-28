@@ -51,6 +51,7 @@ Below is a collection of Vue **props** for the `AwTable` component.
 
 
 
+
 ### Slots
 Below is a collection of Vue **slots** for the `AwTable` component.
 <!-- @vuese:AwTable:slots:start -->
@@ -68,6 +69,7 @@ Below is a collection of Vue **slots** for the `AwTable` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwTable` component.
 <!-- @vuese:AwTable:events:start -->
@@ -76,6 +78,7 @@ Below is a collection of Vue **events** for the `AwTable` component.
 |`TABLE_ROW_CLICK_EVENT`|-|-|
 
 <!-- @vuese:AwTable:events:end -->
+
 
 
 

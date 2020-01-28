@@ -17,15 +17,19 @@
 
 
 
+
 ## Slots
 
 <!-- @vuese:AwPage:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
 |title|-|-|
+|buttons|-|-|
+|subnav|-|-|
 |default|-|-|
 
 <!-- @vuese:AwPage:slots:end -->
+
 
 
 

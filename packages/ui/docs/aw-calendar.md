@@ -56,6 +56,7 @@ Below is a collection of Vue **props** for the `AwCalendar` component.
 
 
 
+
 ### Events
 Below is a collection of Vue **events** for the `AwCalendar` component.
 <!-- @vuese:AwCalendar:events:start -->
@@ -64,6 +65,7 @@ Below is a collection of Vue **events** for the `AwCalendar` component.
 |input|Fire on date click, returns picked date. If an array is provided as value, adds/removes picked day from array.|date in `outputFormat` or array of dates|
 
 <!-- @vuese:AwCalendar:events:end -->
+
 
 
 
