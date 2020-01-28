@@ -1,22 +1,33 @@
 <template>
     <div :class="className">
-        <!-- title -->
-        <Transition name="fade-from-bottom" mode="out-in">
-            <Component
-                :is="titleTag"
-                :class="['container', elClasses.title]"
-                :key="title.key || title"
-            >
-                <slot name="title" :title="title">{{ title }}</slot>
-            </Component>
-        </Transition>
+        <div class="flex">
+            <div class="w-1/2">
+                <!-- title -->
+                <Transition name="fade-from-bottom" mode="out-in">
+                    <Component
+                        :is="titleTag"
+                        :class="['container', elClasses.title]"
+                        :key="title.key || title"
+                    >
+                        <slot name="title" :title="title">{{ title }}</slot>
+                    </Component>
+                </Transition>
+            </div>
+            <div class="container py-4 w-1/2">
+                <slot name="nav"></slot>
+            </div>
+        </div>
 
         <!-- subnav -->
-        <div v-if="subnav.length" class="border-b bg-muted">
-            <AwTabNav
-                :items="subnav"
-                class="container border-transparent -mb-px"
-            />
+        <div>
+            <slot name="subnav">
+                <div v-if="subnav.length" class="border-b bg-muted">
+                    <AwTabNav
+                        :items="subnav"
+                        class="container border-transparent -mb-px"
+                    />
+                </div>
+            </slot>
         </div>
 
         <!-- content -->
