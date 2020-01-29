@@ -147,7 +147,10 @@ export default {
         // Size of the empty block, e.g loading block or empty block. Available: sm, md, lg, xl
         defaultHeight: {
             type: String,
-            default: 'lg'
+            default: 'lg',
+            validator(value) {
+                return ['sm', 'md', 'lg', 'xl'].includes(value)
+            }
         }
     },
 
