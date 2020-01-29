@@ -40,6 +40,11 @@ module.exports = {
             ...theme('colors'),
             default: 'rgba(0,0,0,.1)'
         }),
+        borderRadius: {
+            'none': '0',
+            default: '.125rem',
+            'full': '9999px'
+        },
         container: {
             padding: {
                 default: '1rem',

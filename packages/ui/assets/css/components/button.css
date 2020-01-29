@@ -183,7 +183,7 @@
     &.theme-solid &__ripple,
     &.theme-outline &__ripple,
     &.theme-ghost &__ripple {
-        @apply rounded-sm;
+        @apply rounded;
     }
 
     &.theme-solid {
@@ -207,7 +207,7 @@
     }
 
     &.theme-ghost &__overlay {
-        @apply rounded-sm;
+        @apply rounded;
     }
 
     &.theme-toggle &__overlay {
