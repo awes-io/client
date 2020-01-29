@@ -1,5 +1,31 @@
 <template>
     <div class="relative">
+        <div v-if="isEmpty && !collection.loading">
+            <!-- empty overlay -->
+            <slot name="empty-container">
+                <AwCard
+                    :class="
+                        `flex items-center justify-center h-block-${defaultHeight} min-h-full mb-5`
+                    "
+                >
+                    <div class="text-center">
+                        <slot name="empty-icon">
+                            <AwSvgImage
+                                name="empty"
+                                class="block m-auto mb-4"
+                            />
+                        </slot>
+                        <slot name="empty-title">
+                            <div class="text-disabled mb-4">
+                                There are no data to show
+                            </div>
+                        </slot>
+                        <slot name="empty-button"></slot>
+                    </div>
+                </AwCard>
+            </slot>
+        </div>
+
         <!-- table -->
         <AwTable
             v-if="items && items.length"
@@ -17,30 +43,21 @@
             <slot />
         </AwTable>
 
-        <!-- loading placeholder -->
-        <AwTable
-            v-else-if="collection.loading"
-            key="placeholder"
-            :rows="placeholderRows"
-            style="filter: blur(2px);"
-        >
-            <template #thead>
-                <AwTableHead
-                    :columns="[
-                        { text: $t('AwTableBuilder.loading'), align: 'center' }
-                    ]"
-                />
-            </template>
-            <AwTableCol title>
-                <template #default>
-                    <span class="block h-4"></span>
-                </template>
-            </AwTableCol>
-        </AwTable>
+        <div v-else-if="collection.loading">
+            <!-- Empty loading container -->
+            <slot name="empty-loading-container">
+                <AwCard
+                    :class="
+                        `flex items-center justify-center h-block-${defaultHeight} min-h-full mb-5`
+                    "
+                >
+                </AwCard>
+            </slot>
+        </div>
 
         <!-- pagination -->
         <AwPagination
-            v-if="pagination.total !== null"
+            v-if="pagination.total !== null && !isEmpty"
             v-bind="pagination"
             :page="page"
             :limits="limitsMerged"
@@ -49,16 +66,21 @@
             class="mt-4"
         />
 
-        <!-- loading overlay -->
+        <!-- Loading overlay -->
         <div
             v-if="collection.loading"
             class="absolute inset-0 flex items-center justify-center"
         >
             <div class="absolute inset-0 p-8 bg-surface opacity-50"></div>
+            <!-- Customization of loading block -->
             <slot name="loading">
-                <span class="h2 relative">
+                <div class="rounded-full py-2 pl-3 pr-5 relative bg-muted-dark">
+                    <AwSvgImage
+                        name="spinner"
+                        class="inline-block w-6 h-6 mr-2"
+                    />
                     {{ $t('AwTableBuilder.loading') }}
-                </span>
+                </div>
             </slot>
         </div>
     </div>
@@ -68,6 +90,8 @@
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 import AwTableHead from './AwTableHead.vue'
+import AwCard from './AwCard.vue'
+import AwSvgImage from './AwSvgImage.vue'
 import WatchParams from '../mixins/watch-params'
 
 const DEFAULT_LIMITS = [15, 50, 100]
@@ -78,7 +102,8 @@ export default {
     mixins: [WatchParams],
 
     components: {
-        AwTableHead
+        AwTableHead,
+        AwCard
     },
 
     props: {
@@ -117,7 +142,13 @@ export default {
             default: true
         },
 
-        verticalAlign: String
+        verticalAlign: String,
+
+        // Size of the empty block, e.g loading block or empty block. Available: sm, md, lg, xl
+        defaultHeight: {
+            type: String,
+            default: 'lg'
+        }
     },
 
     data() {
@@ -172,6 +203,10 @@ export default {
 
         items() {
             return this.collection.models
+        },
+
+        isEmpty() {
+            return this.collection.models.length === 0
         },
 
         placeholderRows() {

@@ -17,7 +17,7 @@ module.exports = {
             disabled: '#999999',
             overlay: '#222',
             brand: '#37295e',
-            success: '#7fc876',
+            success: '#7FC876',
             info: '#45a4dc',
             warning: '#edc252',
             accent: '#F43E80',
@@ -234,7 +234,14 @@ module.exports = {
                 body: ['Open Sans', 'sans-serif']
             },
             fontSize: {
-                xxs: '0.5rem'
+                xxs: '0.5rem',
+                xxxxl: '5rem'
+            },
+            height: {
+                'block-sm': '10vh',
+                'block-md': '30vh',
+                'block-lg': '50vh',
+                'block-xl': '70vh'
             }
         }
     },

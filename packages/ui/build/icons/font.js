@@ -6,7 +6,7 @@ const fs = require('fs')
 const path = require('path')
 const webfontsGenerator = require('webfonts-generator')
 
-const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg/')
+const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg/icon/')
 const files = fs.readdirSync(ICONS_FOLDER).map(filename => {
     return path.resolve(ICONS_FOLDER, filename)
 })
