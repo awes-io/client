@@ -1,11 +1,11 @@
 <template>
     <div class="inline-flex relative">
         <div
-            class="bg-overlay rounded-sm opacity-10 absolute inset-0 m-1"
+            class="bg-overlay rounded opacity-10 absolute inset-0 m-1"
             aria-hidden="true"
         ></div>
         <div
-            class="bg-surface shadow rounded-sm absolute top-0 bottom-0"
+            class="bg-surface shadow rounded absolute top-0 bottom-0"
             style="transition: 250ms left, 100ms width;"
             :style="markerStyle"
             aria-hidden="true"

@@ -1,7 +1,7 @@
 <template>
     <div @dragenter="dragOver = true">
         <label
-            class="relative p-4 rounded-sm border overflow-y-hidden flex items-center justify-center cursor-pointer group"
+            class="relative p-4 rounded border overflow-y-hidden flex items-center justify-center cursor-pointer group"
             @dragleave="dragOver = false"
             @dragover.prevent
             @drop.prevent="_onDrop"

@@ -1,5 +1,5 @@
 .aw-error {
-    @apply leading-tight rounded-sm bg-error;
+    @apply leading-tight bg-error;
     position: absolute;
     cursor: default;
     padding: theme('spacing.2', 0.5rem) theme('spacing.4', 1rem);

@@ -2,7 +2,7 @@
     position: relative;
 
     &__element {
-        @apply w-full border rounded-sm;
+        @apply w-full border rounded;
         background-color: var(--c-surface, inherit);
         transition: 200ms border-color;
 
@@ -125,7 +125,7 @@
     }
 
     &__icon {
-        @apply absolute right-0 top-0 mt-px mr-px rounded-r-sm;
+        @apply absolute right-0 top-0 mt-px mr-px rounded-r;
     }
 
     &__icon svg {
