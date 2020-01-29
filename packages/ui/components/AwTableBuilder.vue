@@ -1,25 +1,33 @@
 <template>
     <div class="relative">
         <div v-if="isEmpty && !collection.loading">
-            <!-- empty overlay -->
+            <!-- Empty container, your can compleatly overwrite the block. -->
             <slot name="empty-container">
+                <!-- Block with icon, headline and slot for button. -->
                 <AwCard
                     class="flex items-center justify-center min-h-full mb-5"
                     :class="`h-${defaultHeight}`"
                 >
                     <div class="text-center">
+                        <!-- Icon customization. Leave empty if you would like to remove. -->
                         <slot name="empty-icon">
+                            <!-- Empty SVG icon -->
                             <AwSvgImage
                                 name="empty"
                                 class="block m-auto mb-4"
                             />
                         </slot>
+                        <!-- Headline customization in the empty block -->
                         <slot name="empty-title">
+                            <!-- Text: "There are no data to show" -->
                             <div class="text-disabled mb-4">
                                 {{ $t('AwTableBuilder.empty') }}
                             </div>
                         </slot>
-                        <slot name="empty-button"></slot>
+                        <!-- You can use the slot to add a button or else -->
+                        <slot name="empty-button">
+                            <!-- `Empty` -->
+                        </slot>
                     </div>
                 </AwCard>
             </slot>
@@ -45,6 +53,7 @@
         <div v-else-if="collection.loading" key="empty-loading-container">
             <!-- Empty loading container -->
             <slot name="empty-loading-container">
+                <!-- Empty AwCard block -->
                 <AwCard
                     class="flex items-center justify-center min-h-full mb-5"
                     :class="`h-${defaultHeight}`"
@@ -72,6 +81,7 @@
             <div class="absolute inset-0 p-8 bg-surface opacity-50"></div>
             <!-- Customization of loading block -->
             <slot name="loading">
+                <!-- Default loading block -->
                 <div class="rounded-full py-2 pl-3 pr-5 relative bg-muted-dark">
                     <AwSvgImage
                         name="spinner"
