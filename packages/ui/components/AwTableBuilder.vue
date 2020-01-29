@@ -17,7 +17,7 @@
                         </slot>
                         <slot name="empty-title">
                             <div class="text-disabled mb-4">
-                                There are no data to show
+                                {{ $t('AwTableBuilder.empty') }}
                             </div>
                         </slot>
                         <slot name="empty-button"></slot>
