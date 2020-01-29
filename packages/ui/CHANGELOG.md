@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.44.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.44.0...@awes-io/ui@1.44.1) (2020-01-29)
+
+
+### Bug Fixes
+
+* **ui:** send arguments to row:click listener instead of object ([0971d82](https://git.awescode.com/awes-io/ui/commits/0971d82af0ce3a8be7a2a467020ab33e66aa9e96))
+
+
+
+
+
 # [1.44.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.43.0...@awes-io/ui@1.44.0) (2020-01-29)
 
 
