@@ -13,12 +13,6 @@
 
 <!-- @vuese:AwTableCol:props:end -->
 
-
-
-
-
-
-
 ## Slots
 
 <!-- @vuese:AwTableCol:slots:start -->
@@ -27,5 +21,4 @@
 |default|-|-|
 
 <!-- @vuese:AwTableCol:slots:end -->
-
 

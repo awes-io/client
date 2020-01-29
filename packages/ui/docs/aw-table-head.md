@@ -9,7 +9,6 @@
 
 <!-- @vuese:AwTableHead:props:end -->
 
-
 ## Slots
 
 <!-- @vuese:AwTableHead:slots:start -->
@@ -18,5 +17,4 @@
 |th|-|-|
 
 <!-- @vuese:AwTableHead:slots:end -->
-
 

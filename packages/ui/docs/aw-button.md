@@ -50,11 +50,6 @@ Below is a collection of Vue **props** for the `AwButton` component.
 
 <!-- @vuese:AwButton:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwButton` component.
 <!-- @vuese:AwButton:slots:start -->
@@ -63,12 +58,6 @@ Below is a collection of Vue **slots** for the `AwButton` component.
 |default|-|-|
 
 <!-- @vuese:AwButton:slots:end -->
-
-
-
-
-
-
 
 ## Examples
 Below is a collection of simple to complex examples.

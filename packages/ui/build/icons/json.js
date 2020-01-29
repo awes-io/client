@@ -3,7 +3,7 @@ const path = require('path')
 const util = require('util')
 const DOMParser = require('dom-parser')
 
-const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg')
+const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg/image/')
 const COMPILED_FILE_NAME = path.resolve(__dirname, '../../assets/js/icons.js')
 const SVGRe = /\.svg$/
 
@@ -20,8 +20,12 @@ iconsFiles.forEach(filename => {
     let svg = doc.getElementsByTagName('svg')[0]
 
     // get dimensions
-    let width = svg.getAttribute('width'),
-        height = svg.getAttribute('height'),
+    let width =
+            svg.getAttribute('width') ||
+            svg.getAttribute('viewBox').split(' ')[2],
+        height =
+            svg.getAttribute('height') ||
+            svg.getAttribute('viewBox').split(' ')[3],
         viewBox = svg.getAttribute('viewBox')
 
     const viewBoxArr = viewBox.split(' ')

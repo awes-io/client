@@ -42,7 +42,11 @@
         <section class="mt-8">
             <h2 class="h3">Table builder with Vue-MC</h2>
 
-            <AwTableBuilder @click:row="clickRow" :collection="tasksCollection">
+            <AwTableBuilder
+                @click:row="clickRow"
+                :collection="tasksCollection"
+                defaultHeight="lg"
+            >
                 <AwTableCol vertical-align="top" field="id" />
 
                 <AwTableCol visible="md" title="User name" field="name" />

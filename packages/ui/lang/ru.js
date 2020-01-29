@@ -38,7 +38,8 @@ export const AwSelect = {
 }
 
 export const AwTableBuilder = {
-    loading: 'Загрузка...'
+    loading: 'Загрузка...',
+    empty: 'Нет данных для показа.'
 }
 
 export const AwSearch = {

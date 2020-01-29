@@ -10,12 +10,6 @@
 
 <!-- @vuese:AwLayoutDefault:props:end -->
 
-
-
-
-
-
-
 ## Slots
 
 <!-- @vuese:AwLayoutDefault:slots:start -->
@@ -25,10 +19,4 @@
 |default|content|-|
 
 <!-- @vuese:AwLayoutDefault:slots:end -->
-
-
-
-
-
-
 

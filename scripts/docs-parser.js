@@ -66,7 +66,6 @@ fs.readFile(dirPathComponents + 'index.js', 'utf8', function(err, content) {
 <!-- @vuese:${name}:${type}:start -->
 ${renderRes[type]}
 <!-- @vuese:${name}:${type}:end -->
-
                             `
                         }
 
@@ -76,7 +75,7 @@ ${renderRes[type]}
                                 if (renderRes[type]) {
                                     let code = `<!-- @vuese:${c1}:${c2}:start -->\n`
                                     code += renderRes[type]
-                                    code += `\n<!-- @vuese:${c1}:${c2}:end -->\n`
+                                    code += `\n<!-- @vuese:${c1}:${c2}:end -->`
                                     return code
                                 }
                                 return s

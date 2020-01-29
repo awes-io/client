@@ -17,7 +17,7 @@ module.exports = {
             disabled: '#999999',
             overlay: '#222',
             brand: '#37295e',
-            success: '#7fc876',
+            success: '#7FC876',
             info: '#45a4dc',
             warning: '#edc252',
             accent: '#F43E80',
@@ -41,9 +41,9 @@ module.exports = {
             default: 'rgba(0,0,0,.1)'
         }),
         borderRadius: {
-            'none': '0',
+            none: '0',
             default: '.125rem',
-            'full': '9999px'
+            full: '9999px'
         },
         container: {
             padding: {
@@ -234,7 +234,14 @@ module.exports = {
                 body: ['Open Sans', 'sans-serif']
             },
             fontSize: {
-                xxs: '0.5rem'
+                xxs: '0.5rem',
+                '7xl': '5rem'
+            },
+            height: {
+                '10vh': '10vh',
+                '30vh': '30vh',
+                '50vh': '50vh',
+                '70vh': '70vh'
             }
         }
     },
