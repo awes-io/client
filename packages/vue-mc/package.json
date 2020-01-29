@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/vue-mc",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "Models and collections abstract layer",
     "homepage": "https://www.awes.io",
     "bugs": {
