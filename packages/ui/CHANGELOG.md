@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.44.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.43.0...@awes-io/ui@1.44.0) (2020-01-29)
+
+
+### Features
+
+* added breadcrumb for AwPage ([bca914d](https://git.awescode.com/awes-io/ui/commits/bca914dffa6bb6b0ba9aa47b2a02fec460876439))
+
+
+
+
+
 # [1.43.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.42.3...@awes-io/ui@1.43.0) (2020-01-29)
 
 
