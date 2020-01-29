@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.42.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.41.0...@awes-io/ui@1.42.0) (2020-01-29)
+
+
+### Bug Fixes
+
+* aw-multi-block-builder passed remove method in slots ([7464fbc](https://git.awescode.com/awes-io/ui/commits/7464fbc6b0f3050b8dbe6b33bd206b752a2a3ca1))
+* **ui:** aw-form submits on command+enter key press ([0c4a12e](https://git.awescode.com/awes-io/ui/commits/0c4a12e0e9cf7489dda1287c5a78618d0db0326a))
+
+
+### Features
+
+* **ui:** aw-multi-block-builder fetches collection only if fetch prop is true ([eac0d2f](https://git.awescode.com/awes-io/ui/commits/eac0d2fb88b431533de5460fe329c39a3da51e2b))
+* **vue-mc:** package added ([dc8cfe3](https://git.awescode.com/awes-io/ui/commits/dc8cfe379fc31fec9e1693bd3cc76ac896e94163))
+
+
+
+
+
 # 1.41.0 (2020-01-28)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.42.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.41.0...basic-ui@1.42.0) (2020-01-29)
+
+
+### Features
+
+* **ui:** aw-multi-block-builder fetches collection only if fetch prop is true ([eac0d2f](https://git.awescode.com/awes-io/client/commits/eac0d2fb88b431533de5460fe329c39a3da51e2b))
+* **vue-mc:** package added ([dc8cfe3](https://git.awescode.com/awes-io/client/commits/dc8cfe379fc31fec9e1693bd3cc76ac896e94163))
+
+
+
+
+
 # 1.41.0 (2020-01-28)
 
 
