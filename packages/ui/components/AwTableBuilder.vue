@@ -4,9 +4,8 @@
             <!-- empty overlay -->
             <slot name="empty-container">
                 <AwCard
-                    :class="
-                        `flex items-center justify-center h-block-${defaultHeight} min-h-full mb-5`
-                    "
+                    class="flex items-center justify-center min-h-full mb-5"
+                    :class="`h-${defaultHeight}`"
                 >
                     <div class="text-center">
                         <slot name="empty-icon">
@@ -43,13 +42,12 @@
             <slot />
         </AwTable>
 
-        <div v-else-if="collection.loading">
+        <div v-else-if="collection.loading" key="empty-loading-container">
             <!-- Empty loading container -->
             <slot name="empty-loading-container">
                 <AwCard
-                    :class="
-                        `flex items-center justify-center h-block-${defaultHeight} min-h-full mb-5`
-                    "
+                    class="flex items-center justify-center min-h-full mb-5"
+                    :class="`h-${defaultHeight}`"
                 >
                 </AwCard>
             </slot>
@@ -92,6 +90,7 @@ import { mergeRouteQuery } from '../assets/js/router'
 import AwTableHead from './AwTableHead.vue'
 import AwCard from './AwCard.vue'
 import AwSvgImage from './AwSvgImage.vue'
+import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
 
 const DEFAULT_LIMITS = [15, 50, 100]
@@ -103,7 +102,9 @@ export default {
 
     components: {
         AwTableHead,
-        AwCard
+        AwCard,
+        AwSvgImage,
+        AwPagination
     },
 
     props: {
@@ -144,12 +145,12 @@ export default {
 
         verticalAlign: String,
 
-        // Size of the empty block, e.g loading block or empty block. Available: sm, md, lg, xl
+        // Size of the empty block, e.g loading block or empty block.
         defaultHeight: {
             type: String,
-            default: 'lg',
+            default: '50vh',
             validator(value) {
-                return ['sm', 'md', 'lg', 'xl'].includes(value)
+                return ['10vh', '30vh', '50vh', '70vh'].includes(value)
             }
         }
     },

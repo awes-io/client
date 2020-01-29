@@ -41,9 +41,9 @@ module.exports = {
             default: 'rgba(0,0,0,.1)'
         }),
         borderRadius: {
-            'none': '0',
+            none: '0',
             default: '.125rem',
-            'full': '9999px'
+            full: '9999px'
         },
         container: {
             padding: {
@@ -235,13 +235,13 @@ module.exports = {
             },
             fontSize: {
                 xxs: '0.5rem',
-                xxxxl: '5rem'
+                '7xl': '5rem'
             },
             height: {
-                'block-sm': '10vh',
-                'block-md': '30vh',
-                'block-lg': '50vh',
-                'block-xl': '70vh'
+                '10vh': '10vh',
+                '30vh': '30vh',
+                '50vh': '50vh',
+                '70vh': '70vh'
             }
         }
     },
