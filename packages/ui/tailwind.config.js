@@ -18,6 +18,7 @@ module.exports = {
             overlay: '#222',
             brand: '#37295e',
             success: '#7fc876',
+            link: '#1d6ec5',
             info: '#45a4dc',
             warning: '#edc252',
             accent: '#F43E80',
@@ -41,9 +42,9 @@ module.exports = {
             default: 'rgba(0,0,0,.1)'
         }),
         borderRadius: {
-            'none': '0',
+            none: '0',
             default: '.125rem',
-            'full': '9999px'
+            full: '9999px'
         },
         container: {
             padding: {
@@ -104,7 +105,7 @@ module.exports = {
                 fontSize: theme('fontSize.lg')
             },
             link: {
-                color: 'var(--c-info)',
+                color: 'var(--c-link)',
                 '&:hover, &:focus': {
                     outline: 'none',
                     textDecoration: 'underline'
