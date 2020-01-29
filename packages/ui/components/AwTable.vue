@@ -227,7 +227,7 @@ export default {
             if (row) {
                 const index = parseInt(row.getAttribute(TABLE_INDEX_ATTR))
                 const data = this.rows[index]
-                this.$emit(TABLE_ROW_CLICK_EVENT, { data, index, $event })
+                this.$emit(TABLE_ROW_CLICK_EVENT, data, index, $event)
             }
         },
 
