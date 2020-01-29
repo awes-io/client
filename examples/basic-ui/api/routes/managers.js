@@ -6,9 +6,10 @@ const managersCollection = new Managers(managersData)
 
 const managers = express.Router()
 
-function getError(message, status) {
+function getError(message, status, errors = null) {
     const error = new Error(message)
     error.status = status
+    error.errors = errors
     return error
 }
 

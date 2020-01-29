@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import { Model, Collection } from 'vue-mc'
+import { BaseModel, BaseCollection } from '@awes-io/vue-mc'
 
-class Manager extends Model {
+class Manager extends BaseModel {
     defaults() {
         return {
             id: null,
@@ -77,7 +77,7 @@ class Manager extends Model {
     }
 }
 
-class Managers extends Collection {
+class Managers extends BaseCollection {
     model() {
         return Manager
     }
@@ -87,10 +87,6 @@ class Managers extends Collection {
             fetch: 'api/managers',
             save: 'api/managers'
         }
-    }
-
-    getModelsFromResponse(response) {
-        return response.getData().data
     }
 }
 

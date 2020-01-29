@@ -1,0 +1,30 @@
+{
+    "name": "@awes-io/vue-mc",
+    "version": "0.1.0",
+    "description": "Models and collections abstract layer",
+    "homepage": "https://www.awes.io",
+    "bugs": {
+        "url": "https://github.com/awes-io/client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@git.awescode.com:awes-io/collection.git"
+    },
+    "license": "MIT",
+    "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
+    "contributors": [
+        "illjah42 <ilya.kitayev@gmail.com>"
+    ],
+    "main": "dist/index.js",
+    "module": "index.js",
+    "scripts": {
+        "build": "rollup -f cjs -i index.js -o ./dist/index.js -e vue,vue-mc,rambdax"
+    },
+    "dependencies": {
+        "rambdax": "^3.5.0",
+        "vue-mc": "^0.6.0"
+    },
+    "devDependencies": {
+        "rollup": "^1.30.1"
+    }
+}
