@@ -10,13 +10,9 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 |collection|VueMC collection object|`Object`|`true`|-|
 |title|Title, added to block heading and buttons|`String`|`false`|-|
 |max|Max number of items, the add button hides if value is reached|`Number`|`false`|-|
+|fetch|Fetch collection immediately when component mounted|`Boolean`|`false`|-|
 
 <!-- @vuese:AwMultiBlockBuilder:props:end -->
-
-
-
-
-
 
 ## Events
 
@@ -30,11 +26,6 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 
 <!-- @vuese:AwMultiBlockBuilder:events:end -->
 
-
-
-
-
-
 ## Slots
 
 <!-- @vuese:AwMultiBlockBuilder:slots:start -->
@@ -47,11 +38,6 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 
 <!-- @vuese:AwMultiBlockBuilder:slots:end -->
 
-
-
-
-
-
 ## Methods
 
 <!-- @vuese:AwMultiBlockBuilder:methods:start -->
@@ -61,9 +47,4 @@ Serves for VueMC collection visualization. Pass the collection to `collection` p
 |remove|Remove model and emit `remove:model` event|The model object, required|
 
 <!-- @vuese:AwMultiBlockBuilder:methods:end -->
-
-
-
-
-
 

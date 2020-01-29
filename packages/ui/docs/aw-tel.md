@@ -58,12 +58,6 @@ Below is a collection of Vue **events** for the `AwTel` component.
 
 <!-- @vuese:AwTel:events:end -->
 
-
-
-
-
-
-
 ## Examples
 Below is a collection of simple to complex examples.
 

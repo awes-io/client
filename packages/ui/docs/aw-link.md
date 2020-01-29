@@ -49,11 +49,6 @@ Below is a collection of Vue **props** for the `AwLink` component.
 
 <!-- @vuese:AwLink:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwLink` component.
 <!-- @vuese:AwLink:slots:start -->
@@ -62,12 +57,6 @@ Below is a collection of Vue **slots** for the `AwLink` component.
 |default|-|-|
 
 <!-- @vuese:AwLink:slots:end -->
-
-
-
-
-
-
 
 ### Events
 Below is a collection of Vue **events** for the `AwLink` component.

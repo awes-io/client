@@ -26,7 +26,3 @@ The `AwCalendarNav` component is used to render navigation for calendar.
 
 <!-- @vuese:AwCalendarNav:props:end -->
 
-
-
-
-

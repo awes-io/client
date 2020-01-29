@@ -5,23 +5,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.38.0](https://git.awescode.com/awes-io/client/compare/v1.37.0...v1.38.0) (2020-01-27)
 
-
 ### Bug Fixes
 
 * **translations:** loaded langs fix ([d9f5803](https://git.awescode.com/awes-io/client/commits/d9f5803138cd1c82321a8b28cce64babab52823c))
-
 
 ### Features
 
 * **ui:** aw-form listener to switch fields and send form ([85fac02](https://git.awescode.com/awes-io/client/commits/85fac029ddb7c98dbe2673d2dc2c1076a0ee2c8b))
 * **ui:** aw-multi-block-builder added ([f8a1e0d](https://git.awescode.com/awes-io/client/commits/f8a1e0df35cfc0ac84c9a162b27a1ed39b57279a))
 
-
-
-
-
 # [1.37.0](https://git.awescode.com/awes-io/client/compare/v1.36.2...v1.37.0) (2020-01-23)
-
 
 ### Bug Fixes
 
@@ -31,15 +24,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * changed navigation; fixed dependency ([ab8b2ae](https://git.awescode.com/awes-io/client/commits/ab8b2ae32cfa350e5b5cf68dbfce9bfd846b0922))
 * **aws-671:** fixed padding of AwTel component ([a4a6dee](https://git.awescode.com/awes-io/client/commits/a4a6deec6dd736ee2c9d9805503437f6a85b7f35))
 
-
 ### Features
 
 * added generator for documentation ([dbba524](https://git.awescode.com/awes-io/client/commits/dbba524fdb6858bd1541997580b6635ac91a19d7))
 * connected examples with documentation ([4a0f48b](https://git.awescode.com/awes-io/client/commits/4a0f48b030a1fb8687f112fe57884352def04b1b))
-
-
-
-
 
 ## [1.36.2](https://git.awescode.com/awes-io/client/compare/v1.36.1...v1.36.2) (2020-01-14)
 
