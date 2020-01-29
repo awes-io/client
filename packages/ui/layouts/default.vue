@@ -1,18 +1,6 @@
 <template>
     <AwLayoutDefault :menu="menuItems">
-        <template #default>
-            <Nuxt />
-        </template>
-        <template #navbar>
-            <button
-                class="aw-button p-2 aw-button_md rounded-full ml-auto bg-muted"
-            >
-                <img
-                    class="rounded-full w-12 h-12"
-                    src="https://i.pinimg.com/originals/c5/f9/74/c5f974ac144391a830196f97a9130141.jpg"
-                />
-            </button>
-        </template>
+        <Nuxt />
     </AwLayoutDefault>
 </template>
 
