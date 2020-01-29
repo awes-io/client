@@ -45,7 +45,7 @@
             <AwTableBuilder
                 @click:row="clickRow"
                 :collection="tasksCollection"
-                defaultBlockSize="lg"
+                defaultHeight="lg"
             >
                 <AwTableCol vertical-align="top" field="id" />
 
