@@ -1,6 +1,6 @@
 {
   "name": "@awes-io/ui",
-  "version": "1.42.2",
+  "version": "1.42.3",
   "description": "User Interface (UI) components",
   "keywords": [
     "ui",
@@ -114,5 +114,5 @@
     "vue-template-compiler": "^2.6.10",
     "webfonts-generator": "^0.4.0"
   },
-  "gitHead": "6d86455047a13c59c319b6aa0762a5bc2170d773"
+  "gitHead": "291b901b106c2699ccb31ec7eb746ccba47bb864"
 }

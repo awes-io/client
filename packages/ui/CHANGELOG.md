@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.42.3](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.42.2...@awes-io/ui@1.42.3) (2020-01-29)
+
+
+### Bug Fixes
+
+* tailwind borderRadius section ([53ae5d4](https://git.awescode.com/awes-io/ui/commits/53ae5d40bb9cb6edcae73d9daa2cb3ac4b652c94))
+
+
+
+
+
 ## [1.42.2](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.42.1...@awes-io/ui@1.42.2) (2020-01-29)
 
 

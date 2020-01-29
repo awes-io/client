@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.2...@awes-io/vue-mc@0.2.3) (2020-01-29)
+
+
+### Bug Fixes
+
+* tailwind borderRadius section ([53ae5d4](https://git.awescode.com/awes-io/collection/commits/53ae5d40bb9cb6edcae73d9daa2cb3ac4b652c94))
+
+
+
+
+
 ## [0.2.2](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.1...@awes-io/vue-mc@0.2.2) (2020-01-29)
 
 

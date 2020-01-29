@@ -7,7 +7,7 @@
     >
         <div
             v-if="errorsList.length"
-            class="px-4 py-2 text-sm bg-error mb-2 rounded-sm"
+            class="px-4 py-2 text-sm bg-error mb-2 rounded"
         >
             <p v-for="(err, i) in errors" :key="i">
                 {{ err }}

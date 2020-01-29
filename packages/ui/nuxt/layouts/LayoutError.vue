@@ -8,7 +8,7 @@
 
         <main class="container flex-grow flex items-stretch">
             <div
-                class="bg-surface px-4 py-8 -mt-40 flex flex-col justify-center items-center w-full shadow rounded-sm"
+                class="bg-surface px-4 py-8 -mt-40 flex flex-col justify-center items-center w-full shadow rounded"
             >
                 <h1 class="text-center text-3xl">
                     {{ $t('AwLayoutError.subtitle') }}
