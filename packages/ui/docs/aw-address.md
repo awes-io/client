@@ -46,12 +46,6 @@ Below is a collection of Vue **props** for the `AwAddress` component.
 
 <!-- @vuese:AwAddress:props:end -->
 
-
-
-
-
-
-
 ### Events
 Below is a collection of Vue **events** for the `AwAddress` component.
 <!-- @vuese:AwAddress:events:start -->
@@ -60,12 +54,6 @@ Below is a collection of Vue **events** for the `AwAddress` component.
 |input|-|-|
 
 <!-- @vuese:AwAddress:events:end -->
-
-
-
-
-
-
 
 ## Examples
 Below is a collection of simple to complex examples.

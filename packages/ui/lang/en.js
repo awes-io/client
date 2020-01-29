@@ -83,7 +83,8 @@ export const AwSelect = {
 }
 
 export const AwTableBuilder = {
-    loading: 'Loading...'
+    loading: 'Loading...',
+    empty: 'There are no data to show'
 }
 
 export const AwTimelineBuilder = {

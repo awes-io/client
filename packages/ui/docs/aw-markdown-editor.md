@@ -46,11 +46,6 @@ Below is a collection of Vue **props** for the `AwMarkdownEditor` component.
 
 <!-- @vuese:AwMarkdownEditor:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwMarkdownEditor` component.
 <!-- @vuese:AwMarkdownEditor:slots:start -->
@@ -65,12 +60,6 @@ Below is a collection of Vue **events** for the `AwMarkdownEditor` component.
 |change|-|-|
 
 <!-- @vuese:AwMarkdownEditor:events:end -->
-
-
-
-
-
-
 
 ## Examples
 Below is a collection of simple to complex examples.

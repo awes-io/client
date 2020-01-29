@@ -47,11 +47,6 @@ Below is a collection of Vue **props** for the `AwInput` component.
 
 <!-- @vuese:AwInput:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwInput` component.
 <!-- @vuese:AwInput:slots:start -->
@@ -61,12 +56,6 @@ Below is a collection of Vue **slots** for the `AwInput` component.
 |error|-|-|
 
 <!-- @vuese:AwInput:slots:end -->
-
-
-
-
-
-
 
 ### Events
 Below is a collection of Vue **events** for the `AwInput` component.

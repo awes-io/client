@@ -235,7 +235,14 @@ module.exports = {
                 body: ['Open Sans', 'sans-serif']
             },
             fontSize: {
-                xxs: '0.5rem'
+                xxs: '0.5rem',
+                '7xl': '5rem'
+            },
+            height: {
+                '10vh': '10vh',
+                '30vh': '30vh',
+                '50vh': '50vh',
+                '70vh': '70vh'
             }
         }
     },

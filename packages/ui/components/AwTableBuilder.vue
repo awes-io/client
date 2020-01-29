@@ -1,5 +1,38 @@
 <template>
     <div class="relative">
+        <div v-if="isEmpty && !collection.loading">
+            <!-- Empty container, your can compleatly overwrite the block. -->
+            <slot name="empty-container">
+                <!-- Block with icon, headline and slot for button. -->
+                <AwCard
+                    class="flex items-center justify-center min-h-full mb-5"
+                    :class="`h-${defaultHeight}`"
+                >
+                    <div class="text-center">
+                        <!-- Icon customization. Leave empty if you would like to remove. -->
+                        <slot name="empty-icon">
+                            <!-- Empty SVG icon -->
+                            <AwSvgImage
+                                name="empty"
+                                class="block m-auto mb-4"
+                            />
+                        </slot>
+                        <!-- Headline customization in the empty block -->
+                        <slot name="empty-title">
+                            <!-- Text: "There are no data to show" -->
+                            <div class="text-disabled mb-4">
+                                {{ $t('AwTableBuilder.empty') }}
+                            </div>
+                        </slot>
+                        <!-- You can use the slot to add a button or else -->
+                        <slot name="empty-button">
+                            <!-- `Empty` -->
+                        </slot>
+                    </div>
+                </AwCard>
+            </slot>
+        </div>
+
         <!-- table -->
         <AwTable
             v-if="items && items.length"
@@ -17,30 +50,21 @@
             <slot />
         </AwTable>
 
-        <!-- loading placeholder -->
-        <AwTable
-            v-else-if="collection.loading"
-            key="placeholder"
-            :rows="placeholderRows"
-            style="filter: blur(2px);"
-        >
-            <template #thead>
-                <AwTableHead
-                    :columns="[
-                        { text: $t('AwTableBuilder.loading'), align: 'center' }
-                    ]"
-                />
-            </template>
-            <AwTableCol title>
-                <template #default>
-                    <span class="block h-4"></span>
-                </template>
-            </AwTableCol>
-        </AwTable>
+        <div v-else-if="collection.loading" key="empty-loading-container">
+            <!-- Empty loading container -->
+            <slot name="empty-loading-container">
+                <!-- Empty AwCard block -->
+                <AwCard
+                    class="flex items-center justify-center min-h-full mb-5"
+                    :class="`h-${defaultHeight}`"
+                >
+                </AwCard>
+            </slot>
+        </div>
 
         <!-- pagination -->
         <AwPagination
-            v-if="pagination.total !== null"
+            v-if="pagination.total !== null && !isEmpty"
             v-bind="pagination"
             :page="page"
             :limits="limitsMerged"
@@ -49,16 +73,22 @@
             class="mt-4"
         />
 
-        <!-- loading overlay -->
+        <!-- Loading overlay -->
         <div
             v-if="collection.loading"
             class="absolute inset-0 flex items-center justify-center"
         >
             <div class="absolute inset-0 p-8 bg-surface opacity-50"></div>
+            <!-- Customization of loading block -->
             <slot name="loading">
-                <span class="h2 relative">
+                <!-- Default loading block -->
+                <div class="rounded-full py-2 pl-3 pr-5 relative bg-muted-dark">
+                    <AwSvgImage
+                        name="spinner"
+                        class="inline-block w-6 h-6 mr-2"
+                    />
                     {{ $t('AwTableBuilder.loading') }}
-                </span>
+                </div>
             </slot>
         </div>
     </div>
@@ -68,6 +98,9 @@
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 import AwTableHead from './AwTableHead.vue'
+import AwCard from './AwCard.vue'
+import AwSvgImage from './AwSvgImage.vue'
+import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
 
 const DEFAULT_LIMITS = [15, 50, 100]
@@ -78,7 +111,10 @@ export default {
     mixins: [WatchParams],
 
     components: {
-        AwTableHead
+        AwTableHead,
+        AwCard,
+        AwSvgImage,
+        AwPagination
     },
 
     props: {
@@ -117,7 +153,16 @@ export default {
             default: true
         },
 
-        verticalAlign: String
+        verticalAlign: String,
+
+        // Size of the empty block, e.g loading block or empty block.
+        defaultHeight: {
+            type: String,
+            default: '50vh',
+            validator(value) {
+                return ['10vh', '30vh', '50vh', '70vh'].includes(value)
+            }
+        }
     },
 
     data() {
@@ -172,6 +217,10 @@ export default {
 
         items() {
             return this.collection.models
+        },
+
+        isEmpty() {
+            return this.collection.models.length === 0
         },
 
         placeholderRows() {

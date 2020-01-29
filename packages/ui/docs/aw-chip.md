@@ -49,11 +49,6 @@ Below is a collection of Vue **props** for the `AwChip` component.
 
 <!-- @vuese:AwChip:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwChip` component.
 <!-- @vuese:AwChip:slots:start -->
@@ -65,12 +60,6 @@ Below is a collection of Vue **slots** for the `AwChip` component.
 |button|close|-|
 
 <!-- @vuese:AwChip:slots:end -->
-
-
-
-
-
-
 
 ## Examples
 Below is a collection of simple to complex examples.

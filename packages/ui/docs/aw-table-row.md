@@ -13,7 +13,6 @@
 
 <!-- @vuese:AwTableRow:props:end -->
 
-
 ## Events
 
 <!-- @vuese:AwTableRow:events:start -->
@@ -23,5 +22,4 @@
 |click:toggle|-|-|
 
 <!-- @vuese:AwTableRow:events:end -->
-
 

@@ -77,11 +77,6 @@ Below is a collection of Vue **props** for the `AwSelect` component.
 
 <!-- @vuese:AwSelect:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwSelect` component.
 <!-- @vuese:AwSelect:slots:start -->
@@ -95,12 +90,6 @@ Below is a collection of Vue **slots** for the `AwSelect` component.
 
 <!-- @vuese:AwSelect:slots:end -->
 
-
-
-
-
-
-
 ### Events
 Below is a collection of Vue **events** for the `AwSelect` component.
 <!-- @vuese:AwSelect:events:start -->
@@ -113,12 +102,6 @@ Below is a collection of Vue **events** for the `AwSelect` component.
 |preloaded|-|-|
 
 <!-- @vuese:AwSelect:events:end -->
-
-
-
-
-
-
 
 ## Examples
 Below is a collection of simple to complex examples.

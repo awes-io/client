@@ -47,11 +47,6 @@ Below is a collection of Vue **props** for the `AwAccordionFold` component.
 
 <!-- @vuese:AwAccordionFold:props:end -->
 
-
-
-
-
-
 ### Slots
 Below is a collection of Vue **slots** for the `AwAccordionFold` component.
 <!-- @vuese:AwAccordionFold:slots:start -->
@@ -60,12 +55,6 @@ Below is a collection of Vue **slots** for the `AwAccordionFold` component.
 |default|-|-|
 
 <!-- @vuese:AwAccordionFold:slots:end -->
-
-
-
-
-
-
 
 ## Examples
 Below is a collection of simple to complex examples.
