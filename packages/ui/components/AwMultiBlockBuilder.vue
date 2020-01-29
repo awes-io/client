@@ -13,7 +13,8 @@
                     iteration: index + 1,
                     collection,
                     model,
-                    collectionCount
+                    collectionCount,
+                    remove
                 }"
             >
                 <!-- `<h5>{title} #{iteration} <button>Remove {title}</button></h5>` -->
@@ -36,11 +37,16 @@
             </slot>
 
             <!-- block content -->
-            <slot :model="model" />
+            <slot
+                v-bind="{
+                    model,
+                    remove
+                }"
+            />
         </div>
 
         <!-- add button -->
-        <div class="mt-8" v-if="collectionCount < max">
+        <div class="mt-4" v-if="collectionCount < max">
             <slot name="add" v-bind="{ collection, title, add }">
                 <!-- `<button>+ Add {title}</button>` -->
                 <AwLink class="text-sm font-bold uppercase" @click="add">
