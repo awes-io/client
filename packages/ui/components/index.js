@@ -15,6 +15,7 @@ export { default as AwCard } from './AwCard.vue'
 
 export { default as AwChart } from './AwChart.vue'
 export { default as AwChip } from './AwChip.vue'
+export { default as AwChipSelect } from './AwChipSelect.vue'
 
 export { default as AwCropper } from './AwCropper.vue'
 

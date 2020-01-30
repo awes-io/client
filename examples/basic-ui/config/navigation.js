@@ -9,6 +9,11 @@ export const navigation = [
     { title: 'Chart', url: '/aw-chart', description: '' },
     { title: 'Checkbox', url: '/aw-checkbox', description: '' },
     { title: 'Chip', url: '/aw-chip', description: '' },
+    {
+        title: 'ChipSelect',
+        url: '/aw-chip-select',
+        description: 'Component for toggling statuses'
+    },
     { title: 'Code', url: '/aw-code', description: '' },
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },

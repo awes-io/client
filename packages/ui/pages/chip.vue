@@ -1,5 +1,5 @@
 <template>
-    <AwPage :title="headline">
+    <AwPage title="AwChip">
         <!-- minimal usage -->
         <h2>Simple</h2>
 
@@ -105,6 +105,33 @@
                 </template>
             </AwChip>
         </button>
+
+        <!-- chips select -->
+        <h2>Chip select</h2>
+
+        <AwChipSelect
+            style="max-width: 175px"
+            class="overflow-hidden"
+            :value="status"
+            @input="setStatus"
+            :loading="statusLoading"
+            :options="[
+                { id: 1, text: 'New', color: 'info' },
+                { id: 2, text: 'Removed', color: 'error' },
+                { id: 3, text: 'Active', color: 'success' },
+                {
+                    id: 4,
+                    text: 'The one with very very very long name',
+                    color: 'warning'
+                },
+                { id: 5, text: 'New', color: 'info' },
+                { id: 6, text: 'Removed', color: 'error' },
+                { id: 7, text: 'Active', color: 'success' },
+                { id: 8, text: 'New', color: 'info' },
+                { id: 9, text: 'Removed', color: 'error' },
+                { id: 10, text: 'Active', color: 'success' }
+            ]"
+        />
     </AwPage>
 </template>
 
@@ -114,22 +141,23 @@ export default {
 
     data() {
         return {
-            title: 'AwChip',
-            headline: this._getTitle('AwChip'),
-            loading: false
-        }
-    },
-
-    head() {
-        return {
-            title: this._getMetaTitle(this.title),
-            meta: [this._getMetaDescription(this.title)]
+            loading: false,
+            status: 1,
+            statusLoading: false
         }
     },
 
     methods: {
         alert(text) {
             alert(text)
+        },
+
+        setStatus(id) {
+            this.statusLoading = true
+            setTimeout(() => {
+                this.status = id
+                this.statusLoading = false
+            }, 2000)
         }
     }
 }

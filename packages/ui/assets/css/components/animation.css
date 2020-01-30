@@ -8,3 +8,14 @@
         transform: rotate(1turn)
     }
 }
+
+/* chip uses */
+.animation-pulse {
+    animation: aw-pulse 1s infinite;
+}
+
+@keyframes aw-pulse {
+    50% {
+        transform: scale(1.3);
+    }
+}

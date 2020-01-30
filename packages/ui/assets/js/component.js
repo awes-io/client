@@ -30,11 +30,18 @@ export function setConfig(_vue, config = {}) {
 }
 
 export function validateBySchema(schema) {
-    return input =>
-        isValid({
+    return input => {
+        const valid = isValid({
             input: { input },
             schema: {
                 input: schema
             }
         })
+
+        if (!valid) {
+            console.error('Expected: ', JSON.stringify(schema))
+        }
+
+        return valid
+    }
 }

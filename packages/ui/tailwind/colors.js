@@ -96,6 +96,8 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
 
     addUtilities(text, variants('color'))
 
+    addUtilities({ '.text-inherit': { color: 'inherit' } }, variants('color'))
+
     /*
      * Add border colors
      */
@@ -112,6 +114,11 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
 
     addUtilities(border, variants('borderColor'))
 
+    addUtilities(
+        { '.border-text': { 'border-color': 'currentColor' } },
+        variants('borderColor')
+    )
+
     const background = _.fromPairs(
         _.map(colorNames, name => {
             return [
@@ -124,4 +131,9 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
     )
 
     addUtilities(background, variants('backgroundColor'))
+
+    addUtilities(
+        { '.bgcolor-text': { 'background-color': 'currentColor' } },
+        variants('backgroundColor')
+    )
 }
