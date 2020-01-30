@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.45.1...@awes-io/ui@1.46.0) (2020-01-30)
+
+
+### Bug Fixes
+
+* changed style for inon in aw-chip-select ([b59e781](https://git.awescode.com/awes-io/ui/commits/b59e781ff0bdf92db445e3337fc0e0d8ce50fe82))
+* removed deprecated package ([5690409](https://git.awescode.com/awes-io/ui/commits/56904098b874b569d17cd874df7f212224fe5ff7))
+
+
+### Features
+
+* improved userpic with different cases ([51942ef](https://git.awescode.com/awes-io/ui/commits/51942efb9a3b3f3bfef3fa16075ad2aef1c759e5))
+* **AWP-28:** made component AwAvatar ([931021c](https://git.awescode.com/awes-io/ui/commits/931021c4d9fb9907e24edbc5e4837dc09d18f742))
+
+
+
+
+
 ## [1.45.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.45.0...@awes-io/ui@1.45.1) (2020-01-30)
 
 
