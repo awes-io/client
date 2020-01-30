@@ -4,18 +4,20 @@
         @keydown.up="focusListItem(-1, $event)"
         @keydown.down="focusListItem(+1, $event)"
     >
-        <button @click="open">
-            <AwChip :loading="loading" v-bind="selected">
-                <template #right>
-                    <AwIcon
-                        v-if="!readonly"
-                        name="triangle-d"
-                        size="lg"
-                        class="transition-200 flex-shrink-0"
-                        :class="{ 'rotate-180': isOpened }"
-                    />
-                </template>
-            </AwChip>
+        <button @click.stop="open">
+            <slot name="selected" v-bind="selected">
+                <AwChip :loading="loading" v-bind="selected">
+                    <template #right>
+                        <AwIcon
+                            v-if="!readonly"
+                            name="triangle-d"
+                            size="lg"
+                            class="transition-200 flex-shrink-0"
+                            :class="{ 'rotate-180': isOpened }"
+                        />
+                    </template>
+                </AwChip>
+            </slot>
         </button>
         <AwDropdown :show.sync="isOpened" tag="span" class="block p-2 -mx-2">
             <button
@@ -24,9 +26,14 @@
                 class="block w-full text-left my-px rounded hover:bgcolor-muted focus:bgcolor-muted-dark"
                 :class="{ 'bgcolor-info-light': id === value }"
                 data-select-chip
-                @click="select(id)"
+                @click.stop="select(id)"
             >
-                <AwChip :text="noText ? '' : text" v-bind="props" />
+                <slot
+                    name="option"
+                    v-bind="{ id, text, ...props, index: i, select }"
+                >
+                    <AwChip :text="noText ? '' : text" v-bind="props" />
+                </slot>
             </button>
         </AwDropdown>
     </span>
@@ -127,7 +134,6 @@ export default {
                     $event.stopPropagation()
                 }
                 button.focus()
-                button.scrollIntoView()
             }
         }
     }
