@@ -17,7 +17,8 @@ module.exports = {
             disabled: '#999999',
             overlay: '#222',
             brand: '#37295e',
-            success: '#7FC876',
+            success: '#7fc876',
+            link: '#1d6ec5',
             info: '#45a4dc',
             'info-light': 'rgba(69, 164, 220, .1)',
             warning: '#edc252',
@@ -105,7 +106,7 @@ module.exports = {
                 fontSize: theme('fontSize.lg')
             },
             link: {
-                color: 'var(--c-info)',
+                color: 'var(--c-link)',
                 '&:hover, &:focus': {
                     outline: 'none',
                     textDecoration: 'underline'

@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.44.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.44.0...@awes-io/ui@1.44.1) (2020-01-29)
+
+
+### Bug Fixes
+
+* **ui:** send arguments to row:click listener instead of object ([0971d82](https://git.awescode.com/awes-io/ui/commits/0971d82af0ce3a8be7a2a467020ab33e66aa9e96))
+
+
+
+
+
+# [1.44.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.43.0...@awes-io/ui@1.44.0) (2020-01-29)
+
+
+### Features
+
+* added breadcrumb for AwPage ([bca914d](https://git.awescode.com/awes-io/ui/commits/bca914dffa6bb6b0ba9aa47b2a02fec460876439))
+
+
+
+
+
+# [1.43.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.42.3...@awes-io/ui@1.43.0) (2020-01-29)
+
+
+### Bug Fixes
+
+* added translation for empty block ([48b9676](https://git.awescode.com/awes-io/ui/commits/48b96763fc30f2230336892a6d73822fa5421792))
+* improvements for table ([166d3d9](https://git.awescode.com/awes-io/ui/commits/166d3d9e4f89b345fc54585bafa596791877197b))
+
+
+### Features
+
+* added empty block for table; svg icons ([161b7dc](https://git.awescode.com/awes-io/ui/commits/161b7dce4393da093bbe711cb31fcaa0e1a9240c))
+* added validator for defaultHeight prop ([e8b5add](https://git.awescode.com/awes-io/ui/commits/e8b5addff3cc213c6945b181f098ab251441865f))
+* **awp-1:** added padding in navbar avatar ([59dcf60](https://git.awescode.com/awes-io/ui/commits/59dcf602555a452f5706e1e3e589e845df7bf5b6))
+
+
+
+
+
 ## [1.42.3](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.42.2...@awes-io/ui@1.42.3) (2020-01-29)
 
 ### Bug Fixes

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.43.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.43.1...basic-ui@1.43.2) (2020-01-29)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
+## [1.43.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.43.0...basic-ui@1.43.1) (2020-01-29)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
+# [1.43.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.42.3...basic-ui@1.43.0) (2020-01-29)
+
+
+### Bug Fixes
+
+* typo in prop ([94c4f0c](https://git.awescode.com/awes-io/client/commits/94c4f0c6667a657079e58aad80ab69c6273c86d3))
+
+
+### Features
+
+* added empty block for table; svg icons ([161b7dc](https://git.awescode.com/awes-io/client/commits/161b7dce4393da093bbe711cb31fcaa0e1a9240c))
+
+
+
+
+
 ## [1.42.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.42.2...basic-ui@1.42.3) (2020-01-29)
 
 **Note:** Version bump only for package basic-ui

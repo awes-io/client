@@ -25,11 +25,12 @@
     },
     "scripts": {
         "dev:ui": "lerna run dev --scope @awes-io/ui --stream",
+        "dev:ui-nuxt": "lerna run dev-nuxt --scope @awes-io/ui --stream",
         "build:ui": "lerna run build --scope @awes-io/ui",
         "build:ui:docs": "node -r esm scripts/docs-parser.js",
+        "build:vue-mc": "lerna run build --scope @awes-io/vue-mc",
         "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream",
-        "changelog": "node -r esm scripts/changelog.js",
-        "pkg": "node -r esm ./scripts/package"
+        "pkg": "yarn build:ui && yarn build:vue-mc && lerna publish"
     },
     "release": {
         "extends": "@semantic-release/gitlab-config",

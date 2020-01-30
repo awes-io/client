@@ -14,3 +14,9 @@ html, body {
         background-color: var(--c-fade-surface);
     }
 }
+
+.footer__link {
+    a {
+        @apply text-disabled underline;
+    }
+}
