@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.45.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.45.0...@awes-io/ui@1.45.1) (2020-01-30)
+
+
+### Bug Fixes
+
+* **ui:** aw-chip-select - no scroll, no click event bubble ([553af14](https://git.awescode.com/awes-io/ui/commits/553af14fb8f736ec51441f8954d73e9aa72347b8))
+* **ui:** table behavior finetuning ([b08bcc7](https://git.awescode.com/awes-io/ui/commits/b08bcc7cc0c22cbbe65a5083f66070bff47db7e9))
+
+
+
+
+
 # [1.45.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.44.1...@awes-io/ui@1.45.0) (2020-01-30)
 
 
