@@ -42,9 +42,11 @@ Below is a collection of Vue **props** for the `AwAvatar` component.
 <!-- @vuese:AwAvatar:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|src|-|`String`|`false`|-|
-|name|-|`String`|`false`|-|
-|rounded|-|`Boolean`|`false`|-|
+|src|Full URL to the picture|`String`|`false`|-|
+|name|User name|`String`|`true`|-|
+|size|Size of the image|`Number`|`false`|36|
+|type|Type of the rendered image. Values: 'initials', 'empty', 'no-img'|`String`|`false`|initials|
+|isColored|To bring the color to the rounded background.|`Boolean`|`false`|-|
 
 <!-- @vuese:AwAvatar:props:end -->
 
@@ -74,3 +76,13 @@ export default {
 
 ```
 
+
+## Slots
+<!-- @vuese:AwAvatar:slots:start -->
+|Name|Description|Default Slot Content|
+|---|---|---|
+|default|-|-|
+|no-img|-|-|
+
+<!-- @vuese:AwAvatar:slots:end -->
+                            

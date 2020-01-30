@@ -42,10 +42,11 @@ Below is a collection of Vue **props** for the `AwChip` component.
 <!-- @vuese:AwChip:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|icon|-|`String`|`false`|-|
-|text|-|`String`|`false`|-|
-|color|-|`String`|`false`|info|
-|fill|-|`Boolean`|`false`|-|
+|icon|Icon name to render in decor element|`String`|`false`|-|
+|text|Text label|`String`|`false`|-|
+|color|Border, icon and close icon color|`String`|`false`|-|
+|image|Decor element background|`String`|`false`|-|
+|loading|Toggles loading animation|`Boolean`|`false`|-|
 
 <!-- @vuese:AwChip:props:end -->
 
@@ -54,10 +55,10 @@ Below is a collection of Vue **slots** for the `AwChip` component.
 <!-- @vuese:AwChip:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
-|icon|icon|-|
-|text|text|-|
-|default|-|-|
-|button|close|-|
+|left|On the left side of text|decor element|
+|center|text wrap|<span class="aw-chip__text">{{ text }}</span>|
+|default|text|value of text prop|
+|right|On the right side of text|-|
 
 <!-- @vuese:AwChip:slots:end -->
 
