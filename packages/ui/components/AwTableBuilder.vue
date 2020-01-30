@@ -41,7 +41,7 @@
             :rows="items"
             :style="collection.loading ? 'filter: blur(2px);' : null"
             :vertical-align="verticalAlign"
-            @click:row="$emit('click:row', $event)"
+            v-on="tableListeners"
         >
             <template #thead="{ thead }">
                 <slot name="thead" :thead="thead" />
@@ -92,8 +92,9 @@
 </template>
 
 <script>
-import { pathOr } from 'rambdax'
+import { pathOr, filter } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
+import { TABLE_ROW_CLICK_EVENT } from '../assets/js/constants'
 import AwCard from './AwCard.vue'
 import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
@@ -238,16 +239,32 @@ export default {
                 : this.limits
                       .concat(this.pagination.limit)
                       .sort((a, b) => a > b)
+        },
+
+        tableListeners() {
+            return filter((val, key) => {
+                return key === TABLE_ROW_CLICK_EVENT
+            }, this.$listeners)
         }
     },
 
     watch: {
         page: {
-            handler: 'fetch',
+            handler(newVal, oldVal) {
+                if (oldVal && this.scrollOnPage) {
+                    this._scrollTop()
+                }
+                this.fetch()
+            },
             immediate: true
         },
 
-        limit: 'fetch'
+        limit() {
+            if (this.scrollOnPage) {
+                this._scrollTop()
+            }
+            this.fetch()
+        }
     },
 
     created() {
@@ -257,11 +274,10 @@ export default {
     },
 
     methods: {
-        fetch(params) {
+        fetch(params = {}) {
             this.collection
                 .fetch({ params: { ...this.fetchAllQuery, ...params } })
                 .then(this._setPagination)
-                .then(this._scrollTop)
         },
 
         /**
@@ -299,12 +315,17 @@ export default {
         },
 
         _scrollTop() {
-            if (!this.scrollOnPage) return
+            if (this.$isServer) return
 
-            const table = this.$refs.table.$el
-            const sizes = table ? table.getBoundingClientRect() : { y: 0 }
+            const table = this.$el
+            const { y = 0 } = table.getBoundingClientRect()
+            const toTop = window.pageYOffset + y
 
-            if (sizes.y < 0) {
+            if (toTop < window.innerHeight) {
+                document.body.scrollIntoView({
+                    behavior: 'smooth'
+                })
+            } else if (y < 0) {
                 table.scrollIntoView({
                     behavior: 'smooth'
                 })

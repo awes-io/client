@@ -23,8 +23,9 @@ export default {
 
         /**
          * Text align of column title in `thead`
+         * and text in column cells
          */
-        titleAlign: {
+        textAlign: {
             // 'left' / 'center' / 'right'
             type: String,
             default: 'left',

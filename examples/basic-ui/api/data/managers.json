@@ -1,16 +1,935 @@
-[
-    {
-        "id": 1,
-        "first_name": "John",
-        "last_name": "Smith",
-        "position": "Chief",
-        "phones": ["555-11-22-333", "555-11-22-443"]
-    },
-    {
-        "id": 2,
-        "first_name": "John",
-        "last_name": "Doe",
-        "position": "Engeneer",
-        "phones": ["555-22-22-333", "555-11-55-443"]
-    }
-]
+[{
+  "id": 1,
+  "first_name": "Audre",
+  "last_name": "Ivanuschka",
+  "position": "Accounting Assistant IV",
+  "phones": [
+    "705-90-5762",
+    "+58705-90-5762"
+  ],
+  "status": 3
+}, {
+  "id": 2,
+  "first_name": "Ashley",
+  "last_name": "Hurry",
+  "position": "Human Resources Assistant II",
+  "phones": [
+    "171-37-0982",
+    "+58171-37-0982"
+  ],
+  "status": 2
+}, {
+  "id": 3,
+  "first_name": "Brigham",
+  "last_name": "Baitman",
+  "position": "Budget/Accounting Analyst IV",
+  "phones": [
+    "162-20-4563",
+    "+58162-20-4563"
+  ],
+  "status": 3
+}, {
+  "id": 4,
+  "first_name": "Amalia",
+  "last_name": null,
+  "position": "Research Associate",
+  "phones": [
+    "526-91-8466",
+    "+58526-91-8466"
+  ],
+  "status": 1
+}, {
+  "id": 5,
+  "first_name": "Isacco",
+  "last_name": "Prest",
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 6,
+  "first_name": "Charline",
+  "last_name": "Ganforthe",
+  "position": "Pharmacist",
+  "phones": [
+    "169-18-2433",
+    "+58169-18-2433"
+  ],
+  "status": 1
+}, {
+  "id": 7,
+  "first_name": "Stefano",
+  "last_name": "Waddilow",
+  "position": "Financial Analyst",
+  "phones": [
+    "319-38-7655",
+    "+58319-38-7655"
+  ],
+  "status": 1
+}, {
+  "id": 8,
+  "first_name": "Jacob",
+  "last_name": "Swyer-Sexey",
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 9,
+  "first_name": "Sky",
+  "last_name": "Brameld",
+  "position": "Legal Assistant",
+  "phones": [
+    "137-34-1158",
+    "+58137-34-1158"
+  ],
+  "status": 1
+}, {
+  "id": 10,
+  "first_name": "Adelina",
+  "last_name": "Gaber",
+  "position": "VP Sales",
+  "phones": [
+    "211-50-9185",
+    "+58211-50-9185"
+  ],
+  "status": 1
+}, {
+  "id": 11,
+  "first_name": "Marietta",
+  "last_name": "Hawkeridge",
+  "position": "Computer Systems Analyst II",
+  "phones": [
+    "482-60-1054",
+    "+58482-60-1054"
+  ],
+  "status": 1
+}, {
+  "id": 12,
+  "first_name": "Ring",
+  "last_name": "Bothen",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 13,
+  "first_name": "Livvie",
+  "last_name": "Knewstub",
+  "position": "Associate Professor",
+  "phones": [
+    "576-85-9006",
+    "+58576-85-9006"
+  ],
+  "status": 1
+}, {
+  "id": 14,
+  "first_name": "Crystal",
+  "last_name": "Mephan",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 15,
+  "first_name": "Reyna",
+  "last_name": "Sly",
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 16,
+  "first_name": "Cross",
+  "last_name": "Brodest",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 17,
+  "first_name": "Baillie",
+  "last_name": null,
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 18,
+  "first_name": "Gian",
+  "last_name": "Joicey",
+  "position": "Senior Financial Analyst",
+  "phones": [
+    "787-59-2685",
+    "+58787-59-2685"
+  ],
+  "status": 1
+}, {
+  "id": 19,
+  "first_name": "Arvie",
+  "last_name": "Threadgall",
+  "position": "Human Resources Assistant II",
+  "phones": [
+    "213-64-3526",
+    "+58213-64-3526"
+  ],
+  "status": 2
+}, {
+  "id": 20,
+  "first_name": "Maxy",
+  "last_name": "Joinsey",
+  "position": "Assistant Media Planner",
+  "phones": [
+    "527-42-9056",
+    "+58527-42-9056"
+  ],
+  "status": 2
+}, {
+  "id": 21,
+  "first_name": "Edwin",
+  "last_name": "Macartney",
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 22,
+  "first_name": "Rosmunda",
+  "last_name": null,
+  "position": "Design Engineer",
+  "phones": [
+    "558-39-9983",
+    "+58558-39-9983"
+  ],
+  "status": 1
+}, {
+  "id": 23,
+  "first_name": "Dennison",
+  "last_name": "Beeken",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 24,
+  "first_name": "Rowney",
+  "last_name": "Kemsley",
+  "position": "Research Nurse",
+  "phones": [
+    "387-60-9026",
+    "+58387-60-9026"
+  ],
+  "status": 1
+}, {
+  "id": 25,
+  "first_name": "Ermanno",
+  "last_name": "Meese",
+  "position": "Cost Accountant",
+  "phones": [
+    "340-90-8109",
+    "+58340-90-8109"
+  ],
+  "status": 3
+}, {
+  "id": 26,
+  "first_name": "Ben",
+  "last_name": null,
+  "position": "Database Administrator III",
+  "phones": [
+    "742-62-3093",
+    "+58742-62-3093"
+  ],
+  "status": 2
+}, {
+  "id": 27,
+  "first_name": "Trip",
+  "last_name": "Liversage",
+  "position": "VP Quality Control",
+  "phones": [
+    "621-67-6538",
+    "+58621-67-6538"
+  ],
+  "status": 2
+}, {
+  "id": 28,
+  "first_name": "Clayton",
+  "last_name": "Padilla",
+  "position": "Graphic Designer",
+  "phones": [
+    "897-95-1036",
+    "+58897-95-1036"
+  ],
+  "status": 2
+}, {
+  "id": 29,
+  "first_name": "Joachim",
+  "last_name": "Ratley",
+  "position": "Assistant Media Planner",
+  "phones": [
+    "131-20-1845",
+    "+58131-20-1845"
+  ],
+  "status": 2
+}, {
+  "id": 30,
+  "first_name": "Stinky",
+  "last_name": "Flint",
+  "position": "Web Developer IV",
+  "phones": [
+    "309-50-1577",
+    "+58309-50-1577"
+  ],
+  "status": 3
+}, {
+  "id": 31,
+  "first_name": "Carter",
+  "last_name": null,
+  "position": "Budget/Accounting Analyst II",
+  "phones": [
+    "376-42-6441",
+    "+58376-42-6441"
+  ],
+  "status": 1
+}, {
+  "id": 32,
+  "first_name": "Missie",
+  "last_name": null,
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 33,
+  "first_name": "Adan",
+  "last_name": null,
+  "position": "Civil Engineer",
+  "phones": [
+    "534-29-2162",
+    "+58534-29-2162"
+  ],
+  "status": 2
+}, {
+  "id": 34,
+  "first_name": "Jilli",
+  "last_name": "Eatock",
+  "position": "Civil Engineer",
+  "phones": [
+    "853-83-1103",
+    "+58853-83-1103"
+  ],
+  "status": 2
+}, {
+  "id": 35,
+  "first_name": "Blaire",
+  "last_name": "Sheard",
+  "position": "Legal Assistant",
+  "phones": [
+    "793-92-7719",
+    "+58793-92-7719"
+  ],
+  "status": 2
+}, {
+  "id": 36,
+  "first_name": "Alayne",
+  "last_name": null,
+  "position": "Assistant Professor",
+  "phones": [
+    "654-16-3550",
+    "+58654-16-3550"
+  ],
+  "status": 2
+}, {
+  "id": 37,
+  "first_name": "Vin",
+  "last_name": "Firebrace",
+  "position": "Social Worker",
+  "phones": [
+    "533-28-4520",
+    "+58533-28-4520"
+  ],
+  "status": 2
+}, {
+  "id": 38,
+  "first_name": "Isaiah",
+  "last_name": "Kinsella",
+  "position": "Biostatistician II",
+  "phones": [
+    "166-03-0398",
+    "+58166-03-0398"
+  ],
+  "status": 2
+}, {
+  "id": 39,
+  "first_name": "Donavon",
+  "last_name": null,
+  "position": "Tax Accountant",
+  "phones": [
+    "695-55-7038",
+    "+58695-55-7038"
+  ],
+  "status": 2
+}, {
+  "id": 40,
+  "first_name": "Josefina",
+  "last_name": "Prosh",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 41,
+  "first_name": "Winslow",
+  "last_name": "Sollam",
+  "position": "VP Sales",
+  "phones": [
+    "212-10-6479",
+    "+58212-10-6479"
+  ],
+  "status": 1
+}, {
+  "id": 42,
+  "first_name": "Thacher",
+  "last_name": "Feaver",
+  "position": "Assistant Media Planner",
+  "phones": [
+    "827-84-2460",
+    "+58827-84-2460"
+  ],
+  "status": 3
+}, {
+  "id": 43,
+  "first_name": "Crysta",
+  "last_name": null,
+  "position": "Pharmacist",
+  "phones": [
+    "166-11-8704",
+    "+58166-11-8704"
+  ],
+  "status": 2
+}, {
+  "id": 44,
+  "first_name": "Kora",
+  "last_name": "Kenworth",
+  "position": "Community Outreach Specialist",
+  "phones": [
+    "503-03-2904",
+    "+58503-03-2904"
+  ],
+  "status": 2
+}, {
+  "id": 45,
+  "first_name": "Leontyne",
+  "last_name": "St. John",
+  "position": "Research Associate",
+  "phones": [
+    "521-52-9055",
+    "+58521-52-9055"
+  ],
+  "status": 3
+}, {
+  "id": 46,
+  "first_name": "Mellisa",
+  "last_name": "Santen",
+  "position": "Occupational Therapist",
+  "phones": [
+    "810-71-9714",
+    "+58810-71-9714"
+  ],
+  "status": 1
+}, {
+  "id": 47,
+  "first_name": "Dara",
+  "last_name": "Seelbach",
+  "position": "Sales Associate",
+  "phones": [
+    "761-32-0471",
+    "+58761-32-0471"
+  ],
+  "status": 3
+}, {
+  "id": 48,
+  "first_name": "Sibby",
+  "last_name": "Criag",
+  "position": "Electrical Engineer",
+  "phones": [
+    "237-83-3116",
+    "+58237-83-3116"
+  ],
+  "status": 3
+}, {
+  "id": 49,
+  "first_name": "Herbert",
+  "last_name": "Olivazzi",
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 50,
+  "first_name": "Arden",
+  "last_name": null,
+  "position": "Structural Engineer",
+  "phones": [
+    "593-04-5668",
+    "+58593-04-5668"
+  ],
+  "status": 1
+}, {
+  "id": 51,
+  "first_name": "Glendon",
+  "last_name": "Custance",
+  "position": "VP Marketing",
+  "phones": [
+    "209-83-8842",
+    "+58209-83-8842"
+  ],
+  "status": 2
+}, {
+  "id": 52,
+  "first_name": "Sidney",
+  "last_name": "Gwioneth",
+  "position": "Engineer IV",
+  "phones": [
+    "864-80-9459",
+    "+58864-80-9459"
+  ],
+  "status": 3
+}, {
+  "id": 53,
+  "first_name": "Abelard",
+  "last_name": null,
+  "position": "Registered Nurse",
+  "phones": [
+    "336-57-3356",
+    "+58336-57-3356"
+  ],
+  "status": 1
+}, {
+  "id": 54,
+  "first_name": "Greggory",
+  "last_name": "Stearn",
+  "position": "Information Systems Manager",
+  "phones": [
+    "769-16-2334",
+    "+58769-16-2334"
+  ],
+  "status": 3
+}, {
+  "id": 55,
+  "first_name": "Roscoe",
+  "last_name": "Thunderchief",
+  "position": "VP Sales",
+  "phones": [
+    "174-58-4838",
+    "+58174-58-4838"
+  ],
+  "status": 3
+}, {
+  "id": 56,
+  "first_name": "Eryn",
+  "last_name": "Genthner",
+  "position": "Compensation Analyst",
+  "phones": [
+    "580-57-4779",
+    "+58580-57-4779"
+  ],
+  "status": 1
+}, {
+  "id": 57,
+  "first_name": "Jazmin",
+  "last_name": "Botcherby",
+  "position": "Speech Pathologist",
+  "phones": [
+    "268-38-5306",
+    "+58268-38-5306"
+  ],
+  "status": 3
+}, {
+  "id": 58,
+  "first_name": "Karim",
+  "last_name": "McBrady",
+  "position": "Statistician III",
+  "phones": [
+    "556-31-8597",
+    "+58556-31-8597"
+  ],
+  "status": 3
+}, {
+  "id": 59,
+  "first_name": "Lexie",
+  "last_name": "Simanenko",
+  "position": "Systems Administrator III",
+  "phones": [
+    "886-72-4441",
+    "+58886-72-4441"
+  ],
+  "status": 1
+}, {
+  "id": 60,
+  "first_name": "Rebekkah",
+  "last_name": "Roffe",
+  "position": "Librarian",
+  "phones": [
+    "525-42-3249",
+    "+58525-42-3249"
+  ],
+  "status": 3
+}, {
+  "id": 61,
+  "first_name": "Sigismund",
+  "last_name": null,
+  "position": "Automation Specialist III",
+  "phones": [
+    "342-94-8386",
+    "+58342-94-8386"
+  ],
+  "status": 2
+}, {
+  "id": 62,
+  "first_name": "Norine",
+  "last_name": "Slad",
+  "position": "Financial Analyst",
+  "phones": [
+    "261-41-3771",
+    "+58261-41-3771"
+  ],
+  "status": 1
+}, {
+  "id": 63,
+  "first_name": "Georgena",
+  "last_name": "Yablsley",
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 64,
+  "first_name": "Trumaine",
+  "last_name": "Dunford",
+  "position": "Community Outreach Specialist",
+  "phones": [
+    "570-84-0649",
+    "+58570-84-0649"
+  ],
+  "status": 1
+}, {
+  "id": 65,
+  "first_name": "Nevin",
+  "last_name": "Deschlein",
+  "position": "Payment Adjustment Coordinator",
+  "phones": [
+    "412-19-6019",
+    "+58412-19-6019"
+  ],
+  "status": 3
+}, {
+  "id": 66,
+  "first_name": "Blaire",
+  "last_name": "Jebb",
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 67,
+  "first_name": "Ainslee",
+  "last_name": null,
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 68,
+  "first_name": "Anatol",
+  "last_name": "Ivons",
+  "position": "Software Test Engineer III",
+  "phones": [
+    "529-52-9468",
+    "+58529-52-9468"
+  ],
+  "status": 1
+}, {
+  "id": 69,
+  "first_name": "Fidole",
+  "last_name": "Benyon",
+  "position": "Operator",
+  "phones": [
+    "502-39-1262",
+    "+58502-39-1262"
+  ],
+  "status": 2
+}, {
+  "id": 70,
+  "first_name": "Augustin",
+  "last_name": "Ivanchikov",
+  "position": "Systems Administrator III",
+  "phones": [
+    "875-93-4634",
+    "+58875-93-4634"
+  ],
+  "status": 3
+}, {
+  "id": 71,
+  "first_name": "Sarge",
+  "last_name": "Swinglehurst",
+  "position": "Research Nurse",
+  "phones": [
+    "642-92-3499",
+    "+58642-92-3499"
+  ],
+  "status": 2
+}, {
+  "id": 72,
+  "first_name": "Winnah",
+  "last_name": "Edgett",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 73,
+  "first_name": "Leanor",
+  "last_name": "Jeffryes",
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 74,
+  "first_name": "Neal",
+  "last_name": null,
+  "position": "Sales Representative",
+  "phones": [
+    "687-91-0029",
+    "+58687-91-0029"
+  ],
+  "status": 1
+}, {
+  "id": 75,
+  "first_name": "Moe",
+  "last_name": "Shannahan",
+  "position": "Occupational Therapist",
+  "phones": [
+    "665-12-2722",
+    "+58665-12-2722"
+  ],
+  "status": 1
+}, {
+  "id": 76,
+  "first_name": "Fredrick",
+  "last_name": "Stribling",
+  "position": "Database Administrator III",
+  "phones": [
+    "865-47-6089",
+    "+58865-47-6089"
+  ],
+  "status": 2
+}, {
+  "id": 77,
+  "first_name": "Sibby",
+  "last_name": "Sander",
+  "position": null,
+  "phones": null,
+  "status": 2
+}, {
+  "id": 78,
+  "first_name": "Barnabas",
+  "last_name": "McCloch",
+  "position": "Account Coordinator",
+  "phones": [
+    "481-34-8222",
+    "+58481-34-8222"
+  ],
+  "status": 3
+}, {
+  "id": 79,
+  "first_name": "Madeline",
+  "last_name": null,
+  "position": "Software Consultant",
+  "phones": [
+    "246-84-6583",
+    "+58246-84-6583"
+  ],
+  "status": 2
+}, {
+  "id": 80,
+  "first_name": "Cybill",
+  "last_name": null,
+  "position": "Civil Engineer",
+  "phones": [
+    "798-20-2204",
+    "+58798-20-2204"
+  ],
+  "status": 3
+}, {
+  "id": 81,
+  "first_name": "Wolfie",
+  "last_name": "Nutty",
+  "position": "Senior Sales Associate",
+  "phones": [
+    "852-79-4101",
+    "+58852-79-4101"
+  ],
+  "status": 2
+}, {
+  "id": 82,
+  "first_name": "Angelika",
+  "last_name": null,
+  "position": "Speech Pathologist",
+  "phones": [
+    "145-78-8611",
+    "+58145-78-8611"
+  ],
+  "status": 1
+}, {
+  "id": 83,
+  "first_name": "Skippy",
+  "last_name": "Cluelow",
+  "position": "Web Developer I",
+  "phones": [
+    "416-39-2525",
+    "+58416-39-2525"
+  ],
+  "status": 3
+}, {
+  "id": 84,
+  "first_name": "Merrill",
+  "last_name": null,
+  "position": "Pharmacist",
+  "phones": [
+    "788-38-0275",
+    "+58788-38-0275"
+  ],
+  "status": 1
+}, {
+  "id": 85,
+  "first_name": "Kailey",
+  "last_name": "Bramford",
+  "position": null,
+  "phones": null,
+  "status": 3
+}, {
+  "id": 86,
+  "first_name": "Phillie",
+  "last_name": "Frostdick",
+  "position": "Actuary",
+  "phones": [
+    "415-15-0438",
+    "+58415-15-0438"
+  ],
+  "status": 1
+}, {
+  "id": 87,
+  "first_name": "Christy",
+  "last_name": "Dzeniskevich",
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 88,
+  "first_name": "Abbi",
+  "last_name": null,
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 89,
+  "first_name": "Alison",
+  "last_name": null,
+  "position": "Financial Analyst",
+  "phones": [
+    "554-73-7703",
+    "+58554-73-7703"
+  ],
+  "status": 3
+}, {
+  "id": 90,
+  "first_name": "Tommie",
+  "last_name": "De Courtney",
+  "position": "Occupational Therapist",
+  "phones": [
+    "547-73-8306",
+    "+58547-73-8306"
+  ],
+  "status": 3
+}, {
+  "id": 91,
+  "first_name": "Vick",
+  "last_name": null,
+  "position": "Help Desk Operator",
+  "phones": [
+    "275-06-0924",
+    "+58275-06-0924"
+  ],
+  "status": 3
+}, {
+  "id": 92,
+  "first_name": "Clem",
+  "last_name": null,
+  "position": "Software Engineer II",
+  "phones": [
+    "441-34-5572",
+    "+58441-34-5572"
+  ],
+  "status": 1
+}, {
+  "id": 93,
+  "first_name": "Holly",
+  "last_name": "Birds",
+  "position": "Director of Sales",
+  "phones": [
+    "710-84-8283",
+    "+58710-84-8283"
+  ],
+  "status": 3
+}, {
+  "id": 94,
+  "first_name": "Gusta",
+  "last_name": "Delahunt",
+  "position": "Biostatistician I",
+  "phones": [
+    "260-70-6550",
+    "+58260-70-6550"
+  ],
+  "status": 2
+}, {
+  "id": 95,
+  "first_name": "Roldan",
+  "last_name": "Twinterman",
+  "position": "Statistician I",
+  "phones": [
+    "864-37-1687",
+    "+58864-37-1687"
+  ],
+  "status": 1
+}, {
+  "id": 96,
+  "first_name": "Chev",
+  "last_name": "Whines",
+  "position": "Account Executive",
+  "phones": [
+    "321-86-8189",
+    "+58321-86-8189"
+  ],
+  "status": 2
+}, {
+  "id": 97,
+  "first_name": "Killy",
+  "last_name": "Vidgen",
+  "position": "Web Developer I",
+  "phones": [
+    "587-82-5088",
+    "+58587-82-5088"
+  ],
+  "status": 1
+}, {
+  "id": 98,
+  "first_name": "Martguerita",
+  "last_name": "Milkeham",
+  "position": "Mechanical Systems Engineer",
+  "phones": [
+    "322-15-4410",
+    "+58322-15-4410"
+  ],
+  "status": 2
+}, {
+  "id": 99,
+  "first_name": "Kathrine",
+  "last_name": "Hulme",
+  "position": null,
+  "phones": null,
+  "status": 1
+}, {
+  "id": 100,
+  "first_name": "Kira",
+  "last_name": "O'Cridigan",
+  "position": "Software Engineer III",
+  "phones": [
+    "657-42-5031",
+    "+58657-42-5031"
+  ],
+  "status": 3
+}]

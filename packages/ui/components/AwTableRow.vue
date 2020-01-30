@@ -64,23 +64,38 @@ export default {
                     }
                 },
                 visibleColumns
-                    .map(({ field, slot, verticalAlign, priority }) => {
-                        return h(
-                            'td',
-                            {
-                                staticClass: 'py-3 px-4 lg:py-5 lg:px-6',
-                                class: [
-                                    `align-${verticalAlign}`,
-                                    { 'border-t': index > 0 }
-                                ],
-                                attrs: {
-                                    [TABLE_PRIORITY_ATTR]:
-                                        index > 0 ? null : priority
-                                }
-                            },
-                            getContent(getCellData(field, rowData), slot, index)
-                        )
-                    })
+                    .map(
+                        ({
+                            field,
+                            slot,
+                            verticalAlign,
+                            textAlign,
+                            priority
+                        }) => {
+                            return h(
+                                'td',
+                                {
+                                    staticClass: 'py-3 px-4 lg:px-6',
+                                    class: [
+                                        `align-${verticalAlign}`,
+                                        {
+                                            [`text-${textAlign}`]: textAlign,
+                                            'border-t': index > 0
+                                        }
+                                    ],
+                                    attrs: {
+                                        [TABLE_PRIORITY_ATTR]:
+                                            index > 0 ? null : priority
+                                    }
+                                },
+                                getContent(
+                                    getCellData(field, rowData),
+                                    slot,
+                                    index
+                                )
+                            )
+                        }
+                    )
                     .concat(
                         h(AwTableRowToggler, {
                             props: {
