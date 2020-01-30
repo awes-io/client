@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.4...@awes-io/vue-mc@0.2.5) (2020-01-30)
+
+
+### Bug Fixes
+
+* linter syntax ([fa9a175](https://git.awescode.com/awes-io/collection/commits/fa9a1752d298ed1d56caf8418ad5301797d20b19))
+* model methods ([496bab7](https://git.awescode.com/awes-io/collection/commits/496bab7c78008bb42b817247aed4eaca6fcdd3c6))
+
+
+
+
+
 ## [0.2.4](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.3...@awes-io/vue-mc@0.2.4) (2020-01-30)
 
 
