@@ -82,13 +82,10 @@
             <!-- Customization of loading block -->
             <slot name="loading">
                 <!-- Default loading block -->
-                <div class="rounded-full py-2 pl-3 pr-5 relative bg-muted-dark">
-                    <AwSvgImage
-                        name="spinner"
-                        class="inline-block w-6 h-6 mr-2"
-                    />
+                <AwChip class="bgcolor-muted-dark">
+                    <AwSvgImage name="spinner" slot="left" class="h-5 w-5" />
                     {{ $t('AwTableBuilder.loading') }}
-                </div>
+                </AwChip>
             </slot>
         </div>
     </div>
@@ -97,8 +94,8 @@
 <script>
 import { pathOr } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
-import AwTableHead from './AwTableHead.vue'
 import AwCard from './AwCard.vue'
+import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
 import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
@@ -111,8 +108,8 @@ export default {
     mixins: [WatchParams],
 
     components: {
-        AwTableHead,
         AwCard,
+        AwChip,
         AwSvgImage,
         AwPagination
     },

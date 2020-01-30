@@ -20,6 +20,7 @@ module.exports = {
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
+            'info-light': 'rgba(69, 164, 220, .1)',
             warning: '#edc252',
             accent: '#F43E80',
             error: '#f36161'
@@ -266,6 +267,7 @@ module.exports = {
         }),
         require('./tailwind/colors'),
         require('./tailwind/container'),
-        require('./tailwind/calendar')
+        require('./tailwind/calendar'),
+        require('./tailwind/chip')
     ]
 }

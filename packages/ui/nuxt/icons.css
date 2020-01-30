@@ -1,7 +1,7 @@
 @font-face {
     font-family: "aw-icons";
-    src: url("../dist/fonts/aw-icons.woff2?c974b49b34f8f1cb6f3fb3dcf95df2e4") format("woff2"),
-url("../dist/fonts/aw-icons.woff?c974b49b34f8f1cb6f3fb3dcf95df2e4") format("woff");
+    src: url("../dist/fonts/aw-icons.woff2?eac68a615074bd8be5c97fd781d934cd") format("woff2"),
+url("../dist/fonts/aw-icons.woff?eac68a615074bd8be5c97fd781d934cd") format("woff");
 }
 
 .aw-icon {
@@ -58,90 +58,93 @@ url("../dist/fonts/aw-icons.woff?c974b49b34f8f1cb6f3fb3dcf95df2e4") format("woff
 .aw-icon-circle:before {
     content: "\f10d";
 }
-.aw-icon-close:before {
+.aw-icon-close-circle:before {
     content: "\f10e";
 }
-.aw-icon-copy:before {
+.aw-icon-close:before {
     content: "\f10f";
 }
-.aw-icon-drag:before {
+.aw-icon-copy:before {
     content: "\f110";
 }
-.aw-icon-external:before {
+.aw-icon-drag:before {
     content: "\f111";
 }
-.aw-icon-eye-no:before {
+.aw-icon-external:before {
     content: "\f112";
 }
-.aw-icon-eye:before {
+.aw-icon-eye-no:before {
     content: "\f113";
 }
-.aw-icon-font-size:before {
+.aw-icon-eye:before {
     content: "\f114";
 }
-.aw-icon-graph:before {
+.aw-icon-font-size:before {
     content: "\f115";
 }
-.aw-icon-intelligence:before {
+.aw-icon-graph:before {
     content: "\f116";
 }
-.aw-icon-italic:before {
+.aw-icon-intelligence:before {
     content: "\f117";
 }
-.aw-icon-loader:before {
+.aw-icon-italic:before {
     content: "\f118";
 }
-.aw-icon-location:before {
+.aw-icon-loader:before {
     content: "\f119";
 }
-.aw-icon-minus:before {
+.aw-icon-location:before {
     content: "\f11a";
 }
-.aw-icon-more-v:before {
+.aw-icon-minus:before {
     content: "\f11b";
 }
-.aw-icon-more:before {
+.aw-icon-more-v:before {
     content: "\f11c";
 }
-.aw-icon-plus:before {
+.aw-icon-more:before {
     content: "\f11d";
 }
-.aw-icon-quote:before {
+.aw-icon-plus:before {
     content: "\f11e";
 }
-.aw-icon-schedule:before {
+.aw-icon-quote:before {
     content: "\f11f";
 }
-.aw-icon-search:before {
+.aw-icon-schedule:before {
     content: "\f120";
 }
-.aw-icon-settings:before {
+.aw-icon-search:before {
     content: "\f121";
 }
-.aw-icon-speaker:before {
+.aw-icon-settings:before {
     content: "\f122";
 }
-.aw-icon-speed:before {
+.aw-icon-speaker:before {
     content: "\f123";
 }
-.aw-icon-storage:before {
+.aw-icon-speed:before {
     content: "\f124";
 }
-.aw-icon-triangle-d:before {
+.aw-icon-storage:before {
     content: "\f125";
 }
-.aw-icon-triangle-l:before {
+.aw-icon-triangle-d:before {
     content: "\f126";
 }
-.aw-icon-triangle-r:before {
+.aw-icon-triangle-l:before {
     content: "\f127";
 }
-.aw-icon-triangle-u:before {
+.aw-icon-triangle-r:before {
     content: "\f128";
 }
-.aw-icon-upload:before {
+.aw-icon-triangle-u:before {
     content: "\f129";
 }
-.aw-icon-user:before {
+.aw-icon-upload:before {
     content: "\f12a";
+}
+.aw-icon-user:before {
+    content: "\f12b";
 }
