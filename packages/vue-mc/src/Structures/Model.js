@@ -6,4 +6,10 @@ export default class Model extends VueMCModel {
     createRequest(config) {
         return new Request(config, Vue.prototype.$nuxt.$axios)
     }
+
+    options() {
+        return {
+            useFirstErrorOnly: true
+        }
+    }
 }
