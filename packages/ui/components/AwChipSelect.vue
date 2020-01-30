@@ -12,7 +12,7 @@
                             v-if="!readonly"
                             name="triangle-d"
                             size="lg"
-                            class="transition-200 flex-shrink-0"
+                            class="transition-200 flex-shrink-0 text-disabled"
                             :class="{ 'rotate-180': isOpened }"
                         />
                     </template>
