@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.44.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.43.2...basic-ui@1.44.0) (2020-01-30)
+
+
+### Features
+
+* **ui:** aw-chip-select component added ([ed985cb](https://git.awescode.com/awes-io/client/commits/ed985cbabb2679bc2ab4df62f626e11cf6a912fd))
+
+
+
+
+
 ## [1.43.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.43.1...basic-ui@1.43.2) (2020-01-29)
 
 **Note:** Version bump only for package basic-ui

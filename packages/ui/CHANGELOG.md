@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.45.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.44.1...@awes-io/ui@1.45.0) (2020-01-30)
+
+
+### Features
+
+* **ui:** aw-chip-select component added ([ed985cb](https://git.awescode.com/awes-io/ui/commits/ed985cbabb2679bc2ab4df62f626e11cf6a912fd))
+
+
+
+
+
 ## [1.44.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.44.0...@awes-io/ui@1.44.1) (2020-01-29)
 
 
