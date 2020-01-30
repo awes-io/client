@@ -9,7 +9,15 @@ export default class Model extends VueMCModel {
 
     options() {
         return {
-            useFirstErrorOnly: true
+            useFirstErrorOnly: true,
+            methods: {
+                fetch:  "GET",
+                save:   "POST",
+                update: "PUT",
+                create: "POST",
+                patch:  "PATCH",
+                delete: "DELETE",
+            }
         }
     }
 }
