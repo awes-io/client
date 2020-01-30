@@ -11,12 +11,12 @@ export default class Model extends VueMCModel {
         return {
             useFirstErrorOnly: true,
             methods: {
-                fetch:  "GET",
-                save:   "POST",
-                update: "PUT",
-                create: "POST",
-                patch:  "PATCH",
-                delete: "DELETE",
+                fetch: 'GET',
+                save: 'POST',
+                update: 'PUT',
+                create: 'POST',
+                patch: 'PATCH',
+                delete: 'DELETE'
             }
         }
     }
