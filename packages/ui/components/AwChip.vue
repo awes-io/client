@@ -1,41 +1,58 @@
-<template>
-    <div
-        class="inline-flex items-center p-1 rounded-full border"
-        :class="wrapClass"
+<template functional>
+    <span
+        class="aw-chip"
+        :class="[data.staticClass, data.class]"
+        :style="[data.staticStyle, data.style]"
     >
-        <!-- icon -->
-        <slot name="icon" v-bind="{ icon, fill, iconClass }">
-            <AwIcon
-                v-if="icon"
-                :class="iconClass"
-                class="p-1 rounded-full"
-                size="xxs"
-                :name="icon"
-            />
-        </slot>
-
-        <!-- text -->
-        <slot name="text" v-bind="{ text, fill }">
+        <!-- On the left side of text -->
+        <slot name="left" v-bind="props">
+            <!-- decor element -->
             <span
-                v-if="text || $slots.default"
-                class="text-xs uppercase leading-none mx-1 truncate"
+                class="aw-chip__decor"
+                :class="{
+                    [`text-${props.color} border-${props.color}`]: props.color,
+                    'border-text': !props.color && !props.image,
+                    'aw-chip__decor_image': props.image
+                }"
+                :style="{
+                    backgroundImage: props.image ? `url(${props.image})` : null
+                }"
+                aria-hidden="true"
             >
-                <slot>{{ text }}</slot>
+                <span
+                    v-if="!props.image"
+                    class="aw-chip__decor-circle"
+                    :class="{
+                        [`bg-${props.color}`]: props.color,
+                        'bgcolor-text': !props.icon && !props.color,
+                        'animation-pulse': props.loading
+                    }"
+                >
+                    <AwIcon
+                        v-if="props.icon"
+                        :name="props.icon"
+                        class="aw-chip__decor-icon"
+                        :class="{ 'aw-chip__decor-icon_color': props.color }"
+                    />
+                </span>
             </span>
         </slot>
 
-        <!-- close -->
-        <slot name="button" v-bind="{ hasButton }">
-            <AwButton
-                v-if="hasButton"
-                theme="icon"
-                class="rounded-full overflow-hidden -my-2 -mx-1"
-                icon="close"
-                size="xs"
-                @click="$emit('close')"
-            />
+        <!-- text wrap -->
+        <slot name="center" v-bind="props">
+            <!-- <span class="aw-chip__text">{{ text }}</span> -->
+            <span v-if="props.text || slots().default" class="aw-chip__text">
+                <!-- text -->
+                <slot>
+                    <!-- value of text prop -->
+                    {{ props.text }}
+                </slot>
+            </span>
         </slot>
-    </div>
+
+        <!-- On the right side of text -->
+        <slot name="right" v-bind="props" />
+    </span>
 </template>
 
 <script>
@@ -43,40 +60,42 @@ export default {
     name: 'AwChip',
 
     props: {
+        /**
+         * Icon name to render in decor element
+         */
         icon: {
             type: String,
             default: ''
         },
 
+        /**
+         * Text label
+         */
         text: {
             type: String,
             default: ''
         },
 
+        /**
+         * Border, icon and close icon color
+         */
         color: {
             type: String,
-            default: 'info'
+            default: ''
         },
 
-        fill: Boolean
-    },
-
-    computed: {
-        wrapClass() {
-            return this.fill
-                ? `bg-${this.color} border-${this.color}`
-                : `text-${this.color} border-${this.color}`
+        /**
+         * Decor element background
+         */
+        image: {
+            type: String,
+            default: ''
         },
 
-        iconClass() {
-            return this.fill
-                ? `bg-on-${this.color} text-${this.color}`
-                : `bg-${this.color}`
-        },
-
-        hasButton() {
-            return typeof this.$listeners.close === 'function'
-        }
+        /**
+         * Toggles loading animation
+         */
+        loading: Boolean
     }
 }
 </script>
