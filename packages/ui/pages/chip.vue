@@ -109,29 +109,87 @@
         <!-- chips select -->
         <h2>Chip select</h2>
 
-        <AwChipSelect
-            style="max-width: 175px"
-            class="overflow-hidden"
-            :value="status"
-            @input="setStatus"
-            :loading="statusLoading"
-            :options="[
-                { id: 1, text: 'New', color: 'info' },
-                { id: 2, text: 'Removed', color: 'error' },
-                { id: 3, text: 'Active', color: 'success' },
-                {
-                    id: 4,
-                    text: 'The one with very very very long name',
-                    color: 'warning'
-                },
-                { id: 5, text: 'New', color: 'info' },
-                { id: 6, text: 'Removed', color: 'error' },
-                { id: 7, text: 'Active', color: 'success' },
-                { id: 8, text: 'New', color: 'info' },
-                { id: 9, text: 'Removed', color: 'error' },
-                { id: 10, text: 'Active', color: 'success' }
-            ]"
-        />
+        <div @click="bubbled = true">
+            <AwChipSelect
+                style="max-width: 175px"
+                class="overflow-hidden"
+                :value="status"
+                @input="setStatus"
+                :loading="statusLoading"
+                :options="[
+                    { id: 1, text: 'New', color: 'info' },
+                    { id: 2, text: 'Removed', color: 'error' },
+                    { id: 3, text: 'Active', color: 'success' },
+                    {
+                        id: 4,
+                        text: 'The one with very very very long name',
+                        color: 'warning'
+                    },
+                    { id: 5, text: 'New', color: 'info' },
+                    { id: 6, text: 'Removed', color: 'error' },
+                    { id: 7, text: 'Active', color: 'success' },
+                    { id: 8, text: 'New', color: 'info' },
+                    { id: 9, text: 'Removed', color: 'error' },
+                    { id: 10, text: 'Active', color: 'success' }
+                ]"
+            />
+        </div>
+
+        <p>Bubbled: {{ bubbled }}</p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
+            numquam, dignissimos fugiat magnam saepe sunt, illum rem, vero,
+            velit quos quidem. Facere excepturi voluptates temporibus minima
+            architecto nulla neque aliquid.
+        </p>
     </AwPage>
 </template>
 
@@ -143,7 +201,8 @@ export default {
         return {
             loading: false,
             status: 1,
-            statusLoading: false
+            statusLoading: false,
+            bubbled: false
         }
     },
 

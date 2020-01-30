@@ -22,7 +22,7 @@ export default {
         ]
     },
 
-    loading: { color: '#fff' },
+    loading: { color: 'lightgreen' },
 
     css: ['./nuxt/icons.css'],
 

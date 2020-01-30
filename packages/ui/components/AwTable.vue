@@ -71,7 +71,7 @@ export default {
                     `align-${value}`
                 )
             },
-            default: 'top'
+            default: 'middle'
         }
     },
 
@@ -108,7 +108,7 @@ export default {
                             ),
                             priority: pathOr(i, 'priority', props),
                             title,
-                            titleAlign: path('titleAlign', props),
+                            textAlign: path('textAlign', props),
                             slot
                         }
                     })
@@ -142,9 +142,9 @@ export default {
             const { visibleColumns, hiddenColumns } = this.groupedColumns
 
             return visibleColumns
-                .map(({ title, titleAlign }) => ({
+                .map(({ title, textAlign }) => ({
                     text: title,
-                    align: titleAlign && `text-${titleAlign}`
+                    align: textAlign && `text-${textAlign}`
                 }))
                 .concat(hiddenColumns.length ? [{ text: '' }] : [])
         },

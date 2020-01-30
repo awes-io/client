@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.44.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.44.0...basic-ui@1.44.1) (2020-01-30)
+
+
+### Bug Fixes
+
+* **ui:** table behavior finetuning ([b08bcc7](https://git.awescode.com/awes-io/client/commits/b08bcc7cc0c22cbbe65a5083f66070bff47db7e9))
+
+
+
+
+
 # [1.44.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.43.2...basic-ui@1.44.0) (2020-01-30)
 
 
