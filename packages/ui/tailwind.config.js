@@ -238,6 +238,9 @@ module.exports = {
                 xxs: '0.5rem',
                 '7xl': '5rem'
             },
+            inset: {
+                '1/2': '50%'
+            },
             height: {
                 '10vh': '10vh',
                 '30vh': '30vh',
