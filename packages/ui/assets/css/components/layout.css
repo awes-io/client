@@ -73,7 +73,7 @@
     }
 
     &__header {
-        @apply flex items-center bg-surface top-0 z-20 bg-brand p-1;
+        @apply flex items-center bg-surface top-0 z-20 bg-brand py-3;
         min-height: theme('spacing.12');
         transition: 200ms box-shadow;
     }
@@ -212,7 +212,7 @@ $sqush-base: transform $squish-transition, opacity $squish-transition;
         }
 
         &__header {
-            @apply bg-surface p-0;
+            @apply bg-surface py-2;
         }
     }
 }

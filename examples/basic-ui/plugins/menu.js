@@ -1,7 +1,7 @@
 import { navigation } from '../config/navigation'
 import { urlify } from '~/assets/js/url'
 
-export default function({ store }) {
+export default function({ store, app }) {
     const menuItems = [
         {
             key: 'examples',
@@ -41,4 +41,17 @@ export default function({ store }) {
     }
 
     store.commit('awesIo/SET_MENU_ITEM', menuItems)
+
+    // mock user menu
+    store.commit('awesIo/SET_USER_MENU_ITEM', {
+        key: 'mock',
+        order: 1,
+        item: {
+            component: 'AwLink',
+            props: {
+                text: 'Homepage',
+                href: app.localePath({ path: '/' }, app.i18n.locale)
+            }
+        }
+    })
 }
