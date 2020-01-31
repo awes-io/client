@@ -50,10 +50,7 @@ export default {
     },
 
     getType(src, hideName) {
-        return (src === 'undefined' || src === 'null' || src === '' || !src) &&
-            !hideName
-            ? 'no-img'
-            : 'initials'
+        return (src === '' || !src) && !hideName ? 'no-img' : 'initials'
     }
 }
 </script>

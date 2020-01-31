@@ -73,9 +73,10 @@ export default {
             type: Number,
             default: 36
         },
-        // Type of the rendered image. Values: 'initials', 'empty', 'no-img'
+        // Type of the rendered image.
         type: {
             type: String,
+            // initials , empty, no-img
             default: 'initials',
             validator(value) {
                 return ['initials', 'empty', 'no-img'].includes(value)
@@ -90,9 +91,6 @@ export default {
 
     // To get source of the image if exist
     getSrc(src) {
-        if (src === 'undefined' || src === 'null') {
-            return false
-        }
         return src
     },
     // Convert user name to 2 first letters
