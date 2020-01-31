@@ -1,0 +1,15 @@
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "ie": 11
+                },
+                "useBuiltIns": false,
+                "modules": false
+            }
+        ]
+    ],
+    "exclude": "node_modules/**"
+}
