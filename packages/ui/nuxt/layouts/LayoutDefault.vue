@@ -5,7 +5,7 @@
             <!-- profile button -->
             <template v-if="userMenu && userMenu.length">
                 <button
-                    class="focus:outline-none"
+                    class="focus:outline-none rounded-full md:shadow-outline"
                     @click="$refs.userMenu.toggle()"
                 >
                     <AwAvatar

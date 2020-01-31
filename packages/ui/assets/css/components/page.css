@@ -2,9 +2,9 @@
     @apply flex flex-col flex-grow overflow-x-hidden;
 
     &__title {
-        @apply flex items-center text-lg leading-tight font-heading py-4;
-        min-height: theme('spacing.20');
-        
+        @apply flex items-center text-lg leading-tight font-heading py-2;
+        min-height: theme('spacing.16');
+
     }
 
     &__subnav {
@@ -25,7 +25,7 @@
     }
 }
 @screen sm {
-    .$(prefix)-page { 
+    .$(prefix)-page {
         &__title {
             @apply text-3xl;
         }
