@@ -45,6 +45,8 @@ module.exports = {
         borderRadius: {
             none: '0',
             default: '.125rem',
+            md: '.25rem',
+            lg: '.375rem',
             full: '9999px'
         },
         container: {
@@ -268,6 +270,7 @@ module.exports = {
         require('tailwindcss-typography')({
             componentPrefix: ''
         }),
+        require('./tailwind/base'),
         require('./tailwind/colors'),
         require('./tailwind/container'),
         require('./tailwind/calendar'),

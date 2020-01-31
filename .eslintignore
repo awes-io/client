@@ -8,3 +8,4 @@ coverage
 # TODO
 packages/ui/nuxt/layouts/LayoutFrameCenter.vue
 packages/ui/nuxt/plugin.js
+packages/vue-mc/dist/*

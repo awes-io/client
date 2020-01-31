@@ -1,17 +1,7 @@
 /**
- * Root variables
- */
-@import './variables.css';
-
-/**
  * Tailwind reset and base styles
  */
 @import 'tailwindcss/base';
-
-/**
- * Awes UI base styles
- */
-@import './base.css';
 
 /**
  * Tailwind components

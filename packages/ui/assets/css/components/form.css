@@ -1,18 +1,18 @@
-.$(prefix)-form {
+.aw-form {
     /* loading state */
     &.is-loading {
-        .$(prefix)-text-field,
-        .$(prefix)-switch-field {
+        .aw-text-field,
+        .aw-switch-field {
             opacity: .5;
             pointer-events: none;
             user-select: none;
         }
 
-        .$(prefix)-button[type="submit"] {
+        .aw-button[type="submit"] {
             pointer-events: none;
 
             &[data-loading] {
-                .$(prefix)-button__content {
+                .aw-button__content {
                     display: none;
                 }
 
@@ -26,7 +26,7 @@
                     border: 1px dashed currentColor;
                     border-right-style: solid;
                     border-bottom: none;
-                    animation: 1s rotate linear infinite;
+                    animation: 1s aw-rotate linear infinite;
                 }
 
                 &:after {
@@ -35,11 +35,5 @@
                 }
             }
         }
-    }
-}
-
-@keyframes rotate {
-    to {
-        transform: rotate(1turn);
     }
 }

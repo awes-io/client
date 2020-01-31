@@ -16,7 +16,8 @@
             <button
                 :data-page="prevPage"
                 :disabled="prevPage === null"
-                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none mr-1"
+                :class="{ 'opacity-50 cursor-default': prevPage === null }"
+                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none mr-1 focus:outline-none"
             >
                 <AwIcon name="arrow-l" />
             </button>
@@ -24,14 +25,14 @@
             <span class="lg:hidden">
                 {{ $t('AwPagination.page', { page, pagesTotal }) }}
             </span>
-            <div class="hidden lg:block py-1 pr-1 bg-muted-dark rounded">
+            <div class="hidden lg:block py-1 pr-1 bg-muted-dark rounded-lg">
                 <Component
                     v-for="({ component, text }, i) in pageButtons"
                     :is="component"
                     :key="`${i}-${text}`"
                     :data-page="component === 'button' ? text : null"
-                    :class="{ 'bg-surface': text === page }"
-                    class="px-2 py-1 rounded min-w-8 ml-1"
+                    :class="{ 'bg-surface shadow': text === page }"
+                    class="px-2 py-1 text-center rounded min-w-8 ml-1 focus:outline-none"
                 >
                     {{ text }}
                 </Component>
@@ -40,7 +41,8 @@
             <button
                 :data-page="nextPage"
                 :disabled="nextPage === null"
-                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none ml-1"
+                :class="{ 'opacity-50 cursor-default': nextPage === null }"
+                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none ml-1 focus:outline-none"
             >
                 <AwIcon name="arrow-r" />
             </button>
@@ -51,13 +53,18 @@
             <div class="flex justify-end">
                 <template v-if="limits">
                     <button
-                        class="opacity-50 text-sm hover:opacity-100 focus:opacity-100"
-                        @click="$refs.dropdown.toggle()"
+                        class="opacity-50 text-sm hover:opacity-100 focus:opacity-100 focus:outline-none"
+                        @click="limitsOpened = true"
                     >
-                        {{ limit }} <AwIcon name="triangle-d" />
+                        {{ limit }}
+                        <AwIcon
+                            name="triangle-d"
+                            class="transition-200"
+                            :class="{ 'rotate-180': limitsOpened }"
+                        />
                     </button>
                     <AwDropdown
-                        ref="dropdown"
+                        :show.sync="limitsOpened"
                         class="w-32"
                         :options="{
                             placement: 'bottom-end',
@@ -127,6 +134,12 @@ export default {
         limits: {
             type: Array,
             default: null
+        }
+    },
+
+    data() {
+        return {
+            limitsOpened: false
         }
     },
 

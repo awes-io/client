@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { BaseModel, BaseCollection } from '@awes-io/vue-mc'
+import { BaseModel, BaseCollection } from '@awes-io/vue-mc/dist/index.esm.js'
 
 class Managers extends BaseCollection {
     model() {

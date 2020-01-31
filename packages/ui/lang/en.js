@@ -43,7 +43,7 @@ export const AwLayoutDefault = {
     shrinkMenu: 'Shrink menu',
     toggleSubmenu: 'Toggle submenu',
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="link">Awes.io Platform</a>'
+        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwLayoutError = {
@@ -53,7 +53,7 @@ export const AwLayoutError = {
 
 export const AwLayoutFrameCenter = {
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="link">Awes.io Platform</a>'
+        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwMarkdownEditor = {

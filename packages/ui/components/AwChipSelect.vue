@@ -3,8 +3,9 @@
         class="inline-flex"
         @keydown.up="focusListItem(-1, $event)"
         @keydown.down="focusListItem(+1, $event)"
+        @focusout="onBlur"
     >
-        <button @click.stop="open">
+        <button class="focus:outline-none" @focus="open" @click.stop="open">
             <slot name="selected" v-bind="selected">
                 <AwChip :loading="loading" v-bind="selected">
                     <template #right>
@@ -23,7 +24,7 @@
             <button
                 v-for="({ id, text, ...props }, i) in options"
                 :key="id || `chip-${i}`"
-                class="block w-full text-left my-px rounded hover:bgcolor-muted focus:bgcolor-muted-dark"
+                class="block w-full text-left my-px rounded hover:bgcolor-muted focus:outline-none focus:bgcolor-muted-dark"
                 :class="{ 'bgcolor-info-light': id === value }"
                 data-select-chip
                 @click.stop="select(id)"
@@ -97,6 +98,14 @@ export default {
             if (!this.isDisabled && !this.isOpened) {
                 this.isOpened = true
                 this.$nextTick(this.focusListItem)
+            }
+        },
+
+        onBlur(e = {}) {
+            const target = e.relatedTarget
+
+            if (this.isOpened && !this.$el.contains(target)) {
+                this.isOpened = false
             }
         },
 

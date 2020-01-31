@@ -1,4 +1,4 @@
-.$(prefix)-page {
+.aw-page {
     @apply flex flex-col flex-grow overflow-x-hidden;
 
     &__title {
@@ -25,14 +25,14 @@
     }
 }
 @screen sm {
-    .$(prefix)-page {
+    .aw-page {
         &__title {
             @apply text-3xl;
         }
     }
 }
 @screen lg {
-    .$(prefix)-page__content {
+    .aw-page__content {
         @apply py-8;
     }
 }

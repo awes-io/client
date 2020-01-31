@@ -41,8 +41,7 @@ export default {
                 'postcss-easings': {},
                 tailwindcss: {}
             }
-        },
-        transpile: [/\/basic-ui\/api\//]
+        }
     },
 
     axios: {

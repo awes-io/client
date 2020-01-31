@@ -1,4 +1,4 @@
-.$(prefix)-dropdown {
+.aw-dropdown {
     @apply shadow-lg bg-surface;
     min-width: 160px;
     max-height: 75vh;
