@@ -247,6 +247,9 @@ module.exports = {
                 '30vh': '30vh',
                 '50vh': '50vh',
                 '70vh': '70vh'
+            },
+            boxShadow: {
+                outline: '0 0 0 2px var(--c-info)'
             }
         }
     },
