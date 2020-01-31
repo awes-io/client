@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @keydown.enter="_onEnterKeydown">
         <div
             v-for="(model, index) in models"
             :key="model.id || `new-block-${index}`"
@@ -73,6 +73,7 @@
 <script>
 import { equals, prop, isNil, clone } from 'rambdax'
 import { validateBySchema } from '../assets/js/component'
+import exterNextFieldMixin from '../mixins/enter-next-field'
 
 /**
  * Serves for VueMC collection visualization. Pass the collection to `collection` prop, and form fields that you need to default slot.
@@ -91,6 +92,8 @@ import { validateBySchema } from '../assets/js/component'
  */
 export default {
     name: 'AwMultiBlockBuilder',
+
+    mixins: [exterNextFieldMixin],
 
     props: {
         /**
@@ -234,6 +237,11 @@ export default {
             if (index > -1) {
                 listeners.splice(index, 1)
             }
+        },
+
+        // called from exterNextFieldMixin
+        _onEnterKeydownAction() {
+            this.collection.save()
         }
     }
 }

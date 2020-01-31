@@ -7,7 +7,7 @@
             @drop.prevent="_onDrop"
         >
             <input
-                v-bind="$attrs"
+                v-bind="mergedAttrs"
                 type="file"
                 class="sr-only"
                 :accept="format ? formatString : null"
@@ -53,6 +53,7 @@
 import { path, values } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
+import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
 
 let _fileId = 0
 
@@ -116,6 +117,10 @@ export default {
 
         filesStats() {
             return values(this.files)
+        },
+
+        mergedAttrs() {
+            return { ...this.$attrs, [FORM_ENTER_SKIP_ATTR]: '' }
         }
     },
 

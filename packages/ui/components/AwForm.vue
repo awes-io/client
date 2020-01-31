@@ -18,25 +18,17 @@
 </template>
 
 <script>
+import { isFalsy } from 'rambdax'
 import { AwForm as _config } from './_config'
 import { conf } from '../assets/js/component'
-import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
-import { isFalsy, path } from 'rambdax'
-
-const FIELDS_SELECTOR = [
-    'input:not([type="hidden"]):not([type="file"])',
-    'select',
-    'textarea'
-]
-    .map(
-        selector => `${selector}:not([${FORM_ENTER_SKIP_ATTR}]):not([disabled])`
-    )
-    .join(', ')
+import exterNextFieldMixin from '../mixins/enter-next-field'
 
 export default {
     name: 'AwForm',
 
     _config,
+
+    mixins: [exterNextFieldMixin],
 
     props: {
         url: String,
@@ -93,34 +85,9 @@ export default {
             }
         },
 
-        _onEnterKeydown(e) {
-            const target = path('target', e)
-            const targetTag = path('target.tagName', e)
-            const keyCode = path('keyCode', e)
-
-            if (keyCode !== 13 || targetTag !== 'INPUT') return
-
-            const elements = Array.from(
-                this.$el.querySelectorAll(FIELDS_SELECTOR)
-            )
-
-            const index = elements.indexOf(target)
-
-            if (index < 0) return
-
-            e.preventDefault()
-
-            if (
-                index === elements.length - 1 ||
-                e.ctrlKey ||
-                e.shiftKey ||
-                e.metaKey
-            ) {
-                const submitBtn = this.$el.querySelector('[type="submit"]')
-                submitBtn.click()
-            } else {
-                elements[index + 1].focus()
-            }
+        _onEnterKeydownAction() {
+            const submitBtn = this.$el.querySelector('[type="submit"]')
+            submitBtn.click()
         },
 
         _submit() {
