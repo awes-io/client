@@ -1,7 +1,7 @@
-const { Model, Collection } = require('vue-mc')
+const { BaseModel, BaseCollection } = require('@awes-io/vue-mc')
 const V = require('vue-mc/validation')
 
-class Manager extends Model {
+class Manager extends BaseModel {
     defaults() {
         return {
             id: null,
@@ -16,10 +16,18 @@ class Manager extends Model {
     mutations() {
         return {
             id: id => Number(id),
-            first_name: String,
-            last_name: String,
-            position: String,
-            email: String,
+            first_name: val => {
+                return val ? String(val) : ''
+            },
+            last_name: val => {
+                return val ? String(val) : ''
+            },
+            position: val => {
+                return val ? String(val) : ''
+            },
+            email: val => {
+                return val ? String(val) : ''
+            },
             phones: phones =>
                 Array.isArray(phones)
                     ? phones.filter(Boolean).map(String)
@@ -49,7 +57,7 @@ class Manager extends Model {
     }
 }
 
-class Managers extends Collection {
+class Managers extends BaseCollection {
     // Model that is contained in this collection.
     model() {
         return Manager

@@ -44,31 +44,18 @@
 
             <AwTableBuilder
                 @click:row="clickRow"
-                :collection="tasksCollection"
-                defaultHeight="lg"
+                :collection="managers"
+                defaultHeight="70vh"
             >
                 <AwTableCol vertical-align="top" field="id" />
 
-                <AwTableCol visible="md" title="User name" field="name" />
-
-                <AwTableCol
-                    visible="lg"
-                    title-align="center"
-                    field="done"
-                    class="text-center"
-                >
-                    <template #default="{ cell: done }">
-                        <AwChip
-                            :color="done ? 'disabled' : 'error'"
-                            :fill="!done"
-                            :icon="done ? 'check' : 'close'"
-                        >
-                            {{ done ? 'Yes' : 'No' }}
-                        </AwChip>
+                <AwTableCol title="User name">
+                    <template #default="{ cell }">
+                        {{ cell.first_name }} {{ cell.last_name }}
                     </template>
                 </AwTableCol>
 
-                <AwTableCol title="Empty" field="null" />
+                <AwTableCol title="Job title" field="position" />
 
                 <AwTableCol class="text-center">
                     <template #default="{ cell }">
@@ -85,20 +72,10 @@
                         >
                             <AwGrid :gap="0">
                                 <AwButton
-                                    class="w-full text-left"
-                                    theme="toggle"
-                                    :text="
-                                        cell.done ? 'Mark undone' : 'Mark done'
-                                    "
-                                    @click="cell.done = !cell.done"
-                                />
-                                <AwButton
                                     theme="toggle"
                                     class="w-full text-error text-left"
                                     text="Remove"
-                                    @click="
-                                        tasksCollection.remove({ id: cell.id })
-                                    "
+                                    @click="managers.remove({ id: cell.id })"
                                 />
                             </AwGrid>
                         </AwDropdown>
@@ -110,7 +87,19 @@
 </template>
 
 <script>
-import tasksCollection from './../tests/mock/tasks-collection'
+import { BaseModel, BaseCollection } from '@awes-io/vue-mc'
+
+class Managers extends BaseCollection {
+    model() {
+        return BaseModel
+    }
+
+    routes() {
+        return {
+            fetch: 'api/managers'
+        }
+    }
+}
 
 export default {
     name: 'TablePage',
@@ -133,7 +122,7 @@ export default {
                     bla: undefined
                 }
             ],
-            tasksCollection
+            managers: new Managers()
         }
     },
 

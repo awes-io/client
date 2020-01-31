@@ -68,16 +68,13 @@
 </template>
 
 <script>
-import activityCollection from './../../tests/mock/activity-collection'
-
 export default {
     name: 'Typography',
 
     data() {
         return {
             title: 'Typography',
-            headline: this._getTitle(''),
-            activityCollection
+            headline: this._getTitle('')
         }
     },
 
