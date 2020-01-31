@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.47.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.46.0...@awes-io/ui@1.47.0) (2020-01-31)
+
+
+### Bug Fixes
+
+* **ui:** desktop avatar is outlined on default layout ([335b3cf](https://git.awescode.com/awes-io/ui/commits/335b3cf6f64d7e88d94cf11e566aad71033bc4c5))
+* removed condition to check src as a undefined string ([c6570f4](https://git.awescode.com/awes-io/ui/commits/c6570f44ad37219545baeb9bbcbcc56234463fab))
+
+
+### Features
+
+* **ui:** default layout design fixes ([bc25a72](https://git.awescode.com/awes-io/ui/commits/bc25a72a07765a3ecb5d13da840b281a4509b034))
+* **ui:** enter click moves to next field in aw-multi-block-builder ([f64ecd7](https://git.awescode.com/awes-io/ui/commits/f64ecd723e06f795f348a9acf78f1cc33f10c648))
+
+
+
+
+
 # [1.46.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.45.1...@awes-io/ui@1.46.0) (2020-01-30)
 
 

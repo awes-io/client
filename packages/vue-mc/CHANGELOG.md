@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.5...@awes-io/vue-mc@0.2.6) (2020-01-31)
+
+
+### Bug Fixes
+
+* **vue-mc:** build transpilation added for original vue-mc compatibility ([099e9a5](https://git.awescode.com/awes-io/collection/commits/099e9a587f0b055e568e8b314c7f87ff08d8349c))
+
+
+
+
+
 ## [0.2.5](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.4...@awes-io/vue-mc@0.2.5) (2020-01-30)
 
 
