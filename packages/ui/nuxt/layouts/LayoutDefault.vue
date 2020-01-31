@@ -5,9 +5,8 @@
             <!-- profile button -->
             <template v-if="userMenu && userMenu.length">
                 <button
-                    class="aw-button aw-button_md rounded-full ml-auto bg-muted"
+                    class="my-2 ml-auto aw-button aw-button_md rounded-full bg-muted theme-icon"
                     @click="$refs.userMenu.toggle()"
-                    :class="user.avatar ? 'min-w-0 p-2' : 'theme-icon'"
                 >
                     <img
                         v-if="user.avatar"
