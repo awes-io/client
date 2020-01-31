@@ -6,27 +6,32 @@
             :class="{ 'is-wide': menuThin, 'relative z-0': showMobileMenu }"
         >
             <div class="layout__header">
-                <!-- mobile menu toggler -->
-                <AwButton
-                    theme="icon"
-                    class="md:hidden"
-                    @click="showMobileMenu = !showMobileMenu"
-                >
-                    <AwIcon name="burger" size="lg" />
-                    <span class="sr-only">
-                        {{ $t('AwLayoutDefault.toggleMenu') }}
-                    </span>
-                </AwButton>
+                <div class="container flex items-center">
+                    <!-- mobile menu toggler -->
+                    <div class="flex-1 md:hidden">
+                        <button
+                            class="w-8 h-8 -ml-1 flex items-center justify-center focus:outline-none"
+                            @click="showMobileMenu = !showMobileMenu"
+                        >
+                            <AwIcon name="burger" size="2xl" />
+                            <span class="sr-only">
+                                {{ $t('AwLayoutDefault.toggleMenu') }}
+                            </span>
+                        </button>
+                    </div>
 
-                <RouterLink
-                    to="/"
-                    class="pl-4 truncate md:hidden"
-                    v-html="$t('AwLayoutDefault.caption')"
-                />
+                    <div class="flex-1 text-center md:hidden">
+                        <RouterLink
+                            to="/"
+                            class="truncate"
+                            v-html="$t('AwLayoutDefault.caption')"
+                        />
+                    </div>
 
-                <div class="container flex">
-                    <!-- navbar-->
-                    <slot name="navbar" />
+                    <div class="w-full flex-1 flex items-center justify-end">
+                        <!-- navbar-->
+                        <slot name="navbar" />
+                    </div>
                 </div>
             </div>
 
