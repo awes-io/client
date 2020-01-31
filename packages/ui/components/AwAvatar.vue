@@ -16,7 +16,7 @@
             data.class,
             props.isColored ? '' : 'bg-disabled'
         ]"
-        class="rounded-full relative text-center text-surface"
+        class="inline-block align-middle rounded-full relative text-center text-surface"
     >
         <slot v-bind="{ ...props, initials: $options.getColor(props.name) }">
             <img
