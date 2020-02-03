@@ -35,5 +35,6 @@ export const navigation = [
     { title: 'Tab nav', url: '/aw-tab-nav', description: '' },
     { title: 'Table', url: '/aw-table', description: '' },
     { title: 'Timeline builder', url: '/aw-timeline-builder', description: '' },
+    { title: 'Toggler', url: '/aw-toggler', description: '' },
     { title: 'Uploader', url: '/aw-uploader', description: '' }
 ]

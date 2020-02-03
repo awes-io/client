@@ -1,0 +1,17 @@
+.aw-toggler {
+    transition: height .3s ease;
+}
+
+.aw-toggler__content {
+    margin-top: 10.5px;
+}
+
+.aw-toggler__content::before {
+    content: '';
+    @apply absolute w-0 h-0 top-0;
+    left: 10px;
+    border-left: 10.5px solid transparent;
+    border-right: 10.5px solid transparent;
+    border-bottom: 10.5px solid #e8e9eb;
+    transform: translateY(-10px);
+}
