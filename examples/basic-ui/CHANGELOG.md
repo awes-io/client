@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.45.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.45.0...basic-ui@1.45.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* **vue-mc:** path typo fix in package.json ([900d95d](https://git.awescode.com/awes-io/client/commits/900d95d6330a87450dc7dd4ce66b6f78b1511ae7))
+* correct version for awes-io/ui ([e7ba51a](https://git.awescode.com/awes-io/client/commits/e7ba51aeb5eb1010320868c39d99d7fa2d2ad218))
+* included awes-io/vue-mc into example ([f710b03](https://git.awescode.com/awes-io/client/commits/f710b034a589f4474ea96d9d4a189f15d62e7f7e))
+* **ui:** css fixes ([23a6f20](https://git.awescode.com/awes-io/client/commits/23a6f2015368403965f4703143d2bdeec7452c1b))
+
+
+
+
+
 # [1.45.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.44.2...basic-ui@1.45.0) (2020-01-31)
 
 

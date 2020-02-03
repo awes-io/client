@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.7...@awes-io/vue-mc@0.2.8) (2020-02-03)
+
+
+### Bug Fixes
+
+* **vue-mc:** path typo fix in package.json ([900d95d](https://git.awescode.com/awes-io/collection/commits/900d95d6330a87450dc7dd4ce66b6f78b1511ae7))
+
+
+
+
+
 ## [0.2.7](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.6...@awes-io/vue-mc@0.2.7) (2020-01-31)
 
 

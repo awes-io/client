@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.47.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.47.0...@awes-io/ui@1.47.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* **ui:** css fixes ([23a6f20](https://git.awescode.com/awes-io/ui/commits/23a6f2015368403965f4703143d2bdeec7452c1b))
+* **ui:** eslint config for ui subfolder ([f3760fe](https://git.awescode.com/awes-io/ui/commits/f3760fe5092e2b185c713f0d0c86c5508fc30b8e))
+* **vue-mc:** path typo fix in package.json ([900d95d](https://git.awescode.com/awes-io/ui/commits/900d95d6330a87450dc7dd4ce66b6f78b1511ae7))
+
+
+
+
+
 # [1.47.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.46.0...@awes-io/ui@1.47.0) (2020-01-31)
 
 
