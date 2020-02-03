@@ -4,7 +4,9 @@
         class="aw-toggler overflow-hidden"
         :style="{ height: `${currentHeight}px` }"
     >
-        <div class="aw-toggler__content bg-muted-dark rounded p-4 relative">
+        <div
+            class="aw-toggler__content mt-3 bg-muted-dark rounded p-6 relative"
+        >
             <slot></slot>
         </div>
     </div>
