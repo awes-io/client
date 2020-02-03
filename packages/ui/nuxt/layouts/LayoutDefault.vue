@@ -5,14 +5,13 @@
             <!-- profile button -->
             <template v-if="userMenu && userMenu.length">
                 <button
-                    class="focus:outline-none rounded-full md:shadow-outline"
+                    class="focus:outline-none rounded-full focus:shadow-outline"
                     @click="$refs.userMenu.toggle()"
                 >
-                    <AwAvatar
+                    <AwUserpic
                         :src="(user.avatar && user.avatar.w96) || ''"
                         :name="user.name"
-                        :type="user.avatar ? null : 'no-img'"
-                        :is-colored="!user.avatar"
+                        hide-name
                     />
                 </button>
                 <AwDropdown
