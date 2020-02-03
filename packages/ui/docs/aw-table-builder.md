@@ -12,6 +12,7 @@
 |scrollOnPage|-|`Boolean`|`false`|-|
 |verticalAlign|-|`String`|`false`|-|
 |defaultHeight|Size of the empty block, e.g loading block or empty block.|`String`|`false`|50vh|
+|arrowNav|Should the page being switched on `CTRL + <-` and  `CTRL + ->`|`Boolean`|`false`|-|
 
 <!-- @vuese:AwTableBuilder:props:end -->
 

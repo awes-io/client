@@ -8,6 +8,7 @@
 |src|Full URL to the picture|`String`|`false`|-|
 |name|User name|`String`|`false`|-|
 |hideName|It's hide the user name. The size of the image will be bigger.|`Boolean`|`false`|-|
+
 <!-- @vuese:AwUserpic:props:end -->
 
 

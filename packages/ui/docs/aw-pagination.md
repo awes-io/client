@@ -46,6 +46,7 @@ Below is a collection of Vue **props** for the `AwPagination` component.
 |page|Current page|`Number`|`false`|1|
 |limit|Limit of items per page|`Number`|`true`|-|
 |limits|Default limit variants|`Array`|`false`|-|
+|arrowNav|Should the page being switched on `CTRL + <-` and  `CTRL + ->`|`Boolean`|`false`|-|
 
 <!-- @vuese:AwPagination:props:end -->
 

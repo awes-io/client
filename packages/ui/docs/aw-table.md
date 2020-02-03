@@ -43,7 +43,7 @@ Below is a collection of Vue **props** for the `AwTable` component.
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |rows|-|`Array`|`true`|-|
-|verticalAlign|-|`String`|`false`|top|
+|verticalAlign|-|`String`|`false`|middle|
 
 <!-- @vuese:AwTable:props:end -->
 

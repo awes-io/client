@@ -42,8 +42,9 @@ Below is a collection of Vue **props** for the `AwSearch` component.
 <!-- @vuese:AwSearch:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|param|-|`String`|`false`|search|
-|debounce|-|`Number`|`false`|400|
+|param|Which GET-param should component set to query string|`String`|`false`|search|
+|debounce|Debounce before query string update on user input|`Number`|`false`|400|
+|globalKeyBind|If set, the component will listen on user input, and if the active element is not `input` or `textarea`, and `event.key` matches, the component will get focus. Pass `false` or empty string to disable|`String` /  `Boolean`|`false`|/|
 
 <!-- @vuese:AwSearch:props:end -->
 
