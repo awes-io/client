@@ -9,7 +9,7 @@
                     @click="$refs.userMenu.toggle()"
                 >
                     <AwAvatar
-                        :src="user.avatar.w96"
+                        :src="(user.avatar && user.avatar.w96) || ''"
                         :name="user.name"
                         :type="user.avatar ? null : 'no-img'"
                         :is-colored="!user.avatar"
