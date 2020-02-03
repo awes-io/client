@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.48.0...@awes-io/ui@1.48.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* changed aw-userpic in profile button ([b1bbadd](https://git.awescode.com/awes-io/ui/commits/b1bbadd5bdbbf57f82d8df7f05cabab45e1095e1))
+
+
+
+
+
 # [1.48.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.47.1...@awes-io/ui@1.48.0) (2020-02-03)
 
 
