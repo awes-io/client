@@ -1,7 +1,7 @@
 import babel from 'rollup-plugin-babel'
 
 const baseConfig = {
-    input: 'index.js',
+    input: 'src/index.js',
     plugins: [babel()],
     external: ['vue', 'vue-mc', 'rambdax']
 }

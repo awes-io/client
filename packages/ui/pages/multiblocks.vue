@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { BaseModel, BaseCollection } from '@awes-io/vue-mc/index.js'
+import { BaseModel, BaseCollection } from '@awes-io/vue-mc'
 
 class Manager extends BaseModel {
     defaults() {

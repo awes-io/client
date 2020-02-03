@@ -16,7 +16,7 @@
         "illjah42 <ilya.kitayev@gmail.com>"
     ],
     "main": "dist/index.js",
-    "module": "dist/index.ems.js",
+    "module": "dist/index.esm.js",
     "scripts": {
         "build": "rollup -c"
     },

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { BaseModel, BaseCollection } from '@awes-io/vue-mc/dist/index.esm.js'
+import { BaseModel, BaseCollection } from '@awes-io/vue-mc'
 
 const EVENTS = [
     { name: 'Meeting', client: 'John Doe' },
