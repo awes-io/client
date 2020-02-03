@@ -134,7 +134,13 @@ export default {
         limits: {
             type: Array,
             default: null
-        }
+        },
+
+        /**
+         * Should the page being switched on
+         * `CTRL + <-` and  `CTRL + ->`
+         */
+        arrowNav: Boolean
     },
 
     data() {
@@ -196,6 +202,19 @@ export default {
         }
     },
 
+    watch: {
+        arrowNav: {
+            immediate: true,
+            handler(value, prevValue) {
+                if (!this.$isServer && value) {
+                    this._toggleArrowNav(true)
+                } else if (prevValue) {
+                    this._toggleArrowNav(false)
+                }
+            }
+        }
+    },
+
     methods: {
         _getButtonProps(page) {
             if (!isNil(page)) {
@@ -218,6 +237,35 @@ export default {
             if (!target) return
 
             this.$emit('click:page', parseInt(target.getAttribute('data-page')))
+        },
+
+        _toggleArrowNav(on = false) {
+            if (on) {
+                document.addEventListener('keydown', this._globalKeyListener)
+
+                this.$once('hook:beforeDestroy', this._toggleArrowNav)
+            } else {
+                document.removeEventListener('keydown', this._globalKeyListener)
+            }
+        },
+
+        _globalKeyListener($event = {}) {
+            const key = $event.key
+
+            if (
+                !($event.ctrlKey || $event.metaKey) ||
+                ['ArrowLeft', 'ArrowRight'].indexOf(key) < 0
+            )
+                return
+
+            $event.preventDefault()
+            $event.stopPropagation()
+
+            if (key === 'ArrowLeft' && this.prevPage !== null) {
+                this.$emit('click:page', this.prevPage)
+            } else if (key === 'ArrowRight' && this.nextPage !== null) {
+                this.$emit('click:page', this.nextPage)
+            }
         }
     }
 }

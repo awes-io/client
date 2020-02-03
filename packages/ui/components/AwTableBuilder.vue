@@ -68,6 +68,7 @@
             v-bind="pagination"
             :page="page"
             :limits="limitsMerged"
+            :arrow-nav="arrowNav"
             @click:page="page = $event"
             @click:limit="limit = $event"
             class="mt-4"
@@ -160,6 +161,15 @@ export default {
             validator(value) {
                 return ['10vh', '30vh', '50vh', '70vh'].includes(value)
             }
+        },
+
+        /**
+         * Should the page being switched on
+         * `CTRL + <-` and  `CTRL + ->`
+         */
+        arrowNav: {
+            type: Boolean,
+            default: true
         }
     },
 
