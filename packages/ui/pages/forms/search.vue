@@ -7,8 +7,8 @@
                 <AwSearch name="search" />
             </div>
         </AwGrid>
-        <div class="flex my-4">
-            <div class="w-full bg-gray-500 h-12">
+        <div class="mt-4">
+            <div class="w-full bg-gray-500">
                 <AwTable :rows="rows">
                     <AwTableCol field="one" />
                     <AwTableCol field="two with long name" title="Two" />
@@ -24,6 +24,10 @@
                     </AwTableCol>
                 </AwTable>
             </div>
+        </div>
+        <div class="mt-4">
+            <AwInput label="Test global key" />
+            <AwTextarea label="Test global key" class="mt-2" />
         </div>
     </div>
 </template>

@@ -103,7 +103,8 @@ export const AwUploader = {
 }
 
 export const AwSearch = {
-    text: 'Search'
+    text: 'Search',
+    keyBind: ' (Press "{key}" to focus)'
 }
 
 export default {
