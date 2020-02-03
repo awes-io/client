@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.48.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.47.1...@awes-io/ui@1.48.0) (2020-02-03)
+
+
+### Bug Fixes
+
+* **ui:** fix avatar path if null ([8491197](https://git.awescode.com/awes-io/ui/commits/84911979f43e22520e8bd3e99eacd47ed130e459))
+
+
+### Features
+
+* **ui:** global key bindings for search and pagination ([f49c660](https://git.awescode.com/awes-io/ui/commits/f49c660053e822a6b2d6da1ecfefd316e9a1c831))
+
+
+
+
+
 ## [1.47.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.47.0...@awes-io/ui@1.47.1) (2020-02-03)
 
 
