@@ -1,0 +1,9 @@
+# Common
+node_modules
+dist
+.nuxt
+coverage
+
+# Template modules
+nuxt/layouts/LayoutFrameCenter.vue
+nuxt/plugin.js
