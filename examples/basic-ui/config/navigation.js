@@ -17,7 +17,7 @@ export const navigation = [
     { title: 'Code', url: '/aw-code', description: '' },
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },
-    { title: 'Dropdowns', url: '/aw-dropdowns', description: '' },
+    { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
     { title: 'Form', url: '/aw-form', description: '' },
     { title: 'Grid', url: '/aw-grid', description: '' },
     { title: 'Icon', url: '/aw-icon', description: '' },
