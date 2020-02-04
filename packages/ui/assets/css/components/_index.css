@@ -13,5 +13,7 @@
 
 @import './modal.css';
 
+@import './toggler.css';
+
 /* last because of @keyframes lowers performance */
 @import './animation.css';

@@ -17,7 +17,7 @@ export const navigation = [
     { title: 'Code', url: '/aw-code', description: '' },
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },
-    { title: 'Dropdowns', url: '/aw-dropdowns', description: '' },
+    { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
     { title: 'Form', url: '/aw-form', description: '' },
     { title: 'Grid', url: '/aw-grid', description: '' },
     { title: 'Icon', url: '/aw-icon', description: '' },
@@ -35,5 +35,6 @@ export const navigation = [
     { title: 'Tab nav', url: '/aw-tab-nav', description: '' },
     { title: 'Table', url: '/aw-table', description: '' },
     { title: 'Timeline builder', url: '/aw-timeline-builder', description: '' },
+    { title: 'Toggler', url: '/aw-toggler', description: '' },
     { title: 'Uploader', url: '/aw-uploader', description: '' }
 ]

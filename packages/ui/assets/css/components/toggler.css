@@ -1,0 +1,9 @@
+.aw-toggler__content::before {
+    content: '';
+    @apply absolute w-0 h-0 top-0 border-muted-dark;
+    left: 0.75rem;
+    border-left: 0.75rem solid transparent;
+    border-right: 0.75rem solid transparent;
+    border-bottom-width: 0.75rem;
+    transform: translateY(-0.75rem);
+}
