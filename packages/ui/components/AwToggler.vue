@@ -1,16 +1,20 @@
 <template>
-    <div
-        ref="wrapper"
-        class="aw-toggler overflow-hidden"
-        :style="{ height: `${currentHeight}px` }"
+    <transition
+        name="collapse"
+        @enter="open"
+        @after-enter="close"
+        @leave="open"
+        @after-leave="close"
     >
-        <div
-            class="aw-toggler__content mt-3 bg-muted-dark rounded p-6 relative"
-        >
-            <!-- Content passed to component -->
-            <slot></slot>
+        <div v-show="show" ref="wrapper" class="aw-toggler overflow-hidden">
+            <div
+                class="aw-toggler__content mt-3 bg-muted-dark rounded p-6 relative"
+            >
+                <!-- Content passed to component -->
+                <slot></slot>
+            </div>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -25,39 +29,18 @@ export default {
         }
     },
 
-    data() {
-        return {
-            currentHeight: 0
-        }
-    },
-
-    watch: {
-        show(val) {
-            if (val) {
-                this.open()
-            } else {
-                this.close()
-            }
-        }
-    },
-
-    mounted() {
-        if (this.show) {
-            this.open()
-        }
-    },
-
     methods: {
         // @vuese
         // Used to manually open the toggler. E.g. `this.$refs.toggler.open()`
         open() {
-            this.currentHeight = this.$refs.wrapper.scrollHeight
+            const maxHeight = this.$refs.wrapper.scrollHeight
+            this.$refs.wrapper.style.maxHeight = `${maxHeight}px`
         },
 
         // @vuese
         // Used to manually close the toggler. E.g. `this.$refs.toggler.close()`
         close() {
-            this.currentHeight = 0
+            this.$refs.wrapper.style.maxHeight = null
         }
     }
 }
