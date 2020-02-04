@@ -3,7 +3,7 @@
         <!-- Content passed to component -->
         <slot></slot>
         <span
-            :class="[`bg-${props.color}`]"
+            :class="[`bg-${props.color || 'brand'}`]"
             class="
                 rounded-full py-1 px-2 mx-1 text-xs leading-none min-h-badge min-w-badge
                 inline-flex items-center justify-center font-semibold font-body

@@ -15,6 +15,13 @@
 
         <AwCodeSnippet v-text="defaultCode" class="mt-3" />
 
+        <h5>Badge colors:</h5>
+        <span v-for="color in colors" :key="color" class="mx-2">
+            <AwBadge :color="color" text="2">
+                {{ color || 'default' }}
+            </AwBadge>
+        </span>
+
         <h5>Badge icon:</h5>
         <AwBadge icon="search">
             Search
@@ -27,17 +34,6 @@
                 List of all available icons you can find here
             </AwLink>
         </div>
-
-        <h5>Badge colors:</h5>
-        <AwBadge
-            v-for="color in colors"
-            :key="color"
-            text="2"
-            :color="color"
-            class="mx-2"
-        >
-            {{ color || 'default' }}
-        </AwBadge>
     </AwPage>
 </template>
 
