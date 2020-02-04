@@ -45,7 +45,7 @@ Below is a collection of Vue **props** for the `AwAvatar` component.
 |src|Full URL to the picture|`String`|`false`|-|
 |name|User name|`String`|`true`|-|
 |size|Size of the image|`Number`|`false`|36|
-|type|Type of the rendered image. Values: 'initials', 'empty', 'no-img'|`String`|`false`|initials|
+|type|Type of the rendered image.|`String`|`false`|initials , empty, no-img|
 |isColored|To bring the color to the rounded background.|`Boolean`|`false`|-|
 
 <!-- @vuese:AwAvatar:props:end -->

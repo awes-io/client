@@ -25,3 +25,13 @@
 <!-- @vuese:AwChipSelect:events:end -->
 
 
+
+## Slots
+<!-- @vuese:AwChipSelect:slots:start -->
+|Name|Description|Default Slot Content|
+|---|---|---|
+|selected|-|-|
+|option|-|-|
+
+<!-- @vuese:AwChipSelect:slots:end -->
+                            
