@@ -1,5 +1,6 @@
 <template functional>
     <div class="aw-badge inline-flex items-center">
+        <!-- Content passed to component -->
         <slot></slot>
         <span
             :class="[`bg-${props.color}`]"
@@ -19,16 +20,19 @@ export default {
     name: 'AwBadge',
 
     props: {
+        // Text inside badge
         text: {
-            type: String,
+            type: [String, Number],
             default: ''
         },
 
+        // Icon name inside badge. See AwIcon component for available names
         icon: {
             type: String,
             default: ''
         },
 
+        // Badge background color
         color: {
             type: String,
             default: 'brand'
