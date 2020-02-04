@@ -2,9 +2,9 @@
     <transition
         name="collapse"
         @enter="open"
-        @after-enter="close"
-        @leave="open"
-        @after-leave="close"
+        @after-enter="removeMaxHeight"
+        @leave="close"
+        @after-leave="removeMaxHeight"
     >
         <div v-show="show" ref="wrapper" class="aw-toggler overflow-hidden">
             <div
@@ -30,16 +30,24 @@ export default {
     },
 
     methods: {
-        // @vuese
-        // Used to manually open the toggler. E.g. `this.$refs.toggler.open()`
         open() {
+            this.setMaxHeight()
+            // Fire when the toggler is opened
+            this.$emit('open')
+        },
+
+        close() {
+            this.setMaxHeight()
+            // Fire when the toggler is closed
+            this.$emit('close')
+        },
+
+        setMaxHeight() {
             const maxHeight = this.$refs.wrapper.scrollHeight
             this.$refs.wrapper.style.maxHeight = `${maxHeight}px`
         },
 
-        // @vuese
-        // Used to manually close the toggler. E.g. `this.$refs.toggler.close()`
-        close() {
+        removeMaxHeight() {
             this.$refs.wrapper.style.maxHeight = null
         }
     }
