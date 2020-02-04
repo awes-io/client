@@ -2,6 +2,7 @@ export const navigation = [
     { title: 'Accordion fold', url: '/aw-accordion-fold', description: '' },
     { title: 'Address', url: '/aw-address', description: '' },
     { title: 'Avatar', url: '/aw-avatar', description: '' },
+    { title: 'Badge', url: '/aw-badge', description: '' },
     { title: 'Button nav', url: '/aw-button-nav', description: '' },
     { title: 'Button', url: '/aw-button', description: '' },
     { title: 'Calendar', url: '/aw-calendar', description: '' },
