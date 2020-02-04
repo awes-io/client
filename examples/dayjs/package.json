@@ -1,0 +1,20 @@
+{
+  "name": "example-dayjs",
+  "version": "1.0.0",
+  "description": "Example project with dayjs module",
+  "author": "illjah42",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@awes-io/dayjs": "^0.1.0",
+    "@awes-io/ui": "^1.48.1",
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.5.0"
+  }
+}
