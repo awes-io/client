@@ -1,11 +1,15 @@
 {
     "name": "@awes-io/resize",
-    "version": "1.0.0",
-    "description": "Simple library to generate URL to Cloudflare Image Resizing",
+    "version": "1.0.1",
+    "description": "Cloudflare Image Resizing: simple API for URL generation.",
     "keywords": [
         "cloudflare",
         "resize",
+        "resizing",
+        "cropping",
         "crop",
+        "image",
+        "api",
         "awes-io"
     ],
     "scripts": {
@@ -22,11 +26,11 @@
     },
     "homepage": "https://www.awes.io",
     "bugs": {
-        "url": "https://github.com/awes-io/client/issues"
+        "url": "https://github.com/awes-io/resize/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git@git.awescode.com:awes-io/client.git"
+        "url": "git@github.com:awes-io/resize.git"
     },
     "license": "MIT",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
