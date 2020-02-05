@@ -84,7 +84,8 @@ export const AwSelect = {
 
 export const AwTableBuilder = {
     loading: 'Loading...',
-    empty: 'There are no data to show'
+    empty: 'There are no data to show',
+    'empty-filter': 'No results were found for your request'
 }
 
 export const AwTimelineBuilder = {

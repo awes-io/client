@@ -17,13 +17,23 @@
                                 class="block m-auto mb-4"
                             />
                         </slot>
-                        <!-- Headline customization in the empty block -->
-                        <slot name="empty-title">
+
+                        <!-- Headline customization in the empty block if watched params changed-->
+                        <slot v-if="isWatchParamsPresent" name="empty-filter">
+                            <!-- Text: "There are no data to show" -->
+                            <div class="text-disabled mb-4">
+                                {{ $t('AwTableBuilder.empty-filter') }}
+                            </div>
+                        </slot>
+
+                        <!-- Default headline customization in the empty block -->
+                        <slot v-if="!isWatchParamsPresent" name="empty-title">
                             <!-- Text: "There are no data to show" -->
                             <div class="text-disabled mb-4">
                                 {{ $t('AwTableBuilder.empty') }}
                             </div>
                         </slot>
+
                         <!-- You can use the slot to add a button or else -->
                         <slot name="empty-button">
                             <!-- `Empty` -->
@@ -229,6 +239,13 @@ export default {
 
         isEmpty() {
             return this.collection.models.length === 0
+        },
+
+        isWatchParamsPresent() {
+            if (!this.watchParams || !this.watchParams.length) {
+                return false
+            }
+            return this.watchParams.some(el => !!this.$route.query[el])
         },
 
         placeholderRows() {

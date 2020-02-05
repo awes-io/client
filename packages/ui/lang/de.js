@@ -39,7 +39,8 @@ export const AwSelect = {
 
 export const AwTableBuilder = {
     loading: 'Wird geladen...',
-    empty: 'Es sind keine Daten zum Anzeigen vorhanden.'
+    empty: 'Es sind keine Daten zum Anzeigen vorhanden.',
+    'empty-filter': 'Es wurden keine Ergebnisse für Ihre Anfrage gefunden'
 }
 
 export const AwSearch = {
