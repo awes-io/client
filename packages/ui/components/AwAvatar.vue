@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { split, take, join, map, compose } from 'rambdax'
 import AwIcon from './AwIcon.vue'
 
 export default {
@@ -66,7 +67,7 @@ export default {
         // User name
         name: {
             type: String,
-            required: true
+            default: ''
         },
         // Size of the image
         size: {
@@ -94,18 +95,8 @@ export default {
         return src
     },
     // Convert user name to 2 first letters
-    getLetters(name) {
-        const parts = name.split(/[ -]/)
-        let initials = ''
-        for (let i = 0; i < parts.length; i++) {
-            initials += parts[i].charAt(0)
-        }
-        if (initials.length > 3 && initials.search(/[A-Z]/) !== -1) {
-            initials = initials.replace(/[a-z]+/g, '')
-        }
-        initials = initials.substr(0, 2)
-        return initials
-    },
+    getLetters: compose(join(''), map(take(1)), take(2), split(/[ -]/)),
+
     // Get randome color from the preset list
     getColor(name) {
         const colors = [
