@@ -87,7 +87,7 @@ export default {
 
         _onEnterKeydownAction() {
             const submitBtn = this.$el.querySelector('[type="submit"]')
-            submitBtn.click()
+            if (submitBtn) submitBtn.click()
         },
 
         _submit() {
