@@ -1,7 +1,7 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 4 }">
-            <AwAvatar />
+            <AwAvatar name="Max Mustermann jr." />
         </AwGrid>
     </AwPage>
 </template>
