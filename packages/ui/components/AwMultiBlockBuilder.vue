@@ -59,10 +59,7 @@
         <slot name="save" v-bind="{ collectionChanged, collection }">
             <!-- `<button>Save</button>` -->
             <div class="mt-8">
-                <AwButton
-                    :disabled="!collectionChanged || collectionRequest"
-                    @click="collection.save()"
-                >
+                <AwButton :disabled="buttonDisabled" @click="collection.save()">
                     {{ $t('AwMultiBlockBuilder.save') }}
                 </AwButton>
             </div>
@@ -158,6 +155,10 @@ export default {
 
         collectionRequest() {
             return this.collection.saving || this.collection.loading
+        },
+
+        buttonDisabled() {
+            return !this.collectionChanged || this.collectionRequest
         }
     },
 
@@ -241,6 +242,7 @@ export default {
 
         // called from exterNextFieldMixin
         _onEnterKeydownAction() {
+            if (this.buttonDisabled) return
             this.collection.save()
         }
     }
