@@ -23,7 +23,7 @@
             @focus="isOpened = true"
             @blur="_onFocusOutside"
             @input="_applySearch"
-            @keydown.stop.enter="_selectOnEnter"
+            @keydown.enter="_selectOnEnter"
             @keyup.down.prevent="
                 _focusRef(
                     $refs.notEqual ||

@@ -31,8 +31,6 @@ export default {
                 this.$el.querySelectorAll(FIELDS_SELECTOR)
             )
 
-            console.log(FIELDS_SELECTOR)
-
             const index = elements.indexOf(target)
 
             if (index < 0) return
@@ -47,7 +45,6 @@ export default {
             ) {
                 this._onEnterKeydownAction()
             } else {
-                console.log('focus', elements[index + 1])
                 elements[index + 1].focus()
             }
         },
