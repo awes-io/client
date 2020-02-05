@@ -1689,6 +1689,14 @@
     js-yaml "^3.13.1"
     json5 "^2.1.0"
 
+"@kazupon/vue-i18n-loader@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@kazupon/vue-i18n-loader/-/vue-i18n-loader-0.5.0.tgz#64819fc9dbe21bac523e3436b7e15c32bcd33b92"
+  integrity sha512-Tp2mXKemf9/RBhI9CW14JjR9oKjL2KH7tV6S0eKEjIBuQBAOFNuPJu3ouacmz9hgoXbNp+nusw3MVQmxZWFR9g==
+  dependencies:
+    js-yaml "^3.13.1"
+    json5 "^2.1.1"
+
 "@lerna/add@3.20.0":
   version "3.20.0"
   resolved "https://registry.npmjs.org/@lerna/add/-/add-3.20.0.tgz#bea7edf36fc93fb72ec34cb9ba854c48d4abf309"
@@ -5817,7 +5825,7 @@ dateformat@^3.0.0:
   resolved "https://registry.npmjs.org/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
-dayjs@^1.8.17:
+dayjs@^1.8.19:
   version "1.8.19"
   resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.8.19.tgz#5117dc390d8f8e586d53891dbff3fa308f51abfe"
   integrity sha512-7kqOoj3oQSmqbvtvGFLU5iYqies+SqUiEGNT0UtUPPxcPYgY1BrkXR0Cq2R9HYSimBXN+xHkEN4Hi399W+Ovlg==
@@ -9340,7 +9348,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.1.0:
+json5@^2.1.0, json5@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/json5/-/json5-2.1.1.tgz#81b6cb04e9ba496f1c7005d07b4368a2638f90b6"
   integrity sha512-l+3HXD0GEI3huGq1njuqtzYK8OYJyXMkOLtQ53pjWh89tvWS2h6l+1zMkYWqlb57+SiQodKZyvMEFb2X+KrFhQ==
@@ -11068,6 +11076,20 @@ nuxt-i18n@^6.3.0, nuxt-i18n@^6.4.1:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
     "@kazupon/vue-i18n-loader" "^0.4.0"
+    cookie "^0.4.0"
+    is-https "^1.0.0"
+    js-cookie "^2.2.1"
+    vue-i18n "^8.12.0"
+    vue-i18n-extensions "^0.2.1"
+
+nuxt-i18n@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.npmjs.org/nuxt-i18n/-/nuxt-i18n-6.5.0.tgz#dfadf5f8a658f8f5f677c8cc6eb981431951977c"
+  integrity sha512-JNg5rJl/8/b5ruX1ZXPHGk2hXFFefaSgUgg19vaNPMpSWt4UqP2X47ShSv6UdRvUw8TZvcDjDBieZsyfsx+GEg==
+  dependencies:
+    "@babel/parser" "^7.5.5"
+    "@babel/traverse" "^7.5.5"
+    "@kazupon/vue-i18n-loader" "^0.5.0"
     cookie "^0.4.0"
     is-https "^1.0.0"
     js-cookie "^2.2.1"
