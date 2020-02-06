@@ -1,18 +1,18 @@
 <template>
     <AwPage :title="headline">
-        <h6>With name</h6>
+        <h3>With name</h3>
         <AwAvatar name="Max Mustermann jr." :size="50" />
 
         <AwCodeSnippet v-text="codeName" class="mt-3" />
 
-        <h6>With image</h6>
+        <h3>With image</h3>
         <AwAvatar
             :size="50"
             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
         />
         <AwCodeSnippet v-text="codeImage" class="mt-3" :size="50" />
 
-        <h6>In sizes</h6>
+        <h3>In sizes</h3>
 
         <p>You can set any size you want with size prop</p>
 
@@ -28,7 +28,7 @@
 
         <AwCodeSnippet v-text="codeSize" class="mt-3" />
 
-        <h6>Different types of rendered img</h6>
+        <h3>Different types of rendered img</h3>
 
         <AwGrid :col="{ md: 6 }">
             <AwAvatar name="Max Mustermann jr." type="no-img" :size="50" />
@@ -38,7 +38,7 @@
 
         <AwCodeSnippet v-text="codeImg" class="mt-3" />
 
-        <h6>Colored background</h6>
+        <h3>Colored background</h3>
 
         <AwGrid :col="{ md: 6 }">
             <AwAvatar name="Max Mustermann jr." :isColored="true" :size="50" />
