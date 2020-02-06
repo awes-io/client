@@ -1,0 +1,24 @@
+{
+    "name": "@awes-io/nuxt-i18n",
+    "version": "0.1.0",
+    "description": "Internationalization module for Awes.io",
+    "homepage": "https://www.awes.io",
+    "bugs": {
+        "url": "https://github.com/awes-io/client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@git.awescode.com:awes-io/collection.git"
+    },
+    "license": "MIT",
+    "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
+    "contributors": [
+        "illjah42 <ilya.kitayev@gmail.com>"
+    ],
+    "main": "src/index.js",
+    "dependencies": {
+        "axios": "^0.19.2",
+        "nuxt-i18n": "^6.5.0",
+        "rambdax": "^3.5.0"
+    }
+}

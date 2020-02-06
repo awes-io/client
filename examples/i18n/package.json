@@ -1,0 +1,22 @@
+{
+  "name": "example-nuxt-i18n",
+  "version": "1.0.0",
+  "description": "Example of @awes-io/nuxt-i18n usage",
+  "author": "illjah42",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@awes-io/dayjs": "*",
+    "@awes-io/nuxt-i18n": "*",
+    "@awes-io/ui": "*",
+    "express": "^4.17.1",
+    "nuxt": "^2.0.0",
+    "rambdax": "^3.5.0"
+  },
+  "devDependencies": {}
+}
