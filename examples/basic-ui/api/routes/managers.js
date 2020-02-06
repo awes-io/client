@@ -31,15 +31,21 @@ managers.use(
 managers.get('/', function(req, res) {
     const page = Number(req.query.page) || 1
     const limit = Number(req.query.limit) || 15
+    const search = req.query.search || ''
+    let data = managersCollection
+
+    if (search.length) {
+        data = managersCollection.filter(
+            mng =>
+                mng.first_name.toLowerCase().indexOf(search.toLowerCase()) > -1
+        )
+    }
 
     setTimeout(() => {
         res.json({
-            data: managersCollection.models.slice(
-                (page - 1) * limit,
-                page * limit
-            ),
+            data: data.models.slice((page - 1) * limit, page * limit),
             meta: {
-                total: managersCollection.models.length,
+                total: data.models.length,
                 per_page: limit
             }
         })
