@@ -1,8 +1,10 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 4 }">
-            <AwSwitcher />
+            <AwSwitcher label="Active" />
         </AwGrid>
+
+        <AwCodeSnippet v-text="code" class="mt-3" />
     </AwPage>
 </template>
 
@@ -11,7 +13,8 @@ export default {
     data() {
         return {
             title: 'AwSwitcher',
-            headline: this._getTitle('AwSwitcher')
+            headline: this._getTitle('AwSwitcher'),
+            code: '<AwSwitcher label="Active" />'
         }
     },
     head() {
