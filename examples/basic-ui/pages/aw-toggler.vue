@@ -1,5 +1,6 @@
 <template>
     <AwPage :title="headline">
+        <h3>Basic usage</h3>
         <AwButton @click="toggle" class="mb-3">
             Toggle
         </AwButton>
@@ -21,6 +22,19 @@
         </AwToggler>
 
         <AwCodeSnippet v-text="code" class="mt-3" />
+
+        <h3>Show on input</h3>
+
+        <AwInput v-model="inputValue" type="number" label="Price" />
+
+        <AwToggler :show="!!inputValue.length" class="mt-1">
+            <h6>Reason</h6>
+            <AwRadio v-model="disountReason" label="First" value="1" />
+            <AwRadio v-model="disountReason" label="Second" value="2" />
+            <AwRadio v-model="disountReason" label="Third" value="3" />
+        </AwToggler>
+
+        <AwCodeSnippet v-text="inputCode" class="mt-3" />
     </AwPage>
 </template>
 
@@ -34,9 +48,32 @@ export default {
             headline: this._getTitle('AwToggler'),
             isOpen: true,
             radioValue: '',
-            code: `<AwToggler :show="isOpen">
-    // ...content
-</AwToggler>`
+            inputValue: '',
+            disountReason: '1'
+        }
+    },
+
+    computed: {
+        code() {
+            const arr = [
+                '<AwToggler :show="isOpen">',
+                '   <!-- content -->',
+                '</AwToggler>`'
+            ]
+            return arr.join('\n')
+        },
+
+        inputCode() {
+            const arr = [
+                '<AwInput v-model="inputValue" label="Price" type="number"/>',
+                '<AwToggler :show="!!inputValue.length" class="mt-1">',
+                '   <h6>Reason</h6>',
+                '   <AwRadio v-model="disountReason" label="First" value="1" />',
+                '   <AwRadio v-model="disountReason" label="Second" value="2" />',
+                '   <AwRadio v-model="disountReason" label="Third" value="3" />',
+                '</AwToggler>'
+            ]
+            return arr.join('\n')
         }
     },
 
