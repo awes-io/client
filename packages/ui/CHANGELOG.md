@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.49.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.48.1...@awes-io/ui@1.49.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* **datejs:** package added to repository ([f2dfcb4](https://git.awescode.com/awes-io/ui/commits/f2dfcb4e9163afde10617d4a20b58c502ba761be))
+* **ui:** aw-avatar fix empty name ([d2b9d5a](https://git.awescode.com/awes-io/ui/commits/d2b9d5afb5a2bb6c10d1171a90985b3290db9ca6))
+* **ui:** change AwToggler animation ([1b4e092](https://git.awescode.com/awes-io/ui/commits/1b4e0926e904e0c418306095c13511cef9c3ceb8))
+* **ui:** change AwToggler styles ([ae3ae6a](https://git.awescode.com/awes-io/ui/commits/ae3ae6a62e340e1599c4e029aa7731415a62b104))
+* **ui:** fix focus on enter in aw-multi-block-buider ([3e1db0d](https://git.awescode.com/awes-io/ui/commits/3e1db0dea9b67bf27afe33cd1a493dcd3b2a098d))
+
+
+### Features
+
+* **ui:** AwToggler component added ([7fde282](https://git.awescode.com/awes-io/ui/commits/7fde2821908f9123345b0b50598d5fc83f131e75))
+* **ui:** AwToggler emit open\close events ([730ac01](https://git.awescode.com/awes-io/ui/commits/730ac01209effd1266abc7ba32cdbde3ed4db991))
+
+
+
+
+
 ## [1.48.1](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.48.0...@awes-io/ui@1.48.1) (2020-02-03)
 
 

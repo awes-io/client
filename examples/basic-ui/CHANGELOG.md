@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.45.3...basic-ui@1.46.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* **ui:** aw-avatar fix empty name ([d2b9d5a](https://git.awescode.com/awes-io/client/commits/d2b9d5afb5a2bb6c10d1171a90985b3290db9ca6))
+* **ui:** fix typo ([6e3e103](https://git.awescode.com/awes-io/client/commits/6e3e1036fcfac4e5d454528580fe29cdda826e5a))
+
+
+### Features
+
+* **ui:** AwToggler component added ([7fde282](https://git.awescode.com/awes-io/client/commits/7fde2821908f9123345b0b50598d5fc83f131e75))
+
+
+
+
+
 ## [1.45.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.45.2...basic-ui@1.45.3) (2020-02-03)
 
 **Note:** Version bump only for package basic-ui
