@@ -2,7 +2,7 @@
     <div class="relative">
         <div v-if="isEmpty && !collection.loading">
             <!-- Empty container, your can compleatly overwrite the block. -->
-            <slot name="empty-container">
+            <slot v-if="!isWatchParamsPresent" name="empty-container">
                 <!-- Block with icon, headline and slot for button. -->
                 <AwCard
                     class="flex items-center justify-center min-h-full mb-5"
@@ -18,19 +18,44 @@
                             />
                         </slot>
 
-                        <!-- Headline customization in the empty block if watched params changed-->
-                        <slot v-if="isWatchParamsPresent" name="empty-filter">
-                            <!-- Text: "There are no data to show" -->
-                            <div class="text-disabled mb-4">
-                                {{ $t('AwTableBuilder.empty-filter') }}
-                            </div>
-                        </slot>
-
-                        <!-- Default headline customization in the empty block -->
-                        <slot v-if="!isWatchParamsPresent" name="empty-title">
+                        <!-- Headline customization in the empty block -->
+                        <slot name="empty-title">
                             <!-- Text: "There are no data to show" -->
                             <div class="text-disabled mb-4">
                                 {{ $t('AwTableBuilder.empty') }}
+                            </div>
+                        </slot>
+
+                        <!-- You can use the slot to add a button or else -->
+                        <slot name="empty-button">
+                            <!-- `Empty` -->
+                        </slot>
+                    </div>
+                </AwCard>
+            </slot>
+
+            <!-- Empty container, your can compleatly overwrite the block. Shows when watch params is present un url -->
+            <slot v-if="isWatchParamsPresent" name="empty-filter-container">
+                <!-- Block with icon, headline and slot for button. -->
+                <AwCard
+                    class="flex items-center justify-center min-h-full mb-5"
+                    :class="`h-${defaultHeight}`"
+                >
+                    <div class="text-center">
+                        <!-- Icon customization. Leave empty if you would like to remove. -->
+                        <slot name="empty-icon">
+                            <!-- Empty SVG icon -->
+                            <AwSvgImage
+                                name="empty"
+                                class="block m-auto mb-4"
+                            />
+                        </slot>
+
+                        <!-- Headline customization in the empty filter block -->
+                        <slot name="empty-title">
+                            <!-- Text: "There are no data to show" -->
+                            <div class="text-disabled mb-4">
+                                {{ $t('AwTableBuilder.emptyFilter') }}
                             </div>
                         </slot>
 
