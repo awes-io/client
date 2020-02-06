@@ -53,6 +53,7 @@ export default {
     },
 
     props: {
+        // Value that checkbox emits when checked
         value: {
             type: String,
             default: 'on'

@@ -8,7 +8,7 @@
         <h3>With image</h3>
         <AwAvatar
             :size="50"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg"
         />
         <AwCodeSnippet v-text="codeImage" class="mt-3" :size="50" />
 
@@ -22,7 +22,7 @@
             <AwAvatar name="Max Mustermann jr." :size="56" />
             <AwAvatar
                 :size="70"
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg"
             />
         </AwGrid>
 
@@ -36,7 +36,7 @@
             <AwAvatar name="Max Mustermann jr." type="empty" :size="50" />
         </AwGrid>
 
-        <AwCodeSnippet v-text="codeImg" class="mt-3" />
+        <AwCodeSnippet v-text="codeRenderedImg" class="mt-3" />
 
         <h3>Colored background</h3>
 
@@ -56,7 +56,8 @@ export default {
             title: 'AwAvatar',
             headline: this._getTitle('AwAvatar'),
             codeName: '<AwAvatar name="Max Mustermann jr." />',
-            codeImage: '<AwAvatar src="image url here" />'
+            codeImage:
+                '\n\n<AwAvatar src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg" />'
         }
     },
 
@@ -69,12 +70,12 @@ export default {
                 '',
                 '<AwAvatar name="Max Mustermann jr." :size="53" />',
                 '',
-                '<AwAvatar :size="70" src="image url here" />'
+                '<AwAvatar :size="70" src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg" />'
             ]
             return arr.join('\n')
         },
 
-        codeImg() {
+        codeRenderedImg() {
             const arr = [
                 '<AwAvatar name="Max Mustermann jr." type="no-img" :size="50" />',
                 '',

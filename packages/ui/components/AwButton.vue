@@ -45,6 +45,7 @@ export default {
     _config,
 
     props: {
+        // Possible values: 'sm', 'md', 'lg'
         size: {
             type: String,
             default() {
@@ -52,6 +53,7 @@ export default {
             }
         },
 
+        // Background color of button. Possible values: 'info', 'success', 'warning', 'error'
         color: {
             type: String,
             default() {
@@ -59,6 +61,7 @@ export default {
             }
         },
 
+        // Possible values: outline, ghost
         theme: {
             type: String,
             default() {
@@ -66,6 +69,7 @@ export default {
             }
         },
 
+        // Name of icon in button. Icon placed before text
         icon: {
             type: String,
             default: ''

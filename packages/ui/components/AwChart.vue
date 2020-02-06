@@ -13,6 +13,7 @@ export default {
     name: 'AwChart',
 
     props: {
+        // Components uses same structure as chart.js (https://www.chartjs.org/docs/2.9.3/)
         data: {
             type: Object,
             required: true
@@ -24,7 +25,7 @@ export default {
         },
 
         options: Object,
-
+        // List of all types - https://www.chartjs.org/docs/2.9.3/charts/
         type: {
             type: String,
             default: 'line'
