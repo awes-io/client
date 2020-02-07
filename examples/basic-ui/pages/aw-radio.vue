@@ -9,13 +9,13 @@
                 <AwRadio
                     v-model="radio"
                     label="Radio error"
-                    :error="radio !== 'error' && inputError"
+                    :error="radio !== 'error' ? inputError : ''"
                     value="error"
                 />
                 <AwRadio
                     v-model="radio"
                     label="Radio disabled"
-                    value="two"
+                    value="three"
                     disabled
                 />
             </div>

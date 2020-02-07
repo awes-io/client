@@ -13,15 +13,14 @@
 
         <AwSwitcher label="Set value to 'value'" v-model="optionValue" />
 
-        <div class="content mt-4 -mx-2 flex">
-            <div class="md:w-1/2 px-2">
-                <p><strong>Selected:</strong></p>
-                <pre>{{ selected }}</pre>
-            </div>
-            <div class="md:w-1/2 px-2">
-                <p><strong>Markup example:</strong></p>
-                <pre>{{ markup }}</pre>
-            </div>
+        <div class="md:w-1/2 px-2 mt-4">
+            <p><strong>Selected:</strong></p>
+            <pre>{{ selected }}</pre>
+        </div>
+
+        <div class="px-2 mt-4">
+            <p><strong>Markup example:</strong></p>
+            <AwCodeSnippet v-text="markup" />
         </div>
     </AwPage>
 </template>
@@ -66,11 +65,14 @@ export default {
         },
 
         markup() {
-            return `<AwSelect
-    label="Select something"
-    :options="[{text: 'one', value: 1}, {text: 'two', value: 2}, ... ]"
-    option-label="text"
-${this.optionValue ? '    option-value="value"\n/>' : '/>'}`
+            const arr = [
+                '<AwSelect',
+                '   label="Select something"',
+                "   :options=\"[{text: 'one', value: 1}, {text: 'two', value: 2}, ... ]\"",
+                '   option-label="text"',
+                `${this.optionValue ? '   option-value="value"\n/>' : '/>'}`
+            ]
+            return arr.join('\n')
         }
     },
 
