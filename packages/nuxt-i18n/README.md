@@ -1,4 +1,4 @@
-# Awes.io Models and Collections abstract layer
+# Awes.io module for loading translations
 
 Based on [nuxt-i18n](https://nuxt-community.github.io/nuxt-i18n/)
 

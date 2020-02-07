@@ -1,7 +1,7 @@
 {
     "name": "@awes-io/nuxt-i18n",
     "version": "0.1.0",
-    "description": "Internationalization module for Awes.io",
+    "description": "Awes.io module for loading translations",
     "homepage": "https://www.awes.io",
     "bugs": {
         "url": "https://github.com/awes-io/client/issues"
