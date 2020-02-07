@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.47.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.46.0...basic-ui@1.47.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* **ui:** AwTableBuilder replace empty-filter slot with empty-filter-container slot ([2f8fc42](https://git.awescode.com/awes-io/client/commits/2f8fc42d35cecee6076b84d444ddba5a99370042))
+
+
+### Features
+
+* **basic-ui:** add api filter based on search param ([920f5ce](https://git.awescode.com/awes-io/client/commits/920f5ce69a524db4e85f97d27500de35d98b98d3))
+* **ui:** add empty-filter slot to AwTableBuilder ([7b02daa](https://git.awescode.com/awes-io/client/commits/7b02daa302cd824235781cc7322216591a2c35e6))
+
+
+
+
+
 # [1.46.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.45.3...basic-ui@1.46.0) (2020-02-06)
 
 

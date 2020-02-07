@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.9](https://github.com/awes-io/client/compare/@awes-io/vue-mc@0.2.8...@awes-io/vue-mc@0.2.9) (2020-02-07)
+
+
+### Bug Fixes
+
+* **datejs:** package added to repository ([f2dfcb4](https://github.com/awes-io/client/commit/f2dfcb4e9163afde10617d4a20b58c502ba761be))
+
+
+
+
+
 ## [0.2.8](https://git.awescode.com/awes-io/collection/compare/@awes-io/vue-mc@0.2.7...@awes-io/vue-mc@0.2.8) (2020-02-03)
 
 

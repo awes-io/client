@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.50.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.49.0...@awes-io/ui@1.50.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* **ui:** AwTableBuilder replace empty-filter slot with empty-filter-container slot ([2f8fc42](https://github.com/awes-io/client/commit/2f8fc42d35cecee6076b84d444ddba5a99370042))
+
+
+### Features
+
+* **ui:** add empty-filter slot to AwTableBuilder ([7b02daa](https://github.com/awes-io/client/commit/7b02daa302cd824235781cc7322216591a2c35e6))
+
+
+
+
+
 # [1.49.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.48.1...@awes-io/ui@1.49.0) (2020-02-06)
 
 
