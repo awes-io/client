@@ -39,6 +39,7 @@ export default {
 // nuxt.config.js
 
 export default {
+    modules: ['@awes-io/dayjs'],
     awesIo: {
         // default configuration
         dayjs: {
