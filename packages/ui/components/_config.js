@@ -22,22 +22,34 @@ export const AwDropdown = {
     baseClass: 'aw-dropdown',
     popperOptions: {
         placement: 'bottom-start',
-        modifiers: {
-            arrow: {
+        modifiers: [
+            {
+                name: 'arrow',
+                enabled: true
+            },
+            {
+                name: 'flip',
+                options: {
+                    padding: 0,
+                    behavior: 'flip',
+                    boundariesElement: 'scrollParent'
+                }
+            },
+            {
+                name: 'preventOverflow',
                 enabled: false
             },
-            flip: {
-                padding: 0,
-                behavior: 'flip',
-                boundariesElement: 'scrollParent'
-            },
-            preventOverflow: {
+            {
+                name: 'hide',
                 enabled: false
             },
-            hide: {
-                enabled: false
+            {
+                name: 'computeStyles',
+                options: {
+                    adaptive: false
+                }
             }
-        }
+        ]
     }
 }
 
