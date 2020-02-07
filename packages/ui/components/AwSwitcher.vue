@@ -26,6 +26,7 @@
                 v-if="!!label"
                 class="aw-switch-field__label"
                 :for="id || defaultId"
+                @click.prevent
             >
                 <slot name="label" v-bind="{ label, value, isChecked }">
                     {{ label }}
