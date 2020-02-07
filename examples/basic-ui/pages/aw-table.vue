@@ -44,13 +44,13 @@
 
             <h6>Filter by first name</h6>
 
-            <AwSearch name="search" class="my-3"/>
+            <AwSearch name="search" class="my-3" />
 
             <AwTableBuilder
                 @click:row="clickRow"
                 :collection="managers"
                 :watchParams="['search']"
-                defaultHeight="70vh"
+                defaultHeight="50vh"
             >
                 <AwTableCol vertical-align="top" field="id" />
 

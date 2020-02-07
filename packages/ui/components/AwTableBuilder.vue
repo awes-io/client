@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <div v-if="isEmpty && !collection.loading">
-            <!-- Empty container, your can compleatly overwrite the block. -->
+            <!-- The empty container. Will be shown if the data (without filters) is empty. Your can compleatly overwrite the block. -->
             <slot v-if="!isWatchParamsPresent" name="empty-container">
                 <!-- Block with icon, headline and slot for button. -->
                 <AwCard
@@ -34,7 +34,7 @@
                 </AwCard>
             </slot>
 
-            <!-- Empty container, your can compleatly overwrite the block. Shows when watch params is present un url -->
+            <!-- The empty container if filtered response is empty. Your can compleatly overwrite the block. Shows when watch params is present un url -->
             <slot v-if="isWatchParamsPresent" name="empty-filter-container">
                 <!-- Block with icon, headline and slot for button. -->
                 <AwCard
@@ -43,7 +43,7 @@
                 >
                     <div class="text-center">
                         <!-- Icon customization. Leave empty if you would like to remove. -->
-                        <slot name="empty-icon">
+                        <slot name="empty-filter-icon">
                             <!-- Empty SVG icon -->
                             <AwSvgImage
                                 name="empty"
@@ -52,7 +52,7 @@
                         </slot>
 
                         <!-- Headline customization in the empty filter block -->
-                        <slot name="empty-title">
+                        <slot name="empty-filter-title">
                             <!-- Text: "There are no data to show" -->
                             <div class="text-disabled mb-4">
                                 {{ $t('AwTableBuilder.emptyFilter') }}
@@ -60,7 +60,7 @@
                         </slot>
 
                         <!-- You can use the slot to add a button or else -->
-                        <slot name="empty-button">
+                        <slot name="empty-filter-button">
                             <!-- `Empty` -->
                         </slot>
                     </div>
@@ -74,7 +74,7 @@
             ref="table"
             key="table"
             :rows="items"
-            :style="collection.loading ? 'filter: blur(2px);' : null"
+            :style="collection.loading ? 'filter: blur(3px);' : null"
             :vertical-align="verticalAlign"
             v-on="tableListeners"
         >
@@ -113,8 +113,8 @@
         <div
             v-if="collection.loading"
             class="absolute inset-0 flex items-center justify-center"
+            :class="`h-${defaultHeight}`"
         >
-            <div class="absolute inset-0 p-8 bg-surface opacity-50"></div>
             <!-- Customization of loading block -->
             <slot name="loading">
                 <!-- Default loading block -->
