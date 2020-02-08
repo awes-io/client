@@ -5,7 +5,20 @@ Based on [dayjs](https://github.com/iamkun/dayjs/)
 ## Basic usage
 
 1. Install module `yarn add @awes-io/dayjs`
-2. Now you are ready to use it
+2. Add module to `nuxt.config.js`
+
+```javascript
+// nuxt.config.js
+
+export default {
+    modules: [
+        // ... some other modules
+        '@awes-io/dayjs'
+    ]
+}
+```
+
+3. Now you are ready to use it
 
 By default, the module will parse `i18n.locales` in `nuxt.config.js` to load additional localization
 
@@ -39,7 +52,11 @@ export default {
 // nuxt.config.js
 
 export default {
-    modules: ['@awes-io/dayjs'],
+    modules: [
+        // ... some other modules
+        '@awes-io/dayjs'
+    ],
+
     awesIo: {
         // default configuration
         dayjs: {
@@ -60,6 +77,11 @@ You may provide default format for parsing and formatting string dates, like thi
 
 ```javascript
 export default {
+    modules: [
+        // ... some other modules
+        '@awes-io/dayjs'
+    ],
+
     awesIo: {
         dayjs: {
             // parse and format...
@@ -79,6 +101,11 @@ To add more plugins, pass an array to `plugins` property, they will be merged wi
 
 ```javascript
 export default {
+    modules: [
+        // ... some other modules
+        '@awes-io/dayjs'
+    ],
+
     awesIo: {
         dayjs: {
             plugins: [
