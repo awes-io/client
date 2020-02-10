@@ -1,4 +1,5 @@
 export default {
+    mode: 'spa',
     head: {
         link: [
             {

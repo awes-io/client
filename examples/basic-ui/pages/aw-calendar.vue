@@ -1,7 +1,7 @@
 <template>
     <AwPage :title="headline">
-        <AwGrid :col="{ md: 4 }">
-            <AwCalendar />
+        <AwGrid :col="{ lg: 2 }">
+            <AwCalendar v-model="date" />
         </AwGrid>
     </AwPage>
 </template>
@@ -11,7 +11,8 @@ export default {
     data() {
         return {
             title: 'AwCalendar',
-            headline: this._getTitle('AwCalendar')
+            headline: this._getTitle('AwCalendar'),
+            date: new Date()
         }
     },
     head() {

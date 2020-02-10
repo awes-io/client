@@ -51,12 +51,13 @@
                 <AwSwitcher
                     v-model="switcher"
                     label="Checkbox error"
+                    value="three"
                     :error="!switcher.includes('error') && inputError"
                 />
                 <AwSwitcher
                     v-model="switcher"
                     label="Checkbox disabled"
-                    value="two"
+                    value="four"
                     disabled
                 />
             </div>
