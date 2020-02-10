@@ -38,6 +38,7 @@ export default {
                 return ''
             }
         },
+        // If present transforms title into link with given href
         link: {
             type: String,
             default() {
