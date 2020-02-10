@@ -41,7 +41,7 @@
                 v-if="!$options.getSrc(props.src) && props.type === 'no-img'"
                 class="absolute text-surface top-1/2 left-1/2 text-xs"
                 style="transform: translate(-50%, -50%);"
-                name="user"
+                name="user-solid"
             />
         </slot>
     </span>
@@ -100,21 +100,26 @@ export default {
     // Get randome color from the preset list
     getColor(name) {
         const colors = [
-            '#FF5722',
-            '#FFA726',
-            '#FFCA28',
-            '#CDDC39',
-            '#8BC34A',
-            '#4CAF50',
-            '#009688',
-            '#00ACC1',
-            '#03A9F4',
-            '#2196F3',
-            '#3F51B5',
-            '#673AB7',
-            '#9C27B0',
-            '#EC407A',
-            '#F44336'
+            '#E0AB61',
+            '#E29D5D',
+            '#E68262',
+            '#E45284',
+            '#DF54BD',
+            '#DA61D9',
+            '#BF55CF',
+            '#AF57DB',
+            '#9C55D3',
+            '#834EE3',
+            '#634EE3',
+            '#594FCF',
+            '#6086E3',
+            '#66B9E4',
+            '#66C3D1',
+            '#66C7B9',
+            '#5CBC98',
+            '#949799',
+            '#798288',
+            '#9A6F66'
         ]
         return colors[name.length % colors.length]
     }

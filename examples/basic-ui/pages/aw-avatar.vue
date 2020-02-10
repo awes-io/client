@@ -18,8 +18,8 @@
 
         <AwGrid :col="{ md: 6 }">
             <AwAvatar name="Max Mustermann jr." :size="36" />
-            <AwAvatar name="Max Mustermann jr." :size="46" />
-            <AwAvatar name="Max Mustermann jr." :size="56" />
+            <AwAvatar name="Mario Speedwagon" :size="46" />
+            <AwAvatar name="Petey Cruiser" :size="56" />
             <AwAvatar
                 :size="70"
                 src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg"
@@ -32,8 +32,8 @@
 
         <AwGrid :col="{ md: 6 }">
             <AwAvatar name="Max Mustermann jr." type="no-img" :size="50" />
-            <AwAvatar name="Max Mustermann jr." type="initials" :size="50" />
-            <AwAvatar name="Max Mustermann jr." type="empty" :size="50" />
+            <AwAvatar name="Mario Speedwagon" type="initials" :size="50" />
+            <AwAvatar name="Petey Cruiser" type="empty" :size="50" />
         </AwGrid>
 
         <AwCodeSnippet v-text="codeRenderedImg" class="mt-3" />
@@ -41,8 +41,8 @@
         <h3>Colored background</h3>
 
         <AwGrid :col="{ md: 6 }">
-            <AwAvatar name="Max Mustermann jr." :isColored="true" :size="50" />
-            <AwAvatar name="Max Mustermann jr." :isColored="false" :size="50" />
+            <AwAvatar name="Mario Speedwagon" :isColored="true" :size="50" />
+            <AwAvatar name="Mario Speedwagon" :isColored="false" :size="50" />
         </AwGrid>
 
         <AwCodeSnippet v-text="codeColor" class="mt-3" />
@@ -66,9 +66,9 @@ export default {
             const arr = [
                 '<AwAvatar name="Max Mustermann jr." :size="36" />',
                 '',
-                '<AwAvatar name="Max Mustermann jr." :size="48" />',
+                '<AwAvatar name="Mario Speedwagon" :size="48" />',
                 '',
-                '<AwAvatar name="Max Mustermann jr." :size="53" />',
+                '<AwAvatar name="Petey Cruiser" :size="53" />',
                 '',
                 '<AwAvatar :size="70" src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg" />'
             ]
@@ -88,9 +88,9 @@ export default {
 
         codeColor() {
             const arr = [
-                '<AwAvatar name="Max Mustermann jr." :isColored="true" />',
+                '<AwAvatar name="Mario Speedwagon" :isColored="true" />',
                 '',
-                '<AwAvatar name="Max Mustermann jr." :isColored="false" />'
+                '<AwAvatar name="Mario Speedwagon" :isColored="false" />'
             ]
             return arr.join('\n')
         }
