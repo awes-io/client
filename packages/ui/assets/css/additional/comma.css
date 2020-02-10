@@ -1,0 +1,32 @@
+.comma:not(:first-child) {
+    margin-left: -0.3em;
+}
+
+/* next 2 rules are for spacing when the first .comma is empty too */
+.comma:first-child:empty ~ .comma:not(:empty) {
+    margin-left: 0;
+}
+
+.comma:first-child:empty ~ .comma:not(:empty) ~ .comma:not(:empty) {
+    margin-left: -0.3em;
+}
+
+.comma:empty {
+    display: none;
+}
+
+.comma:not(:first-child):before {
+    content: ", ";
+}
+
+.comma:not(:first-child):before {
+    content: ", ";
+}
+
+.comma:empty + .comma:not(:empty):before {
+    content : "";
+}
+
+.comma:not(:empty) ~ .comma:empty + .comma:not(:empty):before {
+    content : ", ";
+}
