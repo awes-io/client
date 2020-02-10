@@ -66,3 +66,5 @@ export { default as AwUploaderFiles } from './AwUploaderFiles.vue'
 export { default as AwUserpic } from './AwUserpic.vue'
 
 export { default as AwToggler } from './AwToggler.vue'
+
+export { default as AwContextMenu } from './AwContextMenu.vue'
