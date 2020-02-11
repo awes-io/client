@@ -14,7 +14,7 @@ module.exports = {
             surface: '#fff',
             muted: '#f8f8f8',
             'muted-dark': '#e8e9eb',
-            disabled: '#999999',
+            disabled: '#949799',
             overlay: '#222',
             brand: '#37295e',
             success: '#7fc876',

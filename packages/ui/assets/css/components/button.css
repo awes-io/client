@@ -8,8 +8,7 @@
         outline: none;
     }
 
-    &__overlay,
-    &__ripple {
+    &__overlay {
         @apply absolute inset-0 overflow-hidden;
     }
 
@@ -19,34 +18,12 @@
         transition: 100ms opacity;
     }
 
-    &__ripple,
-    &__ripple:after {
-        pointer-events: none;
-        backface-visibility: hidden;
-    }
-
-    &__ripple:after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 200%;
-        background-color: currentColor;
-        border-radius: 50%;
-        padding-bottom: 200%;
-        left: var(--ripple-x, 50%);
-        top: var(--ripple-y, 50%);
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1);
-        visibility: hidden;
-        transform-origin: center;
-    }
-
     &__content {
         @apply relative;
         transition: 100ms opacity;
     }
 
-    &:hover > &__overlay {
+    &:not(:disabled):hover > &__overlay {
         opacity: 0.1;
     }
 
@@ -54,37 +31,12 @@
         opacity: 0.15;
     }
 
-
-    /**
-     * JS ripple
-     */
-    &.is-pressed > &__ripple:after {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: .3;
-        transition: none;
-    }
-
-    &.has-ripple > &__ripple:after {
-        visibility: visible;
-        transition: 0ms visiblity, 350ms transform ease-out-sine, 350ms opacity ease-out-sine;
-    }
-
-    &.is-pressed.has-ripple > &__ripple:after {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: .3;
-    }
-
-    &:not(.is-pressed).has-ripple > &__ripple:after {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0;
-    }
-
     /**
      * Sizes
      */
     &_xs {
-        @apply px-2 text-xxs;
-        min-width: 90px;
+        @apply px-4;
+        font-size: 0.625rem;
     }
 
     &_xs.theme-icon {
@@ -93,8 +45,7 @@
     }
 
     &_sm {
-        @apply px-3 py-1;
-        min-width: 90px;
+        @apply px-5 py-1;
     }
 
     &_sm.theme-icon {
@@ -103,8 +54,7 @@
     }
 
     &_md {
-        @apply px-4 py-3;
-        min-width: 120px;
+        @apply px-6 py-2 text-sm;
     }
 
     &_md.theme-icon {
@@ -113,8 +63,7 @@
     }
 
     &_lg {
-        @apply px-6 py-4;
-        min-width: 150px;
+        @apply px-8 py-3 text-sm;
     }
 
     &_lg.theme-icon {
@@ -126,24 +75,29 @@
      * Disabled style
      */
 
-    &[disabled] {
-        cursor: not-allowed;
-        user-select: none;
-        opacity: .5;
+    &[disabled],
+    &.is-loading {
+        cursor: not-allowed!important;
+        user-select: none!important;
     }
+
+    &:not(.is-loading)[disabled] {
+        color: theme('colors.disabled') !important;
+        background-color: rgba(148,151,153, .3) !important;
+    }
+
+    /**
+     * Loading styles
+     */
+
+     &.is-loading {
+        @apply opacity-50;
+     }
+
+     &.is-loading rect {
+        fill: currentColor;
+     }
 }
-
-
-/**
- * No-JS ripple
- */
-
-.no-js .aw-button:active > .aw-button__ripple:after {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: .5;
-    transition: none;
-}
-
 
 /**
  * Colors
@@ -179,17 +133,14 @@
     &.theme-ghost,
     &.theme-solid &__overlay,
     &.theme-outline &__overlay,
-    &.theme-ghost &__overlay,
-    &.theme-solid &__ripple,
-    &.theme-outline &__ripple,
-    &.theme-ghost &__ripple {
+    &.theme-ghost &__overlay {
         @apply rounded;
     }
 
     &.theme-solid {
         @apply shadow-md;
 
-        &:hover {
+        &:not(:disabled):hover {
             @apply shadow-lg;
         }
     }
@@ -230,14 +181,6 @@
     &.theme-icon &__overlay {
         @apply hidden;
     }
-
-    /* &.theme-icon &__ripple {
-        @apply rounded-full;
-        left: .25rem;
-        top: .25rem;
-        width: calc(100% - .5rem);
-        height: calc(100% - .5rem);
-    } */
 
     &.theme-toggle &__content,
     &.theme-icon &__content {
