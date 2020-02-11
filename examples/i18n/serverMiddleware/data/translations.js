@@ -1,3 +1,5 @@
+import { forEach, keys, pathOr } from 'rambdax'
+
 export const LOCALE_DEFAULT = 'en'
 
 export const en = {
@@ -40,7 +42,7 @@ export const ru = {
     auth: {
         failed: 'Эти учетные данные не соответствуют нашим записям.',
         throttle:
-            'Слишком много попыток входа в систему. Пожалуйста, повторите попытку через {секунд} секунд.'
+            'Слишком много попыток входа в систему. Пожалуйста, повторите попытку через {seconds} секунд.'
     },
     statuses: {
         new: 'Новая запись',
@@ -56,7 +58,8 @@ export const uk = {
         password:
             'Паролі повинні містити не менше шести символів і відповідати підтвердження.',
         reset: 'Ваш пароль був скинутий!',
-        sent: 'Ми відправили вам посилання для скидання пароля по електронній пошті!',
+        sent:
+            'Ми відправили вам посилання для скидання пароля по електронній пошті!',
         token: 'Цей скидання пароля: токен недійсний.',
         user:
             'Ми не можемо знайти користувача з такою адресою електронної пошти.',
@@ -66,7 +69,7 @@ export const uk = {
     auth: {
         failed: 'Ці облікові дані не відповідають нашим записам.',
         throttle:
-            'Занадто багато спроб входу в систему. Будь ласка, спробуйте ще раз через {секунд} секунд. '
+            'Занадто багато спроб входу в систему. Будь ласка, спробуйте ще раз через {seconds} секунд. '
     },
     statuses: {
         new: 'Новий запис',
@@ -77,4 +80,31 @@ export const uk = {
     }
 }
 
-export const LOCALES = { en, ru, uk }
+export const de = {}
+
+export const sortFn = (a, b) => a.name < b.name
+
+export const LOCALES = { en, ru, uk, de }
+
+function getFlatLocales() {
+    const _locales = []
+    let id = 1
+
+    forEach((group, groupKey) => {
+        forEach((val, _key) => {
+            const name = `${groupKey}.${_key}`
+            const value = {}
+            forEach(locale => {
+                const _val = pathOr('', name, LOCALES[locale])
+                if (_val) {
+                    value[locale] = _val
+                }
+            }, keys(LOCALES))
+            _locales.push({ id: id++, name, value })
+        }, group)
+    }, LOCALES[LOCALE_DEFAULT])
+
+    return _locales.sort(sortFn)
+}
+
+export let LOCALES_FLAT = getFlatLocales()
