@@ -2,17 +2,19 @@
     <AwPage :title="title">
         <h3>Comma</h3>
 
-        <p><code>.empty</code> class adds comma before current element</p>
+        <p><code>.comma</code> class adds comma before current element</p>
 
         <h5>Example:</h5>
 
-        <span
-            v-for="(item, index) in items"
-            :key="item"
-            :class="{ comma: index !== 0 }"
-        >
-            {{ item }}
-        </span>
+        <div>
+            <span
+                v-for="(item, index) in items"
+                :key="item"
+                class="comma"
+            >
+                {{ item }}
+            </span>
+        </div>
 
         <AwCodeSnippet v-text="codeComma" class="mt-3" />
     </AwPage>
@@ -41,14 +43,16 @@ export default {
     computed: {
         codeComma() {
             const arr = [
-                '<span>Lorem</span>',
-                '<span class="comma">ipsum</span>',
-                '<span class="comma">dolor</span>',
-                '<span class="comma">sit</span>',
-                '<span class="comma">amet</span>',
-                '<span class="comma">consectetur</span>',
-                '<span class="comma">adipisicing</span>',
-                '<span class="comma">elit</span>'
+                '<div>',
+                '   <span class="comma">Lorem</span>',
+                '   <span class="comma">ipsum</span>',
+                '   <span class="comma">dolor</span>',
+                '   <span class="comma">sit</span>',
+                '   <span class="comma">amet</span>',
+                '   <span class="comma">consectetur</span>',
+                '   <span class="comma">adipisicing</span>',
+                '   <span class="comma">elit</span>',
+                '</div>'
             ]
             return arr.join('\n')
         }
