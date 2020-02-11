@@ -1,4 +1,5 @@
 export const navigation = [
+    { title: 'Additional', url: '/additional', description: '' },
     { title: 'Accordion fold', url: '/aw-accordion-fold', description: '' },
     { title: 'Address', url: '/aw-address', description: '' },
     { title: 'Avatar', url: '/aw-avatar', description: '' },
