@@ -1,4 +1,4 @@
-import { pathOr, mergeDeep } from 'rambdax'
+import { pathOr, mergeDeep, includes } from 'rambdax'
 import { Router, urlencoded } from 'express'
 import {
     LOCALES,
@@ -36,12 +36,18 @@ route.get('/', (req, res) => {
 route.get('/edit', (req, res) => {
     const page = parseInt(req.query.page) || 1
     const limit = parseInt(req.query.limit) || 15
+    const search = pathOr('', 'query.search', req)
+    let locales = LOCALES_FLAT
+
+    if (search) {
+        locales = locales.filter(({ name }) => includes(search, name))
+    }
 
     res.json({
         success: true,
-        data: LOCALES_FLAT.slice((page - 1) * limit, page * limit),
+        data: locales.slice((page - 1) * limit, page * limit),
         meta: {
-            total: LOCALES_FLAT.length,
+            total: locales.length,
             current_page: page,
             per_page: limit
         }
