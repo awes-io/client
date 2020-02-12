@@ -8,7 +8,7 @@
         <h3>With image</h3>
         <AwAvatar
             :size="50"
-            src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg"
+            :src="require('@/assets/img/avatar_placeholder.png')"
         />
         <AwCodeSnippet v-text="codeImage" class="mt-3" :size="50" />
 
@@ -17,12 +17,12 @@
         <p>You can set any size you want with size prop</p>
 
         <AwGrid :col="{ md: 6 }">
-            <AwAvatar name="Max Mustermann jr." :size="36" />
-            <AwAvatar name="Mario Speedwagon" :size="46" />
-            <AwAvatar name="Petey Cruiser" :size="56" />
+            <AwAvatar name="Max Mustermann jr." :size="20" />
+            <AwAvatar name="Mario Speedwagon" :size="30" />
+            <AwAvatar name="Petey Cruiser" :size="40" />
             <AwAvatar
-                :size="70"
-                src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg"
+                :size="50"
+                :src="require('@/assets/img/avatar_placeholder.png')"
             />
         </AwGrid>
 
@@ -56,21 +56,17 @@ export default {
             title: 'AwAvatar',
             headline: this._getTitle('AwAvatar'),
             codeName: '<AwAvatar name="Max Mustermann jr." />',
-            codeImage:
-                '\n\n<AwAvatar src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg" />'
+            codeImage: '\n\n<AwAvatar src="image url here" />'
         }
     },
 
     computed: {
         codeSize() {
             const arr = [
-                '<AwAvatar name="Max Mustermann jr." :size="36" />',
-                '',
-                '<AwAvatar name="Mario Speedwagon" :size="48" />',
-                '',
-                '<AwAvatar name="Petey Cruiser" :size="53" />',
-                '',
-                '<AwAvatar :size="70" src="https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg" />'
+                '<AwAvatar name="Max Mustermann jr." :size="20" />',
+                '\n<AwAvatar name="Mario Speedwagon" :size="30" />',
+                '\n<AwAvatar name="Petey Cruiser" :size="40" />',
+                '\n<AwAvatar :size="50" src="image url here" />'
             ]
             return arr.join('\n')
         },

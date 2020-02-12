@@ -24,7 +24,7 @@
                 :height="props.size"
                 :src="props.src"
                 :alt="props.name || props.src"
-                class="rounded-full"
+                class="rounded-full min-h-full min-w-full"
             />
         </slot>
         <span
@@ -99,6 +99,7 @@ export default {
 
     // Get randome color from the preset list
     getColor(name) {
+        let hash = 0
         const colors = [
             '#E0AB61',
             '#E29D5D',
@@ -117,11 +118,16 @@ export default {
             '#66C3D1',
             '#66C7B9',
             '#5CBC98',
-            '#949799',
-            '#798288',
             '#9A6F66'
         ]
-        return colors[name.length % colors.length]
+        if (!name.length) return colors[0]
+        for (var i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash)
+            hash = hash & hash
+        }
+        hash = ((hash % colors.length) + colors.length) % colors.length
+        console.log(hash)
+        return colors[hash]
     }
 }
 </script>
