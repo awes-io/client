@@ -109,7 +109,7 @@ By default, the module will make next requests to you backend
 
 {
     awesIo: {
-        nuxtLoaclization: {
+        nuxtLocalization: {
             // the localization base route, attached to project
             route: '/localization',
 
