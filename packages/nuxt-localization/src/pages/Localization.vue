@@ -1,7 +1,6 @@
 <template>
     <div class="flex flex-col min-h-screen">
         <div class="container mt-8 mb-4">
-            <AwSearch />
             <h1 class="h1">Localization helper</h1>
         </div>
 

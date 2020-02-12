@@ -1,11 +1,19 @@
 <template>
     <div @keydown.enter="focusNext">
-        <AwTranslationBlock
-            v-for="{ id, ...translation } in translations"
-            :key="id"
-            :id="id"
-            v-bind="translation"
-        />
+        <AwSearch class="mb-8 shadow" />
+
+        <template v-if="!isEmpty">
+            <AwTranslationBlock
+                v-for="{ id, ...translation } in translations"
+                :key="id"
+                :id="id"
+                v-bind="translation"
+            />
+        </template>
+        <div v-else class="h-50vh flex items-center justify-center h1">
+            <template v-if="$route.query.search">Nothing found</template>
+            <template v-else>No data</template>
+        </div>
 
         <AwPagination
             v-bind="pagination"
@@ -29,7 +37,7 @@ export default {
         mode: 'out-in'
     },
 
-    watchQuery: ['page', 'limit'],
+    watchQuery: ['page', 'limit', 'search'],
 
     scrollToTop: true,
 
@@ -38,6 +46,7 @@ export default {
             'translations',
             'pagination',
             'paginationLimitDefault',
+            'isEmpty',
             'isSaving'
         ])
     },
