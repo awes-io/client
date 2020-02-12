@@ -26,8 +26,10 @@
 </template>
 
 <script>
-import { pathOr } from 'rambdax'
+import { pathOr, pick, omit, equals } from 'rambdax'
 import { mapGetters } from 'vuex'
+
+const watchQuery = ['page', 'limit', 'search']
 
 export default {
     name: 'LocalizationEdit',
@@ -37,7 +39,7 @@ export default {
         mode: 'out-in'
     },
 
-    watchQuery: ['page', 'limit', 'search'],
+    watchQuery,
 
     scrollToTop: true,
 
@@ -45,7 +47,6 @@ export default {
         ...mapGetters('awesIoTranslations', [
             'translations',
             'pagination',
-            'paginationLimitDefault',
             'isEmpty',
             'isSaving'
         ])
@@ -77,13 +78,8 @@ export default {
 
         setLimit(number) {
             const query = {
-                ...this.$route.query
-            }
-
-            if (number === this.paginationLimitDefault) {
-                delete query.limit
-            } else {
-                query.limit = number
+                ...this.$route.query,
+                limit: String(number)
             }
 
             this._updateRouter(query)
@@ -91,13 +87,8 @@ export default {
 
         setPage(number) {
             const query = {
-                ...this.$route.query
-            }
-
-            if (number === 1) {
-                delete query.page
-            } else {
-                query.page = number
+                ...this.$route.query,
+                page: String(number)
             }
 
             this._updateRouter(query)
@@ -131,9 +122,17 @@ export default {
         }
     },
 
-    async fetch({ store, query }) {
-        store.commit('awesIoTranslations/SET_PARAMS_FROM_QUERY', query)
-        await store.dispatch('awesIoTranslations/FETCH')
+    async fetch({ store, route, query, redirect }) {
+        const updated = await store.dispatch(
+            'awesIoTranslations/SET_PARAMS_FROM_QUERY',
+            query
+        )
+
+        if (!equals(pick(watchQuery, updated), pick(watchQuery, query))) {
+            redirect(route.path, { ...omit(watchQuery, query), ...updated })
+        } else {
+            await store.dispatch('awesIoTranslations/FETCH')
+        }
     }
 }
 </script>
