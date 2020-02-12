@@ -1,14 +1,14 @@
 <template>
     <div class="container">
         <div>
-            <AwLink
+            <NLink
                 v-for="{ code } in $i18n.locales"
                 :key="code"
                 :href="switchLocalePath(code)"
                 target="_self"
             >
                 {{ code }}
-            </AwLink>
+            </NLink>
         </div>
         <strong>Test:</strong> {{ $t('passwords.reset') }}
         <br />
