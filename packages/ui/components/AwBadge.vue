@@ -3,6 +3,9 @@
         <!-- Content passed to component -->
         <slot></slot>
         <span
+            v-show="
+                !props.hideIfEmpty || (props.hideIfEmpty && !!(props.text * 1))
+            "
             :class="[`bg-${props.color || 'brand'}`]"
             class="
                 rounded-full py-1 px-2 mx-1 text-xs leading-none min-h-badge min-w-badge
@@ -36,6 +39,12 @@ export default {
         color: {
             type: String,
             default: 'brand'
+        },
+
+        // When set to `true`, badge will hide if text is empty or 0
+        hideIfEmpty: {
+            type: Boolean,
+            default: false
         }
     }
 }
