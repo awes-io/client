@@ -40,9 +40,9 @@ By default, the module will make next requests to you backend
         // ...
     ],
     "meta": {
-        current_page: 1, // required
-        per_page: 15, // required
-        total: 42, // required
+        "current_page": 1, // required
+        "per_page": 15, // required
+        "total": 42, // required
         // ...
     }
 }
