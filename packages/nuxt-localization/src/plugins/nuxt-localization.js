@@ -62,13 +62,28 @@ const translationsModule = {
             return params
         },
 
+        viewParams: state => {
+            const result = {}
+
+            if (state.pagination.page !== PAGE_DEFAULT) {
+                result.page = String(state.pagination.page)
+            }
+
+            if (state.pagination.limit !== LIMIT_DEFAULT) {
+                result.limit = String(state.pagination.limit)
+            }
+
+            if (state.search) {
+                result.search = state.search
+            }
+
+            return result
+        },
+
         pagination: state => ({
             ...state.pagination,
             limits: uniq([state.pagination.limit, 15, 25, 50])
         }),
-
-        paginationLimitDefault: () =>
-            parseInt('<%=options.pagination.limit.default%>'),
 
         isLoading: state => state.isLoading,
 
@@ -107,16 +122,24 @@ const translationsModule = {
         },
 
         SET_PARAMS_FROM_QUERY(state, query) {
-            Vue.set(
-                state.pagination,
-                'page',
-                pathOr(PAGE_DEFAULT, 'page', query)
-            )
+            // reset pagination on search
+            if (!state.search && query.search && state.page !== PAGE_DEFAULT) {
+                Vue.set(state.pagination, 'page', PAGE_DEFAULT)
+            } else {
+                Vue.set(
+                    state.pagination,
+                    'page',
+                    parseInt(pathOr(PAGE_DEFAULT, 'page', query))
+                )
+            }
+
+            // set limit
             Vue.set(
                 state.pagination,
                 'limit',
-                pathOr(LIMIT_DEFAULT, 'limit', query)
+                parseInt(pathOr(LIMIT_DEFAULT, 'limit', query))
             )
+
             state.search = pathOr('', 'search', query)
         },
 
@@ -137,6 +160,11 @@ const translationsModule = {
     },
 
     actions: {
+        SET_PARAMS_FROM_QUERY({ commit, getters }, query) {
+            commit('SET_PARAMS_FROM_QUERY', query)
+            return getters.viewParams
+        },
+
         FETCH({ getters, commit }) {
             if (loadingTimeout === null) {
                 loadingTimeout = setTimeout(() => {
