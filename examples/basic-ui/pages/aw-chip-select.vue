@@ -30,10 +30,20 @@ class Appointement extends BaseModel {
         return {
             status: 1,
             statuses: [
-                { id: 1, text: 'New', color: 'info' },
-                { id: 2, text: 'Pending', color: 'warning' },
-                { id: 3, text: 'Active', color: 'success' },
-                { id: 4, text: 'Removed', color: 'error' }
+                { id: 1, text: 'New', color: 'info', icon: 'plus-solid' },
+                {
+                    id: 2,
+                    text: 'Pending',
+                    color: 'warning',
+                    icon: 'triangle-solid-r'
+                },
+                {
+                    id: 3,
+                    text: 'Active',
+                    color: 'success',
+                    icon: 'check-solid'
+                },
+                { id: 4, text: 'Removed', color: 'error', icon: 'close-solid' }
             ]
         }
     }
