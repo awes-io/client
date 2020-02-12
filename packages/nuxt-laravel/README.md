@@ -36,7 +36,7 @@ export default {
     srcDir: 'resources/nuxt',
 
     modules: [
-        '@awes-io/nuxt-laravel'
+        '@awes-io/nuxt-laravel' // include first
         // other nuxt modules
     ]
 }
