@@ -18,7 +18,13 @@ export default {
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
 
-    modules: ['@awes-io/ui/nuxt', '@awes-io/dayjs', '@awes-io/nuxt-i18n'],
+    modules: [
+        '@nuxtjs/axios',
+        '@awes-io/dayjs',
+        '@awes-io/ui/nuxt',
+        '@awes-io/nuxt-localization',
+        '@awes-io/nuxt-i18n'
+    ],
 
     // overwrite auto-generated options
     i18n: {
@@ -28,10 +34,10 @@ export default {
     awesIo: {
         nuxtI18n: {
             locales: [
-                { code: 'en', domain: 'local-widget.easyweek.io:3000' },
-                { code: 'ru', domain: 'local-widget.easyweek.ru:3000' },
-                { code: 'uk', domain: 'local-widget.easyweek.com.ua:3000' },
-                { code: 'de', domain: 'local-widget.easyweek.de:3000' }
+                { code: 'en-GB' },
+                { code: 'ru-RU' },
+                { code: 'uk-UA' },
+                { code: 'de-DE' }
             ]
         }
     },
