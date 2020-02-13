@@ -6,7 +6,7 @@
         <h2>Buttons</h2>
         <AwTabNav
             :items="[
-                'One',
+                { text: 'One', badge: { text: 1, color: 'success' } },
                 'Two',
                 'Three',
                 'Four',
@@ -36,8 +36,9 @@ export default {
         return {
             routes: [
                 {
-                    text: 'Order default',
-                    href: { query: { orderBy: null, limit: 50 } }
+                    text: 'Without order',
+                    href: { query: { orderBy: null, limit: 50 } },
+                    badge: { text: 'default', color: 'info' }
                 },
                 {
                     text: 'Order by name',

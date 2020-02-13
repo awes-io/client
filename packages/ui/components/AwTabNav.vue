@@ -13,6 +13,7 @@
                     @click.prevent="navigate(route)"
                 >
                     {{ text }}
+                    <AwBadge v-if="item.badge" v-bind="item.badge" />
                 </a>
                 <button
                     v-else
@@ -23,6 +24,7 @@
                     @click.prevent="update(i)"
                 >
                     {{ text }}
+                    <AwBadge v-if="item.badge" v-bind="item.badge" />
                 </button>
             </slot>
         </template>
@@ -30,20 +32,23 @@
 </template>
 
 <script>
-import { pathOr } from 'rambdax'
+import { pathOr, isType, omit } from 'rambdax'
 import {
     mergeQueries,
     hasRouteQuery,
     cleanRouteQuery,
     trimSlash
 } from '../assets/js/router'
+import { validateBySchema } from '../assets/js/component'
 import AwSlider from './AwSlider.vue'
+import AwBadge from './AwBadge.vue'
 
 export default {
     name: 'AwTabNav',
 
     components: {
-        AwSlider
+        AwSlider,
+        AwBadge
     },
 
     props: {
@@ -56,14 +61,20 @@ export default {
          * @example
          * <AwTabNav :items="[{ text: 'One', href: '/one' }, { text: 'Two', href: '/two' }]" />
          * <AwTabNav :items="['One', 'Two']" />
+         * <AwTabNav :items="[{ text: 'One'}, { text: 'Two'}," />
          */
         items: {
             type: Array,
             required: true,
             validator(items) {
-                return (
-                    items.every(item => typeof item === 'string') ||
-                    items.every(item => item && item.text && item.href)
+                return items.every(
+                    item =>
+                        isType('String', item) ||
+                        validateBySchema({
+                            text: 'string',
+                            'href?': 'any',
+                            'badge?': 'object'
+                        })
                 )
             }
         },
@@ -131,7 +142,7 @@ export default {
                     : i === this.active
 
                 return {
-                    ...item,
+                    ...omit('text,href', item),
                     route,
                     isActive,
                     text,

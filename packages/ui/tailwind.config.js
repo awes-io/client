@@ -226,10 +226,12 @@ module.exports = {
                 '110': 110
             },
             minHeight: {
-                xxs: '10rem'
+                xxs: '10rem',
+                badge: '1.375rem'
             },
             minWidth: {
-                '8': '2rem'
+                '8': '2rem',
+                badge: '1.375rem'
             },
             maxHeight: {
                 '75vh': '75vh'

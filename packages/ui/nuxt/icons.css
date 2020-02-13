@@ -1,7 +1,7 @@
 @font-face {
     font-family: "aw-icons";
-    src: url("../dist/fonts/aw-icons.woff2?eac68a615074bd8be5c97fd781d934cd") format("woff2"),
-url("../dist/fonts/aw-icons.woff?eac68a615074bd8be5c97fd781d934cd") format("woff");
+    src: url("../dist/fonts/aw-icons.woff2?edd68cd03e7b31aed8efa0108300b499") format("woff2"),
+url("../dist/fonts/aw-icons.woff?edd68cd03e7b31aed8efa0108300b499") format("woff");
 }
 
 .aw-icon {
@@ -145,6 +145,9 @@ url("../dist/fonts/aw-icons.woff?eac68a615074bd8be5c97fd781d934cd") format("woff
 .aw-icon-upload:before {
     content: "\f12a";
 }
-.aw-icon-user:before {
+.aw-icon-user-solid:before {
     content: "\f12b";
+}
+.aw-icon-user:before {
+    content: "\f12c";
 }

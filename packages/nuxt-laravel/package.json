@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-laravel",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Awes.io module for connection with Laravel backend",
     "homepage": "https://www.awes.io",
     "bugs": {
