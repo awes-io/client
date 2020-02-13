@@ -1,21 +1,15 @@
 <template>
-    <div :class="css.wrap">
+    <AwSlider class="aw-tab-nav">
         <template
-            v-for="({ text, key, route, isActive, classes, ...item },
-            i) in togglers"
+            v-for="({ text, key, route, isActive, ...item }, i) in togglers"
         >
-            <span
-                v-if="i > 0 && css.divider"
-                :class="css.divider"
-                aria-hidden="true"
-                :key="`divider-${i}`"
-            ></span>
-            <slot v-bind="{ text, key, route, isActive, ...item, css }">
+            <slot v-bind="{ text, key, route, isActive, ...item }">
                 <a
                     v-if="route"
                     :key="key"
                     :href="route.fullPath"
-                    :class="classes"
+                    :class="{ 'aw-tab-nav__toggler_active': isActive }"
+                    class="aw-tab-nav__toggler"
                     @click.prevent="navigate(route)"
                 >
                     {{ text }}
@@ -23,14 +17,16 @@
                 <button
                     v-else
                     :key="key"
-                    :class="classes"
-                    @click="$emit('update:active', i)"
+                    :class="{ 'aw-tab-nav__toggler_active': isActive }"
+                    class="aw-tab-nav__toggler"
+                    type="button"
+                    @click.prevent="update(i)"
                 >
                     {{ text }}
                 </button>
             </slot>
         </template>
-    </div>
+    </AwSlider>
 </template>
 
 <script>
@@ -41,9 +37,14 @@ import {
     cleanRouteQuery,
     trimSlash
 } from '../assets/js/router'
+import AwSlider from './AwSlider.vue'
 
 export default {
     name: 'AwTabNav',
+
+    components: {
+        AwSlider
+    },
 
     props: {
         /**
@@ -78,21 +79,7 @@ export default {
         }
     },
 
-    css: {
-        wrap: 'flex items-center border-b',
-        toggler:
-            'py-5 px-1 -mb-px text-sm leading-none border-b-2 transition-all focus:outline-none',
-        togglerActive: 'opacity-100 border-brand',
-        togglerInactive:
-            'opacity-60 hover:opacity-100 focus:opacity-100 border-transparent',
-        divider: 'block w-px mx-3 h-6 border-l'
-    },
-
     computed: {
-        css() {
-            return pathOr({}, 'css', this.$options)
-        },
-
         _routeNormalizer() {
             return href => {
                 if (typeof href === 'object') {
@@ -121,14 +108,16 @@ export default {
         },
 
         _routeMatcher() {
-            return href => {
-                if (typeof href === 'object') {
+            return route => {
+                // check if same path
+                const isSamePath =
+                    trimSlash(route.path) === trimSlash(this.$route.path)
+
+                return (
+                    isSamePath &&
                     // check for query existance in current route
-                    return hasRouteQuery(pathOr({}, 'query', href), this.$route)
-                } else {
-                    // compare path without params for `String` routes
-                    return href === this.$route.path
-                }
+                    hasRouteQuery(route.query, this.$route)
+                )
             }
         },
 
@@ -136,33 +125,49 @@ export default {
             return this.items.map((item, i) => {
                 const text = pathOr(item, 'text', item)
                 const href = pathOr(false, 'href', item)
+                const route = href ? this._routeNormalizer(href) : false
                 const isActive = href
-                    ? this._routeMatcher(href)
+                    ? this._routeMatcher(route)
                     : i === this.active
 
                 return {
                     ...item,
-                    route: href ? this._routeNormalizer(href) : false,
+                    route,
                     isActive,
                     text,
-                    key: `${text}-${i}`,
-                    classes: [
-                        this.css.toggler,
-                        isActive
-                            ? this.css.togglerActive
-                            : this.css.togglerInactive
-                    ]
+                    key: `${text}-${i}`
                 }
             })
         }
     },
 
+    mounted() {
+        this.$nextTick(this.scrollToActive)
+    },
+
     methods: {
         navigate(route) {
-            try {
+            const toggler = this.togglers.find(item => item.route === route)
+
+            if (toggler && !toggler.isActive) {
                 this.$router.push(route)
-            } catch (e) {
-                // current route
+            }
+        },
+
+        update(i) {
+            this.$emit('update:active', i)
+        },
+
+        scrollToActive() {
+            const el = this.$el.querySelector('.aw-tab-nav__toggler_active')
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'end'
+                    })
+                }, 10)
             }
         }
     }

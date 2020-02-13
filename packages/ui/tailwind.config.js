@@ -14,6 +14,7 @@ module.exports = {
             surface: '#fff',
             muted: '#f8f8f8',
             'muted-dark': '#e8e9eb',
+            'muted-darker': '#d7dbde',
             disabled: '#999999',
             overlay: '#222',
             brand: '#37295e',
@@ -274,6 +275,8 @@ module.exports = {
         require('./tailwind/colors'),
         require('./tailwind/container'),
         require('./tailwind/calendar'),
-        require('./tailwind/chip')
+        require('./tailwind/chip'),
+        require('./tailwind/slider'),
+        require('./tailwind/tab-nav')
     ]
 }

@@ -4,7 +4,21 @@
         <AwTabNav :items="routes" />
 
         <h2>Buttons</h2>
-        <AwTabNav :items="['One', 'Two', 'Three']" :active.sync="active" />
+        <AwTabNav
+            :items="[
+                'One',
+                'Two',
+                'Three',
+                'Four',
+                'Five',
+                'Six',
+                'Seven',
+                'Eight',
+                'Nine',
+                'Ten'
+            ]"
+            :active.sync="active"
+        />
     </AwPage>
 </template>
 
@@ -34,7 +48,7 @@ export default {
                     href: { query: { orderBy: 'id', limit: 5 } }
                 }
             ],
-            active: 2
+            active: 6
         }
     },
 

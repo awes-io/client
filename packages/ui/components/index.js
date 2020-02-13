@@ -53,6 +53,8 @@ export { default as AwModal } from './AwModal.vue'
 
 export { default as AwMultiBlockBuilder } from './AwMultiBlockBuilder.vue'
 
+export { default as AwSlider } from './AwSlider.vue'
+
 export { default as AwSvgImage } from './AwSvgImage.vue'
 
 export { default as AwTabNav } from './AwTabNav.vue'
