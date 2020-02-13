@@ -1,0 +1,24 @@
+{
+    "name": "@awes-io/nuxt-laravel",
+    "version": "0.2.0",
+    "description": "Awes.io module for connection with Laravel backend",
+    "homepage": "https://www.awes.io",
+    "bugs": {
+        "url": "https://github.com/awes-io/client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:awes-io/client.git"
+    },
+    "license": "MIT",
+    "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
+    "contributors": [
+        "illjah42 <ilya.kitayev@gmail.com>"
+    ],
+    "main": "src/index.js",
+    "dependencies": {
+        "@nuxtjs/axios": "^5.9.2",
+        "fs-extra": "^8.1.0",
+        "rambdax": "^3.5.0"
+    }
+}

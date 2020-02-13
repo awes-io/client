@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.52.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.51.0...@awes-io/ui@1.52.0) (2020-02-13)
+
+
+### Features
+
+* **ui:** add new icons ([d70585b](https://github.com/awes-io/client/commit/d70585b07e1f81c543a38339035193d35a2dd42c))
+* **ui:** add new icons, colors ([749cdd1](https://github.com/awes-io/client/commit/749cdd1903dbb7a2d30f50dbc18edfceb03fda7f))
+
+
+
+
+
+# [1.51.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.50.0...@awes-io/ui@1.51.0) (2020-02-13)
+
+
+### Bug Fixes
+
+* **ui:** remove unused code ([b9a71a8](https://github.com/awes-io/client/commit/b9a71a8e42c9a6c9430aa6ee57b25927f80d33a2))
+* table builder was improved ([9836f21](https://github.com/awes-io/client/commit/9836f21158a784d9b3b940046cc41f7eb4384515))
+
+
+### Features
+
+* **ui:** add AwBadge component ([2642b77](https://github.com/awes-io/client/commit/2642b7741cb6f236a006263f37501b49ea24aaec))
+* **ui:** add AwBadge to AwTabNav ([cddad21](https://github.com/awes-io/client/commit/cddad215ca7180d93612d8d97f0222c06bdf4c44))
+* **ui:** add AwSwitcher click handler ([576cac9](https://github.com/awes-io/client/commit/576cac98bb11a54e6987495bf0e1b8f2282fa68c))
+* **ui:** add comma class ([ffd9e47](https://github.com/awes-io/client/commit/ffd9e47435fcac5bfc787391903f04024d9d1cc5))
+* **ui:** AwAvatar add new colors, icon ([b23e4bd](https://github.com/awes-io/client/commit/b23e4bd0e2734ec3c3934077dfa4b97fc995cf22))
+* **ui:** AwAvatar make text and icons responsive ([93f4905](https://github.com/awes-io/client/commit/93f4905749b90fd7c7253bab4549736fe7de8ac3))
+* **ui:** AwAvatar remove color, change avatar image ([115adf4](https://github.com/awes-io/client/commit/115adf47cea6fc6ffe6ad2db8359cdbc1fec7c43))
+
+
+
+
+
+# [1.50.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.49.0...@awes-io/ui@1.50.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* **ui:** AwTableBuilder replace empty-filter slot with empty-filter-container slot ([2f8fc42](https://github.com/awes-io/client/commit/2f8fc42d35cecee6076b84d444ddba5a99370042))
+
+
+### Features
+
+* **ui:** add empty-filter slot to AwTableBuilder ([7b02daa](https://github.com/awes-io/client/commit/7b02daa302cd824235781cc7322216591a2c35e6))
+
+
+
+
+
 # [1.49.0](https://git.awescode.com/awes-io/ui/compare/@awes-io/ui@1.48.1...@awes-io/ui@1.49.0) (2020-02-06)
 
 

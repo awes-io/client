@@ -42,10 +42,15 @@
         <section class="mt-8">
             <h2 class="h3">Table builder with Vue-MC</h2>
 
+            <h6>Filter by first name</h6>
+
+            <AwSearch name="search" class="my-3" />
+
             <AwTableBuilder
                 @click:row="clickRow"
                 :collection="managers"
-                defaultHeight="70vh"
+                :watchParams="['search']"
+                defaultHeight="50vh"
             >
                 <AwTableCol vertical-align="top" field="id" />
 

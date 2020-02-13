@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.49.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.48.0...basic-ui@1.49.0) (2020-02-13)
+
+
+### Features
+
+* **ui:** add new icons, colors ([749cdd1](https://git.awescode.com/awes-io/client/commits/749cdd1903dbb7a2d30f50dbc18edfceb03fda7f))
+
+
+
+
+
+# [1.48.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.47.0...basic-ui@1.48.0) (2020-02-13)
+
+
+### Bug Fixes
+
+* comma example ([36fed9d](https://git.awescode.com/awes-io/client/commits/36fed9d1f924bc5ab38f2aae2e0488d7c3966d95))
+* table builder was improved ([9836f21](https://git.awescode.com/awes-io/client/commits/9836f21158a784d9b3b940046cc41f7eb4384515))
+* **ui:** fix codesandbox error ([ce4198f](https://git.awescode.com/awes-io/client/commits/ce4198f9ffdb0b98b9749e324b7c9c16b0ba82e7))
+* **ui:** fix docs errors ([85f4c8b](https://git.awescode.com/awes-io/client/commits/85f4c8b5e3d857c0d0b2ab5a3666cdf59047c240))
+
+
+### Features
+
+* **ui:** add AwBadge component ([2642b77](https://git.awescode.com/awes-io/client/commits/2642b7741cb6f236a006263f37501b49ea24aaec))
+* **ui:** add AwBadge to AwTabNav ([cddad21](https://git.awescode.com/awes-io/client/commits/cddad215ca7180d93612d8d97f0222c06bdf4c44))
+* **ui:** add comma class ([ffd9e47](https://git.awescode.com/awes-io/client/commits/ffd9e47435fcac5bfc787391903f04024d9d1cc5))
+* **ui:** AwAvatar add new colors, icon ([b23e4bd](https://git.awescode.com/awes-io/client/commits/b23e4bd0e2734ec3c3934077dfa4b97fc995cf22))
+* **ui:** AwAvatar make text and icons responsive ([93f4905](https://git.awescode.com/awes-io/client/commits/93f4905749b90fd7c7253bab4549736fe7de8ac3))
+* **ui:** AwAvatar remove color, change avatar image ([115adf4](https://git.awescode.com/awes-io/client/commits/115adf47cea6fc6ffe6ad2db8359cdbc1fec7c43))
+
+
+
+
+
+# [1.47.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.46.0...basic-ui@1.47.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* **ui:** AwTableBuilder replace empty-filter slot with empty-filter-container slot ([2f8fc42](https://git.awescode.com/awes-io/client/commits/2f8fc42d35cecee6076b84d444ddba5a99370042))
+
+
+### Features
+
+* **basic-ui:** add api filter based on search param ([920f5ce](https://git.awescode.com/awes-io/client/commits/920f5ce69a524db4e85f97d27500de35d98b98d3))
+* **ui:** add empty-filter slot to AwTableBuilder ([7b02daa](https://git.awescode.com/awes-io/client/commits/7b02daa302cd824235781cc7322216591a2c35e6))
+
+
+
+
+
 # [1.46.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.45.3...basic-ui@1.46.0) (2020-02-06)
 
 

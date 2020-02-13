@@ -12,6 +12,10 @@
                 ><small>With description and headline as a link.</small></AwCard
             >
         </AwGrid>
+
+        <h3>Example usage</h3>
+
+        <AwCodeSnippet v-text="code" class="mt-3" />
     </AwPage>
 </template>
 
@@ -22,6 +26,16 @@ export default {
             title: 'AwCard',
             headline: this._getTitle('AwCard'),
             sizes: ['sm', 'md', 'lg']
+        }
+    },
+    computed: {
+        code() {
+            const arr = [
+                '<AwCard title="Card #3" text="Short description" link="/">',
+                '   <small>With description and headline as a link.</small>',
+                '</AwCard>'
+            ]
+            return arr.join('\n')
         }
     },
     head() {

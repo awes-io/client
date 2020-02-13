@@ -24,10 +24,10 @@ export function extractLocales(options) {
     const translations = locales.reduce((acc, locale) => {
         const code = getLocaleCode(locale)
 
-        // skip default
-        // if (locale === 'en') return acc
-
         if (code) {
+            // skip existing
+            if (acc.findIndex(item => item.locale === code) !== -1) return acc
+
             try {
                 const path = `dayjs/locale/${code}`
                 require.resolve(path)

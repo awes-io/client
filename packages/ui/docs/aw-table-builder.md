@@ -21,10 +21,14 @@
 <!-- @vuese:AwTableBuilder:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
-|empty-container|Empty container, your can compleatly overwrite the block.|Block with icon, headline and slot for button.|
+|empty-container|The empty container. Will be shown if the data (without filters) is empty. Your can compleatly overwrite the block.|Block with icon, headline and slot for button.|
 |empty-icon|Icon customization. Leave empty if you would like to remove.|Empty SVG icon|
 |empty-title|Headline customization in the empty block|Text: "There are no data to show"|
 |empty-button|You can use the slot to add a button or else|`Empty`|
+|empty-filter-container|The empty container if filtered response is empty. Your can compleatly overwrite the block. Shows when watch params is present un url|Block with icon, headline and slot for button.|
+|empty-filter-icon|Icon customization. Leave empty if you would like to remove.|Empty SVG icon|
+|empty-filter-title|Headline customization in the empty filter block|Text: "There are no data to show"|
+|empty-filter-button|You can use the slot to add a button or else|`Empty`|
 |default|-|-|
 |empty-loading-container|Empty loading container|Empty AwCard block|
 |loading|Customization of loading block|Default loading block|

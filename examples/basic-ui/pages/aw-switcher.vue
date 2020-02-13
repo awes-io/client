@@ -1,8 +1,38 @@
 <template>
     <AwPage :title="headline">
-        <AwGrid :col="{ md: 4 }">
-            <AwSwitcher />
-        </AwGrid>
+        <div class="flex -mx-4">
+            <div class="px-4">
+                <AwSwitcher
+                    v-model="switcher"
+                    label="Checkbox one"
+                    value="one"
+                />
+                <AwSwitcher
+                    v-model="switcher"
+                    label="Checkbox two"
+                    value="two"
+                />
+            </div>
+            <div class="px-4">
+                <AwSwitcher
+                    v-model="switcher"
+                    label="Checkbox error"
+                    value="three"
+                    :error="!switcher.includes('error') && inputError"
+                />
+                <AwSwitcher
+                    v-model="switcher"
+                    label="Checkbox disabled"
+                    value="four"
+                    disabled
+                />
+            </div>
+        </div>
+        <pre class="mt-4">Switcher value: {{ switcher }}</pre>
+
+        <h3>Example usage</h3>
+
+        <AwCodeSnippet v-text="codeSwitcher" class="mt-3" />
     </AwPage>
 </template>
 
@@ -11,9 +41,39 @@ export default {
     data() {
         return {
             title: 'AwSwitcher',
-            headline: this._getTitle('AwSwitcher')
+            headline: this._getTitle('AwSwitcher'),
+            switcher: [],
+            inputError: 'Error'
         }
     },
+
+    computed: {
+        codeSwitcher() {
+            const arr = [
+                '<AwSwitcher',
+                '    v-model="switcher"',
+                '    label="Checkbox one"',
+                '    value="one"',
+                '/>',
+                '\n<!-- With Error -->',
+                '<AwSwitcher',
+                '    v-model="switcher"',
+                '    label="Checkbox error"',
+                '    value="three"',
+                '    :error="true"',
+                '/>',
+                '\n<!-- Disabled -->',
+                '<AwSwitcher',
+                '    v-model="switcher"',
+                '    label="Checkbox error"',
+                '    value="four"',
+                '    disabled',
+                '/>'
+            ]
+            return arr.join('\n')
+        }
+    },
+
     head() {
         return {
             title: this._getMetaTitle(this.title),

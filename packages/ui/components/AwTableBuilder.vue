@@ -1,8 +1,8 @@
 <template>
     <div class="relative">
         <div v-if="isEmpty && !collection.loading">
-            <!-- Empty container, your can compleatly overwrite the block. -->
-            <slot name="empty-container">
+            <!-- The empty container. Will be shown if the data (without filters) is empty. Your can compleatly overwrite the block. -->
+            <slot v-if="!isWatchParamsPresent" name="empty-container">
                 <!-- Block with icon, headline and slot for button. -->
                 <AwCard
                     class="flex items-center justify-center min-h-full mb-5"
@@ -17,6 +17,7 @@
                                 class="block m-auto mb-4"
                             />
                         </slot>
+
                         <!-- Headline customization in the empty block -->
                         <slot name="empty-title">
                             <!-- Text: "There are no data to show" -->
@@ -24,8 +25,42 @@
                                 {{ $t('AwTableBuilder.empty') }}
                             </div>
                         </slot>
+
                         <!-- You can use the slot to add a button or else -->
                         <slot name="empty-button">
+                            <!-- `Empty` -->
+                        </slot>
+                    </div>
+                </AwCard>
+            </slot>
+
+            <!-- The empty container if filtered response is empty. Your can compleatly overwrite the block. Shows when watch params is present un url -->
+            <slot v-if="isWatchParamsPresent" name="empty-filter-container">
+                <!-- Block with icon, headline and slot for button. -->
+                <AwCard
+                    class="flex items-center justify-center min-h-full mb-5"
+                    :class="`h-${defaultHeight}`"
+                >
+                    <div class="text-center">
+                        <!-- Icon customization. Leave empty if you would like to remove. -->
+                        <slot name="empty-filter-icon">
+                            <!-- Empty SVG icon -->
+                            <AwSvgImage
+                                name="empty"
+                                class="block m-auto mb-4"
+                            />
+                        </slot>
+
+                        <!-- Headline customization in the empty filter block -->
+                        <slot name="empty-filter-title">
+                            <!-- Text: "There are no data to show" -->
+                            <div class="text-disabled mb-4">
+                                {{ $t('AwTableBuilder.emptyFilter') }}
+                            </div>
+                        </slot>
+
+                        <!-- You can use the slot to add a button or else -->
+                        <slot name="empty-filter-button">
                             <!-- `Empty` -->
                         </slot>
                     </div>
@@ -39,7 +74,7 @@
             ref="table"
             key="table"
             :rows="items"
-            :style="collection.loading ? 'filter: blur(2px);' : null"
+            :style="collection.loading ? 'filter: blur(3px);' : null"
             :vertical-align="verticalAlign"
             v-on="tableListeners"
         >
@@ -89,8 +124,8 @@
         <div
             v-if="collection.loading"
             class="absolute inset-0 flex items-center justify-center"
+            :class="`h-${defaultHeight}`"
         >
-            <div class="absolute inset-0 p-8 bg-surface opacity-50"></div>
             <!-- Customization of loading block -->
             <slot name="loading">
                 <!-- Default loading block -->
@@ -240,6 +275,13 @@ export default {
 
         isEmpty() {
             return this.collection.models.length === 0
+        },
+
+        isWatchParamsPresent() {
+            if (!this.watchParams || !this.watchParams.length) {
+                return false
+            }
+            return this.watchParams.some(el => !!this.$route.query[el])
         },
 
         placeholderRows() {

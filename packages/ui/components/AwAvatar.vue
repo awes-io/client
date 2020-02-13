@@ -8,7 +8,8 @@
                     ? $options.getColor(props.name)
                     : '',
                 width: `${props.size}px`,
-                height: `${props.size}px`
+                height: `${props.size}px`,
+                'font-size': `${(props.size / 100) * 3}rem`
             }
         ]"
         :class="[
@@ -24,7 +25,7 @@
                 :height="props.size"
                 :src="props.src"
                 :alt="props.name || props.src"
-                class="rounded-full"
+                class="rounded-full min-h-full min-w-full"
             />
         </slot>
         <span
@@ -39,9 +40,10 @@
         >
             <AwIcon
                 v-if="!$options.getSrc(props.src) && props.type === 'no-img'"
-                class="absolute text-surface top-1/2 left-1/2 text-xs"
+                size=""
+                class="absolute text-surface top-1/2 left-1/2"
                 style="transform: translate(-50%, -50%);"
-                name="user"
+                name="user-solid"
             />
         </slot>
     </span>
@@ -71,8 +73,17 @@ export default {
         },
         // Size of the image
         size: {
-            type: Number,
-            default: 36
+            type: [Number, String],
+            default: 36,
+            validator(val) {
+                const isValid = !Number.isNaN(val * 1)
+                if (process.env.NODE_ENV === 'development' && !isValid) {
+                    console.error(
+                        `Incorrect size. Only numbers or strings as numbers allowed. Given value - ${val}`
+                    )
+                }
+                return isValid
+            }
         },
         // Type of the rendered image.
         type: {
@@ -99,24 +110,34 @@ export default {
 
     // Get randome color from the preset list
     getColor(name) {
+        let hash = 0
         const colors = [
-            '#FF5722',
-            '#FFA726',
-            '#FFCA28',
-            '#CDDC39',
-            '#8BC34A',
-            '#4CAF50',
-            '#009688',
-            '#00ACC1',
-            '#03A9F4',
-            '#2196F3',
-            '#3F51B5',
-            '#673AB7',
-            '#9C27B0',
-            '#EC407A',
-            '#F44336'
+            '#E0AB61',
+            '#E29D5D',
+            '#E68262',
+            '#E45284',
+            '#DF54BD',
+            '#DA61D9',
+            '#BF55CF',
+            '#AF57DB',
+            '#9C55D3',
+            '#834EE3',
+            '#634EE3',
+            '#594FCF',
+            '#6086E3',
+            '#66B9E4',
+            '#66C3D1',
+            '#66C7B9',
+            '#5CBC98',
+            '#9A6F66'
         ]
-        return colors[name.length % colors.length]
+        if (!name.length) return colors[0]
+        for (var i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash)
+            hash = hash & hash
+        }
+        hash = ((hash % colors.length) + colors.length) % colors.length
+        return colors[hash]
     }
 }
 </script>

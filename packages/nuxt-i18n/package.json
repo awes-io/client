@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-i18n",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Awes.io module for loading translations",
     "homepage": "https://www.awes.io",
     "bugs": {
@@ -8,7 +8,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@git.awescode.com:awes-io/collection.git"
+        "url": "git@github.com:awes-io/client.git"
     },
     "license": "MIT",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",

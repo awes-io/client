@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/dayjs",
-    "version": "0.1.1",
+    "version": "0.2.2",
     "description": "Date convertation module for Awes.io",
     "homepage": "https://www.awes.io",
     "bugs": {
@@ -8,7 +8,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@git.awescode.com:awes-io/collection.git"
+        "url": "git@github.com:awes-io/client.git"
     },
     "license": "MIT",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",

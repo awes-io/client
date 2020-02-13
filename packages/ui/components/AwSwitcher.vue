@@ -4,6 +4,7 @@
         :class="wrapperClasses"
         @mousedown="_onPointerDown"
         @touchstart="_onPointerDown"
+        @click.prevent
     >
         <slot
             v-bind="{
@@ -87,7 +88,10 @@ export default {
         },
 
         _onPointerDown($event) {
-            if (this.startPos !== null) return
+            const isDisabled =
+                Object.keys(this.$attrs).includes('disabled') &&
+                (this.$attrs.disabled || !this.$attrs.disabled.length)
+            if (this.startPos !== null || isDisabled) return
 
             this.startPos = $event.screenX
             this.isTouch = $event.type === 'touchstart'
@@ -109,10 +113,18 @@ export default {
             }
         },
 
-        _onPointerUp() {
-            const checked = this.$refs.element.checked
+        _onPointerUp($event) {
+            const el = this.$refs.element
+            const diff = Math.abs($event.screenX - this.startPos)
+
             if (this.isSwitched) {
-                setTimeout(() => this._onChange({ target: { checked } }), 10)
+                setTimeout(
+                    () => this._onChange({ target: { checked: el.checked } }),
+                    10
+                )
+            } else if (diff < THRESHOLD) {
+                el.checked = !el.checked
+                this._onChange({ target: { checked: el.checked } })
             }
 
             this._toggleListeners(false, this.isTouch)

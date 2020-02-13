@@ -1,0 +1,23 @@
+{
+    "name": "@awes-io/nuxt-localization",
+    "version": "0.2.1",
+    "description": "Awes.io module for editing translations",
+    "homepage": "https://www.awes.io",
+    "bugs": {
+        "url": "https://github.com/awes-io/client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:awes-io/client.git"
+    },
+    "license": "MIT",
+    "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
+    "contributors": [
+        "illjah42 <ilya.kitayev@gmail.com>"
+    ],
+    "main": "src/index.js",
+    "dependencies": {
+        "@awes-io/ui": "^1.52.0",
+        "rambdax": "^3.5.0"
+    }
+}
