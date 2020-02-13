@@ -162,19 +162,40 @@ export default {
         }
     },
 
+    watch: {
+        collection: {
+            handler(newCollection, oldCollection) {
+                if (oldCollection) {
+                    this._removeCollectionListener(
+                        'fetch',
+                        this.fetchListener,
+                        oldCollection
+                    )
+                    this._removeCollectionListener(
+                        'save',
+                        this.saveListener,
+                        oldCollection
+                    )
+                }
+
+                newCollection.on('fetch', this.fetchListener)
+                newCollection.on('save', this.saveListener)
+                this._updateSnapshot()
+            },
+            immediate: true
+        }
+    },
+
     mounted() {
-        this.collection.on('fetch', this.fetchListener)
-        this.collection.on('save', this.saveListener)
-
-        this.$once('hook:beforeDestroy', () => {
-            this._removeCollectionListener('fetch', this.fetchListener)
-            this._removeCollectionListener('save', this.saveListener)
-        })
-
         // initial fetch
         if (this.fetch) {
             this.collection.fetch()
         }
+    },
+
+    beforeDestroy() {
+        this._removeCollectionListener('fetch', this.fetchListener)
+        this._removeCollectionListener('save', this.saveListener)
     },
 
     methods: {
@@ -232,8 +253,12 @@ export default {
             }
         },
 
-        _removeCollectionListener(event, listener) {
-            const listeners = this.collection._listeners[event] || []
+        _removeCollectionListener(
+            event,
+            listener,
+            collection = this.collection
+        ) {
+            const listeners = collection._listeners[event] || []
             const index = listeners.indexOf(listener)
             if (index > -1) {
                 listeners.splice(index, 1)
