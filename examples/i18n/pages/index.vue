@@ -2,12 +2,12 @@
     <div class="container">
         <div>
             <NLink
-                v-for="{ code } in $i18n.locales"
+                v-for="{ code, iso } in $i18n.locales"
                 :key="code"
-                :href="switchLocalePath(code)"
+                :to="switchLocalePath(code)"
                 target="_self"
             >
-                {{ code }}
+                {{ iso }}
             </NLink>
         </div>
         <strong>Test:</strong> {{ $t('passwords.reset') }}

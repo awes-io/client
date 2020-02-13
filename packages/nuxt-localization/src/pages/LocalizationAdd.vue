@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { prop } from 'rambdax'
+import { prop, uniq } from 'rambdax'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -40,7 +40,7 @@ export default {
         ...mapGetters('awesIoTranslations', ['isLoading']),
 
         locales() {
-            return this.$i18n.locales.map(prop('code'))
+            return uniq(this.$i18n.locales.map(prop('code')))
         }
     },
 

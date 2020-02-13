@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { prop, values, isType, equals } from 'rambdax'
+import { prop, values, isType, equals, uniq } from 'rambdax'
 
 export default {
     name: 'AwTranslationBlock',
@@ -69,7 +69,7 @@ export default {
 
     computed: {
         locales() {
-            return this.$i18n.locales.map(prop('code'))
+            return uniq(this.$i18n.locales.map(prop('code')))
         },
 
         isSaving() {
