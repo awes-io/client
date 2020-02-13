@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.52.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.51.0...@awes-io/ui@1.52.0) (2020-02-13)
+
+
+### Features
+
+* **ui:** add new icons ([d70585b](https://github.com/awes-io/client/commit/d70585b07e1f81c543a38339035193d35a2dd42c))
+* **ui:** add new icons, colors ([749cdd1](https://github.com/awes-io/client/commit/749cdd1903dbb7a2d30f50dbc18edfceb03fda7f))
+
+
+
+
+
 # [1.51.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.50.0...@awes-io/ui@1.51.0) (2020-02-13)
 
 

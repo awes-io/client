@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.49.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.48.0...basic-ui@1.49.0) (2020-02-13)
+
+
+### Features
+
+* **ui:** add new icons, colors ([749cdd1](https://git.awescode.com/awes-io/client/commits/749cdd1903dbb7a2d30f50dbc18edfceb03fda7f))
+
+
+
+
+
 # [1.48.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.47.0...basic-ui@1.48.0) (2020-02-13)
 
 
