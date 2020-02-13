@@ -19,6 +19,7 @@
                     @click.prevent="navigate(route)"
                 >
                     {{ text }}
+                    <AwBadge v-if="item.badge" v-bind="item.badge" />
                 </a>
                 <button
                     v-else
@@ -27,6 +28,7 @@
                     @click="$emit('update:active', i)"
                 >
                     {{ text }}
+                    <AwBadge v-if="item.badge" v-bind="item.badge" />
                 </button>
             </slot>
         </template>
@@ -41,9 +43,12 @@ import {
     cleanRouteQuery,
     trimSlash
 } from '../assets/js/router'
+import AwBadge from './AwBadge.vue'
 
 export default {
     name: 'AwTabNav',
+
+    components: { AwBadge },
 
     props: {
         /**
@@ -55,14 +60,16 @@ export default {
          * @example
          * <AwTabNav :items="[{ text: 'One', href: '/one' }, { text: 'Two', href: '/two' }]" />
          * <AwTabNav :items="['One', 'Two']" />
+         * <AwTabNav :items="[{ text: 'One'}, { text: 'Two'}," />
          */
         items: {
             type: Array,
             required: true,
             validator(items) {
                 return (
-                    items.every(item => typeof item === 'string') ||
-                    items.every(item => item && item.text && item.href)
+                    items.every(
+                        item => typeof item === 'string' || (item && item.text)
+                    ) || items.every(item => item && item.text && item.href)
                 )
             }
         },
@@ -91,6 +98,14 @@ export default {
     computed: {
         css() {
             return pathOr({}, 'css', this.$options)
+        },
+
+        currentItems() {
+            const isString = this.items.every(item => typeof item === 'string')
+            if (!isString) {
+                return this.items
+            }
+            return this.items.map(item => ({ text: item }))
         },
 
         _routeNormalizer() {
@@ -133,7 +148,7 @@ export default {
         },
 
         togglers() {
-            return this.items.map((item, i) => {
+            return this.currentItems.map((item, i) => {
                 const text = pathOr(item, 'text', item)
                 const href = pathOr(false, 'href', item)
                 const isActive = href

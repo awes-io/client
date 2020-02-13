@@ -5,6 +5,8 @@ export { default as AwInfo } from './AwInfo.vue'
 
 export { default as AwButton } from './AwButton.vue'
 
+export { default as AwBadge } from './AwBadge.vue'
+
 export { default as AwButtonNav } from './AwButtonNav.vue'
 export { default as AwLink } from './AwLink.vue'
 export { default as AwDropdown } from './AwDropdown.vue'
