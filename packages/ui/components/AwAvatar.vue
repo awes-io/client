@@ -101,19 +101,6 @@ export default {
         }
     },
 
-    getIconSize(propSize) {
-        if (propSize < 30) {
-            return 'xs'
-        }
-        if (propSize < 40) {
-            return 'base'
-        }
-        if (propSize < 50) {
-            return '2xl'
-        }
-        return '3xl'
-    },
-
     // To get source of the image if exist
     getSrc(src) {
         return src
