@@ -16,14 +16,14 @@ module.exports = {
             'muted-dark': '#e8e9eb',
             disabled: '#999999',
             overlay: '#222',
-            brand: '#37295e',
+            brand: '#3660CC',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
             'info-light': 'rgba(69, 164, 220, .1)',
-            warning: '#edc252',
+            warning: '#EDC253',
             accent: '#F43E80',
-            error: '#f36161'
+            error: '#D11738'
         },
         onColors: {
             surface: '#0f1012',
