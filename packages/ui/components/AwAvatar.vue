@@ -8,7 +8,8 @@
                     ? $options.getColor(props.name)
                     : '',
                 width: `${props.size}px`,
-                height: `${props.size}px`
+                height: `${props.size}px`,
+                'font-size': `${(props.size / 100) * 3}rem`
             }
         ]"
         :class="[
@@ -39,7 +40,8 @@
         >
             <AwIcon
                 v-if="!$options.getSrc(props.src) && props.type === 'no-img'"
-                class="absolute text-surface top-1/2 left-1/2 text-xs"
+                size=""
+                class="absolute text-surface top-1/2 left-1/2"
                 style="transform: translate(-50%, -50%);"
                 name="user-solid"
             />
@@ -71,8 +73,17 @@ export default {
         },
         // Size of the image
         size: {
-            type: Number,
-            default: 36
+            type: [Number, String],
+            default: 36,
+            validator(val) {
+                const isValid = !Number.isNaN(val * 1)
+                if (process.env.NODE_ENV === 'development' && !isValid) {
+                    console.error(
+                        `Incorrect size. Only numbers or strings as numbers allowed. Given value - ${val}`
+                    )
+                }
+                return isValid
+            }
         },
         // Type of the rendered image.
         type: {
@@ -88,6 +99,19 @@ export default {
             type: Boolean,
             default: true
         }
+    },
+
+    getIconSize(propSize) {
+        if (propSize < 30) {
+            return 'xs'
+        }
+        if (propSize < 40) {
+            return 'base'
+        }
+        if (propSize < 50) {
+            return '2xl'
+        }
+        return '3xl'
     },
 
     // To get source of the image if exist
@@ -126,7 +150,6 @@ export default {
             hash = hash & hash
         }
         hash = ((hash % colors.length) + colors.length) % colors.length
-        console.log(hash)
         return colors[hash]
     }
 }
