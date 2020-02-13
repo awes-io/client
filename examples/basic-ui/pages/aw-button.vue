@@ -4,8 +4,8 @@
 
         <AwButton>Button</AwButton>
         <AwButton href="/aw-dropdown">Route</AwButton>
-        <AwButton href="//google.com" disabled>Google link</AwButton>
-        <AwButton icon="intelligence" color="info">With icon</AwButton>
+        <AwButton href="//google.com">Google link</AwButton>
+        <AwButton icon="intelligence">With icon</AwButton>
 
         <AwCodeSnippet v-text="codeDefault" class="my-3" />
 

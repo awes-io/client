@@ -27,6 +27,10 @@
         opacity: 0.1;
     }
 
+    &:not(:disabled):active > &__overlay {
+        opacity: 0.3;
+    }
+
     &:focus > &__overlay {
         opacity: 0.15;
     }
