@@ -4,7 +4,6 @@ module.exports = function({ addBase }) {
             '-webkit-tap-highlight-color': 'transparent',
             color: 'var(--c-on-surface)',
             backgroundColor: 'var(--c-surface)',
-            'scrollbar-width': 'thick',
             'scrollbar-color': 'var(--c-fade-surface) transparent',
             '&::-webkit-scrollbar': {
                 width: '6px',

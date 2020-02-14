@@ -11,7 +11,7 @@ module.exports = {
         colors: {
             transparent: 'transparent',
             surface: '#fff',
-            muted: '#f8f8f8',
+            muted: '#f3f4f5',
             'muted-dark': '#e8e9eb',
             disabled: '#999999',
             overlay: '#222',
@@ -19,7 +19,6 @@ module.exports = {
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
-            'info-light': 'rgba(69, 164, 220, .1)',
             warning: '#EDC253',
             accent: '#F43E80',
             error: '#D11738'

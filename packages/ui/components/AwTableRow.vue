@@ -70,13 +70,15 @@ export default {
                             slot,
                             verticalAlign,
                             textAlign,
-                            priority
+                            priority,
+                            staticClass
                         }) => {
                             return h(
                                 'td',
                                 {
                                     staticClass: 'py-3 px-4 lg:px-6',
                                     class: [
+                                        staticClass,
                                         `align-${verticalAlign}`,
                                         {
                                             [`text-${textAlign}`]: textAlign,

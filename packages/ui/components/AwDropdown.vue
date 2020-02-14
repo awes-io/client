@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Popper from 'popper.js'
+import { createPopper } from '@popperjs/core'
 import { AwDropdown as _config } from './_config'
 import { containsTargets } from '../assets/js/events'
 
@@ -81,7 +81,7 @@ export default {
             if (isVisible && !this.popper) {
                 this._createPopper()
             } else if (isVisible) {
-                this.popper.scheduleUpdate()
+                this.popper.update()
             }
 
             // sync show prop
@@ -111,7 +111,7 @@ export default {
             this.targetEl = this._getTargetEl()
 
             if (this.$el && this.targetEl) {
-                this.popper = new Popper(
+                this.popper = createPopper(
                     this.targetEl,
                     this.$el,
                     this._popperOptions
@@ -137,7 +137,7 @@ export default {
         },
 
         update() {
-            if (this.popper) this.popper.update()
+            if (this.popper) this.popper.forceUpdate()
         },
 
         setOutsideClick() {

@@ -45,6 +45,7 @@
         "test:watch": "jest -w"
     },
     "dependencies": {
+        "@popperjs/core": "^2.0.5",
         "autosize": "^4.0.2",
         "axios": "^0.19.0",
         "clipboard-copy": "^3.1.0",
@@ -53,7 +54,7 @@
         "insane": "^2.6.2",
         "loadjs": "^3.6.1",
         "marked": "^0.7.0",
-        "popper.js": "^1.15.0",
+        "postcss-color-function": "^4.1.0",
         "prismjs": "^1.17.1",
         "rambdax": "^3.5.0",
         "tailwindcss": "^1.0.6",

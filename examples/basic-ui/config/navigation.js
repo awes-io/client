@@ -17,6 +17,7 @@ export const navigation = [
         description: 'Component for toggling statuses'
     },
     { title: 'Code', url: '/aw-code', description: '' },
+    { title: 'Context menu', url: '/aw-context-menu', description: '' },
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },
     { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
