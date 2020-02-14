@@ -17,5 +17,5 @@ package-lock.json
 /stats.html
 
 ## temp
-/dist
-/nuxt/icons.css
+dist
+nuxt/icons.css

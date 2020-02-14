@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.52.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.52.0...@awes-io/ui@1.52.2) (2020-02-14)
+
+
+### Bug Fixes
+
+* fixed gitignore ([9825443](https://github.com/awes-io/client/commit/98254431a2d9a6aab4f80d1dafd8420d2ccb2522))
+* removed icon.css, fixed brancd color ([fba3e51](https://github.com/awes-io/client/commit/fba3e51fd80a128696bd6543216662a1b1e6aceb))
+
+
+
+
+
 # [1.52.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.51.0...@awes-io/ui@1.52.0) (2020-02-13)
 
 

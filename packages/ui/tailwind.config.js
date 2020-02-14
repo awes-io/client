@@ -10,13 +10,12 @@ module.exports = {
         },
         colors: {
             transparent: 'transparent',
-
             surface: '#fff',
             muted: '#f3f4f5',
             'muted-dark': '#e8e9eb',
             disabled: '#999999',
             overlay: '#222',
-            brand: '#3660CC',
+            brand: '#37295e',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
