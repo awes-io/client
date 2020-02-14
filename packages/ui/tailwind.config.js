@@ -19,7 +19,6 @@ module.exports = {
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
-            'info-light': 'rgba(69, 164, 220, .1)',
             warning: '#EDC253',
             accent: '#F43E80',
             error: '#D11738'

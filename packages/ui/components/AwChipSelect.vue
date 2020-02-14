@@ -21,11 +21,10 @@
             </slot>
         </button>
         <AwDropdown :show.sync="isOpened" tag="span" class="block p-2 -mx-2">
-            <button
+            <AwDropdownButton
                 v-for="({ id, text, ...props }, i) in options"
                 :key="id || `chip-${i}`"
-                class="block w-full text-left my-px rounded hover:bgcolor-muted focus:outline-none focus:bgcolor-muted-dark"
-                :class="{ 'bgcolor-info-light': id === value }"
+                :active="id === value"
                 data-select-chip
                 @click.stop="select(id)"
             >
@@ -35,7 +34,7 @@
                 >
                     <AwChip :text="noText ? '' : text" v-bind="props" />
                 </slot>
-            </button>
+            </AwDropdownButton>
         </AwDropdown>
     </span>
 </template>
