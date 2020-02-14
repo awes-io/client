@@ -10,6 +10,7 @@ export { default as AwBadge } from './AwBadge.vue'
 export { default as AwButtonNav } from './AwButtonNav.vue'
 export { default as AwLink } from './AwLink.vue'
 export { default as AwDropdown } from './AwDropdown.vue'
+export { default as AwDropdownButton } from './AwDropdownButton.vue'
 
 export { default as AwCalendar } from './AwCalendar.vue'
 

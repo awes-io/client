@@ -65,6 +65,7 @@ const configs = [
                     require('postcss-simple-vars'),
                     require('postcss-easings'),
                     require('tailwindcss'),
+                    require('postcss-color-function'),
                     require('postcss-discard-empty'),
                     require('autoprefixer'),
                     require('postcss-custom-properties'),

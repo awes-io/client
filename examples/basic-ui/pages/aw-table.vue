@@ -63,18 +63,12 @@
                 <AwTableCol title="Job title" field="position" />
 
                 <template #dropdown="{ cell }">
-                    <AwButton
-                        theme="toggle"
-                        class="w-full text-error text-left"
+                    <AwDropdownButton
+                        color="error"
                         text="Remove"
                         @click="managers.remove({ id: cell.id })"
                     />
-
-                    <AwButton
-                        theme="toggle"
-                        class="w-full text-left"
-                        text="Second item"
-                    />
+                    <AwDropdownButton text="Second item" />
                 </template>
             </AwTableBuilder>
 

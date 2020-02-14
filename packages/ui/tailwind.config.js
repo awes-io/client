@@ -12,7 +12,7 @@ module.exports = {
             transparent: 'transparent',
 
             surface: '#fff',
-            muted: '#f8f8f8',
+            muted: '#f3f4f5',
             'muted-dark': '#e8e9eb',
             disabled: '#999999',
             overlay: '#222',

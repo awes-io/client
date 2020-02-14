@@ -1,51 +1,39 @@
 <template>
     <AwPage title="Dropdowns">
         <h3>Button</h3>
+
         <AwButton @click="$refs.drop1.toggle()">
             Button drop
         </AwButton>
         <AwDropdown ref="drop1">
-            <AwButton theme="toggle" class="block p-4">
-                Lorem ipsum dolor sit amet.
-            </AwButton>
-            <AwButton theme="toggle" class="block p-4">
-                Lorem ipsum dolor sit amet.
-            </AwButton>
-            <AwLink class="text-success block p-4">
-                In list button
-            </AwLink>
-            <AwLink class="block text-error p-4">
-                In list button
-            </AwLink>
-            <AwLink class="block p-4">
-                In list button
-            </AwLink>
+            <AwDropdownButton>
+                Default
+            </AwDropdownButton>
+            <AwDropdownButton color="success">
+                Seccess
+            </AwDropdownButton>
+            <AwDropdownButton color="warning">
+                Warning
+            </AwDropdownButton>
+            <AwDropdownButton color="error">
+                Danger
+            </AwDropdownButton>
+            <AwDropdownButton active>
+                Default active
+            </AwDropdownButton>
+            <AwDropdownButton color="success" active>
+                Seccess active
+            </AwDropdownButton>
+            <AwDropdownButton color="warning" active>
+                Warning active
+            </AwDropdownButton>
+            <AwDropdownButton color="error" active>
+                Danger active
+            </AwDropdownButton>
         </AwDropdown>
 
-        <h3>Link</h3>
-        <AwLink class="ml-8" @click="$refs.drop2.toggle()">
-            Link drop
-        </AwLink>
-        <AwDropdown ref="drop2">
-            <AwGrid :col="1" :gap="2" class="p-4 max-w-xs">
-                <AwLink theme="toggle">
-                    Lorem ipsum dolor sit amet.
-                </AwLink>
-                <AwLink theme="toggle">
-                    Lorem ipsum dolor sit amet.
-                </AwLink>
-                <AwLink class="text-success">
-                    In list button
-                </AwLink>
-                <AwLink class="text-error">
-                    In list button
-                </AwLink>
-                <AwLink>
-                    In list button
-                </AwLink>
-            </AwGrid>
-        </AwDropdown>
         <h4>Text below</h4>
+
         <p class="mt-4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo
             doloribus, vitae perspiciatis, vel eveniet ullam culpa pariatur

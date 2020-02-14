@@ -6,7 +6,7 @@
             type="hidden"
             tabindex="-1"
             :name="name"
-            :value="_getValue(selected)"
+            :value="JSON.stringify(_getValue(selected))"
             @invalid.prevent="
                 $refs.input.setError($event.target.validationMessage)
             "
@@ -53,7 +53,8 @@
                     <AwIcon
                         v-else
                         key="arrow"
-                        name="chevron-d"
+                        name="triangle-d"
+                        size="xl"
                         class="transition-200"
                         :class="{ 'rotate-180': isOpened }"
                     />
@@ -71,11 +72,9 @@
         >
             <slot name="dropdown" v-bind="{ optionsList, isOpened }">
                 <!-- not equal -->
-                <AwButton
+                <AwDropdownButton
                     v-if="_showNotEqual"
                     ref="notEqual"
-                    class="w-full text-left"
-                    theme="toggle"
                     @click="_onClickNotEqual"
                     @blur="_onFocusOutside"
                     @keydown.up.prevent.stop="_focusRef($refs.input)"
@@ -88,18 +87,15 @@
                     "
                 >
                     <slot name="not-equal" :searchPhrase="searchPhrase" />
-                </AwButton>
+                </AwDropdownButton>
 
                 <!-- options list -->
-                <AwGrid v-if="optionsList.length" :col="1" :gap="0">
-                    <slot name="before"></slot>
-                    <AwButton
+                <template v-if="optionsList.length">
+                    <AwDropdownButton
                         ref="options"
-                        class="w-full text-left"
                         v-for="({ optionLabel, index, active },
                         i) in optionsList"
                         :key="`${optionLabel}-${index}`"
-                        theme="toggle"
                         :active="active"
                         @click="selectedIndex = index"
                         @blur="_onFocusOutside"
@@ -120,15 +116,13 @@
                         >
                             {{ optionLabel }}
                         </slot>
-                    </AwButton>
-                </AwGrid>
+                    </AwDropdownButton>
+                </template>
 
                 <!-- not found -->
-                <AwButton
+                <AwDropdownButton
                     v-else
                     ref="notFound"
-                    class="w-full text-left"
-                    theme="toggle"
                     @click="_selectOnEnter"
                     @blur="_onFocusOutside"
                     @keydown.up.prevent.stop="_focusRef($refs.input)"
@@ -136,7 +130,7 @@
                     <slot name="not-found" :searchPhrase="searchPhrase">
                         {{ $t('AwSelect.notFound') }}
                     </slot>
-                </AwButton>
+                </AwDropdownButton>
             </slot>
         </AwDropdown>
     </div>
@@ -146,11 +140,16 @@
 import { path, pathOr, split } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
+import AwDropdownButton from './AwDropdownButton.vue'
 
 export default {
     inheritAttrs: false,
 
     name: 'AwSelect',
+
+    components: {
+        AwDropdownButton
+    },
 
     props: {
         options: {

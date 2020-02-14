@@ -1,0 +1,47 @@
+.aw-dropdown-button {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: theme('spacing.1') theme('spacing.4');
+    border-radius: theme('borderRadius.default');
+
+    & + & {
+        margin-top: 1px;
+    }
+
+    /* Same active state for all modifiers */
+    &.is-active {
+        background-color: color(theme('colors.info') alpha(20%));
+    }
+
+    /* Default color */
+    &_default {
+        &:focus {
+            outline: none;
+            background-color: theme('colors.muted-dark');
+        }
+
+        &:hover {
+            background-color: theme('colors.muted');
+        }
+    }
+}
+
+
+/* Color modifiers */
+@each $color in (success, warning, error) {
+    .aw-dropdown-button_$(color) {
+        $currentColor: theme('colors.$(color)');
+
+        color: $currentColor;
+
+        &:focus {
+            outline: none;
+            background-color: color($currentColor alpha(25%));
+        }
+
+        &:hover {
+            background-color: color($currentColor alpha(15%));
+        }
+    }
+}

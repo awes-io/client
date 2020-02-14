@@ -86,7 +86,8 @@
 
             <AwTableCol
                 v-if="$slots.dropdown || $scopedSlots.dropdown"
-                class="text-center"
+                class="w-20 lg:w-24"
+                :priority="1"
             >
                 <template #default="{ cell }">
                     <AwContextMenu>
