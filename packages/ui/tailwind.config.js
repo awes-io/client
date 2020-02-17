@@ -13,7 +13,7 @@ module.exports = {
             surface: '#fff',
             muted: '#f3f4f5',
             'muted-dark': '#e8e9eb',
-            disabled: '#999999',
+            disabled: '#949799',
             overlay: '#222',
             brand: '#37295e',
             success: '#7fc876',
