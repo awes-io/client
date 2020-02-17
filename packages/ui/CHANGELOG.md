@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.53.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.52.2...@awes-io/ui@1.53.0) (2020-02-17)
+
+
+### Bug Fixes
+
+* delete icons.css ([c2aece0](https://github.com/awes-io/client/commit/c2aece0b073ebd1385ae0427cfb49cc17891d508))
+* pagination dropdown upgrade ([0494d46](https://github.com/awes-io/client/commit/0494d46c37a20a0fd102035f172120112a361311))
+* **ui:** aw-multiblock-builder creates models snapshop on init ([7a4ba12](https://github.com/awes-io/client/commit/7a4ba12fd424e250487d17dc2e1d96024d3d6fa1))
+
+
+### Features
+
+* **ui:** add AwContextMenu component ([bce3f4e](https://github.com/awes-io/client/commit/bce3f4ee811254e6447962677674e874aa949363))
+* **ui:** aw-dropdown-button added ([8b6bea0](https://github.com/awes-io/client/commit/8b6bea0531ec4f33d77cfd1c338b22c8d733d49f))
+* **ui:** AwButton add active style ([e4e987b](https://github.com/awes-io/client/commit/e4e987b2f1010692aa5d64438d8061accb77c018))
+* **ui:** AwButton remove ripple effect, add loading state ([2028101](https://github.com/awes-io/client/commit/20281019119efbf233a852392fe31c458e4c49f3))
+* **ui:** AwTableBuilder - add dropdown slot ([730c99b](https://github.com/awes-io/client/commit/730c99bd8766f5efe37831177e165bb29ed84194))
+* **ui:** update popper.js ([784eefb](https://github.com/awes-io/client/commit/784eefbdfbddb858a63fd0f794ec997e4c94a596))
+
+
+
+
+
 ## [1.52.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.52.0...@awes-io/ui@1.52.2) (2020-02-14)
 
 
