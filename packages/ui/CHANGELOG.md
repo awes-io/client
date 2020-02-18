@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.54.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.53.0...@awes-io/ui@1.54.0) (2020-02-18)
+
+
+### Features
+
+* **ui:** close dropdown on action by defalt ([67d9723](https://github.com/awes-io/client/commit/67d972351aa4aef0230f9017a796a0306006238d))
+* **ui:** export aw-calendar-days as global component ([580c836](https://github.com/awes-io/client/commit/580c836d54830021e6b0e1ff7ef41c2c712cf6b3))
+
+
+
+
+
 # [1.53.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.52.2...@awes-io/ui@1.53.0) (2020-02-17)
 
 
