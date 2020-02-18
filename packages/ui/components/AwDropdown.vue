@@ -39,7 +39,10 @@ export default {
 
         options: Object,
 
-        closeOnAction: Boolean,
+        closeOnAction: {
+            type: Boolean,
+            default: true
+        },
 
         show: Boolean,
 
