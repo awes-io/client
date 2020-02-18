@@ -35,11 +35,13 @@
 <script>
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-import { F, anyPass, isNil, startsWith } from 'rambdax'
+import { F, anyPass, isNil, startsWith, reject } from 'rambdax'
 import AwCalendarDays from './AwCalendarDays.vue'
 import AwCalendarNav from './AwCalendarNav.vue'
 
 dayjs.extend(customParseFormat)
+
+const isSameDay = date => day => day.isSame(date, 'day')
 
 export default {
     name: 'AwCalendar',
@@ -234,21 +236,35 @@ export default {
                 : true
         },
 
-        onDateClick($event) {
-            if (!$event.isDisabled) {
-                /**
-                 * @vuese
-                 * Fire on date click, returns picked date.
-                 * If an array is provided as value, adds/removes picked day from array.
-                 * @arg date in `outputFormat` or array of dates
-                 */
-                this.$emit(
-                    'input',
-                    Array.isArray($event)
-                        ? $event.map(this.fromDayjs)
-                        : this.fromDayjs($event)
-                )
+        onDateClick(dateObject) {
+            // break if day is disabled
+            if (dateObject.isDisabled) return
+
+            const date = dateObject.date
+            let _date
+
+            if (Array.isArray(this.valueDayjs)) {
+                if (dateObject.isActive) {
+                    _date = reject(isSameDay(date), this.valueDayjs)
+                } else {
+                    _date = this.valueDayjs.concat(dayjs(date))
+                }
+            } else {
+                _date = dayjs(date)
             }
+
+            /**
+             * @vuese
+             * Fire on date click, returns picked date.
+             * If an array is provided as value, adds/removes picked day from array.
+             * @arg date in `outputFormat` or array of dates
+             */
+            this.$emit(
+                'input',
+                Array.isArray(this.valueDayjs)
+                    ? _date.map(this.fromDayjs)
+                    : this.fromDayjs(_date)
+            )
         }
     }
 }

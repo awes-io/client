@@ -26,13 +26,9 @@
 </template>
 
 <script>
-import { F, isFalsy, reject } from 'rambdax'
+import { F, isNil } from 'rambdax'
 import dayjs from 'dayjs'
 import AwCalendarDay from './AwCalendarDay.vue'
-
-const { isDayjs } = dayjs
-
-const isSameDay = date => day => day.isSame(date, 'day')
 
 export default {
     name: 'AwCalendarDays',
@@ -74,13 +70,8 @@ export default {
         },
 
         selected: {
-            type: [Object, Array],
-            default: null,
-            validator(selected) {
-                return Array.isArray(selected)
-                    ? selected.every(isDayjs)
-                    : isDayjs(selected)
-            }
+            type: [Object, Date, Array],
+            default: null
         }
     },
 
@@ -158,31 +149,17 @@ export default {
             const index = parseInt(button.getAttribute('data-index'))
             const dateObject = this.dates[index]
 
-            // break if day is disabled
-            if (dateObject.isDisabled) return
-
-            const date = dateObject.date
-            let _date
-
-            if (Array.isArray(this.selected)) {
-                if (dateObject.isActive) {
-                    _date = reject(isSameDay(date), this.selected)
-                } else {
-                    _date = this.selected.concat(dayjs(date))
-                }
-            } else {
-                _date = dayjs(date)
-            }
-
-            this.$emit('click:date', _date)
+            this.$emit('click:date', dateObject)
         },
 
         isActive(date) {
-            if (isFalsy(this.selected)) return false
+            if (isNil(this.selected)) return false
+
+            const isSameDay = day => dayjs(date).isSame(day, 'day')
 
             return Array.isArray(this.selected)
-                ? this.selected.some(isSameDay(date))
-                : this.selected.isSame(date, 'day')
+                ? this.selected.some(isSameDay)
+                : isSameDay(this.selected)
         }
     }
 }
