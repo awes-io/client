@@ -66,27 +66,17 @@
                     <AwDropdown
                         :show.sync="limitsOpened"
                         class="w-32"
-                        :options="{
-                            placement: 'bottom-end',
-                            modifiers: {
-                                preventOverflow: { enabled: false },
-                                hide: { enabled: false }
-                            }
-                        }"
+                        :options="{ placement: 'bottom-end' }"
                         close-on-action
                     >
-                        <AwGrid :gap="0">
-                            <AwButton
-                                v-for="_limit in limits"
-                                :key="_limit"
-                                :active="_limit === limit"
-                                theme="toggle"
-                                class="w-full text-left"
-                                @click="$emit('click:limit', _limit)"
-                            >
-                                {{ _limit }}
-                            </AwButton>
-                        </AwGrid>
+                        <AwDropdownButton
+                            v-for="_limit in limits"
+                            :key="_limit"
+                            :active="_limit === limit"
+                            @click="$emit('click:limit', _limit)"
+                        >
+                            {{ _limit }}
+                        </AwDropdownButton>
                     </AwDropdown>
                 </template>
                 <span v-else class="text-sm opacity-50">

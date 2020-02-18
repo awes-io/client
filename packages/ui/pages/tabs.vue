@@ -47,6 +47,14 @@ export default {
                 {
                     text: 'Order by id',
                     href: { query: { orderBy: 'id', limit: 5 } }
+                },
+                {
+                    text: 'Order by name',
+                    href: { query: { orderBy: 'name', limit: null } }
+                },
+                {
+                    text: 'Order by id',
+                    href: { query: { orderBy: 'id', limit: 5 } }
                 }
             ],
             active: 6

@@ -62,31 +62,26 @@
 
                 <AwTableCol title="Job title" field="position" />
 
-                <AwTableCol class="text-center">
-                    <template #default="{ cell }">
-                        <AwButton
-                            theme="icon"
-                            icon="more"
-                            :text="`Change item ${cell.id}`"
-                            @click="$refs[`drop-${cell.id}`].toggle()"
-                        />
-                        <AwDropdown
-                            :ref="`drop-${cell.id}`"
-                            close-on-action
-                            class="w-20"
-                        >
-                            <AwGrid :gap="0">
-                                <AwButton
-                                    theme="toggle"
-                                    class="w-full text-error text-left"
-                                    text="Remove"
-                                    @click="managers.remove({ id: cell.id })"
-                                />
-                            </AwGrid>
-                        </AwDropdown>
-                    </template>
-                </AwTableCol>
+                <template #dropdown="{ cell }">
+                    <AwDropdownButton
+                        color="error"
+                        text="Remove"
+                        @click="managers.remove({ id: cell.id })"
+                    />
+                    <AwDropdownButton text="Second item" />
+                </template>
             </AwTableBuilder>
+
+            <div class="mt-8">
+                <p>
+                    Component has <code>dropdown</code> slot. It is hidden by
+                    default and when present - located in most right column.
+                    Slot should contain list of items inside dropdown.<br />
+                    For example:
+                </p>
+
+                <AwCodeSnippet v-text="codeDropdown" class="my-3" />
+            </div>
         </section>
     </AwPage>
 </template>
@@ -128,6 +123,22 @@ export default {
                 }
             ],
             managers: new Managers()
+        }
+    },
+
+    computed: {
+        codeDropdown() {
+            const arr = [
+                '<AwTableBuilder :collection="managers">',
+                '   <AwTableCol vertical-align="top" field="id" />',
+                '   <AwTableCol title="Job title" field="position" />',
+                '   <template #dropdown>',
+                '       <AwButton theme="toggle" class="w-full" text="Remove" @click="remove" />',
+                '       <AwButton theme="toggle" class="w-full" text="Second item" @click="handler" />',
+                '   </template>',
+                '</AwTableBuilder>'
+            ]
+            return arr.join('\n')
         }
     },
 

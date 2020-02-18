@@ -39,7 +39,8 @@ export default {
                 'postcss-each': {},
                 'postcss-simple-vars': {},
                 'postcss-easings': {},
-                tailwindcss: {}
+                tailwindcss: {},
+                'postcss-color-function': {}
             }
         }
     },

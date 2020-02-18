@@ -4,17 +4,25 @@
     <component
         :class="classes"
         v-bind="componentProps"
-        :style="elStyle"
-        v-on="mergedListeners"
+        v-on="$listeners"
+        :disabled="$attrs.disabled || loading"
         @mousedown="_setPressed"
         @mouseup="_setPressed"
         @touchstart="_setPressed"
         @touchend="_setPressed"
     >
         <span :class="elClasses.overlay"></span>
+
+        <AwSvgImage
+            v-if="loading"
+            name="spinner"
+            slot="left"
+            class="h-5 w-5 inline-block mr-1"
+        />
+
         <span :class="elClasses.content">
             <AwIcon
-                v-if="icon"
+                v-if="icon && !loading"
                 :name="icon"
                 :class="{ 'mr-1': theme !== 'icon' }"
             />
@@ -24,10 +32,10 @@
                     elClasses.text
                 ]"
             >
-                <slot>{{ text }}</slot>
+                <slot v-if="!loading">{{ text }}</slot>
+                <span v-else>LOADING</span>
             </span>
         </span>
-        <span ref="ripple" :class="elClasses.ripple"></span>
     </component>
 </template>
 
@@ -35,7 +43,6 @@
 import AwLink from './AwLink.vue'
 import { AwButton as _config } from './_config'
 import { getBemClasses } from '../assets/js/css'
-import { conf } from '../assets/js/component'
 
 export default {
     name: 'AwButton',
@@ -75,17 +82,18 @@ export default {
             default: ''
         },
 
+        // Indicates if loader spinner is shown
+        loading: {
+            type: Boolean,
+            default: false
+        },
+
         active: Boolean
     },
 
     data() {
         return {
-            isPressed: false,
-            showRipple: false,
-            clickCoords: {
-                x: 0,
-                y: 0
-            }
+            isPressed: false
         }
     },
 
@@ -95,8 +103,8 @@ export default {
                 this.className,
                 {
                     'is-pressed': this.isPressed,
-                    'has-ripple': this.showRipple,
-                    'is-active': this.active
+                    'is-active': this.active,
+                    'is-loading': this.loading
                 },
                 `${this.className}_${this.size}`,
                 `color-${this.color}`,
@@ -105,79 +113,14 @@ export default {
         },
 
         elClasses() {
-            return getBemClasses(this.className, [
-                'content',
-                'overlay',
-                'ripple',
-                'text'
-            ])
-        },
-
-        elStyle() {
-            return {
-                '--ripple-x': `${this.clickCoords.x}px`,
-                '--ripple-y': `${this.clickCoords.y}px`
-            }
-        },
-
-        _rippleListeners() {
-            return this.componentProps.is !== conf(this, 'routerComponent')
-                ? {
-                      mousedown: this._setPressed,
-                      mouseup: this._setPressed,
-                      touchstart: this._setPressed,
-                      touchend: this._setPressed
-                  }
-                : {}
-        },
-
-        mergedListeners() {
-            return {
-                ...this._rippleListeners,
-                ...this.$listeners
-            }
+            return getBemClasses(this.className, ['content', 'overlay', 'text'])
         }
     },
 
     methods: {
         _setPressed($event) {
-            if ($event.type === 'mousedown' || $event.type === 'touchstart') {
-                // hide ripple
-                this.showRipple = false
-                this._toggleRippleListener(false)
-
-                // set pressed state and show ripple for transition
-                this.isPressed = true
-
-                // set coordiantes
-                const pos = this.$el.getBoundingClientRect()
-                this.clickCoords = {
-                    x: $event.clientX - pos.x,
-                    y: $event.clientY - pos.y
-                }
-
-                this._raf = requestAnimationFrame(() => {
-                    this.showRipple = true
-                })
-            } else {
-                // remove pressed state
-                this.isPressed = false
-
-                // remove ripple after transition
-                this._raf = requestAnimationFrame(this._toggleRippleListener)
-            }
-        },
-
-        _removeRipple() {
-            this.showRipple = false
-            this._toggleRippleListener(false)
-        },
-
-        _toggleRippleListener(on = true) {
-            this.$refs.ripple[`${on ? 'add' : 'remove'}EventListener`](
-                'transitionend',
-                this._removeRipple
-            )
+            this.isPressed =
+                $event.type === 'mousedown' || $event.type === 'touchstart'
         },
 
         focus() {
@@ -185,11 +128,6 @@ export default {
                 this.$el.focus()
             }
         }
-    },
-
-    beforeDestroy() {
-        this._toggleRippleListener(false)
-        cancelAnimationFrame(this._raf)
     }
 }
 </script>

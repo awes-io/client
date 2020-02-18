@@ -8,6 +8,7 @@
         ref="wrap"
         class="aw-slider"
         @mousedown.capture="_activate"
+        @dragstart.capture="_prevent"
     >
         <slot />
     </Component>
@@ -18,13 +19,6 @@ import { pick } from 'rambdax'
 
 const CLICK_THRESHOLD_T = 300 // ms
 const CLICK_THRESHOLD_X = 5 // px
-
-function prevent($event) {
-    $event.preventDefault()
-    $event.stopImmediatePropagation()
-    $event.stopPropagation()
-    return false
-}
 
 export default {
     name: 'AwSlider',
@@ -53,7 +47,7 @@ export default {
 
     beforeDestroy() {
         this._toggle(false)
-        this.$refs.wrap.removeEventListener('click', prevent, true)
+        this.$refs.wrap.removeEventListener('click', this._prevent, true)
     },
 
     methods: {
@@ -84,7 +78,11 @@ export default {
 
                 // remove click prevention listener
                 setTimeout(() => {
-                    this.$refs.wrap.removeEventListener('click', prevent, true)
+                    this.$refs.wrap.removeEventListener(
+                        'click',
+                        this._prevent,
+                        true
+                    )
                 }, 10)
             })
         },
@@ -100,9 +98,16 @@ export default {
             const time = timeStamp - this.$event.timeStamp
             const x = this.$event.pageX - pageX
             if (time > CLICK_THRESHOLD_T || x > CLICK_THRESHOLD_X) {
-                this.$refs.wrap.addEventListener('click', prevent, true)
+                this.$refs.wrap.addEventListener('click', this._prevent, true)
                 window.removeEventListener('mousemove', this._checkDragging)
             }
+        },
+
+        _prevent($event) {
+            $event.preventDefault()
+            $event.stopImmediatePropagation()
+            $event.stopPropagation()
+            return false
         }
     }
 }

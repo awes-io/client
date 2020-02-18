@@ -10,21 +10,19 @@ module.exports = {
         },
         colors: {
             transparent: 'transparent',
-
             surface: '#fff',
-            muted: '#f8f8f8',
+            muted: '#f3f4f5',
             'muted-dark': '#e8e9eb',
             'muted-darker': '#d7dbde',
-            disabled: '#999999',
+            disabled: '#949799',
             overlay: '#222',
             brand: '#37295e',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
-            'info-light': 'rgba(69, 164, 220, .1)',
-            warning: '#edc252',
+            warning: '#EDC253',
             accent: '#F43E80',
-            error: '#f36161'
+            error: '#D11738'
         },
         onColors: {
             surface: '#0f1012',

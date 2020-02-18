@@ -92,6 +92,7 @@ export default {
                     .map(({ componentOptions, data }, i) => {
                         const props = componentOptions.propsData
                         const slot = path('scopedSlots.default', data)
+                        const staticClass = pathOr('', 'staticClass', data)
                         const field = path('field', props)
                         const title = pathOr(
                             field ? ucFirst(field) : '',
@@ -109,7 +110,8 @@ export default {
                             priority: pathOr(i, 'priority', props),
                             title,
                             textAlign: path('textAlign', props),
-                            slot
+                            slot,
+                            staticClass
                         }
                     })
             } else {

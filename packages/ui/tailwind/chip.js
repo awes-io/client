@@ -41,7 +41,7 @@ function getBaseStyle(theme) {
             display: 'inline-flex'
         },
         'decor-icon_color': {
-            transform: 'scale(0.6)'
+            transform: 'scale(0.5)'
         },
         text: {
             fontSize: theme('fontSize.sm'),

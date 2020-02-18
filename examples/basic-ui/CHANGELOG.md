@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.50.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.49.1...basic-ui@1.50.0) (2020-02-17)
+
+
+### Features
+
+* **ui:** add AwContextMenu component ([bce3f4e](https://git.awescode.com/awes-io/client/commits/bce3f4ee811254e6447962677674e874aa949363))
+* **ui:** aw-dropdown-button added ([8b6bea0](https://git.awescode.com/awes-io/client/commits/8b6bea0531ec4f33d77cfd1c338b22c8d733d49f))
+* **ui:** AwButton add active style ([e4e987b](https://git.awescode.com/awes-io/client/commits/e4e987b2f1010692aa5d64438d8061accb77c018))
+* **ui:** AwButton remove ripple effect, add loading state ([2028101](https://git.awescode.com/awes-io/client/commits/20281019119efbf233a852392fe31c458e4c49f3))
+* **ui:** AwTableBuilder - add dropdown slot ([730c99b](https://git.awescode.com/awes-io/client/commits/730c99bd8766f5efe37831177e165bb29ed84194))
+
+
+
+
+
+## [1.49.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.49.0...basic-ui@1.49.1) (2020-02-14)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
+# [1.49.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.48.0...basic-ui@1.49.0) (2020-02-13)
+
+
+### Features
+
+* **ui:** add new icons, colors ([749cdd1](https://git.awescode.com/awes-io/client/commits/749cdd1903dbb7a2d30f50dbc18edfceb03fda7f))
+
+
+
+
+
 # [1.48.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.47.0...basic-ui@1.48.0) (2020-02-13)
 
 

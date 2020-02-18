@@ -83,6 +83,18 @@
             </template>
 
             <slot />
+
+            <AwTableCol
+                v-if="$slots.dropdown || $scopedSlots.dropdown"
+                class="w-20 lg:w-24"
+                :priority="1"
+            >
+                <template #default="{ cell }">
+                    <AwContextMenu>
+                        <slot name="dropdown" :cell="cell"></slot>
+                    </AwContextMenu>
+                </template>
+            </AwTableCol>
         </AwTable>
 
         <div v-else-if="collection.loading" key="empty-loading-container">

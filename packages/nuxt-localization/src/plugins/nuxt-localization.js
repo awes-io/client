@@ -218,6 +218,14 @@ const translationsModule = {
                 })
                 .catch(e => {
                     if (!isCancel(e)) {
+                        // TODO: remove this in favor of notifications
+                        const statusCode = pathOr(500, 'response.status', e)
+                        if (statusCode === 401) {
+                            this.app.context.error({
+                                statusCode,
+                                message: e.message
+                            })
+                        }
                         throw getErrors(e)
                     }
                 })
