@@ -1,5 +1,6 @@
 import { setConfig } from '../assets/js/component'
 import * as components from '../components/index'
+import tooltip from '../directives/tooltip'
 
 // Import styles
 import '../assets/css/main.css'
@@ -13,6 +14,8 @@ function install(Vue, config) {
     Object.keys(components).forEach(componentName => {
         Vue.component(componentName, components[componentName])
     })
+
+    Vue.directive('tooltip', tooltip)
 
     setConfig(Vue, config)
 }

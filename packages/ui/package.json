@@ -28,6 +28,7 @@
         "nuxt/*",
         "lang/*",
         "tailwind/*",
+        "directives/*",
         "mixins/*",
         "assets/*",
         "docs/*",
