@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.55.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.54.0...@awes-io/ui@1.55.0) (2020-02-18)
+
+
+### Features
+
+* handle any format in aw-calendar-days ([206eaea](https://github.com/awes-io/client/commit/206eaea03c6f554d67c1f1b6f1b381cec56ec837))
+
+
+
+
+
 # [1.54.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.53.0...@awes-io/ui@1.54.0) (2020-02-18)
 
 
