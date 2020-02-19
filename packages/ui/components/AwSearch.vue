@@ -13,7 +13,7 @@
                 name="search"
                 class="h-full w-10 p-3"
             />
-            <button v-else @click="_clear">
+            <button v-else class="focus:outline-none" @click="_clear">
                 <AwIcon name="close" class="h-full w-10 p-3" />
             </button>
         </template>
