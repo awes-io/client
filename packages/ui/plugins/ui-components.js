@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { keys } from 'rambdax'
 import * as exported from '../components/index'
+import tooltip from '../directives/tooltip'
 
 const requireComponent = require.context(
     '../components',
@@ -23,3 +24,5 @@ requireComponent.keys().forEach(fileName => {
 
     Vue.component(componentName, componentConfig.default || componentConfig)
 })
+
+Vue.directive('tooltip', tooltip)

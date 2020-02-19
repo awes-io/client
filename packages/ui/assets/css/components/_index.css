@@ -15,6 +15,7 @@
 @import './modal.css';
 
 @import './toggler.css';
+@import './tooltip.css';
 
 /* last because of @keyframes lowers performance */
 @import './animation.css';
