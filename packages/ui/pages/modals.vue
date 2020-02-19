@@ -32,7 +32,12 @@
         <AwButton @click="$root.$emit('modal::bottom:open')">
             Show bottom
         </AwButton>
-        <AwModal title="Bottom modal" :param="false" name="bottom" theme="bottom">
+        <AwModal
+            title="Bottom modal"
+            :param="false"
+            name="bottom"
+            theme="bottom"
+        >
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
             <AwSwitcher
