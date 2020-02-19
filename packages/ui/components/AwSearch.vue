@@ -6,6 +6,7 @@
         v-model="text"
         autocomplete="off"
         :placeholder="placeholder"
+        @keydown.enter.prevent="_setSearchImmediate"
     >
         <template #icon>
             <AwIcon
@@ -80,8 +81,6 @@ export default {
 
     watch: {
         text: function(newValue) {
-            newValue = newValue.trim()
-
             const currentValue = this.$route.query[this.param] || ''
 
             if (newValue === currentValue) return
@@ -122,6 +121,11 @@ export default {
                 .catch(e => {
                     console.log(e)
                 })
+        },
+
+        _setSearchImmediate($event) {
+            clearTimeout(this._tm)
+            this._setSearchParam($event.target.value)
         },
 
         _clear() {

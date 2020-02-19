@@ -18,6 +18,7 @@ const LIMIT_DEFAULT = parseInt('<%=options.pagination.limit.default%>')
 const LOADING_TIMEOUT = 200 //ms
 
 let loadingTimeout = null
+let fetchRequest = null
 
 const getData = pathOr(
     JSON.parse('<%=JSON.stringify(options.data.default)%>'),
@@ -149,6 +150,15 @@ const translationsModule = {
             loadingTimeout = null
         },
 
+        TOGGLE_FETCHING(state, isFetching = false) {
+            if (isFetching) {
+                fetchRequest = CancelToken.source()
+            } else if (fetchRequest) {
+                fetchRequest.cancel()
+                fetchRequest = null
+            }
+        },
+
         TOGGLE_SAVING(state, isSaving = false) {
             if (isSaving) {
                 state.saveRequest = CancelToken.source()
@@ -172,9 +182,18 @@ const translationsModule = {
                 }, LOADING_TIMEOUT)
             }
 
+            if (fetchRequest) {
+                commit('TOGGLE_FETCHING', false)
+            }
+
+            commit('TOGGLE_FETCHING', true)
+
             return this.$axios
-                .get('<%=options.endpoint%>', {
-                    params: getters.requestParams
+                .request({
+                    method: 'get',
+                    url: '<%=options.endpoint%>',
+                    params: getters.requestParams,
+                    cancelToken: fetchRequest.token
                 })
                 .then(({ data }) => {
                     commit('SET_TRANSLATIONS', getData(data))
@@ -182,7 +201,13 @@ const translationsModule = {
 
                     return data
                 })
+                .catch(e => {
+                    if (!isCancel(e)) {
+                        console.log(e)
+                    }
+                })
                 .finally(() => {
+                    commit('TOGGLE_FETCHING', false)
                     commit('TOGGLE_LOADING', false)
                 })
         },

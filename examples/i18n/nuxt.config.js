@@ -35,7 +35,7 @@ export default {
         nuxtI18n: {
             locales: [
                 { code: 'en-GB' },
-                { code: 'en-US' }, // test duplicated locales in @awes-io/nuxt-localization
+                // { code: 'en-US' }, // test duplicated locales in @awes-io/nuxt-localization
                 { code: 'ru-RU' },
                 { code: 'uk-UA' },
                 { code: 'de-DE' }

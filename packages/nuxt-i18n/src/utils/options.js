@@ -66,19 +66,8 @@ function normalizeNuxtI18nOptions(options) {
     // provide default locales or first
     const defaultLocale = pathOr(locales[0].code, 'defaultLocale', options)
 
-    // fallback locale sends another request
-    // const fallbackLocale = pathOr(
-    //     defaultLocale,
-    //     'vueI18n.fallbackLocale',
-    //     options
-    // )
-
     return {
         ...options,
-        // vueI18n: {
-        //     ...pathOr({}, 'vueI18n', options),
-        //     fallbackLocale
-        // },
         locales,
         differentDomains,
         defaultLocale,
@@ -91,7 +80,6 @@ export function addNuxtI18nOptions(globalOptions, moduleOptions) {
     const awesIoNuxtI18nOptions = pathOr({}, 'awesIo.nuxtI18n', globalOptions)
 
     // set lang dir to build dir
-    // TODO: make dynamic
     const langDir = relative(
         globalOptions.srcDir,
         join(globalOptions.buildDir, 'awes-io', 'lang')
