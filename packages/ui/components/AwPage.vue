@@ -60,10 +60,12 @@
         <div>
             <slot name="subnav">
                 <div v-if="subnav.length" class="border-b bg-muted">
-                    <AwTabNav
-                        :items="subnav"
-                        class="container border-transparent -mb-px"
-                    />
+                    <div class="container">
+                        <AwTabNav
+                            :items="subnav"
+                            class="border-transparent -mb-px -mx-3"
+                        />
+                    </div>
                 </div>
             </slot>
         </div>

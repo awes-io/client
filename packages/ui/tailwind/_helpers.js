@@ -18,7 +18,9 @@ function generateBEMClasses(block, styles) {
                 }
 
                 return [
-                    `.${block}__${element}`,
+                    R.startsWith('default', element)
+                        ? '.' + element.replace('default', block)
+                        : `.${block}__${element}`,
                     R.omit('extends,output', style)
                 ]
             })

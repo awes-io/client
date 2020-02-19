@@ -1,4 +1,4 @@
-import { isFalsy, mergeDeep, filter, keys, pick, equals } from 'rambdax'
+import { isFalsy, mergeDeep, filter, toPairs } from 'rambdax'
 
 /**
  * Removes nullish values from query object
@@ -50,10 +50,11 @@ export function mergeRouteQuery(query, route) {
  * @return {Boolean} - true if has query
  */
 export function hasRouteQuery(query, route) {
-    return equals(
-        pick(keys(query), cleanRouteQuery(route.query)),
-        cleanRouteQuery(query)
-    )
+    const _query = cleanRouteQuery(query)
+    const _routeQuery = cleanRouteQuery(route.query)
+
+    // non-strict values comparation, because of different types of default string parsing
+    return toPairs(_query).every(([key, value]) => _routeQuery[key] == value)
 }
 
 /**
@@ -68,5 +69,7 @@ export function trimSlash(path = '') {
         throw new TypeError('Path must be a string')
     }
 
-    return path.replace(/\/$/, '')
+    const [_path, _query] = path.split('?')
+
+    return _path.replace(/\/$/, '') + (_query ? `?${_query}` : '')
 }
