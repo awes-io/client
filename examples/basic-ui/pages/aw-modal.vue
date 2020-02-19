@@ -20,26 +20,29 @@
             Show aside
         </AwButton>
         <AwModal title="Aside modal" param="drawer" name="aside" theme="aside">
-            <AwInput label="Name" name="name" />
-            <AwInput class="mt-2" label="Password" name="password" />
-            <AwSwitcher
-                label="Save information for the next booking"
-                class="mt-2"
-            />
-            <AwButton class="mt-2" type="submit">Submit</AwButton>
+            <blockquote>
+                <p>
+                    This modal has another param, because
+                    <code>param</code> prop is <code>drawer</code>
+                </p>
+            </blockquote>
         </AwModal>
 
         <AwButton @click="$root.$emit('modal::bottom:open')">
             Show bottom
         </AwButton>
-        <AwModal title="Bottom modal" name="bottom" theme="bottom">
-            <AwInput label="Name" name="name" />
-            <AwInput class="mt-2" label="Password" name="password" />
-            <AwSwitcher
-                label="Save information for the next booking"
-                class="mt-2"
-            />
-            <AwButton class="mt-2" type="submit">Submit</AwButton>
+        <AwModal
+            title="No GET-param for this modal"
+            :param="false"
+            name="bottom"
+            theme="bottom"
+        >
+            <blockquote>
+                <p>
+                    This modal state is not saved to get parameters, because
+                    <code>:param</code> is <code>false</code>
+                </p>
+            </blockquote>
         </AwModal>
     </AwPage>
 </template>
