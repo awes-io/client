@@ -29,6 +29,7 @@ export const navigation = [
     { title: 'Link', url: '/aw-link', description: '' },
     { title: 'Markdown editor', url: '/aw-markdown-editor', description: '' },
     { title: 'Modal', url: '/aw-modal', description: '' },
+    { title: 'Notify', url: '/notify', description: '' },
     { title: 'Radio', url: '/aw-radio', description: '' },
     { title: 'Search', url: '/aw-search', description: '' },
     { title: 'Select', url: '/aw-select', description: '' },
