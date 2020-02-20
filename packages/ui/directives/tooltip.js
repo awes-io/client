@@ -17,8 +17,14 @@ function showTooltip() {
                 options: { padding: 6 }
             },
             {
+                name: 'preventOverflow',
+                options: {
+                    padding: 16
+                }
+            },
+            {
                 name: 'offset',
-                options: { offset: [0, -4] }
+                options: { offset: [0, 6] }
             }
         ]
     })
@@ -59,7 +65,7 @@ function toggleEvents(el, on = false) {
 function createTooltip(content, options = {}, placement = 'top') {
     const tooltip = document.createElement('div')
 
-    const cssClass = pathOr('bg-overlay', 'class', options)
+    const cssClass = pathOr('', 'class', options)
     const onclick = pathOr(F, 'onclick', options)
 
     tooltip.__placement__ = placement
