@@ -22,7 +22,7 @@ module.exports = {
             info: '#45a4dc',
             warning: '#ecab49',
             accent: '#F43E80',
-            error: '#D11738'
+            error: '#e9555b'
         },
         onColors: {
             surface: '#0f1012',
