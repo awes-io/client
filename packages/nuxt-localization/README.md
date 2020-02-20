@@ -36,13 +36,13 @@ By default, the module will make next requests to you backend
                 "en": "Another translation key"
                 // locales may be missing
             }
-        },
+        }
         // ...
     ],
     "meta": {
         "current_page": 1, // required
         "per_page": 15, // required
-        "total": 42, // required
+        "total": 42 // required
         // ...
     }
 }
@@ -116,6 +116,9 @@ By default, the module will make next requests to you backend
             // backend endpoint
             endpoint: '/api/translations/edit',
 
+            // link to download translations (hidden by default)
+            export: '',
+
             // if string is longer, then this limit it will be rendered as textarea
             textLimit: 128,
 
@@ -154,4 +157,5 @@ By default, the module will make next requests to you backend
     }
 }
 ```
+
 Ensure to write proper commit message according to [Git Commit convention](https://www.conventionalcommits.org/)
