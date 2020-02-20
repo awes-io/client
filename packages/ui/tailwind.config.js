@@ -20,9 +20,8 @@ module.exports = {
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
-            warning: '#EDC253',
-            accent: '#F43E80',
-            error: '#D11738'
+            warning: '#ecab49',
+            error: '#e9555b'
         },
         onColors: {
             surface: '#0f1012',
@@ -34,7 +33,6 @@ module.exports = {
             success: '#fff',
             info: '#fff',
             warning: '#fff',
-            accent: '#fff',
             error: '#fff'
         },
         borderColor: theme => ({
