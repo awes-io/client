@@ -89,6 +89,8 @@ import { conf } from '../assets/js/component'
 import { getBemClasses } from '../assets/js/css'
 import { AwModal as _config } from './_config'
 
+const DEFAULT_GET_PARAM = 'modal'
+
 let _uniqModalId = 0
 
 function getStopper() {
@@ -127,9 +129,13 @@ export default {
             default: () => `modal-${_uniqModalId++}`
         },
 
+        /**
+         * Get parameter, which is set when modal is opened
+         */
         param: {
-            type: String,
-            default: 'modal'
+            type: [String, Boolean],
+            /* modal */
+            default: DEFAULT_GET_PARAM
         },
 
         theme: {
@@ -148,7 +154,8 @@ export default {
     data() {
         return {
             showContent: false,
-            lastFocused: null
+            lastFocused: null,
+            localOpened: false
         }
     },
 
@@ -158,7 +165,9 @@ export default {
         },
 
         isOpened() {
-            return this.$route.query[this.param] === this.name
+            return this.paramComputed
+                ? this.$route.query[this.paramComputed] === this.name
+                : this.localOpened
         },
 
         elClasses() {
@@ -171,6 +180,16 @@ export default {
                 'body',
                 'content'
             ])
+        },
+
+        paramComputed() {
+            switch (typeof this.param) {
+                case 'string':
+                    return this.param || DEFAULT_GET_PARAM
+                case 'boolean':
+                default:
+                    return this.param ? DEFAULT_GET_PARAM : null
+            }
         }
     },
 
@@ -228,9 +247,16 @@ export default {
         },
 
         open() {
-            this.$router.push(
-                mergeRouteQuery(this._getModalParam(this.name), this.$route)
-            )
+            if (this.paramComputed) {
+                this.$router.push(
+                    mergeRouteQuery(
+                        { [this.paramComputed]: this.name },
+                        this.$route
+                    )
+                )
+            } else {
+                this.localOpened = true
+            }
         },
 
         selfClose() {
@@ -245,19 +271,17 @@ export default {
         },
 
         close() {
-            this.$router.push(
-                mergeRouteQuery(this._getModalParam(null), this.$route)
-            )
+            if (this.paramComputed) {
+                this.$router.push(
+                    mergeRouteQuery({ [this.paramComputed]: null }, this.$route)
+                )
+            } else {
+                this.localOpened = false
+            }
 
             // emit closed
             this.eventBus.$emit(`modal::${this.name}:closed`)
             this.$emit('closed')
-        },
-
-        _getModalParam(val) {
-            let _param = {}
-            _param[this.param] = val
-            return _param
         },
 
         _escButtonHandler($event) {
