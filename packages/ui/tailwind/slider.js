@@ -27,7 +27,9 @@ function getBaseStyle() {
         },
         'default > *': {
             'scroll-snap-align': 'start end',
-            'scroll-snap-stop': 'always'
+            'scroll-snap-stop': 'always',
+            'user-select': 'none',
+            'user-drag': 'none'
         }
     }
 }

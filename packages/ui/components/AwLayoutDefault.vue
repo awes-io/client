@@ -122,12 +122,13 @@
                             },
                             children && children.length ? 'pr-12' : 'pr-6'
                         ]"
+                        :href="href"
                         :active="isActive({ href, children, i })"
                         :title="menuThin && buttonAttrs.text"
                         v-on="
                             children && children.length
                                 ? { click: () => toggle(i) }
-                                : { click: () => goToPage(href) }
+                                : { click: $event => goToPage($event, href) }
                         "
                     />
 
@@ -267,7 +268,9 @@ export default {
             )
         },
 
-        goToPage(href) {
+        goToPage($event, href) {
+            $event.preventDefault()
+            $event.stopPropagation()
             this.showMobileMenu = false
             this.$router.push(href)
         }
