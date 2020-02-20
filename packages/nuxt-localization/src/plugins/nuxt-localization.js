@@ -4,13 +4,20 @@ import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
 import AwTranslationBlock from '@awes-io/nuxt-localization/src/components/AwTranslationBlock.vue'
 import AwTranslationNav from '@awes-io/nuxt-localization/src/components/AwTranslationNav.vue'
+import AwTranslationDownload from '@awes-io/nuxt-localization/src/components/AwTranslationDownload.vue'
 
 AwTranslationBlock.computed._config = function() {
     return { textLimit: parseInt('<%=options.textLimit%>') }
 }
 
 AwTranslationNav.computed._config = function() {
-    return { route: '<%=options.route%>' }
+    return { route: '<%=options.route%>', export: '<%=options.export%>' }
+}
+
+AwTranslationDownload.computed = {
+    _config() {
+        return { export: '<%=options.export%>' }
+    }
 }
 
 const PAGE_DEFAULT = parseInt('<%=options.pagination.page.default%>')
@@ -256,6 +263,7 @@ const translationsModule = {
 export default function({ store }) {
     Vue.component('AwTranslationBlock', AwTranslationBlock)
     Vue.component('AwTranslationNav', AwTranslationNav)
+    Vue.component('AwTranslationDownload', AwTranslationDownload)
 
     store.registerModule('awesIoTranslations', translationsModule)
 }

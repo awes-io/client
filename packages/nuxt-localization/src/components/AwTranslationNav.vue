@@ -12,7 +12,7 @@ export default {
 
     computed: {
         subnav() {
-            return [
+            const subnav = [
                 {
                     text: 'Edit',
                     href: this.localePath({
@@ -26,6 +26,17 @@ export default {
                     })
                 }
             ]
+
+            if (this._config.export) {
+                subnav.push({
+                    text: 'Export',
+                    href: this.localePath({
+                        path: this._config.route + 'export'
+                    })
+                })
+            }
+
+            return subnav
         }
     }
 }

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { prop, values, isType, equals, uniq } from 'rambdax'
+import { prop, values, isType, equals, uniq, filter } from 'rambdax'
 
 export default {
     name: 'AwTranslationBlock',
@@ -63,7 +63,7 @@ export default {
     data() {
         return {
             showConfirm: false,
-            currentValue: { ...this.value }
+            currentValue: filter(Boolean, this.value)
         }
     },
 
@@ -116,10 +116,10 @@ export default {
 
     methods: {
         update(text = '', locale) {
-            this.currentValue = {
+            this.currentValue = filter(Boolean, {
                 ...this.currentValue,
                 [locale]: text.trim()
-            }
+            })
         },
 
         remove() {
