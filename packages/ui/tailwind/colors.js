@@ -50,13 +50,14 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
                             'background-color': `var(--c-${name})`,
                             color: `var(--c-on-${name})`
                         }
-                    ],
-                    [
-                        `.${e(`bg-${name}`)} *`,
-                        {
-                            'border-color': `var(--c-fade-${name})`
-                        }
                     ]
+                    // ,
+                    // [
+                    //     `.${e(`bg-${name}`)} *`,
+                    //     {
+                    //         'border-color': `var(--c-fade-${name})`
+                    //     }
+                    // ]
                 ]
             })
         )

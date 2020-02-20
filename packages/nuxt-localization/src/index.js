@@ -7,6 +7,7 @@ const meta = require('../package.json')
 const DEFAULT_OPTIONS = {
     route: '/localization',
     endpoint: '/api/translations/edit',
+    export: '',
     textLimit: 128,
     data: { default: {}, response: 'data' },
     errors: { default: {}, response: 'errors' },
@@ -48,7 +49,7 @@ function AwesIoNuxtLocalization(_options = {}) {
 
     // Add localization route
     this.extendRoutes((routes = []) => {
-        routes.unshift({
+        const route = {
             path: mergedOptions.route,
             component: resolve(__dirname, './pages/Localization.vue'),
             children: [
@@ -66,7 +67,17 @@ function AwesIoNuxtLocalization(_options = {}) {
                     )
                 }
             ]
-        })
+        }
+
+        if (mergedOptions.export) {
+            route.children.unshift({
+                path: 'export',
+                name: 'LocalizationExport',
+                component: resolve(__dirname, './pages/LocalizationExport.vue')
+            })
+        }
+
+        routes.unshift(route)
     })
 }
 

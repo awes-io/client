@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.51.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.50.2...basic-ui@1.51.0) (2020-02-20)
+
+
+### Features
+
+* **ui:** aw-modal can optionally disable get param ([e1a18e3](https://git.awescode.com/awes-io/client/commits/e1a18e3eaa6fb6ce3c93f6170d95e6ecf602c4c7))
+* **ui:** tooltip directive added ([11271a6](https://git.awescode.com/awes-io/client/commits/11271a613f6432dc3efa68071e33c649532b2529))
+
+
+
+
+
+## [1.50.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.50.1...basic-ui@1.50.2) (2020-02-18)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
 ## [1.50.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.50.0...basic-ui@1.50.1) (2020-02-18)
 
 **Note:** Version bump only for package basic-ui

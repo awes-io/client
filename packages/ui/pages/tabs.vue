@@ -4,7 +4,21 @@
         <AwTabNav :items="routes" />
 
         <h2>Buttons</h2>
-        <AwTabNav :items="['One', 'Two', 'Three']" :active.sync="active" />
+        <AwTabNav
+            :items="[
+                { text: 'One', badge: { text: 1, color: 'success' } },
+                'Two',
+                'Three',
+                'Four',
+                'Five',
+                'Six',
+                'Seven',
+                'Eight',
+                'Nine',
+                'Ten'
+            ]"
+            :active.sync="active"
+        />
     </AwPage>
 </template>
 
@@ -22,8 +36,17 @@ export default {
         return {
             routes: [
                 {
-                    text: 'Order default',
-                    href: { query: { orderBy: null, limit: 50 } }
+                    text: 'Without order',
+                    href: { query: { orderBy: null, limit: 50 } },
+                    badge: { text: 'default', color: 'info' }
+                },
+                {
+                    text: 'Order by name',
+                    href: { query: { orderBy: 'name', limit: null } }
+                },
+                {
+                    text: 'Order by id',
+                    href: { query: { orderBy: 'id', limit: 5 } }
                 },
                 {
                     text: 'Order by name',
@@ -34,7 +57,7 @@ export default {
                     href: { query: { orderBy: 'id', limit: 5 } }
                 }
             ],
-            active: 2
+            active: 6
         }
     },
 

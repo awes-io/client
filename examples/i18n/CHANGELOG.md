@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.2.5...example-nuxt-i18n@1.3.0) (2020-02-20)
+
+
+### Features
+
+* **nuxt-localization:** download link configuration added ([b0e5fe9](https://git.awescode.com/awes-io/client/commits/b0e5fe992cc2434b01ec3823e943baf3b5a5f113))
+
+
+
+
+
+## [1.2.5](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.2.4...example-nuxt-i18n@1.2.5) (2020-02-18)
+
+**Note:** Version bump only for package example-nuxt-i18n
+
+
+
+
+
 ## [1.2.4](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.2.3...example-nuxt-i18n@1.2.4) (2020-02-18)
 
 **Note:** Version bump only for package example-nuxt-i18n

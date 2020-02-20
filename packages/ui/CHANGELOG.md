@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.56.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.55.0...@awes-io/ui@1.56.0) (2020-02-20)
+
+
+### Bug Fixes
+
+* **ui:** layout styles fix for tablet ([13271e7](https://github.com/awes-io/client/commit/13271e7e7360795d8627f8514e225c69cd905aa7))
+* **ui:** prevent drag in slider ([0b59202](https://github.com/awes-io/client/commit/0b592026d915a577d9dd733b68d46b9d947edf0b))
+
+
+### Features
+
+* **ui:** aw-modal can optionally disable get param ([e1a18e3](https://github.com/awes-io/client/commit/e1a18e3eaa6fb6ce3c93f6170d95e6ecf602c4c7))
+* **ui:** scroll for tabs ([b725062](https://github.com/awes-io/client/commit/b7250624d65830a7ac8acd45056ae4e84a0001a9))
+* **ui:** tooltip directive added ([11271a6](https://github.com/awes-io/client/commit/11271a613f6432dc3efa68071e33c649532b2529))
+
+
+
+
+
+# [1.55.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.54.0...@awes-io/ui@1.55.0) (2020-02-18)
+
+
+### Features
+
+* handle any format in aw-calendar-days ([206eaea](https://github.com/awes-io/client/commit/206eaea03c6f554d67c1f1b6f1b381cec56ec837))
+
+
+
+
+
 # [1.54.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.53.0...@awes-io/ui@1.54.0) (2020-02-18)
 
 
