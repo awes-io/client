@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.57.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.57.0...@awes-io/ui@1.57.1) (2020-02-21)
+
+
+### Bug Fixes
+
+* **ui:** fix slider in safari ([c51ed9e](https://github.com/awes-io/client/commit/c51ed9e3e20108e5253e071c5788631a6ce00feb))
+
+
+
+
+
 # [1.57.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.56.0...@awes-io/ui@1.57.0) (2020-02-21)
 
 
