@@ -16,6 +16,10 @@
         "illjah42 <ilya.kitayev@gmail.com>"
     ],
     "main": "src/index.js",
+    "files": [
+        "src/utils/*",
+        "src/template/*"
+    ],
     "dependencies": {
         "axios": "^0.19.2",
         "nuxt-i18n": "^6.5.0",
