@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.57.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.56.0...@awes-io/ui@1.57.0) (2020-02-21)
+
+
+### Bug Fixes
+
+* **ui:** tooltip design upgrade ([5af14fc](https://github.com/awes-io/client/commit/5af14fc8652621e3240f68da33b8d2a152c4d0af))
+
+
+### Features
+
+* **ui:** tooltip directive for erors ([1ae459c](https://github.com/awes-io/client/commit/1ae459cf5a57d6438108deb6aeab4fd0609dbde9))
+
+
+
+
+
 # [1.56.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.55.0...@awes-io/ui@1.56.0) (2020-02-20)
 
 
