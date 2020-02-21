@@ -67,14 +67,11 @@ export default {
         },
 
         _deactivate() {
+            const left = this.$refs.wrap.scrollLeft
             this.active = false
             this.$nextTick(() => {
                 // set closest position
-                this.$refs.wrap.scrollTo({
-                    top: 0,
-                    left: this.$refs.wrap.scrollLeft,
-                    behavior: 'smooth'
-                })
+                this.$refs.wrap.scrollTo({ top: 0, left })
 
                 // remove click prevention listener
                 setTimeout(() => {
