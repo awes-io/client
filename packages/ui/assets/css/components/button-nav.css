@@ -1,0 +1,62 @@
+.aw-button-nav {
+    display: inline-flex;
+    padding: theme('spacing.1');
+    border-radius: theme('borderRadius.lg');
+    background-color: theme('colors.muted-dark');
+    color: theme('onColors.surface');
+    font-size: theme('fontSize.sm');
+
+    &__toggler {
+        display: flex;
+        position: relative;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        padding: theme('spacing.1') theme('spacing.5');
+        margin-left: theme('spacing.2');
+        border-radius: theme('borderRadius.default');
+        min-width: theme('spacing.8');
+        line-height: theme('lineHeight.relaxed');
+        white-space: nowrap;
+    }
+
+    &__toggler:before {
+        content: '';
+        position: absolute;
+        left: calc(-1 * theme('spacing.1'));
+        top: theme('spacing.1');
+        bottom: theme('spacing.1');
+        width: 1px;
+        display: block;
+        background-color: theme('colors.muted-darker');
+    }
+
+    &__toggler:first-child {
+        margin-left: 0;
+    }
+
+    &__toggler:first-child:before {
+        content: none;
+    }
+
+    &__toggler:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px theme('colors.info');
+    }
+
+    &__toggler_active {
+        background-color: theme('colors.surface');
+        box-shadow: theme('boxShadow.default');
+    }
+
+    &__toggler:hover {
+        background-color: theme('colors.muted');
+    }
+
+    &__toggler[disabled],
+    &__toggler_disabled {
+        color: theme('colors.disabled');
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}

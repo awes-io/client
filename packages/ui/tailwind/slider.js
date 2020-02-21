@@ -5,8 +5,9 @@ function getBaseStyle() {
     return {
         // wrapping element
         default: {
-            display: 'flex',
-            width: '100%',
+            // display: 'flex',
+            maxWidth: '100%',
+            position: 'relative',
             'overflow-x': 'scroll',
             // 'overflow-x': 'overlay',
             'scroll-snap-type': 'x proximity',
@@ -29,6 +30,24 @@ function getBaseStyle() {
             'scroll-snap-align': 'start end',
             'scroll-snap-stop': 'always'
         }
+        // overflow: {
+        //     output: false,
+        //     content: '""',
+        //     width: '1rem',
+        //     height: '100%',
+        //     top: 0,
+        //     position: 'absolute'
+        // },
+        // 'default_overflow-left:before': {
+        //     extends: 'overflow',
+        //     left: 0,
+        //     backgroundImage: 'linear-gradient(90deg, black, rgba(0,0,0,0))'
+        // },
+        // 'default_overflow-right:after': {
+        //     extends: 'overflow',
+        //     right: 0,
+        //     backgroundImage: 'linear-gradient(-90deg, black, rgba(0,0,0,0))'
+        // }
     }
 }
 

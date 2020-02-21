@@ -25,14 +25,18 @@
             <span class="lg:hidden">
                 {{ $t('AwPagination.page', { page, pagesTotal }) }}
             </span>
-            <div class="hidden lg:block py-1 pr-1 bg-muted-dark rounded-lg">
+            <div class="hidden lg:inline-flex aw-button-nav">
                 <Component
                     v-for="({ component, text }, i) in pageButtons"
                     :is="component"
                     :key="`${i}-${text}`"
                     :data-page="component === 'button' ? text : null"
-                    :class="{ 'bg-surface shadow': text === page }"
-                    class="px-2 py-1 text-center rounded min-w-8 ml-1 focus:outline-none"
+                    :class="{
+                        'aw-button-nav__toggler_active': text === page,
+                        'aw-button-nav__toggler_disabled':
+                            component !== 'button'
+                    }"
+                    class="aw-button-nav__toggler px-2 w-8"
                 >
                     {{ text }}
                 </Component>

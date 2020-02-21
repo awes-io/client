@@ -1,15 +1,19 @@
 <template>
-    <AwSlider class="aw-tab-nav">
+    <AwSlider :class="_cssClasses.base">
         <template
-            v-for="({ text, key, route, isActive, ...item }, i) in togglers"
+            v-for="({ text, key, route, isActive, isDisabled, ...item },
+            i) in togglers"
         >
             <slot v-bind="{ text, key, route, isActive, ...item }">
                 <a
                     v-if="route"
                     :key="key"
-                    :href="route.fullPath"
-                    :class="{ 'aw-tab-nav__toggler_active': isActive }"
-                    class="aw-tab-nav__toggler"
+                    :href="isDisabled ? null : route.fullPath"
+                    :class="[
+                        _cssClasses.toggler,
+                        { [_cssClasses.togglerActive]: isActive },
+                        { [_cssClasses.togglerDisabled]: isDisabled }
+                    ]"
                     @click.prevent="navigate(route)"
                 >
                     {{ text }}
@@ -18,8 +22,12 @@
                 <button
                     v-else
                     :key="key"
-                    :class="{ 'aw-tab-nav__toggler_active': isActive }"
-                    class="aw-tab-nav__toggler"
+                    :class="[
+                        _cssClasses.toggler,
+                        { [_cssClasses.togglerActive]: isActive },
+                        { [_cssClasses.togglerDisabled]: isDisabled }
+                    ]"
+                    :disabled="isDisabled ? '' : null"
                     type="button"
                     @click.prevent="update(i)"
                 >
@@ -32,7 +40,7 @@
 </template>
 
 <script>
-import { pathOr, isType, omit } from 'rambdax'
+import { pathOr, isType, omit, uniq, keys, fromPairs } from 'rambdax'
 import {
     mergeQueries,
     hasRouteQuery,
@@ -40,6 +48,7 @@ import {
     trimSlash
 } from '../assets/js/router'
 import { validateBySchema } from '../assets/js/component'
+import { getBemClasses } from '../assets/js/css'
 import AwSlider from './AwSlider.vue'
 import AwBadge from './AwBadge.vue'
 
@@ -49,6 +58,10 @@ export default {
     components: {
         AwSlider,
         AwBadge
+    },
+
+    _config: {
+        baseClass: 'aw-tab-nav'
     },
 
     props: {
@@ -82,15 +95,42 @@ export default {
         /**
          * Active tab index (for button tabs)
          *
-         * @type {Number}
+         * @type {Number|Array}
          */
         active: {
-            type: Number,
-            default: 0
+            type: [Number, Array],
+            default: 0,
+            validator(val) {
+                return Array.isArray(val) ? !val.every(isNaN) : !isNaN(val)
+            }
         }
     },
 
     computed: {
+        _cssClasses() {
+            const base = this.$options._config.baseClass
+            return {
+                base,
+                ...getBemClasses(base, [
+                    'toggler',
+                    'toggler_active',
+                    'toggler_disabled'
+                ])
+            }
+        },
+
+        _resetParams() {
+            return uniq(
+                this.items.reduce((acc, item) => {
+                    return acc.concat(keys(pathOr({}, 'href.query', item)))
+                }, [])
+            )
+        },
+
+        _resetParamsQuery() {
+            return fromPairs(this._resetParams.map(param => [param, null]))
+        },
+
         _routeNormalizer() {
             return href => {
                 if (typeof href === 'object') {
@@ -101,7 +141,10 @@ export default {
                         return this.$router.resolve({
                             path,
                             query: mergeQueries(
-                                pathOr({}, 'query', href),
+                                {
+                                    ...this._resetParamsQuery,
+                                    ...pathOr({}, 'query', href)
+                                },
                                 this.$route.query
                             ),
                             hash: this.$route.hash
@@ -135,16 +178,20 @@ export default {
         togglers() {
             return this.items.map((item, i) => {
                 const text = pathOr(item, 'text', item)
+                const isDisabled = pathOr(false, 'disabled', item)
                 const href = pathOr(false, 'href', item)
                 const route = href ? this._routeNormalizer(href) : false
                 const isActive = href
                     ? this._routeMatcher(route)
+                    : Array.isArray(this.active)
+                    ? this.active.includes(i)
                     : i === this.active
 
                 return {
                     ...omit('text,href', item),
                     route,
                     isActive,
+                    isDisabled,
                     text,
                     key: `${text}-${i}`
                 }
@@ -166,7 +213,17 @@ export default {
         },
 
         update(i) {
-            this.$emit('update:active', i)
+            let active = i
+
+            if (Array.isArray(this.active)) {
+                if (this.active.includes(i)) {
+                    active = this.active.filter(item => item !== i)
+                } else {
+                    active = this.active.concat(i)
+                }
+            }
+
+            this.$emit('update:active', active)
         },
 
         scrollToActive() {
