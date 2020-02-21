@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.3.2...example-nuxt-i18n@1.4.0) (2020-02-21)
+
+
+### Features
+
+* **nuxt-i18n:** send accept language header ([be6cef1](https://git.awescode.com/awes-io/client/commits/be6cef1f6d21b6c543b526df11dcae559d455c35))
+
+
+
+
+
 ## [1.3.2](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.3.1...example-nuxt-i18n@1.3.2) (2020-02-21)
 
 **Note:** Version bump only for package example-nuxt-i18n
