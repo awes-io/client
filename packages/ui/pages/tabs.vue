@@ -37,24 +37,28 @@ export default {
             routes: [
                 {
                     text: 'Without order',
-                    href: { query: { orderBy: null, limit: 50 } },
+                    href: { query: { orderBy: null, limit: 50, order: null } },
                     badge: { text: 'default', color: 'info' }
                 },
                 {
                     text: 'Order by name',
-                    href: { query: { orderBy: 'name', limit: null } }
+                    href: {
+                        query: { orderBy: 'name', order: 'ASC', limit: null }
+                    }
                 },
                 {
                     text: 'Order by id',
-                    href: { query: { orderBy: 'id', limit: 5 } }
+                    href: { query: { orderBy: 'id', order: 'ASC', limit: 5 } }
                 },
                 {
                     text: 'Order by name',
-                    href: { query: { orderBy: 'name', limit: null } }
+                    href: {
+                        query: { orderBy: 'name', order: 'DESC', limit: null }
+                    }
                 },
                 {
                     text: 'Order by id',
-                    href: { query: { orderBy: 'id', limit: 5 } }
+                    href: { query: { orderBy: 'id', order: 'DESC', limit: 5 } }
                 }
             ],
             active: 6
