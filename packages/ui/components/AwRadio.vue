@@ -6,6 +6,7 @@
             v-bind="{ value, checked: isChecked, ...skipAttr, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
+            v-tooltip:top-start.show="errorTooltip"
             v-on="mergedListeners"
         /><label
             v-if="!!label"
@@ -16,15 +17,6 @@
                 {{ label }}
             </slot>
         </label>
-        <slot name="error" v-if="errorText" :error="errorText">
-            <span
-                class="aw-error is-left has-pin-bottom-left"
-                :id="errorId"
-                @click="_onErrorClick"
-            >
-                {{ errorText }}
-            </span>
-        </slot>
     </div>
 </template>
 
@@ -52,6 +44,10 @@ export default {
     },
 
     computed: {
+        _tooltipOffset() {
+            return null
+        },
+
         wrapperClasses() {
             return { 'has-error': this.hasError }
         },

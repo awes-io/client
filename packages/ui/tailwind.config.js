@@ -20,9 +20,9 @@ module.exports = {
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
-            warning: '#EDC253',
+            warning: '#ecab49',
             accent: '#F43E80',
-            error: '#D11738'
+            error: '#e9555b'
         },
         onColors: {
             surface: '#0f1012',

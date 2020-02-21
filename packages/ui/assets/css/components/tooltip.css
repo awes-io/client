@@ -1,10 +1,14 @@
 .aw-tooltip {
-    padding: theme('spacing.1') theme('spacing.2');
-    font-size: theme('fontSize.sm', 0.8rem);
+    padding: theme('spacing.1') theme('spacing.3');
+    font-size: theme('fontSize.sm', 0.875rem);
+    border-radius: theme('borderRadius.default');
+    background-color: theme('colors.overlay', black);
+    color: theme('onColors.overlay', white);
     display: none;
 
     &[data-visible] {
         display: block;
+        z-index: 20;
     }
 
     & > [data-popper-arrow] {
