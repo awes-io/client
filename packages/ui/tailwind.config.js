@@ -34,7 +34,6 @@ module.exports = {
             success: '#fff',
             info: '#fff',
             warning: '#fff',
-            accent: '#fff',
             error: '#fff'
         },
         borderColor: theme => ({

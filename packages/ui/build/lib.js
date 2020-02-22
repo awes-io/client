@@ -1,6 +1,8 @@
+import { keys, pathOr } from 'rambdax'
 import { setConfig } from '../assets/js/component'
 import * as components from '../components/index'
 import tooltip from '../directives/tooltip'
+import { Notification } from '../assets/js/Notification'
 
 // Import styles
 import '../assets/css/main.css'
@@ -11,13 +13,17 @@ function install(Vue, config) {
 
     install.installed = true
 
-    Object.keys(components).forEach(componentName => {
+    keys(components).forEach(componentName => {
         Vue.component(componentName, components[componentName])
     })
 
     Vue.directive('tooltip', tooltip)
 
     setConfig(Vue, config)
+
+    const Noty = new Notification(pathOr({}, 'Notification', config))
+
+    Vue.prototype.$notify = Noty.add.bind(Noty)
 }
 
 // Create module definition for Vue.use()
