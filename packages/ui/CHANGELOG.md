@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.59.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.58.0...@awes-io/ui@1.59.0) (2020-02-22)
+
+
+### Bug Fixes
+
+* **ui:** AwTable do not call click:row if clicked on button or link ([055eb91](https://github.com/awes-io/client/commit/055eb91096350366de96a821e694766f4316c59b))
+* **ui:** fix AwAvatar shrink in table ([615d7e8](https://github.com/awes-io/client/commit/615d7e8143fcb14851fb4ba5443af8cc8dd6613b))
+* **ui:** fix AwPage headline animation ([7c0245e](https://github.com/awes-io/client/commit/7c0245e54e495a2dfd664615729776d9e24ecde2))
+* **ui:** fix AwSearch close button focus outline ([7aee3ed](https://github.com/awes-io/client/commit/7aee3ed444d3c3cec9e52eff101df9424d6d1b28))
+
+
+### Features
+
+* **ui:** notifications added ([fe0bb05](https://github.com/awes-io/client/commit/fe0bb05e7908b53ec265f40bb4e9751bddd633ce))
+
+
+
+
+
 # [1.58.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.57.1...@awes-io/ui@1.58.0) (2020-02-21)
 
 
