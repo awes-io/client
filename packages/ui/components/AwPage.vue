@@ -3,53 +3,49 @@
         <div class="flex items-end container">
             <div class="flex-auto">
                 <!-- title -->
-                <Transition name="fade-from-bottom" mode="out-in">
-                    <Component
-                        :is="titleTag"
-                        :class="[elClasses.title]"
-                        :key="title.key || title"
-                    >
-                        <!-- Breadcrumb link back to catalog -->
-                        <slot name="breadcrumb">
-                            <!-- if prop breadctumb is empty, block is empty too -->
-                            <div
-                                v-if="
-                                    breadcrumb &&
-                                        breadcrumb.href &&
-                                        breadcrumb.title
-                                "
-                            >
-                                <span class="hidden sm:inline-block">
-                                    <AwLink
-                                        :href="breadcrumb.href"
-                                        class="mr-2"
-                                        >{{ breadcrumb.title }}</AwLink
-                                    >
-                                    <span
-                                        class="text-sm text-disabled align-middle mr-4"
-                                        >&#47;</span
-                                    >
-                                </span>
-                                <span class="sm:hidden">
-                                    <AwButton
-                                        :href="breadcrumb.href"
-                                        :title="breadcrumb.title"
-                                        class="mr-4 min-w-0 px-2"
-                                        size="sm"
-                                        color="default"
-                                    >
-                                        <AwIcon name="chevron-l" />
-                                    </AwButton>
-                                </span>
-                            </div>
-                        </slot>
-                        <!-- Title of the page -->
-                        <slot name="title" :title="title">
-                            <!-- Empty string -->
-                            {{ title }}
-                        </slot>
-                    </Component>
-                </Transition>
+                <Component
+                    :is="titleTag"
+                    :class="[elClasses.title]"
+                    :key="title.key || title"
+                >
+                    <!-- Breadcrumb link back to catalog -->
+                    <slot name="breadcrumb">
+                        <!-- if prop breadctumb is empty, block is empty too -->
+                        <div
+                            v-if="
+                                breadcrumb &&
+                                    breadcrumb.href &&
+                                    breadcrumb.title
+                            "
+                        >
+                            <span class="hidden sm:inline-block">
+                                <AwLink :href="breadcrumb.href" class="mr-2">{{
+                                    breadcrumb.title
+                                }}</AwLink>
+                                <span
+                                    class="text-sm text-disabled align-middle mr-4"
+                                    >&#47;</span
+                                >
+                            </span>
+                            <span class="sm:hidden">
+                                <AwButton
+                                    :href="breadcrumb.href"
+                                    :title="breadcrumb.title"
+                                    class="mr-4 min-w-0 px-2"
+                                    size="sm"
+                                    color="default"
+                                >
+                                    <AwIcon name="chevron-l" />
+                                </AwButton>
+                            </span>
+                        </div>
+                    </slot>
+                    <!-- Title of the page -->
+                    <slot name="title" :title="title">
+                        <!-- Empty string -->
+                        {{ title }}
+                    </slot>
+                </Component>
             </div>
             <div v-if="!!$slots.buttons" class="py-4 flex-none pl-4">
                 <slot name="buttons"></slot>
