@@ -9,6 +9,8 @@
                     : '',
                 width: `${props.size}px`,
                 height: `${props.size}px`,
+                'min-width': `${props.size}px`,
+                'min-height': `${props.size}px`,
                 'font-size': `${(props.size / 100) * 3}rem`
             }
         ]"

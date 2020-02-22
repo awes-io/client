@@ -23,6 +23,15 @@ function AwesIoNuxtI18n(_options = {}) {
             }
         })
     })
+
+    // Add header plugin
+    if (this.options.i18n.locales.some(({ iso }) => !!iso)) {
+        const { dst } = this.addTemplate({
+            src: resolve(__dirname, './template/header.js'),
+            fileName: join('awes-io', 'lang-header.js')
+        })
+        this.options.plugins.push(resolve(this.options.buildDir, dst))
+    }
 }
 
 AwesIoNuxtI18n.meta = meta

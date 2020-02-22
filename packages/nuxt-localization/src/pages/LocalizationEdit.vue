@@ -1,6 +1,6 @@
 <template>
     <div @keydown.enter="focusNext">
-        <AwSearch class="mb-8 shadow" />
+        <AwSearch class="mb-8 shadow" :disabled="isLoading" :debounce="1000" />
 
         <template v-if="!isEmpty">
             <AwTranslationBlock
@@ -48,7 +48,8 @@ export default {
             'translations',
             'pagination',
             'isEmpty',
-            'isSaving'
+            'isSaving',
+            'isLoading'
         ])
     },
 
@@ -129,6 +130,7 @@ export default {
         )
 
         if (!equals(pick(watchQuery, updated), pick(watchQuery, query))) {
+            store.commit('awesIoTranslations/TOGGLE_FETCHING', false)
             redirect(route.path, { ...omit(watchQuery, query), ...updated })
         } else {
             await store.dispatch('awesIoTranslations/FETCH')

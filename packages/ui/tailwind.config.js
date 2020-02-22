@@ -21,6 +21,7 @@ module.exports = {
             link: '#1d6ec5',
             info: '#45a4dc',
             warning: '#ecab49',
+            accent: '#F43E80',
             error: '#e9555b'
         },
         onColors: {
