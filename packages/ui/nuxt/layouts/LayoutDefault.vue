@@ -23,7 +23,7 @@
                     <p v-if="user.name" class="px-4 pt-4 font-bold">
                         {{ user.name }}
                     </p>
-                    <AwGrid class="p-4" :col="1" :gap="2">
+                    <AwGrid class="pt-4" :col="1" :gap="2">
                         <!-- eslint-disable prettier/prettier -->
                         <Component
                             v-for="{

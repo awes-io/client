@@ -4,7 +4,6 @@
     max-height: 75vh;
     overflow: auto;
     scrollbar-width: thin;
-    padding: theme('spacing.4') theme('spacing.2');
 
     @media (min-width: theme('screens.md')) {
         max-height: 50vh;

@@ -1,6 +1,7 @@
 <template>
     <AwPage :title="headline">
         <h3>Button</h3>
+
         <AwButton @click="$refs.drop.toggle()">
             Toggle dropdown
         </AwButton>
@@ -9,7 +10,7 @@
                 Default
             </AwDropdownButton>
             <AwDropdownButton color="success">
-                Seccess
+                Success
             </AwDropdownButton>
             <AwDropdownButton color="warning">
                 Warning
@@ -21,7 +22,7 @@
                 Default active
             </AwDropdownButton>
             <AwDropdownButton color="success" active>
-                Seccess active
+                Success active
             </AwDropdownButton>
             <AwDropdownButton color="warning" active>
                 Warning active
