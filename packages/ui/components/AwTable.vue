@@ -208,8 +208,23 @@ export default {
             })
         },
 
+        checkIfButtonOrLink(el) {
+            const elements = ['BUTTON', 'A']
+            let node = el
+            while (node) {
+                if (elements.indexOf(node.tagName.toUpperCase()) > -1) {
+                    return true
+                }
+                node = node.parentElement
+            }
+            return false
+        },
+
         handleRowClick($event) {
             const target = $event.target
+
+            if (this.checkIfButtonOrLink(target)) return
+
             const toggler = target.hasAttribute(TABLE_TOGGLER_ATTR)
                 ? target
                 : target.closest(`[${TABLE_TOGGLER_ATTR}]`)

@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-i18n",
-    "version": "0.2.0",
+    "version": "0.4.0",
     "description": "Awes.io module for loading translations",
     "homepage": "https://www.awes.io",
     "bugs": {
@@ -16,6 +16,10 @@
         "illjah42 <ilya.kitayev@gmail.com>"
     ],
     "main": "src/index.js",
+    "files": [
+        "src/utils/*",
+        "src/template/*"
+    ],
     "dependencies": {
         "axios": "^0.19.2",
         "nuxt-i18n": "^6.5.0",

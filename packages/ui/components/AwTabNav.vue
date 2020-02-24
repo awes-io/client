@@ -229,6 +229,7 @@ export default {
         scrollToActive() {
             const el = this.$el.querySelector('.aw-tab-nav__toggler_active')
             if (el) {
+                console.log(el)
                 setTimeout(() => {
                     el.scrollIntoView({
                         behavior: 'smooth',

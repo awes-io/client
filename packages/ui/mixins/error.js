@@ -13,6 +13,24 @@ export default {
         }
     },
 
+    computed: {
+        _tooltipOffset() {
+            return [0, -6]
+        },
+
+        errorTooltip() {
+            return this.errorText
+                ? {
+                      id: this.errorId,
+                      onclick: this._onErrorClick,
+                      content: this.errorText,
+                      class: 'bg-error',
+                      offset: this._tooltipOffset
+                  }
+                : null
+        }
+    },
+
     watch: {
         error: {
             handler(val) {

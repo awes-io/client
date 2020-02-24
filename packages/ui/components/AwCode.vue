@@ -1,5 +1,9 @@
 <template>
-    <div :class="wrapperClasses" class="flex items-center -mx-1">
+    <div
+        :class="wrapperClasses"
+        v-tooltip.show="errorTooltip"
+        class="flex items-center -mx-1"
+    >
         <input
             class="sr-only"
             v-bind="$attrs"
@@ -10,7 +14,7 @@
         />
         <template v-for="(char, i) in pattern">
             <span v-if="char === '-'" :key="`d-${i}`" class="mx-1">-</span>
-            <div v-else :key="`i-${i}`" class="mx-1">
+            <div v-else :key="`i-${i}`" class="mx-1 flex-1">
                 <input
                     ref="fields"
                     type="tel"
@@ -29,15 +33,6 @@
                 />
             </div>
         </template>
-        <slot name="error" v-if="errorText" :error="errorText">
-            <span
-                class="aw-error is-center has-pin-bottom-center"
-                :id="errorId"
-                @click="_onErrorClick"
-            >
-                {{ errorText }}
-            </span>
-        </slot>
     </div>
 </template>
 

@@ -22,6 +22,7 @@
                 v-bind="{ value, checked: isChecked, ...skipAttr, ...$attrs }"
                 :id="id || defaultId"
                 :aria-describedby="errorText ? errorId : null"
+                v-tooltip:top-start.show="errorTooltip"
                 v-on="mergedListeners"
             /><label
                 v-if="!!label"
@@ -35,15 +36,6 @@
             <div class="aw-switch-field__switch" aria-hidden="true">
                 <span class="aw-switch-field__toggle"></span>
             </div>
-        </slot>
-        <slot name="error" v-if="errorText" :error="errorText">
-            <span
-                class="aw-error is-left has-pin-bottom-left"
-                :id="errorId"
-                @click="_onErrorClick"
-            >
-                {{ errorText }}
-            </span>
         </slot>
     </div>
 </template>
@@ -66,6 +58,12 @@ export default {
             startPos: null,
             isTouch: false,
             isSwitched: false
+        }
+    },
+
+    computed: {
+        _tooltipOffset() {
+            return [0, 0]
         }
     },
 

@@ -1,26 +1,40 @@
 import { createPopper } from '@popperjs/core'
-import { isType, pathOr, omit, F } from 'rambdax'
+import { isType, isNil, pathOr, omit, F, clone } from 'rambdax'
 
 const POPPERS = new Map()
 
 function showTooltip() {
     const tooltip = this.__tooltip__
     const placement = tooltip.__placement__
+    const options = tooltip.__options__
 
     tooltip.setAttribute('data-visible', '')
 
+    const modifiers = [
+        {
+            name: 'arrow',
+            options: { padding: 6 }
+        },
+        {
+            name: 'preventOverflow',
+            options: {
+                padding: 16
+            }
+        }
+    ]
+
+    const offset = pathOr([0, 6], 'offset', options)
+
+    if (offset) {
+        modifiers.push({
+            name: 'offset',
+            options: { offset }
+        })
+    }
+
     const popper = createPopper(this, tooltip, {
         placement,
-        modifiers: [
-            {
-                name: 'arrow',
-                options: { padding: 6 }
-            },
-            {
-                name: 'offset',
-                options: { offset: [0, -4] }
-            }
-        ]
+        modifiers
     })
 
     POPPERS.set(tooltip, popper)
@@ -56,15 +70,22 @@ function toggleEvents(el, on = false) {
     })
 }
 
-function createTooltip(content, options = {}, placement = 'top') {
+function createTooltip(content, options, placement = 'top') {
     const tooltip = document.createElement('div')
 
-    const cssClass = pathOr('bg-overlay', 'class', options)
+    const cssClass = pathOr('', 'class', options)
+    const id = pathOr(null, 'id', options)
     const onclick = pathOr(F, 'onclick', options)
 
     tooltip.__placement__ = placement
 
+    tooltip.__options__ = clone(options)
+
     tooltip.className = 'aw-tooltip ' + cssClass
+
+    if (id) {
+        tooltip.setAttribute('id', id)
+    }
 
     tooltip.onclick = onclick
 
@@ -95,6 +116,7 @@ function unbind(el) {
         // clear references
         tooltip.onclick = null
         delete tooltip.__placement__
+        delete tooltip.__options__
         delete el.__tooltip__
     }
 }
@@ -102,6 +124,8 @@ function unbind(el) {
 function bind(el, { value, arg, modifiers }) {
     // destroy if exists
     unbind(el)
+
+    if (isNil(value)) return
 
     const content = isType('String', value)
         ? value

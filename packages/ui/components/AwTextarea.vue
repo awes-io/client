@@ -5,6 +5,7 @@
             v-bind="{ value: inputValue, ...skipAttr, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
+            v-tooltip.show="errorTooltip"
             v-on="mergedListeners"
             ref="element"
         /><label
@@ -14,15 +15,6 @@
         >
             {{ label }}
         </label>
-        <slot name="error" v-if="errorText" :error="errorText">
-            <span
-                class="aw-error is-center has-pin-bottom-center"
-                :id="errorId"
-                @click="_onErrorClick"
-            >
-                {{ errorText }}
-            </span>
-        </slot>
     </div>
 </template>
 

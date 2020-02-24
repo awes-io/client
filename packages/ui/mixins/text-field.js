@@ -23,9 +23,9 @@ export default {
             return [
                 {
                     'is-filled':
-                        typeof this.inputValue === 'number' ||
-                        !!this.inputValue ||
-                        this.autoFilled
+                        this.autoFilled ||
+                        (typeof this.inputValue !== 'undefined' &&
+                            this.inputValue !== '')
                 },
                 { 'has-label': !!this.label },
                 { 'has-error': this.hasError },

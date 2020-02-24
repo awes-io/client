@@ -13,6 +13,7 @@
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
             v-on="mergedListeners"
+            v-tooltip.show="errorTooltip"
             ref="element"
         /><label v-if="!!label" :class="elClasses.label" :for="id || defaultId">
             {{ label }}
@@ -20,15 +21,6 @@
         <span v-if="$slots.icon" :class="elClasses.icon">
             <slot name="icon" />
         </span>
-        <slot name="error" v-if="errorText" :error="errorText">
-            <span
-                class="aw-error is-center has-pin-bottom-center"
-                :id="errorId"
-                @click="_onErrorClick"
-            >
-                {{ errorText }}
-            </span>
-        </slot>
     </div>
 </template>
 

@@ -43,15 +43,20 @@ route.get('/edit', (req, res) => {
         locales = locales.filter(({ name }) => includes(search, name))
     }
 
-    res.json({
-        success: true,
-        data: locales.slice((page - 1) * limit, page * limit),
-        meta: {
-            total: locales.length,
-            current_page: page,
-            per_page: limit
-        }
-    })
+    setTimeout(
+        () => {
+            res.json({
+                success: true,
+                data: locales.slice((page - 1) * limit, page * limit),
+                meta: {
+                    total: locales.length,
+                    current_page: page,
+                    per_page: limit
+                }
+            })
+        },
+        search ? 2000 : 100
+    )
 })
 
 route.post('/edit', (req, res) => {

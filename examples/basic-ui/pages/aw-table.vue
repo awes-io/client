@@ -82,6 +82,37 @@
 
                 <AwCodeSnippet v-text="codeDropdown" class="my-3" />
             </div>
+
+            <AwCard title="NOTE" class="my-8 border-l-4 border-error">
+                Click on any <code>button</code> or <code>a</code> elements that
+                inside table row will not trigger <code>click:row</code> event.
+                <br />This includes click on dropdown slot button aswell. <br />
+                For example clicking on row in table below will trigger alert
+            </AwCard>
+
+            <AwTable
+                :rows="rows"
+                vertical-align="middle"
+                @click:row="exampleClickRow"
+            >
+                <!-- https://tailwindcss.com/docs/word-break/#app -->
+                <AwTableCol field="one" class="break-all" :priority="4" />
+                <AwTableCol field="two with long name" title="Two">
+                    <template #default>
+                       <AwUserpic :src="undefined" name="Sds Max-Mustermann" />
+                    </template>
+                </AwTableCol>
+                <AwTableCol field="three" title="Three" title-align="center">
+                    <template #default>
+                        <AwLink>Link</AwLink>
+                    </template>
+                </AwTableCol>
+                <AwTableCol>
+                    <template #default>
+                        <AwButton>Button</AwButton>
+                    </template>
+                </AwTableCol>
+            </AwTable>
         </section>
     </AwPage>
 </template>
@@ -145,6 +176,10 @@ export default {
     methods: {
         clickRow(val) {
             console.log(val)
+        },
+
+        exampleClickRow() {
+            alert('Row click')
         }
     },
 

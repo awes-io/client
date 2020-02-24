@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     text: 'Order by id',
-                    href: { query: { orderBy: 'id', limit: 5 } }
+                    href: { query: { orderBy: 'id', order: 'DESC', limit: 5 } }
                 }
             ],
             active: [6]

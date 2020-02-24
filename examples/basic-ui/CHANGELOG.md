@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.51.4](https://git.awescode.com/awes-io/client/compare/basic-ui@1.51.3...basic-ui@1.51.4) (2020-02-22)
+
+
+### Bug Fixes
+
+* **ui:** AwTable do not call click:row if clicked on button or link ([055eb91](https://git.awescode.com/awes-io/client/commits/055eb91096350366de96a821e694766f4316c59b))
+
+
+
+
+
+## [1.51.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.51.2...basic-ui@1.51.3) (2020-02-21)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
+## [1.51.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.51.1...basic-ui@1.51.2) (2020-02-21)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
+## [1.51.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.51.0...basic-ui@1.51.1) (2020-02-21)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
 # [1.51.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.50.2...basic-ui@1.51.0) (2020-02-20)
 
 

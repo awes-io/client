@@ -8,7 +8,7 @@
         >
             <!-- decor -->
             <div aria-hidden="true" class="w-6 flex flex-col items-center">
-                <AwIcon name="circle" size="sm" class="text-accent mt-1 mb-2" />
+                <AwIcon name="circle" size="sm" class="text-error mt-1 mb-2" />
                 <div class="w-px flex-grow bgcolor-overlay opacity-20"></div>
             </div>
 
