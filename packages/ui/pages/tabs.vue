@@ -4,13 +4,13 @@
         <AwTabNav :items="routes" />
 
         <h2>Buttons</h2>
-        <AwTabNav
+        <AwButtonNav
             :items="[
                 { text: 'One', badge: { text: 1, color: 'success' } },
                 'Two',
                 'Three',
-                'Four',
-                'Five',
+                { text: 'Four', disabled: true },
+                { text: 'Five', disabled: false },
                 'Six',
                 'Seven',
                 'Eight',
@@ -36,25 +36,25 @@ export default {
         return {
             routes: [
                 {
-                    text: 'Without order',
-                    href: { query: { orderBy: null, limit: 50, order: null } },
+                    text: 'With badge',
+                    href: {},
                     badge: { text: 'default', color: 'info' }
                 },
                 {
+                    text: 'Without order',
+                    href: { query: { limit: 50 } }
+                },
+                {
                     text: 'Order by name',
-                    href: {
-                        query: { orderBy: 'name', order: 'ASC', limit: null }
-                    }
+                    href: { query: { orderBy: 'name' } }
                 },
                 {
                     text: 'Order by id',
-                    href: { query: { orderBy: 'id', order: 'ASC', limit: 5 } }
+                    href: { query: { orderBy: 'id_DESC', limit: 5 } }
                 },
                 {
                     text: 'Order by name',
-                    href: {
-                        query: { orderBy: 'name', order: 'DESC', limit: null }
-                    }
+                    href: { query: { orderBy: 'name_DESC' } }
                 },
                 {
                     text: 'Order by id',
