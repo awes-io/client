@@ -275,7 +275,6 @@ module.exports = {
         require('./tailwind/container'),
         require('./tailwind/calendar'),
         require('./tailwind/chip'),
-        require('./tailwind/slider'),
         require('./tailwind/tab-nav')
     ]
 }

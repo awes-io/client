@@ -1,5 +1,9 @@
 <template>
-    <AwSlider :class="_cssClasses.base">
+    <AwSlider
+        ref="slider"
+        :class="_cssClasses.base"
+        @resized="scrollToActive(false)"
+    >
         <template
             v-for="({ text, key, route, isActive, isDisabled, ...item },
             i) in togglers"
@@ -226,17 +230,12 @@ export default {
             this.$emit('update:active', active)
         },
 
-        scrollToActive() {
-            const el = this.$el.querySelector('.aw-tab-nav__toggler_active')
-            if (el) {
-                console.log(el)
-                setTimeout(() => {
-                    el.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'end'
-                    })
-                }, 10)
+        scrollToActive(force = true) {
+            const el = this.$el.querySelectorAll(
+                '.' + this._cssClasses.togglerActive
+            )
+            if (el.length === 1 || (el.length > 1 && force)) {
+                this.$refs.slider.scrollTo(el[0])
             }
         }
     }

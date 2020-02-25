@@ -1,10 +1,13 @@
 .aw-button-nav {
     display: inline-flex;
-    padding: theme('spacing.1');
     border-radius: theme('borderRadius.lg');
     background-color: theme('colors.muted-dark');
     color: theme('onColors.surface');
     font-size: theme('fontSize.sm');
+
+    & .aw-slider__scroller {
+        padding: theme('spacing.1');
+    }
 
     &__toggler {
         display: flex;
@@ -40,8 +43,7 @@
     }
 
     &__toggler:focus {
-        outline: none;
-        box-shadow: 0 0 0 1px theme('colors.info');
+        outline: 1px dashed theme('colors.info');
     }
 
     &__toggler_active {

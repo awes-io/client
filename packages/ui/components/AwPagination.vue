@@ -25,7 +25,7 @@
             <span class="lg:hidden">
                 {{ $t('AwPagination.page', { page, pagesTotal }) }}
             </span>
-            <div class="hidden lg:inline-flex aw-button-nav">
+            <div class="hidden lg:inline-flex aw-button-nav p-1">
                 <Component
                     v-for="({ component, text }, i) in pageButtons"
                     :is="component"

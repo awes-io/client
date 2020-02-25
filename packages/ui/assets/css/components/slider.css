@@ -1,0 +1,53 @@
+.aw-slider {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+
+    &__scroller {
+        display: flex;
+        width: 100%;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        transition: transform 100ms;
+
+        & > * {
+            flex: 0 0 auto;
+            user-select: none;
+            user-drag: none;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+            background-color: transparent;
+            height: 0px;
+            width: 0px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            display: none;
+            background-color: transparent;
+        }
+    }
+
+    &__shadow {
+        width: 0.5rem;
+        top: 0.5rem;
+        bottom: 0.5rem;
+        position: absolute;
+        overflow: hidden;
+        box-shadow: 0 0 1rem theme('colors.overlay');
+        transition: opacity 100ms;
+        backface-visibility: hidden;
+        will-change: opacity;
+
+        &_left {
+            left: -1rem;
+            border-radius: 0 100% 100% 0;
+        }
+
+        &_right {
+            right: -1rem;
+            border-radius: 100% 0 0 100%;
+        }
+    }
+}
