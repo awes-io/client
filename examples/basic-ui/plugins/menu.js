@@ -47,7 +47,7 @@ export default function({ store, app }) {
         key: 'mock',
         order: 1,
         item: {
-            component: 'AwLink',
+            component: 'AwDropdownButton',
             props: {
                 text: 'Homepage',
                 href: app.localePath({ path: '/' }, app.i18n.locale)

@@ -1,0 +1,108 @@
+{
+    "name": "@awes-io/nuxt-profile",
+    "description": "",
+    "version": "0.6.1",
+    "module": "index.js",
+    "entry": "index.js",
+    "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
+    "contributors": [],
+    "bugs": {
+        "url": "https://github.com/awes-io/client/issues"
+    },
+    "homepage": "https://www.awes.io",
+    "keywords": [
+        "vue",
+        "nuxt",
+        "auth",
+        "profile",
+        "awes-io"
+    ],
+    "files": [
+        "lang/*",
+        "src/components/*",
+        "src/pages/*",
+        "src/mixins/*",
+        "src/assets/*",
+        "src/store/*",
+        "index.js"
+    ],
+    "scripts": {
+        "lint": "eslint --ext .js,.vue ./src ./tests",
+        "lint:fix": "eslint --ext .js,.vue ./src ./tests --fix",
+        "test": "jest",
+        "test:watch": "jest -w",
+        "version": "auto-changelog -p && git add CHANGELOG.md"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@git.awescode.com:awes-io/nuxt-profile.git"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "yarn lint && yarn test"
+        }
+    },
+    "release": {
+        "extends": "@semantic-release/gitlab-config",
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogTitle": "Release Notes for Awes.io Profile"
+                }
+            ],
+            [
+                "@semantic-release/gitlab",
+                {
+                    "gitlabUrl": "https://git.awescode.com"
+                }
+            ],
+            "@semantic-release/npm",
+            [
+                "@semantic-release/git",
+                {
+                    "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+                }
+            ]
+        ]
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@awes-io/ui": "^0.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "@commitlint/cli": "^8.1.0",
+        "@commitlint/config-conventional": "^8.1.0",
+        "@semantic-release/changelog": "^3.0.4",
+        "@semantic-release/git": "^7.0.16",
+        "@semantic-release/gitlab-config": "^5.0.0",
+        "@vue/test-utils": "^1.0.0-beta.29",
+        "auto-changelog": "^1.14.1",
+        "babel-core": "7.0.0-bridge.0",
+        "babel-eslint": "^10.0.2",
+        "babel-jest": "^24.8.0",
+        "cross-env": "^5.2.0",
+        "eslint": "^6.5.1",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-config-standard": "^14.1.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-node": "^10.0.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslint-plugin-vue": "^5.2.3",
+        "husky": "^3.0.1",
+        "jest": "^24.8.0",
+        "jest-serializer-vue": "^2.0.2",
+        "jest-transform-stub": "^2.0.0",
+        "prettier": "^1.18.2",
+        "semantic-release": "^15.13.24",
+        "vue-jest": "^3.0.4",
+        "vue-template-compiler": "^2.6.10"
+    }
+}
