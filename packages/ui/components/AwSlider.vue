@@ -1,21 +1,31 @@
 <template>
     <Component
         :is="tag"
-        :style="{
-            'scroll-snap-type': active ? 'none' : null,
-            'scroll-behavior': active ? 'auto' : null
-        }"
-        ref="wrap"
         class="aw-slider"
         @mousedown.capture="_activate"
+        @touchstart.capture="_activate"
         @dragstart.capture="_prevent"
+        @focus.capture="_onFocus"
+        @scroll="_prevent"
     >
-        <slot />
+        <span ref="scroller" :style="scrollStyle" class="aw-slider__scroller">
+            <slot />
+        </span>
+        <span
+            aria-hidden="true"
+            class="aw-slider__shadow aw-slider__shadow_left"
+            :style="shadowLeftStyle"
+        ></span>
+        <span
+            aria-hidden="true"
+            class="aw-slider__shadow aw-slider__shadow_right"
+            :style="shadowRightStyle"
+        ></span>
     </Component>
 </template>
 
 <script>
-import { pick } from 'rambdax'
+import { pick, pathOr } from 'rambdax'
 
 const CLICK_THRESHOLD_T = 300 // ms
 const CLICK_THRESHOLD_X = 5 // px
@@ -32,12 +42,41 @@ export default {
 
     data() {
         return {
-            event: {
-                timeStamp: 0,
-                pageX: 0
-            },
+            $event: null,
             active: false,
-            scrollLeft: 0
+            scrollStart: 0,
+            scrollLeft: 0,
+            scrollWidth: 0,
+            width: 0
+        }
+    },
+
+    computed: {
+        _isTouch() {
+            return pathOr('', 'type', this.$event) === 'touchstart'
+        },
+
+        maxScrollLeft() {
+            return this.scrollWidth - this.width
+        },
+
+        scrollStyle() {
+            return {
+                transform: `translateX(-${this.scrollLeft}px)`,
+                transition: this.active ? 'none' : null
+            }
+        },
+
+        shadowLeftStyle() {
+            return {
+                opacity: this.scrollLeft === 0 ? '0' : '1'
+            }
+        },
+
+        shadowRightStyle() {
+            return {
+                opacity: this.scrollLeft === this.maxScrollLeft ? '0' : '1'
+            }
         }
     },
 
@@ -45,58 +84,194 @@ export default {
         active: '_toggle'
     },
 
+    mounted() {
+        window.addEventListener('resize', this._onResize)
+        this.$nextTick(() => {
+            this._setDimensions()
+        })
+    },
+
     beforeDestroy() {
         this._toggle(false)
-        this.$refs.wrap.removeEventListener('click', this._prevent, true)
+        clearTimeout(this._resizetm)
+        window.removeEventListener('resize', this._onResize)
+        this.$el.removeEventListener('click', this._prevent, true)
     },
 
     methods: {
         _toggle(isActive) {
             const method = isActive ? 'addEventListener' : 'removeEventListener'
-            window[method]('mousemove', this._move)
-            window[method]('mousemove', this._checkDragging)
-            window[method]('mouseup', this._deactivate)
-            window[method]('mouseleave', this._deactivate)
+
+            const moveEvent = this._isTouch ? 'touchmove' : 'mousemove'
+            const endEvent = this._isTouch ? 'touchend' : 'mouseup'
+            const cancelEvent = this._isTouch ? 'touchcancel' : 'mouseleave'
+
+            window[method](moveEvent, this._move)
+            window[method](moveEvent, this._checkDragging)
+            window[method](endEvent, this._deactivate)
+            window[method](cancelEvent, this._deactivate)
         },
 
         _activate($event) {
+            if (this.active) return
+
+            this._setDimensions()
+            this.scrollStart = this.scrollLeft
+
             // set start position
-            this.$event = pick('timeStamp,pageX', $event)
-            this.scrollLeft = this.$refs.wrap.scrollLeft
+            this.$event = pick('type,timeStamp,pageX', $event)
+            this.$event.pageX = pathOr($event.pageX, 'touches.0.pageX', $event)
+
             this.active = true
         },
 
         _deactivate() {
-            const left = this.$refs.wrap.scrollLeft
             this.active = false
             this.$nextTick(() => {
                 // set closest position
-                this.$refs.wrap.scrollTo({ top: 0, left })
+                this._snap()
 
                 // remove click prevention listener
                 setTimeout(() => {
-                    this.$refs.wrap.removeEventListener(
-                        'click',
-                        this._prevent,
-                        true
-                    )
+                    this.$el.removeEventListener('click', this._prevent, true)
                 }, 10)
             })
         },
 
         _move($event) {
-            // update scroll
-            const diff = this.$event.pageX - $event.pageX
-            this.$refs.wrap.scrollLeft = this.scrollLeft + diff
+            // calculate new position
+            const end = pathOr($event.pageX, 'touches.0.pageX', $event)
+            const diff = this.$event.pageX - end
+            this.scrollLeft = this._withBorders(this.scrollStart + diff)
         },
 
+        /**
+         * listener, that calculates threshold
+         * to detect if it is a drag event, and not a click
+         */
         _checkDragging($event) {
             const { pageX, timeStamp } = $event
             const time = timeStamp - this.$event.timeStamp
             const x = this.$event.pageX - pageX
             if (time > CLICK_THRESHOLD_T || x > CLICK_THRESHOLD_X) {
-                this.$refs.wrap.addEventListener('click', this._prevent, true)
-                window.removeEventListener('mousemove', this._checkDragging)
+                this.$el.addEventListener('click', this._prevent, true)
+                const moveEvent = this._isTouch ? 'touchmove' : 'mousemove'
+                window.removeEventListener(moveEvent, this._checkDragging)
+            }
+        },
+
+        /**
+         * Scrolls to closest child to fit
+         */
+        _snap() {
+            const els = this.$refs.scroller.childNodes
+            const left = this.scrollLeft
+            const right = this.width + this.scrollLeft
+            let _width = 0
+            let bestFitLeft = Infinity
+            let bestFitRight = Infinity
+
+            for (let i = 0, length = els.length; i < length; i++) {
+                let elWidth = this._getFullWidth(els[i])
+                let offsetLeft = _width - left
+                let offsetRight = right - _width - elWidth
+
+                if (Math.abs(offsetLeft) < Math.abs(bestFitLeft)) {
+                    bestFitLeft = offsetLeft
+                }
+
+                if (Math.abs(offsetRight) < Math.abs(bestFitRight)) {
+                    bestFitRight = offsetRight
+                }
+
+                _width += elWidth
+            }
+
+            if (Math.abs(bestFitLeft) < Math.abs(bestFitRight)) {
+                this.scrollLeft = this._withBorders(
+                    this.scrollLeft + bestFitLeft
+                )
+            } else {
+                // console.log('snap', this.scrollLeft - bestFitRight)
+                this.scrollLeft = this._withBorders(
+                    this.scrollLeft - bestFitRight
+                )
+            }
+        },
+
+        _setDimensions() {
+            const el = this.$refs.scroller
+
+            this.width = el.offsetWidth
+            this.scrollWidth = el.scrollWidth
+
+            // alert(`${this.width}, ${this.scrollWidth}`)
+        },
+
+        _withBorders(scrollLeft) {
+            if (scrollLeft > this.maxScrollLeft) {
+                return this.maxScrollLeft
+            }
+            if (scrollLeft < 0) {
+                return 0
+            }
+            return scrollLeft
+        },
+
+        scrollTo(el) {
+            try {
+                const els = this.$refs.scroller.childNodes
+                let scrollLeft = 0
+
+                for (let i = 0, length = els.length; i < length; i++) {
+                    if (el === els[i]) {
+                        this.scrollLeft = this._withBorders(scrollLeft)
+                        this._snap()
+                        break
+                    } else {
+                        scrollLeft = scrollLeft + this._getFullWidth(el)
+                    }
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        },
+
+        _getFullWidth(el) {
+            const elWidth = el.scrollWidth
+
+            const style = el.currentStyle || getComputedStyle(el)
+
+            const margin =
+                parseFloat(style.marginLeft) + parseFloat(style.marginRight)
+
+            const border =
+                parseFloat(style.borderLeftWidth) +
+                parseFloat(style.borderRightWidth)
+
+            return elWidth + margin + border
+        },
+
+        _onResize() {
+            clearTimeout(this._resizetm)
+            this._resizetm = setTimeout(() => {
+                this._setDimensions()
+                this.scrollLeft = this._withBorders(this.scrollLeft)
+                this.$emit('resized')
+            }, 300)
+        },
+
+        _onFocus($event) {
+            const el = $event.target
+            const bounds = el.getBoundingClientRect()
+            const wrapBounds = this.$el.getBoundingClientRect()
+
+            if (
+                wrapBounds.left > bounds.left ||
+                wrapBounds.right < bounds.right
+            ) {
+                this._prevent($event)
+                this.scrollTo(el)
             }
         },
 

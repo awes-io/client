@@ -53,6 +53,8 @@ export function hasRouteQuery(query, route) {
     const _query = cleanRouteQuery(query)
     const _routeQuery = cleanRouteQuery(route.query)
 
+    if (isFalsy(_query) && !isFalsy(_routeQuery)) return false
+
     // non-strict values comparation, because of different types of default string parsing
     return toPairs(_query).every(([key, value]) => _routeQuery[key] == value)
 }
