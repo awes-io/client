@@ -18,7 +18,7 @@ release:
   only:
     - master
   script:
-    - GL_TOKEN=${GITLAB_TOKEN} GL_API_URL=https://git.awescode.com/api/v4 yarn pkg --yes
+    - HUSKY_BYPASS=true GL_TOKEN=${GITLAB_TOKEN} GL_API_URL=https://git.awescode.com/api/v4 yarn pkg
   stage: release
   except:
     variables:
