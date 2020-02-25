@@ -36,6 +36,9 @@
             border-color: theme('colors.info.100');
         } */
 
+        /* reset shadow in safari */
+        appearance: none;
+
         &::placeholder {
             color: inherit;
             opacity: .5;

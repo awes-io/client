@@ -22,7 +22,7 @@
                 v-bind="{ value, checked: isChecked, ...skipAttr, ...$attrs }"
                 :id="id || defaultId"
                 :aria-describedby="errorText ? errorId : null"
-                v-tooltip:top-start.show="errorTooltip"
+                v-tooltip:top-start.show.prepend="errorTooltip"
                 v-on="mergedListeners"
             /><label
                 v-if="!!label"

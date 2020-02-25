@@ -1,7 +1,7 @@
 <template>
     <div
         :class="wrapperClasses"
-        v-tooltip.show="errorTooltip"
+        v-tooltip.show.prepend="errorTooltip"
         class="flex items-center -mx-1"
     >
         <input
