@@ -7,8 +7,8 @@ release:
     - apk add --no-cache git
     - git config --global user.email "yevhenlisovenko@gmail.com"
     - git config --global user.name "Yevhen L."
-    - git fetch origin +refs/heads/next:refs/remotes/origin/next;
-    - git checkout next;
+    - git fetch origin +refs/heads/master:refs/remotes/origin/master;
+    - git checkout master;
     - git reset --hard "$CI_COMMIT_SHA";
   image: node:12-alpine
   cache:
@@ -16,7 +16,7 @@ release:
     paths:
       - node_modules
   only:
-    - next
+    - master
   script:
     - GL_TOKEN=${GITLAB_TOKEN} GL_API_URL=https://git.awescode.com/api/v4 yarn pkg --yes
   stage: release
