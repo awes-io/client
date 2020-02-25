@@ -1,0 +1,30 @@
+stages:
+  - test
+  - release
+
+test:
+  before_script:
+    - yarn install --frozen-lockfile
+  image: node:8
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - node_modules
+  script:
+    - yarn test
+  stage: test
+
+release:
+  before_script:
+    - yarn install --frozen-lockfile
+  image: node:8
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - node_modules
+  only:
+    - master
+  script:
+    - NPM_TOKEN=${NPM_TOKEN} GITLAB_TOKEN=${GITLAB_TOKEN} npx semantic-release --branch master
+  stage: release
+  when: on_success

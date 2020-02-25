@@ -43,15 +43,15 @@ export default function({ store, app }) {
     store.commit('awesIo/SET_MENU_ITEM', menuItems)
 
     // mock user menu
-    store.commit('awesIo/SET_USER_MENU_ITEM', {
-        key: 'mock',
-        order: 1,
-        item: {
-            component: 'AwDropdownButton',
-            props: {
-                text: 'Homepage',
-                href: app.localePath({ path: '/' }, app.i18n.locale)
-            }
-        }
-    })
+    // store.commit('awesIo/SET_USER_MENU_ITEM', {
+    //     key: 'mock',
+    //     order: 1,
+    //     item: {
+    //         component: 'AwDropdownButton',
+    //         props: {
+    //             text: 'Homepage',
+    //             href: app.localePath({ path: '/' }, app.i18n.locale)
+    //         }
+    //     }
+    // })
 }

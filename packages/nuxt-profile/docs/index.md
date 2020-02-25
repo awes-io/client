@@ -1,0 +1,3 @@
+# NuxtProfile
+
+Initial documentation file...

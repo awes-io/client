@@ -23,6 +23,7 @@ export default {
         // ...
         '@nuxtjs/axios',
         '@awes-io/ui/nuxt',
+        '@awes-io/nuxt-profile',
         // other @awes-io modules, which add custom routes should go before nuxt-i18n
         'nuxt-i18n'
     ],
