@@ -30,7 +30,7 @@
         "build:ui:docs": "node -r esm scripts/docs-parser.js",
         "build:vue-mc": "lerna run build --scope @awes-io/vue-mc",
         "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream",
-        "pkg": "yarn build:ui && yarn build:vue-mc && lerna version --amend --no-push --exact && lerna publish from-git --yes"
+        "pkg": "yarn build:ui && yarn build:vue-mc && lerna version --amend --no-push --exact --yes && lerna publish from-git --yes"
     },
     "husky": {
         "hooks": {
