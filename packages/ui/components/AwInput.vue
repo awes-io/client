@@ -13,7 +13,7 @@
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
             v-on="mergedListeners"
-            v-tooltip.show="errorTooltip"
+            v-tooltip.show.prepend="errorTooltip"
             ref="element"
         /><label v-if="!!label" :class="elClasses.label" :for="id || defaultId">
             {{ label }}

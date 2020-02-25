@@ -60,10 +60,10 @@ const EVENTS = [
     }
 ]
 
-function toggleEvents(el, on = false) {
+function toggleEvents(el, on = false, $events = EVENTS) {
     const useMethod = on ? 'addEventListener' : 'removeEventListener'
 
-    EVENTS.forEach(({ names, handler }) => {
+    $events.forEach(({ names, handler }) => {
         names.forEach(name => {
             el[useMethod](name, handler)
         })
@@ -96,6 +96,9 @@ function createTooltip(content, options, placement = 'top') {
 
 function unbind(el) {
     if (el.__tooltip__) {
+        // prevent async binding
+        clearTimeout(el.__async_tooltip__)
+
         const tooltip = el.__tooltip__
         const popper = POPPERS.get(tooltip)
 
@@ -118,6 +121,7 @@ function unbind(el) {
         delete tooltip.__placement__
         delete tooltip.__options__
         delete el.__tooltip__
+        delete el.__async_tooltip__
     }
 }
 
@@ -136,8 +140,16 @@ function bind(el, { value, arg, modifiers }) {
         // create new tooltip
         el.__tooltip__ = createTooltip(content, options, arg)
 
-        // append to body
-        document.body.appendChild(el.__tooltip__)
+        if (modifiers.prepend) {
+            // insert before parent asynchronously
+            el.__async_tooltip__ = setTimeout(() => {
+                el.parentElement.insertBefore(el.__tooltip__, el)
+                POPPERS.get(el.__tooltip__).update()
+            }, 10)
+        } else {
+            // append to body
+            document.body.appendChild(el.__tooltip__)
+        }
 
         if (modifiers.show) {
             // show always

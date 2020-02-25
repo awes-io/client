@@ -5,7 +5,7 @@
             v-bind="{ value: inputValue, ...skipAttr, ...$attrs }"
             :id="id || defaultId"
             :aria-describedby="errorText ? errorId : null"
-            v-tooltip.show="errorTooltip"
+            v-tooltip.show.prepend="errorTooltip"
             v-on="mergedListeners"
             ref="element"
         /><label

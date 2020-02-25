@@ -47,18 +47,18 @@ export default {
                           on: {
                               ...this.$listeners,
                               input: this._onInputProxy
-                          }
-                      }),
-                      this.errorText
-                          ? h('span', {
-                                staticClass:
-                                    'aw-error is-center has-pin-bottom-center',
-                                domProps: {
-                                    innerText: this.errorText
-                                },
-                                on: { click: this._onErrorClick }
-                            })
-                          : null
+                          },
+                          directives: [
+                              {
+                                  name: 'tooltip',
+                                  value: this.errorTooltip,
+                                  modifiers: {
+                                      show: true,
+                                      prepend: true
+                                  }
+                              }
+                          ]
+                      })
                   ]
               )
             : h('AwInput', { attrs: { type: 'tel', ...this.$attrs } })

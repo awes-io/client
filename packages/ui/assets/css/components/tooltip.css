@@ -11,6 +11,11 @@
         z-index: 20;
     }
 
+    &[data-popper-reference-hidden] {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
     & > [data-popper-arrow] {
         background-clip: content-box;
         padding: 4px;
