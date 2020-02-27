@@ -18,6 +18,7 @@ module.exports = {
             grey: '#595d62',
             overlay: '#222',
             brand: '#3b436f',
+            light: '#f8f8f8',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
