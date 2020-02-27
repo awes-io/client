@@ -20,7 +20,21 @@
                 </AwChip>
             </slot>
         </button>
-        <AwDropdown :show.sync="isOpened" tag="span" class="block p-2 -mx-2">
+        <AwDropdown
+            :show.sync="isOpened"
+            :options="{
+                modifiers: [
+                    {
+                        name: 'offset',
+                        options: {
+                            offset: [-16, 0]
+                        }
+                    }
+                ]
+            }"
+            tag="span"
+            class="block"
+        >
             <AwDropdownButton
                 v-for="({ id, text, ...props }, i) in options"
                 :key="id || `chip-${i}`"
@@ -32,7 +46,11 @@
                     name="option"
                     v-bind="{ id, text, ...props, index: i, select }"
                 >
-                    <AwChip :text="noText ? '' : text" v-bind="props" />
+                    <AwChip
+                        :text="noText ? '' : text"
+                        v-bind="props"
+                        class="p-0"
+                    />
                 </slot>
             </AwDropdownButton>
         </AwDropdown>
