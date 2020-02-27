@@ -104,5 +104,6 @@
         "semantic-release": "^15.13.24",
         "vue-jest": "^3.0.4",
         "vue-template-compiler": "^2.6.10"
-    }
+    },
+    "gitHead": "d7b66b341817076576cd9aa88dc7f79fc277c158"
 }
