@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.52.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.51.4...basic-ui@1.52.0) (2020-02-27)
+
+
+### Bug Fixes
+
+* remove nuxt-profile from basic-ui ([86d9397](https://git.awescode.com/awes-io/client/commits/86d93972b7466c12108468d58248ccadb7e1ad14))
+* remove unused code ([cc7fd8c](https://git.awescode.com/awes-io/client/commits/cc7fd8c4cc5048e29c82c6fba38cba5190756de1))
+
+
+### Features
+
+* add new styles to AwDropdown ([0237c4a](https://git.awescode.com/awes-io/client/commits/0237c4a8962d7a00ca8e863fecbdbe938ea02d60))
+* add nuxt-profile ([346c4a2](https://git.awescode.com/awes-io/client/commits/346c4a29096685af4b4da2de23c0fcb1f8cb92f7))
+* change AwDropdown, AwChip styles ([d645228](https://git.awescode.com/awes-io/client/commits/d6452281ba00e4000d236ec030b83a226223646e))
+* change user menu design ([2a47b40](https://git.awescode.com/awes-io/client/commits/2a47b4002824c6dbe88f90820e8d08aefa6db24d))
+* disable nuxt-profile in basic-ui ([93d2221](https://git.awescode.com/awes-io/client/commits/93d22216d881b89aba2ede30a74708c829f96ab1))
+
+
+
+
+
 ## [1.51.4](https://git.awescode.com/awes-io/client/compare/basic-ui@1.51.3...basic-ui@1.51.4) (2020-02-22)
 
 

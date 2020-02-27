@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.60.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.59.0...@awes-io/ui@1.60.0) (2020-02-27)
+
+
+### Bug Fixes
+
+* nuxt config ([67b5bfa](https://github.com/awes-io/client/commit/67b5bfae287ab0bb7cff61fb97b92738d99e52f6))
+* propper positioning of error tooltip ([875d161](https://github.com/awes-io/client/commit/875d161e63086571673547cd467862fbd88ea0c7))
+
+
+### Features
+
+* add new styles to AwDropdown ([0237c4a](https://github.com/awes-io/client/commit/0237c4a8962d7a00ca8e863fecbdbe938ea02d60))
+* add nuxt-profile ([346c4a2](https://github.com/awes-io/client/commit/346c4a29096685af4b4da2de23c0fcb1f8cb92f7))
+* change AwDropdown, AwChip styles ([d645228](https://github.com/awes-io/client/commit/d6452281ba00e4000d236ec030b83a226223646e))
+* change user menu design ([2a47b40](https://github.com/awes-io/client/commit/2a47b4002824c6dbe88f90820e8d08aefa6db24d))
+* expanded prop for menu item ([3180047](https://github.com/awes-io/client/commit/3180047f627177fb3a9b6dec59d3a2729d703c06))
+* **ui:** aw-button-nav styles upgraded, same comonent as aw-tab-nav ([2400501](https://github.com/awes-io/client/commit/2400501fae59eb3bb00e27322eeede2ec5a6ebbf))
+
+
+
+
+
 # [1.59.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.58.0...@awes-io/ui@1.59.0) (2020-02-22)
 
 
