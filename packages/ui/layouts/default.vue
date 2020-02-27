@@ -26,27 +26,42 @@ export default {
 
     computed: {
         menuItems() {
-            return this.$router.options.routes.map(
-                ({ path: parentPath, name, children }) => ({
-                    key: name,
-                    props: toMenuItem(parentPath, name || getName(children)),
-                    children:
-                        children &&
-                        children.reduce(
-                            (acc, { path, name, children: subChildren }) =>
-                                path
-                                    ? acc.concat({
-                                          key: path,
-                                          props: toMenuItem(
-                                              path,
-                                              name || getName(subChildren),
-                                              parentPath
-                                          )
-                                      })
-                                    : acc,
-                            []
-                        )
-                })
+            return [
+                {
+                    key: 'temp',
+                    props: {
+                        text: 'Temp',
+                        icon: 'location',
+                        badge: { text: 105 }
+                    },
+                    children: [{ props: { text: 'Bla', href: '/' } }]
+                }
+            ].concat(
+                this.$router.options.routes.map(
+                    ({ path: parentPath, name, children }) => ({
+                        key: name,
+                        props: toMenuItem(
+                            parentPath,
+                            name || getName(children)
+                        ),
+                        children:
+                            children &&
+                            children.reduce(
+                                (acc, { path, name, children: subChildren }) =>
+                                    path
+                                        ? acc.concat({
+                                              key: path,
+                                              props: toMenuItem(
+                                                  path,
+                                                  name || getName(subChildren),
+                                                  parentPath
+                                              )
+                                          })
+                                        : acc,
+                                []
+                            )
+                    })
+                )
             )
         }
     }
