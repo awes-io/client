@@ -1,6 +1,6 @@
 <template functional>
     <span
-        class="aw-chip"
+        class="aw-chip px-0"
         :class="[data.staticClass, data.class]"
         :style="[data.staticStyle, data.style]"
     >
