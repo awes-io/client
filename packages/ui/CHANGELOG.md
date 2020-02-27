@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.61.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.61.0...@awes-io/ui@1.61.1) (2020-02-27)
+
+
+### Bug Fixes
+
+* added git head in package json ([32c1725](https://github.com/awes-io/client/commit/32c1725093074da1851efdc373222a660d8da0a6))
+
+
+
+
+
 # [1.61.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.59.0...@awes-io/ui@1.61.0) (2020-02-27)
 
 
