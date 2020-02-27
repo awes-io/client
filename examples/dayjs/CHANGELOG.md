@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.14](https://git.awescode.com/awes-io/client/compare/example-dayjs@1.1.12...example-dayjs@1.1.14) (2020-02-27)
+
+
+### Bug Fixes
+
+* nuxt config ([186ae9e](https://git.awescode.com/awes-io/client/commits/186ae9e319be2290e97868cb0686ee0d171e8a41))
+
+
+
+
+
 ## [1.1.13](https://git.awescode.com/awes-io/client/compare/example-dayjs@1.1.12...example-dayjs@1.1.13) (2020-02-27)
 
 **Note:** Version bump only for package example-dayjs
