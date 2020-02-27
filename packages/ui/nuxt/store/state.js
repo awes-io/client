@@ -1,4 +1,5 @@
 export default () => ({
     menu: {},
-    userMenu: {}
+    userMenu: {},
+    userMenuAdditional: {}
 })
