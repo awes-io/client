@@ -16,7 +16,7 @@ module.exports = {
             'muted-darker': '#d7dbde',
             disabled: '#949799',
             overlay: '#222',
-            brand: '#37295e',
+            brand: '#3b436f',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',

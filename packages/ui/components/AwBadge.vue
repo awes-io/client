@@ -1,5 +1,9 @@
 <template functional>
-    <div class="aw-badge inline-flex items-center">
+    <span
+        :class="[data.staticClass, data.class]"
+        :style="[data.staticStyle, data.style]"
+        class="aw-badge inline-flex items-center"
+    >
         <!-- Content passed to component -->
         <slot></slot>
         <span
@@ -15,7 +19,7 @@
             {{ props.text }}
             <AwIcon v-if="props.icon" :name="props.icon" size="xs" />
         </span>
-    </div>
+    </span>
 </template>
 
 <script>
