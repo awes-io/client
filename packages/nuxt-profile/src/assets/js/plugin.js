@@ -5,7 +5,7 @@ export default async ({ store, app }) => {
         key: 'profile',
         order: 10,
         item: {
-            component: 'AwDropdownButton',
+            component: 'AwLink',
             props: {
                 text: () => app.i18n.t('AwesIoProfile.profileTab'),
                 href: app.localePath({ path: '/profile' }, app.i18n.locale)

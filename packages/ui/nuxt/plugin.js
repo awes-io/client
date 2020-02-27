@@ -21,6 +21,10 @@ export default ({ store, app }) => {
                     pathOr(Infinity, 'order'),
                     values(pathOr({}, 'userMenu', state))
                 ),
+                userMenuAdditional: (state) => sortBy(
+                    pathOr(Infinity, 'order'),
+                    values(pathOr({}, 'userMenuAdditional', state))
+                ),
                 mainMenu: (state, { permissionsGranted }) => {
                     return sortBy(
                         pathOr(Infinity, ['order']),

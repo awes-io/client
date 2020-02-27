@@ -47,10 +47,45 @@ export default function({ store, app }) {
         key: 'mock',
         order: 1,
         item: {
-            component: 'AwDropdownButton',
+            component: 'AwLink',
             props: {
                 text: 'Homepage',
                 href: app.localePath({ path: '/' }, app.i18n.locale)
+            }
+        }
+    })
+
+    // mock user menu additional
+    store.commit('awesIo/SET_USER_MENU_ADDITIONAL_ITEM', {
+        key: 'darkTheme',
+        order: 1,
+        item: {
+            component: 'AwSwitcher',
+            listeners: {
+                change: e => {
+                    console.log('click switcher dark', e)
+                }
+            },
+            props: {
+                label: 'Dark theme',
+                checked: true
+            }
+        }
+    })
+
+    store.commit('awesIo/SET_USER_MENU_ADDITIONAL_ITEM', {
+        key: 'kioskMode',
+        order: 1,
+        item: {
+            component: 'AwSwitcher',
+            listeners: {
+                change: e => {
+                    console.log('click kiosk mode', e)
+                }
+            },
+            props: {
+                label: 'Kiosk mode',
+                checked: false
             }
         }
     })
