@@ -12,6 +12,8 @@
 @import './text-field.css';
 
 @import './layout.css';
+@import './menu.css';
+@import './menu-item.css';
 @import './page.css';
 
 @import './modal.css';
