@@ -6,24 +6,6 @@ export const state = () => ({
         avatar: {
             w96: '/img/icon.jpg',
             w500: '/img/icon.jpg'
-        },
-        additional: [
-            {
-                key: 'darkTheme',
-                order: 1,
-                item: {
-                    component: 'AwSwitcher',
-                    listeners: {
-                        click: () => {
-                            console.log('click switcher dark')
-                        }
-                    },
-                    props: {
-                        text: 'Dark theme',
-                        value: false
-                    }
-                }
-            }
-        ]
+        }
     }
 })
