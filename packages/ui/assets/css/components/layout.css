@@ -44,7 +44,7 @@
     }
 }
 
-@screen md {
+@screen lg {
 
     .layout {
 
@@ -59,7 +59,7 @@
             will-change: padding-left;
 
             &.is-wide {
-                padding-left: theme('spacing.16');
+                padding-left: theme('spacing.10');
             }
         }
 
@@ -70,12 +70,6 @@
         &__header {
             @apply bg-surface;
         }
-    }
-}
-
-@screen lg {
-
-    .layout {
 
         &&--frame-left &__frame {
             @apply w-1/2;

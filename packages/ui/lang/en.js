@@ -38,7 +38,7 @@ export const AwCodeSnippet = {
 
 export const AwLayoutDefault = {
     caption:
-        '<span class="text-lg md:text-3xl"><strong>Awes.io</strong></span>',
+        '<span class="text-lg lg:text-3xl"><strong>Awes.io</strong></span>',
     toggleMenu: 'Toggle mobile menu',
     shrinkMenu: 'Shrink menu',
     toggleSubmenu: 'Toggle submenu',

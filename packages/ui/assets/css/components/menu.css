@@ -26,6 +26,7 @@
     }
 
     &__logo {
+        order: -1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,9 +36,13 @@
         min-height: theme('spacing.12');
     }
 
+    &__homelink:focus {
+        outline: none;
+    }
+
     &__menu {
         position: relative;
-        flex:grow;
+        flex-grow: 1;
         overflow-x: hidden;
         overflow-y: auto;
         scrollbar-width: thin;
@@ -64,12 +69,25 @@
     }
 }
 
-@screen md {
+@screen lg {
     .aw-menu {
         transform: none;
         opacity: 1;
-        transition: 250ms width ease-out;
+        width: auto;
         will-change: width;
+
+        &__logo {
+            padding: 0;
+            min-height: theme('spacing.32');
+        }
+
+        &__homelink {
+            padding: theme('spacing.2', 0.5rem);
+            will-change: max-width, opacity;
+            max-width: theme('spacing.64', 16rem);
+            transition: 100ms 150ms ease-out;
+            transition-property: opacity, max-width;
+        }
 
         &__width-toggler {
             background-color: theme('colors.brand');
@@ -114,35 +132,38 @@
         }
 
         &__menu {
+            width: theme('spacing.64', 16rem);
             overflow: hidden;
+            transition: 250ms width;
 
             &:hover {
                 overflow: auto;
                 overflow: overlay;
                 -ms-overflow-style: -ms-autohiding-scrollbar;
             }
-        }
 
-        &__logo {
-            padding: theme('spacing.2', 0.5rem);
-            min-height: theme('spacing.32');
+            & > * {
+                opacity: 1;
+                transition: 70ms opacity 180ms;
+            }
         }
 
         /* thin menu */
-        &.is-thin {
-            width: theme('spacing.16', 4rem);
+        &.is-thin &__menu {
+            width: theme('spacing.10', 2.5rem);
 
-            /* preserve width in thin menu */
-            .aw-menu-item {
-                width: theme('spacing.64', 16rem);
+            & > * {
+                opacity: 0;
+                transition: none;
             }
+        }
 
-            &:hover {
-                width: theme('spacing.64', 16rem);
+        &.is-thin &__menu:hover {
+            width: theme('spacing.64', 16rem);
 
-                .aw-menu-item {
-                    width: 100%;
-                }
+            & > * {
+                opacity: 1;
+                transition: 70ms opacity 180ms ease-out;
             }
         }
 
@@ -150,8 +171,19 @@
             transform: rotate(90deg);
         }
 
-        &.is-thin &__logo {
-            min-height: theme('spacing.16', 4rem);
+        &.is-thin &__homelink {
+            opacity: 0;
+            max-width: theme('spacing.10', 2.5rem);
+            pointer-events: none;
+            transition: 70ms ease-out;
+            transition-property: opacity, max-width;
+        }
+
+        &.is-thin &__menu:hover + &__logo > &__homelink {
+            opacity: 1;
+            max-width: theme('spacing.64', 16rem);
+            transition: 100ms 150ms ease-out;
+            transition-property: opacity, max-width;
         }
     }
 }

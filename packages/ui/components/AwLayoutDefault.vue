@@ -8,7 +8,7 @@
             <div class="layout__header">
                 <div class="container flex items-center">
                     <!-- mobile menu toggler -->
-                    <div class="flex-1 md:hidden">
+                    <div class="flex-1 lg:hidden">
                         <button
                             class="w-8 h-8 -ml-1 flex items-center justify-center focus:outline-none"
                             @click="showMobileMenu = !showMobileMenu"
@@ -20,7 +20,7 @@
                         </button>
                     </div>
 
-                    <div class="flex-1 text-center md:hidden">
+                    <div class="flex-1 text-center lg:hidden">
                         <RouterLink
                             to="/"
                             class="truncate"
@@ -53,7 +53,7 @@
         <Transition name="fade">
             <button
                 v-show="showMobileMenu"
-                class="block w-full fixed inset-0 bg-overlay opacity-50 md:hidden"
+                class="block w-full fixed inset-0 bg-overlay opacity-50 lg:hidden"
                 @click="showMobileMenu = false"
             >
                 <span class="sr-only">
@@ -71,6 +71,7 @@
             <AwMenuItem
                 v-for="({ key, ...menuItem }, i) in menuItems"
                 :key="key || `item-${i}`"
+                :style="{ transitionDelay: `${i * 30}ms` }"
                 v-bind="menuItem"
             />
         </AwMenu>
