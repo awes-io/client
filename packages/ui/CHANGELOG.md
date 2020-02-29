@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.62.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.61.1...@awes-io/ui@1.62.0) (2020-02-29)
+
+
+### Features
+
+* aw-menu collapse behavior reworked ([506fe16](https://github.com/awes-io/client/commit/506fe1674696e487f88e9693089de370da121609))
+
+
+
+
+
 ## [1.61.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.61.0...@awes-io/ui@1.61.1) (2020-02-27)
 
 
