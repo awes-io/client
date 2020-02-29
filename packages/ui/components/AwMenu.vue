@@ -1,5 +1,11 @@
 <template>
     <nav class="aw-menu">
+        <!-- menu -->
+        <ul class="aw-menu__menu">
+            <slot />
+        </ul>
+
+        <!-- logo -->
         <div class="aw-menu__logo">
             <!-- menu width toggler -->
             <button
@@ -11,7 +17,7 @@
             </button>
 
             <!-- close mobile menu toggler -->
-            <!-- <button class="block md:hidden mr-4" @click="$emit('close')">
+            <!-- <button class="block lg:hidden mr-4" @click="$emit('close')">
                 <AwIcon name="close" size="lg" />
                 <span class="sr-only">
                     {{ $t('AwLayoutDefault.toggleMenu') }}
@@ -19,16 +25,11 @@
             </button> -->
 
             <RouterLink
-                class="truncate focus:outline-none"
+                class="aw-menu__homelink truncate"
                 :to="homeUrl"
                 v-html="$t('AwLayoutDefault.caption')"
             />
         </div>
-
-        <!-- menu -->
-        <ul class="aw-menu__menu">
-            <slot />
-        </ul>
     </nav>
 </template>
 

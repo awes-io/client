@@ -16,7 +16,7 @@
                 </button>
                 <AwDropdown
                     ref="userMenu"
-                    class="mt-1 md:mt-0"
+                    class="mt-1 lg:mt-0"
                     :options="{ placement: 'bottom-end', modifiers }"
                     style="width: 300px"
                 >
