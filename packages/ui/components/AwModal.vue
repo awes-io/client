@@ -123,8 +123,6 @@ export default {
     props: {
         title: String,
 
-        subtitle: String,
-
         stay: {
             type: Boolean,
             default() {
