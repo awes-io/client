@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.63.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.62.0...@awes-io/ui@1.63.0) (2020-03-02)
+
+
+### Bug Fixes
+
+* cursor pointer for error tooltip and prevent switch in aw-shitcher ([f6ac099](https://github.com/awes-io/client/commit/f6ac099d2cb5db64f5071ece37f0483bc878ae08))
+* fixed positioning calculations in aw-slider ([cc89b6a](https://github.com/awes-io/client/commit/cc89b6a26bf0ad9c2ed9012167a649c7353a47d1))
+
+
+### Features
+
+* change dropdown button padding ([65f7b46](https://github.com/awes-io/client/commit/65f7b46f0486e4cd91b88d99de742e85244e66c1))
+
+
+
+
+
 # [1.62.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.61.1...@awes-io/ui@1.62.0) (2020-02-29)
 
 
