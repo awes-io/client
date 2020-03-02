@@ -89,7 +89,9 @@ export default {
             const isDisabled =
                 Object.keys(this.$attrs).includes('disabled') &&
                 (this.$attrs.disabled || !this.$attrs.disabled.length)
-            if (this.startPos !== null || isDisabled) return
+            const hasTooltip = !!this.errorText
+
+            if (this.startPos !== null || isDisabled || hasTooltip) return
 
             this.startPos = $event.screenX
             this.isTouch = $event.type === 'touchstart'

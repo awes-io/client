@@ -73,9 +73,14 @@ function toggleEvents(el, on = false, $events = EVENTS) {
 function createTooltip(content, options, placement = 'top') {
     const tooltip = document.createElement('div')
 
-    const cssClass = pathOr('', 'class', options)
+    let cssClass = pathOr('', 'class', options)
     const id = pathOr(null, 'id', options)
     const onclick = pathOr(F, 'onclick', options)
+
+    if (isType('Function', onclick)) {
+        cssClass += ' cursor-pointer'
+        tooltip.onclick = onclick
+    }
 
     tooltip.__placement__ = placement
 
@@ -86,8 +91,6 @@ function createTooltip(content, options, placement = 'top') {
     if (id) {
         tooltip.setAttribute('id', id)
     }
-
-    tooltip.onclick = onclick
 
     tooltip.innerHTML = content + '</span><span data-popper-arrow></span>'
 
