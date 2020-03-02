@@ -27,7 +27,7 @@ body.has-modal-bottom {
     }
 
     &__container {
-        @apply relative flex w-full min-h-screen justify-center items-center p-16 pb-0;
+        @apply relative flex w-full min-h-screen justify-center items-center p-16;
         height: max-content;
 
         &:before {
@@ -69,9 +69,13 @@ body.has-modal-bottom {
         }
     }
 
+    &__close {
+        @apply ml-auto;
+    }
+
 
     &__title {
-        @apply m-0 leading-tight text-xl truncate font-medium;
+        @apply m-0 leading-tight text-xl truncate font-medium text-center;
         font-family: 'Ubuntu';
     }
 
@@ -173,6 +177,12 @@ body.has-modal-bottom {
         &[class*="is-aside"] &__back {
             display: none;
         }
+    }
+}
+
+@media (max-width: 767px) {
+    .aw-modal__container {
+        @apply p-4;
     }
 }
 
