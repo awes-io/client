@@ -199,6 +199,9 @@ module.exports = {
                 },
                 'table:not([class]) th': {
                     fontWeight: theme('fontWeight.bold')
+                },
+                hr: {
+                    margin: `${theme('spacing.4')} 0`
                 }
             }
         }),

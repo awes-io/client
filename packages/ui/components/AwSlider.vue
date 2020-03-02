@@ -57,7 +57,8 @@ export default {
         },
 
         maxScrollLeft() {
-            return this.scrollWidth - this.width
+            const diff = this.scrollWidth - this.width
+            return diff > 1 ? diff : 0 // +1 for browser's rounding inconsistancy
         },
 
         scrollStyle() {
@@ -192,7 +193,6 @@ export default {
                     this.scrollLeft + bestFitLeft
                 )
             } else {
-                // console.log('snap', this.scrollLeft - bestFitRight)
                 this.scrollLeft = this._withBorders(
                     this.scrollLeft - bestFitRight
                 )
@@ -203,9 +203,11 @@ export default {
             const el = this.$refs.scroller
 
             this.width = el.offsetWidth
-            this.scrollWidth = el.scrollWidth
 
-            // alert(`${this.width}, ${this.scrollWidth}`)
+            this.scrollWidth = Array.from(el.children).reduce(
+                (acc, _el) => acc + this._getFullWidth(_el),
+                0
+            )
         },
 
         _withBorders(scrollLeft) {
@@ -226,10 +228,9 @@ export default {
                 for (let i = 0, length = els.length; i < length; i++) {
                     if (el === els[i]) {
                         this.scrollLeft = this._withBorders(scrollLeft)
-                        this._snap()
                         break
                     } else {
-                        scrollLeft = scrollLeft + this._getFullWidth(el)
+                        scrollLeft = scrollLeft + this._getFullWidth(els[i])
                     }
                 }
             } catch (e) {

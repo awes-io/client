@@ -19,6 +19,18 @@
             ]"
             :active.sync="active"
         />
+        <hr />
+        <AwButtonNav
+            :items="[
+                'All',
+                'New',
+                'In progress',
+                'Accepted',
+                'Rejected',
+                'Finished'
+            ]"
+            :active.sync="status"
+        />
     </AwPage>
 </template>
 
@@ -61,7 +73,8 @@ export default {
                     href: { query: { orderBy: 'id', order: 'DESC', limit: 5 } }
                 }
             ],
-            active: 6
+            active: [6],
+            status: 2
         }
     },
 
