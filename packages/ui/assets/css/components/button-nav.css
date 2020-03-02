@@ -6,7 +6,7 @@
     font-size: theme('fontSize.sm');
 
     & .aw-slider__scroller {
-        padding: theme('spacing.1');
+        padding: theme('spacing.1') 0;
     }
 
     &__toggler {
@@ -16,7 +16,7 @@
         align-items: center;
         justify-content: center;
         padding: theme('spacing.1') theme('spacing.5');
-        margin-left: theme('spacing.2');
+        margin: 0 theme('spacing.1');
         border-radius: theme('borderRadius.default');
         min-width: theme('spacing.8');
         line-height: theme('lineHeight.relaxed');
@@ -32,10 +32,6 @@
         width: 1px;
         display: block;
         background-color: theme('colors.muted-darker');
-    }
-
-    &__toggler:first-child {
-        margin-left: 0;
     }
 
     &__toggler:first-child:before {
