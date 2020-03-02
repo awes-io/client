@@ -2,6 +2,7 @@
     <AwPage :title="headline">
         <AwButton @click="$root.$emit('modal::form:open')">Show modal</AwButton>
         <AwModal title="Form modal" name="form">
+            <template #subtitle>Subtitle</template>
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
             <AwButton class="mt-2" type="submit">Submit</AwButton>

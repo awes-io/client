@@ -20,14 +20,20 @@ body.has-modal-bottom {
 .aw-modal {
     @apply z-100 fixed inset-0;
     overflow: auto;
+    padding: 0!important;
 
     &:focus {
         outline: none;
     }
 
-    &:before {
-        content: '';
-        @apply absolute block inset-0 bg-overlay opacity-50;
+    &__container {
+        @apply relative flex w-full min-h-screen justify-center items-center p-16 pb-0;
+        height: max-content;
+
+        &:before {
+            content: '';
+            @apply absolute block inset-0 bg-overlay opacity-50;
+        }
     }
 
     &__dialog {
@@ -35,7 +41,7 @@ body.has-modal-bottom {
     }
 
     &__header {
-        @apply flex items-center p-4;
+        @apply flex items-center justify-between pl-4;
     }
 
     &__content {
@@ -46,7 +52,7 @@ body.has-modal-bottom {
 
     &__back,
     &__close {
-        @apply p-2 flex-shrink-0;
+        @apply p-2 flex-shrink-0 flex justify-center items-center;
         height: $button-height;
         width: $button-height;
         line-height: $button-height - $gap;
@@ -65,7 +71,13 @@ body.has-modal-bottom {
 
 
     &__title {
-        @apply m-0 leading-loose text-xl flex-grow truncate;
+        @apply m-0 leading-tight text-xl truncate font-medium;
+        font-family: 'Ubuntu';
+    }
+
+    &__subtitle {
+        @apply mt-2 text-sm truncate text-center text-grey;
+        font-family: 'Open Sans'
     }
 
     /**
@@ -85,19 +97,19 @@ body.has-modal-bottom {
     }
 
 
-    &.is-fullscreen,
-    &[class*="is-aside"] {
+    &.is-fullscreen &__container,
+    &[class*="is-aside"] &__container {
         @apply p-0 overflow-hidden;
     }
 
     &.is-fullscreen &,
     &[class*="is-aside"] & {
         &__dialog {
-            @apply flex flex-col w-full max-w-full p-0 h-full overflow-hidden;
+            @apply flex flex-col w-full max-w-full p-0 h-full min-h-screen overflow-hidden;
         }
 
         &__header {
-            @apply bg-muted shadow-md;
+            @apply bg-muted shadow-md mb-8 py-1 pr-1;
         }
 
         &__body {
@@ -133,7 +145,7 @@ body.has-modal-bottom {
     }
 
     &.is-bottom &__header {
-        box-shadow: 0 0 theme('spacing.6') theme('spacing.6') var(--c-muted);
+        @apply py-1 pr-1;
         z-index: 1;
     }
 
