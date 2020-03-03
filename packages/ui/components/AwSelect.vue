@@ -1,5 +1,9 @@
 <template>
-    <div class="relative">
+    <div
+        class="relative"
+        @keydown.up="_focusItem(-1, $event)"
+        @keydown.down="_focusItem(+1, $event)"
+    >
         <!-- value -->
         <input
             v-if="name"
@@ -18,31 +22,24 @@
             :value="isSearching ? searchPhrase : _getLabel(selected)"
             :label="label"
             :class="{ 'is-filled': isOpened }"
-            :placeholder="placeholder"
+            :placeholder="_getLabel(selected)"
             v-bind="$attrs"
-            @focus="isOpened = true"
-            @blur="_onFocusOutside"
+            @click="open"
             @input="_applySearch"
             @keydown.enter="_selectOnEnter"
-            @keyup.down.prevent="
-                _focusRef(
-                    $refs.notEqual ||
-                        (Array.isArray($refs.options)
-                            ? $refs.options[0]
-                            : $refs.options) ||
-                        $refs.notFound
-                )
-            "
-            :readonly="!isSearching"
+            :readonly="!searchable"
             autocomplete="off"
+            data-focus
         >
             <template #icon>
                 <AwButton
-                    ref="button"
+                    v-if="clearable"
+                    v-show="!isOpened && selected"
+                    @click="selectedIndex = null"
+                    icon="close"
                     theme="icon"
-                    @blur="_onFocusOutside"
-                    @click="toggleDropdown"
-                >
+                />
+                <AwButton theme="icon" @click="toggleDropdown">
                     <AwIcon
                         v-if="isLoading"
                         key="loader"
@@ -67,24 +64,14 @@
             ref="dropdown"
             class="w-full"
             :show.sync="isOpened"
-            close-on-action
             :close-outside="false"
         >
             <slot name="dropdown" v-bind="{ optionsList, isOpened }">
                 <!-- not equal -->
                 <AwDropdownButton
                     v-if="_showNotEqual"
-                    ref="notEqual"
                     @click="_onClickNotEqual"
-                    @blur="_onFocusOutside"
-                    @keydown.up.prevent.stop="_focusRef($refs.input)"
-                    @keydown.down.prevent.stop="
-                        _focusRef(
-                            Array.isArray($refs.options)
-                                ? $refs.options[0]
-                                : $refs.options
-                        )
-                    "
+                    data-focus
                 >
                     <slot name="not-equal" :searchPhrase="searchPhrase" />
                 </AwDropdownButton>
@@ -92,23 +79,12 @@
                 <!-- options list -->
                 <template v-if="optionsList.length">
                     <AwDropdownButton
-                        ref="options"
                         v-for="({ optionLabel, index, active },
                         i) in optionsList"
                         :key="`${optionLabel}-${index}`"
                         :active="active"
                         @click="selectedIndex = index"
-                        @blur="_onFocusOutside"
-                        @keydown.up.prevent.stop="
-                            _focusRef(
-                                i
-                                    ? $refs.options[i - 1]
-                                    : $refs.notEqual || $refs.input
-                            )
-                        "
-                        @keydown.down.prevent.stop="
-                            _focusRef($refs.options[i + 1])
-                        "
+                        data-focus
                     >
                         <slot
                             name="option-label"
@@ -120,13 +96,7 @@
                 </template>
 
                 <!-- not found -->
-                <AwDropdownButton
-                    v-else
-                    ref="notFound"
-                    @click="_selectOnEnter"
-                    @blur="_onFocusOutside"
-                    @keydown.up.prevent.stop="_focusRef($refs.input)"
-                >
+                <AwDropdownButton v-else @click="_selectOnEnter" data-focus>
                     <slot name="not-found" :searchPhrase="searchPhrase">
                         {{ $t('AwSelect.notFound') }}
                     </slot>
@@ -137,7 +107,7 @@
 </template>
 
 <script>
-import { path, pathOr, split } from 'rambdax'
+import { path, pathOr, split, isNil } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
 import AwDropdownButton from './AwDropdownButton.vue'
@@ -180,6 +150,11 @@ export default {
             type: Boolean,
             default: true
         },
+
+        /**
+         * Show clear button if value exists
+         */
+        clearable: Boolean,
 
         maxSearchItems: {
             type: Number,
@@ -263,7 +238,7 @@ export default {
                     ? this._matchSearch(option)
                     : true
 
-                return active || (inRange && matchSerach)
+                return inRange && matchSerach
                     ? acc.concat({
                           option,
                           optionLabel: this._getLabel(option),
@@ -272,10 +247,6 @@ export default {
                       })
                     : acc
             }, [])
-        },
-
-        placeholder() {
-            return pathOr(null, '0.optionLabel', this.optionsList)
         },
 
         _optionLabelPath() {
@@ -394,27 +365,67 @@ export default {
             }
         },
 
+        open() {
+            this.isOpened = true
+            this.$nextTick(() => {
+                this.$refs.input.focus()
+            })
+        },
+
         toggleDropdown() {
             if (this.isOpened) {
                 this.isOpened = false
             } else {
-                this._focusRef(this.$refs.input) || (this.isOpened = true)
+                this.open()
             }
         },
 
-        _focusRef(el) {
-            if (el && typeof el.focus === 'function') {
-                el.focus()
+        _focusItem(offset = 0, $event) {
+            if (!this.isOpened) return
+
+            const buttons = Array.from(
+                this.$el.querySelectorAll('[data-focus]')
+            )
+            const active = document.activeElement
+            const activeIndex = buttons.indexOf(active)
+            let nextIndex
+
+            if (activeIndex < 0) {
+                nextIndex = this.options.findIndex(
+                    ({ id }) => id === this.value
+                )
+            } else {
+                nextIndex = activeIndex + offset
             }
 
-            return el
+            const button = buttons[nextIndex]
+
+            if (button) {
+                if ($event) {
+                    $event.preventDefault()
+                    $event.stopPropagation()
+                }
+                button.focus()
+            }
         },
 
         _selectOnEnter() {
+            // close if nothing typed
+            if (!this.searchPhrase) {
+                this.isOpened = false
+                this.selectedIndex = isNil(this.selectedIndex)
+                    ? null
+                    : this.selectedIndex
+                return
+            }
+
             const firstOption = this.optionsList[0]
+
+            // select first option if search exists
             if (firstOption) {
                 this.selectedIndex = firstOption.index
             } else {
+                // emit not found
                 this.isOpened = false
                 this.$emit('not-found', this.searchPhrase)
                 this.selectedIndex = null
@@ -429,12 +440,6 @@ export default {
 
         _onClickOutside($event) {
             if (!this.$el.contains($event.target)) {
-                this.isOpened = false
-            }
-        },
-
-        _onFocusOutside($event) {
-            if (!this.$el.contains($event.relatedTarget)) {
                 this.isOpened = false
             }
         },

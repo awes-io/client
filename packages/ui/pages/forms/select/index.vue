@@ -5,6 +5,7 @@
             :disabled="disabled"
             label="Select something"
             v-model="selected"
+            clearable
         />
 
         <p class="h4">Disable</p>
@@ -42,7 +43,7 @@ export default {
         return {
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
-            selected: 'three'
+            selected: null
         }
     }
 }

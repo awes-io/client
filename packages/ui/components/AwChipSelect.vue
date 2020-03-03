@@ -138,7 +138,7 @@ export default {
             if (!this.isOpened) return
 
             const buttons = Array.from(
-                this.$el.querySelectorAll('button[data-select-chip')
+                this.$el.querySelectorAll('button[data-select-chip]')
             )
             const active = document.activeElement
             const activeIndex = buttons.indexOf(active)
