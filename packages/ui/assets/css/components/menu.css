@@ -103,7 +103,7 @@
             top: theme('spacing.3');
             right: calc(-1 * theme('spacing.3'));
 
-            transform: rotate(-90deg);
+            transform: rotate(90deg);
             transition: 250ms transform ease-out;
 
             &:before {
@@ -168,7 +168,7 @@
         }
 
         &.is-thin &__width-toggler {
-            transform: rotate(90deg);
+            transform: rotate(-90deg);
         }
 
         &.is-thin &__homelink {
