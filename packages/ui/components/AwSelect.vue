@@ -24,7 +24,7 @@
             :class="{ 'is-filled': isOpened }"
             :placeholder="_getLabel(selected)"
             v-bind="$attrs"
-            @click="open"
+            @focus="_onFocus"
             @input="_applySearch"
             @keydown.enter="_selectOnEnter"
             :readonly="!searchable"
@@ -365,18 +365,19 @@ export default {
             }
         },
 
-        open() {
-            this.isOpened = true
-            this.$nextTick(() => {
-                this.$refs.input.focus()
-            })
-        },
-
         toggleDropdown() {
             if (this.isOpened) {
                 this.isOpened = false
             } else {
-                this.open()
+                this.$refs.input.focus()
+            }
+        },
+
+        _onFocus() {
+            if (!this.isOpened) {
+                setTimeout(() => {
+                    this.isOpened = true
+                }, 5)
             }
         },
 
