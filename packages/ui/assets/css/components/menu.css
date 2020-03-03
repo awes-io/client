@@ -33,7 +33,7 @@
         flex-shrink: 0;
         padding: theme('spacing.4', 1rem);
         background-color: color(theme('colors.overlay') a(0.4));
-        min-height: theme('spacing.12');
+        min-height: theme('spacing.16');
     }
 
     &__homelink:focus {
