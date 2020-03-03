@@ -43,6 +43,10 @@
                             </svg>
                         </button>
 
+                        <div :class="elClasses.title" class="md:hidden">
+                            {{ title }}
+                        </div>
+
                         <button
                             :class="elClasses.close"
                             type="button"
@@ -67,7 +71,7 @@
                     </div>
                     <!-- / header -->
 
-                    <div :class="elClasses.title">
+                    <div :class="elClasses.title" class="hidden md:block">
                         {{ title }}
                     </div>
 
