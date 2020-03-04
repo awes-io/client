@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-localization",
-    "version": "0.5.7",
+    "version": "0.5.8",
     "description": "Admin panel for editing translations.",
     "homepage": "https://www.awes.io",
     "bugs": {
