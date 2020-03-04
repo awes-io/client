@@ -20,7 +20,13 @@
 
     &__content {
         @apply relative;
+        display: flex;
+        align-items: center;
         transition: 100ms opacity;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     &:not(:disabled):hover > &__overlay {
@@ -31,46 +37,47 @@
         opacity: 0.3;
     }
 
-    &:focus > &__overlay {
-        opacity: 0.15;
+    &:focus > &__content {
+        /* opacity: 0.15; */
+        outline: 1px dashed theme('colors.info');
     }
 
     /**
      * Sizes
      */
-    &_xs {
+    &_xs &__content {
         @apply px-4;
         font-size: 0.625rem;
     }
 
-    &_xs.theme-icon {
+    &_xs.theme-icon &__content {
         width: theme('spacing.6');
         height: theme('spacing.6');
     }
 
-    &_sm {
+    &_sm &__content {
         @apply px-5 py-1;
     }
 
-    &_sm.theme-icon {
+    &_sm.theme-icon &__content {
         width: theme('spacing.8');
         height: theme('spacing.8');
     }
 
-    &_md {
+    &_md &__content {
         @apply px-6 py-2 text-sm;
     }
 
-    &_md.theme-icon {
+    &_md.theme-icon &__content {
         width: theme('spacing.12');
         height: theme('spacing.12');
     }
 
-    &_lg {
+    &_lg &__content {
         @apply px-8 py-3 text-sm;
     }
 
-    &_lg.theme-icon {
+    &_lg.theme-icon &__content {
         width: theme('spacing.16');
         height: theme('spacing.16');
     }

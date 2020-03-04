@@ -6,18 +6,18 @@ export const AwModal = {
 export const AwCalendar = {
     weekdaysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     months: [
-        'Januar',​
+        'Januar',
         'Februar',
         'März',
         'April',
         'Mai',
-        ​'Juni',
-        ​'Juli',
-        ​'August',
-        ​'September',
-        ​'Oktober',
-        ​'November',
-        ​'Dezember'
+        'Juni',
+        'Juli',
+        'August',
+        'September',
+        'Oktober',
+        'November',
+        'Dezember'
     ]
 }
 

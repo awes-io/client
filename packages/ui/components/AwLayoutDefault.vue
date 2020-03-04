@@ -5,27 +5,7 @@
             class="layout__content"
             :class="{ 'is-wide': menuThin, 'relative z-0': showMobileMenu }"
         >
-            <transition name="collapse">
-                <div
-                    v-if="notification"
-                    class="layout__notification"
-                    :class="`bg-${notification.type}`"
-                >
-                    {{ notification.text }}
-
-                    <button class="layout__close p-2" @click="onCloseClick">
-                        <svg
-                            width="15"
-                            height="15"
-                            viewBox="0 0 19 19"
-                            fill="none"
-                            stroke="currentColor"
-                        >
-                            <path stroke-width="1.1" d="M1 17L17 1M1 1l16 16" />
-                        </svg>
-                    </button>
-                </div>
-            </transition>
+            <slot name="before-header" />
 
             <div class="layout__header">
                 <div class="container flex items-center">
@@ -101,8 +81,6 @@
 </template>
 
 <script>
-import { pathOr } from 'rambdax'
-import { mapGetters } from 'vuex'
 import { trimSlash } from '../assets/js/router'
 import AwIcon from './AwIcon.vue'
 import AwMenu from './AwMenu.vue'
@@ -135,7 +113,6 @@ export default {
     },
 
     computed: {
-        ...mapGetters('awesIo', ['isHeaderNotificationShown']),
         menuItems() {
             return this.menu
                 .map(({ props, order, children = [] }) => ({
@@ -146,17 +123,6 @@ export default {
                         .sort(menuSort)
                 }))
                 .sort(menuSort)
-        },
-
-        notification() {
-            return (
-                this.isHeaderNotificationShown &&
-                pathOr(
-                    null,
-                    ['state', 'auth', 'user', 'notification'],
-                    this.$store
-                )
-            )
         }
     },
 
@@ -190,10 +156,6 @@ export default {
             } catch (e) {
                 console.log(e)
             }
-        },
-
-        onCloseClick() {
-            this.$store.commit('awesIo/CLOSE_HEADER_NOTIFICATION')
         }
     }
 }

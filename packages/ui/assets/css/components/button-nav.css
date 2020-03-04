@@ -15,12 +15,15 @@
         flex-shrink: 0;
         align-items: center;
         justify-content: center;
-        padding: theme('spacing.1') theme('spacing.5');
         margin: 0 theme('spacing.1');
         border-radius: theme('borderRadius.default');
         min-width: theme('spacing.8');
         line-height: theme('lineHeight.relaxed');
         white-space: nowrap;
+    }
+
+    &__toggler > span {
+        padding: theme('spacing.1') theme('spacing.5');
     }
 
     &__toggler:before {
@@ -38,7 +41,11 @@
         content: none;
     }
 
-    &__toggler:focus {
+    &__toggler:focus, &__toggler > span:focus {
+        outline: none;
+    }
+
+    &__toggler:focus > span {
         outline: 1px dashed theme('colors.info');
     }
 
