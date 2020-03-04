@@ -20,33 +20,39 @@ body.has-modal-bottom {
 .aw-modal {
     @apply z-100 fixed inset-0;
     overflow: auto;
+    padding: 0!important;
 
     &:focus {
         outline: none;
     }
 
-    &:before {
-        content: '';
-        @apply absolute block inset-0 bg-overlay opacity-50;
+    &__container {
+        @apply relative flex w-full min-h-screen justify-center items-center p-0;
+        height: max-content;
+
+        &:before {
+            content: '';
+            @apply absolute block inset-0 bg-overlay opacity-50;
+        }
     }
 
     &__dialog {
-        @apply relative max-w-full m-auto bg-muted;
+        @apply relative max-w-full m-auto bg-surface;
     }
 
     &__header {
-        @apply flex items-center p-4;
+        @apply flex items-center justify-between pl-4;
     }
 
     &__content {
-        @apply mx-auto p-8;
+        @apply mx-auto py-8 px-4;
         max-width: var(--ui-container-width, $container-width)
     }
 
 
     &__back,
     &__close {
-        @apply p-2 flex-shrink-0;
+        @apply p-2 flex-shrink-0 flex justify-center items-center;
         height: $button-height;
         width: $button-height;
         line-height: $button-height - $gap;
@@ -63,9 +69,12 @@ body.has-modal-bottom {
         }
     }
 
-
     &__title {
-        @apply m-0 leading-loose text-xl flex-grow truncate;
+        @apply m-0 text-center text-lg leading-tight font-heading font-medium truncate;
+    }
+
+    &__subtitle {
+        @apply mt-2 px-4 text-sm truncate font-body text-grey;
     }
 
     /**
@@ -73,7 +82,7 @@ body.has-modal-bottom {
      */
 
     &.is-default &__dialog {
-        @apply p-2 h-full;
+        @apply p-2 w-screen min-h-screen;
     }
 
     &.is-default &__back {
@@ -84,20 +93,19 @@ body.has-modal-bottom {
         @apply pb-0
     }
 
-
-    &.is-fullscreen,
-    &[class*="is-aside"] {
+    &.is-fullscreen &__container,
+    &[class*="is-aside"] &__container {
         @apply p-0 overflow-hidden;
     }
 
     &.is-fullscreen &,
     &[class*="is-aside"] & {
         &__dialog {
-            @apply flex flex-col w-full max-w-full p-0 h-full overflow-hidden;
+            @apply flex flex-col w-full max-w-full p-0 h-full min-h-screen overflow-hidden;
         }
 
         &__header {
-            @apply bg-muted shadow-md;
+            @apply bg-muted shadow-md mb-8 py-1 pr-1;
         }
 
         &__body {
@@ -133,7 +141,7 @@ body.has-modal-bottom {
     }
 
     &.is-bottom &__header {
-        box-shadow: 0 0 theme('spacing.6') theme('spacing.6') var(--c-muted);
+        @apply py-1 pr-1;
         z-index: 1;
     }
 
@@ -168,8 +176,17 @@ body.has-modal-bottom {
 
     .aw-modal {
 
-        &__title {
+        &__container {
+            @apply p-16;
+        }
+
+        &__title,
+        &__subtitle {
             @apply text-center;
+        }
+
+        &__content {
+            @apply p-8;
         }
 
         &.is-default {
@@ -214,6 +231,14 @@ $modal-t-dur: 250ms;
 
     &-leave-active {
         transition: $modal-t-dur opacity;
+    }
+}
+
+@screen sm {
+    .aw-modal {
+        &__title {
+            @apply text-xl;
+        }
     }
 }
 

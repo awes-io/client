@@ -18,66 +18,83 @@
             :aria-label="title"
             @mousedown.self="selfClose"
         >
-            <div :class="elClasses.dialog" role="document">
-                <!-- header -->
-                <div :class="elClasses.header">
-                    <button
-                        :class="elClasses.back"
-                        type="button"
-                        :title="$t('AwModal.back')"
-                        :aria-label="$t('AwModal.back')"
-                        @click.prevent="$router.back()"
-                        tabindex="0"
-                    >
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            stroke="currentColor"
-                            aria-hidden="true"
+            <div :class="elClasses.container">
+                <div :class="elClasses.dialog" role="document">
+                    <!-- header -->
+                    <div :class="elClasses.header">
+                        <button
+                            :class="elClasses.back"
+                            type="button"
+                            :title="$t('AwModal.back')"
+                            :aria-label="$t('AwModal.back')"
+                            @click.prevent="$router.back()"
+                            tabindex="0"
                         >
-                            <polyline points="10 14 5 9.5 10 5" />
-                            <line x1="16" y1="9.5" x2="5" y2="9.52" />
-                        </svg>
-                    </button>
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <polyline points="10 14 5 9.5 10 5" />
+                                <line x1="16" y1="9.5" x2="5" y2="9.52" />
+                            </svg>
+                        </button>
 
-                    <div :class="elClasses.title">
+                        <div :class="elClasses.title" class="md:hidden">
+                            {{ title }}
+                        </div>
+
+                        <button
+                            :class="elClasses.close"
+                            type="button"
+                            :title="$t('AwModal.close')"
+                            :aria-label="$t('AwModal.close')"
+                            @click.prevent="close()"
+                            tabindex="0"
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 19 19"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-width="1.06"
+                                    d="M1 17L17 1M1 1l16 16"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- / header -->
+
+                    <div :class="elClasses.title" class="hidden md:block">
                         {{ title }}
                     </div>
 
-                    <button
-                        :class="elClasses.close"
-                        type="button"
-                        :title="$t('AwModal.close')"
-                        :aria-label="$t('AwModal.close')"
-                        @click.prevent="close()"
-                        tabindex="0"
+                    <div
+                        v-if="$scopedSlots.subtitle"
+                        :class="elClasses.subtitle"
                     >
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path stroke-width="1.06" d="M16,16 L4,4" />
-                            <path stroke-width="1.06" d="M16,4 L4,16" />
-                        </svg>
-                    </button>
-                </div>
-                <!-- / header -->
-
-                <!-- content -->
-                <div :class="elClasses.body">
-                    <div :class="elClasses.content" v-if="stay || showContent">
-                        <slot :close-modal="close"></slot>
+                        <slot name="subtitle"></slot>
                     </div>
+
+                    <!-- content -->
+                    <div :class="elClasses.body">
+                        <div
+                            :class="elClasses.content"
+                            v-if="stay || showContent"
+                        >
+                            <slot :close-modal="close"></slot>
+                        </div>
+                    </div>
+                    <!-- / content -->
                 </div>
-                <!-- / content -->
+                <!-- / modal__dialog -->
             </div>
-            <!-- / modal__dialog -->
         </aside>
         <!-- / modal -->
     </Transition>
@@ -176,9 +193,11 @@ export default {
                 'header',
                 'back',
                 'title',
+                'subtitle',
                 'close',
                 'body',
-                'content'
+                'content',
+                'container'
             ])
         },
 
