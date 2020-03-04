@@ -25,6 +25,7 @@ export default ({ store, app }) => {
                     pathOr(Infinity, 'order'),
                     values(pathOr({}, 'userMenuAdditional', state))
                 ),
+                isHeaderNotificationShown: (state) => state.headerNotification.show,
                 mainMenu: (state, { permissionsGranted }) => {
                     return sortBy(
                         pathOr(Infinity, ['order']),

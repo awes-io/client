@@ -25,5 +25,9 @@ export default {
                   addMenuItem(state, item)
               })
             : addMenuItem(state, items)
+    },
+
+    CLOSE_HEADER_NOTIFICATION(state) {
+        state.headerNotification.show = false
     }
 }
