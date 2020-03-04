@@ -1,5 +1,8 @@
 export default () => ({
     menu: {},
     userMenu: {},
-    userMenuAdditional: {}
+    userMenuAdditional: {},
+    headerNotification: {
+        show: true
+    }
 })

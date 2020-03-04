@@ -4,6 +4,16 @@
         position: relative;
     }
 
+    &__notification {
+        @apply py-5 pl-2 pr-8 text-center font-body text-sm;
+    }
+
+    &__close {
+        @apply absolute;
+        top: theme('spacing.4');
+        right: .25rem;
+    }
+
     &__container {
         @apply min-h-screen flex flex-col px-4 py-8 items-center justify-center;
         max-width: 30rem;
