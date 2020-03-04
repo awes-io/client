@@ -199,7 +199,7 @@ body.has-modal-bottom {
         }
 
         &.is-default &__dialog {
-            @apply h-auto;
+            @apply h-auto min-h-0;
             width: $modal-width;
         }
     }
