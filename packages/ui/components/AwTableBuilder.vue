@@ -121,8 +121,9 @@
             class="mt-4"
         />
 
-        <!-- Loading overlay v-if="collection.loading" -->
+        <!-- Loading overlay -->
         <div
+            v-if="collection.loading"
             class="absolute inset-0 flex items-center justify-center"
             :class="`h-${defaultHeight}`"
         >

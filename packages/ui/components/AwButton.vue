@@ -20,7 +20,7 @@
             class="h-5 w-5 inline-block mr-1"
         />
 
-        <span :class="elClasses.content">
+        <span :class="elClasses.content" tabindex="-1">
             <AwIcon
                 v-if="icon && !loading"
                 :name="icon"

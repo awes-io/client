@@ -140,9 +140,13 @@
             opacity: 0;
         }
 
-        &:not([readonly]):focus::placeholder {
+        &:not([readonly]):focus::placeholder  {
             opacity: .5;
         }
+    }
+
+    &.is-filled &__element::placeholder {
+        opacity: 0.5;
     }
 
     &__label {

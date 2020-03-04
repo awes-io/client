@@ -1,7 +1,40 @@
 <template>
     <AwLayoutDefault :menu="mainMenu">
+        <!-- notification -->
+        <template #before-header>
+            <Transition name="collapse">
+                <div
+                    v-if="notification"
+                    class="layout__notification"
+                    :class="`bg-${notification.type}`"
+                >
+                    {{ notification.text }}
+
+                    <button
+                        class="layout__close p-1"
+                        @click="
+                            $store.commit('awesIo/CLOSE_HEADER_NOTIFICATION')
+                        "
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M19 2l-1-1-8 8-8-8-1 1 8 8-8 8 1 1 8-8 8 8 1-1-8-8 8-8z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </Transition>
+        </template>
+
         <!-- navbar -->
-        <template slot="navbar">
+        <template #navbar>
             <!-- profile button -->
             <template v-if="userMenu && userMenu.length">
                 <button
@@ -101,10 +134,26 @@ export default {
     },
 
     computed: {
-        ...mapGetters('awesIo', ['mainMenu', 'userMenu', 'userMenuAdditional']),
+        ...mapGetters('awesIo', [
+            'mainMenu',
+            'userMenu',
+            'userMenuAdditional',
+            'isHeaderNotificationShown'
+        ]),
 
         user() {
             return pathOr({}, 'state.auth.user', this.$store)
+        },
+
+        notification() {
+            return (
+                this.isHeaderNotificationShown &&
+                pathOr(
+                    null,
+                    ['state', 'auth', 'user', 'notification'],
+                    this.$store
+                )
+            )
         }
     }
 }
