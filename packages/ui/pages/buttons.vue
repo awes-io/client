@@ -28,6 +28,7 @@
         <AwButton
             v-for="color in colors"
             :color="color"
+            size="sm"
             :key="color"
             class="m-1"
         >
@@ -79,7 +80,7 @@
         <div class="aw-button-group mt-4">
             <AwButton
                 v-for="i in 6"
-                color="gray"
+                color="default"
                 :key="i"
                 theme="outline"
                 size="sm"

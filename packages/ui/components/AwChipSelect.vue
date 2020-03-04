@@ -7,7 +7,7 @@
     >
         <button class="focus:outline-none" @focus="open" @click.stop="open">
             <slot name="selected" v-bind="selected">
-                <AwChip :loading="loading" v-bind="selected">
+                <AwChip :loading="loading" v-bind="selected" class="px-0">
                     <template #right>
                         <AwIcon
                             v-if="!readonly"
@@ -27,7 +27,7 @@
                     {
                         name: 'offset',
                         options: {
-                            offset: [-16, 0]
+                            offset: [-14, 0]
                         }
                     }
                 ]

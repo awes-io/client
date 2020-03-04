@@ -107,8 +107,8 @@ export default {
                     'is-loading': this.loading
                 },
                 `${this.className}_${this.size}`,
-                `color-${this.color}`,
-                `theme-${this.theme}`
+                `color-${this.color || 'default'}`,
+                this.theme && `theme-${this.theme}`
             ]
         },
 

@@ -237,7 +237,8 @@ module.exports = {
                 badge: '1.375rem'
             },
             maxHeight: {
-                '75vh': '75vh'
+                '75vh': '75vh',
+                unset: 'unset'
             },
             fontFamily: {
                 heading: ['Ubuntu', 'sans-serif'],

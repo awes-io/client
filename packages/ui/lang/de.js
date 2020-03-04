@@ -3,6 +3,24 @@ export const AwModal = {
     close: 'Fenster schließen (ESC)'
 }
 
+export const AwCalendar = {
+    weekdaysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    months: [
+        'Januar',​
+        'Februar',
+        'März',
+        'April',
+        'Mai',
+        ​'Juni',
+        ​'Juli',
+        ​'August',
+        ​'September',
+        ​'Oktober',
+        ​'November',
+        ​'Dezember'
+    ]
+}
+
 export const AwCropper = {
     upload: 'Bild ändern',
     rotate: 'Drehen 90°',
@@ -49,6 +67,7 @@ export const AwSearch = {
 
 export default {
     AwModal,
+    AwCalendar,
     AwCropper,
     AwCodeSnippet,
     AwLayoutDefault,

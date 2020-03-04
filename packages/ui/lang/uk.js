@@ -3,6 +3,24 @@ export const AwModal = {
     close: 'Закрити вікно (ESC)'
 }
 
+export const AwCalendar = {
+    weekdaysShort: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    months: [
+        'Січень',
+        'Лютий',
+        'Березень',
+        'Квітень',
+        'Травень',
+        'Червень',
+        'Липень',
+        'Серпень',
+        'Вересень',
+        'Жовтень',
+        'Листопад',
+        'Грудень'
+    ]
+}
+
 export const AwCropper = {
     upload: 'Змінити картинку',
     rotate: 'Крутити 90°',
@@ -49,6 +67,7 @@ export const AwSearch = {
 
 export default {
     AwModal,
+    AwCalendar,
     AwCropper,
     AwCodeSnippet,
     AwLayoutDefault,
