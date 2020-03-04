@@ -1,0 +1,27 @@
+{
+    "name": "@awes-io/nuxt-admin",
+    "version": "0.1.0",
+    "description": "Awes.io module for administration",
+    "homepage": "https://www.awes.io",
+    "bugs": {
+        "url": "https://github.com/awes-io/client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:awes-io/client.git"
+    },
+    "license": "MIT",
+    "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
+    "contributors": [
+        "illjah42 <ilya.kitayev@gmail.com>"
+    ],
+    "main": "src/index.js",
+    "files": [
+        "src/*",
+        "lang/*"
+    ],
+    "dependencies": {
+        "@awes-io/nuxt-auth": "^1.6.0",
+        "rambdax": "^3.5.0"
+    }
+}
