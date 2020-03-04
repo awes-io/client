@@ -6,6 +6,11 @@
     "bugs": {
         "url": "https://github.com/awes-io/client/issues"
     },
+    "keywords": [
+        "laravel",
+        "nuxt",
+        "awes-io"
+    ],
     "repository": {
         "type": "git",
         "url": "git@github.com:awes-io/client.git"

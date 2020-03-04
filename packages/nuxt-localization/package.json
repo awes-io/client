@@ -1,11 +1,18 @@
 {
     "name": "@awes-io/nuxt-localization",
     "version": "0.5.7",
-    "description": "Awes.io module for editing translations",
+    "description": "Admin panel for editing translations.",
     "homepage": "https://www.awes.io",
     "bugs": {
         "url": "https://github.com/awes-io/client/issues"
     },
+    "keywords": [
+        "translations",
+        "localization",
+        "admin",
+        "nuxt",
+        "awes-io"
+    ],
     "repository": {
         "type": "git",
         "url": "git@github.com:awes-io/client.git"
