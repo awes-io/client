@@ -57,10 +57,12 @@
             <slot name="subnav">
                 <div v-if="subnav.length" class="border-b bg-muted">
                     <div class="container">
-                        <AwTabNav
-                            :items="subnav"
-                            class="border-transparent -mb-px -mx-3"
-                        />
+                        <div class="-mb-px -mx-4">
+                            <AwTabNav
+                                :items="subnav"
+                                class="border-transparent"
+                            />
+                        </div>
                     </div>
                 </div>
             </slot>

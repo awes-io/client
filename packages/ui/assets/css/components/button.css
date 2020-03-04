@@ -127,6 +127,22 @@
     }
 }
 
+/* default color */
+.aw-button {
+
+    /* Solid */
+    &.theme-solid.color-default {
+        @apply bg-surface;
+    }
+
+    /* Outline */
+    /* Link */
+    &.theme-outline.color-default,
+    &.theme-ghost.color-default {
+        @apply text-on-muted-dark;
+    }
+}
+
 /**
  * Types
  */
