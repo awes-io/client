@@ -49,12 +49,47 @@
      * Tel styles (overwrite vue-tel-input)
      */
     &.is-tel .vue-tel-input {
+        @apply bg-surface;
         border-color: theme('borderColor.default');
-        border-radius: theme('borderRadius.sm');
+        border-radius: theme('borderRadius.default');
 
         input {
             /* background-color: transparent; */
             box-shadow: none;
+            min-width: 0;
+        }
+
+        .vti__dropdown {
+            position: static;
+            padding-left: theme('spacing.4');
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover,
+            &.open {
+                background-color: theme('colors.muted-dark');
+            }
+        }
+
+        .vti__dropdown-list {
+            @apply shadow-lg;
+            max-width: 100%;
+            border: none;
+            margin: 0;
+            top: 100%;
+            left: 0;
+
+            &:focus {
+                outline: none;
+            }
+
+            &.above {
+                top: auto;
+                bottom: 100%;
+                box-shadow: theme('boxShadow.lg-top');
+            }
         }
 
         &:focus-within {
@@ -62,12 +97,17 @@
             border-color: theme('borderColor.info');
         }
 
-        ul {
-            top: 48px;
-        }
+        .vti__dropdown-item {
+            @apply text-sm tracking-wider;
+            line-height: 19px;
+            padding: theme('spacing.3') theme('spacing.4');
 
-        .dropdown-item {
-            padding: 4px 7px;
+            &.highlighted,
+            &:hover,
+            &:focus {
+                outline: none;
+                background-color: theme('colors.muted-dark');
+            }
         }
     }
 
@@ -148,7 +188,6 @@
 
         &__element {
             @apply border-error;
-            /* animation: 700ms shake ease-out-quad; */
         }
 
         &__label {
