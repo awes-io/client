@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.54.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.54.0...basic-ui@1.54.1) (2020-03-04)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
 # [1.54.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.53.3...basic-ui@1.54.0) (2020-03-04)
 
 

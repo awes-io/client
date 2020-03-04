@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.65.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.64.0...@awes-io/ui@1.65.0) (2020-03-04)
+
+
+### Features
+
+* new focus for button elements ([b3267a9](https://github.com/awes-io/client/commit/b3267a9d7854b81694d7f3ec6c137bd867178930))
+
+
+
+
+
 # [1.64.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.63.0...@awes-io/ui@1.64.0) (2020-03-04)
 
 
