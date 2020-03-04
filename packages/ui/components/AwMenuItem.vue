@@ -144,7 +144,7 @@ export default {
     },
 
     created() {
-        if (this.expanded) return
+        if (this.expanded || this.children.length === 0) return
 
         if ((this.href && this.isSamePage(this.href)) || this.hasActiveChild) {
             this.opened = true
