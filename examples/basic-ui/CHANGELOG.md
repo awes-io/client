@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.54.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.53.3...basic-ui@1.54.0) (2020-03-04)
+
+
+### Features
+
+* add header notifications to AwLAyoutDefault ([b5b894a](https://git.awescode.com/awes-io/client/commits/b5b894a23f415f7c81818b463a6fb97af490eb19))
+* change modal styles ([f1cfaae](https://git.awescode.com/awes-io/client/commits/f1cfaaebfa23ed8cf1120fd880a73d9ec47d2ece))
+
+
+
+
+
 ## [1.53.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.53.2...basic-ui@1.53.3) (2020-03-02)
 
 **Note:** Version bump only for package basic-ui
