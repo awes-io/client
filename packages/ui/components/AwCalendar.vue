@@ -154,7 +154,7 @@ export default {
                 )
             }
 
-            if (this.min) {
+            if (this.max) {
                 fns.push(date =>
                     this.maxDayJs.isBefore(this.toDayjs(date), 'days')
                 )
