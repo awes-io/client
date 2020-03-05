@@ -25,6 +25,7 @@
             :placeholder="_getLabel(selected)"
             v-bind="$attrs"
             @focus="_onFocus"
+            @blur="_onBlur"
             @input="_applySearch"
             @keydown.enter="_selectOnEnter"
             :readonly="!searchable"
@@ -39,7 +40,7 @@
                     icon="close"
                     theme="icon"
                 />
-                <AwButton theme="icon" @click="toggleDropdown">
+                <AwButton tabindex="-1" theme="icon" @click="toggleDropdown">
                     <AwIcon
                         v-if="isLoading"
                         key="loader"
@@ -71,6 +72,7 @@
                 <AwDropdownButton
                     v-if="_showNotEqual"
                     @click="_onClickNotEqual"
+                    tabindex="-1"
                     data-focus
                 >
                     <slot name="not-equal" :searchPhrase="searchPhrase" />
@@ -84,6 +86,7 @@
                         :key="`${optionLabel}-${index}`"
                         :active="active"
                         @click="selectedIndex = index"
+                        tabindex="-1"
                         data-focus
                     >
                         <slot
@@ -96,7 +99,12 @@
                 </template>
 
                 <!-- not found -->
-                <AwDropdownButton v-else @click="_selectOnEnter" data-focus>
+                <AwDropdownButton
+                    v-else
+                    @click="_selectOnEnter"
+                    tabindex="-1"
+                    data-focus
+                >
                     <slot name="not-found" :searchPhrase="searchPhrase">
                         {{ $t('AwSelect.notFound') }}
                     </slot>
@@ -378,6 +386,12 @@ export default {
                 setTimeout(() => {
                     this.isOpened = true
                 }, 5)
+            }
+        },
+
+        _onBlur($event) {
+            if (!this.$el.contains($event.relatedTarget)) {
+                this.isOpened = false
             }
         },
 

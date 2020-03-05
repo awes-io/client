@@ -1,5 +1,5 @@
 <template>
-    <div v-if="pagesTotal > 1" class="flex items-center">
+    <div v-if="pagesTotal > 1" class="flex items-center lg:px-6">
         <!-- info text -->
         <span class="flex-1 text-sm opacity-50 hidden lg:block">{{
             $t('AwPagination.info', {
@@ -13,14 +13,22 @@
             class="flex-grow flex justify-between lg:justify-center items-center"
             @click="_onPageClick"
         >
-            <button
+            <AwButton
                 :data-page="prevPage"
                 :disabled="prevPage === null"
-                :class="{ 'opacity-50 cursor-default': prevPage === null }"
-                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none mr-1 focus:outline-none"
-            >
-                <AwIcon name="arrow-l" />
-            </button>
+                icon="arrow-l"
+                color="default"
+                class="mr-1 lg:hidden"
+                content-class="p-3"
+            />
+            <AwButton
+                :data-page="prevPage"
+                :disabled="prevPage === null"
+                theme="icon"
+                size="sm"
+                icon="arrow-l"
+                class="hidden lg:inline-flex mr-1"
+            />
 
             <span class="lg:hidden">
                 {{ $t('AwPagination.page', { page, pagesTotal }) }}
@@ -36,29 +44,40 @@
                         'aw-button-nav__toggler_disabled':
                             component !== 'button'
                     }"
-                    class="aw-button-nav__toggler px-2 w-8"
+                    class="aw-button-nav__toggler"
                 >
-                    {{ text }}
+                    <span class="w-8 h-8" tabindex="-1">
+                        {{ text }}
+                    </span>
                 </Component>
             </div>
 
-            <button
+            <AwButton
                 :data-page="nextPage"
                 :disabled="nextPage === null"
-                :class="{ 'opacity-50 cursor-default': nextPage === null }"
-                class="bg-surface p-3 leading-none shadow-md rounded lg:bgcolor-transparent lg:shadow-none ml-1 focus:outline-none"
-            >
-                <AwIcon name="arrow-r" />
-            </button>
+                theme="icon"
+                size="sm"
+                icon="arrow-r"
+                class="hidden lg:inline-flex ml-1"
+            />
+            <AwButton
+                :data-page="nextPage"
+                :disabled="nextPage === null"
+                icon="arrow-r"
+                color="default"
+                class="ml-1 lg:hidden"
+                content-class="p-3"
+            />
         </div>
 
         <!-- limit -->
         <div class="flex-1 hidden lg:block">
             <div class="flex justify-end">
                 <template v-if="limits">
-                    <button
-                        class="opacity-50 text-sm hover:opacity-100 focus:opacity-100 focus:outline-none"
-                        @click="limitsOpened = true"
+                    <AwButton
+                        theme="toggle"
+                        content-class="p-0"
+                        @click="limitsOpened = !limitsOpened"
                     >
                         {{ limit }}
                         <AwIcon
@@ -66,12 +85,12 @@
                             class="transition-200"
                             :class="{ 'rotate-180': limitsOpened }"
                         />
-                    </button>
+                    </AwButton>
                     <AwDropdown
+                        ref="limits"
                         :show.sync="limitsOpened"
                         class="w-32"
                         :options="{ placement: 'bottom-end' }"
-                        close-on-action
                     >
                         <AwDropdownButton
                             v-for="_limit in limits"

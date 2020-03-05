@@ -1,0 +1,15 @@
+##IDEs
+/.idea
+/.vscode
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+
+## package managers
+/node_modules
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock

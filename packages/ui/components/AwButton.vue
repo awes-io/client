@@ -1,5 +1,4 @@
 <template>
-    <!-- temporary remove .native modifier for future research (routes won`t work) -->
     <!-- eslint-disable-next-line vue/require-component-is -->
     <component
         :class="classes"
@@ -13,18 +12,26 @@
     >
         <span :class="elClasses.overlay"></span>
 
-        <AwSvgImage
-            v-if="loading"
-            name="spinner"
-            slot="left"
-            class="h-5 w-5 inline-block mr-1"
-        />
+        <span
+            :class="[
+                elClasses.content,
+                `${elClasses.content}_${size}`,
+                contentClass
+            ]"
+            tabindex="-1"
+        >
+            <AwSvgImage
+                v-if="loading"
+                name="spinner"
+                slot="left"
+                class="h-5 w-5 inline-block mr-1"
+            />
 
-        <span :class="elClasses.content" tabindex="-1">
             <AwIcon
                 v-if="icon && !loading"
                 :name="icon"
-                :class="{ 'mr-1': theme !== 'icon' }"
+                :class="{ 'mr-1': theme !== 'icon' && text }"
+                class="flex-shrink-0"
             />
             <span
                 :class="[
@@ -33,7 +40,9 @@
                 ]"
             >
                 <slot v-if="!loading">{{ text }}</slot>
-                <span v-else>LOADING</span>
+                <span v-else>
+                    {{ loadingText }}
+                </span>
             </span>
         </span>
     </component>
@@ -41,6 +50,7 @@
 
 <script>
 import AwLink from './AwLink.vue'
+import { isType } from 'rambdax'
 import { AwButton as _config } from './_config'
 import { getBemClasses } from '../assets/js/css'
 
@@ -84,10 +94,17 @@ export default {
 
         // Indicates if loader spinner is shown
         loading: {
-            type: Boolean,
+            type: [Boolean, String],
             default: false
         },
 
+        // CSS class for content wrapper
+        contentClass: {
+            type: String,
+            default: ''
+        },
+
+        // Active state
         active: Boolean
     },
 
@@ -114,6 +131,13 @@ export default {
 
         elClasses() {
             return getBemClasses(this.className, ['content', 'overlay', 'text'])
+        },
+
+        loadingText() {
+            return (
+                (isType('String', this.loading) && this.loading) ||
+                this.$t('AwButton.loading')
+            )
         }
     },
 

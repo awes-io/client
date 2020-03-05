@@ -52,7 +52,7 @@ function getBaseStyle(theme) {
         },
         'toggler:focus > span': {
             color: theme('onColors.surface'),
-            outline: `1px dashed ${theme('colors.info')}`
+            outline: theme('focusOutline', 'none')
         },
         toggler_active: {
             color: theme('onColors.surface'),
