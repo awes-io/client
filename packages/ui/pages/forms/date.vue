@@ -8,7 +8,6 @@
             <AwDate
                 name="date"
                 :min="new Date().setDate(20)"
-                :max="new Date().setDate(25)"
                 :value="new Date().setDate(23)"
             />
         </AwForm>

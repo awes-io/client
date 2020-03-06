@@ -43,6 +43,7 @@ module.exports = {
             ...theme('colors'),
             default: 'rgba(0,0,0,.1)'
         }),
+        focusOutline: theme => `2px dashed ${theme('colors.info')}`,
         borderRadius: {
             none: '0',
             default: '.125rem',

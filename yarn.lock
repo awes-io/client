@@ -2,14 +2,6 @@
 # yarn lockfile v1
 
 
-"@awes-io/nuxt-auth@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/@awes-io/nuxt-auth/-/nuxt-auth-1.6.0.tgz#b62dc8cd39b2359a38e3dad707a7892eac59e5a2"
-  integrity sha512-J6Jc4cvEGlFxDGwjpEj++fftlw+r1YlheUxs36BYUkju2OAWN7FK+tQNfwIDj/zCf8K+nY3Ve6jjOkuaI+qsdg==
-  dependencies:
-    "@awes-io/ui" "^0.1.0"
-    "@nuxtjs/auth" "^4.8.1"
-
 "@awes-io/ui@^0.1.0":
   version "0.1.4"
   resolved "https://registry.npmjs.org/@awes-io/ui/-/ui-0.1.4.tgz#c5ae73ecd17ee8ee0ff452cf60148f3a30c0c44d"

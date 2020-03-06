@@ -4,7 +4,7 @@
     display: block;
     position: relative;
     width: 100%;
-    padding: 1px;
+    padding: 2px;
     border-radius: theme('borderRadius.default');
 
     & + & {
@@ -13,7 +13,7 @@
 
     & > span {
         display: block;
-        padding: calc(theme('spacing.3') - 1px) calc(theme('spacing.4') - 1px);
+        padding: calc(theme('spacing.3') - 2px) calc(theme('spacing.4') - 2px);
     }
 
     /* Same active state for all modifiers */
@@ -26,7 +26,7 @@
     }
 
     &:focus > span {
-        outline: 1px dashed theme('colors.info');
+        outline: theme('focusOutline', 'none');
     }
 
     /* Default color */

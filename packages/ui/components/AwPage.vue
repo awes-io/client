@@ -27,17 +27,15 @@
                                     >&#47;</span
                                 >
                             </span>
-                            <span class="sm:hidden">
-                                <AwButton
-                                    :href="breadcrumb.href"
-                                    :title="breadcrumb.title"
-                                    class="mr-4 min-w-0 px-2"
-                                    size="sm"
-                                    color="default"
-                                >
-                                    <AwIcon name="chevron-l" />
-                                </AwButton>
-                            </span>
+                            <AwButton
+                                :href="breadcrumb.href"
+                                :title="breadcrumb.title"
+                                class="sm:hidden mr-4"
+                                content-class="p-2"
+                                size="sm"
+                                icon="chevron-l"
+                                color="default"
+                            />
                         </div>
                     </slot>
                     <!-- Title of the page -->

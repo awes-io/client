@@ -7,33 +7,5 @@
             pointer-events: none;
             user-select: none;
         }
-
-        .aw-button[type="submit"] {
-            pointer-events: none;
-
-            &[data-loading] {
-                .aw-button__content {
-                    display: none;
-                }
-
-                &:before {
-                    content: '';
-                    display: inline-block;
-                    vertical-align: middle;
-                    border-radius: 50%;
-                    width: 1rem;
-                    height: 1rem;
-                    border: 1px dashed currentColor;
-                    border-right-style: solid;
-                    border-bottom: none;
-                    animation: 1s aw-rotate linear infinite;
-                }
-
-                &:after {
-                    padding-left: .5rem;
-                    content: attr(data-loading);
-                }
-            }
-        }
     }
 }
