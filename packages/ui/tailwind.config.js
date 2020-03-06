@@ -30,6 +30,7 @@ module.exports = {
             surface: '#0f1012',
             muted: '#0f1012',
             'muted-dark': '#313336',
+            'muted-darker': '#313336',
             light: '#0F1012',
             disabled: '#fff',
             overlay: '#fff',

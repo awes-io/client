@@ -76,7 +76,9 @@
             :rows="items"
             :style="collection.loading ? 'filter: blur(3px);' : null"
             :vertical-align="verticalAlign"
+            :orderable="orderable"
             v-on="tableListeners"
+            @click:head="onTheadClick"
         >
             <template #thead="{ thead }">
                 <slot name="thead" :thead="thead" />
@@ -121,8 +123,9 @@
             class="mt-4"
         />
 
-        <!-- Loading overlay v-if="collection.loading" -->
+        <!-- Loading overlay -->
         <div
+            v-if="collection.loading"
             class="absolute inset-0 flex items-center justify-center"
             :class="`h-${defaultHeight}`"
         >
@@ -139,14 +142,21 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { pathOr, filter } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
-import { TABLE_ROW_CLICK_EVENT } from '../assets/js/constants'
+import {
+    TABLE_ROW_CLICK_EVENT,
+    TABLE_HEAD_CLICK_EVENT
+} from '../assets/js/constants'
 import AwCard from './AwCard.vue'
 import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
 import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
+
+// const defaultOrerableConfig = pathOr({}, '$', Vue)
+console.log(Vue)
 
 const DEFAULT_LIMITS = [15, 50, 100]
 
@@ -216,6 +226,15 @@ export default {
         arrowNav: {
             type: Boolean,
             default: true
+        },
+
+        /**
+         * Orderable config that will be merged with global orderable config.
+         * If null then global orderable config will be used
+         */
+        orderable: {
+            type: Object,
+            default: null
         }
     },
 
@@ -341,6 +360,34 @@ export default {
             this.collection
                 .fetch({ params: { ...this.fetchAllQuery, ...params } })
                 .then(this._setPagination)
+        },
+
+        onTheadClick(col) {
+            const orderable = col.orderable
+            this.$emit(TABLE_HEAD_CLICK_EVENT, col)
+            if (orderable) {
+                const isAskValPresent =
+                    this.$route.query[orderable.param] === orderable.ascValue
+                const isDescValPresent =
+                    this.$route.query[orderable.param] === orderable.descValue
+
+                const paramValue = isAskValPresent
+                    ? orderable.descValue
+                    : isDescValPresent
+                    ? null
+                    : orderable.ascValue
+
+                this.$router.replace(
+                    mergeRouteQuery(
+                        {
+                            [orderable.param]: paramValue
+                        },
+                        this.$route
+                    )
+                )
+
+                this.fetch({ [orderable.param]: paramValue })
+            }
         },
 
         /**

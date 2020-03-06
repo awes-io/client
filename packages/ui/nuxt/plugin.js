@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Vue from 'vue'
-import { flip, pathOr, filter, sortBy, isEmpty, includes, all, values, reduce } from 'rambdax'
+import { flip, pathOr, filter, sortBy, isEmpty, includes, all, values, reduce, mergeDeep } from 'rambdax'
 
 
 import AwesUI from '@awes-io/ui'
@@ -9,7 +9,7 @@ import { state, mutations } from '@awes-io/ui/nuxt/store'
 
 const componentsConfig = <%= JSON.stringify(options.components) %>
 
-Vue.use(AwesUI, { ...config, ...componentsConfig })
+Vue.use(AwesUI, mergeDeep(config, componentsConfig))
 
 export default ({ store, app }) => {
     if (!store.awesIo) {

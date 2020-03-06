@@ -50,11 +50,17 @@
                 @click:row="clickRow"
                 :collection="managers"
                 :watchParams="['search']"
+                :orderable="{
+                    ascTemplate: '%s_asc'
+                }"
                 defaultHeight="50vh"
             >
-                <AwTableCol vertical-align="top" field="id" />
+                <AwTableCol vertical-align="top" field="id" orderable />
 
-                <AwTableCol title="User name">
+                <AwTableCol
+                    title="User name"
+                    :orderable="{ field: 'first_name' }"
+                >
                     <template #default="{ cell }">
                         {{ cell.first_name }} {{ cell.last_name }}
                     </template>
@@ -102,7 +108,7 @@
                 <AwTableCol field="one" class="break-all" :priority="4" />
                 <AwTableCol field="two with long name" title="Two">
                     <template #default>
-                       <AwUserpic :src="undefined" name="Sds Max-Mustermann" />
+                        <AwUserpic :src="undefined" name="Sds Max-Mustermann" />
                     </template>
                 </AwTableCol>
                 <AwTableCol field="three" title="Three" title-align="center">
