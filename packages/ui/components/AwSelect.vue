@@ -292,6 +292,7 @@ export default {
     watch: {
         value(value) {
             this.optionSelected = value
+            this.$refs.input.setError()
         },
 
         isOpened(opened) {
