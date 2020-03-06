@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-admin",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Administration of roles and permissions for Awes.io.",
     "homepage": "https://www.awes.io",
     "bugs": {
@@ -28,7 +28,7 @@
         "lang/*"
     ],
     "dependencies": {
-        "@awes-io/nuxt-auth": "^1.6.0",
+        "@awes-io/nuxt-auth": "^1.6.1",
         "rambdax": "^3.5.0"
     }
 }

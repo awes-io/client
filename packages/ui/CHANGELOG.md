@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.66.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.65.0...@awes-io/ui@1.66.0) (2020-03-06)
+
+
+### Bug Fixes
+
+* focus improvement fixes ([60e0eec](https://github.com/awes-io/client/commit/60e0eec34b6b3ded0250d5caf8991bf9df9d48ac))
+* include footer height in aw-tel dropdown height ([69411fe](https://github.com/awes-io/client/commit/69411fe53c37915ed5600ff99489676ba0d91a42))
+* reset aw-select error on value change ([0277739](https://github.com/awes-io/client/commit/0277739542fca2e64cf1228e2af89620eb715a3b))
+
+
+### Features
+
+* add meta info from nuxt-i18n-seo to layouts ([d753964](https://github.com/awes-io/client/commit/d75396441dcb126a3aa557caf79793ed670e9fd1))
+
+
+
+
+
 # [1.65.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.64.0...@awes-io/ui@1.65.0) (2020-03-04)
 
 
