@@ -28,10 +28,18 @@
 </template>
 
 <script>
+import { isType } from 'rambdax'
+
 export default {
     name: 'error',
 
     layout: 'empty',
+
+    head() {
+        if (isType('Function', this.$nuxtI18nSeo)) {
+            return this.$nuxtI18nSeo()
+        }
+    },
 
     props: {
         error: {

@@ -115,10 +115,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { pathOr } from 'rambdax'
+import { pathOr, isType } from 'rambdax'
 
 export default {
     name: 'default',
+
+    head() {
+        if (isType('Function', this.$nuxtI18nSeo)) {
+            return this.$nuxtI18nSeo()
+        }
+    },
 
     data: () => {
         return {
