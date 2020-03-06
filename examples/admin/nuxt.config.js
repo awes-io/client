@@ -32,6 +32,6 @@ export default {
     },
 
     proxy: {
-        '/api/': 'http://e2e-my.easyweek.io/'
+        '/api/': 'http://auth.test/'
     }
 }

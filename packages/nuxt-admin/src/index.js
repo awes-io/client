@@ -8,22 +8,40 @@ function AwesIoNuxtAdmin() {
 
     // Register routes
     this.extendRoutes((routes = {}) => {
-        routes.unshift({
-            path: '/admin',
-            component: resolve(__dirname, './pages/admin.vue'),
-            children: [
-                {
-                    name: 'admin-settings',
-                    path: 'settings',
-                    component: resolve(__dirname, './pages/admin/settings.vue')
-                },
-                {
-                    name: 'admin-information',
-                    path: '',
-                    component: resolve(__dirname, './pages/admin/index.vue')
-                }
-            ]
-        })
+        routes.unshift(
+            {
+                path: '/admin/roles',
+                component: resolve(__dirname, './pages/Roles.vue')
+            },
+            {
+                path: '/admin/roles/create',
+                component: resolve(__dirname, './pages/RoleCreate.vue')
+            },
+            {
+                path: '/admin/roles/:id',
+                component: resolve(__dirname, './pages/Role.vue'),
+                children: [
+                    {
+                        name: 'role-permissions',
+                        path: 'permissions',
+                        component: resolve(__dirname, './pages/role/permissions.vue')
+                    },
+                    {
+                        name: 'role-information',
+                        path: '',
+                        component: resolve(__dirname, './pages/role/index.vue')
+                    }
+                ]
+            },
+            {
+                path: '/admin/users',
+                component: resolve(__dirname, './pages/Users.vue')
+            },
+            {
+                path: '/admin/users/create',
+                component: resolve(__dirname, './pages/UserCreate.vue')
+            }
+        )
     })
 
     // Add localization
