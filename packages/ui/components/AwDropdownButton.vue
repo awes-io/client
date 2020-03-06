@@ -7,10 +7,12 @@
         v-on="$listeners"
     >
         <!-- content inside button -->
-        <slot>
-            <!-- {{ text }} -->
-            {{ text }}
-        </slot>
+        <span tabindex="-1">
+            <slot>
+                <!-- {{ text }} -->
+                {{ text }}
+            </slot>
+        </span>
     </component>
 </template>
 

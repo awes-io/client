@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.10](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.5.9...@awes-io/nuxt-localization@0.5.10) (2020-03-06)
+
+**Note:** Version bump only for package @awes-io/nuxt-localization
+
+
+
+
+
+## [0.5.9](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.5.8...@awes-io/nuxt-localization@0.5.9) (2020-03-04)
+
+**Note:** Version bump only for package @awes-io/nuxt-localization
+
+
+
+
+
+## [0.5.8](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.5.7...@awes-io/nuxt-localization@0.5.8) (2020-03-04)
+
+
+### Bug Fixes
+
+* updated description of the packages ([eaa6fed](https://github.com/awes-io/client/commit/eaa6fedd3420fee6b43a9541a9c269cc39f8343e))
+
+
+
+
+
+## [0.5.7](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.5.6...@awes-io/nuxt-localization@0.5.7) (2020-03-04)
+
+**Note:** Version bump only for package @awes-io/nuxt-localization
+
+
+
+
+
 ## [0.5.6](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.5.5...@awes-io/nuxt-localization@0.5.6) (2020-03-02)
 
 **Note:** Version bump only for package @awes-io/nuxt-localization

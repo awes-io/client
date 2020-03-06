@@ -20,7 +20,15 @@
 
     &__content {
         @apply relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
         transition: 100ms opacity;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     &:not(:disabled):hover > &__overlay {
@@ -31,46 +39,47 @@
         opacity: 0.3;
     }
 
-    &:focus > &__overlay {
-        opacity: 0.15;
+    &:focus > &__content {
+        /* opacity: 0.15; */
+        outline: theme('focusOutline', 'none');
     }
 
     /**
      * Sizes
      */
-    &_xs {
+    &__content_xs {
         @apply px-4;
         font-size: 0.625rem;
     }
 
-    &_xs.theme-icon {
+    &.theme-icon &__content_xs {
         width: theme('spacing.6');
         height: theme('spacing.6');
     }
 
-    &_sm {
+    &__content_sm {
         @apply px-5 py-1;
     }
 
-    &_sm.theme-icon {
+    &.theme-icon &__content_sm {
         width: theme('spacing.8');
         height: theme('spacing.8');
     }
 
-    &_md {
+    &__content_md {
         @apply px-6 py-2 text-sm;
     }
 
-    &_md.theme-icon {
+    &.theme-icon &__content_md {
         width: theme('spacing.12');
         height: theme('spacing.12');
     }
 
-    &_lg {
+    &__content_lg {
         @apply px-8 py-3 text-sm;
     }
 
-    &_lg.theme-icon {
+    &.theme-icon &__content_lg {
         width: theme('spacing.16');
         height: theme('spacing.16');
     }
@@ -87,6 +96,13 @@
 
     &:not(.is-loading)[disabled] {
         color: theme('colors.disabled') !important;
+    }
+
+    &:not(.is-loading)[disabled] &__content {
+        opacity: 1 !important;
+    }
+
+    &:not(.is-loading):not(.theme-icon)[disabled] {
         background-color: rgba(148,151,153, .3) !important;
     }
 

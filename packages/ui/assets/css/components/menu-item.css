@@ -40,6 +40,7 @@
 
     &__button:hover > *,
     &__child:hover > *,
+    &__child:focus > *,
     &__toggler:focus > *,
     &__toggler:hover > * {
         opacity: 1;

@@ -5,13 +5,13 @@
     }
 
     &__notification {
-        @apply py-5 pl-2 pr-8 text-center font-body text-sm;
+        @apply py-5 px-8 text-center font-body text-sm;
     }
 
     &__close {
         @apply absolute;
-        top: theme('spacing.4');
-        right: .25rem;
+        top: theme('spacing.5');
+        right: theme('spacing.5');
     }
 
     &__container {

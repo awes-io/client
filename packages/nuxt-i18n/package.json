@@ -1,11 +1,17 @@
 {
     "name": "@awes-io/nuxt-i18n",
-    "version": "0.4.0",
-    "description": "Awes.io module for loading translations",
+    "version": "0.4.1",
+    "description": "Nuxt i18n module for loading translations from API endpoint",
     "homepage": "https://www.awes.io",
     "bugs": {
         "url": "https://github.com/awes-io/client/issues"
     },
+    "keywords": [
+        "translations",
+        "i18n",
+        "nuxt",
+        "awes-io"
+    ],
     "repository": {
         "type": "git",
         "url": "git@github.com:awes-io/client.git"

@@ -1,11 +1,18 @@
 {
     "name": "@awes-io/nuxt-admin",
-    "version": "0.1.0",
-    "description": "Awes.io module for administration",
+    "version": "0.2.2",
+    "description": "Administration of roles and permissions for Awes.io.",
     "homepage": "https://www.awes.io",
     "bugs": {
         "url": "https://github.com/awes-io/client/issues"
     },
+    "keywords": [
+        "administration",
+        "permissions",
+        "roles",
+        "nuxt",
+        "awes-io"
+    ],
     "repository": {
         "type": "git",
         "url": "git@github.com:awes-io/client.git"
@@ -21,7 +28,7 @@
         "lang/*"
     ],
     "dependencies": {
-        "@awes-io/nuxt-auth": "^1.6.0",
+        "@awes-io/nuxt-auth": "^1.6.1",
         "rambdax": "^3.5.0"
     }
 }

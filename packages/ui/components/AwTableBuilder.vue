@@ -120,7 +120,7 @@
             :arrow-nav="arrowNav"
             @click:page="page = $event"
             @click:limit="limit = $event"
-            class="mt-4"
+            class="mt-3 lg:mt-8"
         />
 
         <!-- Loading overlay -->

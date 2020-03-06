@@ -10,7 +10,15 @@
 </template>
 
 <script>
+import { isType } from 'rambdax'
+
 export default {
-    name: 'LayoutFrameCenter'
+    name: 'LayoutFrameCenter',
+
+    head() {
+        if (isType('Function', this.$nuxtI18nSeo)) {
+            return this.$nuxtI18nSeo()
+        }
+    }
 }
 </script>
