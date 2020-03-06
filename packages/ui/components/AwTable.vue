@@ -219,7 +219,7 @@ export default {
         },
 
         _unmaskOrderableConfig(orderable, field) {
-            const templateDefaultVal = orderable.field || field
+            const templateDefaultVal = orderable.templateValue || field
             const ascValue = this._unmaskParams(
                 orderable.ascTemplate,
                 templateDefaultVal
