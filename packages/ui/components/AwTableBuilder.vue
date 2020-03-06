@@ -142,7 +142,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { pathOr, filter } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 import {
@@ -154,9 +153,6 @@ import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
 import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
-
-// const defaultOrerableConfig = pathOr({}, '$', Vue)
-console.log(Vue)
 
 const DEFAULT_LIMITS = [15, 50, 100]
 
