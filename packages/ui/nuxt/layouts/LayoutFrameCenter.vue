@@ -10,15 +10,11 @@
 </template>
 
 <script>
-import { isType } from 'rambdax'
+import layoutMixin from './layout-mixin'
 
 export default {
     name: 'LayoutFrameCenter',
 
-    head() {
-        if (isType('Function', this.$nuxtI18nSeo)) {
-            return this.$nuxtI18nSeo()
-        }
-    }
+    mixins: [layoutMixin]
 }
 </script>

@@ -2,7 +2,7 @@ const _ = require('lodash')
 const chroma = require('chroma-js')
 
 const DEFAULTS = {
-    surface: '#000'
+    surface: '#fff'
 }
 
 const ON_DEFAULTS = {
@@ -16,10 +16,15 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
     const colorSetsNames = _.keys(onColors)
     const borderDefault = theme('borderColor.default', 'currentColor')
 
+    // dark theme
+    const darkColors = theme('darkTheme.colors', {})
+    const darkOnColors = theme('darkTheme.onColors', {})
+
     /*
      * Add CSS variables
      */
     const cssRoot = {}
+    const darkThemeCssRoot = {}
 
     _.forEach(colors, (value, key) => {
         cssRoot[`--c-${key}`] = value
@@ -37,6 +42,22 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
 
     addComponents({ ':root': cssRoot })
 
+    _.forEach(darkColors, (value, key) => {
+        darkThemeCssRoot[`--c-${key}`] = value
+    })
+
+    _.forEach(darkOnColors, (value, key) => {
+        darkThemeCssRoot[`--c-on-${key}`] = value
+    })
+
+    _.forEach(darkOnColors, (value, key) => {
+        darkThemeCssRoot[`--c-fade-${key}`] = chroma(value)
+            .alpha(0.1)
+            .css()
+    })
+
+    addComponents({ ':root[data-dark]': darkThemeCssRoot })
+
     /*
      * Add color sets
      */
@@ -47,17 +68,10 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
                     [
                         `.${e(`bg-${name}`)}`,
                         {
-                            'background-color': `var(--c-${name})`,
+                            background: `var(--c-${name})`,
                             color: `var(--c-on-${name})`
                         }
                     ]
-                    // ,
-                    // [
-                    //     `.${e(`bg-${name}`)} *`,
-                    //     {
-                    //         'border-color': `var(--c-fade-${name})`
-                    //     }
-                    // ]
                 ]
             })
         )
@@ -125,7 +139,7 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
             return [
                 `.${e(`bgcolor-${name}`)}`,
                 {
-                    'background-color': `var(--c-${name})`
+                    background: `var(--c-${name})`
                 }
             ]
         })

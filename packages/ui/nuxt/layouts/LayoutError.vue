@@ -28,18 +28,14 @@
 </template>
 
 <script>
-import { isType } from 'rambdax'
+import layoutMixin from './layout-mixin'
 
 export default {
     name: 'error',
 
     layout: 'empty',
 
-    head() {
-        if (isType('Function', this.$nuxtI18nSeo)) {
-            return this.$nuxtI18nSeo()
-        }
-    },
+    mixins: [layoutMixin],
 
     props: {
         error: {

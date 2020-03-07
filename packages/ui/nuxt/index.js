@@ -1,7 +1,10 @@
 import { resolve, join } from 'path'
+// import { readdirSync } from 'fs'
 import _ from 'lodash'
 
 const meta = require('./../package.json')
+
+// const DARK_THEME_FILES = readdirSync(resolve(__dirname, './dark-theme/'))
 
 export const DEFAULTS = {
     logo: {
@@ -38,6 +41,13 @@ function AwesIoUi(_options) {
         _options
     )
 
+    // add plugin (dark theme switcher)
+    // NOTE! add before store, beacuse plugins adds with 'unshift'
+    this.addPlugin({
+        fileName: join('awes-io', 'dark-theme-plugin.js'),
+        src: resolve(join(__dirname, './dark-theme-plugin.js'))
+    })
+
     // add plugin (register components and store)
     this.addPlugin({
         fileName: join('awes-io', 'ui-plugin.js'),
@@ -54,6 +64,11 @@ function AwesIoUi(_options) {
     }
 
     // register layouts
+    this.addTemplate({
+        fileName: join('awes-io', 'layout-mixin.js'),
+        src: resolve(join(__dirname, './layout-mixin.js'))
+    })
+
     this.addLayout(
         {
             fileName: join('awes-io', 'LayoutDefault.vue'),

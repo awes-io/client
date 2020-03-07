@@ -1,8 +1,8 @@
 export default () => ({
     menu: {},
     userMenu: {},
-    userMenuAdditional: {},
     headerNotification: {
         show: true
-    }
+    },
+    isDarkTheme: false
 })

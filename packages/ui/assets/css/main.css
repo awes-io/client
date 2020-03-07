@@ -27,6 +27,15 @@
  * Prism highlight
  */
 @import 'prismjs/themes/prism.css';
+[data-dark] {
+    pre[class*="language-"] {
+        background-color: theme('darkTheme.colors.surface');
+    }
+    code[class*="language-"] {
+        color: theme('darkTheme.onColors.surface');
+        text-shadow: 0 1px theme('darkTheme.colors.muted');
+    }
+}
 pre[class*="language-"] {
     margin-top: 0;
     margin-bottom: 0;

@@ -7,7 +7,8 @@ function getBaseStyle(theme) {
         default: {
             display: 'flex',
             flexWrap: 'wrap',
-            backgroundColor: theme('colors.surface'),
+            background: 'var(--c-surface)',
+            color: 'var(--c-on-surface)',
             paddingBottom: theme('spacing.2')
         },
 

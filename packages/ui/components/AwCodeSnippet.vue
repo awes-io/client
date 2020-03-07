@@ -55,7 +55,7 @@ export default {
                 h(
                     'pre',
                     {
-                        staticClass: 'pre min-h-xxs language-${props.language}'
+                        staticClass: `pre min-h-xxs language-${props.language}`
                     },
                     [
                         h('code', {

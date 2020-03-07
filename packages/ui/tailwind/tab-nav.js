@@ -7,7 +7,7 @@ function getBaseStyle(theme) {
         default: {
             display: 'flex',
             alignItems: 'center',
-            borderBottom: `1px solid ${theme('colors.muted-darker')}`
+            borderBottom: `1px solid var(--c-muted-dark)`
         },
 
         // elements
@@ -18,7 +18,7 @@ function getBaseStyle(theme) {
             transition: 'color 300ms, border-color 300ms',
             margin: `0 ${theme('spacing.3')}`,
             fontSize: theme('fontSize.sm'),
-            color: theme('colors.disabled'),
+            color: 'var(--c-disabled)',
             lineHeight: 1,
             borderBottom: '2px solid transparent',
             whiteSpace: 'nowrap'
@@ -36,13 +36,13 @@ function getBaseStyle(theme) {
             width: '1px',
             height: theme('spacing.6'),
             display: 'block',
-            borderLeft: `1px solid ${theme('colors.muted-darker')}`
+            borderLeft: '1px solid var(--c-muted-dark)'
         },
         'toggler:first-child:before': {
             content: 'none'
         },
         'toggler:hover': {
-            color: theme('onColors.surface')
+            color: 'var(--c-on-surface)'
         },
         'toggler:focus': {
             outline: 'none'
@@ -51,12 +51,12 @@ function getBaseStyle(theme) {
             outline: 'none'
         },
         'toggler:focus > span': {
-            color: theme('onColors.surface'),
+            color: 'var(--c-on-surface)',
             outline: `1px dashed ${theme('colors.info')}`
         },
         toggler_active: {
-            color: theme('onColors.surface'),
-            borderColor: theme('colors.brand')
+            color: 'var(--c-on-surface)',
+            borderColor: 'var(--c-brand)'
         }
     }
 }
