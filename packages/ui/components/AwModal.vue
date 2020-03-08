@@ -16,9 +16,12 @@
             role="dialog"
             :aria-hidden="isOpened ? 'false' : 'true'"
             :aria-label="title"
-            @mousedown.self="selfClose"
         >
-            <div :class="elClasses.container">
+            <div
+                ref="container"
+                :class="elClasses.container"
+                @mousedown.self="selfClose"
+            >
                 <div :class="elClasses.dialog" role="document">
                     <!-- header -->
                     <div :class="elClasses.header">
@@ -85,13 +88,25 @@
                     <!-- content -->
                     <div :class="elClasses.body">
                         <div
-                            :class="elClasses.content"
+                            :class="[
+                                elClasses.content,
+                                $scopedSlots.buttons
+                                    ? `${elClasses.content}--buttons`
+                                    : ''
+                            ]"
                             v-if="stay || showContent"
                         >
                             <slot :close-modal="close"></slot>
                         </div>
                     </div>
                     <!-- / content -->
+
+                    <div
+                        v-if="$scopedSlots.buttons"
+                        :class="[elClasses.buttons, 'aw-button-group']"
+                    >
+                        <slot name="buttons"></slot>
+                    </div>
                 </div>
                 <!-- / modal__dialog -->
             </div>
@@ -197,7 +212,8 @@ export default {
                 'close',
                 'body',
                 'content',
-                'container'
+                'container',
+                'buttons'
             ])
         },
 
@@ -283,7 +299,7 @@ export default {
             let self = this
             window.addEventListener('mouseup', function onUp(e) {
                 window.removeEventListener('mouseup', onUp)
-                if (e.target === self.$el) {
+                if (e.target === self.$refs.container) {
                     self.close()
                 }
             })

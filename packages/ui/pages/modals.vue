@@ -49,6 +49,29 @@
             />
             <AwButton class="mt-2" type="submit">Submit</AwButton>
         </AwModal>
+
+        <AwButton class="m-1" @click="$root.$emit('modal::buttons:open')">
+            Show Bottom buttons
+        </AwButton>
+        <AwModal title="Buttons modal" name="buttons">
+            <AwInput label="Name" name="name" />
+            <AwInput class="mt-2" label="Password" name="password" />
+
+            <template #buttons>
+                <AwButton class="rounded-none flex-1" size="lg">
+                    Save
+                </AwButton>
+                <AwButton
+                    class="rounded-none flex-1 border-t-1 border-muted-darker"
+                    content-class="text-grey"
+                    size="lg"
+                    color="default"
+                    theme="ghost"
+                >
+                    Cancel
+                </AwButton>
+            </template>
+        </AwModal>
     </AwPage>
 </template>
 

@@ -41,7 +41,7 @@ body.has-modal-bottom {
     }
 
     &__header {
-        @apply flex items-center justify-between pl-4;
+        @apply flex items-center justify-between pl-4 pr-2 pt-2;
     }
 
     &__content {
@@ -49,6 +49,9 @@ body.has-modal-bottom {
         max-width: var(--ui-container-width, $container-width)
     }
 
+    &__content--buttons {
+        @apply pt-8 px-4 pb-16;
+    }
 
     &__back,
     &__close {
@@ -77,12 +80,16 @@ body.has-modal-bottom {
         @apply mt-2 px-4 text-sm truncate font-body text-grey;
     }
 
+    &__buttons {
+        @apply fixed bottom-0 w-full bg-surface;
+    }
+
     /**
      * Modifiers
      */
 
     &.is-default &__dialog {
-        @apply p-2 w-screen min-h-screen;
+        @apply p-0 w-screen min-h-screen;
     }
 
     &.is-default &__back {
@@ -186,7 +193,11 @@ body.has-modal-bottom {
         }
 
         &__content {
-            @apply p-8;
+            @apply py-8 px-10;
+        }
+
+        &__content--buttons {
+            @apply py-8 px-10;
         }
 
         &.is-default {
@@ -201,6 +212,10 @@ body.has-modal-bottom {
         &.is-default &__dialog {
             @apply h-auto min-h-0;
             width: $modal-width;
+        }
+
+        &__buttons {
+            @apply static;
         }
     }
 }
