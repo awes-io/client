@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.67.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.66.0...@awes-io/ui@1.67.0) (2020-03-09)
+
+
+### Bug Fixes
+
+* remove unused code ([ab07ebc](https://github.com/awes-io/client/commit/ab07ebc3fb5c8b6bdd52cd4411d7f1f06cf1efca))
+* surface color changed to lighter one ([bf23a63](https://github.com/awes-io/client/commit/bf23a63e108c0ac340cd4ed39a0910385652db5b))
+
+
+### Features
+
+* add AwModal buttons slot ([3dbde2b](https://github.com/awes-io/client/commit/3dbde2bc9caca47801f3b0f15a115c126ed7af31))
+* add default prop to orderable config ([176c135](https://github.com/awes-io/client/commit/176c135f851bc77130ddd77deb1d1801ea37970d))
+* add meta info from nuxt-i18n-seo to layouts ([4bcae27](https://github.com/awes-io/client/commit/4bcae27040e8187846692e7367a0318577676128))
+* add table column ordering ([5f62b6b](https://github.com/awes-io/client/commit/5f62b6bf436b6905fa07a2a94a02fadb159bd82a))
+* arrow navigation for aw-context-menu and aw-chip-select ([12b12f6](https://github.com/awes-io/client/commit/12b12f6e2704f2a66e40af9bb1649478f9821cfa))
+* change modal styles ([fcec5df](https://github.com/awes-io/client/commit/fcec5df16e09a58e7e69bbe756ddcd7f4db08410))
+* dark theme switcher added ([014d817](https://github.com/awes-io/client/commit/014d81716bc668409279c3aac0418d547e0aa95f))
+
+
+
+
+
 # [1.66.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.65.0...@awes-io/ui@1.66.0) (2020-03-06)
 
 

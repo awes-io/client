@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.55.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.54.2...basic-ui@1.55.0) (2020-03-09)
+
+
+### Bug Fixes
+
+* surface color changed to lighter one ([bf23a63](https://git.awescode.com/awes-io/client/commits/bf23a63e108c0ac340cd4ed39a0910385652db5b))
+
+
+### Features
+
+* add AwModal buttons slot ([3dbde2b](https://git.awescode.com/awes-io/client/commits/3dbde2bc9caca47801f3b0f15a115c126ed7af31))
+* add default prop to orderable config ([176c135](https://git.awescode.com/awes-io/client/commits/176c135f851bc77130ddd77deb1d1801ea37970d))
+* add table column ordering ([5f62b6b](https://git.awescode.com/awes-io/client/commits/5f62b6bf436b6905fa07a2a94a02fadb159bd82a))
+* change modal styles ([fcec5df](https://git.awescode.com/awes-io/client/commits/fcec5df16e09a58e7e69bbe756ddcd7f4db08410))
+* dark theme switcher added ([014d817](https://git.awescode.com/awes-io/client/commits/014d81716bc668409279c3aac0418d547e0aa95f))
+
+
+
+
+
 ## [1.54.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.54.1...basic-ui@1.54.2) (2020-03-06)
 
 
