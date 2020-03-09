@@ -111,8 +111,6 @@
 
         <div @click="bubbled = true">
             <AwChipSelect
-                style="max-width: 175px"
-                class="overflow-hidden"
                 :value="status"
                 @input="setStatus"
                 :loading="statusLoading"

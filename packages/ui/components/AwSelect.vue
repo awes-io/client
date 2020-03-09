@@ -1,8 +1,8 @@
 <template>
     <div
         class="relative"
-        @keydown.up="_focusItem(-1, $event)"
-        @keydown.down="_focusItem(+1, $event)"
+        @keydown.up="_arrowFocusItem(-1, $event)"
+        @keydown.down="_arrowFocusItem(+1, $event)"
     >
         <!-- value -->
         <input
@@ -30,7 +30,7 @@
             @keydown.enter="_selectOnEnter"
             :readonly="!searchable"
             autocomplete="off"
-            data-focus
+            data-arrow-focus
         >
             <template #icon>
                 <AwButton
@@ -73,7 +73,7 @@
                     v-if="_showNotEqual"
                     @click="_onClickNotEqual"
                     tabindex="-1"
-                    data-focus
+                    data-arrow-focus
                 >
                     <slot name="not-equal" :searchPhrase="searchPhrase" />
                 </AwDropdownButton>
@@ -87,7 +87,7 @@
                         :active="active"
                         @click="selectedIndex = index"
                         tabindex="-1"
-                        data-focus
+                        data-arrow-focus
                     >
                         <slot
                             name="option-label"
@@ -103,7 +103,7 @@
                     v-else
                     @click="_selectOnEnter"
                     tabindex="-1"
-                    data-focus
+                    data-arrow-focus
                 >
                     <slot name="not-found" :searchPhrase="searchPhrase">
                         {{ $t('AwSelect.notFound') }}
@@ -119,6 +119,7 @@ import { path, pathOr, split, isNil } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
 import AwDropdownButton from './AwDropdownButton.vue'
+import arrowFocusMixin from '../mixins/arrow-focus'
 
 export default {
     inheritAttrs: false,
@@ -128,6 +129,8 @@ export default {
     components: {
         AwDropdownButton
     },
+
+    mixins: [arrowFocusMixin],
 
     props: {
         options: {
@@ -393,35 +396,6 @@ export default {
         _onBlur($event) {
             if (!this.$el.contains($event.relatedTarget)) {
                 this.isOpened = false
-            }
-        },
-
-        _focusItem(offset = 0, $event) {
-            if (!this.isOpened) return
-
-            const buttons = Array.from(
-                this.$el.querySelectorAll('[data-focus]')
-            )
-            const active = document.activeElement
-            const activeIndex = buttons.indexOf(active)
-            let nextIndex
-
-            if (activeIndex < 0) {
-                nextIndex = this.options.findIndex(
-                    ({ id }) => id === this.value
-                )
-            } else {
-                nextIndex = activeIndex + offset
-            }
-
-            const button = buttons[nextIndex]
-
-            if (button) {
-                if ($event) {
-                    $event.preventDefault()
-                    $event.stopPropagation()
-                }
-                button.focus()
             }
         },
 
