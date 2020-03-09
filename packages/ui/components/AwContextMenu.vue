@@ -1,6 +1,10 @@
 <script>
+import arrowFocusMixin from '../mixins/arrow-focus'
+
 export default {
     name: 'AwContextMenu',
+
+    mixins: [arrowFocusMixin],
 
     props: {
         // Popper.js options. List of all options - https://popper.js.org/docs/v2/
@@ -19,7 +23,26 @@ export default {
     render(h) {
         const slotContextList = this.$slots.default
             .filter(el => !!el.tag)
-            .map(el => h('li', { class: { 'aw-cm-item': true } }, [el]))
+            .map(el => {
+                return h(
+                    'li',
+                    {
+                        staticClass: 'aw-cm-item'
+                    },
+                    [
+                        {
+                            ...el,
+                            data: {
+                                ...el.data,
+                                attrs: {
+                                    ...el.data.attrs,
+                                    'data-arrow-focus': ''
+                                }
+                            }
+                        }
+                    ]
+                )
+            })
 
         const renderList = h(
             'ul',
@@ -39,7 +62,7 @@ export default {
         const dropdown = h('AwDropdown', {
             ref: 'drop',
             props: {
-                'close-on-action': true,
+                show: this.isOpened,
                 options: this.options
             },
             class: {
@@ -48,6 +71,9 @@ export default {
             },
             scopedSlots: {
                 default: () => renderList
+            },
+            on: {
+                'update:show': val => (this.isOpened = val)
             }
         })
 
@@ -56,23 +82,42 @@ export default {
                 theme: 'icon',
                 icon: 'more'
             },
-            class: {
-                [this.buttonClass]: true
+            staticClass: this.buttonClass,
+            attrs: {
+                'data-arrow-focus': ''
             },
             on: {
                 click: this.toggle
             }
         })
 
-        return h('div', { class: { 'aw-context-menu': true } }, [
-            button,
-            dropdown
-        ])
+        return h(
+            'div',
+            { staticClass: 'aw-context-menu', on: { keydown: this.onKeydown } },
+            [button, dropdown]
+        )
+    },
+
+    data() {
+        return {
+            isOpened: false
+        }
     },
 
     methods: {
         toggle() {
-            this.$refs.drop.toggle()
+            this.isOpened = !this.isOpened
+        },
+
+        onKeydown($event) {
+            if ($event.key === 'ArrowDown') {
+                $event.stopPropagation()
+                this._arrowFocusItem(+1, $event)
+            }
+            if ($event.key === 'ArrowUp') {
+                $event.stopPropagation()
+                this._arrowFocusItem(-1, $event)
+            }
         }
     }
 }

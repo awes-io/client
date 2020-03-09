@@ -300,6 +300,7 @@ module.exports = {
         require('./tailwind/container'),
         require('./tailwind/calendar'),
         require('./tailwind/chip'),
+        require('./tailwind/outline-focus'),
         require('./tailwind/tab-nav')
     ]
 }

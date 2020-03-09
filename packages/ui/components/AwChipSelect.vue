@@ -1,13 +1,18 @@
 <template>
     <span
         class="inline-flex"
-        @keydown.up="focusListItem(-1, $event)"
-        @keydown.down="focusListItem(+1, $event)"
+        @keydown.up="_arrowFocusItem(-1, $event)"
+        @keydown.down="_arrowFocusItem(+1, $event)"
         @focusout="onBlur"
     >
-        <button class="focus:outline-none" @focus="open" @click.stop="open">
+        <button class="focus-outline" data-arrow-focus @click.stop="open">
             <slot name="selected" v-bind="selected">
-                <AwChip :loading="loading" v-bind="selected" class="px-0">
+                <AwChip
+                    :loading="loading"
+                    v-bind="selected"
+                    tabindex="-1"
+                    class="px-0"
+                >
                     <template #right>
                         <AwIcon
                             v-if="!readonly"
@@ -29,6 +34,12 @@
                         options: {
                             offset: [-14, 0]
                         }
+                    },
+                    {
+                        name: 'computeStyles',
+                        options: {
+                            adaptive: false
+                        }
                     }
                 ]
             }"
@@ -39,7 +50,7 @@
                 v-for="({ id, text, ...props }, i) in options"
                 :key="id || `chip-${i}`"
                 :active="id === value"
-                data-select-chip
+                data-arrow-focus
                 @click.stop="select(id)"
             >
                 <slot
@@ -60,9 +71,12 @@
 <script>
 import { omit } from 'rambdax'
 import { validateBySchema } from '../assets/js/component'
+import arrowFocusMixin from '../mixins/arrow-focus'
 
 export default {
     name: 'AwChipSelect',
+
+    mixins: [arrowFocusMixin],
 
     props: {
         value: {
@@ -112,9 +126,8 @@ export default {
 
     methods: {
         open() {
-            if (!this.isDisabled && !this.isOpened) {
-                this.isOpened = true
-                this.$nextTick(this.focusListItem)
+            if (!this.isDisabled) {
+                this.isOpened = !this.isOpened
             }
         },
 
@@ -132,35 +145,6 @@ export default {
             }
 
             this.isOpened = false
-        },
-
-        focusListItem(offset = 0, $event) {
-            if (!this.isOpened) return
-
-            const buttons = Array.from(
-                this.$el.querySelectorAll('button[data-select-chip]')
-            )
-            const active = document.activeElement
-            const activeIndex = buttons.indexOf(active)
-            let nextIndex
-
-            if (activeIndex < 0) {
-                nextIndex = this.options.findIndex(
-                    ({ id }) => id === this.value
-                )
-            } else {
-                nextIndex = activeIndex + offset
-            }
-
-            const button = buttons[nextIndex]
-
-            if (button) {
-                if ($event) {
-                    $event.preventDefault()
-                    $event.stopPropagation()
-                }
-                button.focus()
-            }
         }
     }
 }
