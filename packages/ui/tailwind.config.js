@@ -245,6 +245,9 @@ module.exports = {
                 '100': 100,
                 '110': 110
             },
+            borderWidth: {
+                '1': '1px'
+            },
             minHeight: {
                 xxs: '10rem',
                 badge: '1.375rem'
