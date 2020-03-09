@@ -35,12 +35,6 @@
         "type": "git",
         "url": "git@git.awescode.com:awes-io/nuxt-auth.git"
     },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-            "pre-commit": "yarn lint && yarn test"
-        }
-    },
     "license": "MIT",
     "dependencies": {
         "@awes-io/ui": "^0.1.0",

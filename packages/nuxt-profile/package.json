@@ -37,12 +37,6 @@
         "type": "git",
         "url": "git@git.awescode.com:awes-io/nuxt-profile.git"
     },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-            "pre-commit": "yarn lint && yarn test"
-        }
-    },
     "release": {
         "extends": "@semantic-release/gitlab-config",
         "plugins": [
