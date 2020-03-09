@@ -2,7 +2,7 @@
     <div>
         <button
             :aria-label="$t('AwUserMenu.openMenu')"
-            class="focus:outline-none rounded-full focus:shadow-outline"
+            class="align-middle focus:outline-none rounded-full focus:shadow-outline"
             @click="isOpened = !isOpened"
         >
             <AwUserpic :src="avatar" :name="name" hide-name />

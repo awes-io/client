@@ -14,7 +14,7 @@ function getBaseStyle(theme) {
         toggler: {
             display: 'flex',
             alignItems: 'center',
-            padding: `${theme('spacing.1')} 0`,
+            padding: `${theme('spacing.2')} 0`,
             transition: 'color 300ms, border-color 300ms',
             margin: `0 ${theme('spacing.3')}`,
             fontSize: theme('fontSize.sm'),
@@ -52,7 +52,7 @@ function getBaseStyle(theme) {
         },
         'toggler:focus > span': {
             color: 'var(--c-on-surface)',
-            outline: `1px dashed ${theme('colors.info')}`
+            outline: theme('focusOutline', 'none')
         },
         toggler_active: {
             color: 'var(--c-on-surface)',

@@ -1,3 +1,7 @@
+export const AwButton = {
+    loading: 'Wird geladen...'
+}
+
 export const AwModal = {
     back: 'Zurück',
     close: 'Fenster schließen (ESC)'
@@ -72,6 +76,7 @@ export const AwUserMenu = {
 }
 
 export default {
+    AwButton,
     AwModal,
     AwCalendar,
     AwCropper,

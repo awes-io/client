@@ -1,3 +1,7 @@
+export const AwButton = {
+    loading: 'Завантаження...'
+}
+
 export const AwModal = {
     back: 'Назад',
     close: 'Закрити вікно (ESC)'
@@ -72,6 +76,7 @@ export const AwUserMenu = {
 }
 
 export default {
+    AwButton,
     AwModal,
     AwCalendar,
     AwCropper,

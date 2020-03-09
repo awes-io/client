@@ -40,7 +40,7 @@ module.exports = {
         },
         darkTheme: {
             colors: {
-                surface: '#212121',
+                surface: '#383838',
                 brand: '#2a2a2a',
                 muted: '#2a2a2a',
                 'muted-dark': '#252525',
@@ -56,8 +56,9 @@ module.exports = {
         },
         borderColor: theme => ({
             ...theme('colors'),
-            default: 'rgba(0,0,0,.1)'
+            default: 'var(--c-fade-muted, rgba(0,0,0,.1))'
         }),
+        focusOutline: theme => `2px dashed ${theme('colors.info')}`,
         borderRadius: {
             none: '0',
             default: '.125rem',
