@@ -47,10 +47,11 @@
             <AwSearch name="search" class="my-3" />
 
             <AwTableBuilder
-                @click:row="clickRow"
                 :collection="managers"
                 :watchParams="['search']"
+                :orderable="{ param: 'order' }"
                 defaultHeight="50vh"
+                @click:row="clickRow"
             >
                 <AwTableCol vertical-align="top" field="id" />
 
@@ -152,7 +153,15 @@
                     class="my-3 shadow"
                     language="javascript"
                 />
+
+                <AwCard title="NOTE" class="my-8 border-l-4 border-error">
+                    If global <code>default</code> property will be set to
+                    <code>true</code>, then first orderable col of each table
+                    will be set as default
+                </AwCard>
             </p>
+
+            <h5>Basic example:</h5>
 
             <AwTableBuilder
                 :collection="oredableManagers"
@@ -243,6 +252,7 @@ export default {
                 "   ascTemplate: '%s', // <-- template, where '%s' is replaced with column field prop",
                 "   descTemplate: '%s_desc' // <-- template, where '%s' is replaced with column field prop",
                 '   templateValue: null // column field prop will be replaced with this prop value, if present',
+                '   default: false',
                 '}'
             ]
 

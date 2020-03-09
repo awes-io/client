@@ -42,16 +42,33 @@ export default {
     methods: {
         getArrowClasses(col) {
             return {
+                'inline-flex': true,
                 'col-orderable': col.orderable,
-                'col-orderable--asc':
-                    col.orderable &&
-                    this.$route.query[col.orderable.param] ===
-                        col.orderable.ascValue,
-                'col-orderable--desc':
-                    col.orderable &&
-                    this.$route.query[col.orderable.param] ===
-                        col.orderable.descValue
+                'col-orderable--asc': this._isParamEqual(col, 'asc', true),
+                'col-orderable--desc': this._isParamEqual(col, 'desc')
             }
+        },
+
+        _isParamEqual(col, type, checkDefault = false) {
+            if (!col.orderable) {
+                return false
+            }
+            const q = this.$route.query[col.orderable.param]
+
+            if (checkDefault) {
+                return (
+                    q === col.orderable[`${type}Value`] ||
+                    this._isColDefault(col)
+                )
+            }
+
+            return q === col.orderable[`${type}Value`]
+        },
+
+        _isColDefault(col) {
+            const isParamPresent =
+                Object.keys(this.$route.query).indexOf(col.orderable.param) > -1
+            return !isParamPresent && col.orderable.default
         }
     }
 }

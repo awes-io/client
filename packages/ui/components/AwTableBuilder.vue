@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import { pathOr, filter } from 'rambdax'
+import { pathOr, filter, mergeDeep } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 import {
     TABLE_ROW_CLICK_EVENT,
@@ -304,11 +304,18 @@ export default {
         },
 
         fetchAllQuery() {
-            return {
+            const params = {
                 page: this.page,
                 limit: this.limit,
                 ...this.fetchQuery()
             }
+
+            const orderableParam = this._currentOrderableConfig.param
+            if (this.$route.query[orderableParam]) {
+                params[orderableParam] = this.$route.query[orderableParam]
+            }
+
+            return params
         },
 
         limitsMerged() {
@@ -323,6 +330,13 @@ export default {
             return filter((val, key) => {
                 return key === TABLE_ROW_CLICK_EVENT
             }, this.$listeners)
+        },
+
+        _currentOrderableConfig() {
+            return mergeDeep(
+                pathOr({}, '$awesConfig.AwTableBuilder', this),
+                pathOr({}, 'orderable', this)
+            )
         }
     },
 
@@ -367,11 +381,12 @@ export default {
                 const isDescValPresent =
                     this.$route.query[orderable.param] === orderable.descValue
 
-                const paramValue = isAskValPresent
-                    ? orderable.descValue
-                    : isDescValPresent
-                    ? null
-                    : orderable.ascValue
+                const paramValue =
+                    isAskValPresent || this._isColDefault(col)
+                        ? orderable.descValue
+                        : isDescValPresent
+                        ? null
+                        : orderable.ascValue
 
                 this.$router.replace(
                     mergeRouteQuery(
@@ -381,9 +396,14 @@ export default {
                         this.$route
                     )
                 )
-
                 this.fetch({ [orderable.param]: paramValue })
             }
+        },
+
+        _isColDefault(col) {
+            const isParamPresent =
+                Object.keys(this.$route.query).indexOf(col.orderable.param) > -1
+            return !isParamPresent && col.orderable.default
         },
 
         /**

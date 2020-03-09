@@ -88,7 +88,8 @@ export default {
     data() {
         return {
             hiddenColsIndexes: [],
-            openedRow: null
+            openedRow: null,
+            isDefaultColSet: false
         }
     },
 
@@ -209,10 +210,23 @@ export default {
             )
 
             if (is(Object, colConfig)) {
-                const conf = mergeDeep(baseConfig, colConfig)
+                const config = { ...colConfig }
+                delete config.param
+                const conf = mergeDeep(baseConfig, config)
+                if (!this.isDefaultColSet && conf.default) {
+                    this.isDefaultColSet = true
+                } else {
+                    conf.default = false
+                }
                 return this._unmaskOrderableConfig(conf, field)
             } else if (is(Boolean, colConfig) && !colConfig) {
                 return null
+            }
+
+            if (!this.isDefaultColSet && baseConfig.default) {
+                this.isDefaultColSet = true
+            } else {
+                baseConfig.default = false
             }
 
             return this._unmaskOrderableConfig(baseConfig, field)
