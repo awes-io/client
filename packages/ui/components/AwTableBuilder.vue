@@ -76,7 +76,9 @@
             :rows="items"
             :style="collection.loading ? 'filter: blur(3px);' : null"
             :vertical-align="verticalAlign"
+            :orderable="orderable"
             v-on="tableListeners"
+            @click:head="onTheadClick"
         >
             <template #thead="{ thead }">
                 <slot name="thead" :thead="thead" />
@@ -140,9 +142,12 @@
 </template>
 
 <script>
-import { pathOr, filter } from 'rambdax'
+import { pathOr, filter, mergeDeep } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
-import { TABLE_ROW_CLICK_EVENT } from '../assets/js/constants'
+import {
+    TABLE_ROW_CLICK_EVENT,
+    TABLE_HEAD_CLICK_EVENT
+} from '../assets/js/constants'
 import AwCard from './AwCard.vue'
 import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
@@ -217,6 +222,15 @@ export default {
         arrowNav: {
             type: Boolean,
             default: true
+        },
+
+        /**
+         * Orderable config that will be merged with global orderable config.
+         * If null then global orderable config will be used
+         */
+        orderable: {
+            type: Object,
+            default: null
         }
     },
 
@@ -290,11 +304,18 @@ export default {
         },
 
         fetchAllQuery() {
-            return {
+            const params = {
                 page: this.page,
                 limit: this.limit,
                 ...this.fetchQuery()
             }
+
+            const orderableParam = this._currentOrderableConfig.param
+            if (this.$route.query[orderableParam]) {
+                params[orderableParam] = this.$route.query[orderableParam]
+            }
+
+            return params
         },
 
         limitsMerged() {
@@ -309,6 +330,13 @@ export default {
             return filter((val, key) => {
                 return key === TABLE_ROW_CLICK_EVENT
             }, this.$listeners)
+        },
+
+        _currentOrderableConfig() {
+            return mergeDeep(
+                pathOr({}, '$awesConfig.AwTableBuilder', this),
+                pathOr({}, 'orderable', this)
+            )
         }
     },
 
@@ -342,6 +370,40 @@ export default {
             this.collection
                 .fetch({ params: { ...this.fetchAllQuery, ...params } })
                 .then(this._setPagination)
+        },
+
+        onTheadClick(col) {
+            const orderable = col.orderable
+            this.$emit(TABLE_HEAD_CLICK_EVENT, col)
+            if (orderable) {
+                const isAskValPresent =
+                    this.$route.query[orderable.param] === orderable.ascValue
+                const isDescValPresent =
+                    this.$route.query[orderable.param] === orderable.descValue
+
+                const paramValue =
+                    isAskValPresent || this._isColDefault(col)
+                        ? orderable.descValue
+                        : isDescValPresent
+                        ? null
+                        : orderable.ascValue
+
+                this.$router.replace(
+                    mergeRouteQuery(
+                        {
+                            [orderable.param]: paramValue
+                        },
+                        this.$route
+                    )
+                )
+                this.fetch({ [orderable.param]: paramValue })
+            }
+        },
+
+        _isColDefault(col) {
+            const isParamPresent =
+                Object.keys(this.$route.query).indexOf(col.orderable.param) > -1
+            return !isParamPresent && col.orderable.default
         },
 
         /**

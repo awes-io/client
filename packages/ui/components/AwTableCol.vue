@@ -62,6 +62,16 @@ export default {
         priority: {
             type: Number,
             default: 0
+        },
+
+        /**
+         * Orderable config that will be merged with global orderable config.
+         * If true then global orderable config will be used
+         * If false order by click is disabled
+         */
+        orderable: {
+            type: [Boolean, Object],
+            default: false
         }
     },
 

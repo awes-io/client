@@ -6,4 +6,6 @@ export const TABLE_INDEX_ATTR = 'data-row-index'
 
 export const TABLE_ROW_CLICK_EVENT = 'click:row'
 
+export const TABLE_HEAD_CLICK_EVENT = 'click:head'
+
 export const FORM_ENTER_SKIP_ATTR = 'data-enter-skip'

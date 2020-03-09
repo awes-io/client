@@ -1,0 +1,32 @@
+.col-orderable {
+    @apply relative pr-4;
+
+    &::after,
+    &::before {
+        @apply absolute w-0 h-0;
+        content: '';
+        right: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+    }
+
+    &::after {
+        top:50%;
+        border-bottom: 4px solid theme('colors.disabled');
+        transform: translateY(calc(-50% - 3px));
+    }
+
+    &::before {
+        top: 50%;
+        border-top: 4px solid theme('colors.disabled');
+        transform: translateY(2px);
+    }
+
+    &.col-orderable--asc::after {
+        border-bottom-color: theme('colors.link');
+    }
+
+    &.col-orderable--desc:before {
+        border-top-color: theme('colors.link');
+    }
+}
