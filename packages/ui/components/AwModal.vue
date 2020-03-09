@@ -3,6 +3,7 @@
         :name="`modal-transition-${theme}`"
         @before-enter="_preOpen"
         @before-appear="_preOpen"
+        @before-leave="onBeforeLeave(theme)"
         @after-leave="
             _removeBodyClass(`has-modal-${theme}`)
             showContent = false
@@ -25,7 +26,7 @@
                 <div :class="elClasses.dialog" role="document">
                     <!-- header -->
                     <div :class="elClasses.header">
-                        <button
+                        <!-- <button
                             :class="elClasses.back"
                             type="button"
                             :title="$t('AwModal.back')"
@@ -44,9 +45,9 @@
                                 <polyline points="10 14 5 9.5 10 5" />
                                 <line x1="16" y1="9.5" x2="5" y2="9.52" />
                             </svg>
-                        </button>
+                        </button> -->
 
-                        <div :class="elClasses.title" class="md:hidden">
+                        <div :class="elClasses.title">
                             {{ title }}
                         </div>
 
@@ -74,9 +75,9 @@
                     </div>
                     <!-- / header -->
 
-                    <div :class="elClasses.title" class="hidden md:block">
+                    <!-- <div :class="elClasses.title" class="hidden md:block">
                         {{ title }}
-                    </div>
+                    </div> -->
 
                     <div
                         v-if="$scopedSlots.subtitle"
@@ -279,6 +280,13 @@ export default {
         _preOpen() {
             this.showContent = true
             this._addBodyClass(`has-modal-${this.theme}`)
+        },
+
+        onBeforeLeave(theme) {
+            if (theme === 'fullscreen') {
+                this._removeBodyClass(`has-modal-${theme}`)
+                this.showContent = false
+            }
         },
 
         open() {

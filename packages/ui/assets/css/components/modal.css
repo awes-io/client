@@ -1,6 +1,6 @@
 $gap: 16px;
 $button-height: 40px;
-$container-width: 1200px;
+$container-width: 688px;
 
 $modal-width: 600px;
 $modal-aside-width: 320px;
@@ -41,11 +41,11 @@ body.has-modal-bottom {
     }
 
     &__header {
-        @apply flex items-center justify-between pl-4 pr-2 pt-2;
+        @apply flex items-center justify-start pl-6 pr-16 pt-6;
     }
 
     &__content {
-        @apply mx-auto py-8 px-4;
+        @apply mx-auto py-8 px-6;
         max-width: var(--ui-container-width, $container-width)
     }
 
@@ -72,12 +72,18 @@ body.has-modal-bottom {
         }
     }
 
+    &__close {
+        @apply absolute;
+        top: theme('spacing.4');
+        right: theme('spacing.4');
+    }
+
     &__title {
-        @apply m-0 text-center text-lg leading-tight font-heading font-medium truncate;
+        @apply m-0 text-center text-xl leading-tight font-heading font-medium truncate;
     }
 
     &__subtitle {
-        @apply mt-2 px-4 text-sm truncate font-body text-grey;
+        @apply px-6 text-sm truncate font-body text-grey;
     }
 
     &__buttons {
@@ -111,10 +117,6 @@ body.has-modal-bottom {
             @apply flex flex-col w-full max-w-full p-0 h-full min-h-screen overflow-hidden;
         }
 
-        &__header {
-            @apply bg-muted shadow-md mb-8 py-1 pr-1;
-        }
-
         &__body {
             overflow: auto;
         }
@@ -130,9 +132,7 @@ body.has-modal-bottom {
     }
 
     &[class*="is-aside"] &__back {
-        height: 0;
-        visibility: hidden;
-        overflow: hidden;
+        @apply hidden;
     }
 
     &.is-aside-medium {
@@ -147,10 +147,10 @@ body.has-modal-bottom {
         @apply overflow-hidden;
     }
 
-    &.is-bottom &__header {
+    /* &.is-bottom &__header {
         @apply py-1 pr-1;
         z-index: 1;
-    }
+    } */
 
     &.is-bottom &__dialog {
         @apply absolute bottom-0 left-0 w-full flex flex-col overflow-hidden;
@@ -183,21 +183,33 @@ body.has-modal-bottom {
 
     .aw-modal {
 
+        &:not(.is-aside) &__header {
+            @apply items-start justify-center;
+        }
+
         &__container {
             @apply p-16;
         }
 
-        &__title,
-        &__subtitle {
+        &:not(.is-aside) &__title {
+            @apply font-normal text-3xl mt-3;
+        }
+
+        &:not(.is-aside) &__title,
+        &:not(.is-aside) &__subtitle {
             @apply text-center;
         }
 
-        &__content {
+        &:not(.is-aside) &__content {
             @apply py-8 px-10;
         }
 
         &__content--buttons {
             @apply py-8 px-10;
+        }
+
+        &__buttons {
+            @apply static;
         }
 
         &.is-default {
@@ -209,13 +221,23 @@ body.has-modal-bottom {
             @apply block h-0 invisible overflow-hidden;
         }
 
+        &.is-bottom &__content {
+            @apply px-0;
+        }
+
         &.is-default &__dialog {
             @apply h-auto min-h-0;
             width: $modal-width;
         }
 
-        &__buttons {
-            @apply static;
+        &.is-fullscreen &__header {
+            @apply pt-16;
+        }
+
+        &.is-fullscreen &__close {
+            @apply absolute;
+            top: theme('spacing.16');
+            right: theme('spacing.16');
         }
     }
 }
@@ -246,14 +268,6 @@ $modal-t-dur: 250ms;
 
     &-leave-active {
         transition: $modal-t-dur opacity;
-    }
-}
-
-@screen sm {
-    .aw-modal {
-        &__title {
-            @apply text-xl;
-        }
     }
 }
 

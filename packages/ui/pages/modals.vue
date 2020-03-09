@@ -7,13 +7,27 @@
             <template #subtitle>Subtitle</template>
             <AwInput label="Name" name="name" error="Error" />
             <AwInput class="mt-2" label="Password" name="password" />
-            <AwButton class="mt-2" type="submit">Submit</AwButton>
+
+            <div class="mt-8">
+                <AwButton size="lg" class="w-full md:w-auto mb-1 md:mb-0">
+                    Apply
+                </AwButton>
+                <AwButton
+                    color="default"
+                    theme="ghost"
+                    size="lg"
+                    class="w-full md:w-auto"
+                >
+                    Cancel
+                </AwButton>
+            </div>
         </AwModal>
 
         <AwButton class="m-1" @click="$root.$emit('modal::fullscreen:open')"
             >Show fullscreen modal</AwButton
         >
         <AwModal title="Fullscreen modal" name="fullscreen" theme="fullscreen">
+            <template #subtitle>Subtitle</template>
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
             <AwButton class="mt-2" type="submit">Submit</AwButton>
@@ -23,12 +37,10 @@
             Show aside
         </AwButton>
         <AwModal title="Aside modal" :param="false" name="aside" theme="aside">
+            <template #subtitle>Subtitle</template>
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
-            <AwSwitcher
-                label="Save information for the next booking"
-                class="mt-2"
-            />
+
             <AwButton class="mt-2" type="submit">Submit</AwButton>
         </AwModal>
 
@@ -41,19 +53,54 @@
             name="bottom"
             theme="bottom"
         >
-            <AwInput label="Name" name="name" />
-            <AwInput class="mt-2" label="Password" name="password" />
-            <AwSwitcher
-                label="Save information for the next booking"
-                class="mt-2"
-            />
-            <AwButton class="mt-2" type="submit">Submit</AwButton>
+            <template #subtitle>Subtitle</template>
+
+            <div style="max-height: 260px; overflow: auto" class="bg-muted p-4">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Expedita quo reiciendis rerum corrupti architecto vero sed
+                accusantium dolores nisi quod itaque asperiores nobis a ad
+                consequuntur corporis, suscipit minus vitae? Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Expedita quo reiciendis
+                rerum corrupti architecto vero sed accusantium dolores nisi quod
+                itaque asperiores nobis a ad consequuntur corporis, suscipit
+                minus vitae? Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Expedita quo reiciendis rerum corrupti architecto vero sed
+                accusantium dolores nisi quod itaque asperiores nobis a ad
+                consequuntur corporis, suscipit minus vitae? Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Expedita quo reiciendis
+                rerum corrupti architecto vero Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Expedita quo reiciendis rerum
+                corrupti architecto vero sed accusantium dolores nisi quod
+                itaque asperiores nobis a ad consequuntur corporis, suscipit
+                minus vitae? Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Expedita quo reiciendis rerum corrupti architecto vero sed
+                accusantium dolores nisi quod itaque asperiores nobis a ad
+                consequuntur corporis, suscipit minus vitae? Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Expedita quo reiciendis
+                rerum corrupti architecto vero sed accusantium dolores nisi quod
+                itaque asperiores nobis a ad consequuntur corporis, suscipit
+                minus vitae? Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Expedita quo reiciendis rerum corrupti architecto vero
+            </div>
+
+            <AwButton class="hidden md:block mt-8" size="lg">
+                Save
+            </AwButton>
+
+            <template #buttons>
+                <div class="px-4 pt-4 bg-surface flex-1 md:hidden">
+                    <AwButton class="w-full" size="lg">
+                        Save
+                    </AwButton>
+                </div>
+            </template>
         </AwModal>
 
         <AwButton class="m-1" @click="$root.$emit('modal::buttons:open')">
             Show Bottom buttons
         </AwButton>
         <AwModal title="Buttons modal" name="buttons">
+            <template #subtitle>Subtitle</template>
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
 

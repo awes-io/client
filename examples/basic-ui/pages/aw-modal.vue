@@ -5,30 +5,68 @@
         </AwButton>
         <AwModal title="Form modal" name="form">
             <template #subtitle>Subtitle</template>
-            <AwInput label="Name" name="name" />
+            <AwInput label="Name" name="name" error="Error" />
             <AwInput class="mt-2" label="Password" name="password" />
-            <AwButton class="mt-2" type="submit">Submit</AwButton>
+
+            <div class="mt-8">
+                <AwButton size="lg" class="w-full md:w-auto mb-1 md:mb-0">
+                    Apply
+                </AwButton>
+                <AwButton
+                    color="default"
+                    theme="ghost"
+                    size="lg"
+                    class="w-full md:w-auto"
+                >
+                    Cancel
+                </AwButton>
+            </div>
         </AwModal>
 
         <AwButton @click="$root.$emit('modal::fullscreen:open')" class="m-1">
             Show fullscreen modal
         </AwButton>
         <AwModal title="Fullscreen modal" name="fullscreen" theme="fullscreen">
+            <template #subtitle>Subtitle</template>
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
-            <AwButton class="mt-2" type="submit">Submit</AwButton>
+
+            <div class="mt-8">
+                <AwButton size="lg" class="w-full md:w-auto mb-1 md:mb-0">
+                    Apply
+                </AwButton>
+                <AwButton
+                    color="default"
+                    theme="ghost"
+                    size="lg"
+                    class="w-full md:w-auto"
+                >
+                    Cancel
+                </AwButton>
+            </div>
         </AwModal>
 
         <AwButton @click="$root.$emit('modal::aside:open')" class="m-1">
             Show aside
         </AwButton>
         <AwModal title="Aside modal" param="drawer" name="aside" theme="aside">
-            <blockquote>
-                <p>
-                    This modal has another param, because
-                    <code>param</code> prop is <code>drawer</code>
-                </p>
-            </blockquote>
+            <template #subtitle>Subtitle</template>
+            <AwInput label="Name" name="name" />
+            <AwInput class="mt-2" label="Password" name="password" />
+
+            <div class="mt-8">
+                <AwButton size="lg" class="w-full mb-1">
+                    Apply
+                </AwButton>
+                <AwButton
+                    color="default"
+                    theme="ghost"
+                    size="lg"
+                    class="w-full"
+                >
+                    Cancel
+                </AwButton>
+            </div>
         </AwModal>
 
         <AwButton @click="$root.$emit('modal::bottom:open')" class="m-1">
@@ -40,12 +78,47 @@
             name="bottom"
             theme="bottom"
         >
-            <blockquote>
-                <p>
-                    This modal state is not saved to get parameters, because
-                    <code>:param</code> is <code>false</code>
-                </p>
-            </blockquote>
+            <template #subtitle>Subtitle</template>
+
+            <div style="max-height: 260px; overflow: auto" class="bg-muted p-4">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Expedita quo reiciendis rerum corrupti architecto vero sed
+                accusantium dolores nisi quod itaque asperiores nobis a ad
+                consequuntur corporis, suscipit minus vitae? Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Expedita quo reiciendis
+                rerum corrupti architecto vero sed accusantium dolores nisi quod
+                itaque asperiores nobis a ad consequuntur corporis, suscipit
+                minus vitae? Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Expedita quo reiciendis rerum corrupti architecto vero sed
+                accusantium dolores nisi quod itaque asperiores nobis a ad
+                consequuntur corporis, suscipit minus vitae? Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Expedita quo reiciendis
+                rerum corrupti architecto vero Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Expedita quo reiciendis rerum
+                corrupti architecto vero sed accusantium dolores nisi quod
+                itaque asperiores nobis a ad consequuntur corporis, suscipit
+                minus vitae? Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Expedita quo reiciendis rerum corrupti architecto vero sed
+                accusantium dolores nisi quod itaque asperiores nobis a ad
+                consequuntur corporis, suscipit minus vitae? Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Expedita quo reiciendis
+                rerum corrupti architecto vero sed accusantium dolores nisi quod
+                itaque asperiores nobis a ad consequuntur corporis, suscipit
+                minus vitae? Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Expedita quo reiciendis rerum corrupti architecto vero
+            </div>
+
+            <AwButton class="hidden md:block mt-8" size="lg">
+                Save
+            </AwButton>
+
+            <template #buttons>
+                <div class="px-4 pt-4 bg-surface flex-1 md:hidden">
+                    <AwButton class="w-full" size="lg">
+                        Save
+                    </AwButton>
+                </div>
+            </template>
         </AwModal>
 
         <section class="mt-8">
