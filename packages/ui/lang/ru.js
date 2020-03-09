@@ -73,6 +73,12 @@ export const AwSearch = {
     text: 'Поиск'
 }
 
+export const AwUserMenu = {
+    openMenu: 'Открыть меню',
+    darkTheme: 'Темная тема',
+    kioskMode: 'Режим киоска'
+}
+
 export default {
     AwButton,
     AwModal,
@@ -84,5 +90,6 @@ export default {
     AwPagination,
     AwSelect,
     AwTableBuilder,
-    AwSearch
+    AwSearch,
+    AwUserMenu
 }

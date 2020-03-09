@@ -11,14 +11,13 @@ module.exports = {
         colors: {
             transparent: 'transparent',
             surface: '#fff',
-            muted: '#f3f4f5',
+            muted: '#f8f8f8',
             'muted-dark': '#e8e9eb',
             'muted-darker': '#d7dbde',
             disabled: '#949799',
             grey: '#595d62',
             overlay: '#222',
-            brand: '#3b436f',
-            light: '#f8f8f8',
+            brand: '#3b436f linear-gradient(#3b436f, #3a3d6b, #393264)',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
@@ -39,9 +38,25 @@ module.exports = {
             warning: '#fff',
             error: '#fff'
         },
+        darkTheme: {
+            colors: {
+                surface: '#383838',
+                brand: '#2a2a2a',
+                muted: '#2a2a2a',
+                'muted-dark': '#252525',
+                'muted-darker': '#333'
+            },
+            onColors: {
+                surface: '#fff',
+                brand: '#fff',
+                muted: '#fff',
+                'muted-dark': '#999',
+                'muted-darker': '#a2a2a2'
+            }
+        },
         borderColor: theme => ({
             ...theme('colors'),
-            default: 'rgba(0,0,0,.1)'
+            default: 'var(--c-fade-muted, rgba(0,0,0,.1))'
         }),
         focusOutline: theme => `2px dashed ${theme('colors.info')}`,
         borderRadius: {

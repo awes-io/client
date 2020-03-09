@@ -1,8 +1,7 @@
 .aw-button-nav {
+    @apply bgcolor-muted-dark text-on-surface;
     display: inline-flex;
     border-radius: theme('borderRadius.lg');
-    background-color: theme('colors.muted-dark');
-    color: theme('onColors.surface');
     font-size: theme('fontSize.sm');
 
     & .aw-slider__scroller {
@@ -31,6 +30,7 @@
     }
 
     &__toggler:before {
+        @apply bgcolor-muted-darker;
         content: '';
         position: absolute;
         left: calc(-1 * theme('spacing.1'));
@@ -38,7 +38,6 @@
         bottom: theme('spacing.1');
         width: 1px;
         display: block;
-        background-color: theme('colors.muted-darker');
     }
 
     &__toggler:first-child:before {
@@ -54,17 +53,17 @@
     }
 
     &__toggler_active {
-        background-color: theme('colors.surface');
+        @apply bgcolor-surface;
         box-shadow: theme('boxShadow.default');
     }
 
     &__toggler:hover {
-        background-color: theme('colors.muted');
+        @apply bgcolor-muted;
     }
 
     &__toggler[disabled],
     &__toggler_disabled {
-        color: theme('colors.disabled');
+        @apply text-disabled;
         pointer-events: none;
         cursor: not-allowed;
     }

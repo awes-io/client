@@ -5,6 +5,9 @@ export default {
 
     head: {
         title: 'Awes.io UI',
+        htmlAttrs: {
+            'data-dark': true
+        },
         meta: [
             { charset: 'utf-8' },
             {

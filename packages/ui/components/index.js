@@ -70,6 +70,7 @@ export { default as AwTableCol } from './AwTableCol.vue'
 export { default as AwUploader } from './AwUploader.vue'
 export { default as AwUploaderFiles } from './AwUploaderFiles.vue'
 export { default as AwUserpic } from './AwUserpic.vue'
+export { default as AwUserMenu } from './AwUserMenu.vue'
 
 export { default as AwToggler } from './AwToggler.vue'
 

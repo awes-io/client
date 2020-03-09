@@ -112,6 +112,12 @@ export const AwSearch = {
     keyBind: ' (Press "{key}" to focus)'
 }
 
+export const AwUserMenu = {
+    openMenu: 'Open menu',
+    darkTheme: 'Dark theme',
+    kioskMode: 'Kiosk mode'
+}
+
 export default {
     AwButton,
     AwModal,
@@ -129,5 +135,6 @@ export default {
     AwTableBuilder,
     AwTimelineBuilder,
     AwUploader,
-    AwSearch
+    AwSearch,
+    AwUserMenu
 }

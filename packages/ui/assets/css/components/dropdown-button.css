@@ -32,7 +32,7 @@
     /* Default color */
     &_default {
         &:hover {
-            background-color: theme('colors.muted');
+            @apply bgcolor-muted;
         }
     }
 }

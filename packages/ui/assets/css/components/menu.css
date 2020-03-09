@@ -1,6 +1,5 @@
 .aw-menu {
-    color: theme('onColors.brand');
-    background-color: theme('colors.brand');
+    @apply bg-brand;
     display: flex;
     flex-direction: column;
     width: theme('spacing.64', 16rem);
@@ -47,11 +46,6 @@
         overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: var(--c-fade-brand) transparent;
-        background-image: linear-gradient(
-            theme('colors.brand'),
-            color(theme('colors.brand') h(+4)),
-            color(theme('colors.brand') h(+16))
-        );
 
         &::-webkit-scrollbar {
             width: 6px;
@@ -90,7 +84,7 @@
         }
 
         &__width-toggler {
-            background-color: theme('colors.brand');
+            @apply bgcolor-brand;
 
             display: flex;
             align-items: center;
@@ -107,8 +101,8 @@
             transition: 250ms transform ease-out;
 
             &:before {
+                @apply bgcolor-surface;
                 content: '';
-                background-color: theme('colors.surface');
 
                 position: absolute;
                 left: 0;

@@ -14,11 +14,6 @@ export default {
         state.userMenu[key] = item
     },
 
-    SET_USER_MENU_ADDITIONAL_ITEM(state, { key, order = 1, item }) {
-        item.order = order
-        state.userMenuAdditional[key] = item
-    },
-
     SET_MENU_ITEM(state, items) {
         Array.isArray(items)
             ? items.forEach(item => {
@@ -29,5 +24,9 @@ export default {
 
     CLOSE_HEADER_NOTIFICATION(state) {
         state.headerNotification.show = false
+    },
+
+    SET_DARK_THEME(state, isDarkTheme = false) {
+        state.isDarkTheme = isDarkTheme
     }
 }
