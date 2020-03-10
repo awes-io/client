@@ -8,7 +8,8 @@ export default class Permissions extends BaseCollection {
 
     routes() {
         return {
-            fetch: '/api/admin/permissions'
+            fetch: '/api/admin/permissions',
+            save: '/api/admin/roles/{id}/permissions'
         }
     }
 }

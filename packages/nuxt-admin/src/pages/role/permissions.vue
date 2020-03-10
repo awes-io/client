@@ -9,7 +9,10 @@
             <AwTableCol field="description" :title="$t('AwesIoNuxtAdmin.description')" />
             <AwTableCol field="name" :title="$t('AwesIoNuxtAdmin.name')" />
         </AwTableBuilder>
-        {{permissions.models}}
+        <AwButton class="mt-5" @click="updateRolePermissions" :loading="model.saving">
+            {{ $t('AwesIoNuxtAdmin.update') }}
+        </AwButton>
+        <div>{{permissions.models}}</div>
     </div>
 </template>
 
@@ -29,7 +32,13 @@ export default {
     },
 
     async mounted() {
-        // this.permissions.set('id', this.model.$.id);
+        this.permissions.set('id', this.model.$.id);
+    },
+
+    methods: {
+        updateRolePermissions() {
+            this.permissions.save()
+        }
     }
 }
 </script>
