@@ -79,7 +79,7 @@ body.has-modal-bottom {
     }
 
     &__title {
-        @apply m-0 pr-4 text-center text-xl leading-tight font-heading font-medium truncate;
+        @apply m-0 pr-6 text-left text-xl leading-tight font-heading font-medium truncate;
     }
 
     &__subtitle {
@@ -192,7 +192,7 @@ body.has-modal-bottom {
         }
 
         &:not(.is-aside) &__title {
-            @apply font-normal text-3xl mt-3;
+            @apply font-normal pr-0 text-3xl mt-3;
         }
 
         &:not(.is-aside) &__title,
