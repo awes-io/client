@@ -1,5 +1,5 @@
 .aw-switch-field {
-    @apply relative py-2;
+    @apply relative py-1;
 
     &__element {
         @apply bg-surface border;
