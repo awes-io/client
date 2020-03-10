@@ -29,7 +29,7 @@
                 <AwTableBuilder :collection="permissions">
                     <AwTableCol>
                         <template #default="{ cell }">
-                            <AwCheckbox :value="cell.id" v-model="role.permissions" :error="role.errors.permissions" />
+                            <AwCheckbox :value="cell.id.toString()" v-model="role.permissions" :error="role.errors.permissions" />
                         </template>
                     </AwTableCol>
                     <AwTableCol field="description" :title="$t('AwesIoNuxtAdmin.description')" />

@@ -1,11 +1,14 @@
 <template>
     <div>
-        <AwCheckbox v-for="permission in allPermissions" 
-            :key="permission.id" 
-            :label="permission.name" 
-            :value="permission.id"
-            v-model="permissions.models"
-        />
+        <AwTableBuilder :collection="allPermissions">
+            <AwTableCol>
+                <template #default="{ cell }">
+                    <AwCheckbox :value="cell.id.toString()" v-model="model.permissions" :error="model.errors.permissions" />
+                </template>
+            </AwTableCol>
+            <AwTableCol field="description" :title="$t('AwesIoNuxtAdmin.description')" />
+            <AwTableCol field="name" :title="$t('AwesIoNuxtAdmin.name')" />
+        </AwTableBuilder>
         {{permissions.models}}
     </div>
 </template>
@@ -20,15 +23,12 @@ export default {
 
     data() {
         return {
-            permissions: new Permissions(this.model.$.permissions.map((p) => {return {id: p.id} })),
-            allPermissions: [
-                { "id": 1, "name": "view dashboard", "description": "awesio-laraveladmin::permissions.descriptions.view dashboard" }, 
-                { "id": 2, "name": "view analytics", "description": "awesio-laraveladmin::permissions.descriptions.view analytics" } 
-            ]
+            permissions: new Permissions(this.model.$.permissions),
+            allPermissions: new Permissions(),
         }
     },
 
-    mounted() {
+    async mounted() {
         // this.permissions.set('id', this.model.$.id);
     }
 }
