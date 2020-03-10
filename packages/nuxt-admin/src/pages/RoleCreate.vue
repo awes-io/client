@@ -1,6 +1,6 @@
 <template>
     <AwPage :title="$t('AwesIoNuxtAdmin.create_role')" :breadcrumb="breadcrumb" >
-        <AwGrid :col="{ lg: 2 }">
+        <AwGrid :col="{ lg: 2 }" v-if="loaded">
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.role_name') }}</p>
                 <AwInput
@@ -25,6 +25,16 @@
                     name="description"
                     :error="role.errors.description"
                 />
+                <p class="h6 capitalize">{{ $t('AwesIoNuxtAdmin.permissions') }}</p>
+                <AwTableBuilder :collection="permissions">
+                    <AwTableCol>
+                        <template #default="{ cell }">
+                            <AwCheckbox :value="cell.id" v-model="role.permissions" :error="role.errors.permissions" />
+                        </template>
+                    </AwTableCol>
+                    <AwTableCol field="description" :title="$t('AwesIoNuxtAdmin.description')" />
+                    <AwTableCol field="name" :title="$t('AwesIoNuxtAdmin.name')" />
+                </AwTableBuilder>
                 <AwButton class="mt-5" @click="createRole" :loading="role.saving">
                     {{ $t('AwesIoNuxtAdmin.create') }}
                 </AwButton>
@@ -35,6 +45,7 @@
 
 <script>
 import Role from '../collections/Role'
+import Permissions from '../collections/Permissions'
 
 export default {
     name: 'RoleCreate',
@@ -45,8 +56,15 @@ export default {
             breadcrumb: {
                 title: this.$t('AwesIoNuxtAdmin.roles'),
                 href: '/admin/roles'
-            }
+            },
+            permissions: new Permissions(),
+            loaded: false
         }
+    },
+
+    async mounted() {
+        await this.permissions.fetch()
+        this.loaded = true
     },
 
     methods: {

@@ -35,5 +35,6 @@ export default {
         password: 'Password',
         password_confirmation: 'Password confirmation',
         default_new: 'default new',
+        name: 'Name',
     }
 }

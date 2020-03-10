@@ -5,4 +5,10 @@ export default class Permissions extends BaseCollection {
     model() {
         return Permission
     }
+
+    routes() {
+        return {
+            fetch: '/api/admin/permissions'
+        }
+    }
 }

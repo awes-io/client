@@ -8,6 +8,7 @@ export default class Role extends BaseModel {
             default_new: false,
             priority: null,
             description: '',
+            permissions: [],
         }
     }
 
