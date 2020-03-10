@@ -75,9 +75,9 @@
                         multiple
                     />
                     <AwButton
-                        class="mt-2"
+                        class="mt-2 w-full"
                         type="submit"
-                        :data-loading="loadingText"
+                        :loading="loading && loadingText"
                     >
                         Submit
                     </AwButton>

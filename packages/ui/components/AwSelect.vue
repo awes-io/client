@@ -1,8 +1,8 @@
 <template>
     <div
         class="relative"
-        @keydown.up="_focusItem(-1, $event)"
-        @keydown.down="_focusItem(+1, $event)"
+        @keydown.up="_arrowFocusItem(-1, $event)"
+        @keydown.down="_arrowFocusItem(+1, $event)"
     >
         <!-- value -->
         <input
@@ -25,11 +25,12 @@
             :placeholder="_getLabel(selected)"
             v-bind="$attrs"
             @focus="_onFocus"
+            @blur="_onBlur"
             @input="_applySearch"
             @keydown.enter="_selectOnEnter"
             :readonly="!searchable"
             autocomplete="off"
-            data-focus
+            data-arrow-focus
         >
             <template #icon>
                 <AwButton
@@ -39,7 +40,7 @@
                     icon="close"
                     theme="icon"
                 />
-                <AwButton theme="icon" @click="toggleDropdown">
+                <AwButton tabindex="-1" theme="icon" @click="toggleDropdown">
                     <AwIcon
                         v-if="isLoading"
                         key="loader"
@@ -71,7 +72,8 @@
                 <AwDropdownButton
                     v-if="_showNotEqual"
                     @click="_onClickNotEqual"
-                    data-focus
+                    tabindex="-1"
+                    data-arrow-focus
                 >
                     <slot name="not-equal" :searchPhrase="searchPhrase" />
                 </AwDropdownButton>
@@ -84,7 +86,8 @@
                         :key="`${optionLabel}-${index}`"
                         :active="active"
                         @click="selectedIndex = index"
-                        data-focus
+                        tabindex="-1"
+                        data-arrow-focus
                     >
                         <slot
                             name="option-label"
@@ -96,7 +99,12 @@
                 </template>
 
                 <!-- not found -->
-                <AwDropdownButton v-else @click="_selectOnEnter" data-focus>
+                <AwDropdownButton
+                    v-else
+                    @click="_selectOnEnter"
+                    tabindex="-1"
+                    data-arrow-focus
+                >
                     <slot name="not-found" :searchPhrase="searchPhrase">
                         {{ $t('AwSelect.notFound') }}
                     </slot>
@@ -111,6 +119,7 @@ import { path, pathOr, split, isNil } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
 import AwDropdownButton from './AwDropdownButton.vue'
+import arrowFocusMixin from '../mixins/arrow-focus'
 
 export default {
     inheritAttrs: false,
@@ -120,6 +129,8 @@ export default {
     components: {
         AwDropdownButton
     },
+
+    mixins: [arrowFocusMixin],
 
     props: {
         options: {
@@ -284,6 +295,7 @@ export default {
     watch: {
         value(value) {
             this.optionSelected = value
+            this.$refs.input.setError()
         },
 
         isOpened(opened) {
@@ -381,32 +393,9 @@ export default {
             }
         },
 
-        _focusItem(offset = 0, $event) {
-            if (!this.isOpened) return
-
-            const buttons = Array.from(
-                this.$el.querySelectorAll('[data-focus]')
-            )
-            const active = document.activeElement
-            const activeIndex = buttons.indexOf(active)
-            let nextIndex
-
-            if (activeIndex < 0) {
-                nextIndex = this.options.findIndex(
-                    ({ id }) => id === this.value
-                )
-            } else {
-                nextIndex = activeIndex + offset
-            }
-
-            const button = buttons[nextIndex]
-
-            if (button) {
-                if ($event) {
-                    $event.preventDefault()
-                    $event.stopPropagation()
-                }
-                button.focus()
+        _onBlur($event) {
+            if (!this.$el.contains($event.relatedTarget)) {
+                this.isOpened = false
             }
         },
 

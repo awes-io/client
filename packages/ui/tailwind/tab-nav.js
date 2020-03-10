@@ -7,25 +7,27 @@ function getBaseStyle(theme) {
         default: {
             display: 'flex',
             alignItems: 'center',
-            borderBottom: `1px solid ${theme('colors.muted-darker')}`
+            borderBottom: `1px solid var(--c-muted-dark)`
         },
 
         // elements
         toggler: {
             display: 'flex',
             alignItems: 'center',
+            padding: `${theme('spacing.2')} 0`,
             transition: 'color 300ms, border-color 300ms',
-            marginLeft: theme('spacing.3'),
-            marginRight: theme('spacing.3'),
-            paddingLeft: theme('spacing.1'),
-            paddingRight: theme('spacing.1'),
-            paddingTop: theme('spacing.4'),
-            paddingBottom: theme('spacing.4'),
+            margin: `0 ${theme('spacing.3')}`,
             fontSize: theme('fontSize.sm'),
-            color: theme('colors.disabled'),
+            color: 'var(--c-disabled)',
             lineHeight: 1,
             borderBottom: '2px solid transparent',
             whiteSpace: 'nowrap'
+        },
+        'toggler > span': {
+            display: 'flex',
+            alignItems: 'center',
+            height: '100%',
+            padding: `${theme('spacing.3')} ${theme('spacing.1')}`
         },
         'toggler:before': {
             content: '""',
@@ -34,22 +36,27 @@ function getBaseStyle(theme) {
             width: '1px',
             height: theme('spacing.6'),
             display: 'block',
-            borderLeft: `1px solid ${theme('colors.muted-darker')}`
+            borderLeft: '1px solid var(--c-muted-dark)'
         },
         'toggler:first-child:before': {
-            width: 0,
-            borderColor: 'transparent'
+            content: 'none'
         },
         'toggler:hover': {
-            color: theme('onColors.surface')
+            color: 'var(--c-on-surface)'
         },
         'toggler:focus': {
-            color: theme('onColors.surface'),
             outline: 'none'
         },
+        'toggler > span:focus': {
+            outline: 'none'
+        },
+        'toggler:focus > span': {
+            color: 'var(--c-on-surface)',
+            outline: theme('focusOutline', 'none')
+        },
         toggler_active: {
-            color: theme('onColors.surface'),
-            borderColor: theme('colors.brand')
+            color: 'var(--c-on-surface)',
+            borderColor: 'var(--c-brand)'
         }
     }
 }

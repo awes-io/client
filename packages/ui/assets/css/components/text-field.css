@@ -76,6 +76,7 @@
         .vti__dropdown-list {
             @apply shadow-lg;
             max-width: 100%;
+            max-height: 147px; /* include 53px of footer height */
             border: none;
             margin: 0;
             top: 100%;
@@ -140,9 +141,13 @@
             opacity: 0;
         }
 
-        &:not([readonly]):focus::placeholder {
+        &:not([readonly]):focus::placeholder  {
             opacity: .5;
         }
+    }
+
+    &.is-filled &__element::placeholder {
+        opacity: 0.5;
     }
 
     &__label {

@@ -42,6 +42,15 @@ export default {
         locales: [{ code: 'en', iso: 'en-US' }],
         defaultLocale: 'en'
     },
+    awesIo: {
+        ui: {
+            components: {
+                AwTableBuilder: {
+                    // param: 'order'
+                }
+            }
+        }
+    },
 
     serverMiddleware: ['~/api/index.js']
 }

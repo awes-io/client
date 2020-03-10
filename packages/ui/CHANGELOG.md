@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.67.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.66.0...@awes-io/ui@1.67.0) (2020-03-09)
+
+
+### Bug Fixes
+
+* remove unused code ([ab07ebc](https://github.com/awes-io/client/commit/ab07ebc3fb5c8b6bdd52cd4411d7f1f06cf1efca))
+* surface color changed to lighter one ([bf23a63](https://github.com/awes-io/client/commit/bf23a63e108c0ac340cd4ed39a0910385652db5b))
+
+
+### Features
+
+* add AwModal buttons slot ([3dbde2b](https://github.com/awes-io/client/commit/3dbde2bc9caca47801f3b0f15a115c126ed7af31))
+* add default prop to orderable config ([176c135](https://github.com/awes-io/client/commit/176c135f851bc77130ddd77deb1d1801ea37970d))
+* add meta info from nuxt-i18n-seo to layouts ([4bcae27](https://github.com/awes-io/client/commit/4bcae27040e8187846692e7367a0318577676128))
+* add table column ordering ([5f62b6b](https://github.com/awes-io/client/commit/5f62b6bf436b6905fa07a2a94a02fadb159bd82a))
+* arrow navigation for aw-context-menu and aw-chip-select ([12b12f6](https://github.com/awes-io/client/commit/12b12f6e2704f2a66e40af9bb1649478f9821cfa))
+* change modal styles ([fcec5df](https://github.com/awes-io/client/commit/fcec5df16e09a58e7e69bbe756ddcd7f4db08410))
+* dark theme switcher added ([014d817](https://github.com/awes-io/client/commit/014d81716bc668409279c3aac0418d547e0aa95f))
+
+
+
+
+
+# [1.66.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.65.0...@awes-io/ui@1.66.0) (2020-03-06)
+
+
+### Bug Fixes
+
+* focus improvement fixes ([60e0eec](https://github.com/awes-io/client/commit/60e0eec34b6b3ded0250d5caf8991bf9df9d48ac))
+* include footer height in aw-tel dropdown height ([69411fe](https://github.com/awes-io/client/commit/69411fe53c37915ed5600ff99489676ba0d91a42))
+* reset aw-select error on value change ([0277739](https://github.com/awes-io/client/commit/0277739542fca2e64cf1228e2af89620eb715a3b))
+
+
+### Features
+
+* add meta info from nuxt-i18n-seo to layouts ([d753964](https://github.com/awes-io/client/commit/d75396441dcb126a3aa557caf79793ed670e9fd1))
+
+
+
+
+
+# [1.65.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.64.0...@awes-io/ui@1.65.0) (2020-03-04)
+
+
+### Features
+
+* new focus for button elements ([b3267a9](https://github.com/awes-io/client/commit/b3267a9d7854b81694d7f3ec6c137bd867178930))
+
+
+
+
+
+# [1.64.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.63.0...@awes-io/ui@1.64.0) (2020-03-04)
+
+
+### Bug Fixes
+
+* aw-menu toggler arrow in right direction + do not open aw-menu-item without children ([998f2a9](https://github.com/awes-io/client/commit/998f2a9de998b838d86de02b3729139bacc69c38))
+* aw-select improvements ([5277578](https://github.com/awes-io/client/commit/5277578854891d9c2d8e06bbe9a6d281c809f360))
+* change modal desktop min-height ([f30eaa7](https://github.com/awes-io/client/commit/f30eaa7707413333f96eb369cc519cbc985e4da4))
+* components markup finetuning ([b9274c3](https://github.com/awes-io/client/commit/b9274c329535b32c7a54da95be0ac762f5a1d107))
+* consistent aw-tel styles ([e647c30](https://github.com/awes-io/client/commit/e647c30917ce35a9bf5ce4fc8afd9224e488e6cf))
+* correct aw-menu min-height on mobile ([aa6bd78](https://github.com/awes-io/client/commit/aa6bd78659dfe7abea09cd12689d628c49fbf8eb))
+* focus aw-select on error tooltip click ([6e568a2](https://github.com/awes-io/client/commit/6e568a2db69db3f6bf7745f0f272c405cef6ec55))
+* modal remove subtitle prop ([5b5aa3f](https://github.com/awes-io/client/commit/5b5aa3f38f69cb51bfa3cf4e09d3fadceb904eb2))
+
+
+### Features
+
+* add AwModal mobile styles ([26ff5ea](https://github.com/awes-io/client/commit/26ff5ea7d056b7e1ea3b0d2488a88a3a61a38390))
+* add header notifications to AwLAyoutDefault ([b5b894a](https://github.com/awes-io/client/commit/b5b894a23f415f7c81818b463a6fb97af490eb19))
+* change modal styles ([f1cfaae](https://github.com/awes-io/client/commit/f1cfaaebfa23ed8cf1120fd880a73d9ec47d2ece))
+* update modal styles ([cff78db](https://github.com/awes-io/client/commit/cff78db01146dcb9dca526237ec551024f4ee03a))
+
+
+
+
+
 # [1.63.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.62.0...@awes-io/ui@1.63.0) (2020-03-02)
 
 

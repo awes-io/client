@@ -5,6 +5,9 @@ export default {
 
     head: {
         title: 'Awes.io UI',
+        htmlAttrs: {
+            'data-dark': true
+        },
         meta: [
             { charset: 'utf-8' },
             {
@@ -16,7 +19,8 @@ export default {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             {
                 rel: 'stylesheet',
-                href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu:400,500&display=swap'
+                href:
+                    'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu:400,500&display=swap'
             }
         ]
     },

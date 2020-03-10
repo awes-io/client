@@ -5,7 +5,7 @@
         <!-- Table head, passes `thead` object to the scope -->
         <slot name="thead" :thead="theadVisible">
             <!-- `AwTableHead` component -->
-            <AwTableHead :columns="theadVisible" />
+            <AwTableHead :columns="theadVisible" @click="onTheadClick" />
         </slot>
 
         <!-- body -->
@@ -35,13 +35,14 @@
 </template>
 
 <script>
-import { keys, path, pathOr } from 'rambdax'
+import { keys, path, pathOr, is, mergeDeep } from 'rambdax'
 import { ucFirst, toPascal } from '../assets/js/string'
 import {
     TABLE_PRIORITY_ATTR,
     TABLE_TOGGLER_ATTR,
     TABLE_INDEX_ATTR,
-    TABLE_ROW_CLICK_EVENT
+    TABLE_ROW_CLICK_EVENT,
+    TABLE_HEAD_CLICK_EVENT
 } from '../assets/js/constants'
 import AwTableHead from './AwTableHead.vue'
 import AwTableCol from './AwTableCol.vue'
@@ -72,17 +73,31 @@ export default {
                 )
             },
             default: 'middle'
+        },
+
+        /**
+         * Orderable config that will be merged with global orderable config.
+         * If null then global orderable config will be used
+         */
+        orderable: {
+            type: Object,
+            default: null
         }
     },
 
     data() {
         return {
             hiddenColsIndexes: [],
-            openedRow: null
+            openedRow: null,
+            isDefaultColSet: false
         }
     },
 
     computed: {
+        _tableBuilderConfig() {
+            return pathOr({}, '$awesConfig.AwTableBuilder', this)
+        },
+
         columns() {
             const _slots = this.$slots.default
 
@@ -99,6 +114,15 @@ export default {
                             'title',
                             props
                         )
+                        const colOrderableConfig = pathOr(
+                            false,
+                            'orderable',
+                            props
+                        )
+                        const orderable = this._getOredableConfig(
+                            colOrderableConfig,
+                            field
+                        )
 
                         return {
                             field,
@@ -111,7 +135,8 @@ export default {
                             title,
                             textAlign: path('textAlign', props),
                             slot,
-                            staticClass
+                            staticClass,
+                            orderable
                         }
                     })
             } else {
@@ -144,9 +169,10 @@ export default {
             const { visibleColumns, hiddenColumns } = this.groupedColumns
 
             return visibleColumns
-                .map(({ title, textAlign }) => ({
+                .map(({ title, textAlign, orderable }) => ({
                     text: title,
-                    align: textAlign && `text-${textAlign}`
+                    align: textAlign && `text-${textAlign}`,
+                    orderable
                 }))
                 .concat(hiddenColumns.length ? [{ text: '' }] : [])
         },
@@ -171,6 +197,61 @@ export default {
     methods: {
         toggleRow(index) {
             this.openedRow = this.openedRow === index ? null : index
+        },
+
+        onTheadClick(column, key) {
+            this.$emit(TABLE_HEAD_CLICK_EVENT, this.columns[key])
+        },
+
+        _getOredableConfig(colConfig, field) {
+            const baseConfig = mergeDeep(
+                this._tableBuilderConfig,
+                this.orderable || {}
+            )
+
+            if (is(Object, colConfig)) {
+                const config = { ...colConfig }
+                delete config.param
+                const conf = mergeDeep(baseConfig, config)
+                if (!this.isDefaultColSet && conf.default) {
+                    this.isDefaultColSet = true
+                } else {
+                    conf.default = false
+                }
+                return this._unmaskOrderableConfig(conf, field)
+            } else if (is(Boolean, colConfig) && !colConfig) {
+                return null
+            }
+
+            if (!this.isDefaultColSet && baseConfig.default) {
+                this.isDefaultColSet = true
+            } else {
+                baseConfig.default = false
+            }
+
+            return this._unmaskOrderableConfig(baseConfig, field)
+        },
+
+        _unmaskOrderableConfig(orderable, field) {
+            const templateDefaultVal = orderable.templateValue || field
+            const ascValue = this._unmaskParams(
+                orderable.ascTemplate,
+                templateDefaultVal
+            )
+            const descValue = this._unmaskParams(
+                orderable.descTemplate,
+                templateDefaultVal
+            )
+
+            return {
+                ...orderable,
+                ascValue,
+                descValue
+            }
+        },
+
+        _unmaskParams(str, value, mask = '%s') {
+            return str.split(mask).join(value)
         },
 
         setResizeListener() {

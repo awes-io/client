@@ -5,6 +5,8 @@
             class="layout__content"
             :class="{ 'is-wide': menuThin, 'relative z-0': showMobileMenu }"
         >
+            <slot name="before-header" />
+
             <div class="layout__header">
                 <div class="container flex items-center">
                     <!-- mobile menu toggler -->

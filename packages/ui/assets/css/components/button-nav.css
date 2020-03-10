@@ -1,21 +1,23 @@
 .aw-button-nav {
+    @apply bgcolor-muted-dark text-on-surface;
     display: inline-flex;
     border-radius: theme('borderRadius.lg');
-    background-color: theme('colors.muted-dark');
-    color: theme('onColors.surface');
     font-size: theme('fontSize.sm');
 
     & .aw-slider__scroller {
         padding: theme('spacing.1') 0;
     }
 
-    &__toggler {
+    &__toggler,
+    &__toggler > span {
         display: flex;
-        position: relative;
-        flex-shrink: 0;
         align-items: center;
         justify-content: center;
-        padding: theme('spacing.1') theme('spacing.5');
+    }
+
+    &__toggler {
+        position: relative;
+        flex-shrink: 0;
         margin: 0 theme('spacing.1');
         border-radius: theme('borderRadius.default');
         min-width: theme('spacing.8');
@@ -23,7 +25,12 @@
         white-space: nowrap;
     }
 
+    &__toggler > span:not([class]) {
+        padding: theme('spacing.1') theme('spacing.5');
+    }
+
     &__toggler:before {
+        @apply bgcolor-muted-darker;
         content: '';
         position: absolute;
         left: calc(-1 * theme('spacing.1'));
@@ -31,29 +38,32 @@
         bottom: theme('spacing.1');
         width: 1px;
         display: block;
-        background-color: theme('colors.muted-darker');
     }
 
     &__toggler:first-child:before {
         content: none;
     }
 
-    &__toggler:focus {
-        outline: 1px dashed theme('colors.info');
+    &__toggler:focus, &__toggler > span:focus {
+        outline: none;
+    }
+
+    &__toggler:focus > span {
+        outline: theme('focusOutline', 'none');
     }
 
     &__toggler_active {
-        background-color: theme('colors.surface');
+        @apply bgcolor-surface;
         box-shadow: theme('boxShadow.default');
     }
 
     &__toggler:hover {
-        background-color: theme('colors.muted');
+        @apply bgcolor-muted;
     }
 
     &__toggler[disabled],
     &__toggler_disabled {
-        color: theme('colors.disabled');
+        @apply text-disabled;
         pointer-events: none;
         cursor: not-allowed;
     }

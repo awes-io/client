@@ -64,7 +64,7 @@
                     <AwButton
                         class="mt-2"
                         type="submit"
-                        :data-loading="loadingText"
+                        :loading="loading && loadingText"
                     >
                         Submit
                     </AwButton>

@@ -24,7 +24,7 @@
                 ref="editor"
                 :value="source"
                 :style="isEditorVisible"
-                class="font-mono min-h-xxs max-h-screen w-full p-3"
+                class="font-mono bg-surface min-h-xxs max-h-screen w-full p-3"
                 @change="$emit('change', $event.target.value)"
             ></textarea>
 

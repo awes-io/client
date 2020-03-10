@@ -1,6 +1,7 @@
 <template functional>
     <span
         class="aw-chip"
+        v-bind="data.attrs"
         :class="[data.staticClass, data.class]"
         :style="[data.staticStyle, data.style]"
     >

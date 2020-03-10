@@ -1,3 +1,7 @@
+export const AwButton = {
+    loading: 'Завантаження...'
+}
+
 export const AwModal = {
     back: 'Назад',
     close: 'Закрити вікно (ESC)'
@@ -39,12 +43,12 @@ export const AwLayoutDefault = {
     shrinkMenu: 'Згорнути меню',
     toggleSubmenu: 'Відкрити меню',
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwLayoutFrameCenter = {
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwPagination = {
@@ -65,7 +69,14 @@ export const AwSearch = {
     text: 'Пошук'
 }
 
+export const AwUserMenu = {
+    openMenu: 'Відкрити меню',
+    darkTheme: 'Темна тема',
+    kioskMode: 'Режим кіоску'
+}
+
 export default {
+    AwButton,
     AwModal,
     AwCalendar,
     AwCropper,
@@ -75,5 +86,6 @@ export default {
     AwPagination,
     AwSelect,
     AwTableBuilder,
-    AwSearch
+    AwSearch,
+    AwUserMenu
 }

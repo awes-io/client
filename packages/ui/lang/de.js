@@ -1,3 +1,7 @@
+export const AwButton = {
+    loading: 'Wird geladen...'
+}
+
 export const AwModal = {
     back: 'Zurück',
     close: 'Fenster schließen (ESC)'
@@ -6,18 +10,18 @@ export const AwModal = {
 export const AwCalendar = {
     weekdaysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     months: [
-        'Januar',​
+        'Januar',
         'Februar',
         'März',
         'April',
         'Mai',
-        ​'Juni',
-        ​'Juli',
-        ​'August',
-        ​'September',
-        ​'Oktober',
-        ​'November',
-        ​'Dezember'
+        'Juni',
+        'Juli',
+        'August',
+        'September',
+        'Oktober',
+        'November',
+        'Dezember'
     ]
 }
 
@@ -39,12 +43,12 @@ export const AwLayoutDefault = {
     shrinkMenu: 'Menü verkleinern',
     toggleSubmenu: 'Untermenü umschalten',
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwLayoutFrameCenter = {
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwPagination = {
@@ -65,7 +69,14 @@ export const AwSearch = {
     text: 'Suche'
 }
 
+export const AwUserMenu = {
+    openMenu: 'Menü öffnen',
+    darkTheme: 'Dunkles Thema',
+    kioskMode: 'Kiosk-Modus'
+}
+
 export default {
+    AwButton,
     AwModal,
     AwCalendar,
     AwCropper,
@@ -75,5 +86,6 @@ export default {
     AwPagination,
     AwSelect,
     AwTableBuilder,
-    AwSearch
+    AwSearch,
+    AwUserMenu
 }

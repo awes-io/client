@@ -1,7 +1,7 @@
 {
     "name": "@awes-io/nuxt-profile",
     "description": "",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "module": "index.js",
     "entry": "index.js",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
@@ -36,12 +36,6 @@
     "repository": {
         "type": "git",
         "url": "git@git.awescode.com:awes-io/nuxt-profile.git"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-            "pre-commit": "yarn lint && yarn test"
-        }
     },
     "release": {
         "extends": "@semantic-release/gitlab-config",

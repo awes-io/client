@@ -7,7 +7,11 @@
             @focus="isOpened = true"
             @click="isOpened = true"
         />
-        <AwDropdown :show.sync="isOpened" class="max-h-unset max-w-full">
+        <AwDropdown
+            :show.sync="isOpened"
+            :close-on-action="false"
+            class="max-h-unset max-w-full"
+        >
             <AwCalendar
                 class="max-w-xs"
                 v-bind="calendarProps"

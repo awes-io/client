@@ -28,10 +28,14 @@
 </template>
 
 <script>
+import layoutMixin from './layout-mixin'
+
 export default {
     name: 'error',
 
     layout: 'empty',
+
+    mixins: [layoutMixin],
 
     props: {
         error: {

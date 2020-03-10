@@ -10,7 +10,11 @@
 </template>
 
 <script>
+import layoutMixin from './layout-mixin'
+
 export default {
-    name: 'LayoutFrameCenter'
+    name: 'LayoutFrameCenter',
+
+    mixins: [layoutMixin]
 }
 </script>

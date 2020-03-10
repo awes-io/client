@@ -1,3 +1,7 @@
+export const AwButton = {
+    loading: 'Loading...'
+}
+
 export const AwModal = {
     back: 'Go Back',
     close: 'Close Window (ESC)'
@@ -43,7 +47,7 @@ export const AwLayoutDefault = {
     shrinkMenu: 'Shrink menu',
     toggleSubmenu: 'Toggle submenu',
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwLayoutError = {
@@ -53,7 +57,7 @@ export const AwLayoutError = {
 
 export const AwLayoutFrameCenter = {
     footer:
-        '© 2019 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
 export const AwMarkdownEditor = {
@@ -108,7 +112,14 @@ export const AwSearch = {
     keyBind: ' (Press "{key}" to focus)'
 }
 
+export const AwUserMenu = {
+    openMenu: 'Open menu',
+    darkTheme: 'Dark theme',
+    kioskMode: 'Kiosk mode'
+}
+
 export default {
+    AwButton,
     AwModal,
     AwCalendar,
     AwCropper,
@@ -124,5 +135,6 @@ export default {
     AwTableBuilder,
     AwTimelineBuilder,
     AwUploader,
-    AwSearch
+    AwSearch,
+    AwUserMenu
 }

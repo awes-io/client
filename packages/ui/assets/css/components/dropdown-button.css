@@ -4,11 +4,16 @@
     display: block;
     position: relative;
     width: 100%;
-    padding: theme('spacing.3') theme('spacing.4');
+    padding: 2px;
     border-radius: theme('borderRadius.default');
 
     & + & {
         margin-top: 1px;
+    }
+
+    & > span {
+        display: block;
+        padding: calc(theme('spacing.3') - 2px) calc(theme('spacing.4') - 2px);
     }
 
     /* Same active state for all modifiers */
@@ -16,15 +21,18 @@
         background-color: color(theme('colors.info') alpha(20%));
     }
 
+    &:focus, & > span:focus {
+        outline: none;
+    }
+
+    &:focus > span {
+        outline: theme('focusOutline', 'none');
+    }
+
     /* Default color */
     &_default {
-        &:focus {
-            outline: none;
-            background-color: theme('colors.muted-dark');
-        }
-
         &:hover {
-            background-color: theme('colors.muted');
+            @apply bgcolor-muted;
         }
     }
 }
@@ -36,11 +44,6 @@
         $currentColor: theme('colors.$(color)');
 
         color: $currentColor;
-
-        &:focus {
-            outline: none;
-            background-color: color($currentColor alpha(25%));
-        }
 
         &:hover {
             background-color: color($currentColor alpha(10%));

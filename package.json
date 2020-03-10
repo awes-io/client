@@ -32,11 +32,6 @@
         "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream",
         "pkg": "yarn build:ui && yarn build:vue-mc && lerna publish"
     },
-    "husky": {
-        "hooks": {
-            "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS"
-        }
-    },
     "commitlint": {
         "extends": [
             "@commitlint/config-conventional"
@@ -50,16 +45,16 @@
         "@rollup/plugin-json": "^4.0.1",
         "@rollup/plugin-node-resolve": "^7.0.0",
         "@rollup/plugin-replace": "^2.3.0",
-        "@semantic-release/exec": "^5.0.0",
         "@semantic-release/changelog": "^3.0.4",
+        "@semantic-release/exec": "^5.0.0",
         "@semantic-release/git": "^7.0.16",
         "@semantic-release/gitlab-config": "^5.0.0",
         "@semantic-release/npm": "^5.3.4",
         "@vuese/markdown-render": "^2.5.3",
         "@vuese/parser": "^2.4.3",
         "change-case": "^4.1.1",
-        "fs-extra": "^8.1.0",
         "esm": "^3.2.25",
+        "fs-extra": "^8.1.0",
         "lerna": "^3.16.4",
         "sort-package-json": "^1.39.0"
     },
@@ -67,7 +62,5 @@
         "packages/*",
         "examples/*"
     ],
-    "devDependencies": {
-        "husky": "^4.0.10"
-    }
+    "devDependencies": {}
 }
