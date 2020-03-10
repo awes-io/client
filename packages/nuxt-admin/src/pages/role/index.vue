@@ -34,18 +34,20 @@
 </template>
 
 <script>
+import redirectToRoles from '../../mixins/redirectToRoles'
+
 export default {
     name: 'RoleUpdateInformation',
 
     props: ['model'],
 
+    mixins: [redirectToRoles],
+
     methods: {
         async updateRole() {
             try {
                 await this.model.save()
-                this.$router.push({
-                    path: `/admin/roles`
-                })
+                this.redirectToRoles()
             } catch (error) {
                 console.log(error)
             }

@@ -85,18 +85,20 @@
 </template>
 
 <script>
+import redirectToUsers from '../../mixins/redirectToUsers'
+
 export default {
     name: 'UserUpdateInformation',
 
     props: ['model'],
 
+    mixins: [redirectToUsers],
+
     methods: {
         async updateUser() {
             try {
                 await this.model.save()
-                this.$router.push({
-                    path: `/admin/users`
-                })
+                this.redirectToUsers()
             } catch (error) {
                 console.log(error)
             }

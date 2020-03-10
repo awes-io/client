@@ -104,9 +104,12 @@
 
 <script>
 import User from '../collections/User'
+import redirectToUsers from '../mixins/redirectToUsers'
 
 export default {
     name: 'UserCreate',
+
+    mixins: [redirectToUsers],
 
     data() {
         return {
@@ -122,9 +125,7 @@ export default {
         async createUser() {
             try {
                 await this.user.save()
-                this.$router.push({
-                    path: `/admin/users`
-                })
+                this.redirectToUsers()
             } catch (error) {
                 console.log(error)
             }

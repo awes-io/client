@@ -17,11 +17,14 @@
 
 <script>
 import Permissions from '../../collections/Permissions'
+import redirectToRoles from '../../mixins/redirectToRoles'
 
 export default {
     name: 'RoleUpdatePermissions',
 
     props: ['model'],
+
+    mixins: [redirectToRoles],
 
     data() {
         return {
@@ -38,9 +41,7 @@ export default {
         async updateRolePermissions() {
             try {
                 await this.permissions.save()
-                this.$router.push({
-                    path: `/admin/roles`
-                })
+                this.redirectToRoles()
             } catch (error) {
                 console.log(error)
             }

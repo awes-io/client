@@ -46,9 +46,12 @@
 <script>
 import Role from '../collections/Role'
 import Permissions from '../collections/Permissions'
+import redirectToRoles from '../mixins/redirectToRoles'
 
 export default {
     name: 'RoleCreate',
+
+    mixins: [redirectToRoles],
 
     data() {
         return {
@@ -71,9 +74,7 @@ export default {
         async createRole() {
             try {
                 await this.role.save()
-                this.$router.push({
-                    path: `/admin/roles`
-                })
+                this.redirectToRoles()
             } catch (error) {
                 console.log(error)
             }
