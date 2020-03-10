@@ -25,7 +25,7 @@
                     name="description"
                     :error="role.errors.description"
                 />
-                <AwButton class="mt-5" @click="createRole">
+                <AwButton class="mt-5" @click="createRole" :loading="role.saving">
                     {{ $t('AwesIoNuxtAdmin.create') }}
                 </AwButton>
             </div>

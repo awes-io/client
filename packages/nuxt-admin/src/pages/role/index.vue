@@ -25,7 +25,7 @@
                     name="description"
                     :error="model.errors.description"
                 />
-                <AwButton class="mt-5" @click="updateRole">
+                <AwButton class="mt-5" @click="updateRole" :loading="model.saving">
                     {{ $t('AwesIoNuxtAdmin.update') }}
                 </AwButton>
             </div>
@@ -40,9 +40,12 @@ export default {
     props: ['model'],
 
     methods: {
-        updateRole() {
+        async updateRole() {
             try {
-                this.model.save()
+                await this.model.save()
+                this.$router.push({
+                    path: `/admin/roles`
+                })
             } catch (error) {
                 console.log(error)
             }

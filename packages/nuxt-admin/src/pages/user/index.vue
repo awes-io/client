@@ -76,7 +76,7 @@
                 />
             </div>
             <div :span="{ lg: 2 }">
-                <AwButton class="mt-5" @click="updateUser">
+                <AwButton class="mt-5" @click="updateUser" :loading="model.saving">
                     {{ $t('AwesIoNuxtAdmin.update') }}
                 </AwButton>
             </div>
@@ -94,6 +94,9 @@ export default {
         async updateUser() {
             try {
                 await this.model.save()
+                this.$router.push({
+                    path: `/admin/users`
+                })
             } catch (error) {
                 console.log(error)
             }

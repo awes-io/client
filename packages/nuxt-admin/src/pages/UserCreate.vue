@@ -94,7 +94,7 @@
                 />
             </div>
             <div :span="{ lg: 2 }">
-                <AwButton class="mt-5" @click="createUser">
+                <AwButton class="mt-5" @click="createUser" :loading="user.saving">
                     {{ $t('AwesIoNuxtAdmin.create') }}
                 </AwButton>
             </div>
