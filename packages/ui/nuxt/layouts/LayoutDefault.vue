@@ -8,27 +8,17 @@
                     class="layout__notification"
                     :class="`bg-${notification.type}`"
                 >
-                    {{ notification.text }}
+                    <span v-html="notification.text"></span>
 
-                    <button
-                        class="layout__close p-1"
+                    <AwButton
+                        class="layout__close"
+                        icon="close"
+                        theme="ghost"
+                        content-class="p-2 text-surface"
                         @click="
                             $store.commit('awesIo/CLOSE_HEADER_NOTIFICATION')
                         "
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                d="M19 2l-1-1-8 8-8-8-1 1 8 8-8 8 1 1 8-8 8 8 1-1-8-8 8-8z"
-                            />
-                        </svg>
-                    </button>
+                    ></AwButton>
                 </div>
             </Transition>
         </template>
