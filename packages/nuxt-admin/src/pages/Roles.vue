@@ -7,7 +7,12 @@
             </AwButton>
         </template>
         <AwTableBuilder :collection="roles" @click:row="showRole">
-            <AwTableCol field="name" :title="$t('AwesIoNuxtAdmin.role')" />
+            <AwTableCol :title="$t('AwesIoNuxtAdmin.role')" >
+                <template #default="{ cell }">
+                    {{ cell.name }} 
+                    <span class="text-disabled">{{ cell.default_new ? '(' + $t('AwesIoNuxtAdmin.default_new') + ')' : '' }}</span>
+                </template>
+            </AwTableCol>
             <AwTableCol field="description" :title="$t('AwesIoNuxtAdmin.description')" />
             <AwTableCol field="priority" :title="$t('AwesIoNuxtAdmin.priority')" />
             <AwTableCol :title="$t('AwesIoNuxtAdmin.permissions')">

@@ -34,5 +34,6 @@ export default {
         position: 'Position',
         password: 'Password',
         password_confirmation: 'Password confirmation',
+        default_new: 'default new',
     }
 }
