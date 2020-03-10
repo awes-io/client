@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.68.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.67.0...@awes-io/ui@1.68.0) (2020-03-10)
+
+
+### Bug Fixes
+
+* change modal title mobile padding ([35ee6ac](https://github.com/awes-io/client/commit/35ee6ac3efa70279fd6ec22c1acc8c11b622e9a6))
+* improved paddings for radio buttons and toggle ([374b780](https://github.com/awes-io/client/commit/374b78003e68443cd61a266b169716d3c8e27bd1))
+* modal mobile title truncate fix ([e116702](https://github.com/awes-io/client/commit/e116702a11d237c06c2c2a99ab0d6e2a1db5e055))
+
+
+### Features
+
+* change mobile notification ([c302cc0](https://github.com/awes-io/client/commit/c302cc0369d2db06799b31a0cff417afae6e4a06))
+* change modal styles ([a5c691a](https://github.com/awes-io/client/commit/a5c691a5d17d5ed870e17ffb1a1fc96880fd1a27))
+
+
+
+
+
 # [1.67.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.66.0...@awes-io/ui@1.67.0) (2020-03-09)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.56.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.55.0...basic-ui@1.56.0) (2020-03-10)
+
+
+### Features
+
+* change modal styles ([a5c691a](https://git.awescode.com/awes-io/client/commits/a5c691a5d17d5ed870e17ffb1a1fc96880fd1a27))
+
+
+
+
+
 # [1.55.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.54.2...basic-ui@1.55.0) (2020-03-09)
 
 
