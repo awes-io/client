@@ -325,6 +325,18 @@ export default {
 
             this.$once('hook:beforeDestroy', unwatch)
         }
+
+        if (this.searchable) {
+            let tm
+            const unwatch = this.$watch('searchPhrase', () => {
+                clearTimeout(tm)
+                tm = setTimeout(() => {
+                    this.$refs.dropdown.update()
+                }, 60)
+            })
+
+            this.$once('hook:beforeDestroy', unwatch)
+        }
     },
 
     mounted() {
