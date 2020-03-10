@@ -55,7 +55,7 @@
         >
             <template #subtitle>Subtitle</template>
 
-            <div style="max-height: 260px; overflow: auto" class="bg-muted p-4">
+            <div style="max-height: 210px; overflow: auto" class="bg-muted p-4">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Expedita quo reiciendis rerum corrupti architecto vero sed
                 accusantium dolores nisi quod itaque asperiores nobis a ad

@@ -51,7 +51,19 @@
                             {{ title }}
                         </div>
 
-                        <button
+                        <AwButton
+                            :class="elClasses.close"
+                            :title="$t('AwModal.close')"
+                            :aria-label="$t('AwModal.close')"
+                            @click.prevent="close()"
+                            theme="ghost"
+                            color="default"
+                            content-class="px-2 py-3"
+                            icon="close"
+                            tabindex="0"
+                        />
+
+                        <!-- <button
                             :class="elClasses.close"
                             type="button"
                             :title="$t('AwModal.close')"
@@ -71,7 +83,7 @@
                                     d="M1 17L17 1M1 1l16 16"
                                 />
                             </svg>
-                        </button>
+                        </button> -->
                     </div>
                     <!-- / header -->
 
