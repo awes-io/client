@@ -188,6 +188,21 @@
         </div>
 
         <AwCodeSnippet v-text="codeGroup" class="my-3" />
+
+        <section class="mt-8">
+            <h3>Additional examples</h3>
+
+            <h5>Close button</h5>
+
+            <AwButton
+                icon="close"
+                theme="ghost"
+                color="default"
+                content-class="p-2"
+            />
+
+            <AwCodeSnippet v-text="codeCloseButton" class="my-3" />
+        </section>
     </AwPage>
 </template>
 
@@ -225,6 +240,18 @@ export default {
                 '\n<div class="aw-button-group">',
                 this.generateCode('color', this.colors, this.outlineText, true),
                 '</div>'
+            ]
+            return arr.join('\n')
+        },
+
+        codeCloseButton() {
+            const arr = [
+                '<AwButton',
+                '    icon="close"',
+                '    theme="ghost"',
+                '    color="default"',
+                '    content-class="p-2"',
+                '/>'
             ]
             return arr.join('\n')
         }

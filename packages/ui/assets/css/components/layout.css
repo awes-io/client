@@ -5,13 +5,13 @@
     }
 
     &__notification {
-        @apply py-5 px-8 text-center font-body text-sm;
+        @apply py-5 px-8 text-center font-body text-sm relative;
     }
 
     &__close {
         @apply absolute;
-        top: theme('spacing.5');
-        right: theme('spacing.5');
+        top: theme('spacing.4');
+        right: theme('spacing.3');
     }
 
     &__container {
@@ -20,7 +20,7 @@
     }
 
     &__header {
-        @apply flex items-center bg-surface top-0 z-20 bg-brand py-3;
+        @apply flex items-center bg-surface top-0 z-20 bg-brand py-3 order-first;
         min-height: theme('spacing.16');
         transition: 200ms box-shadow;
     }
@@ -78,7 +78,7 @@
         }
 
         &__header {
-            @apply bg-surface;
+            @apply bg-surface order-none;
         }
 
         &&--frame-left &__frame {
