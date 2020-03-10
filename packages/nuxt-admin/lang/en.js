@@ -21,6 +21,7 @@ export default {
         last_activity: 'Last activity',
         edit: 'Edit',
         block: 'Block',
+        activate: 'Activate',
         all: 'All',
         active: 'Active',
         blocked: 'Blocked',

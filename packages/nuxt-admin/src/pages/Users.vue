@@ -23,7 +23,7 @@
                     <span class="text-disabled">{{ cell.email }}</span>
                 </template>
             </AwTableCol>
-            <AwTableCol field="role" :title="$t('AwesIoNuxtAdmin.role')" />
+            <AwTableCol field="role.name" :title="$t('AwesIoNuxtAdmin.role')" />
             <AwTableCol :title="$t('AwesIoNuxtAdmin.status')">
                 <template #default="{ cell }">
                     <span :class="`text-` + cell.status_sys">{{ cell.status_text }}</span>
@@ -31,8 +31,9 @@
             </AwTableCol>
             <AwTableCol field="last_activity" :title="$t('AwesIoNuxtAdmin.last_activity')" />
             <template #dropdown="{ cell }">
-                <AwDropdownButton :text="$t('AwesIoNuxtAdmin.edit')" @click.stop="showRole(cell)" />
-                <AwDropdownButton color="error" :text="$t('AwesIoNuxtAdmin.block')" @click.stop="showRole(cell)" />
+                <AwDropdownButton :text="$t('AwesIoNuxtAdmin.edit')" @click.stop="showUser(cell)" />
+                <AwDropdownButton v-if="cell.status" color="error" :text="$t('AwesIoNuxtAdmin.block')" @click.stop="cell.block()" />
+                <AwDropdownButton v-else color="success" :text="$t('AwesIoNuxtAdmin.activate')" @click.stop="cell.activate()" />
             </template>
         </AwTableBuilder>
     </AwPage>

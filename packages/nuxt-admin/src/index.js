@@ -40,6 +40,17 @@ function AwesIoNuxtAdmin() {
             {
                 path: '/admin/users/create',
                 component: resolve(__dirname, './pages/UserCreate.vue')
+            },
+            {
+                path: '/admin/users/:id',
+                component: resolve(__dirname, './pages/User.vue'),
+                children: [
+                    {
+                        name: 'user-information',
+                        path: '',
+                        component: resolve(__dirname, './pages/user/index.vue')
+                    }
+                ]
             }
         )
     })

@@ -1,33 +1,33 @@
 <template>
-    <AwPage :title="$t('AwesIoNuxtAdmin.create_user')" :breadcrumb="breadcrumb" >
+    <div>
         <AwGrid :col="{ lg: 2 }">
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.first_name') }}</p>
                 <AwInput
-                    v-model="user.first_name"
+                    v-model="model.profile.first_name"
                     name="first_name"
-                    :error="user.errors.first_name"
+                    :error="model.errors['profile.first_name']"
                 />
             </div>
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.last_name') }}</p>
                 <AwInput
-                    v-model="user.last_name"
+                    v-model="model.profile.last_name"
                     name="last_name"
-                    :error="user.errors.last_name"
+                    :error="model.errors['profile.last_name']"
                 />
             </div>
             <div :span="{ lg: 2 }">
                 <AwRadio
                     class="inline-block"
-                    v-model="user.sex"
+                    v-model="model.profile.sex"
                     :label="$t('AwesIoNuxtAdmin.male')"
                     value="male"
-                    :error="user.errors.sex"
+                    :error="model.errors['profile.sex']"
                 />
                 <AwRadio
                     class="inline-block ml-3"
-                    v-model="user.sex"
+                    v-model="model.profile.sex"
                     :label="$t('AwesIoNuxtAdmin.female')"
                     value="female"
                 />
@@ -35,100 +35,68 @@
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.email') }}</p>
                 <AwInput
-                    v-model="user.email"
+                    v-model="model.email"
                     name="email"
-                    :error="user.errors.email"
+                    :error="model.errors.email"
                 />
             </div>
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.phone') }}</p>
                 <AwInput
-                    v-model="user.phone"
+                    v-model="model.profile.phone"
                     name="phone"
-                    :error="user.errors.phone"
-                />
-            </div>
-            <div>
-                <p class="h6">{{ $t('AwesIoNuxtAdmin.password') }}</p>
-                <AwInput
-                    type="password"
-                    v-model="user.password"
-                    name="password"
-                    :error="user.errors.password"
-                />
-            </div>
-            <div>
-                <p class="h6">{{ $t('AwesIoNuxtAdmin.password_confirmation') }}</p>
-                <AwInput
-                    type="password"
-                    v-model="user.password_confirmation"
-                    name="password_confirmation"
-                    :error="user.errors.password"
+                    :error="model.errors['profile.phone']"
                 />
             </div>
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.position') }}</p>
                 <AwInput
-                    v-model="user.position"
+                    v-model="model.profile.position"
                     name="position"
-                    :error="user.errors.position"
+                    :error="model.errors['profile.position']"
                 />
             </div>
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.role') }}</p>
                 <AwSelect
-                    v-model="user.role"
+                    v-model="model.role.id"
                     :label="$t('AwesIoNuxtAdmin.role')"
                     :options="(text) => `/api/admin/roles?name=${text}&limit=100`"
                     option-label="name"
                     option-value="id"
-                    :error="user.errors.role"
+                    :error="model.errors['role.id']"
                 />
             </div>
             <div :span="{ lg: 2 }">
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.description') }}</p>
                 <AwTextarea
-                    v-model="user.description"
+                    v-model="model.profile.description"
                     name="description"
-                    :error="user.errors.description"
+                    :error="model.errors['profile.description']"
                 />
             </div>
             <div :span="{ lg: 2 }">
-                <AwButton class="mt-5" @click="createUser">
-                    {{ $t('AwesIoNuxtAdmin.create') }}
+                <AwButton class="mt-5" @click="updateUser">
+                    {{ $t('AwesIoNuxtAdmin.update') }}
                 </AwButton>
             </div>
         </AwGrid>
-    </AwPage>
+    </div>
 </template>
 
 <script>
-import User from '../collections/User'
-
 export default {
-    name: 'UserCreate',
+    name: 'UserUpdateInformation',
 
-    data() {
-        return {
-            user: new User(),
-            breadcrumb: {
-                title: this.$t('AwesIoNuxtAdmin.employees'),
-                href: '/admin/users'
-            }
-        }
-    },
+    props: ['model'],
 
     methods: {
-        async createUser() {
+        async updateUser() {
             try {
-                await this.user.save()
-                this.$router.push({
-                    path: `/admin/users`
-                })
+                await this.model.save()
             } catch (error) {
                 console.log(error)
             }
-            
         }
     }
 }

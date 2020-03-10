@@ -1,5 +1,5 @@
 <template>
-    <AwPage :title="$t('AwesIoNuxtAdmin.role')" :subnav="subnav">
+    <AwPage :title="role.name" :subnav="subnav" :breadcrumb="breadcrumb" >
         <NuxtChild :model="role" v-if="loaded" />
     </AwPage>
 </template>
@@ -13,7 +13,11 @@ export default {
     data() {
         return {
             role: new Role({ id: this.$route.params.id }),
-            loaded: false
+            loaded: false,
+            breadcrumb: {
+                title: this.$t('AwesIoNuxtAdmin.roles'),
+                href: '/admin/roles'
+            }
         }
     },
     

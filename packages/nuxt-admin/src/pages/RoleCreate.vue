@@ -1,5 +1,5 @@
 <template>
-    <AwPage :title="$t('AwesIoNuxtAdmin.create_role')">
+    <AwPage :title="$t('AwesIoNuxtAdmin.create_role')" :breadcrumb="breadcrumb" >
         <AwGrid :col="{ lg: 2 }">
             <div>
                 <p class="h6">{{ $t('AwesIoNuxtAdmin.role_name') }}</p>
@@ -41,7 +41,11 @@ export default {
 
     data() {
         return {
-            role: new Role()
+            role: new Role(),
+            breadcrumb: {
+                title: this.$t('AwesIoNuxtAdmin.roles'),
+                href: '/admin/roles'
+            }
         }
     },
 
