@@ -5,7 +5,7 @@ export const state = () => ({
         info: 'Standart until 10 November<br />5 users $500 per month',
         // notification: {
         //     type: 'error',
-        //     text: 'Header notification text'
+        //     text: 'Header notification text <b>bold text</b>'
         // },
         avatar: {
             w96: '/img/icon.jpg',
