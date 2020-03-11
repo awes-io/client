@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.2.3...@awes-io/nuxt-admin@0.3.0) (2020-03-11)
+
+
+### Bug Fixes
+
+* minor fixes ([5f8bf16](https://github.com/awes-io/client/commit/5f8bf16fef4e2d40c25799d065c7e109ce98863b))
+* useless tags removed ([73311cb](https://github.com/awes-io/client/commit/73311cb5e95795bea13bfa08c7928fe309772f57))
+
+
+### Features
+
+* creating and editing user ([a6ec636](https://github.com/awes-io/client/commit/a6ec636cf0ec180802329251cf2603a252da258e))
+* default new role marked ([50fff42](https://github.com/awes-io/client/commit/50fff42bc86244adfe2e5563ccf284b1a9e0994c))
+* improved ui ([7dd6ec3](https://github.com/awes-io/client/commit/7dd6ec321071cbb9397245a1535dd18b43a08317))
+* minor loading and redirect fixes ([33a41d6](https://github.com/awes-io/client/commit/33a41d632f48a65c603d0e7b4f26416065e4fde6))
+* redirects moved to mixins ([94eb54c](https://github.com/awes-io/client/commit/94eb54cbe9431f7197ea65cf527193cd590929f9))
+* selecting new role permissions ([8663f40](https://github.com/awes-io/client/commit/8663f406c05ce94f14f8ece4967069d74fae7d4e))
+* update permissions ([bfad9d3](https://github.com/awes-io/client/commit/bfad9d34824f006586d15d5afbdfd4c5d9a7dbef))
+* updatin role permissions ([5912408](https://github.com/awes-io/client/commit/59124087ff92f25387b5f12875aa465961414558))
+* wip nuxt-admin module ([f6ec86d](https://github.com/awes-io/client/commit/f6ec86d0993284b50b9101670f3aefc4a1a47c81))
+
+
+
+
+
 ## [0.2.3](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.2.2...@awes-io/nuxt-admin@0.2.3) (2020-03-09)
 
 **Note:** Version bump only for package @awes-io/nuxt-admin

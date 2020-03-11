@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.68.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.68.0...@awes-io/ui@1.68.1) (2020-03-11)
+
+
+### Bug Fixes
+
+* **aw-select:** update dropdown on search ([3c138ac](https://github.com/awes-io/client/commit/3c138ac33493357bc2368f60dbb22108174abb28))
+
+
+
+
+
 # [1.68.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.67.0...@awes-io/ui@1.68.0) (2020-03-10)
 
 
