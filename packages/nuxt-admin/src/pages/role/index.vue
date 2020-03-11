@@ -1,34 +1,42 @@
 <template>
     <AwGrid :col="{ lg: 2 }">
-        <div>
-            <p class="h6">{{ $t('AwesIoNuxtAdmin.role_name') }}</p>
+        <AwGrid>
             <AwInput
+                :label="$t('AwesIoNuxtAdmin.role_name')"
                 v-model="model.name"
                 name="name"
                 :error="model.errors.name"
             />
-            <AwSwitcher 
-                class="mt-5"
-                v-model="model.default_new"
-                :label="$t('AwesIoNuxtAdmin.default_role')"
-            />
-            <p class="h6">{{ $t('AwesIoNuxtAdmin.priority') }}</p>
             <AwInput
                 v-model="model.priority"
+                :label="$t('AwesIoNuxtAdmin.priority')"
                 name="priority"
                 :error="model.errors.priority"
+                type="number"
+                placeholder="0"
             />
-            <p class="h6">{{ $t('AwesIoNuxtAdmin.description') }}</p>
             <AwTextarea
                 v-model="model.description"
+                :label="$t('AwesIoNuxtAdmin.description')"
                 name="description"
                 :error="model.errors.description"
             />
-            <AwButton class="mt-5" @click="updateRole" :loading="model.saving">
+            <AwInfo :label="$t('AwesIoNuxtAdmin.default_role_title')">
+                <AwSwitcher
+                    v-model="model.default_new"
+                    :label="$t('AwesIoNuxtAdmin.default_role')"
+                />
+            </AwInfo>
+            <AwButton
+                class="mt-5"
+                @click="updateRole"
+                :loading="model.saving"
+                :disabled="!model.changed()"
+            >
                 {{ $t('AwesIoNuxtAdmin.update') }}
             </AwButton>
-        </div>
-    </AwGrid>  
+        </AwGrid>
+    </AwGrid>
 </template>
 
 <script>

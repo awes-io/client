@@ -9,18 +9,20 @@ export default {
         permissions: 'permissions',
         permissions_title: 'Permissions',
         role_name: 'Role name',
-        default_role: 'Default role for a new user',
+        default_role_title: 'Do you want to use this role by default?',
+        default_role: 'Yes, I want to use by default.',
         priority: 'Priority',
         information: 'Information',
+        gender: 'Gender',
         create: 'Create',
-        create_user: 'Create user',
+        create_user: 'New user',
         update: 'Update',
-        employees: 'Employees',
-        employee: 'Employee',
+        employees: 'Users',
+        employee: 'User',
         status: 'Status',
         last_activity: 'Last activity',
         edit: 'Edit',
-        block: 'Block',
+        block: 'Deactivate',
         activate: 'Activate',
         all: 'All',
         active: 'Active',
@@ -36,5 +38,12 @@ export default {
         password_confirmation: 'Password confirmation',
         default_new: 'default new',
         name: 'Name',
+        reset: 'Reset',
+        user_edit: {
+            popup: {
+                header: 'Well Done!',
+                text: 'You have successfully updated the user profile.'
+            }
+        }
     }
 }
