@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    mode: 'spa',
 
     head: {
         title: 'Admin module example',
@@ -18,20 +18,24 @@ export default {
         '@awes-io/ui/nuxt',
         '@awes-io/nuxt-auth',
         '@awes-io/nuxt-admin',
-        '@awes-io/nuxt-i18n'
+        'nuxt-i18n'
     ],
-
-    awesIo: {
-        nuxtI18n: {
-            locales: ['en-US']
-        }
+    i18n: {
+        defaultLocale: 'en',
+        locales: [
+            {
+                code: 'en',
+                iso: 'en-US'
+            }
+        ]
     },
-
     axios: {
         proxy: true
     },
 
     proxy: {
-        '/api/': 'http://e2e-my.easyweek.io/'
+        '/api/': {
+            target: process.env.APP_SERVICE_API
+        }
     }
 }

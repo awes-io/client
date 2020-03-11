@@ -1678,6 +1678,14 @@
     postcss "^7.0.14"
     purgecss "^1.4.0"
 
+"@intlify/vue-i18n-loader@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.npmjs.org/@intlify/vue-i18n-loader/-/vue-i18n-loader-0.6.1.tgz#dbf7ab1d7ea3641396733b9827fed949644b1eeb"
+  integrity sha512-PyBeKrIxNQmnHq/hYGMneVIQAlGTWsFu92SMD5Noyi3GcHJvDpnthWTuRUBAsY4WqQ7RYLCnrngqCrUY5tNZtg==
+  dependencies:
+    js-yaml "^3.13.1"
+    json5 "^2.1.1"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.npmjs.org/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -2837,7 +2845,7 @@
     consola "^2.11.3"
     defu "^0.0.4"
 
-"@nuxtjs/axios@^5.3.6", "@nuxtjs/axios@^5.9.0":
+"@nuxtjs/axios@^5.9.0":
   version "5.9.5"
   resolved "https://registry.npmjs.org/@nuxtjs/axios/-/axios-5.9.5.tgz#5adc0acc4deb7e1d67ab7240c741a401a6c01823"
   integrity sha512-5sMsl5PbNSbAOou75wN2ztDAfGi6pU12zZQvfkDBz3s9KnKST/Azfc1FLw2Y8TR4UaDv074vt20oxK+z7AnH1A==
@@ -11665,6 +11673,20 @@ nuxt-i18n@^6.5.0:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
     "@kazupon/vue-i18n-loader" "^0.5.0"
+    cookie "^0.4.0"
+    is-https "^1.0.0"
+    js-cookie "^2.2.1"
+    vue-i18n "^8.12.0"
+    vue-i18n-extensions "^0.2.1"
+
+nuxt-i18n@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.npmjs.org/nuxt-i18n/-/nuxt-i18n-6.6.0.tgz#f7390d428ab54e4adada5bbc287b17682370f1fd"
+  integrity sha512-EIqCJXdnV+wU9Z/+wtPtNOOWPirAvFZ2nnOzI0ja86TfaZuUv2xxQ4Tj42GpMHBBh9CVnOCY5WseclXSz5O2iQ==
+  dependencies:
+    "@babel/parser" "^7.5.5"
+    "@babel/traverse" "^7.5.5"
+    "@intlify/vue-i18n-loader" "^0.6.1"
     cookie "^0.4.0"
     is-https "^1.0.0"
     js-cookie "^2.2.1"

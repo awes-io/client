@@ -20,7 +20,8 @@
     "license": "MIT",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
     "contributors": [
-        "illjah42 <ilya.kitayev@gmail.com>"
+        "illjah42 <ilya.kitayev@gmail.com>",
+        "begimov <begimov@gmail.com>"
     ],
     "main": "src/index.js",
     "files": [
@@ -29,6 +30,7 @@
     ],
     "dependencies": {
         "@awes-io/nuxt-auth": "^1.6.2",
+        "@awes-io/vue-mc": "^0.3.0",
         "rambdax": "^3.5.0"
     }
 }
