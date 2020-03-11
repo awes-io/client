@@ -42,7 +42,7 @@ Below is a collection of Vue **props** for the `AwCheckbox` component.
 <!-- @vuese:AwCheckbox:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|value|-|`String`|`false`|on|
+|value|Value that checkbox emits when checked|`String`|`false`|on|
 |checked|-|`Array` /  `Boolean` /  `Number`|`false`|-|
 
 <!-- @vuese:AwCheckbox:props:end -->
@@ -54,7 +54,6 @@ Below is a collection of Vue **slots** for the `AwCheckbox` component.
 |---|---|---|
 |default|-|-|
 |label|-|-|
-|error|-|-|
 
 <!-- @vuese:AwCheckbox:slots:end -->
 

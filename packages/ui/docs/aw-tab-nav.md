@@ -42,8 +42,8 @@ Below is a collection of Vue **props** for the `AwTabNav` component.
 <!-- @vuese:AwTabNav:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|items|Array of tab objects with `text` property or array of strings which become button names <AwTabNav :items="[{ text: 'One', href: '/one' }, { text: 'Two', href: '/two' }]" /> <AwTabNav :items="['One', 'Two']" />|`Array`|`true`|-|
-|active|Active tab index (for button tabs)|`Number`|`false`|-|
+|items|Array of tab objects with `text` property or array of strings which become button names <AwTabNav :items="[{ text: 'One', href: '/one' }, { text: 'Two', href: '/two' }]" /> <AwTabNav :items="['One', 'Two']" /> <AwTabNav :items="[{ text: 'One'}, { text: 'Two'}," />|`Array`|`true`|-|
+|active|Active tab index (for button tabs)|`Number` /  `Array`|`false`|-|
 
 <!-- @vuese:AwTabNav:props:end -->
 
@@ -59,6 +59,9 @@ Below is a collection of Vue **slots** for the `AwTabNav` component.
 ### Events
 Below is a collection of Vue **events** for the `AwTabNav` component.
 <!-- @vuese:AwTabNav:events:start -->
+|Event Name|Description|Parameters|
+|---|---|---|
+|update:active|-|-|
 
 <!-- @vuese:AwTabNav:events:end -->
 ## Examples

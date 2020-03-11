@@ -44,6 +44,7 @@ Below is a collection of Vue **props** for the `AwTable` component.
 |---|---|---|---|---|
 |rows|-|`Array`|`true`|-|
 |verticalAlign|-|`String`|`false`|middle|
+|orderable|Orderable config that will be merged with global orderable config. If null then global orderable config will be used|`Object`|`false`|-|
 
 <!-- @vuese:AwTable:props:end -->
 
@@ -64,6 +65,7 @@ Below is a collection of Vue **events** for the `AwTable` component.
 <!-- @vuese:AwTable:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
+|`TABLE_HEAD_CLICK_EVENT`|-|-|
 |`TABLE_ROW_CLICK_EVENT`|-|-|
 
 <!-- @vuese:AwTable:events:end -->

@@ -42,10 +42,10 @@ Below is a collection of Vue **props** for the `AwChart` component.
 <!-- @vuese:AwChart:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|data|-|`Object`|`true`|-|
+|data|Components uses same structure as chart.js (https://www.chartjs.org/docs/2.9.3/)|`Object`|`true`|-|
 |show|-|`Boolean`|`false`|-|
 |options|-|`Object`|`false`|-|
-|type|-|`String`|`false`|line|
+|type|List of all types - https://www.chartjs.org/docs/2.9.3/charts/|`String`|`false`|line|
 |height|-|`Number`|`false`|150|
 
 <!-- @vuese:AwChart:props:end -->

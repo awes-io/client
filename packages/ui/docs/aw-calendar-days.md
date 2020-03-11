@@ -19,11 +19,11 @@ The `AwCalendarDays` component is used to render days for calendar.
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |year|-|`Number`|`false`|2020|
-|month|-|`Number`|`false`|-|
+|month|-|`Number`|`false`|2|
 |firstDay|-|`Number`|`false`|1|
 |weekdays|-|`Array`|`false`|-|
 |disabledDays|-|`Function`|`false`|-|
-|selected|-|`String` /  `Number` /  `Object` /  `Date`|`false`|-|
+|selected|-|`Object` /  `Date` /  `Array`|`false`|-|
 
 <!-- @vuese:AwCalendarDays:props:end -->
 

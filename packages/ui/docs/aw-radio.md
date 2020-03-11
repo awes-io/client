@@ -53,7 +53,6 @@ Below is a collection of Vue **slots** for the `AwRadio` component.
 |Name|Description|Default Slot Content|
 |---|---|---|
 |label|-|-|
-|error|-|-|
 
 <!-- @vuese:AwRadio:slots:end -->
 

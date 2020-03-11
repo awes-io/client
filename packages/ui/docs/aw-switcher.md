@@ -50,7 +50,6 @@ Below is a collection of Vue **slots** for the `AwSwitcher` component.
 |---|---|---|
 |default|-|-|
 |label|-|-|
-|error|-|-|
 
 <!-- @vuese:AwSwitcher:slots:end -->
 

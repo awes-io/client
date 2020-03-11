@@ -45,7 +45,7 @@ Below is a collection of Vue **props** for the `AwCard` component.
 |background|-|`String`|`false`|-|
 |title|-|`String`|`false`|-|
 |text|-|`String`|`false`|-|
-|link|-|`String`|`false`|-|
+|link|If present transforms title into link with given href|`String`|`false`|-|
 
 <!-- @vuese:AwCard:props:end -->
 

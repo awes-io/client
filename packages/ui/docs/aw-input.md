@@ -53,7 +53,6 @@ Below is a collection of Vue **slots** for the `AwInput` component.
 |Name|Description|Default Slot Content|
 |---|---|---|
 |icon|-|-|
-|error|-|-|
 
 <!-- @vuese:AwInput:slots:end -->
 

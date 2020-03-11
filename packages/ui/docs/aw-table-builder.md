@@ -13,6 +13,7 @@
 |verticalAlign|-|`String`|`false`|-|
 |defaultHeight|Size of the empty block, e.g loading block or empty block.|`String`|`false`|50vh|
 |arrowNav|Should the page being switched on `CTRL + <-` and  `CTRL + ->`|`Boolean`|`false`|-|
+|orderable|Orderable config that will be merged with global orderable config. If null then global orderable config will be used|`Object`|`false`|-|
 
 <!-- @vuese:AwTableBuilder:props:end -->
 
@@ -35,3 +36,12 @@
 
 <!-- @vuese:AwTableBuilder:slots:end -->
 
+
+## Events
+<!-- @vuese:AwTableBuilder:events:start -->
+|Event Name|Description|Parameters|
+|---|---|---|
+|`TABLE_HEAD_CLICK_EVENT`|-|-|
+
+<!-- @vuese:AwTableBuilder:events:end -->
+                            

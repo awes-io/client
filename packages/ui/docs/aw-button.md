@@ -42,11 +42,13 @@ Below is a collection of Vue **props** for the `AwButton` component.
 <!-- @vuese:AwButton:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|size|-|`String`|`false`|-|
-|color|-|`String`|`false`|-|
-|theme|-|`String`|`false`|-|
-|icon|-|`String`|`false`|-|
-|active|-|`Boolean`|`false`|-|
+|size|Possible values: 'sm', 'md', 'lg'|`String`|`false`|-|
+|color|Background color of button. Possible values: 'info', 'success', 'warning', 'error'|`String`|`false`|-|
+|theme|Possible values: outline, ghost|`String`|`false`|-|
+|icon|Name of icon in button. Icon placed before text|`String`|`false`|-|
+|loading|Indicates if loader spinner is shown|`Boolean` /  `String`|`false`|-|
+|contentClass|CSS class for content wrapper|`String`|`false`|-|
+|active|Active state|`Boolean`|`false`|-|
 
 <!-- @vuese:AwButton:props:end -->
 

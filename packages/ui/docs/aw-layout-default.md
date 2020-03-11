@@ -6,7 +6,6 @@
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |menu|-|`Array`|`false`|[]|
-|menuExpanded|-|`Boolean`|`false`|-|
 
 <!-- @vuese:AwLayoutDefault:props:end -->
 
@@ -15,6 +14,7 @@
 <!-- @vuese:AwLayoutDefault:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
+|before-header|-|-|
 |navbar|navbar|-|
 |default|content|-|
 

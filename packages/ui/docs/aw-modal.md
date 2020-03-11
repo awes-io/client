@@ -46,7 +46,7 @@ Below is a collection of Vue **props** for the `AwModal` component.
 |stay|-|`Boolean`|`false`|-|
 |bgClickClose|-|`Boolean`|`false`|-|
 |name|-|`String`|`false`|-|
-|param|-|`String`|`false`|modal|
+|param|Get parameter, which is set when modal is opened|`String` /  `Boolean`|`false`|modal|
 |theme|-|`String`|`false`|default|
 |className|-|`String`|`false`|-|
 
@@ -57,7 +57,9 @@ Below is a collection of Vue **slots** for the `AwModal` component.
 <!-- @vuese:AwModal:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
+|subtitle|-|-|
 |default|-|-|
+|buttons|-|-|
 
 <!-- @vuese:AwModal:slots:end -->
 

@@ -69,6 +69,7 @@ Below is a collection of Vue **props** for the `AwSelect` component.
 |optionLabel|-|`String`|`false`|-|
 |optionValue|-|`String`|`false`|-|
 |searchable|-|`Boolean`|`false`|-|
+|clearable|Show clear button if value exists|`Boolean`|`false`|-|
 |maxSearchItems|-|`Number`|`false`|100|
 |name|-|`String`|`false`|-|
 |searchPreload|ajax|`Array` /  `Object` /  `Boolean`|`false`|-|
@@ -84,7 +85,6 @@ Below is a collection of Vue **slots** for the `AwSelect` component.
 |---|---|---|
 |dropdown|-|not equal|
 |not-equal|-|-|
-|before|-|-|
 |option-label|-|-|
 |not-found|-|-|
 
