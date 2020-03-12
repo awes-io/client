@@ -58,7 +58,7 @@
                             @click.prevent="close()"
                             theme="ghost"
                             color="default"
-                            content-class="px-2 py-3"
+                            content-class="p-2"
                             icon="close"
                             tabindex="0"
                         />

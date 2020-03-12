@@ -33,6 +33,7 @@ export const navigation = [
     { title: 'Radio', url: '/aw-radio', description: '' },
     { title: 'Search', url: '/aw-search', description: '' },
     { title: 'Select', url: '/aw-select', description: '' },
+    { title: 'Select multiple', url: '/aw-select_multiple', description: '' },
     { title: 'Select ajax', url: '/aw-select_ajax', description: '' },
     { title: 'Select object', url: '/aw-select_object', description: '' },
     { title: 'Switcher', url: '/aw-switcher', description: '' },

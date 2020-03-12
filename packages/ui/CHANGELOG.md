@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.69.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.68.1...@awes-io/ui@1.69.0) (2020-03-12)
+
+
+### Bug Fixes
+
+* aw-select dropdown update in the next tick ([75addf7](https://github.com/awes-io/client/commit/75addf7c944cd28b87716ec36bd14cf4bca24340))
+* header notification - center close button ([c476835](https://github.com/awes-io/client/commit/c476835467162b756c08c0f2999cbf78d00c535c))
+* modal close button spacing fix ([3953c30](https://github.com/awes-io/client/commit/3953c301abd5ba586040f8daaf760ece1c2f694a))
+* reduce timeout to 0 in async dropdown update on aw-select search ([c740f97](https://github.com/awes-io/client/commit/c740f9752e4355578de65df91c1bb2b418ee95d5))
+
+
+### Features
+
+* **aw-select:** simple multiple select proposal ([524bcfd](https://github.com/awes-io/client/commit/524bcfd10a12a69a76bf23e0579231fd2330a074))
+* change header notification min-height ([707a07e](https://github.com/awes-io/client/commit/707a07e8c11a56d4bd9a4b5e19811ffa3b1720e1))
+* change modal content max-width ([ac0bc2f](https://github.com/awes-io/client/commit/ac0bc2fcac897465d5563c7b6ecb561abe59e1cf))
+
+
+
+
+
 ## [1.68.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.68.0...@awes-io/ui@1.68.1) (2020-03-11)
 
 

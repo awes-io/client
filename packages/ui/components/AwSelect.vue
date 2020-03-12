@@ -3,26 +3,36 @@
         class="relative"
         @keydown.up="_arrowFocusItem(-1, $event)"
         @keydown.down="_arrowFocusItem(+1, $event)"
+        @click="_selectOnClick"
     >
         <!-- value -->
-        <input
+        <!-- <select
             v-if="name"
-            type="hidden"
-            tabindex="-1"
             :name="name"
-            :value="JSON.stringify(_getValue(selected))"
+            :multiple="multiple"
+            tabindex="-1"
+            class="hidden"
             @invalid.prevent="
                 $refs.input.setError($event.target.validationMessage)
             "
-        />
+        >
+            <option
+                v-for="index in selectedIndexes"
+                :key="index"
+                :value="JSON.stringify(_getValue(selectOptions[index]))"
+                selected
+            >
+                {{ _getLabel(selectOptions[index]) }}
+            </option>
+        </select> -->
 
         <!-- show label -->
         <AwInput
             ref="input"
-            :value="isSearching ? searchPhrase : _getLabel(selected)"
+            :value="_inputValue"
             :label="label"
-            :class="{ 'is-filled': isOpened }"
-            :placeholder="_getLabel(selected)"
+            :class="{ 'is-filled': searchable && isOpened }"
+            :placeholder="_selectedLabel"
             v-bind="$attrs"
             @focus="_onFocus"
             @blur="_onBlur"
@@ -32,11 +42,14 @@
             autocomplete="off"
             data-arrow-focus
         >
+            <template v-if="multiple && selectedIndexes.length" #element>
+                {{ selectedIndexes }}
+            </template>
             <template #icon>
                 <AwButton
                     v-if="clearable"
-                    v-show="!isOpened && selected"
-                    @click="selectedIndex = null"
+                    v-show="!isOpened && selectedIndexes.length"
+                    @click="selectedIndexes = []"
                     icon="close"
                     theme="icon"
                 />
@@ -85,7 +98,7 @@
                         i) in optionsList"
                         :key="`${optionLabel}-${index}`"
                         :active="active"
-                        @click="selectedIndex = index"
+                        :data-select-index="index"
                         tabindex="-1"
                         data-arrow-focus
                     >
@@ -115,11 +128,15 @@
 </template>
 
 <script>
-import { path, pathOr, split, isNil } from 'rambdax'
+import { path, pathOr, isNil } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
-import AwDropdownButton from './AwDropdownButton.vue'
 import arrowFocusMixin from '../mixins/arrow-focus'
+import AwIcon from './AwIcon.vue'
+import AwInput from './AwInput.vue'
+import AwButton from './AwButton.vue'
+import AwDropdown from './AwDropdown.vue'
+import AwDropdownButton from './AwDropdownButton.vue'
 
 export default {
     inheritAttrs: false,
@@ -127,6 +144,10 @@ export default {
     name: 'AwSelect',
 
     components: {
+        AwIcon,
+        AwInput,
+        AwButton,
+        AwDropdown,
         AwDropdownButton
     },
 
@@ -152,7 +173,7 @@ export default {
             default: ''
         },
 
-        optionValue: {
+        trackBy: {
             type: String,
             default: ''
         },
@@ -172,9 +193,22 @@ export default {
             default: 100
         },
 
-        name: {
+        // name: {
+        //     type: String,
+        //     default: ''
+        // },
+
+        /**
+         * Allow select multiple values
+         */
+        multiple: Boolean,
+
+        /**
+         * Separator for multiple values
+         */
+        multipleSeparator: {
             type: String,
-            default: ''
+            default: ', '
         },
 
         // ajax
@@ -200,7 +234,6 @@ export default {
             isSearching: false,
             searchPhrase: '',
             selectOptions: [],
-            optionSelected: this.value,
 
             // ajax
             cancellation: null,
@@ -209,41 +242,46 @@ export default {
     },
 
     computed: {
-        selected: {
+        selectedIndexes: {
             get() {
-                return this.selectOptions[this.selectedIndex]
-            },
-
-            set(value) {
-                value = this._getValue(value)
-                this.optionSelected = value
-                this.$emit('input', value, this.selected)
-                this.isOpened = false
-            }
-        },
-
-        selectedIndex: {
-            get() {
-                return this.selectOptions.findIndex(
-                    this.optionValue
-                        ? option =>
-                              option[this.optionValue] === this.optionSelected
-                        : option => option === this.optionSelected
-                )
-            },
-
-            set(index) {
-                this.selected = this.selectOptions[index]
-                // blur, because select opens on focus
-                if (document.activeElement) {
-                    document.activeElement.blur()
+                if (isNil(this.value)) {
+                    return []
                 }
+
+                const value = Array.isArray(this.value)
+                    ? this.value
+                    : [this.value]
+
+                return value.reduce((acc, option) => {
+                    const index = this.selectOptions.findIndex(_option => {
+                        return this._getValue(_option) === option
+                    })
+                    return index === -1 ? acc : acc.concat(index)
+                }, [])
+            },
+
+            set(indexes) {
+                if (!Array.isArray(indexes)) return
+
+                const options = indexes.reduce((acc, index) => {
+                    const option = this.selectOptions[index]
+                    return isNil(option) ? acc : acc.concat(option)
+                }, [])
+                const values = options.map(this._getValue)
+
+                if (this.multiple) {
+                    this.$emit('input', values, options)
+                } else {
+                    this.$emit('input', values[0], options[0])
+                }
+
+                this._close()
             }
         },
 
         optionsList() {
             return this.selectOptions.reduce((acc, option, index) => {
-                const active = index === this.selectedIndex
+                const active = this.selectedIndexes.includes(index)
                 const inRange = acc.length < this.maxSearchItems
                 const matchSerach = this._hasInternalSearch
                     ? this._matchSearch(option)
@@ -260,12 +298,17 @@ export default {
             }, [])
         },
 
-        _optionLabelPath() {
-            return !!this.optionLabel && split('.', this.optionLabel)
+        _selectedLabel() {
+            return this.selectedIndexes
+                .map(index => this._getLabel(this.selectOptions[index]))
+                .join(this.multipleSeparator)
         },
 
-        _optionValuePath() {
-            return !!this.optionValue && split('.', this.optionValue)
+        _inputValue() {
+            if (this.isSearching) {
+                return this.searchPhrase
+            }
+            return this._selectedLabel
         },
 
         _optionSearchRegEx() {
@@ -293,8 +336,7 @@ export default {
     },
 
     watch: {
-        value(value) {
-            this.optionSelected = value
+        value() {
             this.$refs.input.setError()
         },
 
@@ -303,7 +345,11 @@ export default {
                 this.searchPhrase = ''
                 this.isSearching = !!this.searchable
                 this._toggleOutsideHandler(true)
-                if (!this.selected && this._isAjax && !!this.searchPreload) {
+                if (
+                    !this.selectedIndexes.length &&
+                    this._isAjax &&
+                    !!this.searchPreload
+                ) {
                     this._preloadOptions()
                 }
             } else {
@@ -327,12 +373,10 @@ export default {
         }
 
         if (this.searchable) {
-            let tm
             const unwatch = this.$watch('searchPhrase', () => {
-                clearTimeout(tm)
-                tm = setTimeout(() => {
-                    this.$refs.dropdown.update()
-                }, 60)
+                  this.$nextTick(() => {
+                      this.$refs.dropdown.update()
+                  });
             })
 
             this.$once('hook:beforeDestroy', unwatch)
@@ -352,15 +396,11 @@ export default {
 
     methods: {
         _getLabel(option) {
-            return this.optionLabel
-                ? path(this._optionLabelPath, option)
-                : option
+            return this.optionLabel ? path(this.optionLabel, option) : option
         },
 
         _getValue(option) {
-            return this.optionValue
-                ? path(this._optionValuePath, option)
-                : option
+            return this.trackBy ? path(this.trackBy, option) : option
         },
 
         _matchSearch(option) {
@@ -411,13 +451,43 @@ export default {
             }
         },
 
+        _selectIndex(index) {
+            if (this.multiple) {
+                const selected = this.selectedIndexes
+
+                if (selected.indexOf(index) !== -1) {
+                    this.selectedIndexes = selected.filter(
+                        _index => _index !== index
+                    )
+                } else {
+                    this.selectedIndexes = selected.concat(index)
+                }
+            } else {
+                this.selectedIndexes = [index]
+            }
+        },
+
+        _selectOnClick($event) {
+            let target = $event.target
+
+            if (!target.hasAttribute('data-select-index')) {
+                target = target.closest('[data-select-index]')
+            }
+
+            if (target) {
+                $event.stopPropagation()
+                $event.preventDefault()
+                this._selectIndex(
+                    parseInt(target.getAttribute('data-select-index'))
+                )
+            }
+        },
+
         _selectOnEnter() {
             // close if nothing typed
             if (!this.searchPhrase) {
                 this.isOpened = false
-                this.selectedIndex = isNil(this.selectedIndex)
-                    ? null
-                    : this.selectedIndex
+                this._close()
                 return
             }
 
@@ -425,18 +495,18 @@ export default {
 
             // select first option if search exists
             if (firstOption) {
-                this.selectedIndex = firstOption.index
+                this._selectIndex(firstOption.index)
             } else {
                 // emit not found
                 this.isOpened = false
                 this.$emit('not-found', this.searchPhrase)
-                this.selectedIndex = null
+                this.selectedIndexes = []
             }
         },
 
         _onClickNotEqual() {
             this.isOpened = false
-            this.selectedIndex = null
+            this.selectedIndexes = []
             this.$emit('not-equal', this.searchPhrase)
         },
 
@@ -450,6 +520,15 @@ export default {
             const method = activate ? 'addEventListener' : 'removeEventListener'
 
             document.body[method]('click', this._onClickOutside)
+        },
+
+        _close() {
+            this.isOpened = false
+
+            // blur, because select opens on focus
+            if (typeof document !== 'undefined' && document.activeElement) {
+                document.activeElement.blur()
+            }
         },
 
         // ajax
