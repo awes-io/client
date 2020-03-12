@@ -332,7 +332,7 @@ export default {
                 clearTimeout(tm)
                 tm = setTimeout(() => {
                     this.$refs.dropdown.update()
-                }, 60)
+                }, 0)
             })
 
             this.$once('hook:beforeDestroy', unwatch)
