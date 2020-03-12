@@ -1,11 +1,5 @@
 <template>
-    <div
-        class="aw-switch-field is-switcher"
-        :class="wrapperClasses"
-        @mousedown="_onPointerDown"
-        @touchstart="_onPointerDown"
-        @click.prevent
-    >
+    <div class="aw-switch-field is-switcher" :class="wrapperClasses">
         <slot
             v-bind="{
                 id: id || defaultId,
@@ -22,8 +16,7 @@
                 v-bind="{ value, checked: isChecked, ...skipAttr, ...$attrs }"
                 :id="id || defaultId"
                 :aria-describedby="errorText ? errorId : null"
-                v-tooltip:top-start.show.prepend="errorTooltip"
-                v-on="mergedListeners"
+                @change="_onChange"
             /><label
                 v-if="!!label"
                 class="aw-switch-field__label"
@@ -33,7 +26,13 @@
                     {{ label }}
                 </slot>
             </label>
-            <div class="aw-switch-field__switch" aria-hidden="true">
+            <div
+                v-tooltip:top-start.show.prepend="errorTooltip"
+                class="aw-switch-field__switch"
+                aria-hidden="true"
+                @mousedown="_onPointerDown"
+                @touchstart="_onPointerDown"
+            >
                 <span class="aw-switch-field__toggle"></span>
             </div>
         </slot>
@@ -61,18 +60,12 @@ export default {
         }
     },
 
-    computed: {
-        _tooltipOffset() {
-            return [0, 0]
-        }
-    },
-
     methods: {
         _onChange($event) {
-            if ($event.isTrusted && this.isSwitched) {
-                this.isSwitched = false
-                return
-            }
+            // if ($event.isTrusted && this.isSwitched) {
+            //     this.isSwitched = false
+            //     return
+            // }
 
             let value = this._createValue($event.target.checked)
 
