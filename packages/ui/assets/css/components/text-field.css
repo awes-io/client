@@ -2,7 +2,7 @@
     position: relative;
 
     &__element {
-        @apply w-full border rounded;
+        @apply w-full border rounded truncate;
         background-color: var(--c-surface, inherit);
         transition: 200ms border-color;
 
@@ -151,7 +151,8 @@
     }
 
     &__label {
-        @apply absolute opacity-50;
+        @apply absolute opacity-50 truncate;
+        max-width: 100%;
         left: theme('spacing.3', 0.75rem);
         top: theme('spacing.3', 0.75rem);
         transform-origin: left top;
@@ -169,7 +170,11 @@
      */
 
     &.has-icon &__element {
-        @apply pr-10;
+        @apply pr-16;
+    }
+
+    &.has-icon &__label {
+        max-width: calc(100% - theme('spacing.16'))
     }
 
     &__icon {

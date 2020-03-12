@@ -6,7 +6,7 @@
             label="Select something"
             v-model="selected"
             option-label="text"
-            :option-value="optionValueProp"
+            :track-by="optionValueProp"
         />
 
         <AwSwitcher label="Disable" v-model="disabled" />
@@ -74,7 +74,7 @@ export default {
     label="Select something"
     :options="[{text: 'one', value: 1}, {text: 'two', value: 2}, ... ]"
     option-label="text"
-${this.optionValue ? '    option-value="value"\n/>' : '/>'}`
+${this.optionValue ? '    track-by="value"\n/>' : '/>'}`
         }
     },
 
