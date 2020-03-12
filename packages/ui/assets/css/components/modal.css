@@ -46,6 +46,11 @@ body.has-modal-bottom {
 
     &__content {
         @apply mx-auto p-6;
+        max-width: 100%;
+    }
+
+    &.is-fullscreen &__content,
+    &.is-bottom &__content {
         max-width: var(--ui-container-width, $container-width)
     }
 
@@ -75,7 +80,7 @@ body.has-modal-bottom {
     &__close {
         @apply absolute;
         top: theme('spacing.4');
-        right: theme('spacing.3');
+        right: theme('spacing.4');
     }
 
     &__title {
@@ -184,7 +189,7 @@ body.has-modal-bottom {
     .aw-modal {
 
         &:not(.is-aside) &__header {
-            @apply items-start justify-center;
+            @apply items-start justify-center px-8;
         }
 
         &__container {
@@ -198,6 +203,10 @@ body.has-modal-bottom {
         &:not(.is-aside) &__title,
         &:not(.is-aside) &__subtitle {
             @apply text-center;
+        }
+
+        &:not(.is-aside) &__subtitle {
+            @apply px-8;
         }
 
         &:not(.is-aside) &__content,
@@ -235,14 +244,6 @@ body.has-modal-bottom {
             @apply absolute;
             top: theme('spacing.16');
             right: theme('spacing.16');
-        }
-    }
-}
-
-@screen lg {
-    .aw-modal {
-        &.is-default &__content {
-            @apply px-0;
         }
     }
 }
