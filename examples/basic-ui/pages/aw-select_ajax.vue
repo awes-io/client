@@ -5,7 +5,7 @@
             ref="select"
             :options="text => `/api/select-ajax?s=${text}`"
             :disabled="disabled"
-            option-value="id"
+            track-by="id"
             option-label="name"
             label="Category"
             placeholder="Select or create category"
