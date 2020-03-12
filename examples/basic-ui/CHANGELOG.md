@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.57.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.56.1...basic-ui@1.57.0) (2020-03-12)
+
+
+### Features
+
+* **aw-select:** simple multiple select proposal ([524bcfd](https://git.awescode.com/awes-io/client/commits/524bcfd10a12a69a76bf23e0579231fd2330a074))
+
+
+
+
+
 ## [1.56.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.56.0...basic-ui@1.56.1) (2020-03-11)
 
 **Note:** Version bump only for package basic-ui
