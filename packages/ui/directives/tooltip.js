@@ -1,5 +1,5 @@
 import { createPopper } from '@popperjs/core'
-import { isType, isNil, pathOr, omit, F, clone } from 'rambdax'
+import { isType, pathOr, omit, F, clone, equals } from 'rambdax'
 
 const POPPERS = new Map()
 
@@ -70,7 +70,15 @@ function toggleEvents(el, on = false, $events = EVENTS) {
     })
 }
 
-function createTooltip(content, options, placement = 'top') {
+function _updateTooltipContent(tooltip, content) {
+    tooltip.__content__ = content
+
+    tooltip.innerHTML = content + '</span><span data-popper-arrow></span>'
+
+    return tooltip
+}
+
+function createTooltip(content, options, placement) {
     const tooltip = document.createElement('div')
 
     let cssClass = pathOr('', 'class', options)
@@ -92,9 +100,17 @@ function createTooltip(content, options, placement = 'top') {
         tooltip.setAttribute('id', id)
     }
 
-    tooltip.innerHTML = content + '</span><span data-popper-arrow></span>'
+    _updateTooltipContent(tooltip, content)
 
     return tooltip
+}
+
+function _getContent(value) {
+    return isType('String', value) ? value : pathOr('', 'content', value)
+}
+
+function _getOptions(value) {
+    return isType('Object', value) ? omit('content', value) : {}
 }
 
 function unbind(el) {
@@ -123,23 +139,18 @@ function unbind(el) {
         tooltip.onclick = null
         delete tooltip.__placement__
         delete tooltip.__options__
+        delete tooltip.__content__
         delete el.__tooltip__
         delete el.__async_tooltip__
     }
 }
 
-function bind(el, { value, arg, modifiers }) {
-    // destroy if exists
-    unbind(el)
-
-    if (isNil(value)) return
-
-    const content = isType('String', value)
-        ? value
-        : pathOr('', 'content', value)
-    const options = isType('Object', value) ? omit('content', value) : {}
+function bind(el, { value, arg = 'top', modifiers }) {
+    const content = _getContent(value)
 
     if (content) {
+        const options = _getOptions(value)
+
         // create new tooltip
         el.__tooltip__ = createTooltip(content, options, arg)
 
@@ -164,8 +175,41 @@ function bind(el, { value, arg, modifiers }) {
     }
 }
 
+function update(el, { value, arg = 'top', modifiers }) {
+    const content = _getContent(value)
+
+    // create if not exist
+    if (content && !el.__tooltip__) {
+        bind(el, { value, arg, modifiers })
+        return
+    }
+
+    // remove if no content
+    if (!content) {
+        unbind(el)
+        return
+    }
+
+    // rebuild tooltip
+    const options = _getOptions(value)
+
+    if (
+        arg !== el.__tooltip__.__placement__ ||
+        !equals(options, el.__tooltip__.__options__)
+    ) {
+        unbind(el)
+        bind(el, { value, arg, modifiers })
+        return
+    }
+
+    // update content
+    if (content !== el.__tooltip__.__content__) {
+        _updateTooltipContent(el.__tooltip__, content)
+    }
+}
+
 export default {
     bind,
-    update: bind,
+    update,
     unbind
 }
