@@ -5,13 +5,14 @@
     }
 
     &__notification {
-        @apply py-5 pl-8 pr-12 text-center font-body text-sm relative;
+        @apply py-3 pl-8 pr-12 flex justify-center items-center font-body text-sm relative;
+        min-height: theme('spacing.16');
     }
 
     &__close {
         @apply absolute;
-        top: 1.90625rem;
-        right: theme('spacing.3');
+        top: theme('spacing.8');
+        right: theme('spacing.4');
         transform: translateY(-50%);
     }
 
