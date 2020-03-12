@@ -108,7 +108,7 @@
         opacity: 1 !important;
     }
 
-    &:not(.is-loading):not(.theme-icon)[disabled] {
+    &.theme-solid:not(.is-loading)[disabled] {
         background-color: rgba(148,151,153, .3) !important;
     }
 
