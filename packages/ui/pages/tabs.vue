@@ -76,14 +76,6 @@ export default {
             active: [6],
             status: 2
         }
-    },
-
-    methods: {
-        isActive(items) {
-            return items.findIndex(
-                ({ href }) => href.query.orderBy == this.$route.query.orderBy
-            )
-        }
     }
 }
 </script>

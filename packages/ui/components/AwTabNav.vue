@@ -48,13 +48,17 @@
 </template>
 
 <script>
-import { pathOr, isType, omit, uniq, keys, fromPairs } from 'rambdax'
 import {
-    mergeQueries,
-    hasRouteQuery,
-    cleanRouteQuery,
-    trimSlash
-} from '../assets/js/router'
+    pathOr,
+    isType,
+    pick,
+    omit,
+    uniq,
+    keys,
+    equals,
+    fromPairs
+} from 'rambdax'
+import { cleanRouteQuery, trimSlash } from '../assets/js/router'
 import { validateBySchema } from '../assets/js/component'
 import { getBemClasses } from '../assets/js/css'
 import AwSlider from './AwSlider.vue'
@@ -127,7 +131,11 @@ export default {
             }
         },
 
-        _resetParams() {
+        _currentPath() {
+            return trimSlash(this.$route.path)
+        },
+
+        _allParams() {
             return uniq(
                 this.items.reduce((acc, item) => {
                     return acc.concat(keys(pathOr({}, 'href.query', item)))
@@ -136,51 +144,7 @@ export default {
         },
 
         _resetParamsQuery() {
-            return fromPairs(this._resetParams.map(param => [param, null]))
-        },
-
-        _routeNormalizer() {
-            return href => {
-                if (typeof href === 'object') {
-                    const currentPath = trimSlash(this.$route.path)
-                    const path = trimSlash(pathOr(currentPath, 'path', href))
-
-                    if (path === currentPath) {
-                        return this.$router.resolve({
-                            path,
-                            query: mergeQueries(
-                                {
-                                    ...this._resetParamsQuery,
-                                    ...pathOr({}, 'query', href)
-                                },
-                                this.$route.query
-                            ),
-                            hash: this.$route.hash
-                        }).route
-                    } else {
-                        return this.$router.resolve({
-                            ...href,
-                            query: cleanRouteQuery(pathOr({}, 'query', href))
-                        }).route
-                    }
-                } else {
-                    return this.$router.resolve(href).route
-                }
-            }
-        },
-
-        _routeMatcher() {
-            return route => {
-                // check if same path
-                const isSamePath =
-                    trimSlash(route.path) === trimSlash(this.$route.path)
-
-                return (
-                    isSamePath &&
-                    // check for query existance in current route
-                    hasRouteQuery(route.query, this.$route)
-                )
-            }
+            return fromPairs(this._allParams.map(param => [param, null]))
         },
 
         togglers() {
@@ -188,9 +152,9 @@ export default {
                 const text = pathOr(item, 'text', item)
                 const isDisabled = pathOr(false, 'disabled', item)
                 const href = pathOr(false, 'href', item)
-                const route = href ? this._routeNormalizer(href) : false
+                const route = href ? this._normalizeRoute(href) : false
                 const isActive = href
-                    ? this._routeMatcher(route)
+                    ? this._isSameRoute(route)
                     : Array.isArray(this.active)
                     ? this.active.includes(i)
                     : i === this.active
@@ -216,7 +180,13 @@ export default {
             const toggler = this.togglers.find(item => item.route === route)
 
             if (toggler && !toggler.isActive) {
-                this.$router.push(route)
+                this.$router.push({
+                    ...route,
+                    query: cleanRouteQuery({
+                        ...(this._isSamePath(route) ? this.$route.query : {}),
+                        ...route.query
+                    })
+                })
             }
         },
 
@@ -241,6 +211,35 @@ export default {
             if (el.length === 1 || (el.length > 1 && force)) {
                 this.$refs.slider.scrollTo(el[0])
             }
+        },
+
+        _normalizeRoute(href) {
+            const route = this.$router.resolve(href).route
+
+            return {
+                ...route,
+                query: {
+                    ...this._resetParamsQuery,
+                    ...cleanRouteQuery(route.query)
+                }
+            }
+        },
+
+        _isSamePath(route) {
+            return trimSlash(route.path) === this._currentPath
+        },
+
+        _isSameRoute(route) {
+            if (!this._isSamePath(route)) {
+                return false
+            }
+
+            const currentParams = {
+                ...this._resetParamsQuery,
+                ...pick(this._allParams, this.$route.query)
+            }
+
+            return equals(currentParams, route.query)
         }
     }
 }

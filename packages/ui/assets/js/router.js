@@ -1,4 +1,4 @@
-import { isFalsy, mergeDeep, filter, toPairs } from 'rambdax'
+import { isNil, mergeDeep, filter } from 'rambdax'
 
 /**
  * Removes nullish values from query object
@@ -6,7 +6,7 @@ import { isFalsy, mergeDeep, filter, toPairs } from 'rambdax'
  * @param  {Object} dirty query
  * @return {Object} clean query
  */
-export const cleanRouteQuery = filter(val => !isFalsy(val))
+export const cleanRouteQuery = filter(val => !isNil(val) && val !== '')
 
 /**
  * Returns merged query object without nullish values
@@ -38,25 +38,6 @@ export function mergeRouteQuery(query, route) {
         ...route,
         query: mergeQueries(query, route.query)
     }
-}
-
-/**
- * Checks if given route has provided query params
- *
- * @param {Object<VueRouterRoute>} route - Vue-router instance from component
- *
- * @param {Object}                 query - params object.
- *
- * @return {Boolean} - true if has query
- */
-export function hasRouteQuery(query, route) {
-    const _query = cleanRouteQuery(query)
-    const _routeQuery = cleanRouteQuery(route.query)
-
-    if (isFalsy(_query) && !isFalsy(_routeQuery)) return false
-
-    // non-strict values comparation, because of different types of default string parsing
-    return toPairs(_query).every(([key, value]) => _routeQuery[key] == value)
 }
 
 /**
