@@ -162,6 +162,10 @@ body.has-modal-bottom {
         top: 50%;
     }
 
+    &.is-bottom &__subtitle {
+        flex-shrink: 0;
+    }
+
     &.is-bottom &__back {
         @apply hidden;
     }

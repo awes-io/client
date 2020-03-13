@@ -374,9 +374,9 @@ export default {
 
         if (this.searchable) {
             const unwatch = this.$watch('searchPhrase', () => {
-                  this.$nextTick(() => {
-                      this.$refs.dropdown.update()
-                  });
+                this.$nextTick(() => {
+                    this.$refs.dropdown.update()
+                })
             })
 
             this.$once('hook:beforeDestroy', unwatch)

@@ -1,3 +1,4 @@
+import { isNil } from 'rambdax'
 import FieldMixin from './field'
 import ErrorMixin from './error'
 
@@ -24,8 +25,7 @@ export default {
                 {
                     'is-filled':
                         this.autoFilled ||
-                        (typeof this.inputValue !== 'undefined' &&
-                            this.inputValue !== '')
+                        (!isNil(this.inputValue) && this.inputValue !== '')
                 },
                 { 'has-label': !!this.label },
                 { 'has-error': this.hasError },

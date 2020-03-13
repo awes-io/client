@@ -62,19 +62,25 @@
      * Switcher
      */
 
+    &.is-switcher {
+        display: flex;
+        align-items: center;
+    }
+
     &.is-switcher &__label {
-        @apply block relative z-1 opacity-50;
-        padding-left: 2.75rem;
+        @apply opacity-50;
         user-select: none;
         transition: 200ms opacity;
     }
 
     &__switch {
-        @apply block absolute opacity-50;
+        @apply relative opacity-50;
+        flex-shrink: 0;
+        margin: 0.125rem 0 0.125rem 0.125rem;
+        cursor: pointer;
+        order: -1;
         width: 2rem;
         height: 1rem;
-        left: .125rem;
-        top: .75rem;
         border-radius: .625rem;
         transition: 200ms opacity;
 
