@@ -186,6 +186,20 @@
 
             <AwCodeSnippet v-text="configExampleCode" class="mt-8 shadow" />
         </section>
+
+        <section class="mt-8">
+            <h2 class="h3">List slot</h2>
+
+            <AwTableBuilder :collection="listManagers">
+                <template #list="{ item }">
+                    <div class="bg-muted-dark mb-2 p-4 rounded">
+                        {{ item.first_name }} {{ item.last_name }}
+                    </div>
+                </template>
+            </AwTableBuilder>
+
+            <AwCodeSnippet v-text="listCode" class="mt-8 shadow" />
+        </section>
     </AwPage>
 </template>
 
@@ -226,7 +240,8 @@ export default {
                 }
             ],
             managers: new Managers(),
-            oredableManagers: new Managers()
+            oredableManagers: new Managers(),
+            listManagers: new Managers()
         }
     },
 
@@ -299,6 +314,19 @@ export default {
                 '    </AwTableCol>',
                 '',
                 '    <AwTableCol title="Job title" field="position" />',
+                '</AwTableBuilder>'
+            ]
+            return arr.join('\n')
+        },
+
+        listCode() {
+            const arr = [
+                '<AwTableBuilder :collection="listManagers">',
+                '    <template #list="{ item }">',
+                '        <div class="bg-muted-dark mb-2 p-4 rounded">',
+                '            {{ item.first_name }} {{ item.last_name }}',
+                '        </div>',
+                '    </template>',
                 '</AwTableBuilder>'
             ]
             return arr.join('\n')
