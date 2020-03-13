@@ -68,9 +68,19 @@
             </slot>
         </div>
 
+        <ul
+            v-if="$scopedSlots.list"
+            :style="collection.loading ? 'filter: blur(3px);' : null"
+            class="list-none"
+        >
+            <li v-for="item in items" :key="item.id">
+                <slot name="list" v-bind:item="item"></slot>
+            </li>
+        </ul>
+
         <!-- table -->
         <AwTable
-            v-if="items && items.length"
+            v-if="items && items.length && !$scopedSlots.list"
             ref="table"
             key="table"
             :rows="items"
@@ -99,7 +109,10 @@
             </AwTableCol>
         </AwTable>
 
-        <div v-else-if="collection.loading" key="empty-loading-container">
+        <div
+            v-else-if="collection.loading && !$scopedSlots.list"
+            key="empty-loading-container"
+        >
             <!-- Empty loading container -->
             <slot name="empty-loading-container">
                 <!-- Empty AwCard block -->
