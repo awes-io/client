@@ -3,11 +3,7 @@
         :name="`modal-transition-${theme}`"
         @before-enter="_preOpen"
         @before-appear="_preOpen"
-        @before-leave="onBeforeLeave(theme)"
-        @after-leave="
-            _removeBodyClass(`has-modal-${theme}`)
-            showContent = false
-        "
+        @after-leave="_afterLeave"
         appear
     >
         <aside
@@ -129,12 +125,16 @@
 </template>
 
 <script>
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { mergeRouteQuery } from '../assets/js/router'
 import { conf } from '../assets/js/component'
 import { getBemClasses } from '../assets/js/css'
 import { AwModal as _config } from './_config'
+import AwButton from './AwButton.vue'
 
 const DEFAULT_GET_PARAM = 'modal'
+
+const DISABLE_SCROLL_THEMES = ['default', 'fullscreen', 'bottom']
 
 let _uniqModalId = 0
 
@@ -151,6 +151,10 @@ export default {
     name: 'AwModal',
 
     _config,
+
+    components: {
+        AwButton
+    },
 
     props: {
         title: String,
@@ -186,6 +190,17 @@ export default {
         theme: {
             type: String,
             default: 'default'
+        },
+
+        /**
+         * Should modal disable body scrolling
+         */
+        disableScroll: {
+            type: Boolean,
+            // by default disabled for 'default', 'fullscreen' and 'bottom' themes
+            default() {
+                return DISABLE_SCROLL_THEMES.includes(this.theme)
+            }
         },
 
         className: {
@@ -281,24 +296,24 @@ export default {
     },
 
     methods: {
-        _addBodyClass(...classes) {
-            document.body.classList.add(...classes)
-        },
-
-        _removeBodyClass(...classes) {
-            document.body.classList.remove(...classes)
+        _toggleBodyScroll(enable) {
+            if (enable) {
+                enableBodyScroll(this.$el)
+            } else if (this.disableScroll) {
+                disableBodyScroll(this.$el, {
+                    reserveScrollBarGap: true
+                })
+            }
         },
 
         _preOpen() {
             this.showContent = true
-            this._addBodyClass(`has-modal-${this.theme}`)
+            this._toggleBodyScroll(false)
         },
 
-        onBeforeLeave(theme) {
-            if (theme === 'fullscreen') {
-                this._removeBodyClass(`has-modal-${theme}`)
-                this.showContent = false
-            }
+        _afterLeave() {
+            this._toggleBodyScroll(true)
+            this.showContent = false
         },
 
         open() {
@@ -356,6 +371,7 @@ export default {
     },
 
     beforeDestroy() {
+        this._afterLeave()
         this.eventBus.$off(`modal::${this.name}:open`, this.open)
         this.eventBus.$off(`modal::${this.name}:close`, this.close)
 

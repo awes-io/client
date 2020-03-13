@@ -7,16 +7,6 @@ $modal-aside-width: 320px;
 $modal-aside-width-medium: 50vw;
 $modal-aside-width-large: 75vw;
 
-aw-modal {
-    display: none;
-}
-
-body.has-modal-default,
-body.has-modal-fullscreen,
-body.has-modal-bottom {
-    overflow: hidden;
-}
-
 .aw-modal {
     @apply z-100 fixed inset-0;
     overflow: auto;
