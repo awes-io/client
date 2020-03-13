@@ -6,11 +6,13 @@
 
 <script>
 export default {
+    name: 'Homepage',
+
     data() {
         return {
             breadcrumb: {
                 title: 'Back',
-                href: '/appointment'
+                href: '/modals'
             }
         }
     }
