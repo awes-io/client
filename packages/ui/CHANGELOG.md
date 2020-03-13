@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.70.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.69.0...@awes-io/ui@1.70.0) (2020-03-13)
+
+
+### Bug Fixes
+
+* **aw-button:** solid background on disabled buttons only for solid theme ([d532f98](https://github.com/awes-io/client/commit/d532f9851f67bbb7c9597e84f9e1abe46f1a5cb8))
+* **aw-checkbox:** styles update ([6ed8a95](https://github.com/awes-io/client/commit/6ed8a95289a8e137c1c502fc8de72a34d98f0719))
+* **aw-input:** consider field is empty if value is null ([5fa03b8](https://github.com/awes-io/client/commit/5fa03b822a647b16b41a5bbfcdd73a75c49b84c2))
+* **aw-tab-nav, aw-button-nav:** active status check improved ([4fba0b7](https://github.com/awes-io/client/commit/4fba0b7c2bc7445abf1f43581662d461852bb2f9))
+* **aw-tel:** update styles for dark mode ([1b0fea0](https://github.com/awes-io/client/commit/1b0fea0a768ef9eb886407ffd2479dd09ce91c49))
+* **build:** explicitly export body-scroll-lock from es6 build ([f327ead](https://github.com/awes-io/client/commit/f327ead727f3d97201835832f9bb501bc6d8dac4))
+
+
+### Features
+
+* AwTableBuilder add list slot ([f9cca42](https://github.com/awes-io/client/commit/f9cca42e0a05ccd2f0ead53b9653f9f7d4e6640b))
+* **aw-modal:** body-scroll-lock integration ([40296ed](https://github.com/awes-io/client/commit/40296edf9c92759a7eaee58a0eefa3f2996f343d))
+* update tooltip without destroying if possible ([038b704](https://github.com/awes-io/client/commit/038b7041cdd9069823a4c6f1c3015ad3bf4f06e3))
+
+
+
+
+
 # [1.69.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.68.1...@awes-io/ui@1.69.0) (2020-03-12)
 
 

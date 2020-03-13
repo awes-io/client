@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.58.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.57.0...basic-ui@1.58.0) (2020-03-13)
+
+
+### Features
+
+* AwTableBuilder add list slot ([f9cca42](https://git.awescode.com/awes-io/client/commits/f9cca42e0a05ccd2f0ead53b9653f9f7d4e6640b))
+
+
+
+
+
 # [1.57.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.56.1...basic-ui@1.57.0) (2020-03-12)
 
 
