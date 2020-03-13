@@ -125,7 +125,10 @@
 </template>
 
 <script>
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import {
+    disableBodyScroll,
+    enableBodyScroll
+} from 'body-scroll-lock/lib/bodyScrollLock.es6.js'
 import { mergeRouteQuery } from '../assets/js/router'
 import { conf } from '../assets/js/component'
 import { getBemClasses } from '../assets/js/css'
