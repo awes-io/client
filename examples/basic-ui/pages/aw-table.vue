@@ -187,7 +187,7 @@
             <AwCodeSnippet v-text="configExampleCode" class="mt-8 shadow" />
         </section>
 
-        <section>
+        <section class="mt-8">
             <h2 class="h3">List slot</h2>
 
             <AwTableBuilder :collection="listManagers">
@@ -198,7 +198,7 @@
                 </template>
             </AwTableBuilder>
 
-            <AwCodeSnippet v-text="listCode" class="mt-4 shadow" />
+            <AwCodeSnippet v-text="listCode" class="mt-8 shadow" />
         </section>
     </AwPage>
 </template>
