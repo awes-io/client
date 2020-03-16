@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.71.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.70.0...@awes-io/ui@1.71.0) (2020-03-16)
+
+
+### Features
+
+* **calendar:** range selection added ([9eb81e8](https://github.com/awes-io/client/commit/9eb81e822bf6c26f0eafbc2a88c0264f7e1f3916))
+
+
+
+
+
 # [1.70.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.69.0...@awes-io/ui@1.70.0) (2020-03-13)
 
 
