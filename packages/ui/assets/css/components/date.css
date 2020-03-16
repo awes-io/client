@@ -1,0 +1,37 @@
+.aw-date {
+    position: relative;
+
+    &__dropdown {
+        max-height: unset;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__calendar {
+        max-width: theme('maxWidth.xs');
+    }
+
+    &__range:before,
+    &__range-start:before,
+    &__range-end:before {
+        @apply bg-success;
+        opacity: 0.5;
+        content: '';
+        display: block;
+        position: absolute;
+        top: calc(50% - theme('spacing.4'));
+        left: 0;
+        width: 100%;
+        height: theme('spacing.8');
+    }
+
+    &__range-start:before,
+    &__range-end:before {
+        width: 50%;
+    }
+
+    &__range-start:before {
+        left: 50%;
+    }
+}

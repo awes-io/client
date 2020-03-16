@@ -1,13 +1,11 @@
 <template functional>
     <button
+        :data-time="props.timestamp"
+        :disabled="data.attrs.disabled || null"
+        :class="[data.staticClass, data.class]"
         type="button"
-        :data-index="props.index"
-        class="calendar__day"
-        :class="{
-            calendar__day_outside: props.isOutside,
-            calendar__day_disabled: props.isDisabled,
-            calendar__day_active: props.isActive
-        }"
+        tabindex="-1"
+        class="aw-calendar__day"
     >
         <span> {{ props.day }} </span>
     </button>
@@ -23,16 +21,10 @@ export default {
             required: true
         },
 
-        index: {
+        timestamp: {
             type: Number,
             required: true
-        },
-
-        isOutside: Boolean,
-
-        isDisabled: Boolean,
-
-        isActive: Boolean
+        }
     }
 }
 </script>
