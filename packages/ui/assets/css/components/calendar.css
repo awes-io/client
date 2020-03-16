@@ -1,0 +1,67 @@
+.aw-calendar {
+    @apply bg-surface;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: theme('spacing.2');
+    border-top: 2px solid var(--c-success);
+
+    &__nav {
+        @apply bg-success;
+        margin-top: -2px;
+        display: flex;
+        align-items: center;
+        padding: theme('spacing.2') theme('spacing.1');
+        width: 100%;
+    }
+
+    &__nav-title {
+        flex-grow: 1;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &__weekday,
+    &__day {
+        width: calc(100% / 7.001);
+        padding: theme('spacing.2') theme('spacing.1');
+        font-size: theme('fontSize.sm');
+    }
+
+    &__weekday {
+        display: block;
+        text-align: center;
+        opacity: 0.8;
+        margin-top: theme('spacing.2');
+    }
+
+    &__day {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__day[disabled],
+    &__day_outside {
+        opacity: 0.4;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &__day > span {
+        display: block;
+        position: relative;
+        width: theme('spacing.8');
+        height: theme('spacing.8');
+        text-align: center;
+        line-height: 1.1428;
+        padding-top: theme('spacing.2');
+        padding-bottom: theme('spacing.2');
+        border-radius: 50%;
+    }
+
+    &__day_active:not(&__day_outside) > span {
+        @apply bg-success;
+        font-weight: bold;
+    }
+}

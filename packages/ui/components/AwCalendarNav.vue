@@ -1,12 +1,19 @@
 <template>
-    <div class="calendar__nav">
+    <div class="aw-calendar__nav">
         <AwButton
+            v-show="$listeners['click:prev']"
             theme="icon"
             icon="chevron-l"
             :disabled="disabledPrev"
-            @click="$emit('click:prev')"
+            @click.stop="$emit('click:prev')"
         />
-        <div class="calendar__nav-title">
+        <div
+            class="aw-calendar__nav-title"
+            :class="{
+                'mr-12': !$listeners['click:next'],
+                'ml-12': !$listeners['click:prev']
+            }"
+        >
             <!-- <AwButton theme="toggle" class="min-w-0 px-2">
                 {{ months[month] }}
             </AwButton>
@@ -16,10 +23,11 @@
             {{ months[month] }} {{ year }}
         </div>
         <AwButton
+            v-show="$listeners['click:next']"
             theme="icon"
             icon="chevron-r"
             :disabled="disabledNext"
-            @click="$emit('click:next')"
+            @click.stop="$emit('click:next')"
         />
     </div>
 </template>

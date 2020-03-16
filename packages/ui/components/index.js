@@ -13,7 +13,7 @@ export { default as AwDropdown } from './AwDropdown.vue'
 export { default as AwDropdownButton } from './AwDropdownButton.vue'
 
 export { default as AwCalendar } from './AwCalendar.vue'
-export { default as AwCalendarDays } from './AwCalendarDays.vue'
+export { default as AwCalendarView } from './AwCalendarView.vue'
 
 export { default as AwCard } from './AwCard.vue'
 
