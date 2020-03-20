@@ -21,6 +21,7 @@ export const navigation = [
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },
     { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
+    { title: 'Fetch Data', url: '/aw-fetch-data', description: '' },
     { title: 'Form', url: '/aw-form', description: '' },
     { title: 'Grid', url: '/aw-grid', description: '' },
     { title: 'Icon', url: '/aw-icon', description: '' },
