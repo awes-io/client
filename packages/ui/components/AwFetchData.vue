@@ -79,14 +79,6 @@ export default {
         fetch: {
             type: Boolean,
             default: true
-        },
-
-        /**
-         * Interval in seconds for fetching data
-         */
-        reloadInterval: {
-            type: Number,
-            default: 0
         }
     },
 
