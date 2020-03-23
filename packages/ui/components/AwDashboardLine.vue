@@ -23,6 +23,8 @@
         <div class="mt-5">
             <AwDashboardLegend :data="_legendData" percent />
         </div>
+
+        <slot name="footer"></slot>
     </AwCard>
 </template>
 
