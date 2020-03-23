@@ -28,5 +28,7 @@
 @import './toggler.css';
 @import './tooltip.css';
 
+@import './dashboard.css';
+
 /* last because of @keyframes lowers performance */
 @import './animation.css';

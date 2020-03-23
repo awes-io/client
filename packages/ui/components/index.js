@@ -75,3 +75,5 @@ export { default as AwUserMenu } from './AwUserMenu.vue'
 export { default as AwToggler } from './AwToggler.vue'
 
 export { default as AwContextMenu } from './AwContextMenu.vue'
+
+export { default as AwDashboardLine } from './AwDashboardLine.vue'
