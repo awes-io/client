@@ -1,6 +1,6 @@
 <template>
     <div class="relative bg-muted overflow-hidden mt-auto">
-        <ul ref="list" class="rounded dashboard__legend p-4">
+        <ul ref="list" class="rounded dashboard__legend">
             <li
                 v-for="(item, index) in data"
                 :key="item.color"

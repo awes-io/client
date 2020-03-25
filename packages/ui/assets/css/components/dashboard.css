@@ -36,8 +36,16 @@
     }
 
     & &__legend {
-        @apply mb-0 overflow-auto text-xs;
+        @apply mb-0 overflow-auto text-xs px-4 pt-4 pb-0;
         max-height: 148px;
+
+        /* Fix for no bottom padding on scroll in Firefox & IE */
+        &::after {
+            content: "";
+            display: block;
+            height: 1rem;
+            width: 100%;
+        }
 
         &_shadow {
             @apply absolute overflow-hidden w-full;
