@@ -36,7 +36,7 @@
     }
 
     & &__legend {
-        @apply mb-0 mt-auto overflow-auto text-xs;
+        @apply mb-0 overflow-auto text-xs;
         max-height: 148px;
 
         &_shadow {

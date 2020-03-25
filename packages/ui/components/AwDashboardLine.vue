@@ -1,13 +1,13 @@
 <template>
     <aw-dashboard-builder v-bind="$props">
-        <template #chart="chartData">
-            <AwLineChart :data="chartData.data" />
-        </template>
-
         <template #image>
             <slot name="image">
                 <AwSvgImage name="checklist" class="mx-auto mb-8" />
             </slot>
+        </template>
+
+        <template #chart="chartData">
+            <AwLineChart :data="chartData.data" />
         </template>
 
         <template #footer>
