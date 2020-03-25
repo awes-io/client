@@ -15,6 +15,11 @@ export default {
             default: ''
         },
 
+        percent: {
+            type: Boolean,
+            default: false
+        },
+
         colors: {
             type: Array,
             default: () => []

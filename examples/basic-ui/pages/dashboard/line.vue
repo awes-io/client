@@ -1,22 +1,35 @@
 <template>
     <AwPage :title="headline">
-        <div class="flex">
-            <div style="width: 300px">
+        <AwGrid :col="2" :gap="2">
+            <div class="h-full">
                 <AwDashboardLine
                     :data="lineData"
+                    percent
                     title="Регистрации"
                     description="Заявок"
                 />
             </div>
 
-            <div style="width: 300px" class="ml-2">
+            <div class="h-full">
                 <AwDashboardLine
                     :data="lineDatatwo"
+                    :colors="['green']"
                     title="Регистрации"
                     description="Заявок"
                 />
             </div>
-        </div>
+
+            <div :span="2">
+                <AwDashboardLine
+                    :data="lineDatatwo"
+                    :colors="['#00f']"
+                    title="Регистрации"
+                    description="Заявок"
+                ></AwDashboardLine>
+            </div>
+        </AwGrid>
+
+        <div class="mt-6" style="max-width: 600px"></div>
     </AwPage>
 </template>
 
@@ -33,19 +46,11 @@ export default {
                     {
                         title: 'Успешных', // string
                         value: 265, // number
-                        value_diff: -2, // number, при null не показывать, либо не передавать вовсе,
                         on_chart: true
                     },
                     {
                         title: 'Ожидает',
                         value: 60,
-                        value_diff: 3,
-                        on_chart: true
-                    },
-                    {
-                        title: 'Отказ',
-                        value: 15,
-                        value_diff: 1,
                         on_chart: true
                     }
                 ]
@@ -81,7 +86,17 @@ export default {
                     {
                         title: 'test2',
                         value: 30,
-                        value_diff: 1,
+                        on_chart: true
+                    },
+                    {
+                        title: 'long long long long long long long',
+                        value: 20,
+                        value_diff: 3,
+                        on_chart: true
+                    },
+                    {
+                        title: 'test2',
+                        value: 30,
                         on_chart: true
                     }
                 ]

@@ -1,45 +1,58 @@
-<template functional>
-    <ul class="rounded bg-muted p-4 dashboard__legend">
-        <li
-            v-for="(item, index) in props.data"
-            :key="item.color"
-            :class="{ 'mt-4': index }"
-            class="flex items-center font-body"
-        >
-            <span
-                class="w-2 h-2 mr-2 rounded-full flex-none"
-                :style="{ backgroundColor: item.color }"
-            ></span>
-
-            <span class="truncate">
-                {{ item.title }}
-            </span>
-
-            <div class="ml-auto flex items-center">
-                {{ $options._getItemValue(item, props.percent) }}
-
+<template>
+    <div class="relative bg-muted overflow-hidden">
+        <ul ref="list" class="rounded dashboard__legend p-4">
+            <li
+                v-for="(item, index) in data"
+                :key="item.color"
+                :class="{ 'mt-4': index }"
+                class="flex items-center font-body text-xs"
+            >
                 <span
-                    v-if="item.value_diff"
-                    :class="
-                        item.value_diff && item.value_diff > 0
-                            ? 'text-success'
-                            : 'text-error'
-                    "
-                    class="dashboard__legend_difference"
-                >
-                    {{ $options._getDiffValue(item) }}%
+                    class="w-2 h-2 mr-2 rounded-full flex-none"
+                    :style="{ backgroundColor: item.color }"
+                ></span>
 
-                    <AwIcon
-                        :name="item.value_diff > 0 ? 'arrow-u' : 'arrow-d'"
-                        :class="
-                            item.value_diff > 0 ? 'text-success' : 'text-error'
-                        "
-                        class="ml-1"
-                    />
+                <span class="truncate">
+                    {{ item.title }}
                 </span>
-            </div>
-        </li>
-    </ul>
+
+                <div class="ml-auto flex items-center text-grey font-bold">
+                    {{ _getItemValue(item) }}
+
+                    <span
+                        v-if="isPercentShown"
+                        :class="[
+                            !item.value_diff ? 'invisible' : '',
+                            item.value_diff && item.value_diff > 0
+                                ? 'text-success'
+                                : 'text-error'
+                        ]"
+                        class="dashboard__legend_difference"
+                    >
+                        {{ _getDiffValue(item) }}%
+
+                        <AwIcon
+                            :name="item.value_diff > 0 ? 'arrow-u' : 'arrow-d'"
+                            :class="
+                                item.value_diff > 0
+                                    ? 'text-success'
+                                    : 'text-error'
+                            "
+                        />
+                    </span>
+                </div>
+            </li>
+        </ul>
+
+        <span
+            :style="topShadowStyle"
+            class="dashboard__legend_shadow dashboard__legend_shadow_top"
+        ></span>
+        <span
+            :style="bottomShadowStyle"
+            class="dashboard__legend_shadow dashboard__legend_shadow_bottom"
+        ></span>
+    </div>
 </template>
 
 <script>
@@ -55,23 +68,85 @@ export default {
         percent: {
             type: Boolean,
             default: false
+        },
+
+        template: {
+            type: String,
+            default: '{value}'
         }
     },
 
-    _getItemValue(item, percent) {
-        const val = percent ? Math.round(item.percent) : item.value
-        if (item.template) {
-            return item.template.replace('{value}', val)
+    data() {
+        return {
+            scrollTop: 0,
+            clientHeight: 0,
+            scrollHeight: 0,
+            isShadow: false
         }
-        return val
     },
 
-    _getDiffValue(item) {
-        const prevVal = item.value + item.value_diff
-        const diff =
-            (Math.abs(item.value - prevVal) / ((prevVal + item.value) / 2)) *
-            100
-        return Math.round(diff)
+    computed: {
+        isPercentShown() {
+            return this.data.some(el => el.value_diff)
+        },
+
+        topShadowStyle() {
+            return {
+                opacity: this.isShadow && this.scrollTop > 0 ? '1' : '0'
+            }
+        },
+
+        bottomShadowStyle() {
+            const isBot =
+                this.scrollHeight - this.scrollTop === this.clientHeight
+            return {
+                opacity: this.isShadow && !isBot ? '1' : '0'
+            }
+        }
+    },
+
+    mounted() {
+        this.$nextTick(() => {
+            this.isShadow =
+                this.$refs.list.scrollHeight > this.$refs.list.clientHeight
+            this._toggleScrollListener(true)
+            this._onScroll()
+        })
+    },
+
+    beforeDestroy() {
+        this._toggleScrollListener(false)
+    },
+
+    methods: {
+        _getItemValue(item) {
+            if (!item.value) return ''
+            const val = this.percent ? Math.round(item.percent) : item.value
+            return this.template.replace('{value}', val)
+        },
+
+        _getDiffValue(item) {
+            if (!item.value_diff) return ''
+            const prevVal = item.value + item.value_diff
+            const diff =
+                (Math.abs(item.value - prevVal) /
+                    ((prevVal + item.value) / 2)) *
+                100
+            return Math.round(diff)
+        },
+
+        _onScroll() {
+            this.scrollTop = this.$refs.list.scrollTop
+            this.scrollHeight = this.$refs.list.scrollHeight
+            this.clientHeight = this.$refs.list.clientHeight
+        },
+
+        _toggleScrollListener(on = false) {
+            this.$refs.list[on ? 'addEventListener' : 'removeEventListener'](
+                'scroll',
+                this._onScroll
+            )
+        }
     }
 }
 </script>

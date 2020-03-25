@@ -1,36 +1,71 @@
 .dashboard {
-    @apply flex flex-col h-full;
+    @apply flex flex-col h-full h-full;
 
-    & &__header {
-        @apply flex justify-between items-center;
+    /* Change card styles */
+    & > div {
+        @apply p-4 h-full flex flex-col;
+    }
+
+    & .aw-chart {
+        @apply mt-4;
     }
 
     & &__title {
-        @apply font-heading font-bold text-lg text-on-muted-dark leading-none;
+        @apply flex justify-between items-center mb-4 font-heading font-bold text-sm text-on-muted-dark leading-none;
     }
 
     & &__description {
-        @apply mb-0 text-disabled text-sm leading-snug font-body font-bold;
+        @apply mb-0 text-disabled text-sm leading-snug font-body font-bold truncate;
     }
 
     & &__counter {
-        @apply flex items-center mt-4 text-4xl leading-snug font-heading text-on-muted-dark font-bold;
+        @apply flex items-center text-4xl leading-snug font-heading text-on-muted-dark font-bold;
 
         .aw-icon {
             @apply text-2xl ml-3;
         }
     }
 
-    & &__legend {
-        @apply mb-0;
-
-        &_difference {
-            @apply ml-2 flex items-center justify-end;
-            min-width: 3.5rem;
-        }
+    & &__content {
+        @apply mb-4;
     }
 
-    &__difference {
+    & &__chart {
+        @apply flex-shrink-0 text-center flex-auto;
+        min-width: 240px;
+    }
 
+    & &__legend {
+        @apply mb-0 mt-auto overflow-auto text-xs;
+        max-height: 148px;
+
+        &_shadow {
+            @apply absolute overflow-hidden w-full;
+            overflow: hidden;
+            box-shadow: 0 0 1rem theme('colors.overlay');
+            transition: opacity 100ms;
+            backface-visibility: hidden;
+            will-change: opacity;
+            height: 2px;
+
+            &_top {
+                top: -5px;
+                border-radius: 0 0 100% 100%;
+            }
+
+            &_bottom {
+                bottom: -5px;
+                border-radius: 100% 100% 0 0;
+            }
+        }
+
+        &_difference {
+            @apply ml-1 flex items-center justify-end;
+            min-width: 3rem;
+
+            .aw-icon {
+                @apply text-xs ml-1;
+            }
+        }
     }
 }
