@@ -124,14 +124,34 @@
             </slot>
         </div>
 
+        <AwButton
+            v-if="infiniteScroll && !isLastPage"
+            color="default"
+            size="lg"
+            class="mt-3 w-full"
+            @click="fetchMore()"
+        >
+            Load more
+        </AwButton>
+
+        <AwButton
+            v-if="mixed && !isLastPage"
+            color="default"
+            size="lg"
+            class="mt-3 w-full"
+            @click="onPageClick(page + 1, false)"
+        >
+            Load more
+        </AwButton>
+
         <!-- pagination -->
         <AwPagination
-            v-if="pagination.total !== null && !isEmpty"
+            v-if="pagination.total !== null && !isEmpty && !infiniteScroll"
             v-bind="pagination"
             :page="page"
             :limits="limitsMerged"
             :arrow-nav="arrowNav"
-            @click:page="page = $event"
+            @click:page="onPageClick($event, true)"
             @click:limit="limit = $event"
             class="mt-3 lg:mt-8"
         />
@@ -219,6 +239,12 @@ export default {
 
         verticalAlign: String,
 
+        // Indicates if infinity scroll enabled
+        infiniteScroll: Boolean,
+
+        // If true enable both pagination and infinity scroll
+        mixed: Boolean,
+
         // Size of the empty block, e.g loading block or empty block.
         defaultHeight: {
             type: String,
@@ -249,6 +275,7 @@ export default {
 
     data() {
         return {
+            isResetPage: true,
             pagination: {
                 total: null,
                 limit: DEFAULT_LIMITS[0]
@@ -295,6 +322,13 @@ export default {
                     )
                 )
             }
+        },
+
+        isLastPage() {
+            return (
+                this.collection.models.length === this.pagination.total ||
+                this.page * this.limit >= this.pagination.total
+            )
         },
 
         items() {
@@ -380,8 +414,31 @@ export default {
 
     methods: {
         fetch(params = {}) {
+            if (!this.mixed || this.isResetPage) {
+                this.collection
+                    .page()
+                    .fetch({ params: { ...this.fetchAllQuery, ...params } })
+                    .then(this._setPagination)
+            } else {
+                this.collection
+                    .page(1)
+                    .fetch({
+                        params: { ...this.fetchAllQuery }
+                    })
+                    .then(this._setPagination)
+            }
+        },
+
+        fetchMore() {
+            const page = this.collection.models.length / this.limit
             this.collection
-                .fetch({ params: { ...this.fetchAllQuery, ...params } })
+                .page(1)
+                .fetch({
+                    params: {
+                        ...this.fetchAllQuery,
+                        page: page + 1
+                    }
+                })
                 .then(this._setPagination)
         },
 
@@ -411,6 +468,11 @@ export default {
                 )
                 this.fetch({ [orderable.param]: paramValue })
             }
+        },
+
+        onPageClick(page, reset = true) {
+            this.isResetPage = reset
+            this.page = page
         },
 
         _isColDefault(col) {
