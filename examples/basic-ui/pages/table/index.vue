@@ -50,6 +50,7 @@
                 :collection="managers"
                 :watchParams="['search']"
                 :orderable="{ param: 'order' }"
+                :scroll-on-page="false"
                 defaultHeight="50vh"
                 @click:row="clickRow"
             >
@@ -120,77 +121,9 @@
         </section>
 
         <section class="mt-8">
-            <h2 class="h3">Orderable</h2>
-
-            <p>
-                You can enable ordering by adding <code>orderable</code> prop to
-                <code>AwTableCol</code>. Prop can be <code>Boolean</code> or
-                <code>Object</code>. If boolean, then default config will be
-                used
-            </p>
-
-            <p>
-                Default config:
-
-                <AwCodeSnippet
-                    v-text="orderableConfigCode"
-                    class="mt-3 shadow"
-                    language="javascript"
-                />
-            </p>
-
-            <p>
-                Also you can specify orderable config for the whole table by
-                adding orderable prop to <code>AwTableBuilder</code>
-
-                Also you can specify orderable config globally in
-                <code>nuxt.config.js</code>
-                <br />
-                For example
-
-                <AwCodeSnippet
-                    v-text="globalConfigCode"
-                    class="my-3 shadow"
-                    language="javascript"
-                />
-
-                <AwCard title="NOTE" class="my-8 border-l-4 border-error">
-                    If global <code>default</code> property will be set to
-                    <code>true</code>, then first orderable col of each table
-                    will be set as default
-                </AwCard>
-            </p>
-
-            <h5>Basic example:</h5>
-
-            <AwTableBuilder
-                :collection="oredableManagers"
-                :orderable="{
-                    ascTemplate: '%s_asc'
-                }"
-                defaultHeight="50vh"
-            >
-                <AwTableCol field="id" orderable />
-
-                <AwTableCol
-                    title="User name"
-                    :orderable="{ templateValue: 'first_name' }"
-                >
-                    <template #default="{ cell }">
-                        {{ cell.first_name }} {{ cell.last_name }}
-                    </template>
-                </AwTableCol>
-
-                <AwTableCol title="Job title" field="position" />
-            </AwTableBuilder>
-
-            <AwCodeSnippet v-text="configExampleCode" class="mt-8 shadow" />
-        </section>
-
-        <section class="mt-8">
             <h2 class="h3">List slot</h2>
 
-            <AwTableBuilder :collection="listManagers">
+            <AwTableBuilder :collection="listManagers" :scroll-on-page="false">
                 <template #list="{ item }">
                     <div class="bg-muted-dark mb-2 p-4 rounded">
                         {{ item.first_name }} {{ item.last_name }}
