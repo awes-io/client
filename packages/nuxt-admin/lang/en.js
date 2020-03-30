@@ -45,6 +45,7 @@ export default {
                 text: 'You have successfully updated the user profile.'
             }
         },
-        delete: 'Delete'
+        delete: 'Delete',
+        reset_password: 'Reset password',
     }
 }

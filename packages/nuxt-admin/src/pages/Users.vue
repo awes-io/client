@@ -67,6 +67,10 @@
                     @click.stop="showUser(cell)"
                 />
                 <AwDropdownButton
+                    :text="$t('AwesIoNuxtAdmin.reset_password')"
+                    @click.stop="cell.resetPassword()"
+                />
+                <AwDropdownButton
                     v-if="cell.status"
                     color="error"
                     :text="$t('AwesIoNuxtAdmin.block')"
