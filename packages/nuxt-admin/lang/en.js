@@ -44,6 +44,7 @@ export default {
                 header: 'Well Done!',
                 text: 'You have successfully updated the user profile.'
             }
-        }
+        },
+        delete: 'Delete'
     }
 }

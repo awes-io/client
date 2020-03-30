@@ -46,6 +46,13 @@
                     {{ $t('AwesIoNuxtAdmin.permissions') }}
                 </template>
             </AwTableCol>
+            <template #dropdown="{ cell }">
+                <AwDropdownButton
+                    color="error"
+                    :text="$t('AwesIoNuxtAdmin.delete')"
+                    @click.stop="cell.delete()"
+                />
+            </template>
         </AwTableBuilder>
     </AwPage>
 </template>
