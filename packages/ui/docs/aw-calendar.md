@@ -86,3 +86,13 @@ export default {
 
 ```
 
+
+## Slots
+<!-- @vuese:AwCalendar:slots:start -->
+|Name|Description|Default Slot Content|
+|---|---|---|
+|header|-|nav buttons and current month and year|
+|footer|-|-|
+
+<!-- @vuese:AwCalendar:slots:end -->
+                            

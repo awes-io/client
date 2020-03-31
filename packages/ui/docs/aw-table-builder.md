@@ -11,6 +11,8 @@
 |limits|-|`Array`|`false`|-|
 |scrollOnPage|-|`Boolean`|`false`|-|
 |verticalAlign|-|`String`|`false`|-|
+|infiniteScroll|Indicates if infinity scroll enabled|`Boolean`|`false`|-|
+|mixed|If true enable both pagination and infinity scroll|`Boolean`|`false`|-|
 |defaultHeight|Size of the empty block, e.g loading block or empty block.|`String`|`false`|50vh|
 |arrowNav|Should the page being switched on `CTRL + <-` and  `CTRL + ->`|`Boolean`|`false`|-|
 |orderable|Orderable config that will be merged with global orderable config. If null then global orderable config will be used|`Object`|`false`|-|
@@ -30,6 +32,7 @@
 |empty-filter-icon|Icon customization. Leave empty if you would like to remove.|Empty SVG icon|
 |empty-filter-title|Headline customization in the empty filter block|Text: "There are no data to show"|
 |empty-filter-button|You can use the slot to add a button or else|`Empty`|
+|list|-|-|
 |default|-|-|
 |empty-loading-container|Empty loading container|Empty AwCard block|
 |loading|Customization of loading block|Default loading block|

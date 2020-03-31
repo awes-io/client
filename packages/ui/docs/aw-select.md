@@ -67,11 +67,12 @@ Below is a collection of Vue **props** for the `AwSelect` component.
 |label|-|`String`|`false`|-|
 |value|-|—|`false`|-|
 |optionLabel|-|`String`|`false`|-|
-|optionValue|-|`String`|`false`|-|
+|trackBy|-|`String`|`false`|-|
 |searchable|-|`Boolean`|`false`|-|
 |clearable|Show clear button if value exists|`Boolean`|`false`|-|
 |maxSearchItems|-|`Number`|`false`|100|
-|name|-|`String`|`false`|-|
+|multiple|name: { type: String, default: '' }, Allow select multiple values|`Boolean`|`false`|-|
+|multipleSeparator|Separator for multiple values|`String`|`false`|, |
 |searchPreload|ajax|`Array` /  `Object` /  `Boolean`|`false`|-|
 |searchMin|-|`Number`|`false`|-|
 |debounce|-|`Number`|`false`|400|

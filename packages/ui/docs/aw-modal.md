@@ -48,6 +48,7 @@ Below is a collection of Vue **props** for the `AwModal` component.
 |name|-|`String`|`false`|-|
 |param|Get parameter, which is set when modal is opened|`String` /  `Boolean`|`false`|modal|
 |theme|-|`String`|`false`|default|
+|disableScroll|Should modal disable body scrolling|`Boolean`|`false`|by default disabled for 'default', 'fullscreen' and 'bottom' themes|
 |className|-|`String`|`false`|-|
 
 <!-- @vuese:AwModal:props:end -->
