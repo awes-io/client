@@ -1,7 +1,7 @@
 <template>
     <AwPage title="AwContentWrapper">
         <AwButton @click="check" class="my-4">Check param 'status_id'</AwButton>
-        <AwContentWrapper
+        <!-- <AwContentWrapper
             url="/api/chart"
             :watch-params="['status_id', 'search']"
         >
@@ -48,16 +48,16 @@
                     }"
                 ></AwChart>
             </template>
-        </AwContentWrapper>
+        </AwContentWrapper> -->
     </AwPage>
 </template>
 
 <script>
-import AwContentWrapper from '../components/AwContentWrapper'
+// import AwContentWrapper from '../components/AwContentWrapper'
 import { mergeRouteQuery } from '../assets/js/router'
 
 export default {
-    components: { AwContentWrapper },
+    // components: { AwContentWrapper },
     head() {
         return {
             title: 'AwContentWrapper'

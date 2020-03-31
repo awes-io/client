@@ -24,7 +24,7 @@ export { default as AwChipSelect } from './AwChipSelect.vue'
 export { default as AwCropper } from './AwCropper.vue'
 
 export { default as AwCodeSnippet } from './AwCodeSnippet.vue'
-export { default as AwContentWrapper } from './AwContentWrapper.vue'
+export { default as AwFetchData } from './AwFetchData.vue'
 
 export { default as AwGrid } from './AwGrid.vue'
 
@@ -75,3 +75,5 @@ export { default as AwUserMenu } from './AwUserMenu.vue'
 export { default as AwToggler } from './AwToggler.vue'
 
 export { default as AwContextMenu } from './AwContextMenu.vue'
+
+export { default as AwDashboardLine } from './AwDashboardLine.vue'
