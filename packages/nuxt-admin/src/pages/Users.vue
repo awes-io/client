@@ -68,7 +68,11 @@
                 />
                 <AwDropdownButton
                     :text="$t('AwesIoNuxtAdmin.reset_password')"
-                    @click.stop="cell.resetPassword()"
+                    @click.stop="resetPassword(cell)"
+                />
+                <AwDropdownButton
+                    :text="$t('AwesIoNuxtAdmin.set_password')"
+                    @click.stop="setPasswordModal(cell)"
                 />
                 <AwDropdownButton
                     v-if="cell.status"
@@ -84,17 +88,25 @@
                 />
             </template>
         </AwTableBuilder>
+        <SetPasswordModal v-if="user" :user="user" />
+        <AwModal :title="`New password: ${newPassword}`" name="new_password" />
     </AwPage>
 </template>
 
 <script>
 import Users from '../collections/Users'
+import SetPasswordModal from '../components/SetPasswordModal.vue'
 
 export default {
     name: 'Users',
 
+    components: {
+        SetPasswordModal
+    },
+
     data() {
         return {
+            user: null,
             users: new Users(),
             filters: [
                 {
@@ -109,7 +121,8 @@ export default {
                     text: this.$t('AwesIoNuxtAdmin.blocked'),
                     href: { query: { status: '0' } }
                 }
-            ]
+            ],
+            newPassword: null
         }
     },
 
@@ -118,7 +131,23 @@ export default {
             this.$router.push({
                 path: `/admin/users/${cell.id}`
             })
-        }
+        },
+        async resetPassword(user) {
+            if (!confirm(this.$t('AwesIoNuxtAdmin.confirm_reset_password'))) {
+                return;
+            }
+            try {
+                const res = await user.resetPassword()
+                this.newPassword = res.response.data.password
+                this.$root.$emit('modal::new_password:open')
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        setPasswordModal(user) {
+            this.user = user
+            this.$root.$emit('modal::set_password:open')
+        },
     }
 }
 </script>

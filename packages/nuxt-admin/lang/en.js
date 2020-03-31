@@ -47,5 +47,8 @@ export default {
         },
         delete: 'Delete',
         reset_password: 'Reset password',
+        set_password: 'Set password',
+        confirm_role_delete: 'Are you sure, you want to delete this role?',
+        confirm_reset_password: 'Are you sure, you want to reset user password?',
     }
 }

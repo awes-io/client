@@ -48,9 +48,10 @@
             </AwTableCol>
             <template #dropdown="{ cell }">
                 <AwDropdownButton
+                    :disabled="cell.default_new || !cell.priority"
                     color="error"
                     :text="$t('AwesIoNuxtAdmin.delete')"
-                    @click.stop="cell.delete()"
+                    @click.stop="deleteRole(cell)"
                 />
             </template>
         </AwTableBuilder>
@@ -74,6 +75,16 @@ export default {
             this.$router.push({
                 path: `/admin/roles/${cell.id}`
             })
+        },
+        async deleteRole(role) {
+            if (!confirm(this.$t('AwesIoNuxtAdmin.confirm_role_delete'))) {
+                return;
+            }
+            try {
+                await role.delete()
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 }
