@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.3.0...@awes-io/nuxt-admin@0.4.0) (2020-03-31)
+
+
+### Features
+
+* reseting user password ([347cfc5](https://github.com/awes-io/client/commit/347cfc57b48a62d92a75baae35e37ded291ce0b1))
+* role deleting ([3e4d090](https://github.com/awes-io/client/commit/3e4d09073648794a0333b676cc6cca9c416f21e3))
+
+
+
+
+
 # [0.3.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.2.3...@awes-io/nuxt-admin@0.3.0) (2020-03-11)
 
 
