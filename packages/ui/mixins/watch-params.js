@@ -26,20 +26,15 @@ export default {
 
     created() {
         if (this.watchParams) {
-            const unwatchers = []
+            const unwatcher = this.$watch(() => {
+                const vars = this.watchParams.map(param => {
+                    return this.$route.query[param]
+                })
+                return vars.join(', ')
+            }, this._fetchFromWatcher)
 
             this.$once('hook:beforeDestroy', () => {
-                unwatchers.forEach(unwatch => {
-                    unwatch()
-                })
-            })
-
-            this.watchParams.forEach(param => {
-                const unwatcher = this.$watch(
-                    `$route.query.${param}`,
-                    this._fetchFromWatcher
-                )
-                unwatchers.push(unwatcher)
+                unwatcher()
             })
         }
     }
