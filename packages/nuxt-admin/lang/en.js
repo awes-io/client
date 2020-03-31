@@ -1,5 +1,6 @@
 export default {
     AwesIoNuxtAdmin: {
+        admin: 'Admin',
         roles: 'Roles',
         create_role: 'Create role',
         role: 'Role',

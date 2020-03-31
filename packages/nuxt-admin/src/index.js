@@ -62,6 +62,13 @@ function AwesIoNuxtAdmin() {
         options: { moduleName: meta.name }
     })
     this.options.plugins.push(join(this.options.buildDir, langPlugin.dst))
+
+    // Menu plugin
+    const menuPlugin = this.addTemplate({
+        fileName: join('awes-io', 'admin-menu-plugin.js'),
+        src: resolve(__dirname, './plugins/menu.js'),
+    })
+    this.options.plugins.push(join(this.options.buildDir, menuPlugin.dst))
 }
 
 AwesIoNuxtAdmin.meta = meta
