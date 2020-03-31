@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.72.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.71.0...@awes-io/ui@1.72.0) (2020-03-31)
+
+
+### Bug Fixes
+
+* firefox scroll bug ([a2325f2](https://github.com/awes-io/client/commit/a2325f2cc9d35af102ff81778f169fe1c8e8f9d9))
+
+
+### Features
+
+* add AwDashboardLine component ([0937399](https://github.com/awes-io/client/commit/09373996e30139df227463e2526078a06ea10041))
+* add AwDashboardLine component ([75047bc](https://github.com/awes-io/client/commit/75047bc63c9d5ebbacdf43d378210703ee0317ef))
+* add AwFetchData component ([28eddbd](https://github.com/awes-io/client/commit/28eddbd921f519a6622b5b17d2cdc5c47eb1510a))
+* add new icons ([0276d26](https://github.com/awes-io/client/commit/0276d266f1deef9e6183c12b0d94460dca397a51))
+* change watch-params mixin ([13620d1](https://github.com/awes-io/client/commit/13620d1f307069a05c58732329d2b8cf4ffb7ce5))
+* push legend to bottom of card ([94743aa](https://github.com/awes-io/client/commit/94743aaebd22eb611dc5430e967372c38d9aec5e))
+* remove reload interval prop ([b008a8e](https://github.com/awes-io/client/commit/b008a8e73bf11c3d7f0ada0de88618f6501e8764))
+* update AwTableBuilder component ([879d1b9](https://github.com/awes-io/client/commit/879d1b93f0314dfdfd1c095192b56ed1f5658aa9))
+
+
+
+
+
 # [1.71.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.70.0...@awes-io/ui@1.71.0) (2020-03-16)
 
 

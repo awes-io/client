@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.59.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.58.1...basic-ui@1.59.0) (2020-03-31)
+
+
+### Features
+
+* add AwDashboardLine component ([0937399](https://git.awescode.com/awes-io/client/commits/09373996e30139df227463e2526078a06ea10041))
+* add AwDashboardLine component ([75047bc](https://git.awescode.com/awes-io/client/commits/75047bc63c9d5ebbacdf43d378210703ee0317ef))
+* add AwFetchData component ([28eddbd](https://git.awescode.com/awes-io/client/commits/28eddbd921f519a6622b5b17d2cdc5c47eb1510a))
+* add new icons ([0276d26](https://git.awescode.com/awes-io/client/commits/0276d266f1deef9e6183c12b0d94460dca397a51))
+
+
+
+
+
 ## [1.58.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.58.0...basic-ui@1.58.1) (2020-03-16)
 
 **Note:** Version bump only for package basic-ui
