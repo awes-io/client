@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.4.0...@awes-io/nuxt-admin@0.5.0) (2020-03-31)
+
+
+### Features
+
+* menu plugin added in admin module ([4d0e48d](https://github.com/awes-io/client/commit/4d0e48d64c75a06aa01cb8ba3ac229847021a6a1))
+
+
+
+
+
 # [0.4.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.3.0...@awes-io/nuxt-admin@0.4.0) (2020-03-31)
 
 
