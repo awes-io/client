@@ -17,6 +17,7 @@ export default class Role extends BaseModel {
             fetch: `/api/admin/roles/{id}`,
             save: `/api/admin/roles`,
             update: `/api/admin/roles/{id}`,
+            delete: `/api/admin/roles/{id}`,
         }
     }
 }

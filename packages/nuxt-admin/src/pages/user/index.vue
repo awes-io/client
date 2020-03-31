@@ -67,7 +67,7 @@
             :label="$t('AwesIoNuxtAdmin.role')"
             :options="text => `/api/admin/roles?name=${text}&limit=100`"
             option-label="name"
-            option-value="id"
+            track-by="id"
             :error="model.errors['role.id']"
         />
         <div class="hidden md:block" />

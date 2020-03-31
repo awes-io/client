@@ -31,6 +31,9 @@ export default class User extends BaseModel {
             save: `/api/admin/users`,
             update: `/api/admin/users/{id}`,
             updateStatus: `/api/admin/users/{id}/status`,
+            resetPassword: `/api/admin/users/{id}/password/reset`,
+            setPassword: `/api/admin/users/{id}/password/set`,
+            delete: `/api/admin/users/{id}`,
         }
     }
 
@@ -54,6 +57,29 @@ export default class User extends BaseModel {
         let params = this.getRouteParameters();
         let url    = this.getURL(route, params);
         let data   = {status}
+        
+        return this.createRequest({method, url, data}).send();
+    }
+
+    resetPassword() {
+        let method = 'POST';
+        let route  = this.getRoute('resetPassword');
+        let params = this.getRouteParameters();
+        let url    = this.getURL(route, params);
+        let data   = {}
+        
+        return this.createRequest({method, url, data}).send();
+    }
+
+    setPassword() {
+        let method = 'POST';
+        let route  = this.getRoute('setPassword');
+        let params = this.getRouteParameters();
+        let url    = this.getURL(route, params);
+        let data   = {
+            password: this.password, 
+            password_confirmation: this.password_confirmation
+        }
         
         return this.createRequest({method, url, data}).send();
     }
