@@ -86,6 +86,11 @@
                     :text="$t('AwesIoNuxtAdmin.activate')"
                     @click.stop="cell.activate()"
                 />
+                <AwDropdownButton
+                    color="error"
+                    :text="$t('AwesIoNuxtAdmin.delete')"
+                    @click.stop="deleteUser(cell)"
+                />
             </template>
         </AwTableBuilder>
         <SetPasswordModal v-if="user" :user="user" />
@@ -148,6 +153,16 @@ export default {
             this.user = user
             this.$root.$emit('modal::set_password:open')
         },
+        async deleteUser(user) {
+            if (!confirm(this.$t('AwesIoNuxtAdmin.confirm_user_delete'))) {
+                return;
+            }
+            try {
+                await user.delete()
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 }
 </script>

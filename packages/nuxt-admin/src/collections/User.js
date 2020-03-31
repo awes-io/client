@@ -33,6 +33,7 @@ export default class User extends BaseModel {
             updateStatus: `/api/admin/users/{id}/status`,
             resetPassword: `/api/admin/users/{id}/password/reset`,
             setPassword: `/api/admin/users/{id}/password/set`,
+            delete: `/api/admin/users/{id}`,
         }
     }
 
