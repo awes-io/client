@@ -24,8 +24,14 @@ export default {
             const target = path('target', e)
             const targetTag = path('target.tagName', e)
             const keyCode = path('keyCode', e)
+            const tagIndex = TAG_NAMES.indexOf(targetTag)
 
-            if (keyCode !== 13 || TAG_NAMES.indexOf(targetTag) === -1) return
+            if (keyCode !== 13 || tagIndex === -1) return
+
+            if (FIELDS[tagIndex].tag === 'textarea') {
+                e.stopPropagation()
+                return
+            }
 
             const elements = Array.from(
                 this.$el.querySelectorAll(FIELDS_SELECTOR)
