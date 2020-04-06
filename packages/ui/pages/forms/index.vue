@@ -61,18 +61,24 @@
                     />
                     <AwInput name="last_name" label="Last name" class="mt-2" />
                     <AwSelect
+                        v-model="select"
                         name="gender"
                         label="Gender"
                         :options="['Male', 'Female']"
                         class="mt-2"
                     />
                     <AwPassword class="mt-2" name="password" label="Password" />
-                    <AwUploader
+                    <!-- <AwUploader
                         name="file"
                         url="//httpbin.org/post"
                         class="mt-2"
                         :get-file-id="() => new Date().getTime()"
                         multiple
+                    /> -->
+                    <AwTextarea
+                        class="mt-2"
+                        name="description"
+                        label="Description"
                     />
                     <AwButton
                         class="mt-2 w-full"
@@ -108,7 +114,8 @@ export default {
             method: 'POST',
             response: 'success',
             errors: null,
-            recieved: {}
+            recieved: {},
+            select: null
         }
     },
 
