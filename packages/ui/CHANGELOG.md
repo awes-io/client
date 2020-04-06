@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.72.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.72.0...@awes-io/ui@1.72.1) (2020-04-06)
+
+
+### Bug Fixes
+
+* add textarea overflow ([28cf654](https://github.com/awes-io/client/commit/28cf654f641ba191d2c2001ad065ab2c0ffcf192))
+* do not submit form if last element is textarea ([9b9403a](https://github.com/awes-io/client/commit/9b9403a99f117041d7e922e5e5485b5b4c58a081))
+
+
+
+
+
 # [1.72.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.71.0...@awes-io/ui@1.72.0) (2020-03-31)
 
 
