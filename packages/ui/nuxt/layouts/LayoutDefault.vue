@@ -92,7 +92,7 @@ export default {
         ...mapGetters('awesIo', [
             'mainMenu',
             'userMenu',
-            'userMenuAdditional',
+            'navbarMenu',
             'isHeaderNotificationShown'
         ]),
 
