@@ -27,7 +27,10 @@
         <template #navbar>
             <div class="flex items-center">
                 <!-- navbar menu -->
-                <ul class="hidden lg:flex list-none layout__navbar-list mr-8">
+                <ul
+                    v-if="Object.keys(navbarMenu).length"
+                    class="hidden lg:flex list-none layout__navbar-list mr-8"
+                >
                     <li
                         v-for="{
                             component,

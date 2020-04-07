@@ -60,7 +60,7 @@
             </div>
 
             <!-- navbar menu -->
-            <div class="lg:hidden">
+            <div v-if="Object.keys(navbarMenu).length" class="lg:hidden">
                 <hr />
 
                 <ul class="list-none px-6 pb-4">
