@@ -25,27 +25,41 @@
 
         <!-- navbar -->
         <template #navbar>
-            <!-- profile button -->
-            <AwUserMenu
-                :avatar="(user.avatar && user.avatar.w96) || ''"
-                :name="user.name"
-                :dark-theme="isDarkTheme"
-                @switch-dark-theme="isDarkTheme = $event"
-            >
-                <Component
-                    v-for="{
-                        component,
-                        key,
-                        props: { text, ...props }
-                    } in userMenu"
-                    :key="key"
-                    :is="component"
-                    v-bind="props"
-                    class="block mt-4"
+            <div class="flex items-center">
+                <!-- navbar menu -->
+                <ul class="hidden lg:flex list-none layout__navbar-list mr-8">
+                    <li
+                        v-for="{ component, key, props, text } in navbarMenu"
+                        :key="key"
+                    >
+                        <Component :key="key" :is="component" v-bind="props">
+                            {{ typeof text === 'function' ? text() : text }}
+                        </Component>
+                    </li>
+                </ul>
+
+                <!-- profile button -->
+                <AwUserMenu
+                    :avatar="(user.avatar && user.avatar.w96) || ''"
+                    :name="user.name"
+                    :dark-theme="isDarkTheme"
+                    @switch-dark-theme="isDarkTheme = $event"
                 >
-                    {{ typeof text === 'function' ? text() : text }}
-                </Component>
-            </AwUserMenu>
+                    <Component
+                        v-for="{
+                            component,
+                            key,
+                            props: { text, ...props }
+                        } in userMenu"
+                        :key="key"
+                        :is="component"
+                        v-bind="props"
+                        class="block mt-4"
+                    >
+                        {{ typeof text === 'function' ? text() : text }}
+                    </Component>
+                </AwUserMenu>
+            </div>
         </template>
 
         <!-- view -->
@@ -67,7 +81,7 @@ export default {
         ...mapGetters('awesIo', [
             'mainMenu',
             'userMenu',
-            'userMenuAdditional',
+            'navbarMenu',
             'isHeaderNotificationShown'
         ]),
 

@@ -30,6 +30,12 @@
     &__content {
         @apply flex flex-col min-h-screen;
     }
+
+    &__navbar-list {
+        & li + li {
+            @apply ml-3;
+        }
+    }
 }
 
 @media (min-width: 35rem) {

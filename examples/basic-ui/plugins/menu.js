@@ -54,4 +54,41 @@ export default function({ store, app }) {
             }
         }
     })
+
+    //mock navbar
+    store.commit('awesIo/SET_NAVBAR_ITEM', [
+        {
+            key: 'badge',
+            order: 1,
+            item: {
+                component: 'AwBadge',
+                text: 'SMS',
+                props: {
+                    text: '8',
+                    color: 'info'
+                }
+            }
+        },
+        {
+            key: 'link',
+            order: 2,
+            item: {
+                component: 'AwLink',
+                text: 'Homepage',
+                props: {
+                    href: app.localePath({ path: '/' }, app.i18n.locale)
+                }
+            }
+        },
+        {
+            key: 'speaker',
+            order: 3,
+            item: {
+                component: 'AwIcon',
+                props: {
+                    name: 'speaker'
+                }
+            }
+        }
+    ])
 }

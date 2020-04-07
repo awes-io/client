@@ -25,6 +25,10 @@ export default ({ store, app }) => {
                     pathOr(Infinity, 'order'),
                     values(pathOr({}, 'userMenuAdditional', state))
                 ),
+                navbarMenu: (state) => sortBy(
+                    pathOr(Infinity, 'order'),
+                    values(pathOr({}, 'navbarMenu', state))
+                ),
                 isHeaderNotificationShown: (state) => state.headerNotification.show,
                 mainMenu: (state, { permissionsGranted }) => {
                     return sortBy(
