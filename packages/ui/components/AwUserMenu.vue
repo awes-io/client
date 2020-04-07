@@ -58,11 +58,40 @@
                     @change="$emit('switch-dark-theme', $event)"
                 />
             </div>
+
+            <!-- navbar menu -->
+            <div class="lg:hidden">
+                <hr />
+
+                <ul class="list-none px-6 pb-4">
+                    <li
+                        v-for="{
+                            component,
+                            key,
+                            props,
+                            text,
+                            listeners
+                        } in navbarMenu"
+                        :key="key"
+                        class="mt-4"
+                    >
+                        <Component
+                            :key="key"
+                            :is="component"
+                            v-bind="props"
+                            v-on="listeners"
+                        >
+                            {{ typeof text === 'function' ? text() : text }}
+                        </Component>
+                    </li>
+                </ul>
+            </div>
         </AwDropdown>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import AwUserpic from './AwUserpic.vue'
 import AwDropdown from './AwDropdown.vue'
 import AwSwitcher from './AwSwitcher.vue'
@@ -111,6 +140,10 @@ export default {
         return {
             isOpened: false
         }
+    },
+
+    computed: {
+        ...mapGetters('awesIo', ['navbarMenu'])
     }
 }
 </script>

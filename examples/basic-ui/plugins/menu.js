@@ -54,4 +54,30 @@ export default function({ store, app }) {
             }
         }
     })
+
+    //mock navbar. Uncomment to enable
+    // store.commit('awesIo/SET_NAVBAR_ITEM', [
+    //     {
+    //         key: 'badge',
+    //         order: 1,
+    //         item: {
+    //             component: 'AwBadge',
+    //             text: 'SMS',
+    //             props: {
+    //                 text: '8',
+    //                 color: 'info'
+    //             }
+    //         }
+    //     },
+    //     {
+    //         key: 'speaker',
+    //         order: 2,
+    //         item: {
+    //             component: 'AwIcon',
+    //             props: {
+    //                 name: 'speaker'
+    //             }
+    //         }
+    //     }
+    // ])
 }
