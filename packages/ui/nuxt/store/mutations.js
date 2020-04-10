@@ -8,10 +8,23 @@ function addMenuItem(state, { key, children = [], parent, ...params }) {
     }
 }
 
+function addNavbarItem(state, { key, order = 1, item }) {
+    item.order = order
+    Vue.set(state.navbarMenu, key, item)
+}
+
 export default {
     SET_USER_MENU_ITEM(state, { key, order = 1, item }) {
         item.order = order
         state.userMenu[key] = item
+    },
+
+    SET_NAVBAR_ITEM(state, items) {
+        Array.isArray(items)
+            ? items.forEach(item => {
+                  addNavbarItem(state, item)
+              })
+            : addNavbarItem(state, items)
     },
 
     SET_MENU_ITEM(state, items) {
