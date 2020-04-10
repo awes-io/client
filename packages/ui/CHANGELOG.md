@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.73.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.72.2...@awes-io/ui@1.73.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* change toggler to v-if ([61602b3](https://github.com/awes-io/client/commit/61602b39a285f111d73d7f3401375c27abf814ae))
+
+
+### Features
+
+* add navbar menu ([b436cb2](https://github.com/awes-io/client/commit/b436cb27b464f7267117650f29aaa9ebe7ac3a31))
+* add navbar menu ([869ba29](https://github.com/awes-io/client/commit/869ba292977f3d3e0e97dcc4e31597c5c458a3e6))
+* fix navbar display ([b2cda27](https://github.com/awes-io/client/commit/b2cda276e498295c0edb21f6a5f5e9326d20fa6f))
+
+
+
+
+
 ## [1.72.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.72.1...@awes-io/ui@1.72.2) (2020-04-06)
 
 

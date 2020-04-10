@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://git.awescode.com/awes-io/client/compare/example-admin@1.1.8...example-admin@1.1.9) (2020-04-10)
+
+**Note:** Version bump only for package example-admin
+
+
+
+
+
 ## [1.1.8](https://git.awescode.com/awes-io/client/compare/example-admin@1.1.7...example-admin@1.1.8) (2020-04-06)
 
 **Note:** Version bump only for package example-admin

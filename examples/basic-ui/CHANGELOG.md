@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.60.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.59.2...basic-ui@1.60.0) (2020-04-10)
+
+
+### Features
+
+* add navbar menu ([b436cb2](https://git.awescode.com/awes-io/client/commits/b436cb27b464f7267117650f29aaa9ebe7ac3a31))
+* add navbar menu ([869ba29](https://git.awescode.com/awes-io/client/commits/869ba292977f3d3e0e97dcc4e31597c5c458a3e6))
+* disable navbar in basic-ui ([90536dd](https://git.awescode.com/awes-io/client/commits/90536dd4325ac251841804b83f5b925d8b170711))
+
+
+
+
+
 ## [1.59.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.59.1...basic-ui@1.59.2) (2020-04-06)
 
 **Note:** Version bump only for package basic-ui
