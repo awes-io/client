@@ -57,11 +57,7 @@
                     name="option"
                     v-bind="{ id, text, ...props, index: i, select }"
                 >
-                    <AwChip
-                        :text="noText ? '' : text"
-                        v-bind="props"
-                        class="p-0"
-                    />
+                    <AwChip :text="noText ? '' : text" v-bind="props" />
                 </slot>
             </AwDropdownButton>
         </AwDropdown>

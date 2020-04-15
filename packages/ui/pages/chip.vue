@@ -115,20 +115,53 @@
                 @input="setStatus"
                 :loading="statusLoading"
                 :options="[
-                    { id: 1, text: 'New', color: 'info' },
-                    { id: 2, text: 'Removed', color: 'error' },
-                    { id: 3, text: 'Active', color: 'success' },
+                    { id: 1, text: 'New', color: 'info', icon: 'plus-solid' },
+                    {
+                        id: 2,
+                        text: 'Removed',
+                        color: 'error',
+                        icon: 'close-solid'
+                    },
+                    {
+                        id: 3,
+                        text: 'Active',
+                        color: 'success',
+                        icon: 'check-solid'
+                    },
                     {
                         id: 4,
                         text: 'The one with very very very long name',
-                        color: 'warning'
+                        color: 'warning',
+                        icon: 'triangle-solid-r'
                     },
-                    { id: 5, text: 'New', color: 'info' },
-                    { id: 6, text: 'Removed', color: 'error' },
-                    { id: 7, text: 'Active', color: 'success' },
-                    { id: 8, text: 'New', color: 'info' },
-                    { id: 9, text: 'Removed', color: 'error' },
-                    { id: 10, text: 'Active', color: 'success' }
+                    {
+                        id: 5,
+                        text: 'In Work',
+                        color: 'link',
+                        icon: 'pie-chart-empty',
+                        scale: 0.6
+                    },
+                    {
+                        id: 6,
+                        text: 'Error',
+                        color: 'error',
+                        icon: 'attention',
+                        scale: 0.65
+                    },
+                    {
+                        id: 7,
+                        text: 'Pause',
+                        color: 'warning',
+                        icon: 'pause'
+                    },
+                    {
+                        id: 8,
+                        text: 'In progress',
+                        color: 'link',
+                        icon: 'progress',
+                        scale: 0.85,
+                        rotate: true
+                    }
                 ]"
             />
         </div>

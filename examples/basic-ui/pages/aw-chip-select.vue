@@ -1,6 +1,5 @@
 <template>
     <AwPage :title="headline">
-        <h2>Appointments</h2>
         <AwTable :rows="appointments.models" verticalAlign="middle">
             <AwTableCol field="name" title="Event" />
             <AwTableCol field="client" title="Client" />
@@ -9,7 +8,6 @@
                     <AwChipSelect
                         v-model="appointment.status"
                         :options="appointment.statuses"
-                        :loading="appointment.loading"
                     />
                 </template>
             </AwTableCol>
@@ -33,19 +31,46 @@ class Appointement extends BaseModel {
             status: 1,
             statuses: [
                 { id: 1, text: 'New', color: 'info', icon: 'plus-solid' },
-                {
-                    id: 2,
-                    text: 'Pending',
-                    color: 'warning',
-                    icon: 'triangle-solid-r'
-                },
-                {
-                    id: 3,
-                    text: 'Active',
-                    color: 'success',
-                    icon: 'check-solid'
-                },
-                { id: 4, text: 'Removed', color: 'error', icon: 'close-solid' }
+                    {
+                        id: 2,
+                        text: 'Removed',
+                        color: 'error',
+                        icon: 'close-solid'
+                    },
+                    {
+                        id: 3,
+                        text: 'Active',
+                        color: 'success',
+                        icon: 'check-solid'
+                    },
+                    {
+                        id: 5,
+                        text: 'In Work',
+                        color: 'link',
+                        icon: 'pie-chart-empty',
+                        scale: 0.6
+                    },
+                    {
+                        id: 6,
+                        text: 'Error',
+                        color: 'error',
+                        icon: 'attention',
+                        scale: 0.65
+                    },
+                    {
+                        id: 7,
+                        text: 'Pause',
+                        color: 'warning',
+                        icon: 'pause'
+                    },
+                    {
+                        id: 8,
+                        text: 'In progress',
+                        color: 'link',
+                        icon: 'progress',
+                        scale: 0.85,
+                        rotate: true
+                    }
             ]
         }
     }
@@ -84,9 +109,12 @@ export default {
                 '<AwChipSelect',
                 '   :options="[',
                 "       {id: 1, text: 'New', color: 'info', icon: 'plus-solid'}",
-                "       {id: 2, text: 'Pending', color: 'warning', icon: 'triangle-solid-r'}",
+                "       {id: 2, text: 'Removed', color: 'error', icon: 'close-solid'}",
                 "       {id: 3, text: 'Active', color: 'success', icon: 'check-solid'}",
-                "       {id: 4, text: 'Removed', color: 'error', icon: 'close-solid'}",
+                "       {id: 5, text: 'In Work', color: 'link', icon: 'pie-chart-empty', scale: 0.6},",
+                "       {id: 6, text: 'Error', color: 'error', icon: 'attention', scale: 0.65},",
+                "       {id: 7, text: 'Pause', color: 'warning', icon: 'pause'},",
+                "       {id: 8, text: 'In progress', color: 'link', icon: 'progress', scale: 0.85, rotate: true},",
                 '   ]"',
                 '   :loading="true"',
                 '/>'
