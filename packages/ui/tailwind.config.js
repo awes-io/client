@@ -45,7 +45,9 @@ module.exports = {
                 brand: '#2a2a2a',
                 muted: '#2a2a2a',
                 'muted-dark': '#252525',
-                'muted-darker': '#333'
+                'muted-darker': '#333',
+                link: '#2388f5',
+                warning: '#ffd25e'
             },
             onColors: {
                 surface: '#fff',

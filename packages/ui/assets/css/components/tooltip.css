@@ -2,8 +2,8 @@
     padding: theme('spacing.1') theme('spacing.3');
     font-size: theme('fontSize.sm', 0.875rem);
     border-radius: theme('borderRadius.default');
-    background-color: theme('colors.overlay', black);
-    color: theme('onColors.overlay', white);
+    background-color: var(--c-on-surface);
+    color: var(--c-surface);
     display: none;
 
     &[data-visible] {
