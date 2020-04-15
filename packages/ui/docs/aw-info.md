@@ -42,8 +42,9 @@ Below is a collection of Vue **props** for the `AwInfo` component.
 <!-- @vuese:AwInfo:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|label|-|`String`|`false`|-|
-|text|-|`String` /  `Number`|`false`|-|
+|label|Subtitle for the element|`String`|`false`|-|
+|help|Tooltip with help icon|`String`|`false`|-|
+|text|Text it's a string or number to print in content area|`String` /  `Number`|`false`|-|
 
 <!-- @vuese:AwInfo:props:end -->
 
@@ -52,6 +53,7 @@ Below is a collection of Vue **slots** for the `AwInfo` component.
 <!-- @vuese:AwInfo:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
+|icon|Customization of help icon|question-circle icon|
 |default|-|-|
 
 <!-- @vuese:AwInfo:slots:end -->

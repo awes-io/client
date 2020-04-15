@@ -109,9 +109,12 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
         )
     )
 
-    addUtilities(text, variants('color'))
+    addUtilities(text, variants('textColor'))
 
-    addUtilities({ '.text-inherit': { color: 'inherit' } }, variants('color'))
+    addUtilities(
+        { '.text-inherit': { color: 'inherit' } },
+        variants('textColor')
+    )
 
     /*
      * Add border colors
