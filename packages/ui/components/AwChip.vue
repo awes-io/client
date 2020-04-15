@@ -9,13 +9,16 @@
         <slot name="left" v-bind="props">
             <!-- decor element -->
             <span
+                v-if="props.icon || props.image"
                 class="aw-chip__decor"
                 :class="{
                     [`border-${props.color}`]: props.color,
                     [`text-${props.color}`]: !props.filled && props.color,
                     'border-text': !props.color && !props.image,
                     'aw-chip__decor_image': props.image,
-                    'animation-rotate-slow': props.rotate,
+                    'animation-rotate-slow':
+                        $options._config[props.icon] &&
+                        $options._config[props.icon].rotate,
                     [`bg-${props.color} `]: props.filled && props.color
                 }"
                 :style="{
@@ -50,7 +53,11 @@
                         'aw-chip__decor-icon_color': props.color
                     }"
                     :style="
-                        props.scale ? `transform: scale(${props.scale})` : null
+                        $options._config[props.icon]
+                            ? `transform: scale(${
+                                  $options._config[props.icon].scale
+                              })`
+                            : null
                     "
                 />
             </span>
@@ -76,6 +83,19 @@
 <script>
 export default {
     name: 'AwChip',
+
+    _config: {
+        'pie-chart-empty': {
+            scale: 0.6
+        },
+        attention: {
+            scale: 0.65
+        },
+        progress: {
+            scale: 0.85,
+            rotate: true
+        }
+    },
 
     props: {
         /**
@@ -116,22 +136,9 @@ export default {
         loading: Boolean,
 
         /**
-         * Toggles rotation animation
-         */
-        rotate: Boolean,
-
-        /**
          * Indicates if chip has filled background
          */
-        filled: Boolean,
-
-        /**
-         * Sets scale for icon
-         */
-        scale: {
-            type: [Number, String],
-            default: null
-        }
+        filled: Boolean
     }
 }
 </script>

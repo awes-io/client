@@ -54,15 +54,13 @@ const statuses = [
         id: 5,
         text: 'In Work',
         color: 'link',
-        icon: 'pie-chart-empty',
-        scale: 0.6
+        icon: 'pie-chart-empty'
     },
     {
         id: 6,
         text: 'Error',
         color: 'error',
-        icon: 'attention',
-        scale: 0.65
+        icon: 'attention'
     },
     {
         id: 7,
@@ -74,9 +72,7 @@ const statuses = [
         id: 8,
         text: 'In progress',
         color: 'link',
-        icon: 'progress',
-        scale: 0.85,
-        rotate: true
+        icon: 'progress'
     }
 ]
 
