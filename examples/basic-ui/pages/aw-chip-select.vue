@@ -123,10 +123,10 @@ export default {
                 "       {id: 1, text: 'New', color: 'info', icon: 'plus-solid'}",
                 "       {id: 2, text: 'Removed', color: 'error', icon: 'close-solid'}",
                 "       {id: 3, text: 'Active', color: 'success', icon: 'check-solid'}",
-                "       {id: 5, text: 'In Work', color: 'link', icon: 'pie-chart-empty', scale: 0.6},",
-                "       {id: 6, text: 'Error', color: 'error', icon: 'attention', scale: 0.65},",
+                "       {id: 5, text: 'In Work', color: 'link', icon: 'pie-chart-empty'},",
+                "       {id: 6, text: 'Error', color: 'error', icon: 'attention'},",
                 "       {id: 7, text: 'Pause', color: 'warning', icon: 'pause'},",
-                "       {id: 8, text: 'In progress', color: 'link', icon: 'progress', scale: 0.85, rotate: true},",
+                "       {id: 8, text: 'In progress', color: 'link', icon: 'progress'},",
                 '   ]"',
                 '/>'
             ]
