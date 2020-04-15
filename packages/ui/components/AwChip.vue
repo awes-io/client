@@ -9,18 +9,24 @@
         <slot name="left" v-bind="props">
             <!-- decor element -->
             <span
+                v-if="props.icon || props.image"
                 class="aw-chip__decor"
                 :class="{
-                    [`text-${props.color} border-${props.color}`]: props.color,
+                    [`border-${props.color}`]: props.color,
+                    [`text-${props.color}`]: !props.filled && props.color,
                     'border-text': !props.color && !props.image,
-                    'aw-chip__decor_image': props.image
+                    'aw-chip__decor_image': props.image,
+                    'animation-rotate-slow':
+                        $options._config[props.icon] &&
+                        $options._config[props.icon].rotate,
+                    [`bg-${props.color} `]: props.filled && props.color
                 }"
                 :style="{
                     backgroundImage: props.image ? `url(${props.image})` : null
                 }"
                 aria-hidden="true"
             >
-                <span
+                <!-- <span
                     v-if="!props.image"
                     class="aw-chip__decor-circle"
                     :class="{
@@ -33,9 +39,27 @@
                         v-if="props.icon"
                         :name="props.icon"
                         class="aw-chip__decor-icon"
-                        :class="{ 'aw-chip__decor-icon_color': props.color }"
+                        :class="{
+                            'aw-chip__decor-icon_color': props.color,
+                        }"
                     />
-                </span>
+                </span> -->
+
+                <AwIcon
+                    v-if="props.icon"
+                    :name="props.icon"
+                    class="aw-chip__decor-icon"
+                    :class="{
+                        'aw-chip__decor-icon_color': props.color
+                    }"
+                    :style="
+                        $options._config[props.icon]
+                            ? `transform: scale(${
+                                  $options._config[props.icon].scale
+                              })`
+                            : null
+                    "
+                />
             </span>
         </slot>
 
@@ -59,6 +83,19 @@
 <script>
 export default {
     name: 'AwChip',
+
+    _config: {
+        'pie-chart-empty': {
+            scale: 0.6
+        },
+        attention: {
+            scale: 0.65
+        },
+        progress: {
+            scale: 0.85,
+            rotate: true
+        }
+    },
 
     props: {
         /**
@@ -96,7 +133,12 @@ export default {
         /**
          * Toggles loading animation
          */
-        loading: Boolean
+        loading: Boolean,
+
+        /**
+         * Indicates if chip has filled background
+         */
+        filled: Boolean
     }
 }
 </script>

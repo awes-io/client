@@ -15,12 +15,13 @@ function getBaseStyle(theme) {
 
         // elements
         decor: {
+            width: theme('spacing.5'),
+            height: theme('spacing.5'),
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderWidth: theme('borderWidth.default'),
-            borderRadius: theme('borderRadius.full'),
-            padding: theme('spacing.1')
+            borderWidth: theme('borderWidth.2'),
+            borderRadius: theme('borderRadius.full')
         },
         decor_image: {
             width: theme('spacing.6'),
@@ -30,8 +31,8 @@ function getBaseStyle(theme) {
             borderColor: 'transparent'
         },
         'decor-circle': {
-            width: theme('spacing.4'),
-            height: theme('spacing.4'),
+            width: theme('spacing.2'),
+            height: theme('spacing.2'),
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -41,7 +42,8 @@ function getBaseStyle(theme) {
             display: 'inline-flex'
         },
         'decor-icon_color': {
-            transform: 'scale(0.5)'
+            transform: 'scale(0.5)',
+            overflow: 'visible!important'
         },
         text: {
             fontSize: theme('fontSize.sm'),

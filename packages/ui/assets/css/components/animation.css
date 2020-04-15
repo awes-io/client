@@ -3,6 +3,10 @@
     animation: aw-rotate 1s linear infinite;
 }
 
+.animation-rotate-slow {
+    animation: aw-rotate 2s linear infinite;
+}
+
 @keyframes aw-rotate {
     to {
         transform: rotate(1turn)

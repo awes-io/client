@@ -37,7 +37,8 @@ module.exports = {
             success: '#fff',
             info: '#fff',
             warning: '#fff',
-            error: '#fff'
+            error: '#fff',
+            link: '#fff'
         },
         darkTheme: {
             colors: {

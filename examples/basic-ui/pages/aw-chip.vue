@@ -30,16 +30,12 @@
             class="bg-error mb-2"
         />
 
-        <AwChip
-            text="With text, color, bg and button"
-            color="error"
-            class="bgcolor-muted-dark mb-2"
-            @click="alert('Click!')"
-        />
-
         <!-- chips with events -->
         <button class="text-left mb-2" @click="alert('Close!')">
-            <AwChip text="With text, color, bg and button" class="bg-error">
+            <AwChip
+                text="With text, color, bg and button"
+                class="bg-error mb-2"
+            >
                 <template #right="{ color }">
                     <AwIcon
                         name="close-circle"
@@ -53,7 +49,7 @@
         <button class="text-left mb-2" @click="alert('Icon close!')">
             <AwChip
                 text="With text, color, bg and button"
-                class="bg-error"
+                class="bg-error mb-2"
                 icon="close-circle"
             >
                 <template #right="{ color }">
@@ -105,6 +101,18 @@
                 </template>
             </AwChip>
         </button>
+
+        <!-- rotating chips -->
+        <h2>Rotating chips</h2>
+        <AwChip color="link" icon="progress" scale="0.85" rotate>
+            In Progress
+        </AwChip>
+
+        <!-- Filled chips -->
+        <h2>Filled chips</h2>
+        <AwChip color="warning" icon="pause" filled>
+            Stop
+        </AwChip>
     </AwPage>
 </template>
 

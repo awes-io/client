@@ -1,7 +1,6 @@
 <template>
     <AwPage :title="headline">
-        <h2>Appointments</h2>
-        <AwTable :rows="appointments.models" verticalAlign="middle">
+        <!-- <AwTable :rows="appointments.models" verticalAlign="middle">
             <AwTableCol field="name" title="Event" />
             <AwTableCol field="client" title="Client" />
             <AwTableCol title="Status">
@@ -9,13 +8,23 @@
                     <AwChipSelect
                         v-model="appointment.status"
                         :options="appointment.statuses"
-                        :loading="appointment.loading"
+                        filled
                     />
                 </template>
             </AwTableCol>
-        </AwTable>
+        </!-->
+
+        <h2>Chip select</h2>
+
+        <AwChipSelect v-model="standart" :options="statuses" />
 
         <AwCodeSnippet v-text="code" class="mt-3" :size="50" />
+
+        <h2>Filled</h2>
+
+        <AwChipSelect v-model="filled" :options="statuses" filled />
+
+        <AwCodeSnippet v-text="filledCode" class="mt-3" :size="50" />
     </AwPage>
 </template>
 
@@ -27,26 +36,51 @@ const EVENTS = [
     { name: 'Call', client: 'Jane Smith' }
 ]
 
+const statuses = [
+    { id: 1, text: 'New', color: 'info', icon: 'plus-solid' },
+    {
+        id: 2,
+        text: 'Removed',
+        color: 'error',
+        icon: 'close-solid'
+    },
+    {
+        id: 3,
+        text: 'Active',
+        color: 'success',
+        icon: 'check-solid'
+    },
+    {
+        id: 5,
+        text: 'In Work',
+        color: 'link',
+        icon: 'pie-chart-empty'
+    },
+    {
+        id: 6,
+        text: 'Error',
+        color: 'error',
+        icon: 'attention'
+    },
+    {
+        id: 7,
+        text: 'Pause',
+        color: 'warning',
+        icon: 'pause'
+    },
+    {
+        id: 8,
+        text: 'In progress',
+        color: 'link',
+        icon: 'progress'
+    }
+]
+
 class Appointement extends BaseModel {
     defaults() {
         return {
             status: 1,
-            statuses: [
-                { id: 1, text: 'New', color: 'info', icon: 'plus-solid' },
-                {
-                    id: 2,
-                    text: 'Pending',
-                    color: 'warning',
-                    icon: 'triangle-solid-r'
-                },
-                {
-                    id: 3,
-                    text: 'Active',
-                    color: 'success',
-                    icon: 'check-solid'
-                },
-                { id: 4, text: 'Removed', color: 'error', icon: 'close-solid' }
-            ]
+            statuses: statuses
         }
     }
 }
@@ -74,7 +108,10 @@ export default {
         return {
             title: 'AwChipSelect',
             headline: this._getTitle('AwChipSelect'),
-            appointments
+            appointments,
+            statuses: [...statuses],
+            standart: 1,
+            filled: 1
         }
     },
 
@@ -84,11 +121,23 @@ export default {
                 '<AwChipSelect',
                 '   :options="[',
                 "       {id: 1, text: 'New', color: 'info', icon: 'plus-solid'}",
-                "       {id: 2, text: 'Pending', color: 'warning', icon: 'triangle-solid-r'}",
+                "       {id: 2, text: 'Removed', color: 'error', icon: 'close-solid'}",
                 "       {id: 3, text: 'Active', color: 'success', icon: 'check-solid'}",
-                "       {id: 4, text: 'Removed', color: 'error', icon: 'close-solid'}",
+                "       {id: 5, text: 'In Work', color: 'link', icon: 'pie-chart-empty'},",
+                "       {id: 6, text: 'Error', color: 'error', icon: 'attention'},",
+                "       {id: 7, text: 'Pause', color: 'warning', icon: 'pause'},",
+                "       {id: 8, text: 'In progress', color: 'link', icon: 'progress'},",
                 '   ]"',
-                '   :loading="true"',
+                '/>'
+            ]
+            return arr.join('\n')
+        },
+
+        filledCode() {
+            const arr = [
+                '<AwChipSelect',
+                '   :options="options"',
+                '   filled',
                 '/>'
             ]
             return arr.join('\n')
