@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.74.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.73.0...@awes-io/ui@1.74.0) (2020-04-15)
+
+
+### Features
+
+* add filled chip styles ([11200a9](https://github.com/awes-io/client/commit/11200a92e186c2635cdce81692a1637e920dbd34))
+* added tooltip for awinfo ([12e062f](https://github.com/awes-io/client/commit/12e062f9c34cffefc23026c8ad127b55782e4e95))
+* move icon options to config ([4ed0d87](https://github.com/awes-io/client/commit/4ed0d8797cbbe48845817372530a480efede74db))
+* new styles for chipSelect ([8dedd3b](https://github.com/awes-io/client/commit/8dedd3b65918aac98138c7b5398f8083f26b13da))
+
+
+
+
+
 # [1.73.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.72.2...@awes-io/ui@1.73.0) (2020-04-10)
 
 

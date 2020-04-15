@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.61.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.60.0...basic-ui@1.61.0) (2020-04-15)
+
+
+### Features
+
+* add filled chip styles ([11200a9](https://git.awescode.com/awes-io/client/commits/11200a92e186c2635cdce81692a1637e920dbd34))
+* added tooltip for awinfo ([12e062f](https://git.awescode.com/awes-io/client/commits/12e062f9c34cffefc23026c8ad127b55782e4e95))
+* move icon options to config ([4ed0d87](https://git.awescode.com/awes-io/client/commits/4ed0d8797cbbe48845817372530a480efede74db))
+* new styles for chipSelect ([8dedd3b](https://git.awescode.com/awes-io/client/commits/8dedd3b65918aac98138c7b5398f8083f26b13da))
+
+
+
+
+
 # [1.60.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.59.2...basic-ui@1.60.0) (2020-04-10)
 
 
