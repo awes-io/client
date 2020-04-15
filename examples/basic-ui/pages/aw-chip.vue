@@ -105,6 +105,18 @@
                 </template>
             </AwChip>
         </button>
+
+        <!-- rotating chips -->
+        <h2>Rotating chips</h2>
+        <AwChip color="link" icon="progress" scale="0.85" rotate>
+            In Progress
+        </AwChip>
+
+        <!-- Filled chips -->
+        <h2>Filled chips</h2>
+        <AwChip color="warning" icon="pause" filled>
+            Stop
+        </AwChip>
     </AwPage>
 </template>
 
