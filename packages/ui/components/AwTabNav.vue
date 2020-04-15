@@ -82,11 +82,6 @@ export default {
          * or array of strings which become button names
          *
          * @type {Array<Object|String>}
-         *
-         * @example
-         * <AwTabNav :items="[{ text: 'One', href: '/one' }, { text: 'Two', href: '/two' }]" />
-         * <AwTabNav :items="['One', 'Two']" />
-         * <AwTabNav :items="[{ text: 'One'}, { text: 'Two'}," />
          */
         items: {
             type: Array,
