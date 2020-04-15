@@ -112,6 +112,7 @@
         <div @click="bubbled = true">
             <AwChipSelect
                 :value="status"
+                filled
                 @input="setStatus"
                 :loading="statusLoading"
                 :options="[

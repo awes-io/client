@@ -11,10 +11,12 @@
             <span
                 class="aw-chip__decor"
                 :class="{
-                    [`text-${props.color} border-${props.color}`]: props.color,
+                    [`border-${props.color}`]: props.color,
+                    [`text-${props.color}`]: !props.filled && props.color,
                     'border-text': !props.color && !props.image,
                     'aw-chip__decor_image': props.image,
-                    'animation-rotate-slow': props.rotate
+                    'animation-rotate-slow': props.rotate,
+                    [`bg-${props.color} `]: props.filled && props.color
                 }"
                 :style="{
                     backgroundImage: props.image ? `url(${props.image})` : null
@@ -45,7 +47,7 @@
                     :name="props.icon"
                     class="aw-chip__decor-icon"
                     :class="{
-                        'aw-chip__decor-icon_color': props.color,
+                        'aw-chip__decor-icon_color': props.color
                     }"
                     :style="
                         props.scale ? `transform: scale(${props.scale})` : null
@@ -117,6 +119,11 @@ export default {
          * Toggles rotation animation
          */
         rotate: Boolean,
+
+        /**
+         * Indicates if chip has filled background
+         */
+        filled: Boolean,
 
         /**
          * Sets scale for icon

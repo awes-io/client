@@ -9,6 +9,7 @@
             <slot name="selected" v-bind="selected">
                 <AwChip
                     :loading="loading"
+                    :filled="filled"
                     v-bind="selected"
                     tabindex="-1"
                     class="px-0"
@@ -57,7 +58,11 @@
                     name="option"
                     v-bind="{ id, text, ...props, index: i, select }"
                 >
-                    <AwChip :text="noText ? '' : text" v-bind="props" />
+                    <AwChip
+                        :text="noText ? '' : text"
+                        v-bind="props"
+                        :filled="filled"
+                    />
                 </slot>
             </AwDropdownButton>
         </AwDropdown>
@@ -94,7 +99,9 @@ export default {
 
         loading: Boolean,
 
-        disabled: Boolean
+        disabled: Boolean,
+
+        filled: Boolean
     },
 
     data() {
