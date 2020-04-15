@@ -9,9 +9,6 @@ title: Calendar Days
 
 The `AwCalendarDays` component is used to render days for calendar.
 
-::: tip Content
-[[toc]]
-:::
 
 ## Props
 

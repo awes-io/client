@@ -9,9 +9,6 @@ title: Calendar Nav
 
 The `AwCalendarNav` component is used to render navigation for calendar.
 
-::: tip Content
-[[toc]]
-:::
 
 ## Props
 

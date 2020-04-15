@@ -1,6 +1,14 @@
 # AwMultiBlockBuilder
 
-Serves for VueMC collection visualization. Pass the collection to `collection` prop, and form fields that you need to default slot. ```vue <AwMultiBlockBuilder title="Manager" :collection="managers">    <template #default="{ model }">      <AwInput         v-model="model.first_name"         :error="model.errors.first_name"         label="First name"       />    </template>  </AwMultiBlockBuilder> ```
+Serves for VueMC collection visualization. Pass the collection to `collection` prop, and form fields that you need to default slot. 
+
+```vue
+<AwMultiBlockBuilder title="Manager" :collection="managers">    
+    <template #default="{ model }">      
+        <AwInput v-model="model.first_name" :error="model.errors.first_name" label="First name" />    
+    </template>  
+</AwMultiBlockBuilder> 
+```
 
 ## Props
 

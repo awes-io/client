@@ -11,6 +11,7 @@
 |noText|-|`Boolean`|`false`|-|
 |loading|-|`Boolean`|`false`|-|
 |disabled|-|`Boolean`|`false`|-|
+|filled|-|`Boolean`|`false`|-|
 
 <!-- @vuese:AwChipSelect:props:end -->
 

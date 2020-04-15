@@ -1,7 +1,5 @@
 # AwSlider
 
-px
-
 ## Props
 
 <!-- @vuese:AwSlider:props:start -->

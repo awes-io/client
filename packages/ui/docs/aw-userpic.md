@@ -1,5 +1,17 @@
 # AwUserpic
 
+## Usage
+Several examples how you can use `AwUserpic`.
+
+### Live Example
+<iframe
+     src='https://codesandbox.io/embed/github/awes-io/client/tree/master/examples/basic-ui?autoresize=1&fontsize=14&hidenavigation=1&initialpath=%2Faw-userpic&module=%2Fpages%2Faw-userpic.vue&theme=dark&view=editor'
+     style='width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;'
+     title='basic-ui'
+     allow='geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb'
+     sandbox='allow-modals allow-forms allow-popups allow-scripts allow-same-origin'
+   ></iframe>
+
 ## Props
 
 <!-- @vuese:AwUserpic:props:start -->
@@ -10,33 +22,3 @@
 |hideName|It's hide the user name. The size of the image will be bigger.|`Boolean`|`false`|-|
 
 <!-- @vuese:AwUserpic:props:end -->
-
-
-## Examples
-Below is a collection of simple to complex examples.
-
-### Basic usage
-```vue
-<template>
-    <AwPage title="AwUserpic">
-        <!-- View for tables, small picture with user name. -->
-        <AwUserpic src="https://picsum.photos/72" name="Max Mustermann" />
-        <!-- View for tables, large picture without user name. -->
-        <AwUserpic src="https://picsum.photos/72" name="Max Mustermann" hide-name />
-    </AwPage>
-</template>
-
-<script>
-import { AwPage, AwUserpic } from '@awes-io/ui'
-
-export default {
-    name: 'AwUserpic',
-
-    components: {
-        AwPage,
-        AwUserpic
-    }
-}
-</script>
-
-```
