@@ -31,10 +31,9 @@ Below is a collection of Vue **props** for the `AwUploader` component.
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |url|-|`String`|`true`|-|
-|name|-|`String`|`false`|-|
+|name|-|`String`|`false`|file|
 |format|-|`Array`|`false`|[]|
 |max|-|`Number`|`false`|2|
-|getFileId|-|`Function`|`false`|-|
 |multiple|-|`Boolean`|`false`|-|
 
 <!-- @vuese:AwUploader:props:end -->
@@ -45,7 +44,6 @@ Below is a collection of Vue **slots** for the `AwUploader` component.
 |Name|Description|Default Slot Content|
 |---|---|---|
 |drag-over|-|-|
-|file-list|file list|-|
 
 <!-- @vuese:AwUploader:slots:end -->
 
@@ -54,6 +52,9 @@ Below is a collection of Vue **events** for the `AwUploader` component.
 <!-- @vuese:AwUploader:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
+|start|-|-|
+|finish|-|-|
 |error|-|-|
+|progress|-|-|
 
 <!-- @vuese:AwUploader:events:end -->

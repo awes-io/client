@@ -30,7 +30,7 @@ Below is a collection of Vue **props** for the `AwTabNav` component.
 <!-- @vuese:AwTabNav:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|items|Array of tab objects with `text` property or array of strings which become button names |`Array`|`true`|-|
+|items|Array of tab objects with `text` property or array of strings which become button names|`Array`|`true`|-|
 |active|Active tab index (for button tabs)|`Number` /  `Array`|`false`|-|
 
 <!-- @vuese:AwTabNav:props:end -->
