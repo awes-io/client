@@ -23,6 +23,9 @@ examples/*/LICENSE
 # Dist folders
 dist
 
+# Temporary folders
+tmp
+
 # Junit reports
 reports
 

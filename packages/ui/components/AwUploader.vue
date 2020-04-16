@@ -1,5 +1,5 @@
 <template>
-    <div @dragenter="dragOver = true">
+    <div v-tooltip.show.prepend="errorTooltip" @dragenter="dragOver = true">
         <label
             class="relative p-4 rounded border overflow-y-hidden flex items-center justify-center cursor-pointer group"
             @dragleave="dragOver = false"
@@ -7,60 +7,48 @@
             @drop.prevent="_onDrop"
         >
             <input
+                ref="element"
                 v-bind="mergedAttrs"
                 type="file"
                 class="sr-only"
+                :name="name || null"
                 :accept="format ? formatString : null"
                 :multiple="multiple"
                 @change="_uploadFile($event.target.files)"
             />
 
             <span
-                class="text-lg pointer-events-none opacity-60 group-hover:opacity-90 block text-center"
+                class="pointer-events-none opacity-60 group-hover:opacity-90 block text-center"
                 :class="{ 'opacity-90': dragOver }"
             >
                 <slot name="drag-over" :dragOver="dragOver">
                     <AwIcon name="upload" size="4xl" />
-                    <span class="block mt-2">
+                    <span class="text-lg block mt-2">
                         {{ $t('AwUploader.drop') }}
                     </span>
                 </slot>
             </span>
         </label>
-
-        <!-- file list -->
-        <slot name="file-list" v-bind="{ files: filesStats, removeFile }">
-            <AwUploaderFiles :files="filesStats" :remove-file="removeFile" />
-        </slot>
-
-        <!-- file fields -->
-        <template v-if="name">
-            <template v-for="{ uploadedId } in files">
-                <input
-                    v-if="uploadedId"
-                    :key="uploadedId"
-                    type="hidden"
-                    tabindex="-1"
-                    :name="name"
-                    :value="uploadedId"
-                />
-            </template>
-        </template>
     </div>
 </template>
 
 <script>
-import { path, values } from 'rambdax'
+import { pathOr, isEmpty, forEach } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
 import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
+import errorMixin from '../mixins/error'
 
-let _fileId = 0
+let __fileId = 1
+const __files = {}
+const __cancelTokens = {}
 
 export default {
     name: 'AwUploader',
 
     inheritAttrs: false,
+
+    mixins: [errorMixin],
 
     props: {
         url: {
@@ -70,7 +58,7 @@ export default {
 
         name: {
             type: String,
-            default: ''
+            default: 'file'
         },
 
         format: {
@@ -83,19 +71,12 @@ export default {
             default: 2
         },
 
-        getFileId: {
-            type: Function,
-            default: path('data.fileId')
-        },
-
         multiple: Boolean
     },
 
     data() {
         return {
-            dragOver: false,
-            files: {},
-            cancelFiles: {}
+            dragOver: false
         }
     },
 
@@ -112,16 +93,16 @@ export default {
         },
 
         maxSizeBytes() {
-            return this.size * 1024 * 1024
-        },
-
-        filesStats() {
-            return values(this.files)
+            return this.max * 1024 * 1024
         },
 
         mergedAttrs() {
             return { ...this.$attrs, [FORM_ENTER_SKIP_ATTR]: '' }
         }
+    },
+
+    beforeDestroy() {
+        forEach(({ id }) => this.cancel(id), __files)
     },
 
     methods: {
@@ -133,24 +114,11 @@ export default {
                 errors.push(this.$t('AwUploader.errorExtension', { fileName }))
             }
 
-            if (this.size && file.size > this.maxSizeBytes) {
+            if (this.max && file.size > this.maxSizeBytes) {
                 errors.push(this.$t('AwUploader.errorSize', { fileName }))
             }
 
             return errors
-        },
-
-        _createFileRecord(name) {
-            const id = _fileId++
-
-            this.$set(this.files, id, {
-                id,
-                name,
-                progress: 0,
-                loaded: false
-            })
-
-            return id
         },
 
         _onDrop($event) {
@@ -164,71 +132,89 @@ export default {
                 const file = files[i]
                 const errors = this._validateFile(file)
 
-                if (errors.length) {
-                    this.$emit('error', errors)
-                    return
+                if (!isEmpty(errors)) {
+                    const errorText = errors.join('. ')
+                    this.errorText = this.errorText
+                        ? this.errorText.concat(', ', errorText)
+                        : errorText
+                    continue
                 }
 
-                const id = this._createFileRecord(file.name)
+                const [uploader, canceler] = this._createFileRecord(file)
+                const id = uploader.id
                 const data = new FormData()
-
                 data.append('file', file)
 
-                this.cancelFiles[id] = CancelToken.source()
+                this.$emit('start', uploader)
 
                 this.$axios
                     .request({
                         method: 'post',
                         url: this.url,
                         data,
-                        cancelToken: this.cancelFiles[id].token,
+                        cancelToken: canceler.token,
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         },
-                        onUploadProgress: this._setFileProgress(id)
+                        onUploadProgress: this._setFileProgress(uploader)
                     })
-                    .then(data => {
-                        delete this.cancelFiles[id]
-                        const fileId = this.getFileId(data)
-                        this.$set(this.files[id], 'uploadedId', fileId)
-                        this.$set(this.files[id], 'loaded', true)
+                    .then(response => {
+                        this.$emit('finish', id, response)
                     })
                     .catch(e => {
                         if (!isCancel(e)) {
-                            console.log(e)
+                            const response = pathOr(null, 'response', e)
+                            this.$emit('error', id, response)
+                            if (!response) {
+                                console.log(e)
+                            }
                         }
+                    })
+                    .finally(() => {
+                        this.cancel(id)
                     })
             }
         },
 
-        removeFile(id) {
-            const fileLoader = this.cancelFiles[id]
+        cancel(id) {
+            const cancelToken = __cancelTokens[id]
 
-            if (fileLoader) {
-                fileLoader.cancel()
-                delete this.cancelFiles[id]
+            if (cancelToken) {
+                cancelToken.cancel()
             }
 
-            this.$delete(this.files, id)
+            delete __cancelTokens[id]
+            delete __files[id]
         },
 
-        _setFileProgress(id) {
+        _createFileRecord(file) {
+            const id = __fileId++
+
+            __cancelTokens[id] = CancelToken.source()
+
+            __files[id] = {
+                id,
+                file,
+                loading: true,
+                progress: 0,
+                cancel: () => this.cancel(id)
+            }
+
+            return [__files[id], __cancelTokens[id]]
+        },
+
+        _setFileProgress(uploader) {
             return $event => {
                 const { total, loaded } = $event
                 const progress = Math.round((loaded / total) * 100)
-                this.$set(this.files[id], 'progress', progress)
+                uploader.progress = progress
+                this.$emit('progress', uploader)
             }
         },
 
         _getFileExtension(fileName) {
             return fileName.split('.').pop()
         },
-
-        // _getFileName(fileName) {
-        //     let name = fileName.split('.')
-        //     name.pop()
-        //     return name.join('.')
-        // },
 
         _extensionMatch(file) {
             let extension = this._getFileExtension(file.name)
