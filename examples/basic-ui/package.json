@@ -14,6 +14,7 @@
         "@awes-io/vue-mc": "^0.3.0",
         "@nuxtjs/axios": "^5.0.0",
         "express": "^4.17.1",
+        "express-fileupload": "^1.1.7-alpha.3",
         "nuxt": "^2.0.0",
         "nuxt-i18n": "^6.3.0",
         "vue-api-query": "^1.5.1",
