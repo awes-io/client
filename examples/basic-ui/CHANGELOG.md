@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.62.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.61.0...basic-ui@1.62.0) (2020-04-16)
+
+
+### Features
+
+* **aw-uploader:** media gallery example ([6306bd0](https://git.awescode.com/awes-io/client/commits/6306bd040f074999eb7e4d1928a5f0398c11fea3))
+
+
+
+
+
 # [1.61.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.60.0...basic-ui@1.61.0) (2020-04-15)
 
 

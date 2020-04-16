@@ -1,6 +1,6 @@
 {
   "name": "tabs-routing",
-  "version": "1.41.46",
+  "version": "1.41.47",
   "private": true,
   "description": "Awes.io AwTabNav routing example",
   "author": "illjah42",
@@ -16,7 +16,7 @@
     "nuxt-i18n": "^6.3.0"
   },
   "devDependencies": {
-    "@awes-io/ui": "^1.74.0",
+    "@awes-io/ui": "^1.75.0",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.1",

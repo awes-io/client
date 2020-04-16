@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.75.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.74.0...@awes-io/ui@1.75.0) (2020-04-16)
+
+
+### Features
+
+* **aw-uploader:** media gallery example ([6306bd0](https://github.com/awes-io/client/commit/6306bd040f074999eb7e4d1928a5f0398c11fea3))
+
+
+
+
+
 # [1.74.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.73.0...@awes-io/ui@1.74.0) (2020-04-15)
 
 
