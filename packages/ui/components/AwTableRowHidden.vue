@@ -4,7 +4,7 @@
             <strong v-if="props.title">{{ props.title }}:</strong>
         </td>
         <td class="p-2">
-            <slot v-bind="props">{{ props.cell }}</slot>
+            <slot v-bind="props"></slot>
         </td>
     </tr>
 </template>
