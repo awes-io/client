@@ -8,26 +8,23 @@
             :show="!!suggestions.length"
             close-on-action
         >
-            <AwGrid :col="1" :gap="0">
-                <AwButton
-                    icon="location"
-                    class="w-full text-left"
-                    v-for="place in suggestions"
-                    :key="place.place_id"
-                    theme="toggle"
-                    @click="select(place)"
-                >
-                    {{ place.description }}
-                </AwButton>
+            <AwDropdownButton
+                icon="location"
+                v-for="place in suggestions"
+                :key="place.place_id"
+                @click="select(place)"
+            >
+                <AwIcon name="location" class="flex-shrink-0 mr-1" />
+                {{ place.description }}
+            </AwDropdownButton>
 
-                <!-- branding -->
-                <img
-                    class="block mr-4 my-2 ml-auto"
-                    aria-hidden="true"
-                    src="https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png"
-                    alt=""
-                />
-            </AwGrid>
+            <!-- branding -->
+            <img
+                class="block my-2 mx-auto"
+                aria-hidden="true"
+                src="https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png"
+                alt=""
+            />
         </AwDropdown>
 
         <!-- places service needs a container to init -->
