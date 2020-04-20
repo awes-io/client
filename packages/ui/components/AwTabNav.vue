@@ -20,10 +20,12 @@
                     ]"
                     @click.prevent="navigate(route)"
                 >
-                    <span tabindex="-1">
-                        {{ text }}
-                        <AwBadge v-if="item.badge" v-bind="item.badge" />
-                    </span>
+                    <div tabindex="-1">
+                        <span tabindex="-1">
+                            {{ text }}
+                            <AwBadge v-if="item.badge" v-bind="item.badge" />
+                        </span>
+                    </div>
                 </a>
                 <button
                     v-else
@@ -37,10 +39,12 @@
                     type="button"
                     @click.prevent="update(i)"
                 >
-                    <span tabindex="-1">
-                        {{ text }}
-                        <AwBadge v-if="item.badge" v-bind="item.badge" />
-                    </span>
+                    <div tabindex="-1">
+                        <span tabindex="-1">
+                            {{ text }}
+                            <AwBadge v-if="item.badge" v-bind="item.badge" />
+                        </span>
+                    </div>
                 </button>
             </slot>
         </template>
