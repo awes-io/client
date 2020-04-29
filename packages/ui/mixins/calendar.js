@@ -354,13 +354,13 @@ export default {
 
         _getNonRangeValue(dayjs) {
             if (this._isMultiple) {
-                const index = this.valueDayjs.findIndex(val =>
+                const index = this._valueDayjs.findIndex(val =>
                     val.isSame(dayjs)
                 )
                 if (index === -1) {
-                    return this.valueDayjs.concat(dayjs).map(this._fromDayjs)
+                    return this._valueDayjs.concat(dayjs).map(this._fromDayjs)
                 } else {
-                    return this.valueDayjs
+                    return this._valueDayjs
                         .filter((val, i) => i !== index)
                         .map(this._fromDayjs)
                 }

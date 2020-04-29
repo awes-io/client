@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Calendar</h2>
-        <AwCalendar v-model="dates" output-format="DD-MM-YYYY" range />
+        <AwCalendar v-model="dates" output-format="DD-MM-YYYY" />
 
         <h2>Dumb calendar</h2>
         <AwCalendarView />
