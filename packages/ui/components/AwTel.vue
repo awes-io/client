@@ -2,6 +2,8 @@
 import loadjs from 'loadjs'
 import errorMixin from '../mixins/error'
 
+const LOADJS_ID = 'vue-tel-input'
+
 export default {
     name: 'AwTel',
 
@@ -66,17 +68,15 @@ export default {
 
     methods: {
         loadTelInput() {
-            if (window.VueTelInput) {
-                return Promise.resolve()
+            if (loadjs.isDefined(LOADJS_ID)) {
+                return new Promise(resolve => {
+                    loadjs.ready('vue-tel-input', resolve)
+                })
             }
 
-            return loadjs(
-                ['https://unpkg.com/vue-tel-input'],
-                'vue-tel-input',
-                {
-                    returnPromise: true
-                }
-            )
+            return loadjs(['https://unpkg.com/vue-tel-input'], LOADJS_ID, {
+                returnPromise: true
+            })
         },
 
         bindErrorListener(attach = true) {
