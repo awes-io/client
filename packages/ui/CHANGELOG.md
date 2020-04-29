@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.76.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.75.0...@awes-io/ui@1.76.0) (2020-04-29)
+
+
+### Bug Fixes
+
+* **aw-calendar:** allow multiple dates in calendar ([0c7b486](https://github.com/awes-io/client/commit/0c7b486697b962302ff9e6ac07ff58e5ce2527e5))
+* **aw-tel:** allow multiple vue-tel-input loaders ([d61bfbc](https://github.com/awes-io/client/commit/d61bfbcf937f696f5d9fff44dcb0c87c8fa4902c))
+* **aw-uploader:** allow uppercase file extensions, clear errors before new upload ([edc4e49](https://github.com/awes-io/client/commit/edc4e499124981bc273d03fbc159b62e22a74f5a))
+* autofill styles ([2df26e3](https://github.com/awes-io/client/commit/2df26e3555d49d9745d1a3d3a6fc0ad8dabb3590))
+* AwTableRowHidden - do not show cell data if no field ([3b0271f](https://github.com/awes-io/client/commit/3b0271fb4ec5cc377aa2582678ff22eb0c24d2f1))
+* change address button component ([0843482](https://github.com/awes-io/client/commit/0843482804254826c236182f9943b1dc6b416aa6))
+* tab nav padding, focus ([4a5caf9](https://github.com/awes-io/client/commit/4a5caf9d8e153e5ef8e5a3c9547b80eab5a47486))
+
+
+### Features
+
+* add resize listeners ([7804087](https://github.com/awes-io/client/commit/780408753d136ebec519b0836bbff9ebae0a4699))
+
+
+
+
+
 # [1.75.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.74.0...@awes-io/ui@1.75.0) (2020-04-16)
 
 
