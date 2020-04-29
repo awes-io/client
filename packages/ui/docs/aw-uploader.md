@@ -30,11 +30,11 @@ Below is a collection of Vue **props** for the `AwUploader` component.
 <!-- @vuese:AwUploader:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|url|-|`String`|`true`|-|
-|name|-|`String`|`false`|file|
-|format|-|`Array`|`false`|[]|
-|max|-|`Number`|`false`|2|
-|multiple|-|`Boolean`|`false`|-|
+|url|API url, where the files will be sent|`String`|`true`|-|
+|name|form input[type="file"] field name|`String`|`false`|file|
+|format|Array of available formats|`Array`|`false`|[]|
+|max|Max file size in Mb|`Number`|`false`|2|
+|multiple|Allow multiple file upload|`Boolean`|`false`|-|
 
 <!-- @vuese:AwUploader:props:end -->
 
@@ -43,7 +43,7 @@ Below is a collection of Vue **slots** for the `AwUploader` component.
 <!-- @vuese:AwUploader:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
-|drag-over|-|-|
+|drag-over|Content inside uploader area. Passes `dragOver<Boolean>` prop, that shows if draggin file above|Icon and text|
 
 <!-- @vuese:AwUploader:slots:end -->
 
@@ -52,9 +52,9 @@ Below is a collection of Vue **events** for the `AwUploader` component.
 <!-- @vuese:AwUploader:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
-|start|-|-|
-|finish|-|-|
-|error|-|-|
-|progress|-|-|
+|start|Fire on upload start, when browser validation is passed|{ id: <Number>, file: <String>, loading: <Boolean>, progress: <Number>, cancel: <Function> }|
+|finish|Fire on upload start, when browser validation is passed|id <Number> response <axios success response>|
+|error|Fire on upload start, when browser validation is passed|id <Number> response <axios error response>|
+|progress|Fire on upload start, when browser validation is passed|{ id: <Number>, file: <String>, loading: <Boolean>, progress: <Number>, cancel: <Function> }|
 
 <!-- @vuese:AwUploader:events:end -->
