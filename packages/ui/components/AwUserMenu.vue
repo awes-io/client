@@ -7,7 +7,9 @@
         >
             <AwUserpic :src="avatar" :name="name" hide-name />
         </button>
+
         <AwDropdown
+            v-if="isDesktop"
             :show.sync="isOpened"
             :options="{
                 placement: 'bottom-end',
@@ -29,72 +31,39 @@
             class="mt-1 lg:mt-0"
             style="width: 300px"
         >
-            <div v-if="name || info" class="p-6 bg-muted">
-                <h5 v-if="name" class="text-xl font-semibold">
-                    {{ name }}
-                </h5>
-
-                <p
-                    v-if="info"
-                    class="mb-0 mt-1 text-xs text-grey leading-snug"
-                    v-html="info"
-                ></p>
-            </div>
-
-            <template v-if="$slots.default">
-                <hr />
-
-                <div class="px-6 pb-4 ">
-                    <slot />
-                </div>
-            </template>
-
-            <hr />
-
-            <div class="px-6 py-2">
-                <AwSwitcher
-                    :checked="darkTheme"
-                    :label="$t('AwUserMenu.darkTheme')"
-                    @change="$emit('switch-dark-theme', $event)"
-                />
-            </div>
-
-            <!-- navbar menu -->
-            <div v-if="Object.keys(navbarMenu).length" class="lg:hidden">
-                <hr />
-
-                <ul class="list-none px-6 pb-4">
-                    <li
-                        v-for="{
-                            component,
-                            key,
-                            props,
-                            text,
-                            listeners
-                        } in navbarMenu"
-                        :key="key"
-                        class="mt-4"
-                    >
-                        <Component
-                            :key="key"
-                            :is="component"
-                            v-bind="props"
-                            v-on="listeners"
-                        >
-                            {{ typeof text === 'function' ? text() : text }}
-                        </Component>
-                    </li>
-                </ul>
-            </div>
+            <AwUserMenuContent v-bind="$props" v-on="$listeners">
+                <slot />
+            </AwUserMenuContent>
         </AwDropdown>
+
+        <template v-else>
+            <Transition name="fade">
+                <div
+                    v-show="isOpened"
+                    class="block w-screen h-screen fixed inset-0 bg-overlay opacity-50"
+                    @click="isOpened = false"
+                ></div>
+            </Transition>
+
+            <AwUserMenuContent
+                v-bind="$props"
+                v-on="$listeners"
+                :class="{ 'is-visible': isOpened }"
+                class="aw-usermenu-mobile z-20"
+            >
+                <slot />
+            </AwUserMenuContent>
+        </template>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import AwUserpic from './AwUserpic.vue'
 import AwDropdown from './AwDropdown.vue'
-import AwSwitcher from './AwSwitcher.vue'
+import AwUserMenuContent from './AwUserMenuContent.vue'
+
+const debounce = 150
+let timeout = null
 
 export default {
     name: 'AwUserMenu',
@@ -102,7 +71,7 @@ export default {
     components: {
         AwUserpic,
         AwDropdown,
-        AwSwitcher
+        AwUserMenuContent
     },
 
     props: {
@@ -138,12 +107,37 @@ export default {
 
     data() {
         return {
-            isOpened: false
+            isOpened: false,
+            isDesktop: false
         }
     },
 
-    computed: {
-        ...mapGetters('awesIo', ['navbarMenu'])
+    watch: {
+        $route() {
+            this.isOpened = false
+        }
+    },
+
+    mounted() {
+        if (window) {
+            window.addEventListener('resize', this.resizeHandler)
+            this.resizeHandler()
+        }
+    },
+
+    beforeDestroy() {
+        if (window) {
+            window.removeEventListener('resize', this.resizeHandler)
+        }
+    },
+
+    methods: {
+        resizeHandler() {
+            clearTimeout(timeout)
+            timeout = setTimeout(() => {
+                this.isDesktop = window.innerWidth > 1023
+            }, debounce)
+        }
     }
 }
 </script>

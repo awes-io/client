@@ -1,0 +1,16 @@
+.aw-usermenu-mobile {
+    @apply h-screen bg-surface fixed top-0 right-0;
+    width: theme('spacing.64', 16rem);
+    
+    /* mobile transition */
+    transform: translateX(100%);
+    opacity: 0;
+    transition: 200ms transform, 0ms opacity 200ms;
+
+    &.is-visible {
+        transform: none;
+        transition: 250ms transform ease-out-quad;
+        opacity: 1;
+        box-shadow: -5px 0 10px -3px rgba(0, 0, 0, 0.25), -2px 0 5px -2px rgba(0, 0, 0, 0.05);
+    }
+}
