@@ -21,7 +21,9 @@
                 class="pointer-events-none opacity-60 group-hover:opacity-90 block text-center"
                 :class="{ 'opacity-90': dragOver }"
             >
+                <!-- Content inside uploader area. Passes `dragOver<Boolean>` prop, that shows if draggin file above -->
                 <slot name="drag-over" :dragOver="dragOver">
+                    <!-- Icon and text -->
                     <AwIcon name="upload" size="4xl" />
                     <span class="text-lg block mt-2">
                         {{ $t('AwUploader.drop') }}
@@ -33,7 +35,7 @@
 </template>
 
 <script>
-import { pathOr, isEmpty, forEach } from 'rambdax'
+import { pathOr, isEmpty, forEach, toLower } from 'rambdax'
 import CancelToken from 'axios/lib/cancel/CancelToken'
 import isCancel from 'axios/lib/cancel/isCancel'
 import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
@@ -51,26 +53,41 @@ export default {
     mixins: [errorMixin],
 
     props: {
+        /**
+         * API url, where the files will be sent
+         */
         url: {
             type: String,
             required: true
         },
 
+        /**
+         * form input[type="file"] field name
+         */
         name: {
             type: String,
             default: 'file'
         },
 
+        /**
+         * Array of available formats
+         */
         format: {
             type: Array,
             default: () => []
         },
 
+        /**
+         * Max file size in Mb
+         */
         max: {
             type: Number,
             default: 2
         },
 
+        /**
+         * Allow multiple file upload
+         */
         multiple: Boolean
     },
 
@@ -88,8 +105,12 @@ export default {
     },
 
     computed: {
+        _format() {
+            return this.format.filter(Boolean).map(toLower)
+        },
+
         formatString() {
-            return this.format.map(extension => `*.${extension}`).join(', ')
+            return this._format.map(extension => `*.${extension}`).join(', ')
         },
 
         maxSizeBytes() {
@@ -110,7 +131,7 @@ export default {
             const errors = []
             const fileName = file.name
 
-            if (this.format.length && !this._extensionMatch(file)) {
+            if (this._format.length && !this._extensionMatch(file)) {
                 errors.push(this.$t('AwUploader.errorExtension', { fileName }))
             }
 
@@ -128,6 +149,8 @@ export default {
         },
 
         _uploadFile(files) {
+            this.errorText = ''
+
             for (var i = files.length - 1; i >= 0; i--) {
                 const file = files[i]
                 const errors = this._validateFile(file)
@@ -145,6 +168,10 @@ export default {
                 const data = new FormData()
                 data.append('file', file)
 
+                /**
+                 * Fire on upload start, when browser validation is passed
+                 * @arg { id: <Number>, file: <String>, loading: <Boolean>, progress: <Number>, cancel: <Function> }
+                 */
                 this.$emit('start', uploader)
 
                 this.$axios
@@ -159,11 +186,21 @@ export default {
                         onUploadProgress: this._setFileProgress(uploader)
                     })
                     .then(response => {
+                        /**
+                         * Fire on upload start, when browser validation is passed
+                         * @arg id <Number>
+                         * @arg response <axios success response>
+                         */
                         this.$emit('finish', id, response)
                     })
                     .catch(e => {
                         if (!isCancel(e)) {
                             const response = pathOr(null, 'response', e)
+                            /**
+                             * Fire on upload start, when browser validation is passed
+                             * @arg id <Number>
+                             * @arg response <axios error response>
+                             */
                             this.$emit('error', id, response)
                             if (!response) {
                                 console.log(e)
@@ -208,17 +245,23 @@ export default {
                 const { total, loaded } = $event
                 const progress = Math.round((loaded / total) * 100)
                 uploader.progress = progress
+                /**
+                 * Fire on upload start, when browser validation is passed
+                 * @arg { id: <Number>, file: <String>, loading: <Boolean>, progress: <Number>, cancel: <Function> }
+                 */
                 this.$emit('progress', uploader)
             }
         },
 
-        _getFileExtension(fileName) {
-            return fileName.split('.').pop()
+        _getFileExtension(fileName = '') {
+            return toLower(fileName)
+                .split('.')
+                .pop()
         },
 
         _extensionMatch(file) {
             let extension = this._getFileExtension(file.name)
-            return this.format.includes(extension)
+            return this._format.includes(extension)
         }
     }
 }
