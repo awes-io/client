@@ -2,7 +2,7 @@ export default function({ store, app }) {
     store.commit('awesIo/SET_MENU_ITEM', [
         {
             key: 'admin',
-            order: 1,
+            order: 99,
             props: {
                 text: app.i18n.t('AwesIoNuxtAdmin.admin'),
                 icon: 'user',
