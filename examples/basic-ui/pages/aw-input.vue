@@ -35,6 +35,13 @@
             value="Disabled input"
             disabled
         />
+
+        <!-- <AwSelect
+            :options="[1, 2, 3, 4, 5]"
+            class="my-6"
+            label="Error overflow test"
+        /> -->
+
         <AwInput
             v-model="input"
             class="mt-2"

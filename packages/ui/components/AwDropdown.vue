@@ -6,7 +6,7 @@
     >
         <component
             :is="tag"
-            class="aw-dropdown z-10"
+            class="aw-dropdown z-30"
             v-show="visible"
             v-on="listeners"
         >
