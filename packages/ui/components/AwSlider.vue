@@ -8,7 +8,7 @@
         @focus.capture="_onFocus"
         @scroll="_prevent"
     >
-        <span ref="scroller" :style="scrollStyle" class="aw-slider__scroller">
+        <span ref="scroller" class="aw-slider__scroller">
             <slot />
         </span>
         <span
@@ -82,11 +82,16 @@ export default {
     },
 
     watch: {
-        active: '_toggle'
+        active: '_toggle',
+
+        scrollLeft(val) {
+            this.$refs.scroller.scrollLeft = val
+        }
     },
 
     mounted() {
         window.addEventListener('resize', this._onResize)
+        this.$refs.scroller.addEventListener('scroll', this._delayedSnap)
         this.$nextTick(() => {
             this._setDimensions()
         })
@@ -94,7 +99,9 @@ export default {
 
     beforeDestroy() {
         this._toggle(false)
+        clearTimeout(this._snaptm)
         clearTimeout(this._resizetm)
+        this.$refs.scroller.removeEventListener('scroll', this._delayedSnap)
         window.removeEventListener('resize', this._onResize)
         this.$el.removeEventListener('click', this._prevent, true)
     },
@@ -102,10 +109,15 @@ export default {
     methods: {
         _toggle(isActive) {
             const method = isActive ? 'addEventListener' : 'removeEventListener'
+            const invertMethod = isActive
+                ? 'removeEventListener'
+                : 'addEventListener'
 
             const moveEvent = this._isTouch ? 'touchmove' : 'mousemove'
             const endEvent = this._isTouch ? 'touchend' : 'mouseup'
             const cancelEvent = this._isTouch ? 'touchcancel' : 'mouseleave'
+
+            this.$refs.scroller[invertMethod]('scroll', this._delayedSnap)
 
             window[method](moveEvent, this._move)
             window[method](moveEvent, this._checkDragging)
@@ -144,6 +156,15 @@ export default {
             const end = pathOr($event.pageX, 'touches.0.pageX', $event)
             const diff = this.$event.pageX - end
             this.scrollLeft = this._withBorders(this.scrollStart + diff)
+        },
+
+        _delayedSnap($event) {
+            clearTimeout(this._snaptm)
+
+            this._snaptm = setTimeout(() => {
+                this.scrollLeft = this._withBorders($event.target.scrollLeft)
+                this._snap()
+            }, 60)
         },
 
         /**
