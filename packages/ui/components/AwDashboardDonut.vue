@@ -6,9 +6,9 @@
             </slot>
         </template>
 
-        <template #chart="chartData">
-            <AwChartLine :data="chartData.data" />
-        </template>
+        <!-- TODO: Add chartjs donut chart -->
+        <!-- <template #chart="chartData">
+        </template> -->
 
         <template #footer>
             <slot name="footer"></slot>
@@ -18,7 +18,6 @@
 
 <script>
 import AwDashboardBuilder from './AwDashboardBuilder.vue'
-import AwChartLine from './AwChartLine.vue'
 import dashboardMixin from '../mixins/dashboard'
 
 export default {
@@ -27,7 +26,6 @@ export default {
     mixins: [dashboardMixin],
 
     components: {
-        AwChartLine,
         AwDashboardBuilder
     }
 }

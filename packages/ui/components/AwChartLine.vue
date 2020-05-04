@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: 'AwLineChart',
+    name: 'AwChartLine',
 
     props: {
         data: {
