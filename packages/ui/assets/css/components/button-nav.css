@@ -29,7 +29,7 @@
         padding: theme('spacing.1') theme('spacing.5');
     }
 
-    &__toggler:before {
+    &__toggler > div:before {
         @apply bgcolor-muted-darker;
         content: '';
         position: absolute;
@@ -40,11 +40,11 @@
         display: block;
     }
 
-    &__toggler:first-child:before {
+    &__toggler:first-child > div:before {
         content: none;
     }
 
-    &__toggler:focus, &__toggler > div > span:focus {
+    &__toggler:focus, &__toggler > div:focus, &__toggler > div > span:focus {
         outline: none;
     }
 
