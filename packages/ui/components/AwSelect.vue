@@ -78,6 +78,7 @@
             ref="dropdown"
             class="w-full"
             :show.sync="isOpened"
+            :close-on-action="!multiple"
             :close-outside="false"
         >
             <slot name="dropdown" v-bind="{ optionsList, isOpened }">
@@ -90,6 +91,8 @@
                 >
                     <slot name="not-equal" :searchPhrase="searchPhrase" />
                 </AwDropdownButton>
+
+                <hr v-if="_showNotEqual" style="margin: 0" />
 
                 <!-- options list -->
                 <template v-if="optionsList.length">
@@ -106,7 +109,16 @@
                             name="option-label"
                             v-bind="{ ...optionsList[i], searchPhrase }"
                         >
-                            {{ optionLabel }}
+                            <div class="flex items-center">
+                                <AwCheckbox
+                                    v-if="multiple"
+                                    :checked="active"
+                                    tabindex="-1"
+                                    class="mr-3"
+                                    @click.stop="_selectIndex(index)"
+                                />
+                                <span v-html="_highlightOption(optionLabel)" />
+                            </div>
                         </slot>
                     </AwDropdownButton>
                 </template>
@@ -273,9 +285,8 @@ export default {
                     this.$emit('input', values, options)
                 } else {
                     this.$emit('input', values[0], options[0])
+                    this._close()
                 }
-
-                this._close()
             }
         },
 
@@ -329,7 +340,9 @@ export default {
                 this.selectOptions.length &&
                 (this.$slots['not-equal'] || this.$scopedSlots['not-equal']) &&
                 !this.selectOptions.find(
-                    option => this._getLabel(option) === this.searchPhrase
+                    option =>
+                        this._getLabel(option).toLowerCase() ===
+                        this.searchPhrase.toLowerCase()
                 )
             )
         }
@@ -427,6 +440,27 @@ export default {
                 this.cancelRequest()
                 !text.length && this._preloadOptions()
             }
+        },
+
+        _highlightOption(option) {
+            if (!this.searchPhrase.trim().length) {
+                return option
+            }
+
+            const matches = option.match(new RegExp(this.searchPhrase, 'gi'))
+            return this._addBoldTagsToString(option, matches)
+        },
+
+        _addBoldTagsToString(str, matches = []) {
+            const used = {}
+            let fin = str
+            matches.forEach(match => {
+                if (!used[match]) {
+                    fin = fin.replace(new RegExp(match, 'g'), `<b>${match}</b>`)
+                    used[match] = true
+                }
+            })
+            return fin
         },
 
         toggleDropdown() {

@@ -25,6 +25,24 @@
             label="Select something"
             v-model="selected"
         />
+
+        <AwSelect
+            v-model="selectedCategory"
+            :options="categories"
+            clearable
+            class="mt-4"
+            track-by="id"
+            option-label="name"
+            label="Label"
+            placeholder="placeholder"
+            @not-equal="createCategory"
+        >
+            <template #not-equal="{ searchPhrase }">
+                <AwIcon name="plus" class="mr-2" />
+                {{ $t('ui.services.modals.category_create') }}
+                {{ searchPhrase }}
+            </template>
+        </AwSelect>
     </AwPage>
 </template>
 
@@ -38,7 +56,26 @@ export default {
             headline: this._getTitle('AwSelect'),
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
-            selected: 'three'
+            selected: '3',
+            selectedCategory: null,
+            categories: [
+                {
+                    id: 1,
+                    name: 'user one'
+                },
+                {
+                    id: 2,
+                    name: 'user tWO wo WO Wo wO'
+                },
+                {
+                    id: 3,
+                    name: 'test One'
+                },
+                {
+                    id: 4,
+                    name: 'test two'
+                }
+            ]
         }
     },
 
@@ -46,6 +83,12 @@ export default {
         return {
             title: this._getMetaTitle(this.title),
             meta: [this._getMetaDescription(this.title)]
+        }
+    },
+
+    methods: {
+        createCategory(e) {
+            console.log('create', e)
         }
     }
 }
