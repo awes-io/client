@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.78.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.0...@awes-io/ui@1.78.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* added translation for off mode ([207c7ef](https://github.com/awes-io/client/commit/207c7ef0eb3b276830ea15cce505b9a058e60754))
+
+
+
+
+
 # [1.78.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.3...@awes-io/ui@1.78.0) (2020-05-05)
 
 
