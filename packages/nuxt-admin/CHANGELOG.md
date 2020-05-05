@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.6.0...@awes-io/nuxt-admin@0.6.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* **nuxt-admin:** rename ua locale to uk and remove duplicates ([9e3ce22](https://github.com/awes-io/client/commit/9e3ce225762a5641a58f8323f5424f36c857929c))
+
+
+
+
+
 # [0.6.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.5.0...@awes-io/nuxt-admin@0.6.0) (2020-05-05)
 
 
