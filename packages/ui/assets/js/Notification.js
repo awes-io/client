@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { pathOr } from 'rambdax'
+import { pathOr, isType } from 'rambdax'
 import AwNotyContainer from '../../components/AwNotyContainer.vue'
 
 export class Notification {
@@ -14,6 +14,7 @@ export class Notification {
     }
 
     add(noty) {
+        noty = isType('String', noty) ? { title: noty } : noty
         const position = pathOr('default', 'position', noty)
 
         const container =
