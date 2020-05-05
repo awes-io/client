@@ -37,6 +37,9 @@ export const AwCodeSnippet = {
 }
 
 export const AwLayoutDefault = {
+    offline: 'Keine Internetverbindung',
+    offlineText:
+        'Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut ...',
     caption:
         '<span class="text-lg lg:text-3xl"><strong>Awes.io</strong></span>',
     toggleMenu: 'Menü umschalten',

@@ -41,7 +41,8 @@ export const AwCodeSnippet = {
 }
 
 export const AwLayoutDefault = {
-    offline: 'Offline',
+    offline: 'No Internet Connection',
+    offlineText: 'Check your connection and try again ...',
     caption:
         '<span class="text-lg lg:text-3xl"><strong>Awes.io</strong></span>',
     toggleMenu: 'Toggle mobile menu',

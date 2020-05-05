@@ -47,6 +47,7 @@ export default {
                         timeout: 0,
                         type: 'error',
                         title: this.$t('AwLayoutDefault.offline'),
+                        text: this.$t('AwLayoutDefault.offlineText'),
                         closable: false
                     })
                 } else {

@@ -1,9 +1,9 @@
 <script>
 const FRAME_BARS = [
-    { class: 'w-1 h-full left-0 top-0' },
-    { class: 'w-1 h-full right-0 top-0' },
-    { class: 'h-1 w-full left-0 top-0' },
-    { class: 'h-1 w-full left-0 bottom-0' }
+    { class: 'w-2 h-full left-0 top-0' },
+    { class: 'w-2 h-full right-0 top-0' },
+    { class: 'h-2 w-full left-0 top-0' },
+    { class: 'h-2 w-full left-0 bottom-0' }
 ]
 
 export const OFFLINE_FRAME_ID = '__offline-frame__'
