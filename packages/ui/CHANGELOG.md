@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.78.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.1...@awes-io/ui@1.78.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* added icon for notify ([357f5d9](https://github.com/awes-io/client/commit/357f5d9865dadfbcdb49d760c89240977989f8fd))
+
+
+
+
+
 ## [1.78.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.0...@awes-io/ui@1.78.1) (2020-05-05)
 
 
