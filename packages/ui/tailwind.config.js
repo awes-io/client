@@ -17,7 +17,7 @@ module.exports = {
             disabled: '#949799',
             grey: '#595d62',
             overlay: '#222',
-            brand: '#3b436f',
+            brand: '#313e4d',
             success: '#7fc876',
             link: '#1d6ec5',
             info: '#45a4dc',
