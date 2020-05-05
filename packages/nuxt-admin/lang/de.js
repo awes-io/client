@@ -12,7 +12,6 @@ export default {
         role_name: 'Rolle',
         default_role_title: 'Möchten Sie diese Rolle standardmäßig verwenden?',
         default_role: 'Ja, ich möchte die Standardeinstellung verwenden.',
-        priority: 'Priorität',
         information: 'Informationen',
         gender: 'Geschlecht',
         create: 'Erstellen',

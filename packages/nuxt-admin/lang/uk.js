@@ -13,7 +13,6 @@ export default {
         default_role_title:
             'Ви хочете використовувати цю роль за замовчуванням?',
         default_role: 'Так, я хочу використовувати за замовчуванням.',
-        priority: 'Пріоритет',
         information: 'Інформація',
         gender: 'Пол',
         create: 'Створити',
