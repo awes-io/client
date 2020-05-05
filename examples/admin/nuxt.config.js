@@ -35,7 +35,7 @@ export default {
 
     proxy: {
         '/api/': {
-            target: process.env.APP_SERVICE_API
+            target: process.env.APP_SERVICE_API || '/'
         }
     }
 }

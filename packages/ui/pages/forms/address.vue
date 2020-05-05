@@ -30,7 +30,9 @@
         <AwForm url="//httpbin.org/post">
             <AwInput required label="Test" />
             <AwTel
-                v-model="phone"
+                v-for="(number, i) in phone"
+                :key="i"
+                v-model="phone[i]"
                 label="Enter phone number"
                 name="phone"
                 :disabled="disablePhone"
@@ -38,6 +40,7 @@
                 placeholder="+111 222 33 44"
                 class="mt-4"
             />
+            <AwLink text="Add" @click="phone.push('')" class="block my-2" />
             <AwButton type="submit" class="mt-2" text="Submit" />
         </AwForm>
         <AwCodeSnippet v-text="phone" class="mt-4" />
@@ -56,7 +59,7 @@ export default {
 
     data() {
         return {
-            phone: null,
+            phone: ['123', '456'],
             text: 'Response will show up here...',
             key: '',
             showAddress: false,

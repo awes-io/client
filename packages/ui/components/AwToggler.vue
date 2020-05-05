@@ -1,6 +1,17 @@
 <template>
-    <transition name="collapse" @enter="open" @leave="close">
-        <div v-if="show" ref="wrapper" class="aw-toggler overflow-hidden">
+    <transition
+        name="collapse"
+        @enter="open"
+        @leave="close"
+        @before-leave="isHidden = true"
+        @after-enter="isHidden = false"
+    >
+        <div
+            v-if="show"
+            ref="wrapper"
+            class="aw-toggler"
+            :class="{ 'overflow-hidden': isHidden }"
+        >
             <div
                 class="aw-toggler__content bg-muted-dark rounded p-4 mt-3 relative"
             >
@@ -20,6 +31,12 @@ export default {
         show: {
             type: Boolean,
             default: true
+        }
+    },
+
+    data() {
+        return {
+            isHidden: false
         }
     },
 

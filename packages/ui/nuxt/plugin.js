@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Vue from 'vue'
-import { flip, pathOr, filter, sortBy, isEmpty, includes, all, values, reduce, mergeDeep } from 'rambdax'
+import { pathOr, sortBy, values, mergeDeep } from 'rambdax'
 
 
 import AwesUI from '@awes-io/ui'
@@ -33,28 +33,8 @@ export default ({ store, app }) => {
                 mainMenu: (state, { permissionsGranted }) => {
                     return sortBy(
                         pathOr(Infinity, ['order']),
-                        reduce(
-                            (menu, item) => {
-                                return permissionsGranted(item)
-                                    ?   menu.concat({
-                                            ...item,
-                                            children: filter(permissionsGranted, item.children)
-                                        })
-                                    :   menu
-                            },
-                            [],
-                            values(pathOr({}, 'menu', state))
-                        )
+                        values(pathOr({}, 'menu', state))
                     )
-                },
-                permissions: (state, getters, rootState) => {
-                    return pathOr([], '<%= options.permissions.storePath %>', rootState)
-                },
-                permissionsGranted: (state, { permissions }) => item => {
-                    let routePermissions = pathOr([], ['permissions'], item)
-                    routePermissions = Array.isArray(routePermissions) ? routePermissions : [routePermissions]
-                    return isEmpty(routePermissions) ||
-                        all(flip(includes)(permissions), routePermissions)
                 }
             },
             namespaced: true

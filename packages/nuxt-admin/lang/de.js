@@ -1,0 +1,58 @@
+export default {
+    AwesIoNuxtAdmin: {
+        admin: 'Benutzer',
+        roles: 'Rollen',
+        create_role: 'Rolle erstellen',
+        role: 'Rolle',
+        description: 'Beschreibung',
+        priority: 'Priorität',
+        from: 'von',
+        permissions: 'Berechtigungen',
+        permissions_title: 'Berechtigungen',
+        role_name: 'Rolle',
+        default_role_title: 'Möchten Sie diese Rolle standardmäßig verwenden?',
+        default_role: 'Ja, ich möchte die Standardeinstellung verwenden.',
+        priority: 'Priorität',
+        information: 'Informationen',
+        gender: 'Geschlecht',
+        create: 'Erstellen',
+        create_user: 'Neuer Benutzer',
+        update: 'Aktualisieren',
+        employees: 'Benutzer',
+        employee: 'Benutzer',
+        status: 'Status',
+        last_activity: 'Letzte Aktivität',
+        edit: 'Bearbeiten',
+        block: 'Deaktivieren',
+        activate: 'Aktivieren',
+        all: 'Alle',
+        active: 'Aktiv',
+        blocked: 'Blockiert',
+        first_name: 'Vorname',
+        last_name: 'Nachname',
+        male: 'Männlich',
+        female: 'Weiblich',
+        divers: 'Divers',
+        email: 'E-Mail',
+        phone: 'Telefon',
+        position: 'Position',
+        password: 'Passwort',
+        password_confirmation: 'Passwort bestätigen',
+        default_new: 'Standard ist neu',
+        name: 'Name',
+        reset: 'Zurücksetzen',
+        user_edit: {
+            popup: {
+                header: 'Erfolg!',
+                text: 'Sie haben das Benutzerprofil erfolgreich aktualisiert.'
+            }
+        },
+        delete: 'Löschen',
+        reset_password: 'Passwort zurücksetzen',
+        set_password: 'Passwort setzen',
+        confirm_role_delete: 'Möchten Sie diese Rolle wirklich löschen?',
+        confirm_reset_password:
+            'Möchten Sie das Benutzerkennwort wirklich zurücksetzen?',
+        confirm_user_delete: 'Möchten Sie diesen Benutzer wirklich löschen?'
+    }
+}

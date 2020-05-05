@@ -1,0 +1,16 @@
+{
+  "name": "permissions-example",
+  "version": "1.1.0",
+  "description": "Example of casl-vue integration",
+  "author": "ILLJAH42",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  }
+}

@@ -15,6 +15,12 @@
                     :label="$t('AwesIoNuxtAdmin.female')"
                     value="female"
                 />
+                <AwRadio
+                    class="inline-block ml-3"
+                    v-model="user.sex"
+                    :label="$t('AwesIoNuxtAdmin.divers')"
+                    value="divers"
+                />
             </AwInfo>
 
             <AwInput
@@ -106,8 +112,8 @@
 </template>
 
 <script>
-import User from '../collections/User'
-import redirectToUsers from '../mixins/redirectToUsers'
+import User from '@awes-io/nuxt-admin/src/collections/User'
+import redirectToUsers from '@awes-io/nuxt-admin/src/mixins/redirectToUsers'
 
 export default {
     name: 'UserCreate',

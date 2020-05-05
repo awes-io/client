@@ -14,6 +14,12 @@
                 :label="$t('AwesIoNuxtAdmin.female')"
                 value="female"
             />
+            <AwRadio
+                class="inline-block ml-3"
+                v-model="model.profile.sex"
+                :label="$t('AwesIoNuxtAdmin.divers')"
+                value="divers"
+            />
         </AwInfo>
 
         <AwInput
@@ -104,7 +110,7 @@
 </template>
 
 <script>
-import redirectToUsers from '../../mixins/redirectToUsers'
+import redirectToUsers from '@awes-io/nuxt-admin/src/mixins/redirectToUsers'
 
 export default {
     name: 'UserUpdateInformation',

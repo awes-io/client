@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.77.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.1...@awes-io/ui@1.77.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* changed brancd color ([b55734f](https://github.com/awes-io/client/commit/b55734f046d0216444261a6a1ba5bceea083cb14))
+
+
+
+
+
+## [1.77.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.0...@awes-io/ui@1.77.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* AwSelect improvements ([840c551](https://github.com/awes-io/client/commit/840c5517d9d072c9902165d8abff963d1f4f22f3))
+
+
+
+
+
+# [1.77.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.76.0...@awes-io/ui@1.77.0) (2020-05-05)
+
+
+### Bug Fixes
+
+* **aw-slider:** allow scroll on touchpad ([8648101](https://github.com/awes-io/client/commit/86481014e600dfdabc04f6303da860e88cfc2307))
+* AwDropdown z-index fix ([68c6689](https://github.com/awes-io/client/commit/68c6689d4157e8b1cda943ef1cc8f0e58f29a790))
+* AwToggler overflow bug ([f268787](https://github.com/awes-io/client/commit/f2687870c169edb90896e8dbc1a5814bb0181e44))
+* fix AwButtonNav styles ([dbecca9](https://github.com/awes-io/client/commit/dbecca943115dc8aa496817a1517a8332005fd31))
+* update AwPagination ([7ea4abb](https://github.com/awes-io/client/commit/7ea4abb4463e45b5f3db16acb39675fbc7cc1b49))
+
+
+### Features
+
+* **nuxt-auth:** casl added globally to manage permissions ([58b0175](https://github.com/awes-io/client/commit/58b0175c5809b37d2669d425a3702eb8840603ea))
+
+
+
+
+
+# [1.76.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.75.0...@awes-io/ui@1.76.0) (2020-04-29)
+
+
+### Bug Fixes
+
+* **aw-calendar:** allow multiple dates in calendar ([0c7b486](https://github.com/awes-io/client/commit/0c7b486697b962302ff9e6ac07ff58e5ce2527e5))
+* **aw-tel:** allow multiple vue-tel-input loaders ([d61bfbc](https://github.com/awes-io/client/commit/d61bfbcf937f696f5d9fff44dcb0c87c8fa4902c))
+* **aw-uploader:** allow uppercase file extensions, clear errors before new upload ([edc4e49](https://github.com/awes-io/client/commit/edc4e499124981bc273d03fbc159b62e22a74f5a))
+* autofill styles ([2df26e3](https://github.com/awes-io/client/commit/2df26e3555d49d9745d1a3d3a6fc0ad8dabb3590))
+* AwTableRowHidden - do not show cell data if no field ([3b0271f](https://github.com/awes-io/client/commit/3b0271fb4ec5cc377aa2582678ff22eb0c24d2f1))
+* change address button component ([0843482](https://github.com/awes-io/client/commit/0843482804254826c236182f9943b1dc6b416aa6))
+* tab nav padding, focus ([4a5caf9](https://github.com/awes-io/client/commit/4a5caf9d8e153e5ef8e5a3c9547b80eab5a47486))
+
+
+### Features
+
+* add resize listeners ([7804087](https://github.com/awes-io/client/commit/780408753d136ebec519b0836bbff9ebae0a4699))
+
+
+
+
+
 # [1.75.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.74.0...@awes-io/ui@1.75.0) (2020-04-16)
 
 

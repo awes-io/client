@@ -8,7 +8,7 @@
                     name="name"
                     :error="role.errors.name"
                 />
-                <AwSwitcher 
+                <AwSwitcher
                     class="mt-5"
                     v-model="role.default_new"
                     :label="$t('AwesIoNuxtAdmin.default_role')"
@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import Role from '../collections/Role'
-import Permissions from '../collections/Permissions'
-import redirectToRoles from '../mixins/redirectToRoles'
+import Role from '@awes-io/nuxt-admin/src/collections/Role'
+import Permissions from '@awes-io/nuxt-admin/src/collections/Permissions'
+import redirectToRoles from '@awes-io/nuxt-admin/src/mixins/redirectToRoles'
 
 export default {
     name: 'RoleCreate',

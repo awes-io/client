@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Role from '../collections/Role'
+import Role from '@awes-io/nuxt-admin/src/collections/Role'
 
 export default {
     name: 'RoleUpdate',

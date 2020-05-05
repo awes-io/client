@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Permissions from '../../collections/Permissions'
-import redirectToRoles from '../../mixins/redirectToRoles'
+import Permissions from '@awes-io/nuxt-admin/src/collections/Permissions'
+import redirectToRoles from '@awes-io/nuxt-admin/src/mixins/redirectToRoles'
 
 export default {
     name: 'RoleUpdatePermissions',
