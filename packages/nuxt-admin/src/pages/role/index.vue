@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import redirectToRoles from '../../mixins/redirectToRoles'
+import redirectToRoles from '@awes-io/nuxt-admin/src/mixins/redirectToRoles'
 
 export default {
     name: 'RoleUpdateInformation',

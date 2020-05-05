@@ -99,8 +99,8 @@
 </template>
 
 <script>
-import Users from '../collections/Users'
-import SetPasswordModal from '../components/SetPasswordModal.vue'
+import Users from '@awes-io/nuxt-admin/src/collections/Users'
+import SetPasswordModal from '@awes-io/nuxt-admin/src/components/SetPasswordModal.vue'
 
 export default {
     name: 'Users',

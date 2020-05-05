@@ -112,8 +112,8 @@
 </template>
 
 <script>
-import User from '../collections/User'
-import redirectToUsers from '../mixins/redirectToUsers'
+import User from '@awes-io/nuxt-admin/src/collections/User'
+import redirectToUsers from '@awes-io/nuxt-admin/src/mixins/redirectToUsers'
 
 export default {
     name: 'UserCreate',
