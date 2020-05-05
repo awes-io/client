@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.78.3](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.2...@awes-io/ui@1.78.3) (2020-05-05)
+
+
+### Bug Fixes
+
+* removed icon for offline ([5a71f36](https://github.com/awes-io/client/commit/5a71f36f5ac9259f12edf45c3bfcb8b650b67839))
+
+
+
+
+
 ## [1.78.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.1...@awes-io/ui@1.78.2) (2020-05-05)
 
 
