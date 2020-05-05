@@ -26,7 +26,7 @@
             v-model="selected"
         />
 
-        <AwSelect
+        <!-- <AwSelect
             v-model="selectedCategory"
             :options="categories"
             clearable
@@ -42,7 +42,7 @@
                 {{ $t('ui.services.modals.category_create') }}
                 {{ searchPhrase }}
             </template>
-        </AwSelect>
+        </AwSelect> -->
     </AwPage>
 </template>
 
