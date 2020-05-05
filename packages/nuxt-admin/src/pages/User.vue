@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import User from '../collections/User'
+import User from '@awes-io/nuxt-admin/src/collections/User'
 
 export default {
     name: 'UserUpdate',

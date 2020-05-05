@@ -1,4 +1,5 @@
 import { resolve, join } from 'path'
+import { mergeRoutes } from './utils/merge-routes'
 
 const meta = require('../package.json')
 
@@ -7,8 +8,8 @@ function AwesIoNuxtAdmin() {
     this.options.build.transpile.push('@awes-io/nuxt-admin')
 
     // Register routes
-    this.extendRoutes((routes = {}) => {
-        routes.unshift(
+    this.extendRoutes((routes = []) => {
+        mergeRoutes(routes, [
             {
                 path: '/admin/roles',
                 component: resolve(__dirname, './pages/Roles.vue')
@@ -18,13 +19,16 @@ function AwesIoNuxtAdmin() {
                 component: resolve(__dirname, './pages/RoleCreate.vue')
             },
             {
-                path: '/admin/roles/:id',
+                path: '/admin/roles/:id?',
                 component: resolve(__dirname, './pages/Role.vue'),
                 children: [
                     {
                         name: 'role-permissions',
                         path: 'permissions',
-                        component: resolve(__dirname, './pages/role/permissions.vue')
+                        component: resolve(
+                            __dirname,
+                            './pages/role/permissions.vue'
+                        )
                     },
                     {
                         name: 'role-information',
@@ -42,7 +46,7 @@ function AwesIoNuxtAdmin() {
                 component: resolve(__dirname, './pages/UserCreate.vue')
             },
             {
-                path: '/admin/users/:id',
+                path: '/admin/users/:id?',
                 component: resolve(__dirname, './pages/User.vue'),
                 children: [
                     {
@@ -52,7 +56,7 @@ function AwesIoNuxtAdmin() {
                     }
                 ]
             }
-        )
+        ])
     })
 
     // Add localization
@@ -66,7 +70,7 @@ function AwesIoNuxtAdmin() {
     // Menu plugin
     const menuPlugin = this.addTemplate({
         fileName: join('awes-io', 'admin-menu-plugin.js'),
-        src: resolve(__dirname, './plugins/menu.js'),
+        src: resolve(__dirname, './plugins/menu.js')
     })
     this.options.plugins.push(join(this.options.buildDir, menuPlugin.dst))
 }

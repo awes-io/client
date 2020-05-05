@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import Roles from '../collections/Roles'
+import Roles from '@awes-io/nuxt-admin/src/collections/Roles'
 
 export default {
     name: 'Roles',
