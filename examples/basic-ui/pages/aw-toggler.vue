@@ -16,6 +16,12 @@
                 value="three"
             />
 
+            <AwSelect
+                v-model="select"
+                :options="['1', '2', '3', '4', '5', '6']"
+                class="my-2"
+            />
+
             <AwButton @click="toggle" class="mt-3" size="sm">
                 Close
             </AwButton>
@@ -49,7 +55,8 @@ export default {
             isOpen: true,
             radioValue: '',
             inputValue: '',
-            disountReason: '1'
+            disountReason: '1',
+            select: '1'
         }
     },
 
