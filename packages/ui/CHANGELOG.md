@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.77.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.0...@awes-io/ui@1.77.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* AwSelect improvements ([840c551](https://github.com/awes-io/client/commit/840c5517d9d072c9902165d8abff963d1f4f22f3))
+
+
+
+
+
 # [1.77.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.76.0...@awes-io/ui@1.77.0) (2020-05-05)
 
 

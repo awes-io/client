@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.62.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.2...basic-ui@1.62.3) (2020-05-05)
+
+
+### Bug Fixes
+
+* AwSelect improvements ([840c551](https://git.awescode.com/awes-io/client/commits/840c5517d9d072c9902165d8abff963d1f4f22f3))
+* remove test code ([f8ac7ee](https://git.awescode.com/awes-io/client/commits/f8ac7ee2277f10b6b0538c1b92e9a8f657c244a3))
+
+
+
+
+
 ## [1.62.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.1...basic-ui@1.62.2) (2020-05-05)
 
 
