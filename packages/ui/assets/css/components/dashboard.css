@@ -18,12 +18,23 @@
         @apply mb-0 text-disabled text-sm leading-snug font-body font-bold truncate;
     }
 
+    & &__counter-wrapper {
+        @apply absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     & &__counter {
         @apply flex items-center text-4xl leading-snug font-heading text-on-muted-dark font-bold;
 
         .aw-icon {
             @apply text-2xl ml-3;
         }
+    }
+
+    & &__counter-wrapper &__counter {
+        @apply block text-center leading-none text-3xl;
     }
 
     & &__content {

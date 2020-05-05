@@ -1,11 +1,13 @@
 <template>
     <AwPage :title="headline">
-        <AwDashboardDoughnut
-            :data="lineData"
-            percent
-            title="Регистрации"
-            description="Заявок"
-        />
+        <div style="max-width: 400px">
+            <AwDashboardDoughnut
+                :data="lineDatatwo"
+                percent
+                title="Регистрации"
+                description="Заявок"
+            />
+        </div>
     </AwPage>
 </template>
 
@@ -13,20 +15,20 @@
 export default {
     data() {
         return {
-            title: 'AwDashboardDonut',
-            headline: this._getTitle('AwDashboardDonut'),
+            title: 'AwDashboardDoughnut',
+            headline: this._getTitle('AwDashboardDoughnut'),
             lineData: {
                 total: 340, // number
                 total_diff: 20, // number
                 elements: [
                     {
                         title: 'Успешных', // string
-                        value: 265, // number
+                        value: 240, // number
                         on_chart: true
                     },
                     {
                         title: 'Ожидает',
-                        value: 60,
+                        value: 100,
                         on_chart: true
                     }
                 ]

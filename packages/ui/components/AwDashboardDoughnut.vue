@@ -1,13 +1,24 @@
 <template>
-    <aw-dashboard-builder v-bind="$props">
+    <aw-dashboard-builder v-bind="$props" :is-counter-visible="false">
         <!-- TODO: Add chartjs donut chart -->
         <template #chart="chartData">
-            <AwChart
-                type="doughnut"
-                :data="formatData(chartData)"
-                :height="height"
-                :options="chartOptions"
-            />
+            <div style="max-width: 300px" class="mx-auto relative mt-4 mb-8">
+                <AwChart
+                    type="doughnut"
+                    :data="formatData(chartData)"
+                    :height="height"
+                    :options="chartOptions"
+                />
+
+                <div class="dashboard__counter-wrapper">
+                    <div class="dashboard__counter">
+                        340
+                        <div class="dashboard__description">
+                            {{ description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </template>
 
         <template #footer>
@@ -21,7 +32,7 @@ import AwDashboardBuilder from './AwDashboardBuilder.vue'
 import dashboardMixin from '../mixins/dashboard'
 
 export default {
-    name: 'AwDashboardLine',
+    name: 'AwDashboardDoughnut',
 
     mixins: [dashboardMixin],
 
@@ -32,13 +43,14 @@ export default {
     props: {
         height: {
             type: Number,
-            default: 75
+            default: 200
         }
     },
 
     data() {
         return {
             chartOptions: {
+                cutoutPercentage: 67,
                 legend: {
                     display: false
                 }
@@ -67,7 +79,8 @@ export default {
                 datasets: [
                     {
                         data: obj.data,
-                        backgroundColor: obj.colors
+                        backgroundColor: obj.colors,
+                        weight: 5
                     }
                 ]
             }
