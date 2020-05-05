@@ -1,5 +1,6 @@
 <template>
     <Component
+        v-if="visible"
         :is="tag"
         class="aw-menu-item"
         :class="{
@@ -7,7 +8,7 @@
             'aw-menu-item_expanded': expanded,
             'aw-menu-item_has-icon': !!icon,
             'aw-menu-item_has-badge': !!_badge,
-            'aw-menu-item_has-toggler': children.length && !expanded,
+            'aw-menu-item_has-toggler': hasChildren && !expanded,
             'aw-menu-item_has-active': hasActiveChild
         }"
     >
@@ -18,7 +19,7 @@
             :to="href || null"
             :aria-current="isSamePage(href) ? 'page' : null"
             v-bind="$attrs"
-            v-on="!href && children.length ? { click: toggle } : {}"
+            v-on="!href && hasChildren ? { click: toggle } : {}"
             class="aw-menu-item__button"
         >
             <AwIcon v-if="icon" :name="icon" size="xl" class="mr-5" />
@@ -32,7 +33,7 @@
 
         <!-- submenu toggler -->
         <button
-            v-if="children.length && !expanded"
+            v-if="hasChildren && !expanded"
             :aria-label="$t('AwLayoutDefault.toggleSubmenu')"
             @click.stop.prevent="toggle()"
             class="aw-menu-item__toggler"
@@ -42,12 +43,12 @@
 
         <!-- submenu -->
         <AwAccordionFold
-            v-if="children.length"
+            v-if="hasChildren"
             :show="opened || expanded"
             class="aw-menu-item__children"
         >
             <RouterLink
-                v-for="(child, j) in children"
+                v-for="(child, j) in visibleChildren"
                 :key="`child-${j}`"
                 :to="child.href"
                 :aria-current="isSamePage(child.href) ? 'page' : null"
@@ -61,7 +62,7 @@
 </template>
 
 <script>
-import { isEmpty, isNil } from 'rambdax'
+import { isEmpty, isType, isNil } from 'rambdax'
 import { trimSlash } from '../assets/js/router'
 import AwIcon from './AwIcon.vue'
 import AwBadge from './AwBadge.vue'
@@ -111,6 +112,11 @@ export default {
             default: null
         },
 
+        show: {
+            type: [Boolean, Function],
+            default: true
+        },
+
         expanded: Boolean
     },
 
@@ -132,19 +138,35 @@ export default {
             }
         },
 
+        visible() {
+            return isType('Function', this.show)
+                ? this.show()
+                : this.show !== false
+        },
+
+        visibleChildren() {
+            return this.children.filter(({ show }) =>
+                isType('Function', show) ? show : show !== false
+            )
+        },
+
+        hasChildren() {
+            return this.visibleChildren.length
+        },
+
         currentPath() {
             return trimSlash(this.$route.path)
         },
 
         hasActiveChild() {
-            return this.children.some(
+            return this.visibleChildren.some(
                 ({ href }) => !!href && this.isSamePage(href)
             )
         }
     },
 
     created() {
-        if (this.expanded || this.children.length === 0) return
+        if (!this.show || this.expanded || !this.hasChildren) return
 
         if ((this.href && this.isSamePage(this.href)) || this.hasActiveChild) {
             this.opened = true

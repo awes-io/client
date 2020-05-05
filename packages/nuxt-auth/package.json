@@ -38,6 +38,8 @@
     "license": "MIT",
     "dependencies": {
         "@awes-io/ui": "^0.1.0",
+        "@casl/ability": "^4.0.8",
+        "@casl/vue": "^1.0.3",
         "@nuxtjs/auth": "^4.8.1"
     },
     "release": {
