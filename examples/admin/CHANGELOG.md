@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://git.awescode.com/awes-io/client/compare/example-admin@1.1.12...example-admin@1.2.0) (2020-05-05)
+
+
+### Features
+
+* **nuxt-admin:** merge routes instead of replace ([66fb5ab](https://git.awescode.com/awes-io/client/commits/66fb5abb01ffcec055f8722c307de5397ffec561))
+
+
+
+
+
 ## [1.1.12](https://git.awescode.com/awes-io/client/compare/example-admin@1.1.11...example-admin@1.1.12) (2020-04-29)
 
 **Note:** Version bump only for package example-admin

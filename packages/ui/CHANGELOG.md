@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.77.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.76.0...@awes-io/ui@1.77.0) (2020-05-05)
+
+
+### Bug Fixes
+
+* **aw-slider:** allow scroll on touchpad ([8648101](https://github.com/awes-io/client/commit/86481014e600dfdabc04f6303da860e88cfc2307))
+* AwDropdown z-index fix ([68c6689](https://github.com/awes-io/client/commit/68c6689d4157e8b1cda943ef1cc8f0e58f29a790))
+* AwToggler overflow bug ([f268787](https://github.com/awes-io/client/commit/f2687870c169edb90896e8dbc1a5814bb0181e44))
+* fix AwButtonNav styles ([dbecca9](https://github.com/awes-io/client/commit/dbecca943115dc8aa496817a1517a8332005fd31))
+* update AwPagination ([7ea4abb](https://github.com/awes-io/client/commit/7ea4abb4463e45b5f3db16acb39675fbc7cc1b49))
+
+
+### Features
+
+* **nuxt-auth:** casl added globally to manage permissions ([58b0175](https://github.com/awes-io/client/commit/58b0175c5809b37d2669d425a3702eb8840603ea))
+
+
+
+
+
 # [1.76.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.75.0...@awes-io/ui@1.76.0) (2020-04-29)
 
 

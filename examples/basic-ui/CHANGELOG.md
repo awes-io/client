@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.62.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.1...basic-ui@1.62.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* AwDropdown z-index fix ([68c6689](https://git.awescode.com/awes-io/client/commits/68c6689d4157e8b1cda943ef1cc8f0e58f29a790))
+* AwToggler overflow bug ([f268787](https://git.awescode.com/awes-io/client/commits/f2687870c169edb90896e8dbc1a5814bb0181e44))
+
+
+
+
+
 ## [1.62.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.0...basic-ui@1.62.1) (2020-04-29)
 
 **Note:** Version bump only for package basic-ui

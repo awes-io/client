@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.5.0...@awes-io/nuxt-admin@0.6.0) (2020-05-05)
+
+
+### Bug Fixes
+
+* updated order for admin menu ([e86e0a7](https://github.com/awes-io/client/commit/e86e0a7006959f9dd7e7a5dda7e2b4ffeabc557e))
+
+
+### Features
+
+* **nuxt-admin:** merge routes instead of replace ([66fb5ab](https://github.com/awes-io/client/commit/66fb5abb01ffcec055f8722c307de5397ffec561))
+* added translation ([bb23ec2](https://github.com/awes-io/client/commit/bb23ec2225f996ac93fd11d80e9a8e88646519a2))
+
+
+
+
+
 # [0.5.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.4.0...@awes-io/nuxt-admin@0.5.0) (2020-03-31)
 
 
