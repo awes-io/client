@@ -134,9 +134,18 @@ function AwesIoNuxtAuth() {
         fileName: join('awes-io', 'auth-plugin.js')
     })
 
-    this.options.plugins.push({
-        src: join(this.options.buildDir, dst)
+    const authPlugin = { src: join(this.options.buildDir, dst) }
+
+    const firstUserPluginIndex = this.options.plugins.findIndex(plugin => {
+        const src = plugin.src || plugin
+        return /^[.~]{0,2}(\/)plugins/.test(src)
     })
+
+    if (firstUserPluginIndex === -1) {
+        this.options.plugins.push(authPlugin)
+    } else {
+        this.options.plugins.splice(firstUserPluginIndex, 0, authPlugin)
+    }
 
     // Add localization
     const langPlugin = this.addTemplate({

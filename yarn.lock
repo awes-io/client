@@ -1453,6 +1453,18 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@casl/ability@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.npmjs.org/@casl/ability/-/ability-4.0.8.tgz#cdd4a3f61866e9a8341349c52dd2f5425265b07c"
+  integrity sha512-XBTK87mIr0IaDkFLS019ZVQ2Z4OkKZnHqyqkwDGrauBiCh/5ZJqiia39xO5gcjY7EZLTC591Vje6gVPyBUFoCQ==
+  dependencies:
+    sift "^12.0.0"
+
+"@casl/vue@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@casl/vue/-/vue-1.0.3.tgz#6ac0489d30372c608b9867278ad226297564affd"
+  integrity sha512-PV1bMaT1aoOyFILLmhWdd2e2ydOy5JxdrH9HkaLYEM5GRPmQhQKQrOL4atsdjloieXsm6tsOI0mz7KbJqik1vA==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.npmjs.org/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -14866,6 +14878,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
+
+sift@^12.0.0:
+  version "12.0.1"
+  resolved "https://registry.npmjs.org/sift/-/sift-12.0.1.tgz#ec3b5fda13c569138a71cbeda6acb4395cc7f4be"
+  integrity sha512-TVJzYmDLSSK2Qmps/SG16y1UfgQJAB5urJ6iIYNO7Ok+EHnQu/Mh5p31gCLkFMubtOSqWZk7fycRVcsrupQF+w==
 
 sigmund@^1.0.1:
   version "1.0.1"
