@@ -9,7 +9,7 @@
     }
 
     &__toggler,
-    &__toggler > span {
+    &__toggler > div > span {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -25,11 +25,11 @@
         white-space: nowrap;
     }
 
-    &__toggler > span:not([class]) {
+    &__toggler > div > span:not([class]) {
         padding: theme('spacing.1') theme('spacing.5');
     }
 
-    &__toggler:before {
+    &__toggler > div:before {
         @apply bgcolor-muted-darker;
         content: '';
         position: absolute;
@@ -40,15 +40,15 @@
         display: block;
     }
 
-    &__toggler:first-child:before {
+    &__toggler:first-child > div:before {
         content: none;
     }
 
-    &__toggler:focus, &__toggler > span:focus {
+    &__toggler:focus, &__toggler > div:focus, &__toggler > div > span:focus {
         outline: none;
     }
 
-    &__toggler:focus > span {
+    &__toggler:focus > div > span {
         outline: theme('focusOutline', 'none');
     }
 
