@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.77.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.1...@awes-io/ui@1.77.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* changed brancd color ([b55734f](https://github.com/awes-io/client/commit/b55734f046d0216444261a6a1ba5bceea083cb14))
+
+
+
+
+
 ## [1.77.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.0...@awes-io/ui@1.77.1) (2020-05-05)
 
 
