@@ -15,7 +15,10 @@
                 />
             </slot>
         </div>
-        <slot>{{ text }}</slot>
+        <slot v-if="hasSlot" />
+        <div v-else>
+            {{ text || '—' }}
+        </div>
     </div>
 </template>
 
@@ -43,6 +46,14 @@ export default {
         text: {
             type: [String, Number],
             default: ''
+        }
+    },
+    computed: {
+        hasSlot() {
+            const slot = this.$slots.default || []
+            return slot.filter(element => {
+                return element.tag || element.text.trim()
+            }).length
         }
     }
 }
