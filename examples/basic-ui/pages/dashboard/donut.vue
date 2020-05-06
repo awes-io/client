@@ -15,6 +15,13 @@
                 description="Заявок"
             />
         </AwGrid>
+
+        <section class="mt-8">
+            <AwCodeSnippet v-text="code" />
+
+            <h5>Example data</h5>
+            <AwCodeSnippet v-text="lineData" language="javascript" />
+        </section>
     </AwPage>
 </template>
 
@@ -86,6 +93,21 @@ export default {
                     }
                 ]
             }
+        }
+    },
+
+    computed: {
+        code() {
+            const arr = [
+                '<AwDashboardDonut',
+                '    :data="lineData"',
+                '    percent',
+                '    title="Регистрации"',
+                '    description="Заявок"',
+                '/>'
+            ]
+
+            return arr.join('\n')
         }
     },
 

@@ -23,7 +23,12 @@
             />
         </AwGrid>
 
-        <div class="mt-6" style="max-width: 600px"></div>
+        <section class="mt-8">
+            <AwCodeSnippet v-text="code" />
+
+            <h5>Example data</h5>
+            <AwCodeSnippet v-text="lineData" language="javascript" />
+        </section>
     </AwPage>
 </template>
 
@@ -95,6 +100,37 @@ export default {
                     }
                 ]
             }
+        }
+    },
+
+    computed: {
+        code() {
+            const arr = [
+                '<AwGrid :col="{ md: 2, lg: 3 }">',
+                '   <AwDashboardLine',
+                '       :data="lineData"',
+                '       percent',
+                '       title="Регистрации"',
+                '       description="Заявок"',
+                '   />',
+                '',
+                '   <AwDashboardLine',
+                '       :data="lineDatatwo"',
+                `       :colors="['green']"`,
+                '       title="Регистрации"',
+                '       description="Заявок"',
+                '   />',
+                '',
+                '   <AwDashboardLine',
+                '       :data="lineDatatwo"',
+                `       :colors="['#00f']"`,
+                '       title="Регистрации"',
+                '       description="Заявок"',
+                '   />',
+                '</AwGrid>'
+            ]
+
+            return arr.join('\n')
         }
     },
 
