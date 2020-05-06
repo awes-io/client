@@ -1,5 +1,8 @@
 <template>
-    <AwCard :class="$options._config.baseClass" ref="card">
+    <AwCard
+        :class="{ [$options._config.baseClass]: true, 'is-wide': isWide }"
+        ref="card"
+    >
         <div :class="_cssClasses.header">
             <span :class="_cssClasses.title">{{ title }}</span>
 
@@ -9,10 +12,7 @@
         </div>
 
         <div class="flex h-full">
-            <div
-                :class="{ 'mr-8': isWide }"
-                class="min-w-0 flex-auto flex flex-col"
-            >
+            <div class="min-w-0 flex-auto left-col flex flex-col">
                 <div
                     :class="[
                         _cssClasses.content,
@@ -138,6 +138,12 @@ export default {
         }
     },
 
+    watch: {
+        isWide(val) {
+            this.$emit('screen-change', val)
+        }
+    },
+
     mounted() {
         this.toggleResizeListener(true)
         this.checkIfWide()
@@ -157,7 +163,7 @@ export default {
         },
 
         checkIfWide() {
-            this.isWide = this.$refs.card.$el.clientWidth > 550
+            this.isWide = this.$refs.card.$el.clientWidth > 543
         },
 
         onResize() {

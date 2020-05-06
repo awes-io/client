@@ -1,23 +1,31 @@
 <template>
-    <aw-dashboard-builder v-bind="$props" :is-counter-visible="false">
-        <!-- TODO: Add chartjs donut chart -->
+    <aw-dashboard-builder
+        v-bind="$props"
+        :is-counter-visible="false"
+        ref="builder"
+        @screen-change="isWide = $event"
+    >
         <template #chart="chartData">
-            <div style="max-width: 300px" class="mx-auto relative mt-4 mb-8">
+            <div
+                :class="{ 'my-4': !isWide }"
+                style="max-width: 300px"
+                class="mx-auto relative"
+            >
+                <div class="dashboard__counter-wrapper">
+                    <div class="dashboard__counter">
+                        {{ data.total }}
+                        <div class="dashboard__description">
+                            {{ description }}
+                        </div>
+                    </div>
+                </div>
+
                 <AwChart
                     type="doughnut"
                     :data="formatData(chartData)"
                     :height="height"
                     :options="chartOptions"
                 />
-
-                <div class="dashboard__counter-wrapper">
-                    <div class="dashboard__counter">
-                        340
-                        <div class="dashboard__description">
-                            {{ description }}
-                        </div>
-                    </div>
-                </div>
             </div>
         </template>
 
@@ -49,8 +57,12 @@ export default {
 
     data() {
         return {
+            isWide: false,
             chartOptions: {
                 cutoutPercentage: 67,
+                tooltips: {
+                    enabled: false
+                },
                 legend: {
                     display: false
                 }

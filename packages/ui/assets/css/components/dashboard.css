@@ -11,7 +11,7 @@
     }
 
     & &__title {
-        @apply flex justify-between items-center mb-4 font-heading font-bold text-sm text-on-muted-dark leading-none;
+        @apply flex justify-between items-center mb-4 font-heading font-bold text-on-muted-dark leading-none;
     }
 
     & &__description {
@@ -42,7 +42,7 @@
     }
 
     & &__chart {
-        @apply flex-shrink-0 text-center flex-auto;
+        @apply flex-shrink-0 text-center flex-auto ml-8;
         min-width: 240px;
     }
 
@@ -86,5 +86,11 @@
                 @apply text-xs ml-1;
             }
         }
+    }
+
+    &.is-wide .left-col {
+        flex-grow: 1;
+        max-width: 330px;
+        flex-basis: 100%;
     }
 }

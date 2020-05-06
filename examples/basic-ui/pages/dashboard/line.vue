@@ -1,6 +1,6 @@
 <template>
     <AwPage :title="headline">
-        <AwGrid :col="2" :gap="2">
+        <AwGrid :col="{ md: 2, lg: 3 }">
             <div class="h-full">
                 <AwDashboardLine
                     :data="lineData"
@@ -19,7 +19,7 @@
                 />
             </div>
 
-            <div :span="2">
+            <div>
                 <AwDashboardLine
                     :data="lineDatatwo"
                     :colors="['#00f']"
