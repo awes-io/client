@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.78.3](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.2...@awes-io/ui@1.78.3) (2020-05-05)
+
+
+### Bug Fixes
+
+* removed icon for offline ([5a71f36](https://github.com/awes-io/client/commit/5a71f36f5ac9259f12edf45c3bfcb8b650b67839))
+
+
+
+
+
+## [1.78.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.1...@awes-io/ui@1.78.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* added icon for notify ([357f5d9](https://github.com/awes-io/client/commit/357f5d9865dadfbcdb49d760c89240977989f8fd))
+
+
+
+
+
+## [1.78.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.0...@awes-io/ui@1.78.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* added translation for off mode ([207c7ef](https://github.com/awes-io/client/commit/207c7ef0eb3b276830ea15cce505b9a058e60754))
+
+
+
+
+
+# [1.78.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.3...@awes-io/ui@1.78.0) (2020-05-05)
+
+
+### Features
+
+* **offline:** show offline notification ([a4c6986](https://github.com/awes-io/client/commit/a4c69863b542c5ed0e571c8e4ceaba13b7674c39))
+
+
+
+
+
 ## [1.77.3](https://github.com/awes-io/client/compare/@awes-io/ui@1.77.2...@awes-io/ui@1.77.3) (2020-05-05)
 
 

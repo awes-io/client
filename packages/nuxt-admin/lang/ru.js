@@ -12,7 +12,6 @@ export default {
         role_name: 'Роль',
         default_role_title: 'Вы хотите использовать эту роль по умолчанию?',
         default_role: 'Да, я хочу использовать по умолчанию.',
-        priority: 'Приоритет',
         information: 'Информация',
         gender: 'Пол',
         create: 'Создать',

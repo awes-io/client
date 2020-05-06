@@ -12,7 +12,6 @@ export default {
         role_name: 'Role name',
         default_role_title: 'Do you want to use this role by default?',
         default_role: 'Yes, I want to use by default.',
-        priority: 'Priority',
         information: 'Information',
         gender: 'Gender',
         create: 'Create',

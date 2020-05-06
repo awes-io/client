@@ -21,7 +21,7 @@
 
         <!-- close button -->
         <button
-            v-if="props.remove"
+            v-if="props.remove && props.closable !== false"
             @click="props.remove"
             class="aw-noty__button"
         >
@@ -74,6 +74,11 @@ export default {
         remove: {
             type: Function,
             default: null
+        },
+
+        closable: {
+            type: Boolean,
+            default: true
         }
     },
 

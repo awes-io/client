@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-localization",
-    "version": "0.5.27",
+    "version": "0.5.31",
     "description": "Admin panel for editing translations.",
     "homepage": "https://www.awes.io",
     "bugs": {
@@ -24,7 +24,7 @@
     ],
     "main": "src/index.js",
     "dependencies": {
-        "@awes-io/ui": "^1.77.3",
+        "@awes-io/ui": "^1.78.3",
         "rambdax": "^3.5.0"
     },
     "gitHead": "6d4a79edd817bf7af501487d1287187762247682"

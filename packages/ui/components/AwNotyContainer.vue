@@ -72,7 +72,7 @@ export default {
 
             this.stack.push(item)
 
-            return id
+            return item.remove
         },
 
         remove(id) {
