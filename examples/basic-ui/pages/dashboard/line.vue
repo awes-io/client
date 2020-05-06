@@ -1,32 +1,26 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 2, lg: 3 }">
-            <div class="h-full">
-                <AwDashboardLine
-                    :data="lineData"
-                    percent
-                    title="Регистрации"
-                    description="Заявок"
-                />
-            </div>
+            <AwDashboardLine
+                :data="lineData"
+                percent
+                title="Регистрации"
+                description="Заявок"
+            />
 
-            <div class="h-full">
-                <AwDashboardLine
-                    :data="lineDatatwo"
-                    :colors="['green']"
-                    title="Регистрации"
-                    description="Заявок"
-                />
-            </div>
+            <AwDashboardLine
+                :data="lineDatatwo"
+                :colors="['green']"
+                title="Регистрации"
+                description="Заявок"
+            />
 
-            <div>
-                <AwDashboardLine
-                    :data="lineDatatwo"
-                    :colors="['#00f']"
-                    title="Регистрации"
-                    description="Заявок"
-                ></AwDashboardLine>
-            </div>
+            <AwDashboardLine
+                :data="lineDatatwo"
+                :colors="['#00f']"
+                title="Регистрации"
+                description="Заявок"
+            />
         </AwGrid>
 
         <div class="mt-6" style="max-width: 600px"></div>
