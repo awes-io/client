@@ -40,7 +40,7 @@ import AwDashboardBuilder from './AwDashboardBuilder.vue'
 import dashboardMixin from '../mixins/dashboard'
 
 export default {
-    name: 'AwDashboardDoughnut',
+    name: 'AwDashboardDonut',
 
     mixins: [dashboardMixin],
 

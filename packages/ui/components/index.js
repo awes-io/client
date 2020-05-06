@@ -77,4 +77,4 @@ export { default as AwToggler } from './AwToggler.vue'
 export { default as AwContextMenu } from './AwContextMenu.vue'
 
 export { default as AwDashboardLine } from './AwDashboardLine.vue'
-export { default as AwDashboardDoughnut } from './AwDashboardDoughnut.vue'
+export { default as AwDashboardDonut } from './AwDashboardDonut.vue'

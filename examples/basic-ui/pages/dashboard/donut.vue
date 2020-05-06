@@ -1,14 +1,14 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 2, lg: 3 }">
-            <AwDashboardDoughnut
+            <AwDashboardDonut
                 :data="lineData"
                 percent
                 title="Регистрации"
                 description="Заявок"
             />
 
-            <AwDashboardDoughnut
+            <AwDashboardDonut
                 :data="lineDatatwo"
                 percent
                 title="Регистрации"
@@ -22,8 +22,8 @@
 export default {
     data() {
         return {
-            title: 'AwDashboardDoughnut',
-            headline: this._getTitle('AwDashboardDoughnut'),
+            title: 'AwDashboardDonut',
+            headline: this._getTitle('AwDashboardDonut'),
             lineData: {
                 total: 215, // number
                 total_diff: 20, // number

@@ -22,8 +22,8 @@ export const navigation = [
     { title: 'Date', url: '/aw-date', description: '' },
     { title: 'Dashboard line', url: '/dashboard/line', description: '' },
     {
-        title: 'Dashboard doughnut',
-        url: '/dashboard/doughnut',
+        title: 'Dashboard Donut',
+        url: '/dashboard/donut',
         description: ''
     },
     { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
