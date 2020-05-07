@@ -23,6 +23,12 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        &.is-bottom {
+            bottom: 0;
+            top: unset;
+            transform: translateX(-50%);
+        }
     }
 
     & &__counter {
@@ -48,7 +54,7 @@
 
     & &__legend {
         @apply mb-0 overflow-auto text-xs px-4 pt-4 pb-0;
-        max-height: 148px;
+        max-height: 152px;
 
         /* Fix for no bottom padding on scroll in Firefox & IE */
         &::after {
@@ -88,9 +94,56 @@
         }
     }
 
+    & .chart-wrapper {
+        @apply relative mx-auto;
+        min-width: 100px;
+        max-width: 236px;
+    }
+
     &.is-wide .left-col {
         flex-grow: 1;
         max-width: 330px;
         flex-basis: 100%;
+    }
+
+    &.is-wide .chart-wrapper {
+        @apply my-4;
+    }
+
+    /* Donut */
+    &-donut .chart-wrapper {
+        max-width: 180px;
+    }
+
+    &-donut.is-wide .chart-wrapper {
+        max-width: 236px;
+    }
+
+    /* Progress */
+    &-progress &__content {
+        @apply flex items-center justify-between;
+    }
+
+    &-progress &__counter-wrapper &__counter {
+        @apply text-base;
+    }
+
+    &-progress.is-wide &__counter-wrapper &__counter {
+        @apply text-3xl;
+    }
+
+    &-progress.counter-hidden &__content {
+        @apply justify-center;
+    }
+
+    &-progress .image {
+        @apply absolute hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -55%);
+    }
+
+    &-progress.is-wide .image {
+        @apply block;
     }
 }

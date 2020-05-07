@@ -1,26 +1,25 @@
 <template>
     <AwPage :title="headline">
-        <AwGrid :col="{ md: 2, lg: 3 }">
-            <AwDashboardLine
-                :data="lineData"
+        <AwGrid :col="{ md: 2, lg: 4 }">
+            <AwDashboardProgress
+                :data="dataOne"
+                title="Регистрации"
+                description="Заявок"
+            />
+
+            <AwDashboardProgress
+                :data="dataTwo"
+                hide-counter
                 percent
                 title="Регистрации"
                 description="Заявок"
             />
 
-            <AwDashboardLine
-                :data="lineDatatwo"
-                :colors="['green']"
+            <AwDashboardProgress
+                :data="dataTwo"
                 title="Регистрации"
                 description="Заявок"
-            />
-
-            <AwDashboardLine
-                :data="lineDatatwo"
-                :colors="['#00f']"
-                percent
-                title="Регистрации"
-                description="Заявок"
+                :span="{ md: 2, lg: 2 }"
             />
         </AwGrid>
 
@@ -28,7 +27,7 @@
             <AwCodeSnippet v-text="code" />
 
             <h5>Example data</h5>
-            <AwCodeSnippet v-text="lineData" language="javascript" />
+            <AwCodeSnippet v-text="dataOne" language="javascript" />
         </section>
     </AwPage>
 </template>
@@ -37,9 +36,9 @@
 export default {
     data() {
         return {
-            title: 'AwDashboardLine',
-            headline: this._getTitle('AwDashboardLine'),
-            lineData: {
+            title: 'AwDashboardProgress',
+            headline: this._getTitle('AwDashboardProgress'),
+            dataOne: {
                 total: 340, // number
                 total_diff: 20, // number
                 elements: [
@@ -55,14 +54,14 @@ export default {
                     }
                 ]
             },
-            lineDatatwo: {
-                total: 340, // number
+            dataTwo: {
+                total: 400, // number
                 total_diff: 20, // number
                 elements: [
                     {
                         title: 'Успешных', // string
                         value: 200, // number
-                        value_diff: -2, // number, при null не показывать, либо не передавать вовсе,
+                        value_diff: 2, // number, при null не показывать, либо не передавать вовсе,
                         on_chart: true
                     },
                     {
@@ -74,29 +73,13 @@ export default {
                     {
                         title: 'Отказ',
                         value: 15,
-                        value_diff: 1,
+                        value_diff: -1,
                         on_chart: true
                     },
                     {
-                        title: 'long long long long long long long',
+                        title: 'Обработано',
                         value: 20,
                         value_diff: 3,
-                        on_chart: true
-                    },
-                    {
-                        title: 'test2',
-                        value: 30,
-                        on_chart: true
-                    },
-                    {
-                        title: 'long long long long long long long',
-                        value: 20,
-                        value_diff: 3,
-                        on_chart: true
-                    },
-                    {
-                        title: 'test2',
-                        value: 30,
                         on_chart: true
                     }
                 ]
@@ -107,27 +90,27 @@ export default {
     computed: {
         code() {
             const arr = [
-                '<AwGrid :col="{ md: 2, lg: 3 }">',
-                '   <AwDashboardLine',
-                '       :data="lineData"',
-                '       percent',
-                '       title="Регистрации"',
-                '       description="Заявок"',
-                '   />',
+                '<AwGrid :col="{ md: 2, lg: 4 }">',
+                '    <AwDashboardProgress',
+                '        :data="dataOne"',
+                '        title="Регистрации"',
+                '        description="Заявок"',
+                '    />',
                 '',
-                '   <AwDashboardLine',
-                '       :data="lineDatatwo"',
-                `       :colors="['green']"`,
-                '       title="Регистрации"',
-                '       description="Заявок"',
-                '   />',
+                '    <AwDashboardProgress',
+                '        :data="dataTwo"',
+                '        hide-counter',
+                '        percent',
+                '        title="Регистрации"',
+                '        description="Заявок"',
+                '    />',
                 '',
-                '   <AwDashboardLine',
-                '       :data="lineDatatwo"',
-                `       :colors="['#00f']"`,
-                '       title="Регистрации"',
-                '       description="Заявок"',
-                '   />',
+                '    <AwDashboardProgress',
+                '        :data="dataTwo"',
+                '        title="Регистрации"',
+                '        description="Заявок"',
+                '        :span="{ md: 2, lg: 2 }"',
+                '    />',
                 '</AwGrid>'
             ]
 

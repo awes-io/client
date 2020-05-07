@@ -1,18 +1,15 @@
 <template>
     <aw-dashboard-builder
         v-bind="$props"
-        :is-counter-visible="false"
+        hide-counter
         ref="builder"
+        class="donut"
         @screen-change="isWide = $event"
     >
         <template #chart="chartData">
-            <div
-                :class="{ 'my-4': !isWide }"
-                style="max-width: 300px"
-                class="mx-auto relative"
-            >
+            <div class="chart-wrapper">
                 <div class="dashboard__counter-wrapper">
-                    <div class="dashboard__counter">
+                    <div class="dashboard__counter text-3xl">
                         {{ data.total }}
                         <div class="dashboard__description">
                             {{ description }}
