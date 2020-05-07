@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.79.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.3...@awes-io/ui@1.79.0) (2020-05-06)
+
+
+### Features
+
+* added mdash for empty value ([bd3d5ae](https://github.com/awes-io/client/commit/bd3d5ae755d3b67f1bb97bdf08b12a3d54a6fa20))
+
+
+
+
+
 ## [1.78.3](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.2...@awes-io/ui@1.78.3) (2020-05-05)
 
 
