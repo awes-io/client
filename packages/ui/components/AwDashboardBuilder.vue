@@ -19,7 +19,7 @@
                         contentInline ? 'is-inline' : ''
                     ]"
                 >
-                    <div v-if="isCounterVisible">
+                    <div v-if="!hideCounter">
                         <div :class="_cssClasses.counter">
                             <slot name="counter">
                                 {{ data.total }}
@@ -88,9 +88,9 @@ export default {
             default: false
         },
 
-        isCounterVisible: {
+        hideCounter: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
 

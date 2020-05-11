@@ -18,6 +18,7 @@
             <AwDashboardLine
                 :data="lineDatatwo"
                 :colors="['#00f']"
+                percent
                 title="Registrations"
                 description="Leads"
             />
@@ -77,7 +78,8 @@ export default {
                         on_chart: true
                     },
                     {
-                        title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                        title:
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                         value: 20,
                         value_diff: 3,
                         on_chart: true
@@ -88,7 +90,8 @@ export default {
                         on_chart: true
                     },
                     {
-                        title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                        title:
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                         value: 20,
                         value_diff: 3,
                         on_chart: true

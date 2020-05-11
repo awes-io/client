@@ -78,3 +78,4 @@ export { default as AwContextMenu } from './AwContextMenu.vue'
 
 export { default as AwDashboardLine } from './AwDashboardLine.vue'
 export { default as AwDashboardDonut } from './AwDashboardDonut.vue'
+export { default as AwDashboardProgress } from './AwDashboardProgress.vue'
