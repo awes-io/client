@@ -4,22 +4,22 @@
             <AwDashboardLine
                 :data="lineData"
                 percent
-                title="Регистрации"
-                description="Заявок"
+                title="Registrations"
+                description="Leads"
             />
 
             <AwDashboardLine
                 :data="lineDatatwo"
                 :colors="['green']"
-                title="Регистрации"
-                description="Заявок"
+                title="Registrations"
+                description="Leads"
             />
 
             <AwDashboardLine
                 :data="lineDatatwo"
                 :colors="['#00f']"
-                title="Регистрации"
-                description="Заявок"
+                title="Registrations"
+                description="Leads"
             />
         </AwGrid>
 
@@ -43,12 +43,12 @@ export default {
                 total_diff: 20, // number
                 elements: [
                     {
-                        title: 'Успешных', // string
+                        title: 'Success', // string
                         value: 265, // number
                         on_chart: true
                     },
                     {
-                        title: 'Ожидает',
+                        title: 'In progress',
                         value: 60,
                         on_chart: true
                     }
@@ -59,25 +59,25 @@ export default {
                 total_diff: 20, // number
                 elements: [
                     {
-                        title: 'Успешных', // string
+                        title: 'Success', // string
                         value: 200, // number
                         value_diff: -2, // number, при null не показывать, либо не передавать вовсе,
                         on_chart: true
                     },
                     {
-                        title: 'Ожидает',
+                        title: 'In progress',
                         value: 60,
                         value_diff: 3,
                         on_chart: true
                     },
                     {
-                        title: 'Отказ',
+                        title: 'Declined',
                         value: 15,
                         value_diff: 1,
                         on_chart: true
                     },
                     {
-                        title: 'long long long long long long long',
+                        title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                         value: 20,
                         value_diff: 3,
                         on_chart: true
@@ -88,7 +88,7 @@ export default {
                         on_chart: true
                     },
                     {
-                        title: 'long long long long long long long',
+                        title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                         value: 20,
                         value_diff: 3,
                         on_chart: true
@@ -110,22 +110,22 @@ export default {
                 '   <AwDashboardLine',
                 '       :data="lineData"',
                 '       percent',
-                '       title="Регистрации"',
-                '       description="Заявок"',
+                '       title="Registrations"',
+                '       description="Leads"',
                 '   />',
                 '',
                 '   <AwDashboardLine',
                 '       :data="lineDatatwo"',
                 `       :colors="['green']"`,
-                '       title="Регистрации"',
-                '       description="Заявок"',
+                '       title="Registrations"',
+                '       description="Leads"',
                 '   />',
                 '',
                 '   <AwDashboardLine',
                 '       :data="lineDatatwo"',
                 `       :colors="['#00f']"`,
-                '       title="Регистрации"',
-                '       description="Заявок"',
+                '       title="Registrations"',
+                '       description="Leads"',
                 '   />',
                 '</AwGrid>'
             ]
