@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/awes-io/client/compare/@awes-io/dayjs@0.3.0...@awes-io/dayjs@0.3.1) (2020-05-11)
+
+
+### Bug Fixes
+
+* **dayjs:** upgrade default custom string plugin to new api ([b1141a9](https://github.com/awes-io/client/commit/b1141a9ca76ba85593660f79023a19cbf44f2ff5))
+
+
+
+
+
 # [0.3.0](https://github.com/awes-io/client/compare/@awes-io/dayjs@0.2.2...@awes-io/dayjs@0.3.0) (2020-02-21)
 
 

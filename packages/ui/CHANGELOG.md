@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.80.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.79.0...@awes-io/ui@1.80.0) (2020-05-11)
+
+
+### Bug Fixes
+
+* **dayjs:** upgrade default custom string plugin to new api ([b1141a9](https://github.com/awes-io/client/commit/b1141a9ca76ba85593660f79023a19cbf44f2ff5))
+* name fix ([eacccd7](https://github.com/awes-io/client/commit/eacccd746f53656eb5e5460cd511ff2e61a1f431))
+
+
+### Features
+
+* add AwDashboardDoughnut component ([68a894f](https://github.com/awes-io/client/commit/68a894fefcf0f359acf090449996dd898189d026))
+* add AwDashboardProgress ([75ac8e0](https://github.com/awes-io/client/commit/75ac8e0a3f2158274efb6b621790fa66c631bbbe))
+* add base component for DashboardDonut ([c8fd78f](https://github.com/awes-io/client/commit/c8fd78f8d42d899185f5f6abf8c2556d15b5da56))
+* applying connection tester on axios network error ([64cb2fc](https://github.com/awes-io/client/commit/64cb2fc7558e3e2709151ced317b85041a06cf17))
+* finish AwDashboardDoughnut ([65fce97](https://github.com/awes-io/client/commit/65fce97f71201d6fcde071738cda782bc7869c04))
+* improve AwDashboardDoughnut ([7391a58](https://github.com/awes-io/client/commit/7391a5800fd92609605abfbf62994d3c11a251ce))
+
+
+
+
+
 # [1.79.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.78.3...@awes-io/ui@1.79.0) (2020-05-06)
 
 
