@@ -22,7 +22,12 @@ export const DEFAULTS = {
     permissions: {
         storePath: 'auth.user.permissions'
     },
-    addCss: true
+    addCss: true,
+    offline: {
+        testUrl: 'http://httpbin.org/get',
+        interval: 5000,
+        maxTries: Infinity
+    }
 }
 
 function AwesIoUi(_options) {
@@ -101,6 +106,14 @@ function AwesIoUi(_options) {
         },
         'empty'
     )
+
+    // add axios offline interceptor
+    const offlinePlugin = this.addTemplate({
+        fileName: join('awes-io', 'ui-offline-plugin.js'),
+        src: resolve(__dirname, './offline-plugin.js'),
+        options: options.offline
+    })
+    this.options.plugins.push(join(this.options.buildDir, offlinePlugin.dst))
 
     // fix error path
     this.options.ErrorPage = resolve(
