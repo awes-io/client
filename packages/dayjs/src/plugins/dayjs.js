@@ -20,6 +20,9 @@ if (dayjs.en) {
     dayjs.Ls.en = { ...dayjs.Ls.en, ...dayjs.en }
 }
 
+// Switch to 'en' by default
+dayjs.locale('en')
+
 // Plugin for default string format
 function defaultStringFormat(options, _dayjs) {
     // do not patch if no pattern provided
@@ -34,9 +37,10 @@ function defaultStringFormat(options, _dayjs) {
     const _oldParse = proto.parse
 
     proto.parse = function(config) {
-        const { date, format } = config
+        const { date, args } = config
+        const format = args[1]
         if (typeof date === 'string' && !format) {
-            return _oldParse.call(this, { ...config, format: options.pattern })
+            return _oldParse.call(this, { ...config, args: [ args[0], options.pattern ] })
         } else {
             return _oldParse.call(this, config)
         }
