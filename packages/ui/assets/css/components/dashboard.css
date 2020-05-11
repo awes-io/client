@@ -11,11 +11,18 @@
     }
 
     & &__title {
-        @apply flex justify-between items-center mb-4 font-heading font-bold text-sm text-on-muted-dark leading-none;
+        @apply flex justify-between items-center mb-4 font-heading font-bold text-on-muted-dark leading-none;
     }
 
     & &__description {
         @apply mb-0 text-disabled text-sm leading-snug font-body font-bold truncate;
+    }
+
+    & &__counter-wrapper {
+        @apply absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     & &__counter {
@@ -26,12 +33,16 @@
         }
     }
 
+    & &__counter-wrapper &__counter {
+        @apply block text-center leading-none text-3xl;
+    }
+
     & &__content {
         @apply mb-4;
     }
 
     & &__chart {
-        @apply flex-shrink-0 text-center flex-auto;
+        @apply flex-shrink-0 text-center flex-auto ml-8;
         min-width: 240px;
     }
 
@@ -75,5 +86,11 @@
                 @apply text-xs ml-1;
             }
         }
+    }
+
+    &.is-wide .left-col {
+        flex-grow: 1;
+        max-width: 330px;
+        flex-basis: 100%;
     }
 }

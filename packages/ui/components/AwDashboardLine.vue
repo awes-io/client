@@ -7,7 +7,7 @@
         </template>
 
         <template #chart="chartData">
-            <AwLineChart :data="chartData.data" />
+            <AwChartLine :data="chartData.data" />
         </template>
 
         <template #footer>
@@ -18,7 +18,7 @@
 
 <script>
 import AwDashboardBuilder from './AwDashboardBuilder.vue'
-import AwLineChart from './AwLineChart.vue'
+import AwChartLine from './AwChartLine.vue'
 import dashboardMixin from '../mixins/dashboard'
 
 export default {
@@ -27,7 +27,7 @@ export default {
     mixins: [dashboardMixin],
 
     components: {
-        AwLineChart,
+        AwChartLine,
         AwDashboardBuilder
     }
 }

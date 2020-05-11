@@ -1,23 +1,16 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 2, lg: 3 }">
-            <AwDashboardLine
+            <AwDashboardDonut
                 :data="lineData"
                 percent
                 title="Registrations"
                 description="Leads"
             />
 
-            <AwDashboardLine
+            <AwDashboardDonut
                 :data="lineDatatwo"
-                :colors="['green']"
-                title="Registrations"
-                description="Leads"
-            />
-
-            <AwDashboardLine
-                :data="lineDatatwo"
-                :colors="['#00f']"
+                percent
                 title="Registrations"
                 description="Leads"
             />
@@ -36,20 +29,20 @@
 export default {
     data() {
         return {
-            title: 'AwDashboardLine',
-            headline: this._getTitle('AwDashboardLine'),
+            title: 'AwDashboardDonut',
+            headline: this._getTitle('AwDashboardDonut'),
             lineData: {
-                total: 340, // number
+                total: 215, // number
                 total_diff: 20, // number
                 elements: [
                     {
                         title: 'Success', // string
-                        value: 265, // number
+                        value: 150, // number
                         on_chart: true
                     },
                     {
                         title: 'In progress',
-                        value: 60,
+                        value: 65,
                         on_chart: true
                     }
                 ]
@@ -61,7 +54,7 @@ export default {
                     {
                         title: 'Success', // string
                         value: 200, // number
-                        value_diff: -2, // number, при null не показывать, либо не передавать вовсе,
+                        value_diff: -2, // number, when null don't show
                         on_chart: true
                     },
                     {
@@ -106,28 +99,12 @@ export default {
     computed: {
         code() {
             const arr = [
-                '<AwGrid :col="{ md: 2, lg: 3 }">',
-                '   <AwDashboardLine',
-                '       :data="lineData"',
-                '       percent',
-                '       title="Registrations"',
-                '       description="Leads"',
-                '   />',
-                '',
-                '   <AwDashboardLine',
-                '       :data="lineDatatwo"',
-                `       :colors="['green']"`,
-                '       title="Registrations"',
-                '       description="Leads"',
-                '   />',
-                '',
-                '   <AwDashboardLine',
-                '       :data="lineDatatwo"',
-                `       :colors="['#00f']"`,
-                '       title="Registrations"',
-                '       description="Leads"',
-                '   />',
-                '</AwGrid>'
+                '<AwDashboardDonut',
+                '    :data="lineData"',
+                '    percent',
+                '    title="Registrations"',
+                '    description="Leads"',
+                '/>'
             ]
 
             return arr.join('\n')
