@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/dayjs",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Date convertation module for Awes.io",
     "homepage": "https://www.awes.io",
     "bugs": {
@@ -17,7 +17,7 @@
     ],
     "main": "src/index.js",
     "dependencies": {
-        "dayjs": "^1.8.19",
+        "dayjs": "^1.8.26",
         "rambdax": "^3.5.0"
     }
 }

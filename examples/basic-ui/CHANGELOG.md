@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.63.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.10...basic-ui@1.63.0) (2020-05-11)
+
+
+### Bug Fixes
+
+* name fix ([eacccd7](https://git.awescode.com/awes-io/client/commits/eacccd746f53656eb5e5460cd511ff2e61a1f431))
+
+
+### Features
+
+* add AwDashboardDoughnut component ([68a894f](https://git.awescode.com/awes-io/client/commits/68a894fefcf0f359acf090449996dd898189d026))
+* add AwDashboardProgress ([75ac8e0](https://git.awescode.com/awes-io/client/commits/75ac8e0a3f2158274efb6b621790fa66c631bbbe))
+* finish AwDashboardDoughnut ([65fce97](https://git.awescode.com/awes-io/client/commits/65fce97f71201d6fcde071738cda782bc7869c04))
+* improve AwDashboardDoughnut ([7391a58](https://git.awescode.com/awes-io/client/commits/7391a5800fd92609605abfbf62994d3c11a251ce))
+* updated translation ([8811ed7](https://git.awescode.com/awes-io/client/commits/8811ed784bfb8f79f7d904d62a5672bf0d0b0443))
+* updated translations ([a9c57d4](https://git.awescode.com/awes-io/client/commits/a9c57d4dd8cef4226303bc35b4389b6b6f1be938))
+
+
+
+
+
 ## [1.62.10](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.9...basic-ui@1.62.10) (2020-05-06)
 
 **Note:** Version bump only for package basic-ui
