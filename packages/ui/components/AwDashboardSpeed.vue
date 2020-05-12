@@ -1,29 +1,27 @@
 <template>
     <aw-dashboard-builder
         v-bind="$props"
-        :hide-counter="!isWide && hideCounter"
+        hide-counter
+        hide-dot
         ref="builder"
-        class="dashboard__has-chart"
+        class="dashboard__has-chart dashboard-speed"
         @screen-change="isWide = $event"
     >
         <template #chart>
             <div class="chart-wrapper">
-                <div class="image">
-                    <slot name="image">
-                        <AwSvgImage name="checklist" />
-                    </slot>
-                </div>
-
                 <div
                     :class="{ 'is-bottom': isWide }"
                     class="dashboard__counter-wrapper"
                 >
                     <div class="dashboard__counter text-base">
-                        {{ _totalPercent }}%
+                        <!-- {{ _totalPercent }}% -->
                     </div>
                 </div>
 
-                <aw-chart-progress :percent="_totalPercent" />
+                <aw-chart-speed
+                    :arrowValue="_arrowValue"
+                    :sections="_sections"
+                />
             </div>
         </template>
 
@@ -34,25 +32,24 @@
 </template>
 
 <script>
-import AwChartProgress from './AwChartProgress.vue'
+import AwChartSpeed from './AwChartSpeed.vue'
 import AwDashboardBuilder from './AwDashboardBuilder.vue'
 import dashboardMixin from '../mixins/dashboard'
 
 export default {
-    name: 'AwDashboardProgress',
+    name: 'AwDashboardSpeed',
 
     mixins: [dashboardMixin],
 
     components: {
         AwDashboardBuilder,
-        AwChartProgress
+        AwChartSpeed
     },
 
     props: {
-        // If true - hide counter and description on small version
-        hideCounter: {
-            type: Boolean,
-            default: false
+        sections: {
+            type: Array,
+            required: true
         }
     },
 
@@ -63,12 +60,16 @@ export default {
     },
 
     computed: {
-        _totalPercent() {
-            const sum = this.data.elements.reduce(
-                (acc, val) => acc + parseInt(val.value),
-                0
-            )
-            return Math.round((sum * 100) / this.data.total)
+        _arrowValue() {
+            const arrowVal = this.data.elements.filter(el => el.on_chart)
+            return Math.round((arrowVal[0].value / this.data.total) * 100)
+        },
+
+        _sections() {
+            return this.sections.map(el => {
+                el.value = Math.round((el.value / this.data.total) * 100)
+                return el
+            })
         }
     }
 }

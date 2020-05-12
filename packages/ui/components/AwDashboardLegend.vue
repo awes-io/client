@@ -8,9 +8,10 @@
                 class="flex items-center font-body text-xs"
             >
                 <span
+                    v-if="!hideDot"
                     class="w-2 h-2 mr-2 rounded-full flex-none"
                     :style="{ backgroundColor: item.color }"
-                ></span>
+                />
 
                 <span class="truncate">
                     {{ item.title }}
@@ -73,6 +74,11 @@ export default {
         template: {
             type: String,
             default: '{value}'
+        },
+
+        hideDot: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -120,7 +126,7 @@ export default {
 
     methods: {
         _getItemValue(item) {
-            if (!item.value) return ''
+            if (!item.value && item.value !== 0) return ''
             const val = this.percent ? Math.round(item.percent) : item.value
             return this.template.replace('{value}', val)
         },

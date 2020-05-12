@@ -31,6 +31,11 @@ export const navigation = [
         url: '/dashboard/progress',
         description: ''
     },
+    {
+        title: 'Dashboard Speed',
+        url: '/dashboard/speed',
+        description: ''
+    },
     { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
     { title: 'Fetch data', url: '/aw-fetch-data', description: '' },
     { title: 'Form', url: '/aw-form', description: '' },

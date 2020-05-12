@@ -1,6 +1,10 @@
 <template>
     <AwCard
-        :class="{ [$options._config.baseClass]: true, 'is-wide': isWide }"
+        :class="{
+            [$options._config.baseClass]: true,
+            'is-wide': isWide,
+            'counter-hidden': hideCounter
+        }"
         ref="card"
     >
         <div :class="_cssClasses.header">
@@ -53,6 +57,7 @@
                     :template="template"
                     :data="legendData"
                     :percent="percent"
+                    :hide-dot="hideDot"
                 />
             </div>
 
@@ -89,6 +94,11 @@ export default {
         },
 
         hideCounter: {
+            type: Boolean,
+            default: false
+        },
+
+        hideDot: {
             type: Boolean,
             default: false
         }
