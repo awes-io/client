@@ -6,6 +6,20 @@
                 :sections="sections"
                 title="Productivity"
             />
+
+            <AwDashboardSpeed
+                :data="dataTwo"
+                :sections="sections"
+                title="Productivity"
+            >
+                <template #footer>
+                    <div class="flex justify-end mt-4">
+                        <a href="https://www.google.com" target="_blank">
+                            Footer link
+                        </a>
+                    </div>
+                </template>
+            </AwDashboardSpeed>
         </AwGrid>
 
         <section class="mt-8">
@@ -48,7 +62,22 @@ export default {
                     },
                     {
                         title: 'Completed',
-                        value: 120,
+                        value: 105,
+                        on_chart: true
+                    }
+                ]
+            },
+            dataTwo: {
+                total: 150,
+                elements: [
+                    {
+                        title: 'Total tasks',
+                        value: 150,
+                        on_chart: false
+                    },
+                    {
+                        title: 'Completed',
+                        value: 135,
                         on_chart: true
                     }
                 ]
@@ -59,27 +88,26 @@ export default {
     computed: {
         code() {
             const arr = [
-                '<AwGrid :col="{ md: 2, lg: 4 }">',
-                '    <AwDashboardProgress',
-                '        :data="dataOne"',
-                '        title="Регистрации"',
-                '        description="Заявок"',
+                ' <AwGrid :col="{ md: 2, lg: 4 }">',
+                '    <AwDashboardSpeed',
+                '        :data="data"',
+                '        :sections="sections"',
+                '        title="Productivity"',
                 '    />',
                 '',
-                '    <AwDashboardProgress',
+                '    <AwDashboardSpeed',
                 '        :data="dataTwo"',
-                '        hide-counter',
-                '        percent',
-                '        title="Регистрации"',
-                '        description="Заявок"',
-                '    />',
-                '',
-                '    <AwDashboardProgress',
-                '        :data="dataTwo"',
-                '        title="Регистрации"',
-                '        description="Заявок"',
-                '        :span="{ md: 2, lg: 2 }"',
-                '    />',
+                '        :sections="sections"',
+                '        title="Productivity"',
+                '    >',
+                '        <template #footer>',
+                '            <div class="flex justify-end mt-4">',
+                '                <a href="https://www.google.com" target="_blank">',
+                '                    Footer link',
+                '                </a>',
+                '            </div>',
+                '        </template>',
+                '    </AwDashboardSpeed>',
                 '</AwGrid>'
             ]
 

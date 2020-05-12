@@ -4,7 +4,7 @@
         :hide-counter="!isWide && hideCounter"
         ref="builder"
         class="dashboard__has-chart"
-        @screen-change="isWide = $event"
+        @width-change="isWide = $event"
     >
         <template #chart>
             <div class="chart-wrapper">
@@ -15,6 +15,7 @@
                 </div>
 
                 <div
+                    v-show="isWide || !hidePercent"
                     :class="{ 'is-bottom': isWide }"
                     class="dashboard__counter-wrapper"
                 >
@@ -51,6 +52,12 @@ export default {
     props: {
         // If true - hide counter and description on small version
         hideCounter: {
+            type: Boolean,
+            default: false
+        },
+
+        // If true - hide percent value on chart on small version
+        hidePercent: {
             type: Boolean,
             default: false
         }

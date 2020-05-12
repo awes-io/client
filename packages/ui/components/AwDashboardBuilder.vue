@@ -150,7 +150,7 @@ export default {
 
     watch: {
         isWide(val) {
-            this.$emit('screen-change', val)
+            this.$emit('width-change', val)
         }
     },
 

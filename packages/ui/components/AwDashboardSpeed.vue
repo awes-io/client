@@ -5,16 +5,13 @@
         hide-dot
         ref="builder"
         class="dashboard__has-chart dashboard-speed"
-        @screen-change="isWide = $event"
+        @width-change="isWide = $event"
     >
         <template #chart>
             <div class="chart-wrapper">
-                <div
-                    :class="{ 'is-bottom': isWide }"
-                    class="dashboard__counter-wrapper"
-                >
+                <div class="dashboard__counter-wrapper is-bottom">
                     <div class="dashboard__counter text-base">
-                        <!-- {{ _totalPercent }}% -->
+                        {{ _totalPercent }}%
                     </div>
                 </div>
 
@@ -60,13 +57,21 @@ export default {
     },
 
     computed: {
+        _activeValue() {
+            return this.data.elements.filter(el => el.on_chart)[0]
+        },
+
         _arrowValue() {
-            const arrowVal = this.data.elements.filter(el => el.on_chart)
-            return Math.round((arrowVal[0].value / this.data.total) * 100)
+            return Math.round((this._activeValue.value / this.data.total) * 100)
+        },
+
+        _totalPercent() {
+            return Math.round((this._activeValue.value * 100) / this.data.total)
         },
 
         _sections() {
-            return this.sections.map(el => {
+            const sections = JSON.parse(JSON.stringify(this.sections))
+            return sections.map(el => {
                 el.value = Math.round((el.value / this.data.total) * 100)
                 return el
             })
