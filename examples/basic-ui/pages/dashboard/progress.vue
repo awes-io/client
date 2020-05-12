@@ -3,22 +3,23 @@
         <AwGrid :col="{ md: 2, lg: 4 }">
             <AwDashboardProgress
                 :data="dataOne"
-                title="Регистрации"
-                description="Заявок"
+                title="Registrations"
+                description="Leads"
             />
 
             <AwDashboardProgress
                 :data="dataTwo"
                 hide-counter
                 percent
-                title="Регистрации"
-                description="Заявок"
+                title="Registrations"
+                description="Leads"
             />
 
             <AwDashboardProgress
                 :data="dataTwo"
-                title="Регистрации"
-                description="Заявок"
+                hide-percent
+                title="Registrations"
+                description="Leads"
                 :span="{ md: 2, lg: 2 }"
             />
         </AwGrid>
@@ -43,12 +44,12 @@ export default {
                 total_diff: 20, // number
                 elements: [
                     {
-                        title: 'Успешных', // string
+                        title: 'Succeeded', // string
                         value: 265, // number
                         on_chart: true
                     },
                     {
-                        title: 'Ожидает',
+                        title: 'Awaiting',
                         value: 60,
                         on_chart: true
                     }
@@ -59,25 +60,25 @@ export default {
                 total_diff: 20, // number
                 elements: [
                     {
-                        title: 'Успешных', // string
+                        title: 'Succeeded', // string
                         value: 200, // number
                         value_diff: 2, // number, при null не показывать, либо не передавать вовсе,
                         on_chart: true
                     },
                     {
-                        title: 'Ожидает',
+                        title: 'Awaiting',
                         value: 60,
                         value_diff: 3,
                         on_chart: true
                     },
                     {
-                        title: 'Отказ',
+                        title: 'Declined',
                         value: 15,
                         value_diff: -1,
                         on_chart: true
                     },
                     {
-                        title: 'Обработано',
+                        title: 'Processed',
                         value: 20,
                         value_diff: 3,
                         on_chart: true
@@ -93,22 +94,22 @@ export default {
                 '<AwGrid :col="{ md: 2, lg: 4 }">',
                 '    <AwDashboardProgress',
                 '        :data="dataOne"',
-                '        title="Регистрации"',
-                '        description="Заявок"',
+                '        title="Registrations"',
+                '        description="Leads"',
                 '    />',
                 '',
                 '    <AwDashboardProgress',
                 '        :data="dataTwo"',
                 '        hide-counter',
                 '        percent',
-                '        title="Регистрации"',
-                '        description="Заявок"',
+                '        title="Registrations"',
+                '        description="Leads"',
                 '    />',
                 '',
                 '    <AwDashboardProgress',
                 '        :data="dataTwo"',
-                '        title="Регистрации"',
-                '        description="Заявок"',
+                '        title="Registrations"',
+                '        description="Leads"',
                 '        :span="{ md: 2, lg: 2 }"',
                 '    />',
                 '</AwGrid>'

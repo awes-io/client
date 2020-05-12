@@ -2,10 +2,9 @@
     <aw-dashboard-builder
         v-bind="$props"
         :hide-counter="!isWide && hideCounter"
-        :class="{ 'counter-hidden': !isWide && hideCounter }"
         ref="builder"
-        class="dashboard-progress"
-        @screen-change="isWide = $event"
+        class="dashboard__has-chart"
+        @width-change="isWide = $event"
     >
         <template #chart>
             <div class="chart-wrapper">
@@ -16,6 +15,7 @@
                 </div>
 
                 <div
+                    v-show="isWide || !hidePercent"
                     :class="{ 'is-bottom': isWide }"
                     class="dashboard__counter-wrapper"
                 >
@@ -54,6 +54,12 @@ export default {
         hideCounter: {
             type: Boolean,
             default: false
+        },
+
+        // If true - hide percent value on chart on small version
+        hidePercent: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -69,7 +75,7 @@ export default {
                 (acc, val) => acc + parseInt(val.value),
                 0
             )
-            return Math.round((sum * 100) / parseInt(this.data.total))
+            return Math.round((sum * 100) / this.data.total)
         }
     }
 }

@@ -11,7 +11,7 @@
     }
 
     & &__title {
-        @apply flex justify-between items-center mb-4 font-heading font-bold text-on-muted-dark leading-none;
+        @apply flex justify-between items-center mb-5 font-heading font-bold text-on-muted-dark leading-none tracking-wide;
     }
 
     & &__description {
@@ -107,7 +107,34 @@
     }
 
     &.is-wide .chart-wrapper {
-        @apply my-4;
+        /* @apply my-4; */
+    }
+
+    &__has-chart &__content {
+        @apply flex items-center justify-between;
+    }
+
+    &__has-chart &__counter-wrapper &__counter {
+        @apply text-base;
+    }
+
+    &__has-chart.is-wide &__counter-wrapper &__counter {
+        @apply text-3xl;
+    }
+
+    &__has-chart.counter-hidden &__content {
+        @apply justify-center;
+    }
+
+    &__has-chart .image {
+        @apply absolute hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -55%);
+    }
+
+    &__has-chart.is-wide .image {
+        @apply block;
     }
 
     /* Donut */
@@ -119,31 +146,25 @@
         max-width: 236px;
     }
 
-    /* Progress */
-    &-progress &__content {
-        @apply flex items-center justify-between;
+    /* Speed */
+    &-speed .chart-wrapper {
+        min-width: 115px;
+        max-width: 180px;
     }
 
-    &-progress &__counter-wrapper &__counter {
-        @apply text-base;
-    }
-
-    &-progress.is-wide &__counter-wrapper &__counter {
-        @apply text-3xl;
-    }
-
-    &-progress.counter-hidden &__content {
-        @apply justify-center;
-    }
-
-    &-progress .image {
-        @apply absolute hidden;
+    .speed-arrow {
+        @apply absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-40%, -55%);
-    }
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
 
-    &-progress.is-wide .image {
-        @apply block;
+        svg {
+            width: 100%;
+            height: 100%;
+            min-width: 100px;
+            min-height: 100px;
+        }
     }
 }

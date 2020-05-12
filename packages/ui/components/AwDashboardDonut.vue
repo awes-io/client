@@ -4,7 +4,7 @@
         hide-counter
         ref="builder"
         class="donut"
-        @screen-change="isWide = $event"
+        @width-change="isWide = $event"
     >
         <template #chart="chartData">
             <div class="chart-wrapper">
