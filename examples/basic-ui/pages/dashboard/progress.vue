@@ -2,7 +2,7 @@
     <AwPage :title="headline">
         <AwGrid :col="{ md: 2, lg: 4 }">
             <AwDashboardProgress
-                :data="dataOne"
+                :data="data"
                 title="Registrations"
                 description="Leads"
             />
@@ -17,10 +17,12 @@
 
             <AwDashboardProgress
                 :data="dataTwo"
+                :span="{ md: 2, lg: 2 }"
+                empty-color="#A9A9A9"
+                fill-color="#7fc876"
                 hide-percent
                 title="Registrations"
                 description="Leads"
-                :span="{ md: 2, lg: 2 }"
             />
         </AwGrid>
 
@@ -28,7 +30,10 @@
             <AwCodeSnippet v-text="code" />
 
             <h5>Example data</h5>
-            <AwCodeSnippet v-text="dataOne" language="javascript" />
+            <AwCodeSnippet v-text="data" language="javascript" />
+
+            <h5>Example dataTwo</h5>
+            <AwCodeSnippet v-text="dataTwo" language="javascript" />
         </section>
     </AwPage>
 </template>
@@ -39,7 +44,7 @@ export default {
         return {
             title: 'AwDashboardProgress',
             headline: this._getTitle('AwDashboardProgress'),
-            dataOne: {
+            data: {
                 total: 340, // number
                 total_diff: 20, // number
                 elements: [
@@ -51,7 +56,7 @@ export default {
                     {
                         title: 'Awaiting',
                         value: 60,
-                        on_chart: true
+                        on_chart: false
                     }
                 ]
             },
@@ -75,12 +80,11 @@ export default {
                         title: 'Declined',
                         value: 15,
                         value_diff: -1,
-                        on_chart: true
+                        on_chart: false
                     },
                     {
                         title: 'Processed',
                         value: 20,
-                        value_diff: 3,
                         on_chart: true
                     }
                 ]

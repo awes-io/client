@@ -1,9 +1,9 @@
 .dashboard {
-    @apply flex flex-col h-full h-full;
+    @apply flex flex-col h-full overflow-auto;
 
     /* Change card styles */
     & > div {
-        @apply p-4 h-full flex flex-col;
+        @apply p-0 h-full flex flex-col;
     }
 
     & .aw-chart {
@@ -11,11 +11,11 @@
     }
 
     & &__title {
-        @apply flex justify-between items-center mb-5 font-heading font-bold text-on-muted-dark leading-none tracking-wide;
+        @apply flex justify-between items-center mb-5 mt-4 px-4 font-heading font-bold text-on-muted-dark leading-none tracking-wide;
     }
 
     & &__description {
-        @apply mb-0 text-disabled text-sm leading-snug font-body font-bold truncate;
+        @apply mb-0 px-4 text-disabled text-sm leading-snug font-body font-bold truncate;
     }
 
     & &__counter-wrapper {
@@ -32,7 +32,7 @@
     }
 
     & &__counter {
-        @apply flex items-center text-4xl leading-snug font-heading text-on-muted-dark font-bold;
+        @apply flex items-center px-4 text-4xl leading-snug font-heading text-on-muted-dark font-bold;
 
         .aw-icon {
             @apply text-2xl ml-3;
@@ -48,7 +48,7 @@
     }
 
     & &__chart {
-        @apply flex-shrink-0 text-center flex-auto ml-8;
+        @apply flex-shrink-0 text-center flex-auto ml-8 pr-6 mb-4;
         min-width: 240px;
     }
 
@@ -95,9 +95,14 @@
     }
 
     & .chart-wrapper {
-        @apply relative mx-auto;
+        @apply relative mx-auto px-4;
         min-width: 100px;
         max-width: 236px;
+        width: 100px;
+    }
+
+    &.is-wide .chart-wrapper {
+        width: 236px;
     }
 
     &.is-wide .left-col {
@@ -139,17 +144,29 @@
 
     /* Donut */
     &-donut .chart-wrapper {
-        max-width: 180px;
+        min-width: 300px;
+        width: 300px;
     }
 
-    &-donut.is-wide .chart-wrapper {
-        max-width: 236px;
+    /* Progress */
+
+    &-progress .chart-wrapper {
+        width: 100px;
+    }
+
+    &-progress.is-wide .chart-wrapper {
+        width: 236px;
     }
 
     /* Speed */
     &-speed .chart-wrapper {
-        min-width: 115px;
+        max-width: 135px;
+        width: 135px;
+    }
+
+    &-speed.is-wide .chart-wrapper {
         max-width: 180px;
+        width: 180px;
     }
 
     .speed-arrow {
@@ -163,8 +180,21 @@
         svg {
             width: 100%;
             height: 100%;
-            min-width: 100px;
-            min-height: 100px;
+            /* min-width: 100px;
+            min-height: 100px; */
         }
+    }
+
+    /* Section */
+
+    &-section .chart-wrapper {
+        @apply px-0 mt-8;
+        width: 100%;
+        max-width: 100%;
+        max-height: 300px;
+    }
+
+    &-section &__content {
+        @apply mb-0;
     }
 }

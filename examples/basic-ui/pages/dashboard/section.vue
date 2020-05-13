@@ -1,27 +1,27 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 2, lg: 2, xl: 3 }">
-            <AwDashboardDonut
+            <AwDashboardSection
                 :data="data"
-                percent
                 title="Registrations"
-                description="Leads"
+                description="Registrations yesterday"
             />
 
-            <AwDashboardDonut
-                :data="dataTwo"
-                percent
+            <AwDashboardSection
+                :data="data"
+                border-color="#45A4DC"
+                show-axis-legend
                 title="Registrations"
-                description="Leads"
+                description="Registrations yesterday"
             />
 
-            <AwDashboardDonut
+            <AwDashboardSection
                 :data="data"
                 :span="{ md: 2, lg: 2, xl: 1 }"
-                :colors="['green', 'blue']"
-                percent
+                border-color="#45A4DC"
+                background-color="rgba(69,164,220, 0.3)"
                 title="Registrations"
-                description="Leads"
+                description="Registrations yesterday"
             />
         </AwGrid>
 
@@ -30,9 +30,6 @@
 
             <h5>Example data</h5>
             <AwCodeSnippet v-text="data" language="javascript" />
-
-            <h5>Example data</h5>
-            <AwCodeSnippet v-text="dataTwo" language="javascript" />
         </section>
     </AwPage>
 </template>
@@ -41,68 +38,55 @@
 export default {
     data() {
         return {
-            title: 'AwDashboardDonut',
-            headline: this._getTitle('AwDashboardDonut'),
+            title: 'AwDashboardSection',
+            headline: this._getTitle('AwDashboardSection'),
             data: {
-                total: 215, // number
-                total_diff: 20, // number
-                elements: [
-                    {
-                        title: 'Success', // string
-                        value: 150, // number
-                        on_chart: true
-                    },
-                    {
-                        title: 'In progress',
-                        value: 65,
-                        on_chart: true
-                    }
-                ]
-            },
-            dataTwo: {
                 total: 340, // number
                 total_diff: 20, // number
                 elements: [
                     {
-                        title: 'Success', // string
-                        value: 200, // number
-                        value_diff: -2, // number, when null don't show
+                        title: '06:00', // string
+                        value: 0, // number
                         on_chart: true
                     },
                     {
-                        title: 'In progress',
-                        value: 60,
-                        value_diff: 3,
+                        title: '08:00',
+                        value: 0,
                         on_chart: true
                     },
                     {
-                        title: 'Declined',
-                        value: 15,
-                        value_diff: 1,
+                        title: '10:00',
+                        value: 0,
                         on_chart: true
                     },
                     {
-                        title:
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                        title: '12:00.',
+                        value: 5,
+                        on_chart: true
+                    },
+                    {
+                        title: '14:00',
+                        value: 44,
+                        on_chart: true
+                    },
+                    {
+                        title: '16:00',
                         value: 20,
-                        value_diff: 3,
                         on_chart: true
                     },
                     {
-                        title: 'test2',
+                        title: '18:00',
                         value: 30,
                         on_chart: true
                     },
                     {
-                        title:
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                        value: 20,
-                        value_diff: 3,
+                        title: '20:00',
+                        value: 44,
                         on_chart: true
                     },
                     {
-                        title: 'test2',
-                        value: 30,
+                        title: '22:00',
+                        value: 48,
                         on_chart: true
                     }
                 ]
@@ -114,27 +98,27 @@ export default {
         code() {
             const arr = [
                 '<AwGrid :col="{ md: 2, lg: 2, xl: 3 }">',
-                '    <AwDashboardDonut',
+                '    <AwDashboardSection',
                 '        :data="data"',
-                '        percent',
                 '        title="Registrations"',
-                '        description="Leads"',
+                '        description="Registrations yesterday"',
                 '    />',
                 '',
-                '    <AwDashboardDonut',
-                '        :data="dataTwo"',
-                '        percent',
+                '    <AwDashboardSection',
+                '        :data="data"',
+                '        border-color="#45A4DC"',
+                '        show-axis-legend',
                 '        title="Registrations"',
-                '        description="Leads"',
+                '        description="Registrations yesterday"',
                 '    />',
                 '',
-                '    <AwDashboardDonut',
+                '    <AwDashboardSection',
                 '        :data="data"',
                 '        :span="{ md: 2, lg: 2, xl: 1 }"',
-                `        :colors="['green', 'blue']"`,
-                '        percent',
+                '        border-color="#45A4DC"',
+                '        background-color="rgba(69,164,220, 0.3)"',
                 '        title="Registrations"',
-                '        description="Leads"',
+                '        description="Registrations yesterday"',
                 '    />',
                 '</AwGrid>'
             ]

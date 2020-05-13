@@ -32,6 +32,11 @@ export const navigation = [
         description: ''
     },
     {
+        title: 'Dashboard Section',
+        url: '/dashboard/section',
+        description: ''
+    },
+    {
         title: 'Dashboard Speed',
         url: '/dashboard/speed',
         description: ''

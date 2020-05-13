@@ -3,7 +3,7 @@
         v-bind="$props"
         hide-counter
         ref="builder"
-        class="donut"
+        class="dashboard-donut"
         @width-change="isWide = $event"
     >
         <template #chart="chartData">

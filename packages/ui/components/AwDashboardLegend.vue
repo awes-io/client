@@ -1,5 +1,5 @@
 <template>
-    <div class="relative bg-muted overflow-hidden mt-auto">
+    <div class="relative bg-muted overflow-hidden">
         <ul ref="list" class="rounded dashboard__legend">
             <li
                 v-for="(item, index) in data"

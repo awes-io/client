@@ -3,7 +3,7 @@
         v-bind="$props"
         :hide-counter="!isWide && hideCounter"
         ref="builder"
-        class="dashboard__has-chart"
+        class="dashboard__has-chart dashboard-progress"
         @width-change="isWide = $event"
     >
         <template #chart>
@@ -24,7 +24,11 @@
                     </div>
                 </div>
 
-                <aw-chart-progress :percent="_totalPercent" />
+                <aw-chart-progress
+                    :percent="_totalPercent"
+                    :emptyColor="emptyColor"
+                    :fillColor="_fillColor"
+                />
             </div>
         </template>
 
@@ -60,6 +64,16 @@ export default {
         hidePercent: {
             type: Boolean,
             default: false
+        },
+
+        emptyColor: {
+            type: String,
+            default: '#E8E9EB'
+        },
+
+        fillColor: {
+            type: String,
+            default: '#594FCF'
         }
     },
 
@@ -71,11 +85,17 @@ export default {
 
     computed: {
         _totalPercent() {
-            const sum = this.data.elements.reduce(
-                (acc, val) => acc + parseInt(val.value),
-                0
-            )
+            const sum = this.data.elements.reduce((acc, val) => {
+                if (val.on_chart) {
+                    return acc + parseInt(val.value)
+                }
+                return acc
+            }, 0)
             return Math.round((sum * 100) / this.data.total)
+        },
+
+        _fillColor() {
+            return this.fillColor || this._mergedColors[0]
         }
     }
 }
