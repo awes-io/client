@@ -28,6 +28,7 @@ export default {
 
     _config: {
         baseClass: 'dashboard',
+
         colors: [
             '#594FCF',
             '#E0AB61',

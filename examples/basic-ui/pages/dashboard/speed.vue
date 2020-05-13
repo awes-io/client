@@ -13,7 +13,7 @@
                 title="Productivity"
             >
                 <template #footer>
-                    <div class="flex justify-end mt-4">
+                    <div class="flex justify-end my-4 px-4">
                         <a href="https://www.google.com" target="_blank">
                             Footer link
                         </a>
@@ -101,7 +101,7 @@ export default {
                 '        title="Productivity"',
                 '    >',
                 '        <template #footer>',
-                '            <div class="flex justify-end mt-4">',
+                '            <div class="flex justify-end my-4 px-4">',
                 '                <a href="https://www.google.com" target="_blank">',
                 '                    Footer link',
                 '                </a>',

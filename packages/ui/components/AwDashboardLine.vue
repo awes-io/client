@@ -7,7 +7,9 @@
         </template>
 
         <template #chart="chartData">
-            <AwChartLine :data="chartData.data" />
+            <div class="px-4">
+                <AwChartLine :data="chartData.data" />
+            </div>
         </template>
 
         <template #footer>

@@ -2,7 +2,7 @@
     <AwCard
         :class="{
             [$options._config.baseClass]: true,
-            'is-wide': isWide,
+            'is-wide': _isWide,
             'counter-hidden': hideCounter
         }"
         ref="card"
@@ -28,6 +28,7 @@
                             <slot name="counter">
                                 {{ data.total }}
                                 <AwIcon
+                                    v-if="data.total_diff"
                                     :name="
                                         _isArrowPositive ? 'arrow-u' : 'arrow-d'
                                     "
@@ -48,20 +49,22 @@
                         </div>
                     </div>
 
-                    <div v-show="!isWide">
+                    <div v-show="!_isWide">
                         <slot v-bind:data="chartData" name="chart"></slot>
                     </div>
                 </div>
 
-                <AwDashboardLegend
-                    :template="template"
-                    :data="legendData"
-                    :percent="percent"
-                    :hide-dot="hideDot"
-                />
+                <div v-if="!hideLegend" class="px-4 mb-4 mt-auto">
+                    <AwDashboardLegend
+                        :template="template"
+                        :data="legendData"
+                        :percent="percent"
+                        :hide-dot="hideDot"
+                    />
+                </div>
             </div>
 
-            <div v-show="isWide" :class="_cssClasses.chart">
+            <div v-show="_isWide" :class="_cssClasses.chart">
                 <slot name="image"></slot>
                 <div class="w-full">
                     <slot name="chart" v-bind:data="chartData"></slot>
@@ -101,6 +104,16 @@ export default {
         hideDot: {
             type: Boolean,
             default: false
+        },
+
+        hideLegend: {
+            type: Boolean,
+            default: false
+        },
+
+        noWideState: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -126,6 +139,10 @@ export default {
                     'chart'
                 ])
             }
+        },
+
+        _isWide() {
+            return this.isWide && !this.noWideState
         },
 
         legendData() {

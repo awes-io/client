@@ -3,7 +3,7 @@
         v-bind="$props"
         :hide-counter="!isWide && hideCounter"
         ref="builder"
-        class="dashboard__has-chart"
+        class="dashboard__has-chart dashboard-progress"
         @width-change="isWide = $event"
     >
         <template #chart>
