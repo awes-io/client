@@ -9,9 +9,7 @@
 
             <AwDashboardSection
                 :data="data"
-                :style-options="{
-                    borderColor: '#45A4DC'
-                }"
+                border-color="#45A4DC"
                 show-axis-legend
                 title="Registrations"
                 description="Registrations yesterday"
@@ -19,11 +17,9 @@
 
             <AwDashboardSection
                 :data="data"
-                :style-options="{
-                    borderColor: '#45A4DC',
-                    backgroundColor: 'rgba(69,164,220, 0.3)'
-                }"
                 :span="{ md: 2, lg: 2, xl: 1 }"
+                border-color="#45A4DC"
+                background-color="rgba(69,164,220, 0.3)"
                 title="Registrations"
                 description="Registrations yesterday"
             />
@@ -110,9 +106,7 @@ export default {
                 '',
                 '    <AwDashboardSection',
                 '        :data="data"',
-                '        :style-options="{',
-                "            borderColor: '#45A4DC'",
-                '        }"',
+                '        border-color="#45A4DC"',
                 '        show-axis-legend',
                 '        title="Registrations"',
                 '        description="Registrations yesterday"',
@@ -120,11 +114,9 @@ export default {
                 '',
                 '    <AwDashboardSection',
                 '        :data="data"',
-                '        :style-options="{',
-                "            borderColor: '#45A4DC',",
-                "            backgroundColor: 'rgba(69,164,220, 0.3)'",
-                '        }"',
                 '        :span="{ md: 2, lg: 2, xl: 1 }"',
+                '        border-color="#45A4DC"',
+                '        background-color="rgba(69,164,220, 0.3)"',
                 '        title="Registrations"',
                 '        description="Registrations yesterday"',
                 '    />',

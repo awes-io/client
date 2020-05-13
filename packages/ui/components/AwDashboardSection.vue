@@ -33,17 +33,11 @@ export default {
     },
 
     props: {
-        // Otions for styling chart.
-        // Accepts two values:
-        // borderColor - color of line
-        // backgroundColor - fill color
-        styleOptions: {
-            type: Object,
-            default: () => ({
-                borderColor: null,
-                backgroundColor: null
-            })
-        },
+        // fill color if present
+        backgroundColor: String,
+
+        // Color of line
+        borderColor: String,
 
         // If enabled shows bottom legend
         showAxisLegend: {
@@ -60,10 +54,9 @@ export default {
 
     computed: {
         _baseStyleOptions() {
-            const obj = this.styleOptions || {}
             return {
-                borderColor: obj.borderColor || this._mergedColors[0],
-                backgroundColor: obj.backgroundColor || 'transparent',
+                borderColor: this.borderColor || this._mergedColors[0],
+                backgroundColor: this.backgroundColor || 'transparent',
                 pointRadius: 2,
                 pointHoverRadius: 5,
                 fill: 'start'

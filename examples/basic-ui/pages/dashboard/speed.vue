@@ -1,6 +1,6 @@
 <template>
     <AwPage :title="headline">
-        <AwGrid :col="{ md: 2, lg: 4 }">
+        <AwGrid :col="{ md: 2, lg: 2, xl: 4 }">
             <AwDashboardSpeed
                 :data="data"
                 :sections="sections"
@@ -9,8 +9,15 @@
 
             <AwDashboardSpeed
                 :data="dataTwo"
+                :sections="sectionsTwo"
+                title="Productivity"
+            />
+
+            <AwDashboardSpeed
+                :data="dataTwo"
                 :sections="sections"
                 title="Productivity"
+                :span="{ md: 1, lg: 1, xl: 1 }"
             >
                 <template #footer>
                     <div class="flex justify-end my-4 px-4">
@@ -27,6 +34,9 @@
 
             <h5>Example data</h5>
             <AwCodeSnippet v-text="data" language="javascript" />
+
+            <h5>Example sections</h5>
+            <AwCodeSnippet v-text="sections" language="javascript" />
         </section>
     </AwPage>
 </template>
@@ -48,6 +58,20 @@ export default {
                 },
                 {
                     color: '#7DC9AD',
+                    value: 150
+                }
+            ],
+            sectionsTwo: [
+                {
+                    color: '#45A4DC',
+                    value: 80
+                },
+                {
+                    color: '#B982D2',
+                    value: 110
+                },
+                {
+                    color: '#7FC876',
                     value: 150
                 }
             ],
@@ -88,7 +112,7 @@ export default {
     computed: {
         code() {
             const arr = [
-                ' <AwGrid :col="{ md: 2, lg: 4 }">',
+                '<AwGrid :col="{ md: 2, lg: 2, xl: 4 }">',
                 '    <AwDashboardSpeed',
                 '        :data="data"',
                 '        :sections="sections"',
@@ -97,8 +121,15 @@ export default {
                 '',
                 '    <AwDashboardSpeed',
                 '        :data="dataTwo"',
+                '        :sections="sectionsTwo"',
+                '        title="Productivity"',
+                '    />',
+                '',
+                '    <AwDashboardSpeed',
+                '        :data="dataTwo"',
                 '        :sections="sections"',
                 '        title="Productivity"',
+                '        :span="{ md: 1, lg: 1, xl: 1 }"',
                 '    >',
                 '        <template #footer>',
                 '            <div class="flex justify-end my-4 px-4">',

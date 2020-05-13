@@ -1,16 +1,16 @@
 <template>
     <svg viewBox="0 0 242 244" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
+            :d="emptySections"
+            :fill="emptyColor"
             fill-rule="evenodd"
             clip-rule="evenodd"
-            :d="emptySections"
-            fill="#E8E9EB"
         />
         <path
             :d="filledSections"
+            :fill="fillColor"
             fill-rule="evenodd"
             clip-rule="evenodd"
-            fill="#594FCF"
         />
     </svg>
 </template>
@@ -46,6 +46,16 @@ export default {
         percent: {
             type: Number,
             required: true
+        },
+
+        emptyColor: {
+            type: String,
+            default: '#E8E9EB'
+        },
+
+        fillColor: {
+            type: String,
+            default: '#594FCF'
         }
     },
 

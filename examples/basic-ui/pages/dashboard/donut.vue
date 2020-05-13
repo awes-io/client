@@ -1,15 +1,24 @@
 <template>
     <AwPage :title="headline">
-        <AwGrid :col="{ md: 2, lg: 3 }">
+        <AwGrid :col="{ md: 2, lg: 2, xl: 3 }">
             <AwDashboardDonut
-                :data="lineData"
+                :data="data"
                 percent
                 title="Registrations"
                 description="Leads"
             />
 
             <AwDashboardDonut
-                :data="lineDatatwo"
+                :data="dataTwo"
+                percent
+                title="Registrations"
+                description="Leads"
+            />
+
+            <AwDashboardDonut
+                :data="data"
+                :span="{ md: 2, lg: 2, xl: 1 }"
+                :colors="['green', 'blue']"
                 percent
                 title="Registrations"
                 description="Leads"
@@ -20,7 +29,10 @@
             <AwCodeSnippet v-text="code" />
 
             <h5>Example data</h5>
-            <AwCodeSnippet v-text="lineData" language="javascript" />
+            <AwCodeSnippet v-text="data" language="javascript" />
+
+            <h5>Example data</h5>
+            <AwCodeSnippet v-text="dataTwo" language="javascript" />
         </section>
     </AwPage>
 </template>
@@ -31,7 +43,7 @@ export default {
         return {
             title: 'AwDashboardDonut',
             headline: this._getTitle('AwDashboardDonut'),
-            lineData: {
+            data: {
                 total: 215, // number
                 total_diff: 20, // number
                 elements: [
@@ -47,7 +59,7 @@ export default {
                     }
                 ]
             },
-            lineDatatwo: {
+            dataTwo: {
                 total: 340, // number
                 total_diff: 20, // number
                 elements: [
@@ -101,12 +113,30 @@ export default {
     computed: {
         code() {
             const arr = [
-                '<AwDashboardDonut',
-                '    :data="lineData"',
-                '    percent',
-                '    title="Registrations"',
-                '    description="Leads"',
-                '/>'
+                '<AwGrid :col="{ md: 2, lg: 2, xl: 3 }">',
+                '    <AwDashboardDonut',
+                '        :data="data"',
+                '        percent',
+                '        title="Registrations"',
+                '        description="Leads"',
+                '    />',
+                '',
+                '    <AwDashboardDonut',
+                '        :data="dataTwo"',
+                '        percent',
+                '        title="Registrations"',
+                '        description="Leads"',
+                '    />',
+                '',
+                '    <AwDashboardDonut',
+                '        :data="data"',
+                '        :span="{ md: 2, lg: 2, xl: 1 }"',
+                `        :colors="['green', 'blue']"`,
+                '        percent',
+                '        title="Registrations"',
+                '        description="Leads"',
+                '    />',
+                '</AwGrid>'
             ]
 
             return arr.join('\n')
