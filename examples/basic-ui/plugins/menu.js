@@ -56,39 +56,42 @@ export default function({ store, app }) {
     })
 
     //mock navbar/ Uncomment to enable navbar
-    // store.commit('awesIo/SET_NAVBAR_ITEM', [
-    //     {
-    //         key: 'badge',
-    //         order: 1,
-    //         item: {
-    //             component: 'AwBadge',
-    //             text: 'SMS',
-    //             props: {
-    //                 text: '8',
-    //                 color: 'info'
-    //             }
-    //         }
-    //     },
-    //     {
-    //         key: 'link',
-    //         order: 2,
-    //         item: {
-    //             component: 'AwLink',
-    //             text: 'Homepage',
-    //             props: {
-    //                 href: app.localePath({ path: '/' }, app.i18n.locale)
-    //             }
-    //         }
-    //     },
-    //     {
-    //         key: 'speaker',
-    //         order: 3,
-    //         item: {
-    //             component: 'AwIcon',
-    //             props: {
-    //                 name: 'speaker'
-    //             }
-    //         }
-    //     }
-    // ])
+    store.commit('awesIo/SET_NAVBAR_ITEM', [
+        {
+            key: 'link1',
+            order: 1,
+            item: {
+                component: 'AwLink',
+                text: 'Home',
+                props: {
+                    href: app.localePath({ path: '/' }, app.i18n.locale),
+                    class: 'lg:text-surface'
+                }
+            }
+        },
+        {
+            key: 'link2',
+            order: 2,
+            item: {
+                component: 'AwLink',
+                text: 'Accounting',
+                props: {
+                    href: app.localePath({ path: '/' }, app.i18n.locale),
+                    class: 'lg:text-surface'
+                }
+            }
+        },
+        {
+            key: 'link3',
+            order: 3,
+            item: {
+                component: 'AwLink',
+                text: 'Settings',
+                props: {
+                    href: app.localePath({ path: '/' }, app.i18n.locale),
+                    class: 'lg:text-surface'
+                }
+            }
+        }
+    ])
 }

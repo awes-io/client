@@ -1,6 +1,7 @@
 .layout {
 
-    &&--default {
+    &&--default,
+    &&--simple {
         position: relative;
     }
 
@@ -66,7 +67,8 @@
 
     .layout {
 
-        &&--default {
+        &&--default,
+        &&--simple {
             @apply flex min-h-screen;
         }
 
@@ -81,12 +83,20 @@
             }
         }
 
+        &&--simple &__content {
+           @apply pl-0;
+        }
+
         &__logo {
             @apply mb-16;
         }
 
         &__header {
             @apply bg-surface order-none;
+        }
+
+        &&--simple &__header {
+            @apply bg-brand;
         }
 
         &&--frame-left &__frame {
