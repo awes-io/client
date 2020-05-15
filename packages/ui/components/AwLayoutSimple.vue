@@ -32,11 +32,12 @@
 
                     <div class="w-full flex-1 flex items-center">
                         <!-- navbar menu -->
-                        <RouterLink to="/">
-                            <img
-                                :src="user.logo"
-                                class="mr-10 hidden lg:block"
-                            />
+                        <RouterLink
+                            v-if="logo"
+                            to="/"
+                            class="mr-10 hidden lg:block"
+                        >
+                            <img :src="logo" class="layout__navbar-logo" />
                         </RouterLink>
 
                         <ul
@@ -227,6 +228,10 @@ export default {
 
         user() {
             return pathOr({}, 'state.auth.user', this.$store)
+        },
+
+        logo() {
+            return pathOr(null, 'state.logo', this.$store)
         },
 
         isDarkTheme: {

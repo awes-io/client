@@ -37,6 +37,10 @@
             @apply ml-3;
         }
     }
+
+    &__navbar-logo {
+        max-height: 36px;
+    }
 }
 
 @media (min-width: 35rem) {
