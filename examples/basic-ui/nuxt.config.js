@@ -49,6 +49,7 @@ export default {
                     // param: 'order'
                 }
             }
+            // deafaultLayout: 'LayoutSimple'
         }
     },
 

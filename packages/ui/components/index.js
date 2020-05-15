@@ -46,6 +46,7 @@ export { default as AwAddress } from './AwAddress.vue'
 export { default as AwIcon } from './AwIcon.vue'
 
 export { default as AwLayoutDefault } from './AwLayoutDefault.vue'
+export { default as AwLayoutSimple } from './AwLayoutSimple.vue'
 export { default as AwLayoutFrameCenter } from './AwLayoutFrameCenter.vue'
 export { default as AwPage } from './AwPage.vue'
 

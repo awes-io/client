@@ -10,6 +10,7 @@ export const state = () => ({
         avatar: {
             w96: '/img/icon.jpg',
             w500: '/img/icon.jpg'
-        }
+        },
+        logo: '/img/white_logo.png'
     }
 })

@@ -39,8 +39,7 @@
                     v-for="{
                         component,
                         key,
-                        props,
-                        text,
+                        props: { text, ...props },
                         listeners
                     } in navbarMenu"
                     :key="key"

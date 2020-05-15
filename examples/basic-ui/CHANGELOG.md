@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.64.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.64.0...basic-ui@1.64.1) (2020-05-15)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
+# [1.64.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.63.0...basic-ui@1.64.0) (2020-05-15)
+
+
+### Features
+
+* add AwDashboardSection ([369e433](https://git.awescode.com/awes-io/client/commits/369e433f6afff6568840411f144d2dbf812e2d60))
+* add AwDashboardSpeed ([f19d55d](https://git.awescode.com/awes-io/client/commits/f19d55d8b63c02fd2c7a84e60b62d8de98479f6f))
+* add example layout -  simple ([67a6a1b](https://git.awescode.com/awes-io/client/commits/67a6a1bbff8316f8a2f2da6ca616d3d119be2984))
+* change AwLayoutSimple ([945c0dc](https://git.awescode.com/awes-io/client/commits/945c0dc9b7e0abf79d2da3aacd8029099b2dbff6))
+* layout improvements ([466dab8](https://git.awescode.com/awes-io/client/commits/466dab83425738459823bc1eecac8a9092952186))
+* take logo from store ([9226e35](https://git.awescode.com/awes-io/client/commits/9226e357a9c231549cdbd112797d4bfa843f79d7))
+
+
+
+
+
 # [1.63.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.62.10...basic-ui@1.63.0) (2020-05-11)
 
 
