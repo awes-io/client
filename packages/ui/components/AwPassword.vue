@@ -1,5 +1,5 @@
 <template>
-    <AwInput v-bind="{ ...$props, ...$attrs, type }" v-on="$listeners">
+    <AwInput v-bind="{ ...$props, ...$attrs, type }" v-on="mergedListeners">
         <template #icon>
             <AwButton
                 key="eye"
@@ -18,6 +18,10 @@
 <script>
 import TextFieldMixin from '../mixins/text-field'
 
+const checkSpaces = val => {
+    return !!val.match(/\s/g)
+}
+
 export default {
     name: 'FbPassword',
 
@@ -32,6 +36,30 @@ export default {
     computed: {
         isShown() {
             return this.type === 'text'
+        },
+
+        mergedListeners() {
+            return {
+                ...this.$listeners,
+                keydown: this.$listeners.keydown || this._onKeyDown,
+                paste: this.$listeners.paste || this._onPaste
+            }
+        }
+    },
+
+    methods: {
+        _onKeyDown(e) {
+            if (checkSpaces(e.key)) {
+                e.preventDefault()
+            }
+        },
+
+        _onPaste(e) {
+            const clipboard = e.clipboardData || window.clipboardData
+            const text = clipboard.getData('text')
+            if (checkSpaces(text)) {
+                e.preventDefault()
+            }
         }
     }
 }
