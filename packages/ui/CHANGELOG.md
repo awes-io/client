@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.82.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.82.0...@awes-io/ui@1.82.1) (2020-05-15)
+
+
+### Bug Fixes
+
+* awpassword keypress fix ([87fcc32](https://github.com/awes-io/client/commit/87fcc32a482966e7edbedcf1678310756b45dd18))
+
+
+
+
+
 # [1.82.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.81.1...@awes-io/ui@1.82.0) (2020-05-15)
 
 
