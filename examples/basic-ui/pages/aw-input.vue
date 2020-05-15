@@ -2,12 +2,27 @@
     <AwPage :title="headline">
         <!-- text inputs -->
         <AwInput placeholder="Text input" />
+
+        <AwInput class="mt-2" label="With label" placeholder="Text input" />
+
         <AwInput
             class="mt-2"
-            label="With label"
+            label="Prefix"
             placeholder="Text input"
-            :disabled="null"
+            prefix="site.ru/"
         />
+
+        <AwInput
+            class="mt-2"
+            label="Postfix"
+            placeholder="Text input"
+            postfix=".ru"
+        />
+
+        <section class="my-4">
+            <AwCodeSnippet v-text="code" />
+        </section>
+
         <AwInput
             class="mt-2"
             label="With icon"
@@ -18,6 +33,7 @@
                 <AwIcon name="external" size="sm" class="m-4" />
             </template>
         </AwInput>
+
         <AwInput
             class="mt-2"
             label="With icon"
@@ -28,7 +44,9 @@
                 <AwButton theme="icon" icon="copy" @click="copyToClipboard()" />
             </template>
         </AwInput>
+
         <AwPassword class="mt-2" label="Password" value="123" />
+
         <AwInput
             class="mt-2"
             label="Disabled"
@@ -77,6 +95,27 @@ export default {
             input: 'Value',
             inputError: 'Field error',
             copyValue: 'Input with icon'
+        }
+    },
+
+    computed: {
+        code() {
+            const arr = [
+                '<AwInput',
+                '    class="mt-2"',
+                '    label="Prefix"',
+                '    placeholder="Text input"',
+                '    prefix="site.ru/"',
+                '/>',
+                '',
+                '<AwInput',
+                '    class="mt-2"',
+                '    label="Postfix"',
+                '    placeholder="Text input"',
+                '    postfix=".ru"',
+                '/>'
+            ]
+            return arr.join('\n')
         }
     },
 

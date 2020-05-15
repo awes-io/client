@@ -1,27 +1,49 @@
 <template>
-    <div
+    <label
+        class="flex"
         :class="[
             elClasses.base,
             `is-${type}`,
             ...wrapperClasses,
-            { 'has-icon': $slots.icon }
+            {
+                'has-icon': $slots.icon,
+                'has-prefix': prefix,
+                'has-postfix': postfix
+            }
         ]"
     >
-        <input
-            :class="[elClasses.el, paddingClass]"
-            v-bind="{ type, value: inputValue, ...skipAttr, ...$attrs }"
-            :id="id || defaultId"
-            :aria-describedby="errorText ? errorId : null"
-            v-on="mergedListeners"
-            v-tooltip.show.prepend="errorTooltip"
-            ref="element"
-        /><label v-if="!!label" :class="elClasses.label" :for="id || defaultId">
-            {{ label }}
-        </label>
-        <span v-if="$slots.icon" :class="elClasses.icon">
-            <slot name="icon" />
-        </span>
-    </div>
+        <div
+            v-if="prefix"
+            class="bg-muted-darker flex items-center px-4 rounded-l"
+        >
+            {{ prefix }}
+        </div>
+
+        <div class="relative w-full">
+            <input
+                :class="[elClasses.el, paddingClass]"
+                v-bind="{ type, value: inputValue, ...skipAttr, ...$attrs }"
+                :id="id || defaultId"
+                :aria-describedby="errorText ? errorId : null"
+                v-on="mergedListeners"
+                v-tooltip.show.prepend="errorTooltip"
+                ref="element"
+            />
+            <div v-if="!!label" :class="elClasses.label" :for="id || defaultId">
+                {{ label }}
+            </div>
+            <span v-if="$slots.icon" :class="elClasses.icon">
+                <slot name="icon" />
+            </span>
+        </div>
+
+        <div
+            v-if="postfix"
+            class="bg-muted-darker flex items-center px-4 rounded-r"
+        >
+            {{ postfix }}
+        </div>
+    </label>
 </template>
 
 <script>
@@ -47,6 +69,10 @@ export default {
                 return true
             }
         },
+
+        prefix: String,
+
+        postfix: String,
 
         size: {
             type: String,
