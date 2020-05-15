@@ -6,6 +6,7 @@ export default function({ store, app }) {
         {
             key: 'examples',
             order: 0,
+            dropdown: true,
             props: {
                 text: 'Examples',
                 href: '/',
@@ -32,6 +33,7 @@ export default function({ store, app }) {
 
         menuItems.push({
             key,
+            dropdown: i > 2,
             props: {
                 text: item.title,
                 href
@@ -58,35 +60,26 @@ export default function({ store, app }) {
     //mock navbar/ Uncomment to enable navbar
     // store.commit('awesIo/SET_NAVBAR_ITEM', [
     //     {
-    //         key: 'badge',
+    //         key: 'icon1',
     //         order: 1,
-    //         item: {
-    //             component: 'AwBadge',
-    //             text: 'SMS',
-    //             props: {
-    //                 text: '8',
-    //                 color: 'info'
-    //             }
-    //         }
-    //     },
-    //     {
-    //         key: 'link',
-    //         order: 2,
-    //         item: {
-    //             component: 'AwLink',
-    //             text: 'Homepage',
-    //             props: {
-    //                 href: app.localePath({ path: '/' }, app.i18n.locale)
-    //             }
-    //         }
-    //     },
-    //     {
-    //         key: 'speaker',
-    //         order: 3,
     //         item: {
     //             component: 'AwIcon',
     //             props: {
-    //                 name: 'speaker'
+    //                 name: 'speaker',
+    //                 class: 'lg:text-surface',
+    //                 size: 'xl'
+    //             }
+    //         }
+    //     },
+    //     {
+    //         key: 'icon2',
+    //         order: 2,
+    //         item: {
+    //             component: 'AwIcon',
+    //             props: {
+    //                 name: 'location',
+    //                 class: 'lg:text-surface',
+    //                 size: 'xl'
     //             }
     //         }
     //     }

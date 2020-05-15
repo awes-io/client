@@ -22,6 +22,7 @@
                 <AwUserpic :src="undefined" name="Sds Max-Mustermann" />
                 <AwUserpic :src="null" name=" Max " />
                 <AwUserpic src="" name="- Max '" />
+                <AwUserpic name="Max" />
                 <AwUserpic name=" " />
             </div>
             <div>
