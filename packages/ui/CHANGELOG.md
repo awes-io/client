@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.82.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.81.1...@awes-io/ui@1.82.0) (2020-05-15)
+
+
+### Bug Fixes
+
+* update AwPassword paste logic ([f73a847](https://github.com/awes-io/client/commit/f73a8473da6638c1a3cee1121b0f4cc3698e5356))
+
+
+### Features
+
+* add prefix and postfix slots ([6de7289](https://github.com/awes-io/client/commit/6de7289446928867f5746da23ed9339f9d4ee8e1))
+* add prefix, postfix ([8144b85](https://github.com/awes-io/client/commit/8144b85d63115c50107507910af99cbea5323b90))
+* move logo var to store index ([a346567](https://github.com/awes-io/client/commit/a346567b525679f0c48045cf56d50ed70473c4e1))
+* remove spaces from AwPassword ([f66864e](https://github.com/awes-io/client/commit/f66864e530665b80e2ee315ae02fbca38dd1d020))
+
+
+
+
+
+## [1.81.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.81.0...@awes-io/ui@1.81.1) (2020-05-15)
+
+
+### Bug Fixes
+
+* example ([9fce3ee](https://github.com/awes-io/client/commit/9fce3eeaca28004ad48c0bddde0fd7270bb0c46f))
+
+
+
+
+
+# [1.81.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.80.0...@awes-io/ui@1.81.0) (2020-05-15)
+
+
+### Features
+
+* add AwDashboardSection ([369e433](https://github.com/awes-io/client/commit/369e433f6afff6568840411f144d2dbf812e2d60))
+* add AwDashboardSpeed ([f19d55d](https://github.com/awes-io/client/commit/f19d55d8b63c02fd2c7a84e60b62d8de98479f6f))
+* add example layout -  simple ([67a6a1b](https://github.com/awes-io/client/commit/67a6a1bbff8316f8a2f2da6ca616d3d119be2984))
+* change AwLayoutSimple ([945c0dc](https://github.com/awes-io/client/commit/945c0dc9b7e0abf79d2da3aacd8029099b2dbff6))
+* layout improvements ([466dab8](https://github.com/awes-io/client/commit/466dab83425738459823bc1eecac8a9092952186))
+* take logo from store ([9226e35](https://github.com/awes-io/client/commit/9226e357a9c231549cdbd112797d4bfa843f79d7))
+
+
+
+
+
 # [1.80.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.79.0...@awes-io/ui@1.80.0) (2020-05-11)
 
 

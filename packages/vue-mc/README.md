@@ -16,7 +16,7 @@ class Todo extends BaseModel {
     defaults() {
         return {
             id: null,
-            done: false
+            done: true
         }
     }
 }

@@ -27,7 +27,8 @@ export const DEFAULTS = {
         testUrl: 'http://httpbin.org/get',
         interval: 5000,
         maxTries: Infinity
-    }
+    },
+    deafaultLayout: 'LayoutDefault'
 }
 
 function AwesIoUi(_options) {
@@ -74,14 +75,17 @@ function AwesIoUi(_options) {
         src: resolve(join(__dirname, './layout-mixin.js'))
     })
 
-    this.addLayout(
-        {
-            fileName: join('awes-io', 'LayoutDefault.vue'),
-            src: resolve(__dirname, './layouts/LayoutDefault.vue'),
-            options
-        },
-        'default'
-    )
+    const LAYOUTS = ['LayoutDefault', 'LayoutSimple']
+    LAYOUTS.forEach(layout => {
+        this.addLayout(
+            {
+                fileName: join('awes-io', `${layout}.vue`),
+                src: resolve(__dirname, `./layouts/${layout}.vue`),
+                options
+            },
+            options.deafaultLayout === layout ? 'default' : layout
+        )
+    })
 
     this.addLayout({
         fileName: join('awes-io', 'LayoutFrameCenter.vue'),
