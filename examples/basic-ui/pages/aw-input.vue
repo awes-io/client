@@ -105,15 +105,14 @@ export default {
                 '    class="mt-2"',
                 '    label="Prefix"',
                 '    placeholder="Text input"',
-                '    prefix="site.ru/"',
+                '    prefix="https://example.com/"',
                 '/>',
                 '',
-                '<AwInput',
-                '    class="mt-2"',
-                '    label="Postfix"',
-                '    placeholder="Text input"',
-                '    postfix=".ru"',
-                '/>'
+                '<AwInput class="mt-2" label="Postfix" placeholder="Text input">',
+                '    <template #postfix>',
+                '        <AwIcon name="location" />',
+                '    </template>',
+                '</AwInput>'
             ]
             return arr.join('\n')
         }
