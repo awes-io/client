@@ -1,5 +1,5 @@
 <template>
-    <AwInput v-bind="{ ...$props, ...$attrs, type }" v-on="$listeners">
+    <AwInput v-bind="{ ...$props, ...$attrs, type }" v-on="mergedListeners">
         <template #icon>
             <AwButton
                 key="eye"
@@ -18,6 +18,10 @@
 <script>
 import TextFieldMixin from '../mixins/text-field'
 
+const checkSpaces = val => {
+    return !!val.match(/\s/g)
+}
+
 export default {
     name: 'FbPassword',
 
@@ -32,6 +36,45 @@ export default {
     computed: {
         isShown() {
             return this.type === 'text'
+        },
+
+        mergedListeners() {
+            return {
+                ...this.$listeners,
+                keydown: this.$listeners.keydown || this._onKeyDown,
+                paste: this.$listeners.paste || this._onPaste
+            }
+        }
+    },
+
+    methods: {
+        _onKeyDown(e) {
+            if (checkSpaces(e.key)) {
+                e.preventDefault()
+            }
+        },
+
+        _onPaste(e) {
+            const clipboard = e.clipboardData || window.clipboardData
+            const text = clipboard.getData('text').trim()
+            e.preventDefault()
+            e.stopPropagation()
+            var el = event.target
+            const cursorPosStart = el.selectionStart
+            const cursorPosEnd = el.selectionEnd
+            const v = el.value
+            const textBefore = v.substring(0, cursorPosStart)
+            const textAfter = v.substring(cursorPosEnd, v.length)
+            const mergedText = textBefore + text + textAfter
+
+            el.value = mergedText
+            this.$emit('input', mergedText)
+
+            // move cursor to correct position after paste
+            this.$nextTick(() => {
+                el.selectionStart = el.selectionEnd =
+                    cursorPosStart + text.length
+            })
         }
     }
 }

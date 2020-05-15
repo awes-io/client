@@ -44,9 +44,7 @@
                 <AwButton theme="icon" icon="copy" @click="copyToClipboard()" />
             </template>
         </AwInput>
-
-        <AwPassword class="mt-2" label="Password" value="123" />
-
+        <AwPassword class="mt-2" label="Password" v-model="pass" />
         <AwInput
             class="mt-2"
             label="Disabled"
@@ -94,7 +92,8 @@ export default {
             headline: this._getTitle('AwInput'),
             input: 'Value',
             inputError: 'Field error',
-            copyValue: 'Input with icon'
+            copyValue: 'Input with icon',
+            pass: '123'
         }
     },
 
