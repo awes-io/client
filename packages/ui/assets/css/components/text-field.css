@@ -215,6 +215,18 @@
         }
     }
 
+    /**
+     * Prefix styles
+     */
+
+    &.has-prefix &__element {
+        @apply rounded-l-none;
+    }
+
+    &.has-postfix &__element {
+        @apply rounded-r-none;
+    }
+
 
     /**
      * Disabled style
