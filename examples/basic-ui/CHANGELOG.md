@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.65.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.64.1...basic-ui@1.65.0) (2020-05-15)
+
+
+### Bug Fixes
+
+* changed examples ([5751451](https://git.awescode.com/awes-io/client/commits/57514511f06a91f520c3778f68ab9455bd815ed7))
+* changed translation to general ([5f68966](https://git.awescode.com/awes-io/client/commits/5f689668fb2c8d0d40494c23499e950c42815fae))
+* update AwPassword paste logic ([f73a847](https://git.awescode.com/awes-io/client/commits/f73a8473da6638c1a3cee1121b0f4cc3698e5356))
+
+
+### Features
+
+* add prefix and postfix slots ([6de7289](https://git.awescode.com/awes-io/client/commits/6de7289446928867f5746da23ed9339f9d4ee8e1))
+* add prefix, postfix ([8144b85](https://git.awescode.com/awes-io/client/commits/8144b85d63115c50107507910af99cbea5323b90))
+* move logo var to store index ([a346567](https://git.awescode.com/awes-io/client/commits/a346567b525679f0c48045cf56d50ed70473c4e1))
+
+
+
+
+
 ## [1.64.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.64.0...basic-ui@1.64.1) (2020-05-15)
 
 **Note:** Version bump only for package basic-ui
