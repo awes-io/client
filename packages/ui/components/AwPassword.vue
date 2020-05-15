@@ -49,7 +49,7 @@ export default {
 
     methods: {
         _onKeyDown(e) {
-            if (checkSpaces(e.key)) {
+            if (e.key && checkSpaces(e.key)) {
                 e.preventDefault()
             }
         },
