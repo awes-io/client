@@ -2,28 +2,10 @@
     <div id="layout-simple" class="layout layout--simple">
         <!-- main -->
         <div
-            class="layout__content bg-muted"
+            class="layout__content"
             :class="{ 'relative z-0': showMobileMenu }"
         >
-            <Transition name="collapse">
-                <div
-                    v-if="notification"
-                    class="layout__notification"
-                    :class="`bg-${notification.type}`"
-                >
-                    <span v-html="notification.text"></span>
-
-                    <AwButton
-                        class="layout__close"
-                        icon="close"
-                        theme="ghost"
-                        content-class="p-2 text-surface"
-                        @click="
-                            $store.commit('awesIo/CLOSE_HEADER_NOTIFICATION')
-                        "
-                    ></AwButton>
-                </div>
-            </Transition>
+            <slot name="before-header" />
 
             <div class="layout__header">
                 <div class="container flex items-center">
@@ -49,6 +31,7 @@
                     </div>
 
                     <div class="w-full flex-1 flex items-center">
+                        <!-- navbar menu -->
                         <RouterLink to="/">
                             <AwUserpic
                                 hide-name
@@ -60,18 +43,33 @@
                         <ul
                             class="hidden lg:flex list-none layout__navbar-list"
                         >
-                            <li
-                                v-for="({ key, ...menuItem }, i) in menuItems"
+                            <AwMenuItem
+                                v-for="({ key, ...menuItem },
+                                i) in sortedMenuItems.visible"
                                 :key="key || `item-${i}`"
-                                class="relative px-3 py-2 text-on-brand cursor-pointer flex items-center"
+                                v-bind="menuItem"
+                                class="is-thin"
+                            />
+
+                            <li
+                                v-if="sortedMenuItems.hidden.length"
+                                class="aw-menu-item is-thin"
                             >
-                                <div
-                                    v-show="!i"
-                                    class="bg-on-surface opacity-20 absolute w-full h-full top-0 left-0"
-                                    style="z-index: -1"
-                                />
-                                <AwIcon :name="menuItem.icon" class="mr-3" />
-                                {{ menuItem.text }}
+                                <button
+                                    class="aw-menu-item__button"
+                                    @click="$refs.drop1.toggle()"
+                                >
+                                    <AwIcon name="more" />
+                                </button>
+
+                                <AwDropdown ref="drop1">
+                                    <AwDropdownButton
+                                        v-for="({ key, ...menuItem },
+                                        i) in sortedMenuItems.hidden"
+                                        :key="key || `hidden-item-${i}`"
+                                        v-bind="menuItem"
+                                    />
+                                </AwDropdown>
                             </li>
                         </ul>
 
@@ -79,15 +77,21 @@
                             class="hidden lg:flex list-none layout__navbar-list ml-auto mr-4"
                         >
                             <li
+                                v-for="{
+                                    component,
+                                    key,
+                                    props: { text, ...props }
+                                } in navbarMenu"
+                                :key="key"
                                 class="relative px-1 text-on-brand cursor-pointer"
                             >
-                                <AwIcon name="speaker" size="xl" />
-                            </li>
-
-                            <li
-                                class="relative px-1 text-on-brand cursor-pointer"
-                            >
-                                <AwIcon name="location" size="xl" />
+                                <Component :is="component" v-bind="props">
+                                    {{
+                                        typeof text === 'function'
+                                            ? text()
+                                            : text
+                                    }}
+                                </Component>
                             </li>
                         </ul>
 
@@ -116,14 +120,6 @@
                 </div>
             </div>
 
-            <div class="bg-surface shadow py-3">
-                <div class="flex items-center justify-between container">
-                    <h1 class="text-3xl font-bold font-heading">Company</h1>
-
-                    <AwButton size="sm">Create Lead</AwButton>
-                </div>
-            </div>
-
             <!-- content -->
             <slot />
 
@@ -134,7 +130,7 @@
                 <div
                     v-html="$t('AwLayoutDefault.footer')"
                     class="container py-4"
-                ></div>
+                />
             </div>
         </div>
 
@@ -155,7 +151,6 @@
         <AwMenu
             :class="{ 'is-visible': showMobileMenu }"
             class="lg:hidden"
-            @toggle-width="toggleWidth"
             @close="showMobileMenu = false"
         >
             <AwMenuItem
@@ -169,13 +164,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { pathOr } from 'rambdax'
+import { mapGetters } from 'vuex'
 import AwIcon from './AwIcon.vue'
 import AwMenu from './AwMenu.vue'
 import AwMenuItem from './AwMenuItem.vue'
+import AwUserMenu from './AwUserMenu.vue'
 
-const LS_MENU_THIN_KEY = 'AW_MENU_THIN'
 const menuSort = (a, b) => a.order > b.order
 
 export default {
@@ -184,7 +179,8 @@ export default {
     components: {
         AwIcon,
         AwMenu,
-        AwMenuItem
+        AwMenuItem,
+        AwUserMenu
     },
 
     props: {
@@ -201,12 +197,38 @@ export default {
     },
 
     computed: {
-        ...mapGetters('awesIo', [
-            'mainMenu',
-            'userMenu',
-            'navbarMenu',
-            'isHeaderNotificationShown'
-        ]),
+        ...mapGetters('awesIo', ['userMenu', 'navbarMenu']),
+
+        menuItems() {
+            return this.menu
+                .map(({ props, order, dropdown, children = [] }) => ({
+                    ...props,
+                    order,
+                    dropdown,
+                    children: children
+                        .map(({ props, order }) => ({ ...props, order }))
+                        .sort(menuSort)
+                }))
+                .sort(menuSort)
+        },
+
+        sortedMenuItems() {
+            return this.menuItems.reduce(
+                (acc, val) => {
+                    const key = val.dropdown ? 'hidden' : 'visible'
+                    acc[key].push(val)
+                    return acc
+                },
+                {
+                    visible: [],
+                    hidden: []
+                }
+            )
+        },
+
+        user() {
+            return pathOr({}, 'state.auth.user', this.$store)
+        },
 
         isDarkTheme: {
             get() {
@@ -216,64 +238,12 @@ export default {
             set(val) {
                 this.$store.commit('awesIo/SET_DARK_THEME', val)
             }
-        },
-
-        user() {
-            return pathOr({}, 'state.auth.user', this.$store)
-        },
-
-        notification() {
-            return (
-                this.isHeaderNotificationShown &&
-                pathOr(
-                    null,
-                    ['state', 'auth', 'user', 'notification'],
-                    this.$store
-                )
-            )
-        },
-
-        menuItems() {
-            return this.menu
-                .map(({ props, order, children = [] }) => ({
-                    ...props,
-                    order,
-                    children: children
-                        .map(({ props, order }) => ({ ...props, order }))
-                        .sort(menuSort)
-                }))
-                .sort(menuSort)
         }
     },
 
     watch: {
         '$route.path'() {
             this.showMobileMenu = false
-        }
-    },
-
-    mounted() {
-        try {
-            const menuThin = localStorage.getItem(LS_MENU_THIN_KEY)
-            this.menuThin = menuThin === 'true'
-        } catch (e) {
-            console.log(e)
-        }
-    },
-
-    methods: {
-        toggleWidth() {
-            this.menuThin = !this.menuThin
-
-            try {
-                if (this.menuThin) {
-                    localStorage.setItem(LS_MENU_THIN_KEY, this.menuThin)
-                } else {
-                    localStorage.removeItem(LS_MENU_THIN_KEY)
-                }
-            } catch (e) {
-                console.log(e)
-            }
         }
     }
 }

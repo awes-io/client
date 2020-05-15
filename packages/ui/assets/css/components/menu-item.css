@@ -80,6 +80,11 @@
         padding-left: theme('spacing.16');
     }
 
+    &.is-thin &__button {
+        padding-right: theme('spacing.4');
+        padding-left: theme('spacing.4');
+    }
+
     /* remove reserved place for toggler  */
     &_has-toggler &__button {
         max-width: calc(100% - theme('spacing.8'));

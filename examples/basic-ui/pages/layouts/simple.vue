@@ -1,24 +1,30 @@
 <template>
-    <div class="container mt-10">
-        <AwTableBuilder
-            :collection="managers"
-            :scroll-on-page="false"
-            defaultHeight="50vh"
-        >
-            <AwTableCol field="id" />
+    <AwPage title="Company">
+        <template #buttons>
+            <AwButton size="sm">Create Lead</AwButton>
+        </template>
 
-            <AwTableCol
-                title="User name"
-                :orderable="{ templateValue: 'first_name' }"
+        <div class="bg-muted">
+            <AwTableBuilder
+                :collection="managers"
+                :scroll-on-page="false"
+                defaultHeight="50vh"
             >
-                <template #default="{ cell }">
-                    {{ cell.first_name }} {{ cell.last_name }}
-                </template>
-            </AwTableCol>
+                <AwTableCol field="id" />
 
-            <AwTableCol title="Job title" field="position" />
-        </AwTableBuilder>
-    </div>
+                <AwTableCol
+                    title="User name"
+                    :orderable="{ templateValue: 'first_name' }"
+                >
+                    <template #default="{ cell }">
+                        {{ cell.first_name }} {{ cell.last_name }}
+                    </template>
+                </AwTableCol>
+
+                <AwTableCol title="Job title" field="position" />
+            </AwTableBuilder>
+        </div>
+    </AwPage>
 </template>
 
 <script>
