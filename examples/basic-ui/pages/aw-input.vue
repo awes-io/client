@@ -9,8 +9,8 @@
             class="mt-2"
             label="Prefix"
             placeholder="Text input"
-            prefix="site.ru/"
-            postfix=".ru"
+            prefix="https://example.com/"
+            postfix=".com"
         />
 
         <AwInput class="mt-2" label="Postfix" placeholder="Text input">
