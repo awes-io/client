@@ -9,14 +9,14 @@
             class="mt-2"
             label="Prefix"
             placeholder="Text input"
-            prefix="site.ru/"
+            prefix="https://example.com/"
         />
 
         <AwInput
             class="mt-2"
             label="Postfix"
             placeholder="Text input"
-            postfix=".ru"
+            postfix=".com"
         />
 
         <section class="my-4">
@@ -105,14 +105,14 @@ export default {
                 '    class="mt-2"',
                 '    label="Prefix"',
                 '    placeholder="Text input"',
-                '    prefix="site.ru/"',
+                '    prefix="https://example.com/"',
                 '/>',
                 '',
                 '<AwInput',
                 '    class="mt-2"',
                 '    label="Postfix"',
                 '    placeholder="Text input"',
-                '    postfix=".ru"',
+                '    postfix=".com"',
                 '/>'
             ]
             return arr.join('\n')
