@@ -76,16 +76,16 @@
                         </ul>
 
                         <ul
-                            class="hidden lg:flex list-none layout__navbar-list ml-auto mr-3"
+                            class="hidden lg:flex list-none layout__navbar-list ml-auto mr-4"
                         >
                             <li
-                                class="relative px-3 py-2 text-on-brand cursor-pointer flex items-center"
+                                class="relative px-1 text-on-brand cursor-pointer"
                             >
                                 <AwIcon name="speaker" size="xl" />
                             </li>
 
                             <li
-                                class="relative px-3 py-2 text-on-brand cursor-pointer flex items-center"
+                                class="relative px-1 text-on-brand cursor-pointer"
                             >
                                 <AwIcon name="location" size="xl" />
                             </li>
