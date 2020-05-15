@@ -33,9 +33,8 @@
                     <div class="w-full flex-1 flex items-center">
                         <!-- navbar menu -->
                         <RouterLink to="/">
-                            <AwUserpic
-                                hide-name
-                                src="/img/icon.jpg"
+                            <img
+                                :src="user.logo"
                                 class="mr-10 hidden lg:block"
                             />
                         </RouterLink>
@@ -197,7 +196,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters('awesIo', ['userMenu', 'navbarMenu']),
+        ...mapGetters('awesIo', ['userMenu', 'navbarMenu', 'user']),
 
         menuItems() {
             return this.menu

@@ -83,6 +83,8 @@
     &.is-thin &__button {
         padding-right: theme('spacing.4');
         padding-left: theme('spacing.4');
+        padding-top: theme('spacing.2');
+        padding-bottom: theme('spacing.2');
     }
 
     /* remove reserved place for toggler  */
