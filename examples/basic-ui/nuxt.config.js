@@ -22,7 +22,15 @@ export default {
     modules: [
         // ...
         '@nuxtjs/axios',
-        '@awes-io/ui/nuxt',
+        [
+            '@awes-io/ui/nuxt',
+            {
+                // backgroundDarkFrameCenter: {
+                //     src: 'https://cdn.easyweek.io/website/bg_login_black.svg',
+                //     class: 'bg-cover bg-fixed bg-center'
+                // }
+            }
+        ],
         // other @awes-io modules, which add custom routes should go before nuxt-i18n
         'nuxt-i18n'
     ],
