@@ -70,6 +70,17 @@
     transition: 300ms all ease
 }
 
+.fade-dashboard-card {
+    &-enter-active {
+        transition: opacity .5s ease-in-out-sine;
+        transition-delay: .25s;
+    }
+
+    &-enter, &-leave-to {
+        opacity: 0;
+    }
+}
+
 /* .transition-border {
     transition: 300ms border ease
 }
