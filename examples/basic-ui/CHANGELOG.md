@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.66.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.65.2...basic-ui@1.66.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* AwSelect search error ([3b3ef1b](https://git.awescode.com/awes-io/client/commits/3b3ef1b32004c1b5e2029416ee216a05f8e61e18))
+* remove test component ([003d67e](https://git.awescode.com/awes-io/client/commits/003d67efb2b7a7dd819501895b9a10c3de5fa844))
+
+
+### Features
+
+* @awes-io/ui/nuxt add dark background config ([ed3f030](https://git.awescode.com/awes-io/client/commits/ed3f0306190de3e5cd64824d494cdeb83bce5dd7))
+* add AwDashboardCard ([f310957](https://git.awescode.com/awes-io/client/commits/f31095798d22c23f5dc2173c9b2e89aa5d576d2f))
+* add description to userpic ([a7d71b9](https://git.awescode.com/awes-io/client/commits/a7d71b9e993c7f10e4f24ad16d58da772b3b097f))
+
+
+
+
+
 ## [1.65.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.65.1...basic-ui@1.65.2) (2020-05-15)
 
 **Note:** Version bump only for package basic-ui

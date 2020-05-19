@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.83.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.82.2...@awes-io/ui@1.83.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* AwSelect search error ([3b3ef1b](https://github.com/awes-io/client/commit/3b3ef1b32004c1b5e2029416ee216a05f8e61e18))
+* change hidden row value display logic ([89f7e49](https://github.com/awes-io/client/commit/89f7e4975cbe155dd487a18d8e381da27741c616))
+* display table props value on mobile ([b13246c](https://github.com/awes-io/client/commit/b13246ca126eee41ccedc98442cd8dd6078283e1))
+* update table hidden row value display logic ([8fa245a](https://github.com/awes-io/client/commit/8fa245ac9952e4a1ae2c6210d5e8ebf6c386b74e))
+
+
+### Features
+
+* @awes-io/ui/nuxt add dark background config ([ed3f030](https://github.com/awes-io/client/commit/ed3f0306190de3e5cd64824d494cdeb83bce5dd7))
+* add AwDashboardCard ([f310957](https://github.com/awes-io/client/commit/f31095798d22c23f5dc2173c9b2e89aa5d576d2f))
+* add description to userpic ([a7d71b9](https://github.com/awes-io/client/commit/a7d71b9e993c7f10e4f24ad16d58da772b3b097f))
+
+
+
+
+
 ## [1.82.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.82.1...@awes-io/ui@1.82.2) (2020-05-15)
 
 
