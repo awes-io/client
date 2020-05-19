@@ -31,6 +31,8 @@ Below is a collection of Vue **props** for the `AwInput` component.
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |type|-|`String`|`false`|text|
+|prefix|-|`String`|`false`|-|
+|postfix|-|`String`|`false`|-|
 |size|-|`String`|`false`|md|
 
 <!-- @vuese:AwInput:props:end -->
@@ -40,7 +42,9 @@ Below is a collection of Vue **slots** for the `AwInput` component.
 <!-- @vuese:AwInput:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
+|prefix|-|-|
 |icon|-|-|
+|postfix|-|-|
 
 <!-- @vuese:AwInput:slots:end -->
 

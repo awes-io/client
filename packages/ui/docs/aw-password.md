@@ -40,4 +40,9 @@ Below is a collection of Vue **slots** for the `AwPassword` component.
 ### Events
 Below is a collection of Vue **events** for the `AwPassword` component.
 <!-- @vuese:AwPassword:events:start -->
+|Event Name|Description|Parameters|
+|---|---|---|
+|input|-|-|
 
+<!-- @vuese:AwPassword:events:end -->
+                            
