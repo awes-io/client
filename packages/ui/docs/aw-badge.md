@@ -1,3 +1,10 @@
+---
+metaTitle: AwBadge | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwBadge /&gt; component is used to render badges - UI Vue component for Awes.io.
+title: Badge
+---
 # AwBadge
 
 ## Props

@@ -1,3 +1,11 @@
+---
+metaTitle: TableCol сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwTableCol /&gt; component is used to render TableCol - UI Vue component for Awes.io.
+title: TableCol
+---
+
 # AwTableCol
 
 ## Props

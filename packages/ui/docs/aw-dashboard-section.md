@@ -1,3 +1,11 @@
+---
+metaTitle: DashboardSection сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwDashboardSection /&gt; component is used to render DashboardSection - UI Vue component for Awes.io.
+title: DashboardSection
+---
+
 # AwDashboardSection
 
 ## Props

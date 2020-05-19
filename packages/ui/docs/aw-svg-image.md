@@ -1,3 +1,11 @@
+---
+metaTitle: SvgImage сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwSvgImage /&gt; component is used to render SvgImage - UI Vue component for Awes.io.
+title: SvgImage
+---
+
 # AwSvgImage
 
 ## Props

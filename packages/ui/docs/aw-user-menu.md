@@ -1,3 +1,11 @@
+---
+metaTitle: UserMenu сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwUserMenu /&gt; component is used to render UserMenu - UI Vue component for Awes.io.
+title: UserMenu
+---
+
 # AwUserMenu
 
 ## Props

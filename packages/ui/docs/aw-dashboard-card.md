@@ -1,3 +1,11 @@
+---
+metaTitle: DashboardCard сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwDashboardCard /&gt; component is used to render DashboardCard - UI Vue component for Awes.io.
+title: DashboardCard
+---
+
 # AwDashboardCard
 
 ## Props

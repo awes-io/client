@@ -1,3 +1,11 @@
+---
+metaTitle: MultiBlockBuilder сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwMultiBlockBuilder /&gt; component is used to render MultiBlockBuilder - UI Vue component for Awes.io.
+title: MultiBlockBuilder
+---
+
 # AwMultiBlockBuilder
 
 Serves for VueMC collection visualization. Pass the collection to `collection` prop, and form fields that you need to default slot. 

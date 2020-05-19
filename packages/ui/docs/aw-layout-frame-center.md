@@ -1,3 +1,11 @@
+---
+metaTitle: LayoutFrameCenter сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwLayoutFrameCenter /&gt; is a layout for login or registration page for Awes.io.
+title: LayoutFrameCenter
+---
+
 # AwLayoutFrameCenter
 
 ## Props

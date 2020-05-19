@@ -1,3 +1,11 @@
+---
+metaTitle: DashboardDonut сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwDashboardDonut /&gt; component is used to render DashboardDonut - UI Vue component for Awes.io.
+title: DashboardDonut
+---
+
 # AwDashboardDonut
 
 ## Props

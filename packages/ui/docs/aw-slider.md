@@ -1,3 +1,11 @@
+---
+metaTitle: Slider сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwSlider /&gt; component is used to render Slider - UI Vue component for Awes.io.
+title: Slider
+---
+
 # AwSlider
 
 ## Props

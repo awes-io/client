@@ -1,3 +1,11 @@
+---
+metaTitle: FetchData сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwFetchData /&gt; component is used to render FetchData - UI Vue component for Awes.io.
+title: FetchData
+---
+
 # AwFetchData
 
 ## Props

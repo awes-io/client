@@ -1,3 +1,11 @@
+---
+metaTitle: DashboardSpeed сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwDashboardSpeed /&gt; component is used to render DashboardSpeed - UI Vue component for Awes.io.
+title: DashboardSpeed
+---
+
 # AwDashboardSpeed
 
 ## Props

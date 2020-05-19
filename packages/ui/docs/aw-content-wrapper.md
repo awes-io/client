@@ -1,3 +1,11 @@
+---
+metaTitle: ContentWrapper сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwContentWrapper /&gt; component is used to render ContentWrapper - UI Vue component for Awes.io.
+title: ContentWrapper
+---
+
 # AwContentWrapper
 
 ## Props

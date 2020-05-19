@@ -1,3 +1,11 @@
+---
+metaTitle: TableRow сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwTableRow /&gt; component is used to render TableRow - UI Vue component for Awes.io.
+title: TableRow
+---
+
 # AwTableRow
 
 ## Props

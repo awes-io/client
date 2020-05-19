@@ -1,3 +1,11 @@
+---
+metaTitle: DropdownButton сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwDropdownButton /&gt; component is used to render DropdownButton - UI Vue component for Awes.io.
+title: DropdownButton
+---
+
 # AwDropdownButton
 
 ## Props

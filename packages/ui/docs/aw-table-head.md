@@ -1,3 +1,11 @@
+---
+metaTitle: TableHead сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwTableHead /&gt; component is used to render TableHead - UI Vue component for Awes.io.
+title: TableHead
+---
+
 # AwTableHead
 
 ## Props

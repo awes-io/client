@@ -1,4 +1,12 @@
-# AwLAyoutSimple
+---
+metaTitle: LayoutSimple сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwLayoutSimple /&gt; is a layout with navigation on the head for Awes.io.
+title: LayoutSimple
+---
+
+# AwLayoutSimple
 
 ## Props
 

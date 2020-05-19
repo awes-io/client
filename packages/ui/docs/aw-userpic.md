@@ -1,3 +1,11 @@
+---
+metaTitle: Userpic сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwUserpic /&gt; component is used to render Userpic - UI Vue component for Awes.io.
+title: Userpic
+---
+
 # AwUserpic
 
 ## Usage

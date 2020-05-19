@@ -1,3 +1,11 @@
+---
+metaTitle: ContextMenu сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwContextMenu /&gt; component is used to render ContextMenu - UI Vue component for Awes.io.
+title: ContextMenu
+---
+
 # AwContextMenu
 
 ## Props

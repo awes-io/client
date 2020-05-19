@@ -1,3 +1,11 @@
+---
+metaTitle: DashboardProgress сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwDashboardProgress /&gt; component is used to render DashboardProgress - UI Vue component for Awes.io.
+title: DashboardProgress
+---
+
 # AwDashboardProgress
 
 ## Props

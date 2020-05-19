@@ -1,3 +1,11 @@
+---
+metaTitle: Toggler сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwToggler /&gt; component is used to render Toggler - UI Vue component for Awes.io.
+title: Toggler
+---
+
 # AwToggler
 
 ## Props

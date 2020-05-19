@@ -1,3 +1,11 @@
+---
+metaTitle: Page сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwPage /&gt; general container for internal pages in Awes.io.
+title: Page
+---
+
 # AwPage
 
 ## Props

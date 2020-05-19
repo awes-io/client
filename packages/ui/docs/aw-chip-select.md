@@ -1,4 +1,12 @@
+---
+metaTitle: ChipSelect сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwChipSelect /&gt; component is used to render ChipSelect - UI Vue component for Awes.io.
+title: ChipSelect
+---
 # AwChipSelect
+
 
 ## Props
 

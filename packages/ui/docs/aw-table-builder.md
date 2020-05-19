@@ -1,3 +1,11 @@
+---
+metaTitle: TableBuilder сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwTableBuilder /&gt; component is used to render TableBuilder - UI Vue component for Awes.io.
+title: TableBuilder
+---
+
 # AwTableBuilder
 
 ## Props

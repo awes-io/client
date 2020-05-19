@@ -1,3 +1,11 @@
+---
+metaTitle: LayoutDefault сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwLayoutDefault /&gt; is a layout with left sidebar for Awes.io.
+title: LayoutDefault
+---
+
 # AwLayoutDefault
 
 ## Props

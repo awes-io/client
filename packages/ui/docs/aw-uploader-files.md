@@ -1,3 +1,11 @@
+---
+metaTitle: UploaderFiles сomponent | Awes.io
+meta:
+  - name: description
+    content: The &lt;AwUploaderFiles /&gt; component is used to render UploaderFiles - UI Vue component for Awes.io.
+title: UploaderFiles
+---
+
 # AwUploaderFiles
 
 ## Props
