@@ -1,0 +1,57 @@
+
+.dashboard-card {
+    @apply max-w-full w-full border-l-2 relative overflow-hidden;
+
+    & &__title {
+        @apply text-sm font-body font-bold tracking-wide leading-snug mb-2;
+    }
+
+    & &__number {
+        @apply text-3xl font-bold m-0 leading-snug; 
+    }
+
+    & &__description,
+    & &__footer {
+        @apply text-xs text-disabled m-0 font-bold;
+    }
+
+    & &__footer {
+        @apply mt-5;
+    }
+
+    & &__button {
+        @apply absolute rounded-full shadow-none z-30;
+        top: 18px;
+        right: 18px;
+
+        .aw-button__overlay {
+            @apply rounded-full;
+        }
+    }
+
+    & &__background {
+        @apply absolute rounded-full z-10;
+        top: 19px;
+        right: 19px;
+        width: 20px;
+        height: 20px;
+        transition-duration: 0.4s;
+        transition-timing-function: ease-out;
+    }
+
+    & &__wrapper {
+        @apply absolute top-0 left-0 w-full h-full text-surface z-20;
+    }
+
+    & &__content {
+        @apply w-full max-h-full;
+        overflow: auto;
+    }
+
+    /* Opened styles */
+    &.is-open &__background {
+        /* transform: scale(50); */
+        transition-duration: .7s;
+        transition-timing-function: cubic-bezier(.39,.65,.51,.74);
+    }
+}

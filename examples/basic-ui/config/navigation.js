@@ -20,12 +20,17 @@ export const navigation = [
     { title: 'Context menu', url: '/aw-context-menu', description: '' },
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },
-    { title: 'Dashboard Line', url: '/dashboard/line', description: '' },
+    {
+        title: 'Dashboard Card',
+        url: '/dashboard/card',
+        description: ''
+    },
     {
         title: 'Dashboard Donut',
         url: '/dashboard/donut',
         description: ''
     },
+    { title: 'Dashboard Line', url: '/dashboard/line', description: '' },
     {
         title: 'Dashboard Progress',
         url: '/dashboard/progress',
