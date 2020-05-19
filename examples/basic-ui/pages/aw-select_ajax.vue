@@ -3,19 +3,16 @@
         <AwSelect
             v-model="selected"
             ref="select"
-            :options="text => `/api/select-ajax?s=${text}`"
+            :options="text => `/api/managers?search=${text}`"
             :disabled="disabled"
             track-by="id"
-            option-label="name"
-            label="Category"
-            placeholder="Select or create category"
-            :search-preload="[
-                { id: 6, name: 'Preloaded 2' },
-                { id: 5, name: 'Preloaded :)' }
-            ]"
+            option-label="first_name"
+            label="Managers"
+            placeholder="Select or create manager"
+            clearable
             @preloaded="setActive"
-            @not-found="createCategory"
-            @not-equal="createCategory"
+            @not-found="crateManager"
+            @not-equal="crateManager"
         >
             <template #option-label="{ optionLabel }">
                 <span class="inline-flex items-center">
@@ -25,12 +22,12 @@
 
             <template #not-equal="{ searchPhrase }">
                 <AwIcon name="plus" class="mr-2" />
-                Create category {{ searchPhrase }}
+                Create manager {{ searchPhrase }}
             </template>
 
             <template #not-found="{ searchPhrase }">
                 <AwIcon name="plus" class="mr-2" />
-                Create category {{ searchPhrase }}
+                Create manager {{ searchPhrase }}
             </template>
         </AwSelect>
 
@@ -60,14 +57,14 @@ export default {
             }
         },
 
-        async createCategory(name) {
+        async crateManager(name) {
             this.$refs.select.toggleLoader(true)
 
-            const { data } = await this.$axios.request({
+            const { data } = await this.$axios({
                 method: 'post',
-                url: '/api/select-ajax/add',
+                url: '/api/managers/add',
                 data: {
-                    name
+                    first_name: name
                 }
             })
 

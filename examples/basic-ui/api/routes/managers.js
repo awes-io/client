@@ -83,10 +83,27 @@ managers.post('/', function(req, res) {
     }
 })
 
+managers.post('/add', async function(req, res) {
+    try {
+        const id = Math.max(...managersCollection.map('id')) + 1
+        const manager = new Manager({ id, ...req.body })
+
+        await manager.validate()
+
+        managersCollection.add(manager)
+
+        setTimeout(() => {
+            res.json({ success: true, data: manager })
+        }, 250)
+    } catch (e) {
+        sendError(res, e)
+    }
+})
+
 managers.post('/:id', function(req, res) {
     try {
         const id = Number(req.params.id)
-        const fields = { ...req.body }
+        const fields = { ...req }
 
         const manager = managersCollection.find({ id })
 
@@ -101,23 +118,6 @@ managers.post('/:id', function(req, res) {
 
         setTimeout(() => {
             res.json({ data: manager })
-        }, 250)
-    } catch (e) {
-        sendError(res, e)
-    }
-})
-
-managers.post('/add', async function(req, res) {
-    try {
-        const id = Math.max(...managersCollection.map('id')) + 1
-        const manager = new Manager({ id, ...req.body })
-
-        await manager.validate()
-
-        managersCollection.add(manager)
-
-        setTimeout(() => {
-            res.json({ success: true, data: { id } })
         }, 250)
     } catch (e) {
         sendError(res, e)

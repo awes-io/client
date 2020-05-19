@@ -452,6 +452,8 @@ export default {
         },
 
         _addBoldTagsToString(str, matches = []) {
+            if (!matches) return str
+
             const used = {}
             let fin = str
             matches.forEach(match => {

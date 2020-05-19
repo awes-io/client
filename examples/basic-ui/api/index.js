@@ -6,6 +6,9 @@ const gallery = require('./routes/gallery')
 
 const app = express()
 
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json())
+
 app.use(express.static(__dirname + '/static'))
 app.use(chart)
 app.use('/managers', managers)
