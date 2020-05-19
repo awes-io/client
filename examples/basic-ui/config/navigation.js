@@ -66,5 +66,6 @@ export const navigation = [
     { title: 'Timeline builder', url: '/aw-timeline-builder', description: '' },
     { title: 'Toggler', url: '/aw-toggler', description: '' },
     { title: 'Tooltip', url: '/v-tooltip', description: '' },
-    { title: 'Uploader', url: '/aw-uploader', description: '' }
+    { title: 'Uploader', url: '/aw-uploader', description: '' },
+    { title: 'Userpic', url: '/aw-userpic', description: '' }
 ]

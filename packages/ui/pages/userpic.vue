@@ -32,7 +32,8 @@
                 <AwUserpic
                     src="https://picsum.photos/72"
                     name="Max Mustermann"
-                    hide-name
+                    description="12.12.2020"
+                    big-image
                 />
                 <p>
                     6. Userpic with picture and empty name. Want to render large

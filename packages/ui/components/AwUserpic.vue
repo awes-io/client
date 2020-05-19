@@ -5,15 +5,20 @@
         class="flex items-center"
     >
         <AwAvatar
-            :size="props.hideName ? 36 : 22"
+            :size="props.hideName || props.bigImage ? 36 : 22"
             :src="props.src"
             :name="props.name"
             :is-colored="$options.isColor(props.src, props.name)"
             :type="$options.getType(props.src, props.hideName)"
         />
-        <span v-if="!props.hideName" class="ml-2">
+        <div
+            v-if="!props.hideName"
+            class="ml-2 flex flex-col"
+            :class="{ 'text-sm': props.description }"
+        >
             <span>{{ props.name }}</span>
-        </span>
+            <div class="text-disabled">{{ props.description }}</div>
+        </div>
     </span>
 </template>
 
@@ -40,6 +45,18 @@ export default {
         },
         // It's hide the user name. The size of the image will be bigger.
         hideName: {
+            type: Boolean,
+            default: false
+        },
+
+        // text under name
+        description: {
+            type: String,
+            default: ''
+        },
+
+        // If true - the size of the image will be bigger
+        bigImage: {
             type: Boolean,
             default: false
         }
