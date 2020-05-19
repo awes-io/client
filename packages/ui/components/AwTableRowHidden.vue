@@ -3,7 +3,7 @@
         <td class="p-2 align-top">
             <strong v-if="props.title">{{ props.title }}:</strong>
         </td>
-        <td class="p-2">
+        <td class="p-2" v-if="typeof props.cell !== 'object' || $slots.default">
             <slot v-bind="props">{{ props.cell }}</slot>
         </td>
     </tr>
