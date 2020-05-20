@@ -1,7 +1,7 @@
 {
     "name": "@awes-io/nuxt-profile",
     "description": "",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "module": "index.js",
     "entry": "index.js",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",

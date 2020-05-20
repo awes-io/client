@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.67.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.66.1...basic-ui@1.67.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* **avatar:** update avatar path for all components ([890b2ab](https://git.awescode.com/awes-io/client/commits/890b2aba1911f18474be06ac23380d7813538bfe))
+
+
+### Features
+
+* add icon color for nav menu ([40df40a](https://git.awescode.com/awes-io/client/commits/40df40a1bf8ef162d972400c7b713a9709f8d3f3))
+
+
+
+
+
 ## [1.66.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.66.0...basic-ui@1.66.1) (2020-05-20)
 
 **Note:** Version bump only for package basic-ui
