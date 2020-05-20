@@ -160,6 +160,10 @@ export const AwModal = {
     bgClickClose: true
 }
 
+export const AwMenu = {
+    iconColor: 'currentColor'
+}
+
 export const AwTableBuilder = {
     param: 'orderBy', // <-- GET-param name in browser query string
     ascTemplate: '%s', // <-- template, where '%s' is replaced with column name

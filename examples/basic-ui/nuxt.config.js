@@ -55,6 +55,9 @@ export default {
             components: {
                 AwTableBuilder: {
                     // param: 'order'
+                },
+                AwMenu: {
+                    // iconColor: 'yellow'
                 }
             }
             // deafaultLayout: 'LayoutSimple'

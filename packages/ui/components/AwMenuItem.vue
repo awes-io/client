@@ -22,7 +22,13 @@
             v-on="!href && hasChildren ? { click: toggle } : {}"
             class="aw-menu-item__button"
         >
-            <AwIcon v-if="icon" :name="icon" size="xl" class="mr-5" />
+            <AwIcon
+                v-if="icon"
+                :name="icon"
+                size="xl"
+                class="mr-5"
+                :style="`color: ${_iconCorlor}`"
+            />
             <span class="truncate">{{ text }}</span>
             <AwBadge
                 v-if="_badge"
@@ -62,7 +68,7 @@
 </template>
 
 <script>
-import { isEmpty, isType, isNil } from 'rambdax'
+import { isEmpty, isType, isNil, pathOr } from 'rambdax'
 import { trimSlash } from '../assets/js/router'
 import AwIcon from './AwIcon.vue'
 import AwBadge from './AwBadge.vue'
@@ -112,6 +118,11 @@ export default {
             default: null
         },
 
+        iconColor: {
+            type: String,
+            default: ''
+        },
+
         show: {
             type: [Boolean, Function],
             default: true
@@ -136,6 +147,14 @@ export default {
                     ...this.badge
                 }
             }
+        },
+
+        _config() {
+            return pathOr({}, '$awesConfig.AwMenu', this)
+        },
+
+        _iconCorlor() {
+            return this.iconColor || this._config.iconColor
         },
 
         visible() {
