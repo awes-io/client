@@ -29,3 +29,21 @@ title: LayoutSimple
 <!-- @vuese:AwLAyoutSimple:slots:end -->
 
 
+
+## Props
+<!-- @vuese:AwLayoutSimple:props:start -->
+|Name|Description|Type|Required|Default|
+|---|---|---|---|---|
+|menu|-|`Array`|`false`|[]|
+
+<!-- @vuese:AwLayoutSimple:props:end -->
+                            
+## Slots
+<!-- @vuese:AwLayoutSimple:slots:start -->
+|Name|Description|Default Slot Content|
+|---|---|---|
+|before-header|-|-|
+|default|content|-|
+
+<!-- @vuese:AwLayoutSimple:slots:end -->
+                            
