@@ -54,7 +54,7 @@
 
                 <!-- profile button -->
                 <AwUserMenu
-                    :avatar="(user.avatar && user.avatar.w96) || ''"
+                    :avatar="user.avatar"
                     :name="user.name"
                     :dark-theme="isDarkTheme"
                     @switch-dark-theme="isDarkTheme = $event"

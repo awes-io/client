@@ -1,6 +1,6 @@
 <template>
     <div class="md:flex">
-        <div class="flex-grow md:order-first">
+        <div class="flex-grow md:order-first md:pr-4">
             <AwForm url="/api/profile/update">
                 <AwInput
                     v-model="userData.name"
@@ -29,12 +29,12 @@
         </div>
 
         <!-- avatar -->
-        <div class="w-64 max-w-full mt-4 md:mt-0 md:pl-4">
+        <div class="w-64 flex-shrink-0 max-w-full mt-4 md:mt-0">
             <div class="shadow-md relative">
                 <img
                     v-if="user.avatar"
                     class="w-64 h-64"
-                    :src="user.avatar.w500"
+                    :src="user.avatar"
                     :alt="`${userData.name} avatar`"
                 />
                 <div
@@ -76,8 +76,7 @@
 </template>
 
 <script>
-import isEqual from 'lodash/isEqual'
-import pick from 'lodash/pick'
+import { equals, pick } from 'rambdax'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -96,11 +95,11 @@ export default {
         ...mapState('auth', ['user']),
 
         pickedUserdata() {
-            return pick(this.user, Object.keys(this.userData))
+            return pick(Object.keys(this.userData), this.user)
         },
 
         isEqualData() {
-            return isEqual(this.pickedUserdata, this.userData)
+            return equals(this.pickedUserdata, this.userData)
         }
     },
 

@@ -7,9 +7,6 @@ export const state = () => ({
         //     type: 'error',
         //     text: 'Header notification text <b>bold text</b>'
         // },
-        avatar: {
-            w96: '/img/icon.jpg',
-            w500: '/img/icon.jpg'
-        }
+        avatar: '/img/icon.png'
     }
 })

@@ -161,7 +161,7 @@
 </template>
 
 <script>
-import get from 'lodash/get'
+import { pathOr } from 'rambdax'
 import { mapState } from 'vuex'
 
 export default {
@@ -178,15 +178,15 @@ export default {
         ...mapState('auth', ['user']),
 
         qrCode() {
-            return get(this.user, 'twoFactor.qrCode.qr_code')
+            return pathOr(null, 'twoFactor.qrCode.qr_code', this.user)
         },
 
         twoFactorEnabled() {
-            return !!get(this.user, 'twoFactor')
+            return !!pathOr(false, 'twoFactor', this.user)
         },
 
         twoFactorVerified() {
-            return !!get(this.user, 'twoFactor.verified')
+            return !!pathOr(false, 'twoFactor.verified', this.user)
         }
     },
 

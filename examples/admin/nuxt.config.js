@@ -17,6 +17,7 @@ export default {
         '@nuxtjs/axios',
         '@awes-io/ui/nuxt',
         '@awes-io/nuxt-auth',
+        '@awes-io/nuxt-profile',
         '@awes-io/nuxt-admin',
         'nuxt-i18n'
     ],
