@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.83.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.83.0...@awes-io/ui@1.83.1) (2020-05-20)
+
+
+### Bug Fixes
+
+* migrate text in for ([5e74c94](https://github.com/awes-io/client/commit/5e74c9487505fff1131a988a01c1a7c3eb74f898))
+
+
+
+
+
 # [1.83.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.82.2...@awes-io/ui@1.83.0) (2020-05-19)
 
 
