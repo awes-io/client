@@ -1,8 +1,8 @@
 <template>
     <div>
         <AwLayoutFrameCenter
-            :logo='<%= JSON.stringify(options.logo) %>'
-            :background='<%= JSON.stringify(options.backgroundDarkFrameCenter || options.backgroundFrameCenter) %>'
+            :logo="options.logo"
+            :background="background"
         >
             <Nuxt />
         </AwLayoutFrameCenter>
@@ -17,11 +17,11 @@ export default {
 
     mixins: [layoutMixin],
 
-    created() {
-        console.log(this.options)
-    },
-
     computed: {
+        options() {
+            return <%= JSON.stringify(_.pick(options, [ 'backgroundDarkFrameCenter', 'backgroundFrameCenter', 'logo' ])) %>
+        },
+
         background() {
             if (this.isDarkTheme) {
                 return this.options.backgroundDarkFrameCenter || this.options.backgroundFrameCenter
