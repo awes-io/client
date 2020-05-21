@@ -3,12 +3,14 @@
         :is="tag"
         class="aw-slider"
         @mousedown.capture="_activate"
-        @touchstart.capture="_activate"
         @dragstart.capture="_prevent"
-        @focus.capture="_onFocus"
-        @scroll="_prevent"
     >
-        <span ref="scroller" class="aw-slider__scroller">
+        <span
+            ref="scroller"
+            class="aw-slider__scroller"
+            :class="{ 'aw-slider__scroller--mouse-move': movedByMouse }"
+            @scroll.passive="_setScroll"
+        >
             <slot />
         </span>
         <span
@@ -43,7 +45,7 @@ export default {
     data() {
         return {
             $event: null,
-            active: false,
+            movedByMouse: false,
             scrollStart: 0,
             scrollLeft: 0,
             scrollWidth: 0,
@@ -52,46 +54,39 @@ export default {
     },
 
     computed: {
-        _isTouch() {
-            return pathOr('', 'type', this.$event) === 'touchstart'
-        },
+        // _isTouch() {
+        //     return pathOr('', 'type', this.$event) === 'touchstart'
+        // },
 
         maxScrollLeft() {
             const diff = this.scrollWidth - this.width
             return diff > 1 ? diff : 0 // +1 for browser's rounding inconsistancy
         },
 
-        scrollStyle() {
-            return {
-                transform: `translateX(-${this.scrollLeft}px)`,
-                transition: this.active ? 'none' : null
-            }
-        },
-
         shadowLeftStyle() {
             return {
-                opacity: this.scrollLeft === 0 ? '0' : '1'
+                opacity: this.scrollLeft <= 0 ? '0' : '1' // handle overscroll with <=
             }
         },
 
         shadowRightStyle() {
             return {
-                opacity: this.scrollLeft === this.maxScrollLeft ? '0' : '1'
+                opacity: this.scrollLeft >= this.maxScrollLeft - 2 ? '0' : '1' // handle oerscroll with >=
             }
         }
     },
 
     watch: {
-        active: '_toggle',
+        movedByMouse: '_toggle',
 
         scrollLeft(val) {
+            if (!this.movedByMouse) return
             this.$refs.scroller.scrollLeft = val
         }
     },
 
     mounted() {
         window.addEventListener('resize', this._onResize)
-        this.$refs.scroller.addEventListener('scroll', this._delayedSnap)
         this.$nextTick(() => {
             this._setDimensions()
         })
@@ -99,9 +94,7 @@ export default {
 
     beforeDestroy() {
         this._toggle(false)
-        clearTimeout(this._snaptm)
         clearTimeout(this._resizetm)
-        this.$refs.scroller.removeEventListener('scroll', this._delayedSnap)
         window.removeEventListener('resize', this._onResize)
         this.$el.removeEventListener('click', this._prevent, true)
     },
@@ -109,24 +102,19 @@ export default {
     methods: {
         _toggle(isActive) {
             const method = isActive ? 'addEventListener' : 'removeEventListener'
-            const invertMethod = isActive
-                ? 'removeEventListener'
-                : 'addEventListener'
 
-            const moveEvent = this._isTouch ? 'touchmove' : 'mousemove'
-            const endEvent = this._isTouch ? 'touchend' : 'mouseup'
-            const cancelEvent = this._isTouch ? 'touchcancel' : 'mouseleave'
+            // const moveEvent = this._isTouch ? 'touchmove' : 'mousemove'
+            // const endEvent = this._isTouch ? 'touchend' : 'mouseup'
+            // const cancelEvent = this._isTouch ? 'touchcancel' : 'mouseleave'
 
-            this.$refs.scroller[invertMethod]('scroll', this._delayedSnap)
-
-            window[method](moveEvent, this._move)
-            window[method](moveEvent, this._checkDragging)
-            window[method](endEvent, this._deactivate)
-            window[method](cancelEvent, this._deactivate)
+            window[method]('mousemove', this._move)
+            window[method]('mousemove', this._checkDragging)
+            window[method]('mouseup', this._deactivate)
+            // document[method]('mouseleave', this._deactivate)
         },
 
         _activate($event) {
-            if (this.active) return
+            if (this.movedByMouse) return
 
             this._setDimensions()
             this.scrollStart = this.scrollLeft
@@ -135,14 +123,15 @@ export default {
             this.$event = pick('type,timeStamp,pageX', $event)
             this.$event.pageX = pathOr($event.pageX, 'touches.0.pageX', $event)
 
-            this.active = true
+            this.movedByMouse = true
         },
 
         _deactivate() {
-            this.active = false
+            this.movedByMouse = false
             this.$nextTick(() => {
                 // set closest position
-                this._snap()
+                this.$refs.scroller.scrollLeft = this.scrollLeft
+                // this._snap()
 
                 // remove click prevention listener
                 setTimeout(() => {
@@ -156,15 +145,6 @@ export default {
             const end = pathOr($event.pageX, 'touches.0.pageX', $event)
             const diff = this.$event.pageX - end
             this.scrollLeft = this._withBorders(this.scrollStart + diff)
-        },
-
-        _delayedSnap($event) {
-            clearTimeout(this._snaptm)
-
-            this._snaptm = setTimeout(() => {
-                this.scrollLeft = this._withBorders($event.target.scrollLeft)
-                this._snap()
-            }, 60)
         },
 
         /**
@@ -185,39 +165,43 @@ export default {
         /**
          * Scrolls to closest child to fit
          */
-        _snap() {
-            const els = this.$refs.scroller.childNodes
-            const left = this.scrollLeft
-            const right = this.width + this.scrollLeft
-            let _width = 0
-            let bestFitLeft = Infinity
-            let bestFitRight = Infinity
+        // _snap() {
+        //     const els = this.$refs.scroller.childNodes
+        //     const left = this.scrollLeft
+        //     const right = this.width + this.scrollLeft
+        //     let _width = 0
+        //     let bestFitLeft = Infinity
+        //     let bestFitRight = Infinity
 
-            for (let i = 0, length = els.length; i < length; i++) {
-                let elWidth = this._getFullWidth(els[i])
-                let offsetLeft = _width - left
-                let offsetRight = right - _width - elWidth
+        //     for (let i = 0, length = els.length; i < length; i++) {
+        //         let elWidth = this._getFullWidth(els[i])
+        //         let offsetLeft = _width - left
+        //         let offsetRight = right - _width - elWidth
 
-                if (Math.abs(offsetLeft) < Math.abs(bestFitLeft)) {
-                    bestFitLeft = offsetLeft
-                }
+        //         if (Math.abs(offsetLeft) < Math.abs(bestFitLeft)) {
+        //             bestFitLeft = offsetLeft
+        //         }
 
-                if (Math.abs(offsetRight) < Math.abs(bestFitRight)) {
-                    bestFitRight = offsetRight
-                }
+        //         if (Math.abs(offsetRight) < Math.abs(bestFitRight)) {
+        //             bestFitRight = offsetRight
+        //         }
 
-                _width += elWidth
-            }
+        //         _width += elWidth
+        //     }
 
-            if (Math.abs(bestFitLeft) < Math.abs(bestFitRight)) {
-                this.scrollLeft = this._withBorders(
-                    this.scrollLeft + bestFitLeft
-                )
-            } else {
-                this.scrollLeft = this._withBorders(
-                    this.scrollLeft - bestFitRight
-                )
-            }
+        //     if (Math.abs(bestFitLeft) < Math.abs(bestFitRight)) {
+        //         this.scrollLeft = this._withBorders(
+        //             this.scrollLeft + bestFitLeft
+        //         )
+        //     } else {
+        //         this.scrollLeft = this._withBorders(
+        //             this.scrollLeft - bestFitRight
+        //         )
+        //     }
+        // },
+
+        _setScroll(e) {
+            this.scrollLeft = e.target.scrollLeft
         },
 
         _setDimensions() {
@@ -249,6 +233,7 @@ export default {
                 for (let i = 0, length = els.length; i < length; i++) {
                     if (el === els[i]) {
                         this.scrollLeft = this._withBorders(scrollLeft)
+                        this.$refs.scroller.scrollLeft = this.scrollLeft
                         break
                     } else {
                         scrollLeft = scrollLeft + this._getFullWidth(els[i])
@@ -279,23 +264,24 @@ export default {
             this._resizetm = setTimeout(() => {
                 this._setDimensions()
                 this.scrollLeft = this._withBorders(this.scrollLeft)
+                this.$refs.scroller.scrollLeft = this.scrollLeft
                 this.$emit('resized')
             }, 300)
         },
 
-        _onFocus($event) {
-            const el = $event.target
-            const bounds = el.getBoundingClientRect()
-            const wrapBounds = this.$el.getBoundingClientRect()
+        // _onFocus($event) {
+        //     const el = $event.target
+        //     const bounds = el.getBoundingClientRect()
+        //     const wrapBounds = this.$el.getBoundingClientRect()
 
-            if (
-                wrapBounds.left > bounds.left ||
-                wrapBounds.right < bounds.right
-            ) {
-                this._prevent($event)
-                this.scrollTo(el)
-            }
-        },
+        //     if (
+        //         wrapBounds.left > bounds.left ||
+        //         wrapBounds.right < bounds.right
+        //     ) {
+        //         this._prevent($event)
+        //         this.scrollTo(el)
+        //     }
+        // },
 
         _prevent($event) {
             $event.preventDefault()

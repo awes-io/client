@@ -1,11 +1,14 @@
 <script>
-import { clone } from 'rambdax'
 import AwTabNav from './AwTabNav.vue'
 
-const AwButtonNav = clone(AwTabNav)
+export default {
+    name: 'AwButtonNav',
 
-AwButtonNav.name = 'AwButtonNav'
-AwButtonNav._config.baseClass = 'aw-button-nav'
+    extends: AwTabNav,
 
-export default AwButtonNav
+    _config: {
+        ...AwTabNav._config,
+        baseClass: 'aw-button-nav'
+    }
+}
 </script>
