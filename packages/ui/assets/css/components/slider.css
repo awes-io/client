@@ -6,15 +6,24 @@
     &__scroller {
         display: flex;
         width: 100%;
+        -webkit-overflow-scrolling: touch;
         -ms-overflow-style: none;
         scrollbar-width: none;
         transition: transform 100ms;
         overflow: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
 
         & > * {
             flex: 0 0 auto;
             user-select: none;
             user-drag: none;
+            scroll-snap-align: start;
+        }
+
+        &--mouse-move {
+            scroll-behavior: auto;
+            scroll-snap-type: none;
         }
 
         &::-webkit-scrollbar {
