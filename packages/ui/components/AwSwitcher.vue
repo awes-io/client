@@ -81,7 +81,7 @@ export default {
         _onPointerDown($event) {
             const isDisabled =
                 Object.keys(this.$attrs).includes('disabled') &&
-                (this.$attrs.disabled || !this.$attrs.disabled.length)
+                this.$attrs.disabled
             const hasTooltip = !!this.errorText
 
             if (this.startPos !== null || isDisabled || hasTooltip) return
