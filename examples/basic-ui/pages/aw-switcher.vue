@@ -24,7 +24,7 @@
                     v-model="switcher"
                     label="Checkbox disabled"
                     value="four"
-                    disabled
+                    :disabled="disabled"
                 />
             </div>
         </div>
@@ -43,7 +43,8 @@ export default {
             title: 'AwSwitcher',
             headline: this._getTitle('AwSwitcher'),
             switcher: [],
-            inputError: 'Error'
+            inputError: 'Error',
+            disabled: true
         }
     },
 
