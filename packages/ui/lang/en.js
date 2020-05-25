@@ -78,6 +78,10 @@ export const AwMultiBlockBuilder = {
     save: 'Save'
 }
 
+export const AwPage = {
+    exitFullscreen: 'Exit fullscreen mode'
+}
+
 export const AwPagination = {
     info: 'Show {from}-{to} of {total}',
     page: 'Page {page} of {pagesTotal}',
@@ -132,6 +136,7 @@ export default {
     AwLayoutFrameCenter,
     AwMarkdownEditor,
     AwMultiBlockBuilder,
+    AwPage,
     AwPagination,
     AwSelect,
     AwTableBuilder,
