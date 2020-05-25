@@ -46,7 +46,10 @@
                 </Component>
             </div>
             <div v-if="!!$slots.buttons" class="py-4 flex-none pl-4">
-                <slot name="buttons"></slot>
+                <slot
+                    name="buttons"
+                    v-bind="{ isFullscreen, toggleFullscreen }"
+                ></slot>
             </div>
         </div>
 
@@ -67,15 +70,56 @@
         </div>
 
         <!-- content -->
-        <div :class="elClasses.content" class="content">
+        <div
+            ref="content"
+            :class="[
+                elClasses.content,
+                {
+                    [elClasses.contentFullscreen]:
+                        isFullscreen || isFakeFullscreen
+                },
+                { [elClasses.contentFakeFullscreen]: isFakeFullscreen }
+            ]"
+            class="content"
+        >
             <div class="container">
                 <slot />
+            </div>
+            <div
+                v-if="isFullscreen || isFakeFullscreen"
+                class="container flex align-bottom"
+            >
+                <div
+                    class="flex-1 text-sm text-disabled"
+                    v-html="$t('AwLayoutDefault.footer')"
+                ></div>
+                <div class="flex-1 text-center">
+                    <AwButton
+                        color="surface"
+                        class="-mb-4"
+                        content-class="rounded-b-none normal-case"
+                        @click="toggleFullscreen(false)"
+                    >
+                        <AwIcon name="close" class="mr-4" />
+                        {{ $t('AwPage.exitFullscreen') }}
+                    </AwButton>
+                </div>
+                <div class="flex-1 flex">
+                    <AwSwitcher
+                        v-if="hasDarkThemeSwitcher"
+                        :checked="isDarkTheme"
+                        :label="$t('AwUserMenu.darkTheme')"
+                        class="ml-auto"
+                        @change="isDarkTheme = $event"
+                    />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { pathOr } from 'rambdax'
 import { AwPage as _config } from './_config'
 import { conf } from '../assets/js/component'
 import { getBemClasses } from '../assets/js/css'
@@ -125,13 +169,25 @@ export default {
                 }
                 return false
             }
-        }
+        },
+
+        // A prop to toggle page fullscreen mode
+        fullscreen: Boolean
     },
+
     head() {
         return {
             title: this.getTitle
         }
     },
+
+    data() {
+        return {
+            isFullscreen: false,
+            isFakeFullscreen: false
+        }
+    },
+
     computed: {
         getTitle() {
             let title = this.title
@@ -140,13 +196,82 @@ export default {
             }
             return title
         },
+
         elClasses() {
             return getBemClasses(this.className, [
                 'title',
                 'subnav',
                 'tabs',
-                'content'
+                'content',
+                'content_fullscreen',
+                'content_fake-fullscreen'
             ])
+        },
+
+        hasDarkThemeSwitcher() {
+            return !!pathOr(false, '$store.state.awesIo', this)
+        },
+
+        isDarkTheme: {
+            get() {
+                return this.$store.state.awesIo.isDarkTheme
+            },
+
+            set(val) {
+                this.$store.commit('awesIo/SET_DARK_THEME', val)
+            }
+        }
+    },
+
+    watch: {
+        fullscreen: 'toggleFullscreen',
+
+        isFakeFullscreen(value) {
+            if (this.fullscreen !== value) {
+                this.$emit('update:fullscreen', value)
+            }
+        }
+    },
+
+    beforeDestory() {
+        this.$emit('update:fullscreen', false)
+        this.watchFullscreenState(false)
+    },
+
+    methods: {
+        toggleFullscreen(enable = !this.isFullscreen) {
+            try {
+                if (enable !== false && !document.fullscreenElement) {
+                    this.$refs.content.requestFullscreen()
+                    this.watchFullscreenState(true)
+                }
+
+                if (enable === false && document.fullscreenElement) {
+                    document.exitFullscreen()
+                }
+            } catch (e) {
+                this.isFakeFullscreen = !!enable
+            }
+        },
+
+        watchFullscreenState(enable) {
+            document[enable ? 'addEventListener' : 'removeEventListener'](
+                'fullscreenchange',
+                this.onFullscreenChange
+            )
+        },
+
+        onFullscreenChange() {
+            this.isFullscreen =
+                document.fullscreenElement === this.$refs.content
+
+            if (this.fullscreen !== this.isFullscreen) {
+                this.$emit('update:fullscreen', this.isFullscreen)
+            }
+
+            if (!this.isFullscreen) {
+                this.watchFullscreenState(false)
+            }
         }
     }
 }
