@@ -15,8 +15,8 @@
         <!-- default button -->
         <Component
             :is="href ? 'RouterLink' : 'button'"
-            :class="{ 'is-active': isSamePage(href) }"
-            :to="href || null"
+            :class="{ 'is-active': isSamePage(href) || isParentPage(href) }"
+            :to="callIfFunction(href) || null"
             :aria-current="isSamePage(href) ? 'page' : null"
             v-bind="$attrs"
             v-on="!href && hasChildren ? { click: toggle } : {}"
@@ -27,9 +27,10 @@
                 :name="icon"
                 size="xl"
                 class="mr-5"
-                :style="`color: ${_iconCorlor}`"
+                :class="{ 'aw-menu-item__icon-colored': _iconColor }"
+                :style="`color: ${_iconColor}`"
             />
-            <span class="truncate">{{ text }}</span>
+            <span class="truncate">{{ callIfFunction(text) }}</span>
             <AwBadge
                 v-if="_badge"
                 v-bind="_badge"
@@ -56,12 +57,15 @@
             <RouterLink
                 v-for="(child, j) in visibleChildren"
                 :key="`child-${j}`"
-                :to="child.href"
+                :to="callIfFunction(child.href)"
                 :aria-current="isSamePage(child.href) ? 'page' : null"
-                :class="{ 'is-active': isSamePage(child.href) }"
+                :class="{
+                    'is-active':
+                        isSamePage(child.href) || isParentPage(child.href)
+                }"
                 class="aw-menu-item__child"
             >
-                <span class="truncate">{{ child.text }}</span>
+                <span class="truncate">{{ callIfFunction(child.text) }}</span>
             </RouterLink>
         </AwAccordionFold>
     </Component>
@@ -88,47 +92,82 @@ export default {
     },
 
     props: {
+        /**
+         * Wrapping component tag
+         */
         tag: {
             type: String,
             default: 'li'
         },
 
+        /**
+         * Array of children: { text: <String>|<Function>, href: <String>|<Function> }
+         */
         children: {
             type: Array,
             default: () => []
         },
 
+        /**
+         * Text inside the button
+         */
         text: {
-            type: String,
+            type: [String, Function],
             default: ''
         },
 
+        /**
+         * Item link, if not provided, the `button` tag is rendered
+         */
         href: {
-            type: String,
+            type: [String, Function],
             default: ''
         },
 
+        /**
+         * Icon name
+         */
         icon: {
             type: String,
             default: ''
         },
 
+        /**
+         * Props for rendering AwBadge inside item
+         */
         badge: {
             type: Object,
             default: null
         },
 
+        /**
+         * Icon color in any format, supported by CSS `color`
+         */
         iconColor: {
             type: String,
             default: ''
         },
 
+        /**
+         * Should the item render (used for permission purposes)
+         */
         show: {
             type: [Boolean, Function],
             default: true
         },
 
-        expanded: Boolean
+        /**
+         * Should the item render without collapse button
+         */
+        expanded: Boolean,
+
+        /**
+         * Should the item or children be highlighted, when the nested route is active
+         */
+        highlightWhenParent: {
+            type: Boolean,
+            default: true
+        }
     },
 
     data() {
@@ -153,7 +192,7 @@ export default {
             return pathOr({}, '$awesConfig.AwMenu', this)
         },
 
-        _iconCorlor() {
+        _iconColor() {
             return this.iconColor || this._config.iconColor
         },
 
@@ -198,7 +237,17 @@ export default {
         },
 
         isSamePage(href) {
-            return this.currentPath === trimSlash(href)
+            return this.currentPath === trimSlash(this.callIfFunction(href))
+        },
+
+        isParentPage(href) {
+            return (
+                this.highlightWhenParent && this.currentPath.indexOf(href) === 0
+            )
+        },
+
+        callIfFunction(text) {
+            return isType('Function', text) ? text() : text
         }
     }
 }

@@ -16,7 +16,7 @@ export default ({ store, app }) => {
             component: 'AwLink',
             props: {
                 text: () => app.i18n.t('AwesIoAuth.logout'),
-                href: app.localePath({ path: '/logout' }, app.i18n.locale)
+                href: () => app.localePath({ path: '/logout' })
             }
         }
     })

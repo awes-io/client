@@ -32,6 +32,7 @@ export default {
                     props: {
                         text: 'Temp',
                         icon: 'location',
+                        iconColor: '#f30055',
                         badge: { text: 105 }
                     },
                     children: [{ props: { text: 'Bla', href: '/' } }]

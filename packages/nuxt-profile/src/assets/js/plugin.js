@@ -8,7 +8,7 @@ export default async ({ store, app }) => {
             component: 'AwLink',
             props: {
                 text: () => app.i18n.t('AwesIoProfile.profileTab'),
-                href: app.localePath({ path: '/profile' }, app.i18n.locale)
+                href: () => app.localePath({ path: '/profile' })
             }
         }
     })
