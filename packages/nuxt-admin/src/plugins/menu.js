@@ -4,7 +4,7 @@ export default function({ store, app }) {
             key: 'admin',
             order: 99,
             props: {
-                text: app.i18n.t('AwesIoNuxtAdmin.admin'),
+                text: () => app.i18n.t('AwesIoNuxtAdmin.admin'),
                 icon: 'user',
                 expanded: true
             },
@@ -13,19 +13,19 @@ export default function({ store, app }) {
                     key: 'admin_users',
                     order: 2,
                     props: {
-                        text: app.i18n.t('AwesIoNuxtAdmin.employees'),
-                        href: app.localePath({ path: '/admin/users' })
+                        text: () => app.i18n.t('AwesIoNuxtAdmin.employees'),
+                        href: () => app.localePath({ path: '/admin/users' })
                     }
                 },
                 {
                     key: 'admin_roles',
                     order: 3,
                     props: {
-                        text: app.i18n.t('AwesIoNuxtAdmin.roles'),
-                        href: app.localePath({ path: '/admin/roles' })
+                        text: () => app.i18n.t('AwesIoNuxtAdmin.roles'),
+                        href: () => app.localePath({ path: '/admin/roles' })
                     }
                 }
             ]
-        },
+        }
     ])
 }

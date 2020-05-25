@@ -13,8 +13,12 @@
     &__button > *:not(&__badge),
     &__child > *,
     &__toggler > * {
-        opacity: 0.4;
+        opacity: 0.5;
         transition: 120ms opacity;
+    }
+
+    &__button > &__icon-colored {
+        opacity: 1;
     }
 
     &__button,
@@ -72,9 +76,7 @@
     &__button {
         overflow: hidden;
         flex: 1 1 auto;
-
-        /* reserve place for toggler (8) and badge (10) */
-        padding-right: theme('spacing.18', 4.5rem);
+        padding-right: theme('spacing.4', 1rem);
 
         /* reserve place for icon */
         padding-left: theme('spacing.16');
