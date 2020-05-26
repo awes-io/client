@@ -1,5 +1,8 @@
 <template>
-    <AwPage title="AwCard">
+    <AwPage title="AwCard" :fullscreen.sync="fullscreen">
+        <template #buttons>
+            <AwButton @click="fullscreen = !fullscreen" text="Go fullscreen" />
+        </template>
         <AwGrid :col="{ md: 4 }">
             <AwCard background="transperent">
                 Card #1<br />
@@ -26,6 +29,12 @@ export default {
     head() {
         return {
             title: 'AwCard'
+        }
+    },
+
+    data() {
+        return {
+            fullscreen: false
         }
     }
 }

@@ -23,6 +23,22 @@
     &__content {
         @apply py-4 flex-grow bg-muted;
     }
+
+    &__content_fullscreen {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & > .container {
+            max-width: unset;
+            @apply px-4;
+        }
+    }
+
+    &__content_fake-fullscreen {
+        @apply fixed inset-0;
+        z-index: 120;
+    }
 }
 @screen sm {
     .aw-page {
@@ -32,7 +48,7 @@
     }
 }
 @screen lg {
-    .aw-page__content {
+    .aw-page__content:not(.aw-page__content_fullscreen) {
         @apply py-8;
     }
 }

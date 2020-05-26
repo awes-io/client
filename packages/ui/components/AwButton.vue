@@ -70,7 +70,7 @@ export default {
             }
         },
 
-        // Background color of button. Possible values: 'info', 'success', 'warning', 'error'
+        // Background color of button. Possible values: 'info', 'success', 'warning', 'error', 'surface'
         color: {
             type: String,
             default() {

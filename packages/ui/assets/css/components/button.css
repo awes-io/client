@@ -128,7 +128,7 @@
 /**
  * Colors
  */
-@each $color in (info, success, warning, error) {
+@each $color in (info, success, warning, error, surface) {
     .aw-button {
 
         /**

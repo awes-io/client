@@ -26,6 +26,8 @@ export default {
         '@awes-io/nuxt-i18n'
     ],
 
+    plugins: ['~/plugins/menu'],
+
     // overwrite auto-generated options
     i18n: {
         differnetDomains: false

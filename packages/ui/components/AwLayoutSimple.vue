@@ -124,9 +124,7 @@
             <slot />
 
             <!-- copyright -->
-            <div
-                class="bg-muted mt-auto text-center text-sm text-disabled footer__link"
-            >
+            <div class="bg-muted mt-auto text-center text-sm text-disabled">
                 <div
                     v-html="$t('AwLayoutDefault.footer')"
                     class="container py-4"

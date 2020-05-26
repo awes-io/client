@@ -36,7 +36,8 @@
                             component,
                             key,
                             props,
-                            text,
+                            href = null,
+                            text = '',
                             listeners
                         } in navbarMenu"
                         :key="key"
@@ -44,6 +45,7 @@
                         <Component
                             :key="key"
                             :is="component"
+                            :href="typeof href === 'function' ? href() : href"
                             v-bind="props"
                             v-on="listeners"
                         >
