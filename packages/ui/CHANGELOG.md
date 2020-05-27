@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.85.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.84.0...@awes-io/ui@1.85.0) (2020-05-27)
+
+
+### Bug Fixes
+
+* **aw-slider:** fix junky native scroll ([4e56959](https://github.com/awes-io/client/commit/4e569596423eb2a0464b99af2e6027476da25302))
+* AwSwitcher bind disabled ([1a624ad](https://github.com/awes-io/client/commit/1a624addba1a0b9676523cc71d07da75479838c2))
+
+
+### Features
+
+* **aw-page:** fullscreen mode added ([6aa0edc](https://github.com/awes-io/client/commit/6aa0edc60d3a4123a59c3e1aae743678d1b36017))
+
+
+
+
+
 # [1.84.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.83.1...@awes-io/ui@1.84.0) (2020-05-20)
 
 

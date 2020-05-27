@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.67.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.67.0...basic-ui@1.67.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* AwSwitcher bind disabled ([1a624ad](https://git.awescode.com/awes-io/client/commits/1a624addba1a0b9676523cc71d07da75479838c2))
+
+
+
+
+
 # [1.67.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.66.1...basic-ui@1.67.0) (2020-05-20)
 
 
