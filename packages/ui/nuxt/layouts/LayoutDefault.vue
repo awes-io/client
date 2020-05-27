@@ -65,10 +65,11 @@
                         v-for="{
                             component,
                             key,
-                            props: { text, ...props }
+                            props: { text, href = null, ...props }
                         } in userMenu"
                         :key="key"
                         :is="component"
+                        :href="typeof href === 'function' ? href() : href"
                         v-bind="props"
                         class="block mt-4"
                     >
