@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.85.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.85.0...@awes-io/ui@1.85.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* **aw-user-menu:** acept function as link url ([06f6977](https://github.com/awes-io/client/commit/06f6977a129fe10a3e49f7e5a2259d7484e1cb24))
+
+
+
+
+
 # [1.85.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.84.0...@awes-io/ui@1.85.0) (2020-05-27)
 
 
