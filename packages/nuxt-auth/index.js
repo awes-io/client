@@ -65,7 +65,7 @@ function AwesIoNuxtAuth() {
         false
     )
 
-    this.extendRoutes((routes = []) => {
+    this.nuxt.hook('build:extendRoutes', (routes = []) => {
         const baseArr = [
             {
                 name: 'login',

@@ -8,7 +8,7 @@ function AwesIoNuxtAdmin() {
     this.options.build.transpile.push('@awes-io/nuxt-admin')
 
     // Register routes
-    this.extendRoutes((routes = []) => {
+    this.nuxt.hook('build:extendRoutes', (routes = []) => {
         mergeRoutes(routes, [
             {
                 path: '/admin/roles',

@@ -48,7 +48,7 @@ function AwesIoNuxtLocalization(_options = {}) {
     })
 
     // Add localization route
-    this.extendRoutes((routes = []) => {
+    this.nuxt.hook('build:extendRoutes', (routes = []) => {
         const route = {
             path: mergedOptions.route,
             component: resolve(__dirname, './pages/Localization.vue'),

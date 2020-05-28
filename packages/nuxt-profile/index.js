@@ -8,7 +8,7 @@ function AwesIoNuxtAuth() {
     this.options.build.transpile.push('@awes-io/nuxt-profile')
 
     // Register routes
-    this.extendRoutes((routes = {}) => {
+    this.nuxt.hook('build:extendRoutes', (routes = []) => {
         routes.unshift({
             path: '/profile',
             component: resolve(__dirname, './src/pages/Profile.vue'),

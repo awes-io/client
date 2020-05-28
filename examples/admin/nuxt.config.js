@@ -19,7 +19,7 @@ export default {
         '@awes-io/nuxt-auth',
         '@awes-io/nuxt-profile',
         '@awes-io/nuxt-admin',
-        'nuxt-i18n'
+        '@awes-io/nuxt-i18n'
     ],
     i18n: {
         defaultLocale: 'en',
@@ -27,6 +27,10 @@ export default {
             {
                 code: 'en',
                 iso: 'en-US'
+            },
+            {
+                code: 'ru',
+                iso: 'ru-RU'
             }
         ]
     },
