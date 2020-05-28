@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.85.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.85.1...@awes-io/ui@1.85.2) (2020-05-28)
+
+**Note:** Version bump only for package @awes-io/ui
+
+
+
+
+
 ## [1.85.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.85.0...@awes-io/ui@1.85.1) (2020-05-27)
 
 

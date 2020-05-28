@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/awes-io/client/compare/@awes-io/nuxt-i18n@0.4.1...@awes-io/nuxt-i18n@0.4.2) (2020-05-28)
+
+
+### Bug Fixes
+
+* **i18n:** register routes on hook to fix localization ([36d158d](https://github.com/awes-io/client/commit/36d158d154218dc4db54569749a5b9f62d3d3d5a))
+
+
+
+
+
 ## [0.4.1](https://github.com/awes-io/client/compare/@awes-io/nuxt-i18n@0.4.0...@awes-io/nuxt-i18n@0.4.1) (2020-03-04)
 
 

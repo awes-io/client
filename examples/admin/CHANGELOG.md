@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.20](https://git.awescode.com/awes-io/client/compare/example-admin@1.2.19...example-admin@1.2.20) (2020-05-28)
+
+
+### Bug Fixes
+
+* **i18n:** register routes on hook to fix localization ([36d158d](https://git.awescode.com/awes-io/client/commits/36d158d154218dc4db54569749a5b9f62d3d3d5a))
+
+
+
+
+
 ## [1.2.19](https://git.awescode.com/awes-io/client/compare/example-admin@1.2.18...example-admin@1.2.19) (2020-05-27)
 
 **Note:** Version bump only for package example-admin
