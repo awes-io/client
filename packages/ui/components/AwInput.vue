@@ -14,11 +14,9 @@
     >
         <div
             v-if="prefix || $scopedSlots.prefix"
-            class="bg-muted-darker flex items-center px-4 rounded-l"
+            class="bg-muted-darker flex items-center px-4 rounded-l whitespace-no-wrap"
         >
-            <slot name="prefix">
-                {{ prefix }}
-            </slot>
+            <slot name="prefix">{{ prefix }}</slot>
         </div>
 
         <div class="relative w-full">
@@ -41,11 +39,9 @@
 
         <div
             v-if="postfix || $scopedSlots.postfix"
-            class="bg-muted-darker flex items-center px-4 rounded-r"
+            class="bg-muted-darker flex items-center px-4 rounded-r whitespace-no-wrap"
         >
-            <slot name="postfix">
-                {{ postfix }}
-            </slot>
+            <slot name="postfix">{{ postfix }}</slot>
         </div>
     </label>
 </template>
