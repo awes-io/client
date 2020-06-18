@@ -3,10 +3,23 @@
         <AwInput
             v-bind="{ ...$attrs, label, id }"
             :value="inputValue"
+            :prefix="prefix"
+            :postfix="postfix"
             readonly
             @focus="isOpened = true"
             @click.stop="isOpened = true"
-        />
+        >
+            <template #icon>
+                <AwButton
+                    v-if="clearable"
+                    v-show="inputValue.length"
+                    @click="$emit('input', null)"
+                    icon="close"
+                    theme="icon"
+                />
+            </template>
+        </AwInput>
+
         <AwDropdown
             ref="dropdown"
             :show.sync="isOpened"
@@ -63,7 +76,22 @@ export default {
             default() {
                 return this.$t('AwDate.format')
             }
-        }
+        },
+
+        /**
+         * Show prefix if value exists
+         */
+        prefix: String,
+
+        /**
+         * Show postfix if value exists
+         */
+        postfix: String,
+
+        /**
+         * Show clear button if value exists
+         */
+        clearable: Boolean
     },
 
     data() {
