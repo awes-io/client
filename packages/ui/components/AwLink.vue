@@ -7,10 +7,7 @@
 
 <script>
 import { conf } from '../assets/js/component'
-import { AwLink as _config } from './_config'
-
-const LINK_REGEX = /^(https?:)?\/\//gm
-const SPECIAL_URL_REGEX = /tel:|mailto:/gm
+import { AwLink as _config, LINK_REGEX, SPECIAL_URL_REGEX } from './_config'
 
 export default {
     name: 'AwLink',

@@ -10,10 +10,10 @@
             v-show="
                 !props.hideIfEmpty || (props.hideIfEmpty && !!(props.text * 1))
             "
-            :class="[`bg-${props.color || 'brand'}`]"
+            :class="[`bg-${props.color || 'brand'}`, { 'px-2': props.text }]"
             class="
-                rounded-full py-1 px-2 mx-1 text-xs leading-none min-h-badge min-w-badge
-                inline-flex items-center justify-center font-semibold font-body
+                rounded-full py-1 mx-1 text-xs leading-none min-h-badge min-w-badge
+                inline-flex items-center justify-center font-semibold font-body whitespace-no-wrap
             "
         >
             {{ props.text }}

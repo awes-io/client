@@ -1,6 +1,35 @@
 export const navigation = [
-    { title: 'Additional', url: '/additional', description: '' },
-    { title: 'Accordion fold', url: '/aw-accordion-fold', description: '' },
+    // {
+    //     title: 'Test',
+    //     badge: { text: 'progress', color: 'error' },
+    //     children: [
+    //         {
+    //             title: 'Button',
+    //             url: '/aw-button',
+    //             badge: { icon: 'fas fa-hands', color: 'error' }
+    //         },
+    //         {
+    //             title: 'Card',
+    //             url: '/aw-card',
+    //             badge: { text: 'progress', color: 'success' }
+    //         }
+    //     ]
+    // },
+    // {
+    //     title: 'Google',
+    //     url: 'https://www.google.com/'
+    // },
+    {
+        title: 'Additional',
+        url: '/additional',
+        description: '',
+        badge: { icon: 'more-v', color: 'success' }
+    },
+    {
+        title: 'Accordion fold',
+        url: '/aw-accordion-fold',
+        description: ''
+    },
     { title: 'Address', url: '/aw-address', description: '' },
     { title: 'Avatar', url: '/aw-avatar', description: '' },
     { title: 'Badge', url: '/aw-badge', description: '' },

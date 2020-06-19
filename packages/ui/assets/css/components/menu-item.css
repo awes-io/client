@@ -3,16 +3,15 @@
     flex-wrap: wrap;
 
     &__button,
-    &__child,
-    &__toggler {
+    &__child {
         display: flex;
         align-items: center;
         transition: 120ms background-color;
     }
 
     &__button > *:not(&__badge),
-    &__child > *,
-    &__toggler > * {
+    &__button > *:not(&__toggler),
+    &__child > * {
         opacity: 0.5;
         transition: 120ms opacity;
     }
@@ -35,18 +34,14 @@
 
     &__button:hover,
     &__child:hover,
-    &__toggler:hover,
-    &__button:focus,
-    &__button:hover + &__toggler,
-    &__button:focus + &__toggler {
-        background-color: color(theme('colors.overlay') a(0.15))
+    &__button:focus
+    {
+        background-color: color(theme('colors.overlay') a(0.15));
     }
 
     &__button:hover > *,
     &__child:hover > *,
-    &__child:focus > *,
-    &__toggler:focus > *,
-    &__toggler:hover > * {
+    &__child:focus > * {
         opacity: 1;
     }
 
@@ -64,10 +59,6 @@
         }
     }
 
-    &__button.is-active + &__toggler {
-        background-color: color(theme('colors.overlay') a(0.15));
-    }
-
     &_has-active:not(&_opened) &__button,
     &_has-active:not(&_opened) &__button + &__toggler {
         background-color: color(theme('colors.overlay') a(0.15));
@@ -77,7 +68,10 @@
         overflow: hidden;
         flex: 1 1 auto;
         padding-right: theme('spacing.4', 1rem);
+        padding-left: theme('spacing.6');
+    }
 
+    &_icon-padding &__button {
         /* reserve place for icon */
         padding-left: theme('spacing.16');
     }
@@ -89,22 +83,6 @@
         padding-bottom: theme('spacing.2');
     }
 
-    /* remove reserved place for toggler  */
-    &_has-toggler &__button {
-        max-width: calc(100% - theme('spacing.8'));
-        padding-right: theme('spacing.10');
-    }
-
-    /* remove reserved place for badge  */
-    &_has-badge &__button {
-        padding-right: theme('spacing.8');
-    }
-
-    /* remove reserved place for toggler and badge  */
-    &_has-badge&_has-toggler &__button {
-        padding-right: 0;
-    }
-
     /* remove reserved place for icon  */
     &_has-icon &__button {
         padding-left: theme('spacing.6');
@@ -113,16 +91,14 @@
     &__toggler {
         box-sizing: content-box;
         width: theme('spacing.4');
-        padding: theme('spacing.2');
+        padding: theme('spacing.1');
         flex-shrink: 0;
         justify-content: center;
     }
 
     &__badge {
-        width: theme('spacing.10');
         justify-content: center;
         margin-left: auto;
-        margin-right:
     }
 
     &__caret {
@@ -141,10 +117,10 @@
         width: 100%;
         font-size: theme('fontSize.sm');
         line-height: theme('lineHeight.relaxed');
-        padding: theme('spacing.3');
+        padding: theme('spacing.4');
         padding-left: theme('spacing.10');
 
-        span:before {
+        & > span:first-child:before {
             content: '-';
             display: inline-block;
             width: theme('spacing.2');
