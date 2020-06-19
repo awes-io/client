@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.6.3...@awes-io/nuxt-admin@0.7.0) (2020-06-19)
+
+
+### Features
+
+* removed navigation by default ([aaf7d2c](https://github.com/awes-io/client/commit/aaf7d2c89afe53343b5f4fe618a39988f57c1220))
+
+
+
+
+
 ## [0.6.3](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.6.2...@awes-io/nuxt-admin@0.6.3) (2020-05-28)
 
 
