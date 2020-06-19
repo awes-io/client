@@ -7,6 +7,7 @@ export default function({ store, app }) {
             key: 'examples',
             order: 0,
             dropdown: true,
+            icon: false,
             props: {
                 text: 'Examples',
                 href: '/',
@@ -25,8 +26,9 @@ export default function({ store, app }) {
         if (Array.isArray(navigation[i].children)) {
             children = navigation[i].children.map(child => ({
                 props: {
-                    text: child,
-                    href: `${href}/${urlify(child)}`
+                    text: child.title,
+                    href: child.url,
+                    badge: child.badge
                 }
             }))
         }
@@ -36,7 +38,8 @@ export default function({ store, app }) {
             dropdown: i > 2,
             props: {
                 text: item.title,
-                href
+                href,
+                badge: item.badge
             },
             children
         })

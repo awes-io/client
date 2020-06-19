@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { pathOr } from 'rambdax'
 import AwIconCaret from '../assets/svg/components/caret.vue'
 
 export default {
@@ -48,6 +49,14 @@ export default {
             return typeof this.localePath === 'function'
                 ? this.localePath({ path: '/' })
                 : '/'
+        },
+
+        isIcon() {
+            const menu = Object.values(
+                pathOr({}, '$store.state.awesIo.menu', this)
+            )
+
+            return menu.some(el => !!el.props.icon)
         }
     }
 }

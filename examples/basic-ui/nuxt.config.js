@@ -19,6 +19,8 @@ export default {
         ]
     },
 
+    css: ['@fortawesome/fontawesome-free/css/all.css'],
+
     modules: [
         // ...
         '@nuxtjs/axios',

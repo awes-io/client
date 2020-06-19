@@ -12,6 +12,7 @@
     "dependencies": {
         "@awes-io/ui": "^1.85.2",
         "@awes-io/vue-mc": "^0.3.0",
+        "@fortawesome/fontawesome-free": "^5.13.1",
         "@nuxtjs/axios": "^5.0.0",
         "express": "^4.17.1",
         "express-fileupload": "^1.1.7-alpha.3",

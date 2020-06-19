@@ -7,6 +7,7 @@
             'aw-menu-item_opened': opened,
             'aw-menu-item_expanded': expanded,
             'aw-menu-item_has-icon': !!icon,
+            'aw-menu-item_icon-padding': isIconPadding,
             'aw-menu-item_has-badge': !!_badge,
             'aw-menu-item_has-toggler': hasChildren && !expanded,
             'aw-menu-item_has-active': hasActiveChild
@@ -15,10 +16,10 @@
         <!-- default button -->
         <Component
             :is="href ? 'RouterLink' : 'button'"
-            :class="{ 'is-active': isSamePage(href) || isParentPage(href) }"
+            :class="{ 'is-active': _isParentActive }"
             :to="callIfFunction(href) || null"
             :aria-current="isSamePage(href) ? 'page' : null"
-            v-bind="$attrs"
+            v-bind="_computedProps"
             v-on="!href && hasChildren ? { click: toggle } : {}"
             class="aw-menu-item__button"
         >
@@ -34,19 +35,27 @@
             <AwBadge
                 v-if="_badge"
                 v-bind="_badge"
-                class="aw-menu-item__badge"
+                class="aw-menu-item__badge ml-auto"
             />
+            <button
+                v-if="hasChildren && !expanded"
+                :aria-label="$t('AwLayoutDefault.toggleSubmenu')"
+                class="aw-menu-item__toggler"
+                :class="{ 'ml-auto': !_badge }"
+            >
+                <AwIconCaret size="10" class="aw-menu-item__caret" />
+            </button>
         </Component>
 
         <!-- submenu toggler -->
-        <button
+        <!-- <button
             v-if="hasChildren && !expanded"
             :aria-label="$t('AwLayoutDefault.toggleSubmenu')"
             @click.stop.prevent="toggle()"
             class="aw-menu-item__toggler"
         >
             <AwIconCaret size="10" class="aw-menu-item__caret" />
-        </button>
+        </button> -->
 
         <!-- submenu -->
         <AwAccordionFold
@@ -60,12 +69,16 @@
                 :to="callIfFunction(child.href)"
                 :aria-current="isSamePage(child.href) ? 'page' : null"
                 :class="{
-                    'is-active':
-                        isSamePage(child.href) || isParentPage(child.href)
+                    'is-active': isSamePage(child.href)
                 }"
                 class="aw-menu-item__child"
             >
                 <span class="truncate">{{ callIfFunction(child.text) }}</span>
+                <AwBadge
+                    v-if="child.badge"
+                    v-bind="child.badge"
+                    class="aw-menu-item__badge"
+                />
             </RouterLink>
         </AwAccordionFold>
     </Component>
@@ -78,6 +91,7 @@ import AwIcon from './AwIcon.vue'
 import AwBadge from './AwBadge.vue'
 import AwIconCaret from '../assets/svg/components/caret.vue'
 import AwAccordionFold from './AwAccordionFold.vue'
+import { LINK_REGEX, SPECIAL_URL_REGEX } from './_config'
 
 export default {
     name: 'AwMenuItem',
@@ -196,6 +210,37 @@ export default {
             return this.iconColor || this._config.iconColor
         },
 
+        _computedProps() {
+            if (typeof this.href === 'string') {
+                // test for external link
+                if (this.href.match(LINK_REGEX)) {
+                    return {
+                        ...this.$attrs,
+                        role: 'link',
+                        href: this.href,
+                        target: '_blank',
+                        rel: 'nofollow'
+                    }
+                }
+
+                // test special link
+                if (this.href.match(SPECIAL_URL_REGEX)) {
+                    return {
+                        ...this.$attrs,
+                        is: 'a',
+                        role: 'link',
+                        href: this.href
+                    }
+                }
+            }
+
+            return this.$attrs
+        },
+
+        _isParentActive() {
+            return this.isSamePage(this.href) || this.isParentPage(this.href)
+        },
+
         visible() {
             return isType('Function', this.show)
                 ? this.show()
@@ -220,6 +265,10 @@ export default {
             return this.visibleChildren.some(
                 ({ href }) => !!href && this.isSamePage(href)
             )
+        },
+
+        isIconPadding() {
+            return this.$parent.isIcon
         }
     },
 
@@ -240,9 +289,11 @@ export default {
             return this.currentPath === trimSlash(this.callIfFunction(href))
         },
 
-        isParentPage(href) {
+        isParentPage() {
             return (
-                this.highlightWhenParent && this.currentPath.indexOf(href) === 0
+                this.hasChildren &&
+                this.highlightWhenParent &&
+                this.hasActiveChild
             )
         },
 

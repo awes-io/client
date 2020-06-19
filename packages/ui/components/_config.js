@@ -1,5 +1,8 @@
 import { pathOr, isEmpty } from 'rambdax'
 
+export const LINK_REGEX = /^(https?:)?\/\//gm
+export const SPECIAL_URL_REGEX = /tel:|mailto:/gm
+
 export const AwLink = {
     routerComponent: 'router-link',
     baseClass: 'link'
