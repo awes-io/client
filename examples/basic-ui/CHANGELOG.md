@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.68.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.67.3...basic-ui@1.68.0) (2020-06-19)
+
+
+### Features
+
+* add prefix, postfix, clearable to AwDate ([736ec6b](https://git.awescode.com/awes-io/client/commits/736ec6b9d31dc8a2488ec831c00c672fd70fcd80))
+* menu improvements and fixes ([1469cbc](https://git.awescode.com/awes-io/client/commits/1469cbc01e0e9d749219646b25cc8e640fe3cbde))
+
+
+
+
+
 ## [1.67.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.67.2...basic-ui@1.67.3) (2020-05-28)
 
 **Note:** Version bump only for package basic-ui

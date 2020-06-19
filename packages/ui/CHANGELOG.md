@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.86.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.85.2...@awes-io/ui@1.86.0) (2020-06-19)
+
+
+### Features
+
+* add prefix, postfix, clearable to AwDate ([736ec6b](https://github.com/awes-io/client/commit/736ec6b9d31dc8a2488ec831c00c672fd70fcd80))
+* menu improvements and fixes ([1469cbc](https://github.com/awes-io/client/commit/1469cbc01e0e9d749219646b25cc8e640fe3cbde))
+
+
+
+
+
 ## [1.85.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.85.1...@awes-io/ui@1.85.2) (2020-05-28)
 
 **Note:** Version bump only for package @awes-io/ui
