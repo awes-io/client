@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.87.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.86.0...@awes-io/ui@1.87.0) (2020-06-19)
+
+
+### Features
+
+* updated json ([c3f6d95](https://github.com/awes-io/client/commit/c3f6d952b7a7b01957cb97f148da1795dfc6f43c))
+
+
+
+
+
 # [1.86.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.85.2...@awes-io/ui@1.86.0) (2020-06-19)
 
 
