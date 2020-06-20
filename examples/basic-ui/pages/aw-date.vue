@@ -14,20 +14,22 @@
         </AwForm>
 
         <h2>Prefix / Postfix</h2>
-        <AwDate
-            name="date"
-            v-model="datePrefix"
-            :min="new Date()"
-            prefix="Prefix"
-        />
+        <AwDate name="date" v-model="datePrefix" :min="new Date()">
+            <template #prefix>
+                <AwIcon name="far fa-calendar-alt"></AwIcon>
+            </template>
+        </AwDate>
 
         <AwDate
             name="date"
             v-model="datePostfix"
             :min="new Date()"
-            postfix="Postfix"
             class="mt-4"
-        />
+        >
+            <template #postfix>
+                <AwIcon name="far fa-calendar-times" />
+            </template>
+        </AwDate>
 
         <h2>Clearable</h2>
         <AwDate name="date" v-model="dateClearable" clearable />

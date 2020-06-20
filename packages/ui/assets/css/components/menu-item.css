@@ -127,4 +127,16 @@
             margin-right: theme('spacing.4');
         }
     }
+
+    .external-icon {
+        position: relative;
+    }
+    
+    .external-icon::before {
+        /* Center wide menu icons */
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 }

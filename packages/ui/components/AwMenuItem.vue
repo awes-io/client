@@ -27,7 +27,7 @@
                 v-if="icon"
                 :name="icon"
                 size="xl"
-                class="mr-5"
+                class="mr-5 w-5"
                 :class="{ 'aw-menu-item__icon-colored': _iconColor }"
                 :style="`color: ${_iconColor}`"
             />
@@ -67,9 +67,9 @@
                 v-for="(child, j) in visibleChildren"
                 :key="`child-${j}`"
                 :to="callIfFunction(child.href)"
-                :aria-current="isSamePage(child.href) ? 'page' : null"
+                :aria-current="isStartsWith(child.href) ? 'page' : null"
                 :class="{
-                    'is-active': isSamePage(child.href)
+                    'is-active': isStartsWith(child.href)
                 }"
                 class="aw-menu-item__child"
             >
@@ -191,6 +191,10 @@ export default {
     },
 
     computed: {
+        hasChildren() {
+            return this.visibleChildren.length
+        },
+
         _badge() {
             if (isNil(this.badge) || isEmpty(this.badge)) {
                 return null
@@ -238,7 +242,11 @@ export default {
         },
 
         _isParentActive() {
-            return this.isSamePage(this.href) || this.isParentPage(this.href)
+            if (this.hasChildren) {
+                return this.isParentPage(this.href)
+            }
+
+            return this.isSamePage(this.href)
         },
 
         visible() {
@@ -253,17 +261,13 @@ export default {
             )
         },
 
-        hasChildren() {
-            return this.visibleChildren.length
-        },
-
         currentPath() {
             return trimSlash(this.$route.path)
         },
 
         hasActiveChild() {
             return this.visibleChildren.some(
-                ({ href }) => !!href && this.isSamePage(href)
+                ({ href }) => !!href && this.isStartsWith(href)
             )
         },
 
@@ -287,6 +291,14 @@ export default {
 
         isSamePage(href) {
             return this.currentPath === trimSlash(this.callIfFunction(href))
+        },
+
+        isStartsWith(href) {
+            return (
+                this.currentPath.indexOf(
+                    trimSlash(this.callIfFunction(href))
+                ) === 0
+            )
         },
 
         isParentPage() {

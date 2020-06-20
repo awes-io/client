@@ -1,7 +1,7 @@
 export const navigation = [
     // {
     //     title: 'Test',
-    //     badge: { text: 'progress', color: 'error' },
+    //     icon: 'fas fa-wallet',
     //     children: [
     //         {
     //             title: 'Button',
@@ -9,8 +9,24 @@ export const navigation = [
     //             badge: { icon: 'fas fa-hands', color: 'error' }
     //         },
     //         {
+    //             title: 'Dashboard Card',
+    //             url: '/dashboard/card',
+    //             badge: { text: 'progress', color: 'success' }
+    //         }
+    //     ]
+    // },
+    // {
+    //     title: 'Test 2',
+    //     icon: 'fas fa-users',
+    //     children: [
+    //         {
+    //             title: 'Button',
+    //             url: '/aw-test',
+    //             badge: { icon: 'fas fa-hands', color: 'error' }
+    //         },
+    //         {
     //             title: 'Card',
-    //             url: '/aw-card',
+    //             url: '/aw-asadasd',
     //             badge: { text: 'progress', color: 'success' }
     //         }
     //     ]
