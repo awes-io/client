@@ -39,7 +39,8 @@ export default function({ store, app }) {
             props: {
                 text: item.title,
                 href,
-                badge: item.badge
+                badge: item.badge,
+                icon: item.icon
             },
             children
         })

@@ -18,6 +18,14 @@
                     theme="icon"
                 />
             </template>
+
+            <template v-if="$scopedSlots.prefix" #prefix>
+                <slot name="prefix" />
+            </template>
+
+            <template v-if="$scopedSlots.postfix" #postfix>
+                <slot name="postfix" />
+            </template>
         </AwInput>
 
         <AwDropdown

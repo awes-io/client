@@ -35,7 +35,7 @@ export default {
     computed: {
         classes() {
             if (this.name.indexOf(' ') > -1) {
-                return [this.name, `text-${this.size}`]
+                return [this.name, `text-${this.size}`, 'external-icon']
             }
 
             return [
