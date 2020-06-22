@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.68.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.68.1...basic-ui@1.68.2) (2020-06-22)
+
+
+### Bug Fixes
+
+* menu fixes ([7ef9b05](https://git.awescode.com/awes-io/client/commits/7ef9b057d5138dd66431e5fbc44e725c0cba3674))
+
+
+
+
+
 ## [1.68.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.68.0...basic-ui@1.68.1) (2020-06-19)
 
 **Note:** Version bump only for package basic-ui
