@@ -1,9 +1,11 @@
 export default {
     methods: {
         redirectToRoles() {
-            this.$router.push({
-                path: `/admin/roles`
-            })
+            this.$router.push(
+                this.localePath({
+                    path: `/admin/roles`
+                })
+            )
         }
     }
 }

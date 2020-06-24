@@ -17,7 +17,7 @@ dayjs.locale('<%=locale%>', dayjsLocale<%=locale%>)
 
 // Next line fixes relative time plugin
 if (dayjs.en) {
-    dayjs.Ls.en = { ...dayjs.Ls.en, ...dayjs.en }
+    dayjs.Ls.en = { ...dayjs.Ls.en, ...dayjs.en, weekStart: 1 }
 }
 
 // Switch to 'en' by default

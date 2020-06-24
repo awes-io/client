@@ -1,9 +1,11 @@
 export default {
     methods: {
         redirectToUsers() {
-            this.$router.push({
-                path: `/admin/users`
-            })
+            this.$router.push(
+                this.localePath({
+                    path: `/admin/users`
+                })
+            )
         }
     }
 }
