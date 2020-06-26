@@ -95,6 +95,11 @@ export default {
             }
 
             this.$emit('change', value)
+
+            // fix: update self-set value of element
+            this.$nextTick(() => {
+                $event.target.checked = this.isChecked
+            })
         },
 
         _createValue(isChecked) {

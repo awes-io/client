@@ -19,11 +19,22 @@
 </template>
 
 <script>
+import autosize from 'autosize'
 import TextFieldMixin from '../mixins/text-field'
 
 export default {
     name: 'AwTextarea',
 
-    mixins: [TextFieldMixin]
+    mixins: [TextFieldMixin],
+
+    mounted() {
+        this.$nextTick(() => {
+            autosize(this.$refs.element)
+        })
+    },
+
+    beforeDestroy() {
+        autosize.destroy(this.$refs.element)
+    }
 }
 </script>

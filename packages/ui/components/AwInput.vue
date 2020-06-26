@@ -11,6 +11,7 @@
                 'has-postfix': postfix
             }
         ]"
+        :for="id || defaultId"
     >
         <div
             v-if="prefix || $scopedSlots.prefix"
@@ -29,7 +30,7 @@
                 v-tooltip.show.prepend="errorTooltip"
                 ref="element"
             />
-            <div v-if="!!label" :class="elClasses.label" :for="id || defaultId">
+            <div v-if="!!label" :class="elClasses.label">
                 {{ label }}
             </div>
             <span v-if="$slots.icon" :class="elClasses.icon">

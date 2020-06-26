@@ -4,7 +4,8 @@
             :options="options"
             :disabled="disabled"
             label="Select something"
-            v-model="selected"
+            multiple
+            v-model="multiple"
             clearable
         />
 
@@ -43,7 +44,8 @@ export default {
         return {
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
-            selected: null
+            selected: null,
+            multiple: ['one', 'three']
         }
     }
 }

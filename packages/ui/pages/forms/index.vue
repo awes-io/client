@@ -59,7 +59,6 @@
                         class="mt-2"
                         disabled
                     />
-                    <AwInput name="last_name" label="Last name" class="mt-2" />
                     <AwSelect
                         v-model="select"
                         name="gender"
@@ -67,6 +66,7 @@
                         :options="['Male', 'Female']"
                         class="mt-2"
                     />
+                    <AwInput name="last_name" label="Last name" class="mt-2" />
                     <AwPassword class="mt-2" name="password" label="Password" />
                     <!-- <AwUploader
                         name="file"
