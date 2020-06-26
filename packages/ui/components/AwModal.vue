@@ -317,6 +317,7 @@ export default {
         _afterLeave() {
             this._toggleBodyScroll(true)
             this.showContent = false
+            this.$emit('after-close')
         },
 
         open() {
