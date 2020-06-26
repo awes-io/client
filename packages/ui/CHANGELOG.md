@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.88.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.87.1...@awes-io/ui@1.88.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **aw-input:** autoset ids only in mounted hook to prevent difference in input and label ([1629792](https://github.com/awes-io/client/commit/16297927dc3d9693e77b05a206b2d11efc92a918))
+* **aw-select:** ui improvements ([10eb16a](https://github.com/awes-io/client/commit/10eb16a5bc52ab9e01f73ca24db7117f2d77959f))
+
+
+### Features
+
+* **aw-modal:** after-close event added ([07c89e6](https://github.com/awes-io/client/commit/07c89e63f6e8b786369ac7e34c6713de9c155831))
+
+
+
+
+
 ## [1.87.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.87.0...@awes-io/ui@1.87.1) (2020-06-22)
 
 

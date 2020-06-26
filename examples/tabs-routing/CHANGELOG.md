@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.41.73](https://git.awescode.com/awes-io/client/compare/tabs-routing@1.41.72...tabs-routing@1.41.73) (2020-06-26)
+
+**Note:** Version bump only for package tabs-routing
+
+
+
+
+
 ## [1.41.72](https://git.awescode.com/awes-io/client/compare/tabs-routing@1.41.71...tabs-routing@1.41.72) (2020-06-22)
 
 **Note:** Version bump only for package tabs-routing
