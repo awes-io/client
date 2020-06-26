@@ -106,7 +106,7 @@
     }
 
     &_opened &__caret {
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
     }
 
     &__children {
@@ -131,7 +131,7 @@
     .external-icon {
         position: relative;
     }
-    
+
     .external-icon::before {
         /* Center wide menu icons */
         position: absolute;

@@ -125,7 +125,7 @@
 
                 <!-- not found -->
                 <AwDropdownButton
-                    v-else
+                    v-else-if="!isLoading && searchPhrase"
                     @click="_selectOnEnter"
                     tabindex="-1"
                     data-arrow-focus
