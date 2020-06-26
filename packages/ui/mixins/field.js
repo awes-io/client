@@ -1,7 +1,5 @@
 import { FORM_ENTER_SKIP_ATTR } from '../assets/js/constants'
 
-let fieldId = 0
-
 export default {
     inheritAttrs: false,
 
@@ -31,7 +29,7 @@ export default {
 
     data() {
         return {
-            defaultId: `input-${fieldId++}`
+            defaultId: null
         }
     },
 
@@ -46,6 +44,12 @@ export default {
 
         skipAttr() {
             return { [FORM_ENTER_SKIP_ATTR]: this.enterSkip ? '' : null }
+        }
+    },
+
+    mounted() {
+        if (!this.id && !this.defaultId) {
+            this.defaultId = `input-${this._uid}`
         }
     },
 

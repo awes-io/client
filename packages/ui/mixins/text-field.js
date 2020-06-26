@@ -68,12 +68,18 @@ export default {
 
     methods: {
         _onInput($event) {
-            let value = $event.target.value
-            this.inputValue = value
+            const value = $event.target.value
+            const eventType = $event.type
+
             if (this.hasError) {
                 this.setError('')
             }
-            this.$emit($event.type, value)
+
+            if (this.$listeners[eventType]) {
+                this.$emit(eventType, value)
+            } else {
+                this.inputValue = value
+            }
         },
 
         _autoFillHack($event) {
