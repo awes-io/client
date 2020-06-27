@@ -49,7 +49,7 @@ export function mergeRouteQuery(query, route) {
  */
 export function trimSlash(path = '') {
     if (typeof path !== 'string') {
-        throw new TypeError('Path must be a string')
+        throw new TypeError(`Path must be a string, ${typeof path} given`)
     }
 
     const [_path, _query] = path.split('?')

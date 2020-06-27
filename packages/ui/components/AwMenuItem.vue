@@ -15,12 +15,12 @@
     >
         <!-- default button -->
         <Component
-            :is="href ? 'RouterLink' : 'button'"
+            :is="_href && !hasChildren ? 'RouterLink' : 'button'"
             :class="{ 'is-active': _isParentActive }"
-            :to="callIfFunction(href) || null"
-            :aria-current="isSamePage(href) ? 'page' : null"
+            :to="_href || null"
+            :aria-current="isSamePage(_href) ? 'page' : null"
             v-bind="_computedProps"
-            v-on="!href && hasChildren ? { click: toggle } : {}"
+            v-on="hasChildren ? { click: toggle } : {}"
             class="aw-menu-item__button"
         >
             <AwIcon
@@ -31,20 +31,20 @@
                 :class="{ 'aw-menu-item__icon-colored': _iconColor }"
                 :style="`color: ${_iconColor}`"
             />
-            <span class="truncate">{{ callIfFunction(text) }}</span>
+            <span class="truncate">{{ _text }}</span>
             <AwBadge
                 v-if="_badge"
                 v-bind="_badge"
                 class="aw-menu-item__badge ml-auto"
             />
-            <button
+            <span
                 v-if="hasChildren && !expanded"
                 :aria-label="$t('AwLayoutDefault.toggleSubmenu')"
                 class="aw-menu-item__toggler"
                 :class="{ 'ml-auto': !_badge }"
             >
                 <AwIconCaret size="10" class="aw-menu-item__caret" />
-            </button>
+            </span>
         </Component>
 
         <!-- submenu toggler -->
@@ -66,14 +66,14 @@
             <RouterLink
                 v-for="(child, j) in visibleChildren"
                 :key="`child-${j}`"
-                :to="callIfFunction(child.href)"
+                :to="child.href"
                 :aria-current="isStartsWith(child.href) ? 'page' : null"
                 :class="{
                     'is-active': isStartsWith(child.href)
                 }"
                 class="aw-menu-item__child"
             >
-                <span class="truncate">{{ callIfFunction(child.text) }}</span>
+                <span class="truncate">{{ child.text }}</span>
                 <AwBadge
                     v-if="child.badge"
                     v-bind="child.badge"
@@ -85,13 +85,15 @@
 </template>
 
 <script>
-import { isEmpty, isType, isNil, pathOr } from 'rambdax'
+import { isEmpty, isType, isNil, pathOr, partition, map } from 'rambdax'
 import { trimSlash } from '../assets/js/router'
 import AwIcon from './AwIcon.vue'
 import AwBadge from './AwBadge.vue'
 import AwIconCaret from '../assets/svg/components/caret.vue'
 import AwAccordionFold from './AwAccordionFold.vue'
 import { LINK_REGEX, SPECIAL_URL_REGEX } from './_config'
+
+const LOCALE_RE = /^\/([a-z]{2}(-[A-Z]{2})?)?\/?$/
 
 export default {
     name: 'AwMenuItem',
@@ -195,6 +197,39 @@ export default {
             return this.visibleChildren.length
         },
 
+        _href() {
+            return this._callIfFunction(this.href)
+        },
+
+        _text() {
+            return this._callIfFunction(this.text)
+        },
+
+        /* simple regex detects /, /en, /en/, /en-US, /en-US/ */
+        _isRoot() {
+            return LOCALE_RE.test(this._href)
+        },
+
+        _children() {
+            return (this.children || []).map(item => {
+                const [withFn, withoutFn] = partition(isType('Function'), item)
+
+                if (!isEmpty(withFn)) {
+                    Object.defineProperties(
+                        withoutFn,
+                        map(
+                            val => ({
+                                get: val
+                            }),
+                            withFn
+                        )
+                    )
+                }
+
+                return withoutFn
+            })
+        },
+
         _badge() {
             if (isNil(this.badge) || isEmpty(this.badge)) {
                 return null
@@ -243,22 +278,20 @@ export default {
 
         _isParentActive() {
             if (this.hasChildren) {
-                return this.isParentPage(this.href)
+                return this.hasActiveChild
             }
 
-            return this.isSamePage(this.href)
+            return this.isStartsWith(this._href)
         },
 
         visible() {
             return isType('Function', this.show)
                 ? this.show()
-                : this.show !== false
+                : this.show !== false && (this.href || this.hasChildren)
         },
 
         visibleChildren() {
-            return this.children.filter(({ show }) =>
-                isType('Function', show) ? show : show !== false
-            )
+            return this._children.filter(({ show }) => show !== false)
         },
 
         currentPath() {
@@ -279,7 +312,10 @@ export default {
     created() {
         if (!this.show || this.expanded || !this.hasChildren) return
 
-        if ((this.href && this.isSamePage(this.href)) || this.hasActiveChild) {
+        if (
+            (this._href && this.isSamePage(this._href)) ||
+            this.hasActiveChild
+        ) {
             this.opened = true
         }
     },
@@ -290,26 +326,20 @@ export default {
         },
 
         isSamePage(href) {
-            return this.currentPath === trimSlash(this.callIfFunction(href))
+            return this.currentPath === trimSlash(href)
         },
 
         isStartsWith(href) {
-            return (
-                this.currentPath.indexOf(
-                    trimSlash(this.callIfFunction(href))
-                ) === 0
-            )
+            return this._isRoot
+                ? this.isSamePage(href)
+                : this.currentPath.indexOf(trimSlash(href)) === 0
         },
 
         isParentPage() {
-            return (
-                this.hasChildren &&
-                this.highlightWhenParent &&
-                this.hasActiveChild
-            )
+            return this.highlightWhenParent && this.hasActiveChild
         },
 
-        callIfFunction(text) {
+        _callIfFunction(text) {
             return isType('Function', text) ? text() : text
         }
     }
