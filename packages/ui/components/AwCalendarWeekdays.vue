@@ -1,4 +1,6 @@
 <script>
+import { AwCalendar as lang } from '../lang/en.js'
+
 export default {
     name: 'AwCalendarWeekdays',
 
@@ -18,9 +20,14 @@ export default {
 
     render(h, { props }) {
         const { firstDay, weekdayNames } = props
-        const sortedNames = weekdayNames
+
+        const namesArray = Array.isArray(weekdayNames)
+            ? weekdayNames
+            : lang.weekdaysShort
+
+        const sortedNames = namesArray
             .slice(firstDay)
-            .concat(weekdayNames.slice(0, firstDay))
+            .concat(namesArray.slice(0, firstDay))
 
         return sortedNames.map(name =>
             h('span', { key: name, staticClass: 'aw-calendar__weekday' }, name)

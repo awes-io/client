@@ -193,7 +193,7 @@ export default {
                 return date => {
                     const _date = this._toDayjs(date)
                     return this._isMultiple
-                        ? this._valueDayjs.some(val => val.isSame(_date))
+                        ? this._valueDayjs.some(val => val.isSame(_date, 'day'))
                         : this._valueDayjs.isSame(_date, 'day')
                 }
             }

@@ -20,7 +20,7 @@
             <AwButton theme="toggle" class="min-w-0 px-2">
                 {{ year }}
             </AwButton> -->
-            {{ months[month] }} {{ year }}
+            {{ _months[month] }} {{ year }}
         </div>
         <AwButton
             v-show="$listeners['click:next']"
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { AwCalendar as lang } from '../lang/en.js'
+
 export default {
     name: 'AwCalendarNav',
 
@@ -55,6 +57,12 @@ export default {
         disabledPrev: Boolean,
 
         disabledNext: Boolean
+    },
+
+    computed: {
+        _months() {
+            return Array.isArray(this.months) ? this.months : lang.months
+        }
     }
 }
 </script>
