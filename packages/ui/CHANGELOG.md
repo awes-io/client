@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.88.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.88.0...@awes-io/ui@1.88.1) (2020-06-29)
+
+
+### Bug Fixes
+
+* **aw-calendar:** calendar defaults fallback added ([0d3954f](https://github.com/awes-io/client/commit/0d3954f9c5db76582a0f2fff86675dc3463554af))
+* **aw-menu-item:** markup fix + active state detection update ([3d2681a](https://github.com/awes-io/client/commit/3d2681ac785a59cfcf93f0a4bb2128dee89af176))
+
+
+
+
+
 # [1.88.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.87.1...@awes-io/ui@1.88.0) (2020-06-26)
 
 
