@@ -24,6 +24,7 @@
             />
             <div class="flex items-center justify-between mt-1">
                 <AwCheckbox
+                    v-model="remember"
                     class="ml-3"
                     :label="$t('AwesIoAuth.rememberMe')"
                     enter-skip
@@ -109,6 +110,7 @@ export default {
     data() {
         return {
             loading: false,
+            remember: false,
             formData: {
                 email: '',
                 password: ''
