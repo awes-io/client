@@ -116,11 +116,10 @@
             <!-- Empty loading container -->
             <slot name="empty-loading-container">
                 <!-- Empty AwCard block -->
-                <AwCard
+                <div
                     class="flex items-center justify-center min-h-full mb-5"
                     :class="`h-${defaultHeight}`"
-                >
-                </AwCard>
+                ></div>
             </slot>
         </div>
 
