@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.89.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.88.1...@awes-io/ui@1.89.0) (2020-07-02)
+
+
+### Features
+
+* removed white background in empty table block ([1beba06](https://github.com/awes-io/client/commit/1beba065b782f93c7603dfda75c6cc56fea4a639))
+
+
+
+
+
 ## [1.88.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.88.0...@awes-io/ui@1.88.1) (2020-06-29)
 
 
