@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.90.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.89.0...@awes-io/ui@1.90.0) (2020-07-13)
+
+
+### Features
+
+* added region to address; removed oveflow hidden for aw-page ([0697694](https://github.com/awes-io/client/commit/06976949c57eddce731ef2670f77e682ffe17ea6))
+
+
+
+
+
 # [1.89.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.88.1...@awes-io/ui@1.89.0) (2020-07-02)
 
 
