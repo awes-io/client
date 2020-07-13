@@ -35,7 +35,7 @@ export default {
                 language: this.gmLanguage
             }
 
-            if (gmRegion !== '') {
+            if (this.gmRegion) {
                 params.region = this.gmRegion
             }
 
