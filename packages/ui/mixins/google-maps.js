@@ -18,16 +18,25 @@ export default {
         gmLanguage: {
             type: String,
             default: ''
+        },
+
+        gmRegion: {
+            type: String,
+            default: ''
         }
     },
 
     computed: {
         gmLibUrl() {
             const base = '//maps.googleapis.com/maps/api/js'
-            const params = {
+            let params = {
                 key: this.gmKey,
                 libraries: this.gmLibraries.join(','),
                 language: this.gmLanguage
+            }
+
+            if (gmRegion !== '') {
+                params.region = this.gmRegion
             }
 
             const libParams = join(
