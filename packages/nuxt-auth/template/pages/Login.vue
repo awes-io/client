@@ -40,13 +40,19 @@
         </AwForm>
 
         <!-- registration notify -->
-        <p v-if="$route.meta.register" class="mt-8 text-center">
+        <% if (register && register === true) { %>
+        <p class="mt-8 text-center">
             {{ $t('AwesIoAuth.noAccount') }}
             <AwLink
                 :href="localePath({ path: '/register' })"
                 :text="$t('AwesIoAuth.register')"
             />
         </p>
+        <% } else if (typeof register === 'string') { %>
+        <p class="mt-8 text-center">
+            <%= register %>
+        </p>
+        <% } %>
 
         <!-- social login -->
         <div
@@ -139,7 +145,7 @@ export default {
 
         async loginWithService(service) {
             try {
-                const { data } = await this.$axios.get(`/api/login/${service}`)
+                const { data } = await this.$axios.get('/api/login/' + service)
                 if (data.url) {
                     window.location = data.url
                 }
