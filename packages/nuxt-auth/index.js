@@ -1,15 +1,8 @@
 import { resolve, join } from 'path'
-import fs from 'fs-extra'
 import _ from 'lodash'
+import { mergeRoutes } from './src/assets/js/merge-routes'
 
 const meta = require('./package.json')
-
-const DEFAULTS = {
-    register: true,
-    socialLogin: false
-}
-
-const PAGE_TEMPLATES = ['Login', 'Register']
 
 const twofactor = {
     _scheme: resolve(__dirname, './src/assets/js/strategy.js'),
@@ -32,7 +25,7 @@ const twofactor = {
     }
 }
 
-function AwesIoNuxtAuth(moduleOptions) {
+function AwesIoNuxtAuth() {
     // add es6 transpiling
     this.options.build.transpile.push('@awes-io/nuxt-auth')
 
@@ -59,43 +52,26 @@ function AwesIoNuxtAuth(moduleOptions) {
     }
     _.set(this.options, 'router.middleware', middleware)
 
-    const options = _.defaults(
-        moduleOptions,
-        _.get(this.options, 'awesIo.nuxtAuth'),
-        DEFAULTS
-    )
+    // Get register option from nuxt.config.js
+    const isRegister = _.get(this.options, 'awesIo.nuxtAuth.register', true)
 
-    // Add template pages before routing checks
-    this.nuxt.hook('builder:prepared', () => {
-        PAGE_TEMPLATES.forEach(page => {
-            try {
-                const _content = fs.readFileSync(
-                    resolve(__dirname, './template/pages/', page + '.vue'),
-                    { encoding: 'UTF-8' }
-                )
-                const _compiled = _.template(_content)
-                fs.outputFileSync(
-                    join(
-                        this.options.buildDir,
-                        `/awes-io/nuxt-auth/${page}.vue`
-                    ),
-                    _compiled(options)
-                )
-            } catch (e) {
-                console.log('Error in @awes-io/nuxt-auth compiling ', page, e)
-            }
-        })
-    })
+    // Get socialLogin option from nuxt.config.js
+    const isSocialLogin = _.get(
+        this.options,
+        'awesIo.nuxtAuth.socialLogin',
+        false
+    )
 
     this.nuxt.hook('build:extendRoutes', (routes = []) => {
         const baseArr = [
             {
                 name: 'login',
                 path: '/login',
-                component: join(
-                    this.options.buildDir,
-                    `/awes-io/nuxt-auth/Login.vue`
-                )
+                component: resolve(__dirname, './src/pages/Login.vue'),
+                meta: {
+                    register: isRegister,
+                    socialLogin: isSocialLogin
+                }
             },
             {
                 name: 'twofactor-verify',
@@ -127,18 +103,18 @@ function AwesIoNuxtAuth(moduleOptions) {
             }
         ]
 
-        if (options.register) {
+        if (isRegister) {
             baseArr.unshift({
                 name: 'register',
                 path: '/register',
-                component: join(
-                    this.options.buildDir,
-                    `/awes-io/nuxt-auth/Register.vue`
-                )
+                component: resolve(__dirname, './src/pages/Register.vue'),
+                meta: {
+                    socialLogin: isSocialLogin
+                }
             })
         }
 
-        if (options.socialLogin) {
+        if (isSocialLogin) {
             baseArr.push({
                 name: 'login-service',
                 path: '/login/:service/callback',
@@ -146,7 +122,7 @@ function AwesIoNuxtAuth(moduleOptions) {
             })
         }
 
-        routes.unshift(...baseArr)
+        mergeRoutes(routes, baseArr)
     })
 
     // Add nuxt plugin in the end

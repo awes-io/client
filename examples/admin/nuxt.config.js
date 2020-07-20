@@ -38,15 +38,6 @@ export default {
         proxy: true
     },
 
-    awesIo: {
-        nuxtAuth: {
-            register: `{{ $t('ui.login.no_account') }}
-                <AwLink :href="localePath({ path: '/register' })">
-                    {{ $t('ui.login.create_account') }}
-                </AwLink>`
-        }
-    },
-
     proxy: {
         '/api/': {
             target: process.env.APP_SERVICE_API || '/'
