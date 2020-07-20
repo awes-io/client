@@ -59,13 +59,11 @@
         </p>
 
         <!-- social register -->
-        <% if (socialLogin) { %>
         <div v-if="$route.meta.socialLogin" class="mt-4 flex justify-center">
             <AwButton color="info" @click="loginWithService('google')">
                 Google
             </AwButton>
         </div>
-        <% } %>
     </div>
 </template>
 
@@ -87,7 +85,7 @@ export default {
     methods: {
         async loginWithService(service) {
             try {
-                const { data } = await this.$axios.get('/api/login/' + service)
+                const { data } = await this.$axios.get(`/api/login/${service}`)
                 if (data.url) {
                     window.location = data.url
                 }
