@@ -40,3 +40,20 @@ pre[class*="language-"] {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+/* Kbd styles */
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 1px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    white-space: nowrap;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.5;
+    font-size: .85em;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
