@@ -43,9 +43,9 @@ pre[class*="language-"] {
 
 /* Kbd styles */
 kbd {
-    @apply bg-muted-dark border-1 border-disabled;
+    @apply bg-muted-dark border-1;
     border-radius: 3px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 1px 0 0 rgba(255, 255, 255, .7) inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 1px 0 0 var(--c-fade-surface) inset;
     display: inline-block;
     white-space: nowrap;
     font-family:Arial,Helvetica,sans-serif;
