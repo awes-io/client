@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-admin",
-    "version": "0.7.4",
+    "version": "0.7.5",
     "description": "Administration of roles and permissions for Awes.io.",
     "homepage": "https://www.awes.io",
     "bugs": {

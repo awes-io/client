@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.64](https://git.awescode.com/awes-io/client/compare/example-dayjs@1.1.63...example-dayjs@1.1.64) (2020-08-10)
+
+**Note:** Version bump only for package example-dayjs
+
+
+
+
+
 ## [1.1.63](https://git.awescode.com/awes-io/client/compare/example-dayjs@1.1.62...example-dayjs@1.1.63) (2020-07-13)
 
 **Note:** Version bump only for package example-dayjs

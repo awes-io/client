@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.5](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.7.4...@awes-io/nuxt-admin@0.7.5) (2020-08-10)
+
+
+### Bug Fixes
+
+* changed translation for admin module ([f75d333](https://github.com/awes-io/client/commit/f75d333d3e5985e3dabf13abd726f4d426904d84))
+* translation for admin module ([546f07b](https://github.com/awes-io/client/commit/546f07bdfa9ab00aa9db13e1da74784b8c961cb9))
+
+
+
+
+
 ## [0.7.4](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.7.3...@awes-io/nuxt-admin@0.7.4) (2020-07-20)
 
 **Note:** Version bump only for package @awes-io/nuxt-admin

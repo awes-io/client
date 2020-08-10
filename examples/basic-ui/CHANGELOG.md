@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.69.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.68.7...basic-ui@1.69.0) (2020-08-10)
+
+
+### Features
+
+* add kbd styles ([66fdb80](https://git.awescode.com/awes-io/client/commits/66fdb8019aa2b0d2badab18abf3201f771fa540b))
+
+
+
+
+
 ## [1.68.7](https://git.awescode.com/awes-io/client/compare/basic-ui@1.68.6...basic-ui@1.68.7) (2020-07-13)
 
 **Note:** Version bump only for package basic-ui

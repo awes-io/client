@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.91.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.90.1...@awes-io/ui@1.91.0) (2020-08-10)
+
+
+### Bug Fixes
+
+* AwCard overflow fix ([9561304](https://github.com/awes-io/client/commit/956130425d50f0b1057409189120bed3b3864db9))
+* change kbd color ([a2b5d59](https://github.com/awes-io/client/commit/a2b5d595cdaf754b73fa354ba8700cd00e8dbbc5))
+* use awes colors ([b9f4bb7](https://github.com/awes-io/client/commit/b9f4bb7547a1d25541a4d6f3df86a885cf4bd07b))
+
+
+### Features
+
+* add kbd styles ([66fdb80](https://github.com/awes-io/client/commit/66fdb8019aa2b0d2badab18abf3201f771fa540b))
+
+
+
+
+
 ## [1.90.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.90.0...@awes-io/ui@1.90.1) (2020-07-13)
 
 
