@@ -7,16 +7,18 @@
         <h5>Example:</h5>
 
         <div>
-            <span
-                v-for="(item, index) in items"
-                :key="item"
-                class="comma"
-            >
+            <span v-for="item in items" :key="item" class="comma">
                 {{ item }}
             </span>
         </div>
 
         <AwCodeSnippet v-text="codeComma" class="mt-3" />
+
+        <h3>Keyboard keys</h3>
+
+        <kbd v-for="key in keys" :key="key">{{ key }}</kbd>
+
+        <AwCodeSnippet v-text="codeKeys" class="mt-3" />
     </AwPage>
 </template>
 
@@ -36,6 +38,20 @@ export default {
                 'consectetur',
                 'adipisicing',
                 'elit'
+            ],
+            keys: [
+                '~',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '0',
+                'Enter'
             ]
         }
     },
@@ -55,6 +71,10 @@ export default {
                 '</div>'
             ]
             return arr.join('\n')
+        },
+
+        codeKeys() {
+            return this.keys.map(el => `<kbd>${el}</kbd>`).join('\n')
         }
     },
 
