@@ -1,5 +1,5 @@
 <template>
-    <div :class="'rounded overflow-hidden shadow-md ' + backgroundCss">
+    <div :class="'rounded shadow-md ' + backgroundCss">
         <div class="px-6 py-4">
             <div class="text-xl mb-2" v-if="title != ''">
                 <div v-if="link == ''" class="font-bold">
