@@ -34,7 +34,7 @@ export default {
         divers: 'Разный',
         email: 'Емайл',
         phone: 'Телефон',
-        position: 'Позиция',
+        position: 'Должность',
         password: 'Пароль',
         password_confirmation: 'Подтвердите пароль',
         default_new: 'по умолчанию новый',
