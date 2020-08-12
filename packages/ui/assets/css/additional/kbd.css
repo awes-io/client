@@ -9,5 +9,5 @@ kbd {
     font-size: .85em;
     margin:0 .1em;
     padding:.1em .6em;
-    text-shadow:0 1px 0 #fff;
+    text-shadow:0 1px 0 var(--c-surface);
 }
