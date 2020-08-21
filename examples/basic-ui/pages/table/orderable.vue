@@ -1,5 +1,5 @@
 <template>
-    <AwPage :title="headline">
+    <AwPage :title="headline" :breadcrumb="breadcrumb">
         <section class="mt-8">
             <h2 class="h3">Orderable</h2>
 
@@ -93,7 +93,11 @@ export default {
         return {
             title: 'AwTableBuilder',
             headline: this._getTitle('AwTableBuilder'),
-            oredableManagers: new Managers()
+            oredableManagers: new Managers(),
+            breadcrumb: {
+                title: 'Table',
+                href: '/table/'
+            }
         }
     },
 

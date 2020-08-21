@@ -17,7 +17,17 @@
                                     breadcrumb.href &&
                                     breadcrumb.title
                             "
+                            class="flex items-center"
                         >
+                            <AwButton
+                                :href="breadcrumb.href"
+                                :title="breadcrumb.title"
+                                class="mr-4"
+                                content-class="p-2"
+                                size="sm"
+                                icon="chevron-l"
+                                color="default"
+                            />
                             <span class="hidden sm:inline-block">
                                 <AwLink :href="breadcrumb.href" class="mr-2">{{
                                     breadcrumb.title
@@ -27,15 +37,6 @@
                                     >&#47;</span
                                 >
                             </span>
-                            <AwButton
-                                :href="breadcrumb.href"
-                                :title="breadcrumb.title"
-                                class="sm:hidden mr-4"
-                                content-class="p-2"
-                                size="sm"
-                                icon="chevron-l"
-                                color="default"
-                            />
                         </div>
                     </slot>
                     <!-- Title of the page -->

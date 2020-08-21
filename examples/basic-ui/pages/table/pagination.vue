@@ -1,5 +1,5 @@
 <template>
-    <AwPage :title="headline">
+    <AwPage :title="headline" :breadcrumb="breadcrumb">
         <section class="mt-8">
             <h2 class="h3">Infinite or mixed scroll</h2>
             <p>
@@ -73,7 +73,11 @@ export default {
             title: 'AwTableBuilder',
             headline: this._getTitle('AwTableBuilder'),
             listManagers: new Managers(),
-            isInfinite: true
+            isInfinite: true,
+            breadcrumb: {
+                title: 'Table',
+                href: '/table/'
+            }
         }
     },
 
