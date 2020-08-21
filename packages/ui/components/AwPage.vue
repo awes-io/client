@@ -28,7 +28,7 @@
                                 icon="chevron-l"
                                 color="default"
                             />
-                            <!-- <span class="hidden sm:inline-block">
+                            <span class="hidden sm:inline-block">
                                 <AwLink :href="breadcrumb.href" class="mr-2">{{
                                     breadcrumb.title
                                 }}</AwLink>
@@ -36,7 +36,7 @@
                                     class="text-sm text-disabled align-middle mr-4"
                                     >&#47;</span
                                 >
-                            </span> -->
+                            </span>
                         </div>
                     </slot>
                     <!-- Title of the page -->
