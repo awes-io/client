@@ -47,6 +47,7 @@ import {
 import AwTableHead from './AwTableHead.vue'
 import AwTableCol from './AwTableCol.vue'
 import AwTableRow from './AwTableRow.vue'
+import unmaskParams from '../assets/js/unmask-param'
 
 const WIDTH_THRESHOLD = 50 // px
 const RESIZE_DEBOUNCE = 500 // ms
@@ -234,11 +235,11 @@ export default {
 
         _unmaskOrderableConfig(orderable, field) {
             const templateDefaultVal = orderable.templateValue || field
-            const ascValue = this._unmaskParams(
+            const ascValue = unmaskParams(
                 orderable.ascTemplate,
                 templateDefaultVal
             )
-            const descValue = this._unmaskParams(
+            const descValue = unmaskParams(
                 orderable.descTemplate,
                 templateDefaultVal
             )
@@ -248,10 +249,6 @@ export default {
                 ascValue,
                 descValue
             }
-        },
-
-        _unmaskParams(str, value, mask = '%s') {
-            return str.split(mask).join(value)
         },
 
         setResizeListener() {

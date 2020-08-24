@@ -185,6 +185,7 @@ import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
 import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
+import unmaskParams from '../assets/js/unmask-param'
 
 const DEFAULT_LIMITS = [15, 50, 100]
 
@@ -359,6 +360,11 @@ export default {
             const orderableParam = this._currentOrderableConfig.param
             if (this.$route.query[orderableParam]) {
                 params[orderableParam] = this.$route.query[orderableParam]
+            } else if (this._currentOrderableConfig.default) {
+                params[orderableParam] = unmaskParams(
+                    this._currentOrderableConfig.ascTemplate,
+                    this._currentOrderableConfig.default
+                )
             }
 
             return params
@@ -450,12 +456,20 @@ export default {
                 const isDescValPresent =
                     this.$route.query[orderable.param] === orderable.descValue
 
-                const paramValue =
-                    isAskValPresent || this._isColDefault(col)
-                        ? orderable.descValue
-                        : isDescValPresent
-                        ? null
-                        : orderable.ascValue
+                let paramValue = null
+
+                if (isAskValPresent || this._isColDefault(col)) {
+                    paramValue = orderable.descValue
+                } else {
+                    if (!isDescValPresent) {
+                        paramValue = orderable.ascValue
+                    } else if (this._currentOrderableConfig.default) {
+                        paramValue = unmaskParams(
+                            this._currentOrderableConfig.ascTemplate,
+                            this._currentOrderableConfig.default
+                        )
+                    }
+                }
 
                 this.$router.replace(
                     mergeRouteQuery(

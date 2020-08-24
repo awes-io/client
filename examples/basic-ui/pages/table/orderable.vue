@@ -48,11 +48,12 @@
                 :collection="oredableManagers"
                 :scroll-on-page="false"
                 :orderable="{
-                    ascTemplate: '%s_asc'
+                    ascTemplate: '%s_asc',
+                    default: 'id'
                 }"
                 defaultHeight="50vh"
             >
-                <AwTableCol field="id" orderable />
+                <AwTableCol field="id" :orderable="{ default: true }" />
 
                 <AwTableCol
                     title="User name"
@@ -109,7 +110,6 @@ export default {
                 "   ascTemplate: '%s', // <-- template, where '%s' is replaced with column field prop",
                 "   descTemplate: '%s_desc' // <-- template, where '%s' is replaced with column field prop",
                 '   templateValue: null // column field prop will be replaced with this prop value, if present',
-                '   default: false',
                 '}'
             ]
 
@@ -142,6 +142,7 @@ export default {
                 '    :scroll-on-page="false"',
                 '    :orderable="{',
                 "        ascTemplate: '%s_asc'",
+                "        default: 'id'",
                 '    }"',
                 '    defaultHeight="50vh"',
                 '>',
