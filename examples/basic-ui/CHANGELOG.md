@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.70.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.69.0...basic-ui@1.70.0) (2020-08-24)
+
+
+### Features
+
+* always show breacrubs back button ([b747561](https://git.awescode.com/awes-io/client/commits/b74756184a12e39aa885dd2a67901b2167bfd50a))
+
+
+
+
+
 # [1.69.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.68.7...basic-ui@1.69.0) (2020-08-10)
 
 
