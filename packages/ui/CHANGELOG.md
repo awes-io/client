@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.93.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.92.0...@awes-io/ui@1.93.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* AwTableBuilder change orderable default logic ([2569e02](https://github.com/awes-io/client/commit/2569e02d4e027ca5396e46aa36096675b9cbea15))
+
+
+### Features
+
+* change get default AwTableCol logic ([5f6e7cd](https://github.com/awes-io/client/commit/5f6e7cd0d900ad7a314e25f47b42297a2e2aff27))
+
+
+
+
+
 # [1.92.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.91.0...@awes-io/ui@1.92.0) (2020-08-24)
 
 
