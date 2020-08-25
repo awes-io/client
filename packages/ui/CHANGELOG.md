@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.92.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.91.0...@awes-io/ui@1.92.0) (2020-08-24)
+
+
+### Bug Fixes
+
+* change kbd styles location ([b246e54](https://github.com/awes-io/client/commit/b246e54977fbb581ddafaa818e00c9a0dd7161a2))
+* kbd change shadow color ([294f945](https://github.com/awes-io/client/commit/294f945962ed8b60084dbb32bb9bdd2fc1b9d88e))
+* uncomment breadcrumb title ([17d8911](https://github.com/awes-io/client/commit/17d891164a6c804dfa2376ecbdfb3018c73f25be))
+
+
+### Features
+
+* always show breacrubs back button ([b747561](https://github.com/awes-io/client/commit/b74756184a12e39aa885dd2a67901b2167bfd50a))
+
+
+
+
+
 # [1.91.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.90.1...@awes-io/ui@1.91.0) (2020-08-10)
 
 
