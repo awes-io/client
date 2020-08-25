@@ -275,6 +275,7 @@ export default {
 
     data() {
         return {
+            defaultCol: null,
             isResetPage: true,
             pagination: {
                 total: null,
@@ -360,10 +361,15 @@ export default {
             const orderableParam = this._currentOrderableConfig.param
             if (this.$route.query[orderableParam]) {
                 params[orderableParam] = this.$route.query[orderableParam]
-            } else if (this._currentOrderableConfig.default) {
-                params[orderableParam] = unmaskParams(
+            } else if (this.defaultCol) {
+                const template = pathOr(
                     this._currentOrderableConfig.ascTemplate,
-                    this._currentOrderableConfig.default
+                    'componentOptions.propsData.orderable.ascTemplate',
+                    this.defaultCol
+                )
+                params[orderableParam] = unmaskParams(
+                    template,
+                    this.defaultCol.componentOptions.propsData.field
                 )
             }
 
@@ -399,8 +405,7 @@ export default {
                     this._scrollTop()
                 }
                 this.fetch()
-            },
-            immediate: true
+            }
         },
 
         limit() {
@@ -412,9 +417,11 @@ export default {
     },
 
     created() {
+        this.defaultCol = this._getDefaultCol()
         if (this.watchParams) {
             this.collection.on('delete', this._fetchOnDelete)
         }
+        this.fetch()
     },
 
     methods: {
@@ -463,10 +470,15 @@ export default {
                 } else {
                     if (!isDescValPresent) {
                         paramValue = orderable.ascValue
-                    } else if (this._currentOrderableConfig.default) {
-                        paramValue = unmaskParams(
+                    } else if (this.defaultCol) {
+                        const template = pathOr(
                             this._currentOrderableConfig.ascTemplate,
-                            this._currentOrderableConfig.default
+                            'componentOptions.propsData.orderable.ascTemplate',
+                            this.defaultCol
+                        )
+                        paramValue = unmaskParams(
+                            template,
+                            this.defaultCol.componentOptions.propsData.field
                         )
                     }
                 }
@@ -544,6 +556,18 @@ export default {
                     behavior: 'smooth'
                 })
             }
+        },
+
+        _getDefaultCol() {
+            const filtered = this.$slots.default.filter(el =>
+                pathOr(
+                    false,
+                    'componentOptions.propsData.orderable.default',
+                    el
+                )
+            )
+            console.log('default', filtered)
+            return filtered.length ? filtered[0] : null
         }
     }
 }

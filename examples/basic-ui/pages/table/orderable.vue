@@ -48,8 +48,7 @@
                 :collection="oredableManagers"
                 :scroll-on-page="false"
                 :orderable="{
-                    ascTemplate: '%s_asc',
-                    default: 'id'
+                    ascTemplate: '%s_asc'
                 }"
                 defaultHeight="50vh"
             >
@@ -109,7 +108,8 @@ export default {
                 "   param: 'orderBy', // <-- GET-param name in browser query string",
                 "   ascTemplate: '%s', // <-- template, where '%s' is replaced with column field prop",
                 "   descTemplate: '%s_desc' // <-- template, where '%s' is replaced with column field prop",
-                '   templateValue: null // column field prop will be replaced with this prop value, if present',
+                '   templateValue: null // <-- column field prop will be replaced with this prop value, if present',
+                '   default: true // <-- if true, sets current sorting column as default',
                 '}'
             ]
 
@@ -142,11 +142,10 @@ export default {
                 '    :scroll-on-page="false"',
                 '    :orderable="{',
                 "        ascTemplate: '%s_asc'",
-                "        default: 'id'",
                 '    }"',
                 '    defaultHeight="50vh"',
                 '>',
-                '    <AwTableCol field="id" orderable />',
+                '    <AwTableCol field="id" :orderable="{ default: true }" />',
                 '',
                 '    <AwTableCol',
                 '        title="User name"',
