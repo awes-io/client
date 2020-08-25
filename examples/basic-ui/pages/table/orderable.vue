@@ -52,7 +52,7 @@
                 }"
                 defaultHeight="50vh"
             >
-                <AwTableCol field="id" orderable />
+                <AwTableCol field="id" :orderable="{ default: true }" />
 
                 <AwTableCol
                     title="User name"
@@ -108,8 +108,8 @@ export default {
                 "   param: 'orderBy', // <-- GET-param name in browser query string",
                 "   ascTemplate: '%s', // <-- template, where '%s' is replaced with column field prop",
                 "   descTemplate: '%s_desc' // <-- template, where '%s' is replaced with column field prop",
-                '   templateValue: null // column field prop will be replaced with this prop value, if present',
-                '   default: false',
+                '   templateValue: null // <-- column field prop will be replaced with this prop value, if present',
+                '   default: true // <-- if true, sets current sorting column as default',
                 '}'
             ]
 
@@ -145,7 +145,7 @@ export default {
                 '    }"',
                 '    defaultHeight="50vh"',
                 '>',
-                '    <AwTableCol field="id" orderable />',
+                '    <AwTableCol field="id" :orderable="{ default: true }" />',
                 '',
                 '    <AwTableCol',
                 '        title="User name"',

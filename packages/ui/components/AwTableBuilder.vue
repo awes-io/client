@@ -185,6 +185,7 @@ import AwChip from './AwChip.vue'
 import AwSvgImage from './AwSvgImage.vue'
 import AwPagination from './AwPagination.vue'
 import WatchParams from '../mixins/watch-params'
+import unmaskParams from '../assets/js/unmask-param'
 
 const DEFAULT_LIMITS = [15, 50, 100]
 
@@ -274,6 +275,7 @@ export default {
 
     data() {
         return {
+            defaultCol: null,
             isResetPage: true,
             pagination: {
                 total: null,
@@ -359,6 +361,16 @@ export default {
             const orderableParam = this._currentOrderableConfig.param
             if (this.$route.query[orderableParam]) {
                 params[orderableParam] = this.$route.query[orderableParam]
+            } else if (this.defaultCol) {
+                const template = pathOr(
+                    this._currentOrderableConfig.ascTemplate,
+                    'componentOptions.propsData.orderable.ascTemplate',
+                    this.defaultCol
+                )
+                params[orderableParam] = unmaskParams(
+                    template,
+                    this.defaultCol.componentOptions.propsData.field
+                )
             }
 
             return params
@@ -393,8 +405,7 @@ export default {
                     this._scrollTop()
                 }
                 this.fetch()
-            },
-            immediate: true
+            }
         },
 
         limit() {
@@ -406,9 +417,11 @@ export default {
     },
 
     created() {
+        this.defaultCol = this._getDefaultCol()
         if (this.watchParams) {
             this.collection.on('delete', this._fetchOnDelete)
         }
+        this.fetch()
     },
 
     methods: {
@@ -450,12 +463,25 @@ export default {
                 const isDescValPresent =
                     this.$route.query[orderable.param] === orderable.descValue
 
-                const paramValue =
-                    isAskValPresent || this._isColDefault(col)
-                        ? orderable.descValue
-                        : isDescValPresent
-                        ? null
-                        : orderable.ascValue
+                let paramValue = null
+
+                if (isAskValPresent || this._isColDefault(col)) {
+                    paramValue = orderable.descValue
+                } else {
+                    if (!isDescValPresent) {
+                        paramValue = orderable.ascValue
+                    } else if (this.defaultCol) {
+                        const template = pathOr(
+                            this._currentOrderableConfig.ascTemplate,
+                            'componentOptions.propsData.orderable.ascTemplate',
+                            this.defaultCol
+                        )
+                        paramValue = unmaskParams(
+                            template,
+                            this.defaultCol.componentOptions.propsData.field
+                        )
+                    }
+                }
 
                 this.$router.replace(
                     mergeRouteQuery(
@@ -530,6 +556,18 @@ export default {
                     behavior: 'smooth'
                 })
             }
+        },
+
+        _getDefaultCol() {
+            const filtered = this.$slots.default.filter(el =>
+                pathOr(
+                    false,
+                    'componentOptions.propsData.orderable.default',
+                    el
+                )
+            )
+            console.log('default', filtered)
+            return filtered.length ? filtered[0] : null
         }
     }
 }
