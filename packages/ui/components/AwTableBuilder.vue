@@ -566,7 +566,6 @@ export default {
                     el
                 )
             )
-            console.log('default', filtered)
             return filtered.length ? filtered[0] : null
         }
     }

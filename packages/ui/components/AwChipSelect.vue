@@ -71,7 +71,7 @@
 
 <script>
 import { omit } from 'rambdax'
-import { validateBySchema } from '../assets/js/component'
+// import { validateBySchema } from '../assets/js/component'
 import arrowFocusMixin from '../mixins/arrow-focus'
 
 export default {
@@ -81,16 +81,16 @@ export default {
 
     props: {
         value: {
-            type: Number,
-            required: true
+            type: [Number, String],
+            default: null
         },
 
         options: {
             type: Array,
-            required: true,
-            validator: validateBySchema([
-                { id: 'number', 'color?': 'string', 'text?': 'string' }
-            ])
+            required: true
+            // validator: validateBySchema([
+            //     { id: 'any', 'color?': 'string', 'text?': 'string' }
+            // ])
         },
 
         readonly: Boolean,
