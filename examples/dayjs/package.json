@@ -1,6 +1,6 @@
 {
   "name": "example-dayjs",
-  "version": "1.1.67",
+  "version": "1.1.68",
   "description": "Example project with dayjs module",
   "author": "illjah42",
   "private": true,
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@awes-io/dayjs": "^0.3.2",
-    "@awes-io/ui": "^1.93.1",
+    "@awes-io/ui": "^1.93.2",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.5.0"
   }
