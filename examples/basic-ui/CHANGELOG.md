@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.71.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.71.0...basic-ui@1.71.1) (2020-08-26)
+
+
+### Bug Fixes
+
+* reomove AwChipSelect options validation ([e9f3142](https://git.awescode.com/awes-io/client/commits/e9f31427d7fc74c4c1133b5c84ef449b62e5220f))
+
+
+
+
+
 # [1.71.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.70.0...basic-ui@1.71.0) (2020-08-25)
 
 

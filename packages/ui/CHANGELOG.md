@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.93.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.93.0...@awes-io/ui@1.93.1) (2020-08-26)
+
+
+### Bug Fixes
+
+* kbd style improving ([41e86f3](https://github.com/awes-io/client/commit/41e86f302221aca21d724d608ca3a6ed1a3afd35))
+* reomove AwChipSelect options validation ([e9f3142](https://github.com/awes-io/client/commit/e9f31427d7fc74c4c1133b5c84ef449b62e5220f))
+
+
+
+
+
 # [1.93.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.92.0...@awes-io/ui@1.93.0) (2020-08-25)
 
 
