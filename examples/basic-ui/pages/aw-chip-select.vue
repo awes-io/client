@@ -25,6 +25,12 @@
         <AwChipSelect v-model="filled" :options="statuses" filled />
 
         <AwCodeSnippet v-text="filledCode" class="mt-3" :size="50" />
+
+        <h2>ID as String</h2>
+
+        <AwChipSelect v-model="typesVal" :options="typesOptions" />
+
+        <AwCodeSnippet v-text="typesCode" class="mt-3" />
     </AwPage>
 </template>
 
@@ -76,6 +82,21 @@ const statuses = [
     }
 ]
 
+const typesOptions = [
+    {
+        id: null,
+        text: 'No selected'
+    },
+    {
+        id: 'removed',
+        text: 'Removed'
+    },
+    {
+        id: 'active',
+        text: 'Active'
+    }
+]
+
 class Appointement extends BaseModel {
     defaults() {
         return {
@@ -111,7 +132,9 @@ export default {
             appointments,
             statuses: [...statuses],
             standart: 1,
-            filled: 1
+            filled: 1,
+            typesOptions: typesOptions,
+            typesVal: null
         }
     },
 
@@ -138,6 +161,19 @@ export default {
                 '<AwChipSelect',
                 '   :options="options"',
                 '   filled',
+                '/>'
+            ]
+            return arr.join('\n')
+        },
+
+        typesCode() {
+            const arr = [
+                '<AwChipSelect',
+                '   :options="[',
+                '       { id: null, text: No selected},',
+                "       { id: 'removed', text: 'Removed' }",
+                "       { id: 'active', text: 'Active' }",
+                '   ]"',
                 '/>'
             ]
             return arr.join('\n')
