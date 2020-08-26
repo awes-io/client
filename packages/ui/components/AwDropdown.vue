@@ -145,12 +145,20 @@ export default {
 
         setOutsideClick() {
             this.closeOutside &&
-                document.body.addEventListener('click', this._onClickOutside)
+                document.body.addEventListener(
+                    'click',
+                    this._onClickOutside,
+                    true
+                )
         },
 
         removeOutsideClick() {
             this.closeOutside &&
-                document.body.removeEventListener('click', this._onClickOutside)
+                document.body.removeEventListener(
+                    'click',
+                    this._onClickOutside,
+                    true
+                )
         },
         /**
          * @vuese
