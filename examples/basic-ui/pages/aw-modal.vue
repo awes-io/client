@@ -31,6 +31,13 @@
             <AwInput label="Name" name="name" />
             <AwInput class="mt-2" label="Password" name="password" />
 
+            <AwSelect
+                :options="options"
+                v-model="select"
+                label="Select something"
+                class="mt-2"
+            />
+
             <div class="mt-8">
                 <AwButton size="lg" class="w-full md:w-auto mb-1 md:mb-0">
                     Apply
@@ -159,7 +166,9 @@ export default {
     data() {
         return {
             title: 'AwModal',
-            headline: this._getTitle('AwModal')
+            headline: this._getTitle('AwModal'),
+            options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],
+            select: 'one'
         }
     },
 
