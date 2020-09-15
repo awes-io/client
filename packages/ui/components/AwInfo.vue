@@ -48,8 +48,19 @@ export default {
             default: ''
         }
     },
-    computed: {
-        hasSlot() {
+    data() {
+        return {
+            hasSlot: false
+        }
+    },
+    created() {
+        this.hasSlot = this.checkDefaultContent()
+    },
+    beforeUpdate() {
+        this.hasSlot = this.checkDefaultContent()
+    },
+    methods: {
+        checkDefaultContent() {
             const slot = this.$slots.default || []
             return slot.filter(element => {
                 return element.tag || element.text.trim()
