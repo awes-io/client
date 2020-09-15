@@ -14,6 +14,13 @@
                     tabindex="-1"
                     class="px-0"
                 >
+                    <AwSvgImage
+                        v-if="loading"
+                        name="spinner"
+                        slot="left"
+                        class="h-5 w-5"
+                    />
+
                     <template #right>
                         <AwIcon
                             v-if="!readonly"
