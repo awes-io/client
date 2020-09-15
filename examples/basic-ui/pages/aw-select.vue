@@ -26,6 +26,9 @@
             v-model="selected"
         />
 
+        <p class="h4">Empty options list</p>
+        <AwSelect :options="[]" label="Select something" v-model="selected" />
+
         <!-- <AwSelect
             v-model="selectedCategory"
             :options="categories"
