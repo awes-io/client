@@ -55,6 +55,8 @@
                 <AwInfo label="My awesome title">
                     {{ isOpen ? 'Some async text to show later ' : '' }}
                 </AwInfo>
+
+                <AwCodeSnippet v-text="codeDefaultSlot" class="mt-2" />
             </div>
         </AwGrid>
     </AwPage>
@@ -98,6 +100,16 @@ export default {
                 '        />',
                 '    </template>',
                 '   Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                '</AwInfo>'
+            ]
+            return arr.join('\n')
+        },
+        codeDefaultSlot() {
+            const arr = [
+                '<AwSwitcher v-model="isOpen" label="Show text" />',
+                '',
+                '<AwInfo label="My awesome title">',
+                "    {{ isOpen ? 'Some async text to show later ' : '' }}",
                 '</AwInfo>'
             ]
             return arr.join('\n')
