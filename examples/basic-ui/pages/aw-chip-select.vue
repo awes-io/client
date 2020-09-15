@@ -31,6 +31,10 @@
         <AwChipSelect v-model="typesVal" :options="typesOptions" />
 
         <AwCodeSnippet v-text="typesCode" class="mt-3" />
+
+        <h2>Loading</h2>
+
+        <AwChipSelect v-model="typesVal" :options="typesOptions" loading />
     </AwPage>
 </template>
 

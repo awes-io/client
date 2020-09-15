@@ -13,6 +13,7 @@
                     v-bind="selected"
                     tabindex="-1"
                     class="px-0"
+                    :class="{ 'opacity-50 cursor-not-allowed': loading }"
                 >
                     <AwSvgImage
                         v-if="loading"
