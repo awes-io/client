@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.72.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.71.2...basic-ui@1.72.0) (2020-09-21)
+
+
+### Features
+
+* dashboard charts update ([f0deac1](https://git.awescode.com/awes-io/client/commits/f0deac1d331c2c44200f4468774b6fe8fbe8431c))
+
+
+
+
+
 ## [1.71.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.71.1...basic-ui@1.71.2) (2020-08-26)
 
 **Note:** Version bump only for package basic-ui

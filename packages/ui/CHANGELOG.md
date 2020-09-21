@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.94.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.93.2...@awes-io/ui@1.94.0) (2020-09-21)
+
+
+### Bug Fixes
+
+* font generator fix ([cca9060](https://github.com/awes-io/client/commit/cca90608d5efe35bfc35d2d62d187e106dabd52e))
+
+
+### Features
+
+* dashboard charts update ([f0deac1](https://github.com/awes-io/client/commit/f0deac1d331c2c44200f4468774b6fe8fbe8431c))
+
+
+
+
+
 ## [1.93.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.93.1...@awes-io/ui@1.93.2) (2020-08-26)
 
 
