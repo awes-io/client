@@ -4,6 +4,7 @@
             <AwGrid :col="{ md: 3, lg: 4 }">
                 <AwDashboardCard
                     title="Revenue"
+                    subtitle="Sales"
                     number="$1 930"
                     description="This year"
                     footer="TOTAL VISITS: 20"
@@ -234,8 +235,8 @@
 export default {
     data() {
         return {
-            title: 'AwDashboardDonut',
-            headline: this._getTitle('AwDashboardDonut')
+            title: 'AwDashboardCard',
+            headline: this._getTitle('AwDashboardCard')
         }
     },
 
@@ -245,6 +246,7 @@ export default {
                 '<AwGrid :col="{ md: 3, lg: 4 }">',
                 '    <AwDashboardCard',
                 '        title="Revenue"',
+                '        subtitle="Sales"',
                 '        number="$1 930"',
                 '        description="This year"',
                 '        footer="TOTAL VISITS: 20"',

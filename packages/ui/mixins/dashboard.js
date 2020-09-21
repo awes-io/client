@@ -10,6 +10,11 @@ export default {
             required: true
         },
 
+        subtitle: {
+            type: String,
+            default: ''
+        },
+
         description: {
             type: String,
             default: ''

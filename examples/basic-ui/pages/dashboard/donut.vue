@@ -5,6 +5,7 @@
                 :data="data"
                 percent
                 title="Registrations"
+                subtitle="Last month"
                 description="Leads"
             />
 
@@ -17,9 +18,7 @@
 
             <AwDashboardDonut
                 :data="data"
-                :span="{ md: 2, lg: 2, xl: 1 }"
-                :colors="['green', 'blue']"
-                percent
+                :colors="['#00961e', '#0407c4']"
                 title="Registrations"
                 description="Leads"
             />
@@ -118,6 +117,7 @@ export default {
                 '        :data="data"',
                 '        percent',
                 '        title="Registrations"',
+                '        subtitle="Last month"',
                 '        description="Leads"',
                 '    />',
                 '',
@@ -131,8 +131,7 @@ export default {
                 '    <AwDashboardDonut',
                 '        :data="data"',
                 '        :span="{ md: 2, lg: 2, xl: 1 }"',
-                `        :colors="['green', 'blue']"`,
-                '        percent',
+                `        :colors="['#00961e', '#0407c4']"`,
                 '        title="Registrations"',
                 '        description="Leads"',
                 '    />',
@@ -140,6 +139,19 @@ export default {
             ]
 
             return arr.join('\n')
+        }
+    },
+
+    methods: {
+        update() {
+            this.data.elements = this.data.elements.map(el => {
+                el.value = Math.floor(Math.random() * Math.floor(100))
+                return el
+            })
+            this.data.total = this.data.elements.reduce(
+                (acc, el) => acc + el.value,
+                0
+            )
         }
     },
 

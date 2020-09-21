@@ -6,7 +6,7 @@
         class="dashboard-donut"
         @width-change="isWide = $event"
     >
-        <template #chart="chartData">
+        <template #chart>
             <div class="chart-wrapper">
                 <div class="dashboard__counter-wrapper">
                     <div class="dashboard__counter text-3xl">
@@ -17,12 +17,7 @@
                     </div>
                 </div>
 
-                <AwChart
-                    type="doughnut"
-                    :data="formatData(chartData)"
-                    :height="height"
-                    :options="chartOptions"
-                />
+                <AwChart :options="options" />
             </div>
         </template>
 
@@ -49,49 +44,51 @@ export default {
         height: {
             type: Number,
             default: 200
+        },
+        // apexcharts options
+        chartOptions: {
+            type: Object,
+            default: () => ({})
         }
     },
 
     data() {
         return {
-            isWide: false,
-            chartOptions: {
-                cutoutPercentage: 67,
-                tooltips: {
-                    enabled: false
-                },
-                legend: {
-                    display: false
-                }
-            }
+            isWide: false
         }
     },
 
-    methods: {
-        formatData(data) {
-            const obj = data.data.reduce(
+    computed: {
+        _formattedOptions() {
+            const arr = this.data.elements.filter(el => el.on_chart)
+            return arr.reduce(
                 (acc, val) => {
-                    acc.colors.push(val.color)
-                    acc.data.push(val.value)
+                    acc.series.push(val.value)
                     acc.labels.push(val.title)
                     return acc
                 },
                 {
-                    colors: [],
-                    data: [],
+                    series: [],
                     labels: []
                 }
             )
+        },
 
+        options() {
             return {
-                labels: obj.labels,
-                datasets: [
-                    {
-                        data: obj.data,
-                        backgroundColor: obj.colors,
-                        weight: 5
-                    }
-                ]
+                chart: {
+                    type: 'donut'
+                },
+                colors: this._mergedColors,
+                labels: this._formattedOptions.labels,
+                series: this._formattedOptions.series,
+                dataLabels: {
+                    enabled: false
+                },
+                legend: {
+                    show: false
+                },
+                ...this.chartOptions
             }
         }
     }

@@ -5,6 +5,7 @@
                 v-for="(item, index) in data"
                 :key="item.color"
                 :class="{ 'mt-4': index }"
+                :title="item.title"
                 class="flex items-center font-body text-xs"
             >
                 <span

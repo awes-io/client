@@ -9,17 +9,10 @@
 
             <AwDashboardSection
                 :data="data"
-                border-color="#45A4DC"
-                show-axis-legend
-                title="Registrations"
-                description="Registrations yesterday"
-            />
-
-            <AwDashboardSection
-                :data="data"
-                :span="{ md: 2, lg: 2, xl: 1 }"
-                border-color="#45A4DC"
-                background-color="rgba(69,164,220, 0.3)"
+                :colors="['#069e18']"
+                :fill-colors="['#c1d6c7']"
+                hide-x-labels
+                hide-y-labels
                 title="Registrations"
                 description="Registrations yesterday"
             />
@@ -105,25 +98,27 @@ export default {
                 '    />',
                 '',
                 '    <AwDashboardSection',
-                '        :data="data"',
-                '        border-color="#45A4DC"',
-                '        show-axis-legend',
-                '        title="Registrations"',
-                '        description="Registrations yesterday"',
-                '    />',
-                '',
-                '    <AwDashboardSection',
-                '        :data="data"',
-                '        :span="{ md: 2, lg: 2, xl: 1 }"',
-                '        border-color="#45A4DC"',
-                '        background-color="rgba(69,164,220, 0.3)"',
-                '        title="Registrations"',
-                '        description="Registrations yesterday"',
+                '       :data="data"',
+                `       :colors="['#069e18']"`,
+                `       :fill-colors="['#c1d6c7']"`,
+                '       hide-x-labels',
+                '       hide-y-labels',
+                '       title="Registrations"',
+                '       description="Registrations yesterday"',
                 '    />',
                 '</AwGrid>'
             ]
 
             return arr.join('\n')
+        }
+    },
+
+    methods: {
+        update() {
+            this.data.elements = this.data.elements.map(el => {
+                el.value = Math.floor(Math.random() * Math.floor(100))
+                return el
+            })
         }
     },
 
