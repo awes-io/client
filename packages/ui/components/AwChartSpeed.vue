@@ -24,6 +24,7 @@
                     viewBox="0 0 100 100"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    style="transform: translate(-2px, 5px)"
                 >
                     <path
                         d="M93 47.5C93 47.5 51.5376 53 48.5 53C45.4624 53 43 50.5376 43 47.5C43 44.4624 45.4624 42 48.5 42C51.5376 42 93 47.5 93 47.5Z"
@@ -104,7 +105,9 @@ export default {
     },
 
     mounted() {
-        this.arrowAngle = this._getArrowAngle()
+        setTimeout(() => {
+            this.arrowAngle = this._getArrowAngle()
+        }, 300)
     },
 
     methods: {

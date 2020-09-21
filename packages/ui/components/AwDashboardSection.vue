@@ -6,14 +6,9 @@
         ref="builder"
         class="dashboard-section"
     >
-        <template #chart="chartData">
+        <template #chart>
             <div class="chart-wrapper">
-                <AwChart
-                    type="line"
-                    :data="formatData(chartData)"
-                    :height="170"
-                    :options="chartOptions"
-                />
+                <AwChart v-if="isMounted" :options="options" />
             </div>
         </template>
     </aw-dashboard-builder>
@@ -33,103 +28,96 @@ export default {
     },
 
     props: {
-        // fill color if present
-        backgroundColor: String,
-
-        // Color of line
-        borderColor: String,
-
-        // If enabled shows bottom legend
-        showAxisLegend: {
+        // Colors to fill area. By default - same as colors
+        fillColors: {
+            type: Array,
+            default: () => []
+        },
+        // If true - hides x axis labels
+        hideXLabels: {
             type: Boolean,
             default: false
+        },
+        // If true - hides y axis labels
+        hideYLabels: {
+            type: Boolean,
+            default: false
+        },
+        // apexcharts options
+        chartOptions: {
+            type: Object,
+            default: () => ({})
         }
     },
 
     data() {
         return {
-            chartOptions: null
+            isMounted: false
         }
     },
 
     computed: {
-        _baseStyleOptions() {
-            return {
-                borderColor: this.borderColor || this._mergedColors[0],
-                backgroundColor: this.backgroundColor || 'transparent',
-                pointRadius: 2,
-                pointHoverRadius: 5,
-                fill: 'start'
-            }
-        }
-    },
-
-    created() {
-        this.chartOptions = this._prepareConfig()
-    },
-
-    methods: {
-        _prepareConfig() {
-            return {
-                maintainAspectRatio: false,
-                legend: {
-                    display: false
-                },
-                scales: {
-                    xAxes: [
-                        {
-                            ticks: {
-                                display: this.showAxisLegend,
-                                suggestedMin: -1,
-                                padding: -20,
-                                callback: (value, index, values) => {
-                                    return index && index + 1 !== values.length
-                                        ? value
-                                        : null
-                                }
-                            },
-                            gridLines: {
-                                borderDash: [2, 2],
-                                drawTicks: false,
-                                zeroLineWidth: 0
-                            }
-                        }
-                    ],
-                    yAxes: [
-                        {
-                            display: false,
-                            ticks: {
-                                suggestedMin: -1
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-
-        formatData(data) {
-            const obj = data.data.reduce(
+        _formattedOptions() {
+            const arr = this.data.elements.filter(el => el.on_chart)
+            return arr.reduce(
                 (acc, val) => {
-                    acc.data.push(val.value)
+                    acc.series.push(val.value)
                     acc.labels.push(val.title)
                     return acc
                 },
                 {
-                    data: [],
+                    series: [],
                     labels: []
                 }
             )
+        },
 
+        options() {
             return {
-                labels: obj.labels,
-                datasets: [
+                series: [
                     {
-                        data: obj.data,
-                        ...this._baseStyleOptions
+                        name: this.title,
+                        data: this._formattedOptions.series
                     }
-                ]
+                ],
+                chart: {
+                    type: 'area'
+                },
+                colors: this._mergedColors,
+                fill: {
+                    colors: [...this.fillColors, ...this._mergedColors]
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                legend: {
+                    show: false
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                xaxis: {
+                    categories: this._formattedOptions.labels,
+                    labels: {
+                        show: !this.hideXLabels
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        show: !this.hideYLabels
+                    }
+                },
+                markers: { size: 5, hover: { size: 9 } },
+                ...this.chartOptions
             }
         }
+    },
+
+    mounted() {
+        // Need to wait if navbar is closed, or apexchart calculates wrong width
+        setTimeout(() => {
+            this.isMounted = true
+        }, 250)
     }
 }
 </script>

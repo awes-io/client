@@ -11,7 +11,11 @@
     }
 
     & &__title {
-        @apply flex justify-between items-center mb-5 mt-4 px-4 font-heading font-bold text-on-muted-dark leading-none tracking-wide;
+        @apply flex justify-between items-center mb-1 mt-4 px-4 font-heading font-bold text-on-muted-dark leading-none tracking-wide;
+    }
+
+    & &__subtitle {
+        @apply text-on-muted-dark leading-none tracking-wide px-4 text-sm mb-1;
     }
 
     & &__description {
@@ -49,7 +53,7 @@
 
     & &__chart {
         @apply flex-shrink-0 text-center flex-auto ml-8 pr-6 mb-4;
-        min-width: 240px;
+        /* min-width: 240px; */
     }
 
     & &__legend {
@@ -109,10 +113,6 @@
         flex-grow: 1;
         max-width: 330px;
         flex-basis: 100%;
-    }
-
-    &.is-wide .chart-wrapper {
-        /* @apply my-4; */
     }
 
     &__has-chart &__content {
@@ -191,10 +191,15 @@
         @apply px-0 mt-8;
         width: 100%;
         max-width: 100%;
-        max-height: 300px;
     }
 
     &-section &__content {
         @apply mb-0;
+    }
+}
+
+@media (min-width: 1400px) {
+    .dashboard {
+        overflow: hidden;
     }
 }

@@ -8,14 +8,22 @@
         ref="card"
     >
         <div :class="_cssClasses.header">
-            <span :class="_cssClasses.title">{{ title }}</span>
+            <div class="mb-5">
+                <div :class="_cssClasses.title">
+                    {{ title }}
+                </div>
+
+                <div :class="_cssClasses.subtitle">
+                    {{ subtitle }}
+                </div>
+            </div>
 
             <div :class="$options._config.filter">
                 <slot name="filter"></slot>
             </div>
         </div>
 
-        <div class="flex h-full">
+        <div v-if="isMounted" class="flex h-full">
             <div class="min-w-0 flex-auto left-col flex flex-col">
                 <div
                     :class="[
@@ -49,8 +57,8 @@
                         </div>
                     </div>
 
-                    <div v-show="!_isWide">
-                        <slot v-bind:data="chartData" name="chart"></slot>
+                    <div v-if="!_isWide">
+                        <slot name="chart" v-bind:data="chartData"></slot>
                     </div>
                 </div>
 
@@ -64,7 +72,7 @@
                 </div>
             </div>
 
-            <div v-show="_isWide" :class="_cssClasses.chart">
+            <div v-if="_isWide" :class="_cssClasses.chart">
                 <slot name="image"></slot>
                 <div class="w-full">
                     <slot name="chart" v-bind:data="chartData"></slot>
@@ -119,6 +127,7 @@ export default {
 
     data() {
         return {
+            isMounted: false,
             isWide: false,
             timeout: null
         }
@@ -136,7 +145,8 @@ export default {
                     'counter',
                     'filter',
                     'content',
-                    'chart'
+                    'chart',
+                    'subtitle'
                 ])
             }
         },
@@ -174,6 +184,7 @@ export default {
     mounted() {
         this.toggleResizeListener(true)
         this.checkIfWide()
+        this.isMounted = true
     },
 
     beforeDestroy() {

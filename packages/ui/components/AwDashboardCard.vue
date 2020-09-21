@@ -1,15 +1,16 @@
 <template>
     <AwCard
         :class="[_cssClasses.base, `border-${color}`, { 'is-open': isOpen }]"
+        @mouseleave.native="isOpen = false"
     >
         <div ref="content">
             <!-- Default slot -->
             <slot>
-                <h6 :class="_cssClasses.title">{{ title }}</h6>
-                <h1 :class="_cssClasses.number">{{ number }}</h1>
-                <p :class="_cssClasses.description">{{ description }}</p>
-
-                <p :class="_cssClasses.footer">{{ footer }}</p>
+                <div :class="_cssClasses.title">{{ title }}</div>
+                <div :class="_cssClasses.subtitle">{{ subtitle }}</div>
+                <div :class="_cssClasses.number">{{ number }}</div>
+                <div :class="_cssClasses.description">{{ description }}</div>
+                <div :class="_cssClasses.footer">{{ footer }}</div>
             </slot>
         </div>
 
@@ -17,6 +18,7 @@
             v-if="!hideButton"
             :class="[_cssClasses.background, `bg-${color}`]"
             :style="isOpen ? `transform: scale(${bgScale})` : ''"
+            @mouseenter="onMouseEnter"
         />
 
         <transition name="fade-dashboard-card">
@@ -37,7 +39,9 @@
             "
             :icon="icon"
             size="xs"
-            @click="isOpen = !isOpen"
+            @click="onButtonClick"
+            @mouseenter="onMouseEnter"
+            @mouseleave="cancelBgAnimation"
         />
     </AwCard>
 </template>
@@ -45,7 +49,8 @@
 <script>
 import { getBemClasses } from '../assets/js/css'
 
-const DEBOUNCE = 250
+const DEBOUNCE = 350
+let animationTimeout = null
 
 export default {
     name: 'AwDashboardCard',
@@ -62,6 +67,8 @@ export default {
         },
 
         title: String,
+
+        subtitle: String,
 
         number: String,
 
@@ -85,6 +92,7 @@ export default {
     data() {
         return {
             isOpen: false,
+            isAnimating: false,
             bgScale: 20,
             resizeTimeout: null
         }
@@ -103,7 +111,8 @@ export default {
                     'button',
                     'background',
                     'content',
-                    'wrapper'
+                    'wrapper',
+                    'subtitle'
                 ])
             }
         }
@@ -126,7 +135,7 @@ export default {
             const height = this.$refs.content.offsetWidth
             const max = width > height ? width : height
             // 20 - ibitial background size
-            this.bgScale = Math.ceil((max + 18) / 20) * 2.5
+            this.bgScale = Math.ceil((max + 18) / 20) * 3
         },
 
         toggleResizeListener(add = true) {
@@ -141,6 +150,31 @@ export default {
             this.resizeTimeout = setTimeout(() => {
                 this._getMaxSize()
             }, DEBOUNCE)
+        },
+
+        onMouseEnter() {
+            // wait for the end of animation
+            this.blockAnimationClick(DEBOUNCE + 350)
+            animationTimeout = setTimeout(() => {
+                this.isOpen = true
+            }, DEBOUNCE)
+        },
+
+        cancelBgAnimation() {
+            clearTimeout(animationTimeout)
+        },
+
+        onButtonClick() {
+            if (this.isAnimating) return
+            this.isOpen = !this.isOpen
+            this.blockAnimationClick()
+        },
+
+        blockAnimationClick(delay = 350) {
+            this.isAnimating = true
+            setTimeout(() => {
+                this.isAnimating = false
+            }, delay)
         }
     }
 }

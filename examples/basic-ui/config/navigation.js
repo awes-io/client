@@ -53,7 +53,6 @@ export const navigation = [
     { title: 'Button', url: '/aw-button', description: '' },
     { title: 'Calendar', url: '/aw-calendar', description: '' },
     { title: 'Card', url: '/aw-card', description: '' },
-    { title: 'Chart', url: '/aw-chart', description: '' },
     { title: 'Checkbox', url: '/aw-checkbox', description: '' },
     { title: 'Chip', url: '/aw-chip', description: '' },
     {

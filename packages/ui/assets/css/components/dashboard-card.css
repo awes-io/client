@@ -3,16 +3,17 @@
     @apply max-w-full w-full border-l-2 relative overflow-hidden;
 
     & &__title {
-        @apply text-sm font-body font-bold tracking-wide leading-snug mb-2;
+        @apply text-sm font-body tracking-wide leading-snug mb-1;
     }
 
     & &__number {
-        @apply text-3xl font-bold m-0 leading-snug; 
+        @apply text-3xl font-bold m-0 leading-snug;
     }
 
     & &__description,
+    & &__subtitle,
     & &__footer {
-        @apply text-xs text-disabled m-0 font-bold;
+        @apply text-xs text-disabled m-0;
     }
 
     & &__footer {
@@ -20,7 +21,7 @@
     }
 
     & &__button {
-        @apply absolute rounded-full shadow-none z-30;
+        @apply absolute rounded-full shadow-none z-20;
         top: 18px;
         right: 18px;
 
@@ -35,7 +36,7 @@
         right: 19px;
         width: 20px;
         height: 20px;
-        transition-duration: 0.4s;
+        transition-duration: 0.25s;
         transition-timing-function: ease-out;
     }
 
@@ -51,7 +52,7 @@
     /* Opened styles */
     &.is-open &__background {
         /* transform: scale(50); */
-        transition-duration: .7s;
+        transition-duration: .4s;
         transition-timing-function: cubic-bezier(.39,.65,.51,.74);
     }
 }

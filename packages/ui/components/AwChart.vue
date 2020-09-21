@@ -1,6 +1,6 @@
 <template>
     <div class="chart">
-        <canvas :height="`${height}px`" ref="canvas"></canvas>
+        <div ref="chart"></div>
     </div>
 </template>
 <script>
@@ -13,83 +13,49 @@ export default {
     name: 'AwChart',
 
     props: {
-        // Components uses same structure as chart.js (https://www.chartjs.org/docs/2.9.3/)
-        data: {
+        // https://apexcharts.com/docs/
+        options: {
             type: Object,
             required: true
-        },
-
-        show: {
-            type: Boolean,
-            default: true
-        },
-
-        options: Object,
-        // List of all types - https://www.chartjs.org/docs/2.9.3/charts/
-        type: {
-            type: String,
-            default: 'line'
-        },
-
-        height: {
-            type: Number,
-            default: 150
         }
     },
 
     data() {
         return {
             chart: null,
-            tooltip: false,
-            libUrl:
-                'https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'
+            libUrl: ['https://cdn.jsdelivr.net/npm/apexcharts']
         }
     },
 
     watch: {
-        show(isShown) {
-            if (!this.chart) return
-            this.chart[isShown ? 'update' : 'reset']()
-            this.chart.render()
-        },
-
-        data(newData, oldData) {
-            if (!equals(newData, oldData)) {
-                if (this.chart) {
-                    this.chart.data = newData
-                    this.chart.update()
-                } else {
-                    this.generateChart()
-                }
-            }
-        },
-
-        type(newType, oldType) {
-            if (newType !== oldType) {
-                this.destroyChart()
-                this.generateChart()
+        options(newData, oldData) {
+            if (!equals(newData, oldData) && this.chart) {
+                this.chart.updateOptions(newData)
             }
         }
     },
 
+    async mounted() {
+        await this.$nextTick()
+        await this.init()
+        this.generateChart()
+    },
+
+    beforeDestroy() {
+        this.destroyChart()
+    },
+
     methods: {
         generateChart() {
-            if (this.data && !this.data.datasets) {
-                throw new Error('Charts: datasets expected in data prop')
+            if (!this.options.series) {
+                throw new Error('Charts: data series expected in series prop')
             } else {
-                this.chart = new window.Chart(
-                    this.$refs.canvas.getContext('2d'),
-                    {
-                        type: this.type,
-                        data: this.data,
-                        options: this.options
-                    }
+                this.chart = new window.ApexCharts(
+                    this.$refs.chart,
+                    this.options
                 )
+                this.chart.render()
             }
-        },
-
-        destroyChart() {
-            if (this.chart) this.chart.destroy()
         },
 
         init() {
@@ -100,26 +66,16 @@ export default {
                           error: reject
                       })
                   )
-                : loadjs([this.libUrl], CHART_ID, {
+                : loadjs([...this.libUrl], CHART_ID, {
                       returnPromise: true
                   })
         },
 
-        isInited() {
-            return loadjs.isDefined(CHART_ID)
+        destroyChart() {
+            if (this.chart) {
+                this.chart.destroy()
+            }
         }
-    },
-
-    async mounted() {
-        await this.$nextTick()
-        if (!('Chart' in window)) {
-            await this.init()
-        }
-        this.generateChart()
-    },
-
-    beforeDestroy() {
-        this.destroyChart()
     }
 }
 </script>
