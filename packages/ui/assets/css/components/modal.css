@@ -114,6 +114,7 @@ $modal-aside-width-large: 75vw;
 
         &__body {
             overflow: auto;
+            flex: 1;
         }
     }
 
