@@ -62,7 +62,7 @@
                         class="text-brand animation-rotate"
                     />
                     <AwIcon
-                        v-else
+                        v-if="!isLoading && optionsList.length"
                         key="arrow"
                         name="triangle-d"
                         size="xl"
