@@ -14,6 +14,7 @@
                     >link.</AwLink
                 >
             </AwCard>
+
             <div>
                 <h4 class="h4">Default</h4>
                 <AwInfo label="My awesome title">
@@ -22,6 +23,7 @@
                 <AwCodeSnippet v-text="codeDefault" class="mt-2" />
                 <hr />
             </div>
+
             <div>
                 <h4 class="h4">With help icon</h4>
                 <AwInfo label="My awesome title" help="Tooltip with help infos">
@@ -30,6 +32,7 @@
                 <AwCodeSnippet v-text="codeHelper" class="mt-2" />
                 <hr />
             </div>
+
             <div>
                 <h4 class="h4">Custom icon</h4>
                 <AwInfo label="My awesome title">
@@ -44,6 +47,17 @@
                 </AwInfo>
                 <AwCodeSnippet v-text="codeCustom" class="mt-2" />
             </div>
+
+            <div>
+                <h4 class="h4">Default slot empty value</h4>
+                <AwSwitcher v-model="isOpen" label="Show text" />
+
+                <AwInfo label="My awesome title">
+                    {{ isOpen ? 'Some async text to show later ' : '' }}
+                </AwInfo>
+
+                <AwCodeSnippet v-text="codeDefaultSlot" class="mt-2" />
+            </div>
         </AwGrid>
     </AwPage>
 </template>
@@ -53,7 +67,8 @@ export default {
     data() {
         return {
             title: 'AwInfo',
-            headline: this._getTitle('AwInfo')
+            headline: this._getTitle('AwInfo'),
+            isOpen: false
         }
     },
 
@@ -85,6 +100,16 @@ export default {
                 '        />',
                 '    </template>',
                 '   Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                '</AwInfo>'
+            ]
+            return arr.join('\n')
+        },
+        codeDefaultSlot() {
+            const arr = [
+                '<AwSwitcher v-model="isOpen" label="Show text" />',
+                '',
+                '<AwInfo label="My awesome title">',
+                "    {{ isOpen ? 'Some async text to show later ' : '' }}",
                 '</AwInfo>'
             ]
             return arr.join('\n')
