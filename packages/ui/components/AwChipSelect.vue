@@ -13,7 +13,15 @@
                     v-bind="selected"
                     tabindex="-1"
                     class="px-0"
+                    :class="{ 'opacity-50 cursor-not-allowed': loading }"
                 >
+                    <AwSvgImage
+                        v-if="loading"
+                        name="spinner"
+                        slot="left"
+                        class="h-5 w-5"
+                    />
+
                     <template #right>
                         <AwIcon
                             v-if="!readonly"
