@@ -2,8 +2,6 @@ export default () => ({
     menu: {},
     userMenu: {},
     navbarMenu: {},
-    headerNotification: {
-        show: true
-    },
+    headerNotification: null,
     isDarkTheme: false
 })
