@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.95.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.94.0...@awes-io/ui@1.95.0) (2020-09-30)
+
+
+### Bug Fixes
+
+* AwChipSelect add loading animation ([4f9bac8](https://github.com/awes-io/client/commit/4f9bac8c9c7480adee602d998f6fbfd6607b368e))
+* fix AwInfo reactivity ([2cc209b](https://github.com/awes-io/client/commit/2cc209b7ce991baa78a83a279553a610d6c7b959))
+* fullscreen modal body overflow ([589079c](https://github.com/awes-io/client/commit/589079cde91b26a9afbedb4275c4c2cfa87d9836))
+
+
+### Features
+
+* header notification improvements ([2470a26](https://github.com/awes-io/client/commit/2470a262028c12721db21ef8c6a69ced67c42ca4))
+* hide select arrow icon if no options ([25ba58d](https://github.com/awes-io/client/commit/25ba58dc902565f59894ccb502cea3d05a9cfb72))
+
+
+
+
+
 # [1.94.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.93.2...@awes-io/ui@1.94.0) (2020-09-21)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.73.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.72.0...basic-ui@1.73.0) (2020-09-30)
+
+
+### Bug Fixes
+
+* fix AwInfo reactivity ([2cc209b](https://git.awescode.com/awes-io/client/commits/2cc209b7ce991baa78a83a279553a610d6c7b959))
+* fullscreen modal body overflow ([589079c](https://git.awescode.com/awes-io/client/commits/589079cde91b26a9afbedb4275c4c2cfa87d9836))
+
+
+### Features
+
+* hide select arrow icon if no options ([25ba58d](https://git.awescode.com/awes-io/client/commits/25ba58dc902565f59894ccb502cea3d05a9cfb72))
+
+
+
+
+
 # [1.72.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.71.2...basic-ui@1.72.0) (2020-09-21)
 
 
