@@ -35,8 +35,8 @@ export default {
             : addMenuItem(state, items)
     },
 
-    CLOSE_HEADER_NOTIFICATION(state) {
-        state.headerNotification.show = false
+    SET_HEADER_NOTIFICATION(state, data = null) {
+        state.headerNotification = data
     },
 
     SET_DARK_THEME(state, isDarkTheme = false) {

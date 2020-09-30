@@ -4,20 +4,32 @@
         <template #before-header>
             <Transition name="collapse">
                 <div
+                    v-show="showNotify"
                     v-if="notification"
                     class="layout__notification"
                     :class="`bg-${notification.type}`"
                 >
                     <span v-html="notification.text"></span>
 
+                    <template v-if="Array.isArray(notification.buttons)">
+                        <AwButton
+                            v-for="({ listeners, ...btn },
+                            i) in notification.buttons"
+                            :key="i"
+                            v-bind="btn"
+                            v-on="listeners"
+                            size="sm"
+                            class="ml-4"
+                        />
+                    </template>
+
                     <AwButton
+                        v-if="notification.closable"
                         class="layout__close"
                         icon="close"
                         theme="ghost"
                         content-class="p-2 text-surface"
-                        @click="
-                            $store.commit('awesIo/CLOSE_HEADER_NOTIFICATION')
-                        "
+                        @click="showNotify = false"
                     ></AwButton>
                 </div>
             </Transition>
@@ -94,6 +106,12 @@ export default {
 
     mixins: [layoutMixin],
 
+    data() {
+        return {
+            showNotify: false
+        }
+    },
+
     computed: {
         ...mapGetters('awesIo', [
             'mainMenu',
@@ -117,14 +135,16 @@ export default {
         },
 
         notification() {
-            return (
-                this.isHeaderNotificationShown &&
-                pathOr(
-                    null,
-                    ['state', 'auth', 'user', 'notification'],
-                    this.$store
-                )
-            )
+            return pathOr(null, '$store.state.awesIo.headerNotification', this)
+        }
+    },
+
+    watch: {
+        notification: {
+            handler(data) {
+                this.showNotify = !!data
+            },
+            immediate: true
         }
     }
 }
