@@ -4,7 +4,7 @@ export function mergeRoutes(existingRoutes, newRoutes) {
             ({ path }) => path === newRoute.path
         )
 
-        if (existing && existing.children) {
+        if (existing && existing.children && newRoute.children) {
             return mergeRoutes(existing.children, newRoute.children)
         }
 
