@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.96.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.95.0...@awes-io/ui@1.96.0) (2020-10-06)
+
+
+### Features
+
+* **aw-address:** more information from places api + timezone prop ([35bf2e2](https://github.com/awes-io/client/commit/35bf2e2f89deb90ac96d6c8edb9563d5276807a2))
+
+
+
+
+
 # [1.95.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.94.0...@awes-io/ui@1.95.0) (2020-09-30)
 
 
