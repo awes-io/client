@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { pathOr, pick } from 'rambdax'
 import gmMixin from '../mixins/google-maps'
 
 export default {
@@ -44,7 +45,10 @@ export default {
         queryOptions: {
             type: Object,
             default: null
-        }
+        },
+
+        /* Make additional request to get timezone */
+        timezone: Boolean
     },
 
     data() {
@@ -131,12 +135,73 @@ export default {
                     response[types[0]] = long_name
                 })
 
-                response.location = details.geometry.location
+                response.location = {
+                    lat: details.geometry.location.lat(),
+                    lng: details.geometry.location.lng()
+                }
 
-                return response
+                response.utc_offset = details.utc_offset_minutes
+
+                response.place = {
+                    id: details.place_id,
+                    types: details.types,
+                    name: details.name,
+                    rating: details.rating,
+                    phone: details.international_phone_number,
+                    photos: pathOr([], 'photos', details).map(
+                        this._getPhotoAttrs
+                    ),
+                    schedule: pathOr([], 'opening_hours.periods', details),
+                    google_maps_link: details.url,
+                    website: details.website
+                }
+
+                if (this.timezone) {
+                    return this._getTimeZone(response.location).then(
+                        timezone => {
+                            return {
+                                ...response,
+                                ...timezone
+                            }
+                        }
+                    )
+                } else {
+                    return Promise.resolve(response)
+                }
             }
 
-            return null
+            return Promise.resolve(null)
+        },
+
+        _getPhotoAttrs(photo) {
+            return {
+                ...pick('width,height', photo),
+                src: photo.getUrl()
+            }
+        },
+
+        _getTimeZone({ lat, lng }) {
+            return this.$axios
+                .request({
+                    url: 'https://maps.googleapis.com/maps/api/timezone/json',
+                    params: {
+                        location: `${lat},${lng}`,
+                        timestamp: Math.floor(new Date().getTime() / 1000),
+                        key: this.gmKey
+                    }
+                })
+                .then(({ data }) => {
+                    return {
+                        timezone: data.timeZoneId,
+                        timezone_name: data.timeZoneName
+                    }
+                })
+                .catch(() => {
+                    return {
+                        timezone: undefined,
+                        timezone_name: undefined
+                    }
+                })
         },
 
         select(place) {
@@ -155,7 +220,9 @@ export default {
                     this.place = details
                     this.placeDescription = details.formatted_address
                     this._resetSearch()
-                    this.$emit('input', this._formatAddressResponse(details))
+                    this._formatAddressResponse(details).then(result => {
+                        this.$emit('input', result)
+                    })
                 }
             )
         }
