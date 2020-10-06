@@ -11,7 +11,7 @@ export default {
         password: 'Password',
         passwordConfirm: 'Confirm password',
         rememberMe: 'Remember me',
-        forgotPassword: 'Forgot password?',
+        forgotPassword: 'Reset password',
         noAccount: "Don't have an account?",
         haveAccount: 'Already have an account?',
         login: 'Sign In',

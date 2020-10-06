@@ -11,7 +11,7 @@ export default {
         password: 'Пароль',
         passwordConfirm: 'Подтвердите пароль',
         rememberMe: 'Запомнить меня',
-        forgotPassword: 'Забыли пароль?',
+        forgotPassword: 'Сбросить пароль',
         noAccount: 'У Вас нет аккаунта?',
         haveAccount: 'Уже есть аккаунт?',
         login: 'Войти в систему',
