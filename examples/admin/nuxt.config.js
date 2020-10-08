@@ -21,6 +21,7 @@ export default {
         '@awes-io/nuxt-admin',
         '@awes-io/nuxt-i18n'
     ],
+
     i18n: {
         defaultLocale: 'en',
         locales: [
@@ -34,6 +35,7 @@ export default {
             }
         ]
     },
+
     axios: {
         proxy: true
     },
@@ -41,6 +43,12 @@ export default {
     proxy: {
         '/api/': {
             target: process.env.APP_SERVICE_API || '/'
+        }
+    },
+
+    awesIo: {
+        nuxtAuth: {
+            socialLogin: true
         }
     }
 }
