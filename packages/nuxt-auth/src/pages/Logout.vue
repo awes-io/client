@@ -1,16 +1,19 @@
 <script>
+import { pathOr } from 'rambdax'
+
 export default {
     name: 'PageLogout',
 
-    // fake render
+    layout: 'empty',
+
     render(h) {
         return h('div')
     },
 
-    beforeRouteEnter(toRoute, fromRoute, next) {
-        next(vm => {
-            vm.$auth.logout()
-        })
+    async mounted() {
+        await this.$auth.logout()
+        const loginUrl = pathOr('/login', 'options.redirect.login', this.$auth)
+        this.$router.push(loginUrl)
     }
 }
 </script>
