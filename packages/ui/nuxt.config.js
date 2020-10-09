@@ -4,7 +4,8 @@ export default {
     mode: 'universal',
 
     head: {
-        title: 'Awes.io UI',
+        title: 'Awes.io UI', 
+        
         // htmlAttrs: {
         //     'data-dark': true
         // },
