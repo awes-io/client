@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.96.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.96.0...@awes-io/ui@1.96.1) (2020-10-09)
+
+
+### Bug Fixes
+
+* **aw-layout-default:** header-notification styles updated ([0ca671a](https://github.com/awes-io/client/commit/0ca671ac47d489987b3563b3c12f1a6f9cf9ff83))
+
+
+
+
+
 # [1.96.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.95.0...@awes-io/ui@1.96.0) (2020-10-06)
 
 
