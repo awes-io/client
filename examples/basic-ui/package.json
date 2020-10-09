@@ -1,6 +1,6 @@
 {
     "name": "basic-ui",
-    "version": "1.73.2",
+    "version": "1.73.3",
     "private": true,
     "scripts": {
         "build": "nuxt build",
@@ -10,7 +10,7 @@
         "start": "nuxt start"
     },
     "dependencies": {
-        "@awes-io/ui": "^1.96.1",
+        "@awes-io/ui": "^1.97.0",
         "@awes-io/vue-mc": "^0.3.0",
         "@fortawesome/fontawesome-free": "^5.13.1",
         "@nuxtjs/axios": "^5.0.0",
