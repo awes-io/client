@@ -6,15 +6,53 @@
     }
 
     &__notification {
-        @apply py-3 pl-8 pr-12 flex justify-center items-center font-body text-sm relative;
+        @apply text-sm relative;
+    }
+
+    &__notification-container {
+        @apply flex justify-center items-center flex-wrap;
         min-height: theme('spacing.16');
     }
 
+    &__notification--close .container {
+        @apply pr-12;
+    }
+
     &__close {
-        @apply absolute;
+        @apply absolute p-2;
         top: theme('spacing.8');
         right: theme('spacing.4');
         transform: translateY(-50%);
+
+        &:before {
+            content: '';
+            background-color: currentColor;
+            opacity: 0;
+            transition: 120ms opacity;
+            @apply absolute inset-0 rounded;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        & > svg {
+            position: relative;
+            fill: currentColor;
+        }
+
+        & > svg:focus {
+            outline: none;
+        }
+
+        &:hover:before,
+        &:focus:before {
+            opacity: 0.3;
+        }
+
+        &:active:before {
+            opacity: 0.2;
+        }
     }
 
     &__container {
@@ -85,6 +123,10 @@
             &.is-wide {
                 padding-left: theme('spacing.10');
             }
+        }
+
+        &__notification-container {
+            @apply flex-no-wrap;
         }
 
         &&--simple &__content {

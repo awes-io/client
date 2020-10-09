@@ -7,30 +7,52 @@
                     v-show="showNotify"
                     v-if="notification"
                     class="layout__notification"
-                    :class="`bg-${notification.type}`"
+                    :class="[
+                        `bg-${notification.type || 'surface'}`,
+                        { 'layout__notification--close': notification.closable }
+                    ]"
                 >
-                    <span v-html="notification.text"></span>
+                    <span class="layout__notification-container container">
+                        <span
+                            v-html="notification.text"
+                            class="block px-2 my-2"
+                        ></span>
 
-                    <template v-if="Array.isArray(notification.buttons)">
-                        <AwButton
-                            v-for="({ listeners, ...btn },
-                            i) in notification.buttons"
-                            :key="i"
-                            v-bind="btn"
-                            v-on="listeners"
-                            size="sm"
-                            class="ml-4"
-                        />
-                    </template>
+                        <span
+                            class="flex justify-center flex-wrap max-w-full flex-shrink-0 mx-auto lg:mx-0"
+                            v-if="Array.isArray(notification.buttons)"
+                        >
+                            <AwButton
+                                v-for="({ listeners, ...btn },
+                                i) in notification.buttons"
+                                :key="i"
+                                v-bind="btn"
+                                v-on="listeners"
+                                size="sm"
+                                class="m-2"
+                            />
+                        </span>
 
-                    <AwButton
-                        v-if="notification.closable"
-                        class="layout__close"
-                        icon="close"
-                        theme="ghost"
-                        content-class="p-2 text-surface"
-                        @click="showNotify = false"
-                    ></AwButton>
+                        <button
+                            v-if="notification.closable"
+                            class="layout__close"
+                            @click="showNotify = false"
+                        >
+                            <svg
+                                width="16"
+                                height="16"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                tabindex="-1"
+                            >
+                                <path
+                                    d="M19 2l-1-1-8 8-8-8-1 1 8 8-8 8 1 1 8-8 8 8 1-1-8-8 8-8z"
+                                />
+                            </svg>
+                        </button>
+                    </span>
                 </div>
             </Transition>
         </template>

@@ -9,6 +9,6 @@
         fill="currentColor"
         aria-hidden="true"
     >
-        <path d="M19 2l-1-1-8 8-8-8-1 1 8 8-8 8 1 1 8-8 8 8 1-1-8-8 8-8z"/>
+        <path d="M19 2l-1-1-8 8-8-8-1 1 8 8-8 8 1 1 8-8 8 8 1-1-8-8 8-8z" />
     </svg>
 </template>
