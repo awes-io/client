@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.15](https://git.awescode.com/awes-io/client/compare/example-admin@1.3.14...example-admin@1.3.15) (2020-10-10)
+
+
+### Bug Fixes
+
+* **nuxt-auth:** social login updated ([69dc62c](https://git.awescode.com/awes-io/client/commits/69dc62c4c13f93d9d47b5aa56f1ca94ac2622d41))
+
+
+
+
+
 ## [1.3.14](https://git.awescode.com/awes-io/client/compare/example-admin@1.3.13...example-admin@1.3.14) (2020-10-09)
 
 **Note:** Version bump only for package example-admin
