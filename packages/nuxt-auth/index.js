@@ -32,6 +32,7 @@ function AwesIoNuxtAuth() {
 
     // Add twofactor strategy
     _.set(this.options, 'auth.strategies.twofactor', twofactor)
+    _.set(this.options, 'auth.defaultStrategy', 'twofactor')
 
     // Add i18n redirect
     const authPlugins = _.get(this.options, 'auth.plugins', [])
