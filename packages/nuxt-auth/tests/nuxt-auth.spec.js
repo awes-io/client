@@ -1,14 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
-import NuxtAuth from '../src/components/NuxtAuth.vue'
+import Login from '../src/pages/Login.vue'
 
-describe('NuxtAuth.vue', () => {
+describe('Login page', () => {
     it('renders props.message when passed', () => {
-        const message = 'New message'
+        const wrapper = shallowMount(Login)
 
-        const wrapper = shallowMount(NuxtAuth, {
-            propsData: { message }
-        })
-
-        expect(wrapper.text()).toMatch(message)
+        expect(wrapper.isVueInstance()).toBe(true)
     })
 })

@@ -15,6 +15,7 @@
         "@awes-io/nuxt-auth": "^1.9.2",
         "@awes-io/ui": "^1.97.0",
         "@nuxtjs/axios": "^5.0.0",
+        "express": "^4.17.1",
         "nuxt": "^2.0.0",
         "nuxt-i18n": "^6.6.0"
     }

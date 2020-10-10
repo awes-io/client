@@ -1,5 +1,5 @@
 export default {
-    mode: 'spa',
+    ssr: true,
 
     head: {
         title: 'Admin module example',
@@ -17,9 +17,10 @@ export default {
         '@nuxtjs/axios',
         '@awes-io/ui/nuxt',
         '@awes-io/nuxt-auth',
-        '@awes-io/nuxt-profile',
-        '@awes-io/nuxt-admin',
-        '@awes-io/nuxt-i18n'
+        // '@awes-io/nuxt-profile',
+        // '@awes-io/nuxt-admin',
+        // '@awes-io/nuxt-i18n'
+        'nuxt-i18n'
     ],
 
     i18n: {
@@ -36,15 +37,18 @@ export default {
         ]
     },
 
-    axios: {
-        proxy: true
-    },
+    serverMiddleware: ['~/api'],
 
-    proxy: {
-        '/api/': {
-            target: process.env.APP_SERVICE_API || '/'
-        }
-    },
+    // uncomment for external API
+    //
+    // axios: {
+    //     proxy: true
+    // },
+    // proxy: {
+    //     '/api/': {
+    //         target: process.env.APP_SERVICE_API || '/'
+    //     }
+    // },
 
     awesIo: {
         nuxtAuth: {

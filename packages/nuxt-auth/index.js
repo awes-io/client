@@ -10,7 +10,7 @@ const twofactor = {
         login: {
             url: '/api/login',
             method: 'post',
-            propertyName: false
+            propertyName: 'meta.token'
         },
         logout: { url: '/api/logout', method: 'post' },
         verify: {
@@ -28,6 +28,7 @@ const twofactor = {
 function AwesIoNuxtAuth() {
     // add es6 transpiling
     this.options.build.transpile.push('@awes-io/nuxt-auth')
+    this.options.build.transpile.push('@nuxtjs/auth/lib/schemes/')
 
     // Add twofactor strategy
     _.set(this.options, 'auth.strategies.twofactor', twofactor)

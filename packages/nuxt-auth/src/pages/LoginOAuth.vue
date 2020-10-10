@@ -22,20 +22,11 @@ export default {
                 params: this.$route.query
             })
 
-            const user = data.data
             const token = data.meta.token
 
             // set token
             const twofactor = this.$auth.strategies.twofactor
-            const typedToken = twofactor._addTokenType(token)
-            this.$auth.setToken('twofactor', typedToken)
-            twofactor._setToken(typedToken)
-
-            // set user
-            this.$auth.setUser(user)
-
-            const homeUrl = pathOr('/', 'options.redirect.home', this.$auth)
-            this.$router.push(homeUrl)
+            await twofactor.setUserToken(token)
         } catch (e) {
             const message = pathOr(e.message, 'response.data.message', e)
             const statusCode = pathOr(500, 'response.status', e)
