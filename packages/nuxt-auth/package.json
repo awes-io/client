@@ -37,10 +37,11 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@awes-io/ui": "^0.1.0",
-        "@casl/ability": "^4.0.8",
-        "@casl/vue": "^1.0.3",
-        "@nuxtjs/auth": "^4.8.1"
+        "@awes-io/ui": "^1.96.0",
+        "@casl/ability": "^4.1.6",
+        "@casl/vue": "^1.1.1",
+        "@nuxtjs/auth": "^4.9.1",
+        "rambdax": "^6.2.0"
     },
     "release": {
         "extends": "@semantic-release/gitlab-config",

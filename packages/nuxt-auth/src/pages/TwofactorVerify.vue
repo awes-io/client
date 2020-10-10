@@ -3,7 +3,7 @@
         <p class="text-2xl text-center mb-4">
             {{ $t('AwesIoAuth.verifyTitle') }}
         </p>
-        <AwForm v-bind="endpoint" @sended="_setUser">
+        <AwForm v-bind="endpoint" @submit.prevent="send">
             <AwCode
                 v-model="token"
                 name="token"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { path, pathOr } from 'ramda'
+import { pathOr } from 'rambdax'
 
 export default {
     name: 'PageVerify',
@@ -30,11 +30,7 @@ export default {
 
     middleware: function({ $auth, redirect }) {
         if (!$auth.getToken('twofactor')) {
-            const loginUrl = pathOr(
-                '/',
-                ['options', 'redirect', 'login'],
-                $auth
-            )
+            const loginUrl = pathOr('/login', 'options.redirect.login', $auth)
             return redirect(loginUrl)
         }
     },
@@ -48,36 +44,31 @@ export default {
 
     computed: {
         endpoint() {
-            return path(
-                ['strategies', 'twofactor', 'options', 'endpoints', 'verify'],
+            return pathOr(
+                {},
+                'strategies.twofactor.options.endpoints.verify',
                 this.$auth
             )
         }
     },
 
     methods: {
-        async _setUser(data) {
-            const _token = path(['data', 'meta', 'token'], data)
-            const options = pathOr(
-                {},
-                ['$auth', 'strategies', 'twofactor', 'options'],
-                this
-            )
+        async send() {
+            try {
+                const { data } = await this.$axios.request({
+                    ...this.endpoint,
+                    data: { token: this.token }
+                })
+                const token = pathOr(false, 'meta.token', data)
 
-            const token = options.tokenType
-                ? options.tokenType + ' ' + _token
-                : _token
-
-            await this.$auth.setUserToken(token)
-            await this.$auth.fetchUser()
-
-            const homeUrl = pathOr(
-                '/',
-                ['options', 'redirect', 'home'],
-                this.$auth
-            )
-
-            this.$router.push(homeUrl)
+                // set token
+                const twofactor = this.$auth.strategies.twofactor
+                await twofactor.setUserToken(token)
+            } catch (e) {
+                const message = pathOr(e.message, 'response.data.message', e)
+                const statusCode = pathOr(500, 'response.status', e)
+                this.$nuxt.error({ message, statusCode })
+            }
         }
     }
 }
