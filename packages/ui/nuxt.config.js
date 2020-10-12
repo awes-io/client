@@ -4,8 +4,8 @@ export default {
     mode: 'universal',
 
     head: {
-        title: 'Awes.io UI', 
-        
+        title: 'Awes.io UI',
+
         // htmlAttrs: {
         //     'data-dark': true
         // },
@@ -37,6 +37,7 @@ export default {
     modules: ['@nuxtjs/axios', 'nuxt-i18n'],
 
     build: {
+        transpile: ['body-scroll-lock'],
         postcss: {
             plugins: {
                 'postcss-nested': {},

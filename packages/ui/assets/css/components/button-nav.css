@@ -18,7 +18,7 @@
     &__toggler {
         position: relative;
         flex-shrink: 0;
-        margin: 0 theme('spacing.1');
+        padding: 0 theme('spacing.1');
         border-radius: theme('borderRadius.default');
         min-width: theme('spacing.8');
         line-height: theme('lineHeight.relaxed');
@@ -33,7 +33,7 @@
         @apply bgcolor-muted-darker;
         content: '';
         position: absolute;
-        left: calc(-1 * theme('spacing.1'));
+        left: -1px;
         top: theme('spacing.1');
         bottom: theme('spacing.1');
         width: 1px;
@@ -52,8 +52,9 @@
         outline: theme('focusOutline', 'none');
     }
 
-    &__toggler_active {
+    &__toggler_active > div {
         @apply bgcolor-surface;
+        border-radius: theme('borderRadius.default');
         box-shadow: theme('boxShadow.default');
     }
 

@@ -14,7 +14,7 @@ function getBaseStyle(theme) {
         toggler: {
             display: 'flex',
             alignItems: 'center',
-            margin: `0 ${theme('spacing.3')}`,
+            padding: `0 ${theme('spacing.3')}`,
             fontSize: theme('fontSize.sm'),
             color: 'var(--c-disabled)',
             whiteSpace: 'nowrap'

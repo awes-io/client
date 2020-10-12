@@ -128,7 +128,8 @@ export default {
     methods: {
         _getItemValue(item) {
             if (!item.value && item.value !== 0) return ''
-            const val = this.percent ? Math.round(item.percent) : item.value
+            let val = this.percent ? Math.round(item.percent) : item.value
+            val = isFinite(val) && !isNaN(val) ? val : 0
             return this.template.replace('{value}', val)
         },
 

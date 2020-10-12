@@ -297,6 +297,10 @@ module.exports = {
         // borderWidth: ['responsive', 'first', 'hover', 'focus'],
         opacity: ['responsive', 'hover', 'focus', 'group-hover']
     },
+    future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true
+    },
     plugins: [
         require('tailwindcss-accessibility'),
         require('tailwindcss-typography')({
