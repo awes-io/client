@@ -80,24 +80,31 @@ function AwesIoUi(_options) {
         this.addLayout(
             {
                 fileName: join('awes-io', `${layout}.vue`),
-                src: resolve(__dirname, `./layouts/${layout}.vue`),
-                options
+                src: resolve(__dirname, `./layouts/${layout}.vue`)
             },
             options.deafaultLayout === layout ? 'default' : layout
         )
     })
 
     this.addLayout({
+        fileName: join('awes-io', 'LayoutFrameScreen.vue'),
+        src: resolve(__dirname, './layouts/LayoutFrameScreen.vue')
+    })
+
+    this.addLayout({
         fileName: join('awes-io', 'LayoutFrameCenter.vue'),
         src: resolve(__dirname, './layouts/LayoutFrameCenter.vue'),
-        options
+        options: _.pick(options, [
+            'backgroundDarkFrameCenter',
+            'backgroundFrameCenter',
+            'logo'
+        ])
     })
 
     this.addLayout(
         {
             fileName: join('awes-io', 'LayoutError.vue'),
-            src: resolve(__dirname, './layouts/LayoutError.vue'),
-            options
+            src: resolve(__dirname, './layouts/LayoutError.vue')
         },
         'error'
     )
@@ -105,8 +112,7 @@ function AwesIoUi(_options) {
     this.addLayout(
         {
             fileName: join('awes-io', 'LayoutEmpty.vue'),
-            src: resolve(__dirname, './layouts/LayoutEmpty.vue'),
-            options
+            src: resolve(__dirname, './layouts/LayoutEmpty.vue')
         },
         'empty'
     )

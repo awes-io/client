@@ -15,7 +15,10 @@
                 <slot />
             </div>
 
-            <div v-html="$t('AwLayoutDefault.footer')" class="pt-8"></div>
+            <div
+                v-html="$t('AwLayoutDefault.footer')"
+                class="pt-8 text-sm"
+            ></div>
         </div>
     </div>
 </template>
