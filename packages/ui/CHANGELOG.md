@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.98.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.97.1...@awes-io/ui@1.98.0) (2020-10-15)
+
+
+### Features
+
+* show default layout for 404 error ([1c1ed33](https://github.com/awes-io/client/commit/1c1ed332dbdeeb4b01f17e4af5f4d11306e3fcdb))
+
+
+
+
+
 ## [1.97.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.97.0...@awes-io/ui@1.97.1) (2020-10-12)
 
 
