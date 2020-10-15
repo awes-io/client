@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <AwLayoutFrameCenter
-            :logo="options.logo"
-            :background="background"
-        >
-            <Nuxt />
-        </AwLayoutFrameCenter>
-    </div>
+    <AwLayoutFrameCenter
+        :logo="options.logo"
+        :background="background"
+    >
+        <Nuxt />
+    </AwLayoutFrameCenter>
 </template>
 
 <script>
@@ -19,7 +17,7 @@ export default {
 
     computed: {
         options() {
-            return <%= JSON.stringify(_.pick(options, [ 'backgroundDarkFrameCenter', 'backgroundFrameCenter', 'logo' ])) %>
+            return <%= JSON.stringify(options) %>
         },
 
         background() {
