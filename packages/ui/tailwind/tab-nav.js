@@ -14,25 +14,20 @@ function getBaseStyle(theme) {
         toggler: {
             display: 'flex',
             alignItems: 'center',
-            padding: `0 ${theme('spacing.3')}`,
+            padding: `theme('spacing.2') ${theme('spacing.3')}`,
             fontSize: theme('fontSize.sm'),
             color: 'var(--c-disabled)',
             whiteSpace: 'nowrap'
         },
-        'toggler > div': {
+        'toggler > span': {
             height: '100%',
-            padding: `${theme('spacing.2')} 0`,
-            borderBottom: '2px solid transparent',
-            transition: 'color 300ms, border-color 300ms',
-            position: 'relative'
-        },
-        'toggler > div > span': {
+            padding: `${theme('spacing.3')} ${theme('spacing.1')}`,
+            transition: 'color 300ms',
+            position: 'relative',
             display: 'flex',
-            alignItems: 'center',
-            height: '100%',
-            padding: `${theme('spacing.3')} ${theme('spacing.1')}`
+            alignItems: 'center'
         },
-        'toggler > div:before': {
+        'toggler > span:before': {
             content: '""',
             left: `-${theme('spacing.3')}`,
             position: 'absolute',
@@ -43,7 +38,18 @@ function getBaseStyle(theme) {
             display: 'block',
             borderLeft: '1px solid var(--c-muted-dark)'
         },
-        'toggler:first-child > div:before': {
+        'toggler > span:after': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            bottom: `-${theme('spacing.2')}`,
+            left: 0,
+            right: 0,
+            height: '2px',
+            backgroundColor: 'transparent',
+            transition: 'background-color 300ms'
+        },
+        'toggler:first-child > span:before': {
             content: 'none'
         },
         'toggler:hover': {
@@ -52,19 +58,19 @@ function getBaseStyle(theme) {
         'toggler:focus': {
             outline: 'none'
         },
-        'toggler > div > span:focus': {
+        'toggler > span:focus': {
             outline: 'none'
         },
-        'toggler > div:focus': {
-            outline: 'none'
-        },
-        'toggler:focus > div > span': {
+        'toggler:focus > span': {
             color: 'var(--c-on-surface)',
             outline: theme('focusOutline', 'none')
         },
-        'toggler_active > div': {
+        'toggler_active > span': {
+            color: 'var(--c-on-surface)'
+        },
+        'toggler_active > span:after': {
             color: 'var(--c-on-surface)',
-            borderColor: 'var(--c-brand)'
+            backgroundColor: 'var(--c-brand)'
         }
     }
 }

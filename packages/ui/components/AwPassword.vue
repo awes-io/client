@@ -57,23 +57,25 @@ export default {
         _onPaste(e) {
             const clipboard = e.clipboardData || window.clipboardData
             const text = clipboard.getData('text').trim()
+
             e.preventDefault()
             e.stopPropagation()
-            var el = event.target
-            const cursorPosStart = el.selectionStart
-            const cursorPosEnd = el.selectionEnd
-            const v = el.value
-            const textBefore = v.substring(0, cursorPosStart)
-            const textAfter = v.substring(cursorPosEnd, v.length)
+
+            const el = event.target
+            const { selectionStart, selectionEnd, value } = el
+
+            const textBefore = value.substring(0, selectionStart)
+            const textAfter = value.substring(selectionEnd, value.length)
             const mergedText = textBefore + text + textAfter
 
             el.value = mergedText
-            this.$emit('input', mergedText)
+
+            el.dispatchEvent(new Event('input'))
 
             // move cursor to correct position after paste
             this.$nextTick(() => {
                 el.selectionStart = el.selectionEnd =
-                    cursorPosStart + text.length
+                    selectionStart + text.length
             })
         }
     }
