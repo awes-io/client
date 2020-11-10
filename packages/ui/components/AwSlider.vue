@@ -9,7 +9,7 @@
             ref="scroller"
             class="aw-slider__scroller"
             :class="{ 'aw-slider__scroller--mouse-move': movedByMouse }"
-            @scroll.passive="_setScroll"
+            @scroll="_setScroll"
         >
             <slot />
         </span>
@@ -54,10 +54,6 @@ export default {
     },
 
     computed: {
-        // _isTouch() {
-        //     return pathOr('', 'type', this.$event) === 'touchstart'
-        // },
-
         maxScrollLeft() {
             const diff = this.scrollWidth - this.width
             return diff > 1 ? diff : 0 // +1 for browser's rounding inconsistancy
@@ -103,14 +99,9 @@ export default {
         _toggle(isActive) {
             const method = isActive ? 'addEventListener' : 'removeEventListener'
 
-            // const moveEvent = this._isTouch ? 'touchmove' : 'mousemove'
-            // const endEvent = this._isTouch ? 'touchend' : 'mouseup'
-            // const cancelEvent = this._isTouch ? 'touchcancel' : 'mouseleave'
-
             window[method]('mousemove', this._move)
             window[method]('mousemove', this._checkDragging)
             window[method]('mouseup', this._deactivate)
-            // document[method]('mouseleave', this._deactivate)
         },
 
         _activate($event) {
@@ -131,7 +122,6 @@ export default {
             this.$nextTick(() => {
                 // set closest position
                 this.$refs.scroller.scrollLeft = this.scrollLeft
-                // this._snap()
 
                 // remove click prevention listener
                 setTimeout(() => {
@@ -162,50 +152,14 @@ export default {
             }
         },
 
-        /**
-         * Scrolls to closest child to fit
-         */
-        // _snap() {
-        //     const els = this.$refs.scroller.childNodes
-        //     const left = this.scrollLeft
-        //     const right = this.width + this.scrollLeft
-        //     let _width = 0
-        //     let bestFitLeft = Infinity
-        //     let bestFitRight = Infinity
-
-        //     for (let i = 0, length = els.length; i < length; i++) {
-        //         let elWidth = this._getFullWidth(els[i])
-        //         let offsetLeft = _width - left
-        //         let offsetRight = right - _width - elWidth
-
-        //         if (Math.abs(offsetLeft) < Math.abs(bestFitLeft)) {
-        //             bestFitLeft = offsetLeft
-        //         }
-
-        //         if (Math.abs(offsetRight) < Math.abs(bestFitRight)) {
-        //             bestFitRight = offsetRight
-        //         }
-
-        //         _width += elWidth
-        //     }
-
-        //     if (Math.abs(bestFitLeft) < Math.abs(bestFitRight)) {
-        //         this.scrollLeft = this._withBorders(
-        //             this.scrollLeft + bestFitLeft
-        //         )
-        //     } else {
-        //         this.scrollLeft = this._withBorders(
-        //             this.scrollLeft - bestFitRight
-        //         )
-        //     }
-        // },
-
         _setScroll(e) {
             this.scrollLeft = e.target.scrollLeft
         },
 
         _setDimensions() {
             const el = this.$refs.scroller
+
+            if (!el) return
 
             this.width = el.offsetWidth
 
@@ -268,20 +222,6 @@ export default {
                 this.$emit('resized')
             }, 300)
         },
-
-        // _onFocus($event) {
-        //     const el = $event.target
-        //     const bounds = el.getBoundingClientRect()
-        //     const wrapBounds = this.$el.getBoundingClientRect()
-
-        //     if (
-        //         wrapBounds.left > bounds.left ||
-        //         wrapBounds.right < bounds.right
-        //     ) {
-        //         this._prevent($event)
-        //         this.scrollTo(el)
-        //     }
-        // },
 
         _prevent($event) {
             $event.preventDefault()

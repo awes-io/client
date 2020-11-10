@@ -9,7 +9,7 @@
     }
 
     &__toggler,
-    &__toggler > div > span {
+    &__toggler > span {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -25,40 +25,41 @@
         white-space: nowrap;
     }
 
-    &__toggler > div > span:not([class]) {
+    &__toggler > span:not([class]) {
+        border-radius: theme('borderRadius.default');
         padding: theme('spacing.1') theme('spacing.5');
     }
 
-    &__toggler > div:before {
+    &__toggler > span:before {
         @apply bgcolor-muted-darker;
         content: '';
         position: absolute;
-        left: -1px;
+        left: 0;
         top: theme('spacing.1');
         bottom: theme('spacing.1');
         width: 1px;
         display: block;
     }
 
-    &__toggler:first-child > div:before {
+    &__toggler:first-child > span:before {
         content: none;
     }
 
-    &__toggler:focus, &__toggler > div:focus, &__toggler > div > span:focus {
+    &__toggler:focus, &__toggler > span:focus {
         outline: none;
     }
 
-    &__toggler:focus > div > span {
+    &__toggler:focus > span {
         outline: theme('focusOutline', 'none');
     }
 
-    &__toggler_active > div {
+    &__toggler_active > span {
         @apply bgcolor-surface;
         border-radius: theme('borderRadius.default');
         box-shadow: theme('boxShadow.default');
     }
 
-    &__toggler:hover {
+    &__toggler:hover > span {
         @apply bgcolor-muted;
     }
 
