@@ -40,7 +40,7 @@ iconsFiles.forEach(filename => {
             width,
             height,
             viewBox: viewBox || `0 0 ${width} ${height}`,
-            content: svg.innerHTML.replace(/(\n|\t)/g, '')
+            content: svg.innerHTML.replace(/>(\s+)</g, '><').trim()
         }
     }
 })
