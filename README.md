@@ -4,7 +4,7 @@
     </a>
 </p>
 
-<h1 align="center">Client</h1>
+<h1 align="center">Client UI</h1>
 
 > <p align="center">The Awes.io Frontend Framework. Сonsists of UI, Profile, Auth and else.</p>
 
