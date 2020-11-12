@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.98.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.98.0...@awes-io/ui@1.98.1) (2020-11-12)
+
+
+### Bug Fixes
+
+* password emits input event on paste ([a4d66b0](https://github.com/awes-io/client/commit/a4d66b01111d4b162e0e04c4634423754d83147e))
+* password emits input event on paste ([b7126fb](https://github.com/awes-io/client/commit/b7126fbffafdcff944e80487ec5c5747e1614338))
+
+
+
+
+
 # [1.98.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.97.1...@awes-io/ui@1.98.0) (2020-10-15)
 
 
