@@ -1,0 +1,14 @@
+.aw-select {
+    & .not-searchable,
+    & .not-searchable .aw-text-field__element {
+        @apply cursor-pointer;
+    }
+
+    &--invert .aw-text-field__element {
+        @apply bg-muted-darker;
+    }
+
+    &--invert .aw-text-field__element:not(:focus) {
+        @apply border-muted-darker;
+    }
+}

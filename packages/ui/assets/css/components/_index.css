@@ -33,5 +33,7 @@
 @import './dashboard.css';
 @import './dashboard-card.css';
 
+@import './select.css';
+
 /* last because of @keyframes lowers performance */
 @import './animation.css';

@@ -15,7 +15,7 @@
 
         <AwInput class="mt-2" label="Postfix" placeholder="Text input">
             <template #postfix>
-                <AwIcon name="location" />
+                <AwIcon name="location" class="mx-4" />
             </template>
         </AwInput>
 
