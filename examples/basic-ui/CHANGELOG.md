@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.74.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.73.7...basic-ui@1.74.0) (2020-11-19)
+
+
+### Features
+
+* add select inverted prop, fix input border ([908d83b](https://git.awescode.com/awes-io/client/commits/908d83bb169599ccefe78d9f2db95731312a4138))
+
+
+
+
+
 ## [1.73.7](https://git.awescode.com/awes-io/client/compare/basic-ui@1.73.6...basic-ui@1.73.7) (2020-11-12)
 
 **Note:** Version bump only for package basic-ui
