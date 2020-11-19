@@ -1,6 +1,7 @@
 <template>
     <div
-        class="relative"
+        :class="{ 'aw-select--invert': invert }"
+        class="relative aw-select"
         @keydown.up="_arrowFocusItem(-1, $event)"
         @keydown.down="_arrowFocusItem(+1, $event)"
         @click="_selectOnClick"
@@ -31,20 +32,34 @@
             ref="input"
             :value="_inputValue"
             :label="label"
-            :class="{ 'is-filled': searchable && isOpened }"
+            :class="{
+                'is-filled': searchable && isOpened,
+                'not-searchable': !searchable,
+                opened: isOpened
+            }"
             :placeholder="_selectedLabel"
+            :readonly="!searchable"
             v-bind="$attrs"
+            autocomplete="off"
+            data-arrow-focus
+            @mousedown.native="_onMouseDown"
             @focus="_onFocus"
             @blur="_onBlur"
             @input="_applySearch"
             @keydown.enter="_selectOnEnter"
-            :readonly="!searchable"
-            autocomplete="off"
-            data-arrow-focus
         >
             <template v-if="multiple && selectedIndexes.length" #element>
                 {{ selectedIndexes }}
             </template>
+
+            <template v-if="$scopedSlots.prefix" #prefix>
+                <slot name="prefix" />
+            </template>
+
+            <template v-if="$scopedSlots.postfix" #postfix>
+                <slot name="postfix" />
+            </template>
+
             <template #icon>
                 <AwButton
                     v-if="clearable"
@@ -53,7 +68,13 @@
                     icon="close"
                     theme="icon"
                 />
-                <AwButton tabindex="-1" theme="icon" @click="toggleDropdown">
+                <AwButton
+                    :size="$attrs.size || 'md'"
+                    tabindex="-1"
+                    theme="icon"
+                    class="h-full"
+                    @click="searchable ? toggleDropdown() : null"
+                >
                     <AwIcon
                         v-if="isLoading"
                         key="loader"
@@ -237,6 +258,11 @@ export default {
         debounce: {
             type: Number,
             default: 400
+        },
+
+        invert: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -345,6 +371,10 @@ export default {
                         this.searchPhrase.toLowerCase()
                 )
             )
+        },
+
+        chevronSize() {
+            return this.$attrs.size || 'xl'
         }
     },
 
@@ -473,11 +503,22 @@ export default {
             }
         },
 
+        _onMouseDown(e) {
+            if (!this.searchable) {
+                if (e.target.tagName !== 'INPUT') {
+                    e.preventDefault()
+                }
+                this.isOpened = !this.isOpened
+
+                if (this.isOpened) {
+                    this.$refs.input.focus()
+                }
+            }
+        },
+
         _onFocus() {
             if (!this.isOpened) {
-                setTimeout(() => {
-                    this.isOpened = true
-                }, 5)
+                this.isOpened = true
             }
         },
 

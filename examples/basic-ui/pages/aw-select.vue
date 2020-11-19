@@ -29,6 +29,36 @@
         <p class="h4">Empty options list</p>
         <AwSelect :options="[]" label="Select something" v-model="selected" />
 
+        <p class="h4">Invert theme</p>
+        <AwSelect
+            :options="options"
+            :searchable="false"
+            v-model="invertValue"
+            size="sm"
+            invert
+        >
+            <template #prefix>
+                <div class="mx-4">xxx</div>
+            </template>
+        </AwSelect>
+
+        <!-- <AwSelect
+            :options="options"
+            v-model="test"
+            size="sm"
+            class="mt-4"
+            :searchable="false"
+            dark
+        >
+            <template #prefix>
+                PRE
+            </template>
+
+            <template #postfix>
+                POST
+            </template>
+        </AwSelect> -->
+
         <!-- <AwSelect
             v-model="selectedCategory"
             :options="categories"
@@ -56,6 +86,7 @@ export default {
     data() {
         return {
             title: 'AwSelect',
+            invertValue: null,
             headline: this._getTitle('AwSelect'),
             disabled: false,
             options: ['one', 'two', 'three', 'four', 'five', 'six', 'seven'],

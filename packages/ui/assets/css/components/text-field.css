@@ -1,10 +1,15 @@
 .aw-text-field {
+    @apply border rounded;
     position: relative;
+    transition: 200ms border-color;
+
+    &:focus-within {
+        @apply border-info;
+    }
 
     &__element {
-        @apply w-full border rounded truncate;
+        @apply w-full rounded truncate block;
         background-color: var(--c-surface, inherit);
-        transition: 200ms border-color;
 
         /* reset autofill (firefox)*/
         filter: none;
@@ -28,7 +33,6 @@
 
         /* reset ouline (chrome) */
         &:focus {
-            @apply border-info;
             outline: none;
         }
 
@@ -189,7 +193,7 @@
     }
 
     &__icon {
-        @apply absolute right-0 top-0 mt-px mr-px rounded-r;
+        @apply absolute right-0 top-0 rounded-r h-full;
     }
 
     &__icon svg {
@@ -205,11 +209,8 @@
         animation: 700ms shake ease-out-quad;
     }
 
-    &.has-error & {
-
-        &__element {
-            @apply border-error;
-        }
+    &.has-error {
+        @apply border-error;
 
         &__label {
             @apply text-error opacity-100;
