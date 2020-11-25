@@ -46,11 +46,9 @@
                     }"
                     class="aw-button-nav__toggler"
                 >
-                    <div tabindex="-1">
-                        <span class="w-8 h-8" tabindex="-1">
-                            {{ text }}
-                        </span>
-                    </div>
+                    <span class="w-8 h-8" tabindex="-1">
+                        {{ text }}
+                    </span>
                 </Component>
             </div>
 

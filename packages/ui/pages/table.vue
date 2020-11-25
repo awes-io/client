@@ -1,10 +1,14 @@
 <template>
     <AwPage title="Tables">
+        <template #buttons>
+            <AwButton text="Toggle" @click="showTable = !showTable" />
+            <AwButton text="Fetch" class="ml-4" @click="managers.fetch" />
+        </template>
         <section>
             <h2 class="h3">Managers</h2>
 
             <!-- @click:row="clickRow" -->
-            <AwTableBuilder :collection="managers">
+            <AwTableBuilder v-if="showTable" :collection="managers" no-fetch>
                 <AwTableCol
                     field="first_name"
                     title="First name"
@@ -26,6 +30,11 @@
                     </template>
                 </AwTableCol>
             </AwTableBuilder>
+            <div v-else>
+                <pre v-for="model in managers.models" :key="model.id">{{
+                    model._attributes
+                }}</pre>
+            </div>
         </section>
     </AwPage>
 </template>
@@ -57,7 +66,8 @@ export default {
 
     data() {
         return {
-            managers: new Managers()
+            managers: new Managers(),
+            showTable: true
         }
     },
 

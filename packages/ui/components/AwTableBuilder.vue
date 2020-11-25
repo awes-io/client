@@ -270,7 +270,12 @@ export default {
         orderable: {
             type: Object,
             default: null
-        }
+        },
+
+        /**
+         * Disable auto fetching collection on mount
+         */
+        noFetch: Boolean
     },
 
     data() {
@@ -418,27 +423,41 @@ export default {
 
     created() {
         this.defaultCol = this._getDefaultCol()
+
         if (this.watchParams) {
             this.collection.on('delete', this._fetchOnDelete)
         }
-        this.fetch()
+
+        // Replace default methods with table buider params
+        let _oldGetFetchQuery = this.collection.getFetchQuery
+        let _oldOnFetchFuccess = this.collection.onFetchSuccess
+        let _oldIsPaginated = this.collection.isPaginated
+
+        this.collection.getFetchQuery = () => this.fetchAllQuery
+
+        this.collection.onFetchSuccess = response => {
+            this._setPagination(response)
+            _oldOnFetchFuccess(response)
+        }
+
+        this.collection.isPaginated = () => this.infiniteScroll
+
+        this.$once('hook:beforeDestroy', () => {
+            this.collection.getFetchQuery = _oldGetFetchQuery
+            this.collection.onFetchSuccess = _oldOnFetchFuccess
+            this.collection.isPaginated = _oldIsPaginated
+            _oldGetFetchQuery = null
+            _oldOnFetchFuccess = null
+            _oldIsPaginated = null
+        })
+
+        // Initial fetch
+        !this.noFetch && this.fetch()
     },
 
     methods: {
         fetch(params = {}) {
-            if (!this.mixed || this.isResetPage) {
-                this.collection
-                    .page()
-                    .fetch({ params: { ...this.fetchAllQuery, ...params } })
-                    .then(this._setPagination)
-            } else {
-                this.collection
-                    .page(1)
-                    .fetch({
-                        params: { ...this.fetchAllQuery }
-                    })
-                    .then(this._setPagination)
-            }
+            return this.collection.fetch({ params })
         },
 
         fetchMore() {
