@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.100.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.99.0...@awes-io/ui@1.100.0) (2020-11-25)
+
+
+### Features
+
+* before open modal events added ([ed75e36](https://github.com/awes-io/client/commit/ed75e36a89e4443ce7a81d386e29ccf145794895))
+* no-fetch prop added for table-builder ([ffdb22c](https://github.com/awes-io/client/commit/ffdb22ca02598ec2b03936fa677ff35973305356))
+
+
+
+
+
 # [1.99.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.98.2...@awes-io/ui@1.99.0) (2020-11-19)
 
 
