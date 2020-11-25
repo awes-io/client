@@ -17,7 +17,7 @@ $modal-aside-width-large: 75vw;
     }
 
     &__container {
-        @apply relative flex w-full min-h-screen justify-center items-center p-0;
+        @apply relative flex w-full min-h-screen justify-center items-start p-0;
         height: max-content;
 
         &:before {
@@ -27,7 +27,7 @@ $modal-aside-width-large: 75vw;
     }
 
     &__dialog {
-        @apply relative max-w-full m-auto bg-surface;
+        @apply relative max-w-full mx-auto bg-surface;
     }
 
     &__header {
@@ -188,7 +188,7 @@ $modal-aside-width-large: 75vw;
         }
 
         &__container {
-            @apply p-16;
+            @apply px-16 pt-32 pb-8;
         }
 
         &:not(.is-aside) &__title {

@@ -3,6 +3,8 @@
         :name="`modal-transition-${theme}`"
         @before-enter="_preOpen"
         @before-appear="_preOpen"
+        @after-enter="$emit('opened')"
+        @after-appear="$emit('opened')"
         @after-leave="_afterLeave"
         appear
     >
@@ -22,27 +24,6 @@
                 <div :class="elClasses.dialog" role="document">
                     <!-- header -->
                     <div :class="elClasses.header">
-                        <!-- <button
-                            :class="elClasses.back"
-                            type="button"
-                            :title="$t('AwModal.back')"
-                            :aria-label="$t('AwModal.back')"
-                            @click.prevent="$router.back()"
-                            tabindex="0"
-                        >
-                            <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <polyline points="10 14 5 9.5 10 5" />
-                                <line x1="16" y1="9.5" x2="5" y2="9.52" />
-                            </svg>
-                        </button> -->
-
                         <div :class="elClasses.title">
                             {{ title }}
                         </div>
@@ -58,34 +39,8 @@
                             icon="close"
                             tabindex="0"
                         />
-
-                        <!-- <button
-                            :class="elClasses.close"
-                            type="button"
-                            :title="$t('AwModal.close')"
-                            :aria-label="$t('AwModal.close')"
-                            @click.prevent="close()"
-                            tabindex="0"
-                        >
-                            <svg
-                                width="18"
-                                height="18"
-                                viewBox="0 0 19 19"
-                                fill="none"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-width="1.06"
-                                    d="M1 17L17 1M1 1l16 16"
-                                />
-                            </svg>
-                        </button> -->
                     </div>
                     <!-- / header -->
-
-                    <!-- <div :class="elClasses.title" class="hidden md:block">
-                        {{ title }}
-                    </div> -->
 
                     <div
                         v-if="$scopedSlots.subtitle"
@@ -276,6 +231,7 @@ export default {
 
                 // global event
                 this.eventBus.$emit(`modal::${this.name}:before-close`, stopper)
+                this.$emit('before-close', stopper)
                 if (stopper.prevented) {
                     this.open()
                 }
@@ -312,6 +268,7 @@ export default {
         _preOpen() {
             this.showContent = true
             this._toggleBodyScroll(false)
+            this.$emit('before-open')
         },
 
         _afterLeave() {
