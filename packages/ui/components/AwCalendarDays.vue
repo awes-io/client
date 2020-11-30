@@ -67,16 +67,29 @@ export default {
         dayDisabled: {
             type: Function,
             default: () => null
+        },
+
+        showToday: {
+            type: Boolean,
+            default: false
         }
     },
 
     render(h, { props }) {
-        const { year, month, firstDay, dayDisabled, dayClass } = props
+        const {
+            year,
+            month,
+            firstDay,
+            dayDisabled,
+            dayClass,
+            showToday
+        } = props
 
         const dates = getCalendarDates(year, month, firstDay)
+        const today = new Date().setHours(0, 0, 0, 0)
 
         return dates.map(date => {
-            const timestamp = date.getTime()
+            const timestamp = date.setHours(0, 0, 0, 0)
 
             return h(AwCalendarDay, {
                 key: timestamp,
@@ -85,7 +98,11 @@ export default {
                     day: date.getDate()
                 },
                 class: [
-                    { 'aw-calendar__day_outside': date.getMonth() !== month },
+                    {
+                        'aw-calendar__day_outside': date.getMonth() !== month,
+                        'aw-calendar__day_today':
+                            showToday && timestamp === today
+                    },
                     dayClass(date)
                 ],
                 attrs: {

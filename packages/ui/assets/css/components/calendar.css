@@ -41,6 +41,10 @@
         align-items: center;
     }
 
+    &__day_today > span {
+        background: color(theme('colors.success') a(40%));
+    }
+
     &__day[disabled],
     &__day_outside {
         opacity: 0.4;
