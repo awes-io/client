@@ -178,7 +178,8 @@ import { pathOr, filter, mergeDeep } from 'rambdax'
 import { mergeRouteQuery } from '../assets/js/router'
 import {
     TABLE_ROW_CLICK_EVENT,
-    TABLE_HEAD_CLICK_EVENT
+    TABLE_HEAD_CLICK_EVENT,
+    TABLE_DATA_FETCHED
 } from '../assets/js/constants'
 import AwCard from './AwCard.vue'
 import AwChip from './AwChip.vue'
@@ -457,7 +458,11 @@ export default {
 
     methods: {
         fetch(params = {}) {
-            return this.collection.fetch({ params })
+            return this.collection.fetch({ params }).then(response => {
+                // Trigers every time when data fetched. Emits full response
+                this.$emit(TABLE_DATA_FETCHED, response)
+                return response
+            })
         },
 
         fetchMore() {
@@ -469,6 +474,10 @@ export default {
                         ...this.fetchAllQuery,
                         page: page + 1
                     }
+                })
+                .then(response => {
+                    this.$emit(TABLE_DATA_FETCHED, response)
+                    return response
                 })
                 .then(this._setPagination)
         },
@@ -578,6 +587,9 @@ export default {
         },
 
         _getDefaultCol() {
+            if (!this.$slots.default) {
+                return null
+            }
             const filtered = this.$slots.default.filter(el =>
                 pathOr(
                     false,

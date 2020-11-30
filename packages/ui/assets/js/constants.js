@@ -8,4 +8,6 @@ export const TABLE_ROW_CLICK_EVENT = 'click:row'
 
 export const TABLE_HEAD_CLICK_EVENT = 'click:head'
 
+export const TABLE_DATA_FETCHED = 'data-fetched'
+
 export const FORM_ENTER_SKIP_ATTR = 'data-enter-skip'
