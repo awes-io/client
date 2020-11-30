@@ -95,7 +95,7 @@ export default {
          */
         showToday: {
             type: Boolean,
-            default: false
+            default: true
         }
     },
 
