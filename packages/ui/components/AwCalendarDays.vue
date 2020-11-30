@@ -88,12 +88,8 @@ export default {
         const dates = getCalendarDates(year, month, firstDay)
 
         return dates.map(date => {
-            const classes = {}
             const timestamp = date.setHours(0, 0, 0, 0)
-            if (showToday) {
-                const today = new Date().setHours(0, 0, 0, 0)
-                classes['aw-calendar__day_today'] = timestamp === today
-            }
+            const today = new Date().setHours(0, 0, 0, 0)
 
             return h(AwCalendarDay, {
                 key: timestamp,
@@ -102,8 +98,11 @@ export default {
                     day: date.getDate()
                 },
                 class: [
-                    { 'aw-calendar__day_outside': date.getMonth() !== month },
-                    { ...classes },
+                    {
+                        'aw-calendar__day_outside': date.getMonth() !== month,
+                        'aw-calendar__day_today':
+                            showToday && timestamp === today
+                    },
                     dayClass(date)
                 ],
                 attrs: {
