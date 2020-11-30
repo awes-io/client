@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.101.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.100.0...@awes-io/ui@1.101.0) (2020-11-30)
+
+
+### Features
+
+* aw-money added ([01a96dd](https://github.com/awes-io/client/commit/01a96dd345e7a198b0e225238f4d9464dfe87780))
+
+
+
+
+
 # [1.100.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.99.0...@awes-io/ui@1.100.0) (2020-11-25)
 
 
