@@ -8,6 +8,40 @@ export default {
     props: {
         value: {
             default: ''
+        },
+
+        /**
+         * Applys String mask or filter RegExp pattern for input value
+         */
+        pattern: {
+            type: [String, RegExp],
+            default: null
+        },
+
+        /**
+         * RegExp tokens to recognize in String mask
+         * {
+         *     [token]: { pattern: <RegExp>, transform?: <Function> }
+         * }
+         */
+        maskTokens: {
+            type: Object,
+            default() {
+                return {
+                    '#': { pattern: /\d/ },
+                    X: { pattern: /[0-9a-zA-Z]/ },
+                    S: { pattern: /[a-zA-Z]/ },
+                    A: {
+                        pattern: /[a-zA-Z]/,
+                        transform: v => v.toLocaleUpperCase()
+                    },
+                    a: {
+                        pattern: /[a-zA-Z]/,
+                        transform: v => v.toLocaleLowerCase()
+                    },
+                    '!': { escape: true }
+                }
+            }
         }
     },
 
@@ -68,7 +102,8 @@ export default {
 
     methods: {
         _onInput($event) {
-            const value = $event.target.value
+            const value = this._applyFormat($event.target.value)
+            $event.target.value = value
             const eventType = $event.type
 
             if (this.hasError) {
@@ -91,6 +126,70 @@ export default {
                     this.autoFilled = false
                     break
             }
+        },
+
+        _applyFormat(value) {
+            // mask
+            if (typeof this.pattern === 'string') {
+                return this._mask(value, this.pattern)
+            }
+
+            // regex pattern
+            if (this.pattern instanceof RegExp) {
+                const match = this.pattern.exec(value)
+                this.pattern.lastIndex = 0 // reset for next cycles
+
+                return match ? match[0] : ''
+            }
+
+            return value
+        },
+
+        _mask(value, mask, masked = true) {
+            value = value || ''
+            mask = mask || ''
+            let iMask = 0
+            let iValue = 0
+            let output = ''
+
+            while (iMask < mask.length && iValue < value.length) {
+                let cMask = mask[iMask]
+                let masker = this.maskTokens[cMask]
+                let cValue = value[iValue]
+
+                if (masker && !masker.escape) {
+                    if (masker.pattern.test(cValue)) {
+                        output += masker.transform
+                            ? masker.transform(cValue)
+                            : cValue
+                        iMask++
+                    }
+                    iValue++
+                } else {
+                    if (masker && masker.escape) {
+                        iMask++ // take the next mask char and treat it as char
+                        cMask = mask[iMask]
+                    }
+                    if (masked) output += cMask
+                    if (cValue === cMask) iValue++ // user typed the same char
+                    iMask++
+                }
+            }
+
+            // fix mask that ends with a char: (#)
+            let restOutput = ''
+
+            while (iMask < mask.length && masked) {
+                let cMask = mask[iMask]
+                if (this.maskTokens[cMask]) {
+                    restOutput = ''
+                    break
+                }
+                restOutput += cMask
+                iMask++
+            }
+
+            return output + restOutput
         }
     }
 }

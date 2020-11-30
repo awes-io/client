@@ -22,17 +22,32 @@
         </div>
 
         <div class="relative w-full">
-            <input
-                :class="[elClasses.el, paddingClass]"
-                v-bind="{ type, value: inputValue, ...skipAttr, ...$attrs }"
-                :id="id || defaultId"
-                :aria-describedby="errorText ? errorId : null"
-                v-on="mergedListeners"
-                v-tooltip.show.prepend="errorTooltip"
-                ref="element"
-            />
-            <div v-if="!!label" :class="elClasses.label">
-                {{ label }}
+            <slot
+                name="element"
+                v-bind="{
+                    cssClass: [elClasses.el, paddingClass],
+                    value: inputValue,
+                    errorTooltip,
+                    mergedListeners,
+                    mergedAttributes,
+                    errorText,
+                    errorId
+                }"
+            >
+                <input
+                    :class="[elClasses.el, paddingClass]"
+                    v-bind="mergedAttributes"
+                    :value="inputValue"
+                    :aria-describedby="errorText ? errorId : null"
+                    v-on="mergedListeners"
+                    v-tooltip.show.prepend="errorTooltip"
+                    ref="element"
+                />
+            </slot>
+            <div v-if="!!label || $scopedSlots.label" :class="elClasses.label">
+                <slot name="label" :cssClass="elClasses.label">
+                    {{ label }}
+                </slot>
             </div>
             <span v-if="$slots.icon" :class="elClasses.icon">
                 <slot name="icon" />
@@ -106,6 +121,15 @@ export default {
 
         paddingClass() {
             return this.size === 'md' ? 'p-3' : 'p-2'
+        },
+
+        mergedAttributes() {
+            return {
+                type: this.type,
+                ...this.skipAttr,
+                ...this.$attrs,
+                id: this.id || this.defaultId
+            }
         }
     }
 }

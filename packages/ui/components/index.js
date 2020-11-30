@@ -42,6 +42,7 @@ export { default as AwPassword } from './AwPassword.vue'
 export { default as AwTel } from './AwTel.vue'
 export { default as AwSelect } from './AwSelect.vue'
 export { default as AwAddress } from './AwAddress.vue'
+export { default as AwMoney } from './AwMoney.vue'
 
 export { default as AwIcon } from './AwIcon.vue'
 

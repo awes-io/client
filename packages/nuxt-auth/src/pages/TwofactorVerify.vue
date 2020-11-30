@@ -28,12 +28,12 @@ export default {
 
     auth: 'guest',
 
-    middleware: function({ $auth, redirect }) {
-        if (!$auth.getToken('twofactor')) {
-            const loginUrl = pathOr('/login', 'options.redirect.login', $auth)
-            return redirect(loginUrl)
-        }
-    },
+    // middleware: function({ $auth, redirect }) {
+    //     if (!$auth.getToken('twofactor')) {
+    //         const loginUrl = pathOr('/login', 'options.redirect.login', $auth)
+    //         return redirect(loginUrl)
+    //     }
+    // },
 
     data() {
         return {
