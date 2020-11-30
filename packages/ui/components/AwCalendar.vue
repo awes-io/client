@@ -31,6 +31,7 @@
             :year="viewDate.year()"
             :day-class="_getDayClass"
             :day-disabled="_isDisabled"
+            :show-today="showToday"
         />
 
         <slot name="footer" />

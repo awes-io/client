@@ -88,7 +88,15 @@ export default {
         /**
          * Select range object { start, end }
          */
-        range: Boolean
+        range: Boolean,
+
+        /**
+         * Indicates if today is highlighted on calendar
+         */
+        showToday: {
+            type: Boolean,
+            default: false
+        }
     },
 
     data() {

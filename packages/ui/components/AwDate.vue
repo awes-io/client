@@ -54,6 +54,7 @@
                     :year="year"
                     :day-disabled="view.dayDisabled"
                     :day-class="view.dayClass"
+                    :show-today="showToday"
                 />
             </div>
         </AwDropdown>
