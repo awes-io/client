@@ -24,11 +24,11 @@ export default class extends Local {
 
     _handleTwoFactorError(error) {
         const status = pathOr(500, 'response.status', error)
-        const token = pathOr(false, 'response.data.meta.token', error)
+        // const token = pathOr(false, 'response.data.meta.token', error)
 
-        if (status === 403 && token) {
-            this.$auth.setToken(this.name, token)
-            this._setToken(token)
+        if (status === 403 /* && token */) {
+            // this.$auth.setToken(this.name, token)
+            // this._setToken(token)
             this.$auth.ctx.redirect('/twofactor-verify')
         } else {
             throw error

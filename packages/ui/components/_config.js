@@ -147,6 +147,19 @@ export const AwInput = {
     sizes: ['sm', 'md']
 }
 
+export const AwMoney = {
+    options: {
+        locale: undefined,
+        currency: 'EUR',
+        valueAsInteger: true,
+        distractionFree: true,
+        precision: undefined,
+        autoDecimalMode: false,
+        valueRange: undefined,
+        allowNegative: true
+    }
+}
+
 export const AwIcon = {
     baseClass: 'aw-icon',
     size: 'base'
@@ -183,6 +196,7 @@ export default {
     AwCode,
     AwForm,
     AwInput,
+    AwMoney,
     AwIcon,
     AwPage,
     AwModal,
