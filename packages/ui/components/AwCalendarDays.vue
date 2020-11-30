@@ -86,10 +86,10 @@ export default {
         } = props
 
         const dates = getCalendarDates(year, month, firstDay)
+        const today = new Date().setHours(0, 0, 0, 0)
 
         return dates.map(date => {
             const timestamp = date.setHours(0, 0, 0, 0)
-            const today = new Date().setHours(0, 0, 0, 0)
 
             return h(AwCalendarDay, {
                 key: timestamp,
