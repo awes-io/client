@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.75.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.74.2...basic-ui@1.75.0) (2020-11-30)
+
+
+### Bug Fixes
+
+* remove old code ([b0838bc](https://git.awescode.com/awes-io/client/commits/b0838bc0d9faca8e30a835f9b933a5e522424168))
+
+
+### Features
+
+* calendar, date add show-today prop ([71e720a](https://git.awescode.com/awes-io/client/commits/71e720aa4de356b78011d5e833d662e04a1d4aee))
+
+
+
+
+
 ## [1.74.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.74.1...basic-ui@1.74.2) (2020-11-30)
 
 **Note:** Version bump only for package basic-ui
