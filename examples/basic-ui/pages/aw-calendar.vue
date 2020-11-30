@@ -1,7 +1,7 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ lg: 2 }">
-            <AwCalendar v-model="date" show-today />
+            <AwCalendar v-model="date" />
         </AwGrid>
     </AwPage>
 </template>
