@@ -24,13 +24,20 @@
             class="aw-menu-item__button"
         >
             <AwIcon
-                v-if="icon"
+                v-if="_iconType === 'string'"
                 :name="icon"
                 size="xl"
                 class="mr-5 w-5"
                 :class="{ 'aw-menu-item__icon-colored': _iconColor }"
                 :style="`color: ${_iconColor}`"
             />
+            <component
+                v-if="_iconType === 'object'"
+                :is="icon.component"
+                v-bind="icon.props"
+                class="mr-5 w-5"
+            />
+
             <span class="truncate">{{ _text }}</span>
             <AwBadge
                 v-if="_badge"
@@ -144,7 +151,7 @@ export default {
          * Icon name
          */
         icon: {
-            type: String,
+            type: [String, Object],
             default: ''
         },
 
@@ -247,6 +254,10 @@ export default {
 
         _iconColor() {
             return this.iconColor || this._config.iconColor
+        },
+
+        _iconType() {
+            return this.icon && typeof this.icon
         },
 
         _computedProps() {
