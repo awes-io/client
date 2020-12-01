@@ -48,8 +48,8 @@
             @input="_applySearch"
             @keydown.enter="_selectOnEnter"
         >
-            <template v-if="multiple && selectedIndexes.length" #element>
-                {{ selectedIndexes }}
+            <template #element>
+                <slot name="element" v-bind="{ value: _inputValue }"></slot>
             </template>
 
             <template v-if="$scopedSlots.prefix" #prefix>
