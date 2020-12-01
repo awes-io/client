@@ -11,7 +11,13 @@ export default function({ store, app }) {
             props: {
                 text: 'Examples',
                 href: '/',
-                icon: 'settings'
+                icon: {
+                    component: 'AwBadge',
+                    props: {
+                        icon: 'bubble-text',
+                        color: 'info'
+                    }
+                }
             }
         }
     ]
