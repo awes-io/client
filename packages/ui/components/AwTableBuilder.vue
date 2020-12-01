@@ -434,7 +434,10 @@ export default {
         let _oldOnFetchFuccess = this.collection.onFetchSuccess
         let _oldIsPaginated = this.collection.isPaginated
 
-        this.collection.getFetchQuery = () => this.fetchAllQuery
+        this.collection.getFetchQuery = () => ({
+            ..._oldGetFetchQuery(),
+            ...this.fetchAllQuery
+        })
 
         this.collection.onFetchSuccess = response => {
             this._setPagination(response)
