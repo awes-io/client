@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.103.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.102.0...@awes-io/ui@1.103.0) (2020-12-01)
+
+
+### Bug Fixes
+
+* awselect element slot ([3d458b8](https://github.com/awes-io/client/commit/3d458b8664116c393601a9671799ef112c81791e))
+
+
+### Features
+
+* add settings for icon menu as object ([2e7ad57](https://github.com/awes-io/client/commit/2e7ad57f7001e29dcbd9bfe6a12be9c9f125759e))
+* use old fetch query ([bb56167](https://github.com/awes-io/client/commit/bb56167d0e5205602d0bf86903f3a042ce5699e1))
+
+
+
+
+
 # [1.102.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.101.0...@awes-io/ui@1.102.0) (2020-11-30)
 
 

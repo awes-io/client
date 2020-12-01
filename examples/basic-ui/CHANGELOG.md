@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.76.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.75.0...basic-ui@1.76.0) (2020-12-01)
+
+
+### Features
+
+* add settings for icon menu as object ([2e7ad57](https://git.awescode.com/awes-io/client/commits/2e7ad57f7001e29dcbd9bfe6a12be9c9f125759e))
+
+
+
+
+
 # [1.75.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.74.2...basic-ui@1.75.0) (2020-11-30)
 
 
