@@ -1,10 +1,12 @@
 .aw-tooltip {
     padding: theme('spacing.1') theme('spacing.3');
-    font-size: theme('fontSize.sm', 0.875rem);
+    font-size: theme('fontSize.xs', 0.75rem);
+    line-height: theme('leading.5', 1.25rem);
     border-radius: theme('borderRadius.default');
     background-color: var(--c-on-surface);
     color: var(--c-surface);
     display: none;
+    max-width: 235px;
 
     &[data-visible] {
         display: block;
@@ -16,7 +18,7 @@
         pointer-events: none;
     }
 
-    & > [data-popper-arrow] {
+    /* & > [data-popper-arrow] {
         background-clip: content-box;
         padding: 4px;
 
@@ -49,5 +51,5 @@
 
     &[data-popper-placement^='right'] > [data-popper-arrow] {
         left: -4px;
-    }
+    } */
 }

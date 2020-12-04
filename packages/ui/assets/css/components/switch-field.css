@@ -136,7 +136,11 @@
      */
 
     &.has-error &__element {
-        @apply text-error;
+        @apply border-error;
+    }
+
+    &.has-error &__toggle {
+        @apply border border-error;
     }
 
 

@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import fieldMixin from '../mixins/field'
 import AwCheckbox from './AwCheckbox.vue'
 
 const THRESHOLD = 5 // pixels
@@ -49,8 +48,6 @@ export default {
     name: 'AwSwitcher',
 
     extends: AwCheckbox,
-
-    mixins: [fieldMixin],
 
     data() {
         return {

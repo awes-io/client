@@ -11,10 +11,10 @@ function showTooltip() {
     tooltip.setAttribute('data-visible', '')
 
     const modifiers = [
-        {
-            name: 'arrow',
-            options: { padding: 6 }
-        },
+        // {
+        //     name: 'arrow',
+        //     options: { padding: 6 }
+        // },
         {
             name: 'preventOverflow',
             options: {
@@ -73,7 +73,7 @@ function toggleEvents(el, on = false, $events = EVENTS) {
 function _updateTooltipContent(tooltip, content) {
     tooltip.__content__ = content
 
-    tooltip.innerHTML = content + '</span><span data-popper-arrow></span>'
+    tooltip.innerHTML = content // + '</span><span data-popper-arrow></span>'
 
     return tooltip
 }
@@ -81,6 +81,10 @@ function _updateTooltipContent(tooltip, content) {
 function createTooltip(content, options, placement) {
     const tooltip = document.createElement('div')
 
+    return updateTooltip(tooltip, content, options, placement)
+}
+
+function updateTooltip(tooltip, content, options, placement) {
     let cssClass = pathOr('', 'class', options)
     const id = pathOr(null, 'id', options)
     const onclick = pathOr(F, 'onclick', options)
@@ -197,8 +201,7 @@ function update(el, { value, arg = 'top', modifiers }) {
         arg !== el.__tooltip__.__placement__ ||
         !equals(options, el.__tooltip__.__options__)
     ) {
-        unbind(el)
-        bind(el, { value, arg, modifiers })
+        updateTooltip(el.__tooltip__, content, options, arg)
         return
     }
 

@@ -15,7 +15,7 @@ export default {
 
     computed: {
         _tooltipOffset() {
-            return [0, -6]
+            return [0, -8]
         },
 
         errorTooltip() {
@@ -24,7 +24,7 @@ export default {
                       id: this.errorId,
                       onclick: this._onErrorClick,
                       content: this.errorText,
-                      class: 'bg-error',
+                      class: 'bg-error py-px',
                       offset: this._tooltipOffset
                   }
                 : null

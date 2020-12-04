@@ -1,11 +1,15 @@
 <template>
-    <AwInput v-bind="_awInputProps" :value="currencyValue">
-        <template #element="{ cssClass, mergedAttributes }">
+    <AwInput ref="input" v-bind="_awInputProps" :value="currencyValue">
+        <template
+            #element="{ cssClass, mergedAttributes, errorTooltip, errorText, errorId }"
+        >
             <input
                 ref="element"
                 v-model="currencyValue"
                 v-currency="_options"
                 v-bind="mergedAttributes"
+                v-tooltip.show.prepend="errorTooltip"
+                :aria-describedby="errorText ? errorId : null"
                 :class="cssClass"
                 v-on="_listeners"
             />
@@ -85,6 +89,10 @@ export default {
     watch: {
         value(value) {
             if (!this.$refs.element) return
+
+            if (this.$refs.input && this.$refs.input.hasError) {
+                this.$refs.input.setError('')
+            }
 
             if (this.$refs.element.$ci.getValue() !== value) {
                 this.$refs.element.$ci.setValue(value)

@@ -1,8 +1,6 @@
 import lang from './lang/en'
 
 export default {
-    mode: 'universal',
-
     head: {
         title: 'Awes.io UI',
 

@@ -11,6 +11,7 @@
             :options="{
                 currency: 'USD'
             }"
+            error="Text Error"
             size="sm"
             class="mt-4"
         >
