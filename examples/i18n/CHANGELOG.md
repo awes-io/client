@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.73](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.4.72...example-nuxt-i18n@1.4.73) (2020-12-04)
+
+**Note:** Version bump only for package example-nuxt-i18n
+
+
+
+
+
 ## [1.4.72](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.4.71...example-nuxt-i18n@1.4.72) (2020-12-01)
 
 **Note:** Version bump only for package example-nuxt-i18n

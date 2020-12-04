@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.104.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.103.0...@awes-io/ui@1.104.0) (2020-12-04)
+
+
+### Features
+
+* **tooltip:** tooltip styles updated ([ded84f6](https://github.com/awes-io/client/commit/ded84f680918d4c36dbd9b0725f4396649e6deb6))
+
+
+
+
+
 # [1.103.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.102.0...@awes-io/ui@1.103.0) (2020-12-01)
 
 
