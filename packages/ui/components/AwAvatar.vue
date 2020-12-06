@@ -7,11 +7,11 @@
                 'background-color': props.isColored
                     ? $options.getColor(props.name)
                     : '',
-                width: `${props.size}px`,
-                height: `${props.size}px`,
-                'min-width': `${props.size}px`,
-                'min-height': `${props.size}px`,
-                'font-size': `${(props.size / 100) * 3}rem`
+                width: props.size ? `${props.size}px` : null,
+                height: props.size ? `${props.size}px` : null,
+                'min-width': props.size ? `${props.size}px` : null,
+                'min-height': props.size ? `${props.size}px` : null,
+                'font-size': props.size ? `${(props.size / 100) * 3}rem` : null
             }
         ]"
         :class="[

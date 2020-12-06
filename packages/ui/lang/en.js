@@ -82,6 +82,12 @@ export const AwPage = {
     exitFullscreen: 'Exit fullscreen mode'
 }
 
+export const AwPageUser = {
+    upload: 'Upload',
+    remove: 'Remove',
+    modalTitle: 'Upload avatar'
+}
+
 export const AwPagination = {
     info: 'Show {from}-{to} of {total}',
     page: 'Page {page} of {pagesTotal}',
@@ -137,6 +143,7 @@ export default {
     AwMarkdownEditor,
     AwMultiBlockBuilder,
     AwPage,
+    AwPageUser,
     AwPagination,
     AwSelect,
     AwTableBuilder,

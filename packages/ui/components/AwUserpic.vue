@@ -17,7 +17,9 @@
             :class="{ 'text-sm': props.description }"
         >
             <span>{{ props.name }}</span>
-            <div class="text-disabled">{{ props.description }}</div>
+            <slot name="description">
+                <div class="text-disabled">{{ props.description }}</div>
+            </slot>
         </div>
     </span>
 </template>
