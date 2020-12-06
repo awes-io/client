@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.105.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.104.0...@awes-io/ui@1.105.0) (2020-12-06)
+
+
+### Features
+
+* **aw-page-user:** cusom aw-page with avatar added ([8135df8](https://github.com/awes-io/client/commit/8135df875a80c2869793a672627382c27149aef2))
+
+
+
+
+
 # [1.104.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.103.0...@awes-io/ui@1.104.0) (2020-12-04)
 
 
