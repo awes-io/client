@@ -305,11 +305,13 @@ export default {
         },
 
         _toDayjs(input) {
+            const _dayjs = this.$dayjs || dayjs
+
             if (this._stringFormat && typeof input === 'string') {
-                return dayjs(input, this._stringFormat)
+                return _dayjs(input, this._stringFormat)
             }
 
-            return dayjs(input)
+            return _dayjs(input)
         },
 
         _getDateFromEvent: getDateFromEvent,

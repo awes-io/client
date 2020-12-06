@@ -1,62 +1,74 @@
 <template>
     <div :class="className">
-        <div class="flex items-end container">
-            <div class="flex-auto">
-                <!-- title -->
-                <Component
-                    :is="titleTag"
-                    :class="[elClasses.title]"
-                    :key="title.key || title"
-                >
-                    <!-- Breadcrumb link back to catalog -->
-                    <slot name="breadcrumb">
-                        <!-- if prop breadctumb is empty, block is empty too -->
-                        <div
-                            v-if="
-                                breadcrumb &&
-                                    breadcrumb.href &&
-                                    breadcrumb.title
-                            "
-                            class="flex items-center"
-                        >
-                            <AwButton
-                                :href="breadcrumb.href"
-                                :title="breadcrumb.title"
-                                class="mr-4"
-                                content-class="p-2"
-                                size="sm"
-                                icon="chevron-l"
-                                color="default"
-                            />
-                            <span class="hidden sm:inline-block">
-                                <AwLink :href="breadcrumb.href" class="mr-2">{{
-                                    breadcrumb.title
-                                }}</AwLink>
-                                <span
-                                    class="text-sm text-disabled align-middle mr-4"
-                                    >&#47;</span
-                                >
-                            </span>
-                        </div>
-                    </slot>
-                    <!-- Title of the page -->
-                    <slot name="title" :title="title">
-                        <!-- Empty string -->
-                        {{ title }}
-                    </slot>
-                </Component>
-            </div>
-            <div v-if="!!$slots.buttons" class="py-4 flex-none pl-4">
+        <div class="flex flex-wrap lg:flex-no-wrap items-end container">
+            <slot
+                name="heading"
+                v-bind="{ titleTag, title, breadcrumb, elClasses }"
+            >
+                <div class="flex-grow">
+                    <!-- title -->
+                    <Component
+                        :is="titleTag"
+                        :class="[elClasses.title, elClasses.titleMinHeight]"
+                        :key="title.key || title"
+                    >
+                        <!-- Breadcrumb link back to catalog -->
+                        <slot name="breadcrumb">
+                            <!-- if prop breadctumb is empty, block is empty too -->
+                            <div
+                                v-if="
+                                    breadcrumb &&
+                                        breadcrumb.href &&
+                                        breadcrumb.title
+                                "
+                                class="flex items-center"
+                            >
+                                <AwButton
+                                    :href="breadcrumb.href"
+                                    :title="breadcrumb.title"
+                                    class="mr-4"
+                                    content-class="p-2"
+                                    size="sm"
+                                    icon="chevron-l"
+                                    color="default"
+                                />
+                                <span class="hidden sm:inline-block">
+                                    <AwLink
+                                        :href="breadcrumb.href"
+                                        class="mr-2"
+                                    >
+                                        {{ breadcrumb.title }}
+                                    </AwLink>
+                                    <span
+                                        class="text-sm text-disabled align-middle mr-4"
+                                    >
+                                        &#47;
+                                    </span>
+                                </span>
+                            </div>
+                        </slot>
+                        <!-- Title of the page -->
+                        <slot name="title" :title="title">
+                            <!-- Empty string -->
+                            {{ title }}
+                        </slot>
+                    </Component>
+                </div>
+            </slot>
+            <div
+                v-if="!!$scopedSlots.buttons"
+                class="py-4 flex-shrink-0 pl-4 ml-auto"
+            >
                 <slot
                     name="buttons"
                     v-bind="{ isFullscreen, toggleFullscreen }"
-                ></slot>
+                />
             </div>
         </div>
 
         <!-- subnav -->
         <div>
-            <slot name="subnav">
+            <slot name="subnav" :subnav="subnav">
                 <div v-if="subnav.length" class="border-b bg-muted">
                     <div class="container">
                         <div class="-mb-px -mx-4">
@@ -201,6 +213,7 @@ export default {
         elClasses() {
             return getBemClasses(this.className, [
                 'title',
+                'title_min-height',
                 'subnav',
                 'tabs',
                 'content',

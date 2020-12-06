@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div v-if="label" class="mb-1">
+        <!-- z-index for tooltip overlapped with aw-grid hacky padding -->
+        <!-- TODO: remove z-index after aw-grid refactor to css grid -->
+        <div v-if="label" class="mb-1 relative z-10">
             <span class="opacity-50 text-sm">{{ label }}</span>
 
             <!-- Customization of help icon -->

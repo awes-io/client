@@ -1,37 +1,27 @@
 <template>
-    <div v-show="!!croppie" class="aw-cropper">
+    <div
+        v-show="!!croppie"
+        class="aw-cropper"
+        :style="{ width: totalWidth + 'px' }"
+    >
         <!-- image wrapped because of Croppie -->
-        <div>
+        <div class="aw-cropper__croppie">
             <img :src="src" alt="" ref="image" />
+
+            <AwButton
+                class="aw-cropper__rotate"
+                content-class="px-2"
+                theme="icon"
+                :text="$t('AwCropper.rotate')"
+                color="default"
+                icon="redo-alt"
+                @click="rotate"
+            />
         </div>
 
-        <!-- upload -->
-        <AwButton tag="label" class="appearance-none">
-            <input
-                type="file"
-                ref="file"
-                accept="image/*"
-                class="sr-only"
-                @change="bindImage"
-            />
-            <slot name="upload">
-                {{ $t('AwCropper.upload') }}
-            </slot>
-        </AwButton>
-
-        <slot name="buttons" :rotate="rotate" :save="save" :cancel="cancel">
-            <!-- rotate -->
-            <AwButton :text="$t('AwCropper.rotate')" @click="rotate" />
-
+        <slot name="buttons" :rotate="rotate" :save="save">
             <!-- save -->
             <AwButton :text="$t('AwCropper.save')" @click="save" />
-
-            <!-- cancel -->
-            <AwButton
-                v-if="$listeners.cancel"
-                :text="$t('AwCropper.cancel')"
-                @click="cancel"
-            />
         </slot>
     </div>
 </template>
@@ -61,7 +51,7 @@ export default {
 
         padding: {
             type: [String, Number],
-            default: 100
+            default: 70
         },
 
         format: {
@@ -81,10 +71,9 @@ export default {
         }
     },
 
-    inject: {
-        modal: {
-            from: 'modal',
-            default: false
+    computed: {
+        totalWidth() {
+            return +this.width + +this.padding
         }
     },
 
@@ -105,24 +94,21 @@ export default {
                 await this.loadCroppie()
             }
             this.croppie = new window.Croppie(this.$refs.image, {
-                viewport: { width: +this.width, height: +this.height },
+                viewport: {
+                    width: +this.width,
+                    height: +this.height,
+                    type: 'circle'
+                },
                 boundary: {
-                    width: +this.width + +this.padding,
+                    width: this.totalWidth,
                     height: +this.height + +this.padding
                 },
                 enableOrientation: true
             })
         },
 
-        bindImage(e) {
-            let file = e.target.files[0]
-            if (!file) return
-            let url = URL.createObjectURL(file)
-            this.croppie.bind({ url })
-        },
-
         rotate() {
-            this.croppie.rotate(90)
+            this.croppie.rotate(-90)
         },
 
         async save() {
@@ -134,12 +120,6 @@ export default {
             })
 
             this.$emit('save', file)
-
-            this.cancel()
-        },
-
-        cancel() {
-            this.$emit('cancel')
         }
     },
 
@@ -154,3 +134,33 @@ export default {
     }
 }
 </script>
+
+<style lang="postcss">
+.aw-cropper {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__croppie {
+        position: relative;
+    }
+
+    &__rotate {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+
+    .croppie-container {
+        .cr-viewport,
+        .cr-resizer {
+            box-shadow: 0 0 2000px 2000px var(--c-muted);
+        }
+
+        .cr-slider-wrap {
+            width: 100%;
+        }
+    }
+}
+</style>

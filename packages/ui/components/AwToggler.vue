@@ -4,7 +4,7 @@
         @enter="open"
         @leave="close"
         @before-leave="isHidden = true"
-        @after-enter="isHidden = false"
+        @after-enter="cleanUp"
     >
         <div
             v-if="show"
@@ -56,6 +56,11 @@ export default {
         setMaxHeight() {
             const maxHeight = this.$refs.wrapper.scrollHeight
             this.$refs.wrapper.style.maxHeight = `${maxHeight}px`
+        },
+
+        cleanUp() {
+            this.$refs.wrapper.style.maxHeight = null
+            this.isHidden = false
         }
     }
 }
