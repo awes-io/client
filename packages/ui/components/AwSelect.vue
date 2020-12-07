@@ -146,7 +146,7 @@
 
                 <!-- not found -->
                 <AwDropdownButton
-                    v-else-if="!isLoading && searchPhrase"
+                    v-if="_showNotFound"
                     @click="_selectOnEnter"
                     tabindex="-1"
                     data-arrow-focus
@@ -263,6 +263,11 @@ export default {
         invert: {
             type: Boolean,
             default: false
+        },
+
+        createConfirmText: {
+            type: String,
+            default: 'Create new ?'
         }
     },
 
@@ -370,6 +375,14 @@ export default {
                         this._getLabel(option).toLowerCase() ===
                         this.searchPhrase.toLowerCase()
                 )
+            )
+        },
+
+        _showNotFound() {
+            return !!(
+                !this.selectOptions.length &&
+                !this.isLoading &&
+                this.searchPhrase
             )
         },
 
@@ -524,6 +537,16 @@ export default {
 
         _onBlur($event) {
             if (!this.$el.contains($event.relatedTarget)) {
+                if (
+                    this.isOpened &&
+                    this._isAjax &&
+                    (this._showNotFound || this._showNotEqual)
+                ) {
+                    if (confirm(this.createConfirmText)) {
+                        this.$emit('not-equal', this.searchPhrase)
+                    }
+                }
+
                 this.isOpened = false
             }
         },
