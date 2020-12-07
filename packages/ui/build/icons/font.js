@@ -8,7 +8,7 @@ const webfontsGenerator = require('webfonts-generator')
 
 const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg/icon/')
 const files = fs.readdirSync(ICONS_FOLDER).map(filename => {
-    if (filename.indexOf(".svg") === -1) {
+    if (filename.indexOf('.svg') === -1) {
         return
     }
     return path.resolve(ICONS_FOLDER, filename)
@@ -31,7 +31,6 @@ const DEFAULTS = {
     fontHeight: 240
 }
 
-
 // build default file
 webfontsGenerator(DEFAULTS, function(error) {
     if (error) {
@@ -42,16 +41,16 @@ webfontsGenerator(DEFAULTS, function(error) {
 })
 
 // // build file for nuxt.js include
-// const FOR_NUXT = {
-//     ...DEFAULTS,
-//     cssFontsUrl: '../dist/fonts/', // raltive path for webpack assets loader
-//     cssDest: path.resolve(__dirname, '../../nuxt/icons.css')
-// }
+const FOR_NUXT = {
+    ...DEFAULTS,
+    cssFontsUrl: '../dist/fonts/', // raltive path for webpack assets loader
+    cssDest: path.resolve(__dirname, '../../nuxt/icons.css')
+}
 
-// webfontsGenerator(FOR_NUXT, function(error) {
-//     if (error) {
-//         console.log('Fail!', error)
-//     } else {
-//         console.log('Nuxt.js icons built!')
-//     }
-// })
+webfontsGenerator(FOR_NUXT, function(error) {
+    if (error) {
+        console.log('Fail!', error)
+    } else {
+        console.log('Nuxt.js icons built!')
+    }
+})

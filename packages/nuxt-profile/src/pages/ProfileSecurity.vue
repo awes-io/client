@@ -9,32 +9,31 @@
             url="/api/profile/password"
             @sended="$refs.passwordForm.$el.reset()"
         >
-            <AwPassword
-                :label="$t('AwesIoProfile.oldPassword')"
-                name="password_current"
-                autocomplete="current-password"
-                required
-            />
-            <AwPassword
-                :label="$t('AwesIoProfile.newPassword')"
-                name="password"
-                class="mt-2"
-                autocomplete="new-password"
-                required
-            />
-            <AwPassword
-                :label="$t('AwesIoProfile.passwordConfirm')"
-                name="password_confirmation"
-                class="mt-2"
-                autocomplete="new-password"
-                required
-            />
-            <AwButton
-                type="submit"
-                :text="$t('AwesIoProfile.submitPassword')"
-                class="mt-4"
-                :data-loading="$t('AwesIoProfile.loading')"
-            />
+            <AwGrid>
+                <AwPassword
+                    :label="$t('AwesIoProfile.oldPassword')"
+                    name="password_current"
+                    autocomplete="current-password"
+                    required
+                />
+                <AwPassword
+                    :label="$t('AwesIoProfile.newPassword')"
+                    name="password"
+                    autocomplete="new-password"
+                    required
+                />
+                <AwPassword
+                    :label="$t('AwesIoProfile.passwordConfirm')"
+                    name="password_confirmation"
+                    autocomplete="new-password"
+                    required
+                />
+                <AwButton
+                    type="submit"
+                    :text="$t('AwesIoProfile.submitPassword')"
+                    :data-loading="$t('AwesIoProfile.loading')"
+                />
+            </AwGrid>
         </AwForm>
 
         <!-- two factor -->
@@ -54,18 +53,19 @@
                 url="/api/twofactor"
                 @sended="_onPhoneSend"
             >
-                <AwTel
-                    :label="$t('AwesIoProfile.phone')"
-                    name="phone"
-                    autocomplete="tel"
-                    required
-                />
-                <AwButton
-                    type="submit"
-                    :text="$t('AwesIoProfile.enable')"
-                    class="mt-4"
-                    :data-loading="$t('AwesIoProfile.loading')"
-                />
+                <AwGrid>
+                    <AwTel
+                        :label="$t('AwesIoProfile.phone')"
+                        name="phone"
+                        autocomplete="tel"
+                        required
+                    />
+                    <AwButton
+                        type="submit"
+                        :text="$t('AwesIoProfile.enable')"
+                        :data-loading="$t('AwesIoProfile.loading')"
+                    />
+                </AwGrid>
             </AwForm>
 
             <!-- verify -->
@@ -162,10 +162,16 @@
 
 <script>
 import { pathOr } from 'rambdax'
-import { mapState } from 'vuex'
 
 export default {
     name: 'ProfileSecurityTab',
+
+    props: {
+        user: {
+            type: Object,
+            required: true
+        }
+    },
 
     data() {
         return {
@@ -175,8 +181,6 @@ export default {
     },
 
     computed: {
-        ...mapState('auth', ['user']),
-
         qrCode() {
             return pathOr(null, 'twoFactor.qrCode.qr_code', this.user)
         },
