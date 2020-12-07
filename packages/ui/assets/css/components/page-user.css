@@ -1,0 +1,103 @@
+.aw-user-heading {
+    display: grid;
+    grid-template-columns: 1fr 160px 1fr;
+    grid-template-rows: 160px auto;
+
+    width: 100%;
+    padding: theme('spacing.4') 0;
+
+    &__breadcrumb {
+        @apply text-disabled;
+        padding-right: theme('spacing.4');
+
+        a:hover,
+        a:focus {
+            outline: none;
+
+            span {
+                text-decoration: underline;
+                outline: none;
+            }
+        }
+    }
+
+    &__userpic,
+    &__userpic-overlay {
+        text-align: center;
+        grid-column: 2;
+        grid-row: 1;
+        width: 160px;
+        height: 160px;
+        border-radius: 80px;
+    }
+
+    &__userpic {
+        @apply text-7xl;
+    }
+
+    &__userpic-overlay {
+        @apply bg-surface;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        opacity: 0;
+        transition: 120ms opacity;
+        z-index: 2;
+
+        &:hover,
+        &:focus-within {
+            opacity: 0.8;
+        }
+    }
+
+    &__info {
+        grid-column: 1 / 4;
+        grid-row: 2;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding-top: theme('spacing.4');
+    }
+}
+
+@screen lg {
+    .aw-user-heading {
+        grid-template-columns: 92px auto;
+        grid-template-rows: auto auto;
+
+        &__breadcrumb {
+            grid-column: 2;
+            grid-row: 1;
+
+            align-self: end;
+
+            padding-left: theme('spacing.4');
+        }
+
+        &__userpic,
+        &__userpic-overlay {
+            width: 92px;
+            height: 92px;
+            border-radius: 46px;
+            grid-column: 1;
+            grid-row: 1 / 3;
+        }
+
+        &__userpic {
+            @apply text-4xl;
+        }
+
+        &__info {
+            grid-column: 2;
+            grid-row: 2;
+            align-items: start;
+
+            padding-top: 0;
+            padding-left: theme('spacing.4');
+        }
+    }
+}

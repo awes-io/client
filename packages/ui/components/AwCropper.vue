@@ -27,8 +27,8 @@
 </template>
 
 <script>
+import Croppie from 'croppie'
 import { preventPinchResize } from '../assets/js/prevent-pinch-resize'
-import loadjs from 'loadjs'
 
 export default {
     name: 'AwCropper',
@@ -78,22 +78,8 @@ export default {
     },
 
     methods: {
-        loadCroppie() {
-            return loadjs(
-                [
-                    'https://unpkg.com/croppie/croppie.min.js',
-                    'https://unpkg.com/croppie/croppie.css'
-                ],
-                'croppie',
-                { returnPromise: true }
-            )
-        },
-
-        async initCroppie() {
-            if (!('Croppie' in window)) {
-                await this.loadCroppie()
-            }
-            this.croppie = new window.Croppie(this.$refs.image, {
+        initCroppie() {
+            this.croppie = new Croppie(this.$refs.image, {
                 viewport: {
                     width: +this.width,
                     height: +this.height,
@@ -134,33 +120,3 @@ export default {
     }
 }
 </script>
-
-<style lang="postcss">
-.aw-cropper {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-
-    &__croppie {
-        position: relative;
-    }
-
-    &__rotate {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 2;
-    }
-
-    .croppie-container {
-        .cr-viewport,
-        .cr-resizer {
-            box-shadow: 0 0 2000px 2000px var(--c-muted);
-        }
-
-        .cr-slider-wrap {
-            width: 100%;
-        }
-    }
-}
-</style>

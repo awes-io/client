@@ -8,6 +8,8 @@
 
 @import './calendar.css';
 
+@import './cropper.css';
+
 @import './dropdown.css';
 @import './dropdown-button.css';
 
@@ -20,6 +22,7 @@
 @import './menu.css';
 @import './menu-item.css';
 @import './page.css';
+@import './page-user.css';
 
 @import './modal.css';
 

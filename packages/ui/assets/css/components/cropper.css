@@ -1,0 +1,30 @@
+@import 'croppie/croppie.css';
+
+.aw-cropper {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__croppie {
+        position: relative;
+    }
+
+    &__rotate {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+
+    .croppie-container {
+        .cr-viewport,
+        .cr-resizer {
+            border: none;
+            box-shadow: 0 0 2000px 2000px var(--c-muted);
+        }
+
+        .cr-slider-wrap {
+            width: 100%;
+        }
+    }
+}
