@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.28](https://git.awescode.com/awes-io/client/compare/example-admin@1.3.27...example-admin@1.3.28) (2020-12-07)
+
+
+### Bug Fixes
+
+* **icons:** regenerate iconic font every time on bundle build ([5199489](https://git.awescode.com/awes-io/client/commits/519948920870fb2f0d1a1db8c93d9d5c8571b35f))
+
+
+
+
+
 ## [1.3.27](https://git.awescode.com/awes-io/client/compare/example-admin@1.3.26...example-admin@1.3.27) (2020-12-06)
 
 **Note:** Version bump only for package example-admin

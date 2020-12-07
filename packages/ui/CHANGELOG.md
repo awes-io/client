@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.105.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.105.0...@awes-io/ui@1.105.1) (2020-12-07)
+
+
+### Bug Fixes
+
+* **icons:** regenerate iconic font every time on bundle build ([5199489](https://github.com/awes-io/client/commit/519948920870fb2f0d1a1db8c93d9d5c8571b35f))
+
+
+
+
+
 # [1.105.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.104.0...@awes-io/ui@1.105.0) (2020-12-06)
 
 
