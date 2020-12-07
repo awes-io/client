@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.105.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.105.1...@awes-io/ui@1.105.2) (2020-12-07)
+
+
+### Bug Fixes
+
+* **aw-page-user:** styles moved to css bundle ([7bc8a56](https://github.com/awes-io/client/commit/7bc8a56ce030d3d06cc81f91aa61930386dace49))
+
+
+
+
+
 ## [1.105.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.105.0...@awes-io/ui@1.105.1) (2020-12-07)
 
 
