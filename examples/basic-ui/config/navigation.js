@@ -49,6 +49,7 @@ export const navigation = [
     { title: 'Address', url: '/aw-address', description: '' },
     { title: 'Avatar', url: '/aw-avatar', description: '' },
     { title: 'Badge', url: '/aw-badge', description: '' },
+    { title: 'Birthday Picker', url: '/aw-birthday-picker', description: '' },
     { title: 'Button nav', url: '/aw-button-nav', description: '' },
     { title: 'Button', url: '/aw-button', description: '' },
     { title: 'Calendar', url: '/aw-calendar', description: '' },

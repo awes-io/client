@@ -477,8 +477,9 @@ export default {
                 return option
             }
 
-            const matches = option.match(new RegExp(this.searchPhrase, 'gi'))
-            return this._addBoldTagsToString(option, matches)
+            const opt = String(option)
+            const matches = opt.match(new RegExp(this.searchPhrase, 'gi'))
+            return this._addBoldTagsToString(opt, matches)
         },
 
         _addBoldTagsToString(str, matches = []) {
