@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.77.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.76.4...basic-ui@1.77.0) (2020-12-08)
+
+
+### Features
+
+* add AwBirthdayPicker component ([456a2d9](https://git.awescode.com/awes-io/client/commits/456a2d9d919ed7038adf449d140a3461eb67d5f1))
+* awselect new option creation ([54b0eec](https://git.awescode.com/awes-io/client/commits/54b0eeccaf44b921613b30034957250be494617f))
+
+
+
+
+
 ## [1.76.4](https://git.awescode.com/awes-io/client/compare/basic-ui@1.76.3...basic-ui@1.76.4) (2020-12-07)
 
 **Note:** Version bump only for package basic-ui

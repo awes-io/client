@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.106.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.105.2...@awes-io/ui@1.106.0) (2020-12-08)
+
+
+### Features
+
+* add AwBirthdayPicker component ([456a2d9](https://github.com/awes-io/client/commit/456a2d9d919ed7038adf449d140a3461eb67d5f1))
+* awselect new option creation ([54b0eec](https://github.com/awes-io/client/commit/54b0eeccaf44b921613b30034957250be494617f))
+
+
+
+
+
 ## [1.105.2](https://github.com/awes-io/client/compare/@awes-io/ui@1.105.1...@awes-io/ui@1.105.2) (2020-12-07)
 
 
