@@ -81,6 +81,14 @@ export const AwUserMenu = {
     kioskMode: 'Режим киоска'
 }
 
+export const AwBirthdayPicker = {
+    month: 'Месяц',
+    day: 'День',
+    year: 'Год',
+    set_year: 'Задать год',
+    birthday: 'День рождения'
+}
+
 export default {
     AwButton,
     AwModal,
@@ -93,5 +101,6 @@ export default {
     AwSelect,
     AwTableBuilder,
     AwSearch,
-    AwUserMenu
+    AwUserMenu,
+    AwBirthdayPicker
 }
