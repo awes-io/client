@@ -5,7 +5,12 @@
         @keydown.down="_arrowFocusItem(+1, $event)"
         @focusout="onBlur"
     >
-        <button class="focus-outline" data-arrow-focus @click.stop="open">
+        <button
+            class="focus-outline"
+            :class="{ 'cursor-default': readonly }"
+            data-arrow-focus
+            @click.stop="open"
+        >
             <slot name="selected" v-bind="selected">
                 <AwChip
                     :loading="loading"
