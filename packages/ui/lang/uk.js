@@ -26,10 +26,8 @@ export const AwCalendar = {
 }
 
 export const AwCropper = {
-    upload: 'Змінити картинку',
-    rotate: 'Крутити 90°',
-    save: 'Зберегти',
-    cancel: 'Скасувати'
+    rotate: 'Повернути на 90°',
+    save: 'Зберегти'
 }
 
 export const AwCodeSnippet = {
@@ -53,8 +51,21 @@ export const AwLayoutFrameCenter = {
         '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
+export const AwPage = {
+    exitFullscreen: 'Вийдти з повноекранного режиму'
+}
+
+export const AwPageUser = {
+    upload: 'Змінити зображення',
+    remove: 'Видалити зображення',
+    zoom: 'Збільшити',
+    modalTitle: 'Завантажити аватар'
+}
+
 export const AwPagination = {
-    info: 'Запис {from}-{to} з {total}'
+    info: 'Запис {from}-{to} з {total}',
+    page: 'Сторінка {page} із {pagesTotal}',
+    limit: 'по {limit} на сторінці'
 }
 
 export const AwSelect = {

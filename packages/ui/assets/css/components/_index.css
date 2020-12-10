@@ -3,6 +3,8 @@
 @import './usermenu.css';
 
 @import './slider.css';
+
+@import './avatar.css';
 @import './button.css';
 @import './button-nav.css';
 
@@ -30,6 +32,7 @@
 
 @import './notification.css';
 
+@import './tags.css';
 @import './toggler.css';
 @import './tooltip.css';
 

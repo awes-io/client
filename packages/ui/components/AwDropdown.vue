@@ -62,9 +62,33 @@ export default {
 
     computed: {
         _popperOptions() {
+            const defaults = this.$options._config.popperOptions
+            const modifiers = Array.isArray(defaults.modifiers)
+                ? defaults.modifiers.slice()
+                : []
+
+            if (
+                Array.isArray(this.options.modifiers) &&
+                this.options.modifiers.length
+            ) {
+                for (let i = this.options.modifiers.length - 1; i >= 0; i--) {
+                    const modifier = this.options.modifiers[i]
+                    const index = modifiers.findIndex(
+                        ({ name }) => name === modifier.name
+                    )
+
+                    if (index !== -1) {
+                        modifiers.splice(index, 1, modifier)
+                    } else {
+                        modifiers.push(modifier)
+                    }
+                }
+            }
+
             return {
-                ...this.$options._config.popperOptions,
-                ...this.options
+                ...defaults,
+                ...this.options,
+                modifiers
             }
         },
 
@@ -128,9 +152,15 @@ export default {
         },
 
         _onClickOutside($event) {
-            if (!this.$el.contains($event.target)) {
-                this.visible = false
+            if (
+                this.$el.contains($event.target) ||
+                (this.targetEl && this.targetEl === $event.target) ||
+                (this.targetEl && this.targetEl.contains($event.target))
+            ) {
+                return
             }
+
+            this.visible = false
         },
 
         _onClickAction($event) {

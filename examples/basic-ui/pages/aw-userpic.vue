@@ -55,6 +55,27 @@
         </div>
 
         <AwCodeSnippet v-text="codeDescription" class="mt-3" />
+
+        <h3>With description slot</h3>
+
+        <div class="flex">
+            <AwUserpic name="John Doe" big-image class="mr-4">
+                <template #description>
+                    <AwTags tags="admin, owner, vip" />
+                </template>
+            </AwUserpic>
+            <AwUserpic
+                :src="require('@/assets/img/avatar_placeholder.png')"
+                name="John Doe"
+                big-image
+            >
+                <template #description>
+                    <AwLink>Show info</AwLink>
+                </template>
+            </AwUserpic>
+        </div>
+
+        <AwCodeSnippet v-text="codeDescriptionSlot" class="mt-3" />
     </AwPage>
 </template>
 
@@ -119,6 +140,27 @@ export default {
                 '    big-image',
                 '/>'
             ]
+            return arr.join('\n')
+        },
+
+        codeDescriptionSlot() {
+            const arr = [
+                `<AwUserpic name="John Doe" big-image class="mr-4">`,
+                `    <template #description>`,
+                `        <AwTags tags="admin, owner, vip" />`,
+                `    </template>`,
+                `</AwUserpic>`,
+                `<AwUserpic`,
+                `    :src="image url here"`,
+                `    name="John Doe"`,
+                `    big-image`,
+                `>`,
+                `    <template #description>`,
+                `        <AwLink>Show info</AwLink>`,
+                `    </template>`,
+                `</AwUserpic>`
+            ]
+
             return arr.join('\n')
         }
     },

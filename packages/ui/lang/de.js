@@ -26,10 +26,8 @@ export const AwCalendar = {
 }
 
 export const AwCropper = {
-    upload: 'Bild ändern',
     rotate: 'Drehen 90°',
-    save: 'Bild speichern',
-    cancel: 'Stornieren'
+    save: 'Bild speichern'
 }
 
 export const AwCodeSnippet = {
@@ -52,6 +50,17 @@ export const AwLayoutDefault = {
 export const AwLayoutFrameCenter = {
     footer:
         '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+}
+
+export const AwPage = {
+    exitFullscreen: 'Beenden Sie den Vollbildmodus'
+}
+
+export const AwPageUser = {
+    upload: 'Bild ändern',
+    remove: 'Bild entfernen',
+    zoom: 'Zoomen',
+    modalTitle: 'Avatar hochladen'
 }
 
 export const AwPagination = {

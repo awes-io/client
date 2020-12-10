@@ -71,6 +71,8 @@ export { default as AwTable } from './AwTable.vue'
 export { default as AwTableBuilder } from './AwTableBuilder.vue'
 export { default as AwTableCol } from './AwTableCol.vue'
 
+export { default as AwTags } from './AwTags.vue'
+
 export { default as AwUploader } from './AwUploader.vue'
 export { default as AwUploaderFiles } from './AwUploaderFiles.vue'
 export { default as AwUserpic } from './AwUserpic.vue'

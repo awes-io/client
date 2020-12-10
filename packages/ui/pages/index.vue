@@ -2,8 +2,8 @@
     <AwPageUser
         title="Homepage"
         :breadcrumb="breadcrumb"
-        @remove="log"
-        @save="log"
+        src="//placehold.it/300"
+        url="//httpbin.org/post"
     >
         <h1 class="text-center py-20">Awes.io UI</h1>
     </AwPageUser>
@@ -19,12 +19,6 @@ export default {
                 title: 'Back',
                 href: '/modals'
             }
-        }
-    },
-
-    methods: {
-        log(val) {
-            alert(val)
         }
     }
 }

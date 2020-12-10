@@ -23,7 +23,6 @@
         "src/pages/*",
         "src/mixins/*",
         "src/assets/*",
-        "src/store/*",
         "index.js"
     ],
     "scripts": {
