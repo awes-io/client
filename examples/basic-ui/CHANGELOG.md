@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.78.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.77.0...basic-ui@1.78.0) (2020-12-11)
+
+
+### Bug Fixes
+
+* improvements/fixes ([35cbe83](https://git.awescode.com/awes-io/client/commits/35cbe837a06cc85c73c99ee52644723da7bcde3b))
+
+
+### Features
+
+* change styles dropdown, notyfication, birthdaypicker ([dff9f53](https://git.awescode.com/awes-io/client/commits/dff9f534a27681a54d9ab3da460a6a35d351b4b1))
+* **aw-page-user:** component recieved loading logic ([81fdcd4](https://git.awescode.com/awes-io/client/commits/81fdcd464830b63484308892040cf59c6e39b554))
+
+
+
+
+
 # [1.77.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.76.4...basic-ui@1.77.0) (2020-12-08)
 
 

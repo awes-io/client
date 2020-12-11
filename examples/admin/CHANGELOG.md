@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://git.awescode.com/awes-io/client/compare/example-admin@1.3.30...example-admin@1.4.0) (2020-12-11)
+
+
+### Features
+
+* **aw-page-user:** component recieved loading logic ([81fdcd4](https://git.awescode.com/awes-io/client/commits/81fdcd464830b63484308892040cf59c6e39b554))
+
+
+
+
+
 ## [1.3.30](https://git.awescode.com/awes-io/client/compare/example-admin@1.3.29...example-admin@1.3.30) (2020-12-08)
 
 **Note:** Version bump only for package example-admin

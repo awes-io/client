@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.107.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.106.0...@awes-io/ui@1.107.0) (2020-12-11)
+
+
+### Bug Fixes
+
+* improvements/fixes ([35cbe83](https://github.com/awes-io/client/commit/35cbe837a06cc85c73c99ee52644723da7bcde3b))
+
+
+### Features
+
+* change styles dropdown, notyfication, birthdaypicker ([dff9f53](https://github.com/awes-io/client/commit/dff9f534a27681a54d9ab3da460a6a35d351b4b1))
+* **aw-page-user:** component recieved loading logic ([81fdcd4](https://github.com/awes-io/client/commit/81fdcd464830b63484308892040cf59c6e39b554))
+* **aw-uploader:** drop area expands to full screen in single uploader ([2310768](https://github.com/awes-io/client/commit/23107688eae2d151d96616dcff68180fcce78461))
+
+
+
+
+
 # [1.106.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.105.2...@awes-io/ui@1.106.0) (2020-12-08)
 
 
