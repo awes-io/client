@@ -1,5 +1,5 @@
 <template functional>
-    <div :class="`bg-${props.type}`" class="aw-noty">
+    <div :class="`bg-${props.icon ? 'overlay' : props.type}`" class="aw-noty">
         <!-- icon -->
         <Component
             :is="$options.components.AwIcon"
@@ -7,6 +7,7 @@
             :name="props.icon"
             size="2xl"
             class="aw-noty__icon"
+            :class="`text-${props.type}`"
         />
 
         <!-- content -->
@@ -47,12 +48,7 @@ export default {
             type: String,
             required: true,
             validator(type) {
-                return [
-                    'bg-info',
-                    'bg-warning',
-                    'bg-success',
-                    'bg-error'
-                ].includes(`bg-${type}`)
+                return ['info', 'warning', 'success', 'error'].includes(type)
             }
         },
 

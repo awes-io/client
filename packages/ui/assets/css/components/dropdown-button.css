@@ -1,5 +1,5 @@
 .aw-dropdown-button {
-    @apply text-sm;
+    @apply text-sm whitespace-no-wrap;
     line-height: 19px;
     display: block;
     position: relative;

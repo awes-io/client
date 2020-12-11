@@ -1,8 +1,9 @@
 <template>
     <AwInfo :label="label">
-        <AwGrid :col="{ md: 3 }" :gap="6">
+        <AwGrid :col="{ md: 12 }" :gap="5">
             <AwSelect
                 v-model="month"
+                :span="{ md: 5 }"
                 :options="monthsList"
                 :required="required"
                 :name="_inputKeys.month"
@@ -14,6 +15,7 @@
 
             <AwSelect
                 v-model="day"
+                :span="{ md: 3 }"
                 :options="daysList"
                 :required="required"
                 :name="_inputKeys.day"
@@ -21,7 +23,7 @@
                 @input="emit"
             />
 
-            <div class="flex items-center h-full">
+            <div class="flex items-center h-full" :span="{ md: 4 }">
                 <AwLink
                     v-if="!_showYear"
                     :text="$t('AwBirthdayPicker.set_year')"
@@ -35,8 +37,10 @@
                     :required="required"
                     :name="_inputKeys.year"
                     :label="$t('AwBirthdayPicker.year')"
+                    :clearable="!showYear"
                     class="w-full"
                     @input="checkMaxDay"
+                    @clear="clearYear"
                 />
             </div>
         </AwGrid>
@@ -244,6 +248,12 @@ export default {
                     formatVal ? d.format(formatVal) : d.format()
                 )
             }
+        },
+
+        clearYear() {
+            this.isYearHidden = true
+            this.year = null
+            this.emit()
         }
     }
 }

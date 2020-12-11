@@ -6,8 +6,10 @@
             Toggle dropdown
         </AwButton>
         <AwDropdown ref="drop">
-            <AwDropdownButton>
-                Default
+            <AwDropdownButton text="with icon">
+                <template #icon>
+                    <AwIcon name="check-solid" size="xs" />
+                </template>
             </AwDropdownButton>
             <AwDropdownButton color="success">
                 Success

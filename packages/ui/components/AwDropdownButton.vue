@@ -7,9 +7,15 @@
         v-on="$listeners"
     >
         <!-- content inside button -->
-        <span tabindex="-1">
+
+        <span class="flex items-start white" tabindex="-1">
             <slot>
-                <!-- {{ text }} -->
+                <span
+                    v-if="$scopedSlots.icon"
+                    class="w-6 text-left inline-block mr-1"
+                >
+                    <slot name="icon"> </slot>
+                </span>
                 {{ text }}
             </slot>
         </span>

@@ -64,7 +64,7 @@
                 <AwButton
                     v-if="clearable"
                     v-show="!isOpened && selectedIndexes.length"
-                    @click="selectedIndexes = []"
+                    @click="_onClearClick"
                     icon="close"
                     theme="icon"
                 />
@@ -528,6 +528,11 @@ export default {
                     this.$refs.input.focus()
                 }
             }
+        },
+
+        _onClearClick() {
+            this.$emit('clear')
+            this.selectedIndexes = []
         },
 
         _onFocus() {
