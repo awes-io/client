@@ -66,7 +66,6 @@ export default {
                 options: this.options
             },
             class: {
-                'w-20': true,
                 'aw-context-menu__toggler': true
             },
             scopedSlots: {

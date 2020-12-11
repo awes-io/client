@@ -53,9 +53,10 @@
      * Tel styles (overwrite vue-tel-input)
      */
     &.is-tel .vue-tel-input {
-        @apply bg-surface;
+        @apply bg-surface relative border-none;
         border-color: theme('borderColor.default');
         border-radius: theme('borderRadius.default');
+        z-index: 11;
 
         input {
             /* background-color: transparent; */
@@ -135,9 +136,9 @@
         white-space: pre-wrap;
     }
 
-    &.is-textarea::before {
+    &.is-textarea.has-label::before {
         @apply absolute h-5;
-        top: 1px;
+        top: 0;
         left: 1px;
         right: 1px;
         content: '';

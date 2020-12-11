@@ -1,5 +1,5 @@
 <template>
-    <div class="aw-text-field is-textarea" :class="wrapperClasses">
+    <div class="aw-text-field is-textarea" :class="_wrapperClasses">
         <textarea
             class="aw-text-field__element p-3"
             v-bind="{ value: inputValue, ...skipAttr, ...$attrs }"
@@ -31,6 +31,12 @@ export default {
         this.$nextTick(() => {
             autosize(this.$refs.element)
         })
+    },
+
+    computed: {
+        _wrapperClasses() {
+            return [...this.wrapperClasses, { 'has-label': !!this.label }]
+        }
     },
 
     beforeDestroy() {

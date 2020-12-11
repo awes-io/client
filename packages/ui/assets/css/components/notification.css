@@ -2,7 +2,8 @@
     display: flex;
     align-items: flex-start;
     padding: theme('spacing.4');
-    border-radius: theme('borderRadius.default');
+    border-radius: theme('borderRadius.lg');
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 
     &__icon {
         margin-right: theme('spacing.4');

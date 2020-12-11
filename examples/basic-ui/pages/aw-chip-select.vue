@@ -16,7 +16,7 @@
 
         <h2>Chip select</h2>
 
-        <AwChipSelect v-model="standart" :options="statuses" />
+        <AwChipSelect v-model="standart" :options="statuses" readonly />
 
         <AwCodeSnippet v-text="code" class="mt-3" :size="50" />
 

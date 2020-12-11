@@ -1,6 +1,7 @@
 <template>
     <AwPage :title="headline">
         <AwBirthdayPicker
+            v-model="date"
             full-parse-format="DD.MM.YYYY"
             short-parse-format="DD.MM"
         />
@@ -30,7 +31,7 @@ export default {
         return {
             title: 'AwBirthdayPicker',
             headline: this._getTitle('AwBirthdayPicker'),
-            date: dayjs()
+            date: null
         }
     },
 
