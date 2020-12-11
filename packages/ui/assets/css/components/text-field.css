@@ -53,10 +53,9 @@
      * Tel styles (overwrite vue-tel-input)
      */
     &.is-tel .vue-tel-input {
-        @apply bg-surface relative border-none;
+        @apply bg-surface border-none;
         border-color: theme('borderColor.default');
         border-radius: theme('borderRadius.default');
-        z-index: 11;
 
         input {
             /* background-color: transparent; */
@@ -86,6 +85,7 @@
             margin: 0;
             top: 100%;
             left: 0;
+            z-index: 11;
 
             &:focus {
                 outline: none;
