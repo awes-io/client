@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.107.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.107.0...@awes-io/ui@1.107.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* dropdown, tel input ([01b8c65](https://github.com/awes-io/client/commit/01b8c65743ee68e4d1a11b95f035d7a724d5b819))
+* notifications ([cb5699c](https://github.com/awes-io/client/commit/cb5699c1fe07a934c2ba09996e9d31a01b746f72))
+
+
+
+
+
 # [1.107.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.106.0...@awes-io/ui@1.107.0) (2020-12-11)
 
 
