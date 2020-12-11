@@ -1,0 +1,79 @@
+.aw-uploader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: theme('spacing.5', 1.25rem);
+    border: 1px dashed var(--c-muted-darker, #d7dbde);
+    border-radius: theme('borderRadius.md');
+    cursor: pointer;
+
+    position: relative;
+
+    &__label {
+        @apply pointer-events-none opacity-60 block text-center;
+    }
+
+    &:hover &__label {
+        @apply opacity-90;
+    }
+
+    &__dragzone {
+        @apply bg-overlay opacity-50;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 9999;
+
+        &:before {
+            content: '';
+            display: block;
+            border: 1px dashed currentColor;
+            border-radius: theme('borderRadius.sm');
+
+            position: absolute;
+            left: theme('spacing.5', 1.25rem);
+            right: theme('spacing.5', 1.25rem);
+            top: theme('spacing.5', 1.25rem);
+            bottom: theme('spacing.5', 1.25rem);
+        }
+    }
+
+    &__progress {
+        @apply bg-muted-dark;
+        appearance: none;
+
+        width: 100%;
+        height: theme('spacing.1', 0.25rem);
+        border-radius: 0 0 theme('borderRadius.md') theme('borderRadius.md');
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        &::-moz-progress-bar {
+            @apply bg-success;
+        }
+
+        &::-webkit-progress-bar {
+            @apply bg-muted-dark;
+        }
+
+        &::-webkit-progress-value {
+            @apply bg-success;
+        }
+    }
+}
+
+@screen sm {
+    .aw-uploader {
+        padding: theme('spacing.10', 2.5rem);
+    }
+}

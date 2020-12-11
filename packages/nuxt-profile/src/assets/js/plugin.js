@@ -1,5 +1,3 @@
-import userAvatar from '@awes-io/nuxt-profile/src/store/user-avatar'
-
 export default async ({ store, app }) => {
     store.commit('awesIo/SET_USER_MENU_ITEM', {
         key: 'profile',
@@ -11,9 +9,5 @@ export default async ({ store, app }) => {
                 href: () => app.localePath({ path: '/profile' })
             }
         }
-    })
-
-    store.registerModule(['auth', 'avatar'], userAvatar, {
-        preserveState: true
     })
 }

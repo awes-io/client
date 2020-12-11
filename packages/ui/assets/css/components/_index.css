@@ -3,6 +3,8 @@
 @import './usermenu.css';
 
 @import './slider.css';
+
+@import './avatar.css';
 @import './button.css';
 @import './button-nav.css';
 
@@ -30,6 +32,7 @@
 
 @import './notification.css';
 
+@import './tags.css';
 @import './toggler.css';
 @import './tooltip.css';
 
@@ -37,6 +40,8 @@
 @import './dashboard-card.css';
 
 @import './select.css';
+
+@import './uploader.css';
 
 /* last because of @keyframes lowers performance */
 @import './animation.css';

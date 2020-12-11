@@ -8,18 +8,24 @@
                     name="Max Mustermann Max Mustermann"
                 />
                 <p>2. Userpic with picture and empty name</p>
-                <AwUserpic src="https://picsum.photos/72" />
+                <AwAvatar name="24 #$% gg ЖНШ" size="50" loading />
+                <AwUserpic :src="dynamic" class="mt-2" big-image />
+                <AwButton
+                    text="set"
+                    class="mt-2"
+                    @click="dynamic = 'https://picsum.photos/92'"
+                />
                 <p>3. Userpic with empty image and name</p>
                 <AwUserpic src="undefined" name="Max Mustermann" />
-                <AwUserpic src="null" name="Max Mustermann" />
+                <AwUserpic src="null" name="Max 🥺 Mustermann" />
                 <AwUserpic :src="undefined" name="Max Mustermann" />
                 <AwUserpic :src="null" name="Max Mustermann" />
-                <AwUserpic src="" name="Max Mustermann" />
+                <AwUserpic src="" name="Max 🥺 Mustermann" />
                 <AwUserpic name="Max Mustermann" />
                 <p>4. Test with specific user names</p>
-                <AwUserpic src="undefined" name="Max" />
+                <AwUserpic src="undefined" name="Max 🥺" />
                 <AwUserpic src="null" name="Max M." />
-                <AwUserpic :src="undefined" name="Sds Max-Mustermann" />
+                <AwUserpic :src="undefined" name="🥺 Sds Max-Mustermann" />
                 <AwUserpic :src="null" name=" Max " />
                 <AwUserpic src="" name="- Max '" />
                 <AwUserpic name="Max" />
@@ -57,8 +63,8 @@
                 <p>9. Userpic without picture, without name (empty tag)</p>
                 <AwUserpic />
                 <p>10. Test with specific names</p>
-                <AwUserpic src="undefined" name="Max" hide-name />
-                <AwUserpic src="null" name="Max M." hide-name />
+                <AwUserpic :src="undefined" name="Max" hide-name />
+                <AwUserpic :src="null" name="Max M." hide-name />
                 <AwUserpic
                     :src="undefined"
                     name="Sds Max-Mustermann"
@@ -71,3 +77,13 @@
         </AwGrid>
     </AwPage>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            dynamic: ''
+        }
+    }
+}
+</script>

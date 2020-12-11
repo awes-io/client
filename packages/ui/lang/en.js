@@ -30,10 +30,8 @@ export const AwDate = {
 }
 
 export const AwCropper = {
-    upload: 'Change Image',
     rotate: 'Rotate 90°',
-    save: 'Save Image',
-    cancel: 'Cancel'
+    save: 'Save Image'
 }
 
 export const AwCodeSnippet = {
@@ -83,8 +81,9 @@ export const AwPage = {
 }
 
 export const AwPageUser = {
-    upload: 'Upload',
-    remove: 'Remove',
+    upload: 'Change Image',
+    remove: 'Remove Image',
+    zoom: 'Zoom',
     modalTitle: 'Upload avatar'
 }
 

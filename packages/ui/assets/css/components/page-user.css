@@ -21,34 +21,23 @@
         }
     }
 
-    &__userpic,
-    &__userpic-overlay {
+    &__userpic {
+        --ui-avatar-size: 160px;
+        @apply text-7xl;
         text-align: center;
+
         grid-column: 2;
         grid-row: 1;
-        width: 160px;
-        height: 160px;
-        border-radius: 80px;
-    }
 
-    &__userpic {
-        @apply text-7xl;
-    }
-
-    &__userpic-overlay {
-        @apply bg-surface;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-
-        opacity: 0;
         transition: 120ms opacity;
-        z-index: 2;
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
 
         &:hover,
-        &:focus-within {
-            opacity: 0.8;
+        &:focus-visible {
+            opacity: 0.85;
         }
     }
 
@@ -78,17 +67,12 @@
             padding-left: theme('spacing.4');
         }
 
-        &__userpic,
-        &__userpic-overlay {
-            width: 92px;
-            height: 92px;
-            border-radius: 46px;
+        &__userpic {
+            --ui-avatar-size: 92px;
+            @apply text-4xl;
+
             grid-column: 1;
             grid-row: 1 / 3;
-        }
-
-        &__userpic {
-            @apply text-4xl;
         }
 
         &__info {

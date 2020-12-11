@@ -19,7 +19,8 @@ const DB = [
         password: '12345678',
         profile: {
             first_name: 'User',
-            last_name: 'One'
+            last_name: 'One',
+            position: 'user position'
         },
         needVerify: false,
         role: 'user'

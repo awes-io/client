@@ -28,7 +28,7 @@
             </div>
 
             <div>
-                <AwAvatar name="Petey Cruiser" :size="40" />
+                <AwAvatar name="🥺 Petey Cruiser" :size="40" />
                 <AwAvatar name="Petey Cruiser" type="no-img" :size="40" />
             </div>
 
@@ -92,7 +92,7 @@ export default {
             const arr = [
                 '<AwAvatar name="Max Mustermann jr." :size="20" />',
                 '\n<AwAvatar name="Mario Speedwagon" :size="30" />',
-                '\n<AwAvatar name="Petey Cruiser" :size="40" />',
+                '\n<AwAvatar name="🥺 Petey Cruiser" :size="40" />',
                 '\n<AwAvatar :size="50" src="image url here" />'
             ]
             return arr.join('\n')

@@ -1,92 +1,90 @@
-<template functional>
-    <span
-        :style="[
-            data.staticStyle,
-            data.style,
-            {
-                'background-color': props.isColored
-                    ? $options.getColor(props.name)
-                    : '',
-                width: props.size ? `${props.size}px` : null,
-                height: props.size ? `${props.size}px` : null,
-                'min-width': props.size ? `${props.size}px` : null,
-                'min-height': props.size ? `${props.size}px` : null,
-                'font-size': props.size ? `${(props.size / 100) * 3}rem` : null
-            }
-        ]"
-        :class="[
-            data.staticClass,
-            data.class,
-            props.isColored ? '' : 'bg-disabled'
-        ]"
-        class="inline-block align-middle rounded-full relative text-center text-surface"
-    >
-        <slot v-bind="{ ...props, initials: $options.getColor(props.name) }">
+<template>
+    <Component :is="tag" :style="sizeVariables" class="aw-avatar">
+        <!-- image  -->
+        <slot v-bind="{ src, name, initials, color, imageError }">
             <img
-                v-if="$options.getSrc(props.src)"
-                :height="props.size"
-                :src="props.src"
-                :alt="props.name || props.src"
-                class="rounded-full min-h-full min-w-full"
+                v-if="src && !imageError"
+                :src="src"
+                :alt="name || ''"
+                @load="onLoad"
+                @error="onLoadError"
             />
+            <span
+                v-if="
+                    (imageError || !src) &&
+                        (type === 'initials' || type === 'empty')
+                "
+                :style="{
+                    backgroundColor: color
+                }"
+            >
+                {{ type === 'initials' ? initials : '' }}
+            </span>
         </slot>
-        <span
-            v-if="!$options.getSrc(props.src) && props.type === 'initials'"
-            class="absolute top-1/2 left-1/2 uppercase"
-            style="transform: translate(-50%, -50%);"
-            >{{ $options.getLetters(props.name) }}</span
-        >
-        <slot
-            name="no-img"
-            v-bind="{ ...props, initials: $options.getColor(props.name) }"
-        >
-            <AwIcon
-                v-if="!$options.getSrc(props.src) && props.type === 'no-img'"
-                size=""
-                class="absolute text-surface top-1/2 left-1/2"
-                style="transform: translate(-50%, -50%);"
-                name="user-solid"
-            />
+
+        <!-- no image placeholder -->
+        <slot name="no-img" :initials="initials" :color="color">
+            <svg
+                v-if="(imageError || !src) && type === 'no-img'"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 496 512"
+                class="aw-avatar__no-img-icon"
+            >
+                <path
+                    :fill="color"
+                    d="M248 8a248 248 0 100 496 248 248 0 000-496zm0 96a88 88 0 110 176 88 88 0 010-176zm0 344c-59 0-111-27-146-68 18-36 55-60 98-60l7 1c13 4 27 7 41 7s28-3 41-7l7-1c43 0 80 24 99 60-36 41-88 68-147 68z"
+                />
+            </svg>
         </slot>
-    </span>
+
+        <!-- loading indicator -->
+        <slot name="loading" :isLoading="isLoading">
+            <span v-if="isLoading" class="aw-avatar__loader"></span>
+        </slot>
+    </Component>
 </template>
 
 <script>
-import { split, take, join, map, compose } from 'rambdax'
-import AwIcon from './AwIcon.vue'
+import { memoize } from 'rambdax'
+import { hashStringToIndex } from '../assets/js/string'
+import { conf } from '../assets/js/component'
+import { AwAvatar as _config } from './_config'
+
+const memoizedHasher = memoize(hashStringToIndex)
 
 export default {
     name: 'AwAvatar',
 
-    components: {
-        AwIcon
-    },
+    _config,
 
     props: {
+        // wrapper tag
+        tag: {
+            type: String,
+            default: 'span'
+        },
+
         // Full URL to the picture
         src: {
             type: String,
             default: ''
         },
+
         // User name
         name: {
             type: String,
             default: ''
         },
+
         // Size of the image
         size: {
             type: [Number, String],
-            default: 36,
+            default: null,
             validator(val) {
-                const isValid = !Number.isNaN(val * 1)
-                if (process.env.NODE_ENV === 'development' && !isValid) {
-                    console.error(
-                        `Incorrect size. Only numbers or strings as numbers allowed. Given value - ${val}`
-                    )
-                }
-                return isValid
+                return !isNaN(val * 1)
             }
         },
+
         // Type of the rendered image.
         type: {
             type: String,
@@ -96,50 +94,89 @@ export default {
                 return ['initials', 'empty', 'no-img'].includes(value)
             }
         },
+
         // To bring the color to the rounded background.
         isColored: {
             type: Boolean,
             default: true
+        },
+
+        // Show loading indicator
+        loading: Boolean,
+
+        colors: {
+            type: Array,
+            default() {
+                return conf(this, 'colors')
+            }
         }
     },
 
-    // To get source of the image if exist
-    getSrc(src) {
-        return src
-    },
-    // Convert user name to 2 first letters
-    getLetters: compose(join(''), map(take(1)), take(2), split(/[ -]/)),
-
-    // Get randome color from the preset list
-    getColor(name) {
-        let hash = 0
-        const colors = [
-            '#E0AB61',
-            '#E29D5D',
-            '#E68262',
-            '#E45284',
-            '#DF54BD',
-            '#DA61D9',
-            '#BF55CF',
-            '#AF57DB',
-            '#9C55D3',
-            '#834EE3',
-            '#634EE3',
-            '#594FCF',
-            '#6086E3',
-            '#66B9E4',
-            '#66C3D1',
-            '#66C7B9',
-            '#5CBC98',
-            '#9A6F66'
-        ]
-        if (!name.length) return colors[0]
-        for (var i = 0; i < name.length; i++) {
-            hash = name.charCodeAt(i) + ((hash << 5) - hash)
-            hash = hash & hash
+    data() {
+        return {
+            imageError: false,
+            imageLoading: false
         }
-        hash = ((hash % colors.length) + colors.length) % colors.length
-        return colors[hash]
+    },
+
+    computed: {
+        sizeVariables() {
+            const size = this.size * 1
+
+            if (size && !isNaN(size)) {
+                return {
+                    '--ui-avatar-size': size + 'px',
+                    '--ui-avatar-font-size': (size / 36).toFixed(2) + 'rem'
+                }
+            }
+
+            return null
+        },
+
+        // Convert user name to 2 first letters
+        initials() {
+            const name = this.name
+                .replace(/[^ \u0041-\u005a\u0061-\u007A\u00DF-\u1EF3]/g, '')
+                .trim()
+
+            return name
+                .split(' ')
+                .reduce(
+                    (acc, word) =>
+                        acc.length < 2 ? acc + (word.charAt(0) || '') : acc,
+                    ''
+                )
+        },
+
+        // Get random color from the preset list
+        color() {
+            if (!this.isColored) return null
+
+            const index = memoizedHasher(this.name.trim(), this.colors.length)
+
+            return this.colors[index]
+        },
+
+        isLoading() {
+            return this.loading || this.imageLoading
+        }
+    },
+
+    watch: {
+        src(val) {
+            this.imageLoading = !!val
+        }
+    },
+
+    methods: {
+        onLoad() {
+            this.imageLoading = false
+        },
+
+        onLoadError() {
+            this.imageLoading = false
+            this.imageError = true
+        }
     }
 }
 </script>

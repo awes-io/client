@@ -27,3 +27,36 @@ function _containsTargets(targetTags = [], $event) {
  * Wrap with R.curry before export
  */
 export const containsTargets = curry(_containsTargets)
+
+export const makePreventableEventMock = () => {
+    const $event = Object.create(null)
+
+    $event.name = 'aw-preventable'
+    $event.target = null
+    $event.isDefaultPrevented = false
+    $event.preventDefault = function() {
+        this.isDefaultPrevented = true
+    }
+
+    return $event
+}
+
+export const getEventTargetAttribute = ($event, attrName, bound = null) => {
+    let el = $event.target
+
+    if (el && el === bound) {
+        return el.getAttribute(attrName)
+    }
+
+    while (el && el !== bound) {
+        const val = el.getAttribute(attrName)
+
+        if (val) {
+            return val
+        } else {
+            el = el.parentElement
+        }
+    }
+
+    return null
+}

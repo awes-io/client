@@ -5,7 +5,7 @@
 .collapse {
 
     &-enter-active {
-        transition: 200ms all, 250ms max-height ease-out-sine;
+        transition: 200ms all, 250ms max-height ease-out;
     }
 
     &-leave-active {
@@ -37,7 +37,7 @@
 
     &-enter-active,
     &-leave-active {
-        transition: opacity 400ms ease-in-out-sine;
+        transition: 400ms opacity ease-in-out;
     }
 
     &-enter,
@@ -48,7 +48,7 @@
 
 .fade-from-bottom {
     &-enter-active {
-        transition: opacity 400ms ease-out, transform 400ms ease-out-sine;
+        transition: opacity 400ms ease-out, transform 400ms ease-out;
     }
 
     &-leave-active {
@@ -72,7 +72,7 @@
 
 .fade-dashboard-card {
     &-enter-active {
-        transition: opacity .5s ease-in-out-sine;
+        transition: opacity .5s ease-in-out;
         transition-delay: .15s;
     }
 

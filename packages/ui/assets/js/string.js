@@ -11,3 +11,22 @@ export const toPascal = (text = '') => {
         split('-', text)
     )
 }
+
+export const hashStringToIndex = (str, limit) => {
+    limit = +limit || 0
+
+    let hash = 0
+
+    if (typeof str !== 'string' || !str.length) return null
+
+    if (limit < 2) return 0
+
+    for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash)
+        hash = hash & hash
+    }
+
+    hash = ((hash % limit) + limit) % limit
+
+    return hash
+}

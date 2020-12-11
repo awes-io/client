@@ -1,4 +1,5 @@
 import { pathOr, isEmpty } from 'rambdax'
+import { COLORS } from '../assets/js/constants'
 
 export const LINK_REGEX = /^(https?:)?\/\//gm
 export const SPECIAL_URL_REGEX = /tel:|mailto:/gm
@@ -6,6 +7,10 @@ export const SPECIAL_URL_REGEX = /tel:|mailto:/gm
 export const AwLink = {
     routerComponent: 'router-link',
     baseClass: 'link'
+}
+
+export const AwAvatar = {
+    colors: COLORS
 }
 
 export const AwButton = {
@@ -28,7 +33,7 @@ export const AwDropdown = {
         modifiers: [
             {
                 name: 'arrow',
-                enabled: true
+                enabled: false
             },
             {
                 name: 'flip',
@@ -188,7 +193,12 @@ export const AwTableBuilder = {
     default: false
 }
 
+export const AwTags = {
+    colors: COLORS
+}
+
 export default {
+    AwAvatar,
     AwButton,
     AwLink,
     AwCropper,
@@ -200,5 +210,6 @@ export default {
     AwIcon,
     AwPage,
     AwModal,
-    AwTableBuilder
+    AwTableBuilder,
+    AwTags
 }

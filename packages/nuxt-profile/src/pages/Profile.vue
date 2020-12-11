@@ -3,16 +3,23 @@
         :src="user.avatar"
         :title="userName || $t('AwesIoProfile.title')"
         :subnav="subnav"
-        @save="UPDATE_AVATAR"
-        @remove="DELETE_AVATAR"
+        url="/api/profile/avatar"
+        @saved="$auth.fetchUser()"
+        @removed="$auth.fetchUser()"
     >
+        <template #subtitle>
+            <span v-if="userDescription" class="text-disabled">
+                {{ userDescription }}
+            </span>
+        </template>
+
         <NuxtChild :user="user" />
     </AwPageUser>
 </template>
 
 <script>
 import { pathOr } from 'rambdax'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
     computed: {
@@ -37,11 +44,11 @@ export default {
             return [profile.first_name, profile.last_name]
                 .filter(Boolean)
                 .join(' ')
-        }
-    },
+        },
 
-    methods: {
-        ...mapActions('auth', ['UPDATE_AVATAR', 'DELETE_AVATAR'])
+        userDescription() {
+            return pathOr('', 'profile.position', this.user)
+        }
     }
 }
 </script>

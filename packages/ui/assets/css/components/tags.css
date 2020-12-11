@@ -1,0 +1,31 @@
+.aw-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: theme('spacing.2', 0.5rem);
+}
+
+.aw-tag {
+    color: var(--c-on-overlay);
+
+    border-radius: 9999px;
+    padding: theme('spacing.1', 0.25rem) theme('spacing.2', 0.5rem);
+    min-width: calc(theme('spacing.2', 0.5rem) + theme('fontSize.xs', 0.625rem));
+
+    text-align: center;
+    font-size: theme('fontSize.xs', 0.625rem);
+    font-family: theme('fontFamily.heading');
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); /* TODO: --c-overlay with opacity */
+
+    &--clickable {
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+}

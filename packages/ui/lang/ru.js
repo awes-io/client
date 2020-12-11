@@ -30,10 +30,8 @@ export const AwDate = {
 }
 
 export const AwCropper = {
-    upload: 'Изменить картинку',
-    rotate: 'Вращать 90°',
-    save: 'Сохранить',
-    cancel: 'Отменить'
+    rotate: 'Повернуть на 90°',
+    save: 'Сохранить'
 }
 
 export const AwCodeSnippet = {
@@ -57,8 +55,21 @@ export const AwLayoutFrameCenter = {
         '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
 }
 
+export const AwPage = {
+    exitFullscreen: 'Выйти из полноэкранного режима'
+}
+
+export const AwPageUser = {
+    upload: 'Изменить изображение',
+    remove: 'Удалить изображение',
+    zoom: 'Увеличить',
+    modalTitle: 'Загрузить аватар'
+}
+
 export const AwPagination = {
-    info: 'Записи {from}-{to} из {total}'
+    info: 'Записи {from}-{to} из {total}',
+    page: 'Страница {page} из {pagesTotal}',
+    limit: 'по {limit} на странице'
 }
 
 export const AwSelect = {
@@ -97,6 +108,8 @@ export default {
     AwCodeSnippet,
     AwLayoutDefault,
     AwLayoutFrameCenter,
+    AwPage,
+    AwPageUser,
     AwPagination,
     AwSelect,
     AwTableBuilder,
