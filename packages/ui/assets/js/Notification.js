@@ -15,7 +15,7 @@ export class Notification {
 
     add(noty) {
         noty = isType('String', noty) ? { title: noty } : noty
-        const position = pathOr('default', 'position', noty)
+        const position = pathOr('bottom center', 'position', noty)
 
         const container =
             this.containers[position] || this._initContainer(position)
