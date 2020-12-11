@@ -68,6 +68,7 @@ export default {
                 : []
 
             if (
+                this.options &&
                 Array.isArray(this.options.modifiers) &&
                 this.options.modifiers.length
             ) {
