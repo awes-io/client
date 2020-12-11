@@ -103,6 +103,8 @@ export default {
     AwCodeSnippet,
     AwLayoutDefault,
     AwLayoutFrameCenter,
+    AwPage,
+    AwPageUser,
     AwPagination,
     AwSelect,
     AwTableBuilder,

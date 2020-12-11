@@ -41,5 +41,7 @@
 
 @import './select.css';
 
+@import './uploader.css';
+
 /* last because of @keyframes lowers performance */
 @import './animation.css';
