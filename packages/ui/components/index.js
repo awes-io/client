@@ -89,3 +89,5 @@ export { default as AwDashboardSpeed } from './AwDashboardSpeed.vue'
 export { default as AwDashboardSection } from './AwDashboardSection.vue'
 export { default as AwDashboardCard } from './AwDashboardCard.vue'
 export { default as AwBirthdayPicker } from './AwBirthdayPicker.vue'
+
+export { default as AwDownloadLink } from './AwDownloadLink.vue'

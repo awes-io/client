@@ -12,37 +12,35 @@
     >
         <span :class="elClasses.overlay"></span>
 
+        <AwSvgImage v-if="loading" :class="elClasses.loader" name="loader" />
+
         <span
             :class="[
                 elClasses.content,
                 `${elClasses.content}_${size}`,
+                { 'opacity-0': loading },
                 contentClass
             ]"
             tabindex="-1"
         >
-            <AwSvgImage
-                v-if="loading"
-                name="spinner"
-                slot="left"
-                class="h-5 w-5 inline-block mr-1"
-            />
+            <slot name="icon">
+                <AwIcon
+                    v-if="icon"
+                    :name="icon"
+                    :class="{
+                        'mr-1': theme !== 'icon' && (text || $slots.default)
+                    }"
+                    class="flex-shrink-0"
+                />
+            </slot>
 
-            <AwIcon
-                v-if="icon && !loading"
-                :name="icon"
-                :class="{ 'mr-1': theme !== 'icon' && text }"
-                class="flex-shrink-0"
-            />
             <span
                 :class="[
                     { 'sr-only': theme === 'icon' && icon },
                     elClasses.text
                 ]"
             >
-                <slot v-if="!loading">{{ text }}</slot>
-                <span v-else>
-                    {{ loadingText }}
-                </span>
+                <slot>{{ text }}</slot>
             </span>
         </span>
     </component>
@@ -130,7 +128,12 @@ export default {
         },
 
         elClasses() {
-            return getBemClasses(this.className, ['content', 'overlay', 'text'])
+            return getBemClasses(this.className, [
+                'content',
+                'overlay',
+                'text',
+                'loader'
+            ])
         },
 
         loadingText() {

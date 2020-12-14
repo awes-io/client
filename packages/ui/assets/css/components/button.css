@@ -1,6 +1,6 @@
 .aw-button {
     @apply inline-block cursor-pointer relative rounded; /* shape */
-    @apply text-center text-xs font-medium leading-loose tracking-wider uppercase no-underline; /* text */
+    @apply text-center text-xs font-medium leading-loose tracking-wider no-underline; /* text */
     vertical-align: middle;
     transition: 100ms opacity;
 
@@ -38,11 +38,15 @@
     }
 
     &:not(:disabled):hover > &__overlay {
-        opacity: 0.1;
+        opacity: 0.2;
+    }
+
+    &:not(:disabled):active {
+        transform: translateY(1px);
     }
 
     &:not(:disabled):active > &__overlay {
-        opacity: 0.3;
+        opacity: 0.2;
     }
 
     &:focus > &__content {
@@ -94,35 +98,35 @@
      * Disabled style
      */
 
-    &[disabled],
-    &.is-loading {
+    &[disabled] {
+        @apply opacity-50;
         cursor: not-allowed!important;
         user-select: none!important;
-    }
-
-    &:not(.is-loading)[disabled] {
-        color: theme('colors.disabled') !important;
-    }
-
-    &:not(.is-loading)[disabled] &__content {
-        opacity: 1 !important;
-    }
-
-    &.theme-solid:not(.is-loading)[disabled] {
-        background-color: rgba(148,151,153, .3) !important;
     }
 
     /**
      * Loading styles
      */
 
-     &.is-loading {
-        @apply opacity-50;
-     }
+    &.is-loading {
+    @apply opacity-50;
+    cursor: wait!important;
+    user-select: none!important;
+    }
 
-     &.is-loading rect {
+    &.is-loading rect,
+    &.is-loading svg {
         fill: currentColor;
-     }
+    }
+
+    &.is-loading &__loader {
+        @apply absolute h-2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%;
+    }
+
 }
 
 /**
@@ -130,22 +134,26 @@
  */
 @each $color in (info, success, warning, error, surface) {
     .aw-button {
-
-        /**
-         * Types
-         */
-
         /* Solid */
         &.theme-solid.color-$(color) {
+            @apply bg-$(color);
+        }
+        
+        &.theme-outline.color-$(color) &__overlay {
             @apply bg-$(color);
         }
 
         /* Outline */
         /* Link */
-        &.theme-outline.color-$(color),
         &.theme-ghost.color-$(color) {
             @apply text-$(color);
         }
+    }
+}
+
+.aw-button {
+    &.theme-outline {
+        @apply text-on-muted-dark;
     }
 }
 
@@ -158,6 +166,8 @@
     }
 
     /* Outline */
+
+
     /* Link */
     &.theme-outline.color-default,
     &.theme-ghost.color-default {
@@ -169,21 +179,11 @@
  * Types
  */
 .aw-button {
-
-    /* &.theme-solid,
-    &.theme-outline,
-    &.theme-ghost,
-    &.theme-solid &__overlay,
-    &.theme-outline &__overlay,
-    &.theme-ghost &__overlay {
-        @apply rounded;
-    } */
-
     &.theme-solid {
-        @apply shadow-md;
+        @apply shadow-button;
 
-        &:not(:disabled):hover {
-            @apply shadow-lg;
+        &:not(:disabled):active {
+            @apply shadow-button-active;
         }
     }
 
@@ -245,7 +245,7 @@
  * Button group
  */
 .aw-button-group {
-    @apply flex;
+    @apply flex flex-wrap;
 
     .aw-button {
         margin: 0;

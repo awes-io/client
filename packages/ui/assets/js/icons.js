@@ -17,5 +17,24 @@ export default{
     height: 100,
     viewBox: '0 0 100 100',
     content: '<rect width="22" height="22" x="39" y="5" fill="#7fc876" rx="11" ry="11"><animate attributeName="opacity" begin="-0.8333333333333334s" dur="1s" keyTimes="0;1" repeatCount="indefinite" values="1;0"/></rect><rect width="22" height="22" x="39" y="5" fill="#202873" rx="11" ry="11" transform="rotate(60 50 50)"><animate attributeName="opacity" begin="-0.6666666666666666s" dur="1s" keyTimes="0;1" repeatCount="indefinite" values="1;0"/></rect><rect width="22" height="22" x="39" y="5" fill="#7fc876" rx="11" ry="11" transform="rotate(120 50 50)"><animate attributeName="opacity" begin="-0.5s" dur="1s" keyTimes="0;1" repeatCount="indefinite" values="1;0"/></rect><rect width="22" height="22" x="39" y="5" fill="#202873" rx="11" ry="11" transform="rotate(180 50 50)"><animate attributeName="opacity" begin="-0.3333333333333333s" dur="1s" keyTimes="0;1" repeatCount="indefinite" values="1;0"/></rect><rect width="22" height="22" x="39" y="5" fill="#7fc876" rx="11" ry="11" transform="rotate(240 50 50)"><animate attributeName="opacity" begin="-0.16666666666666666s" dur="1s" keyTimes="0;1" repeatCount="indefinite" values="1;0"/></rect><rect width="22" height="22" x="39" y="5" fill="#202873" rx="11" ry="11" transform="rotate(300 50 50)"><animate attributeName="opacity" begin="0s" dur="1s" keyTimes="0;1" repeatCount="indefinite" values="1;0"/></rect>'
+  },
+  loader: {
+    width: 120,
+    height: 30,
+    viewBox: '0 0 120 30',
+    content: `
+      <circle cx="15" cy="15" r="9">
+        <animate attributeName="r" from="15" to="15" begin="0s" dur="0.9s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.9s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="60" cy="15" r="9" fill-opacity=".3">
+        <animate begin="0.2s" attributeName="r" from="9" to="9"  dur="0.9s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/>
+        <animate begin="0.2s" attributeName="fill-opacity" from=".5" to=".5" dur="0.9s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="105" cy="15" r="9">
+        <animate begin="0.4s" attributeName="r" from="15" to="15" dur="0.9s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/>
+        <animate begin="0.4s" attributeName="fill-opacity" from="1" to="1" dur="0.9s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/>
+      </circle>
+    `
   }
 }

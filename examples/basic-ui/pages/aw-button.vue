@@ -5,13 +5,15 @@
         <AwButton>Button</AwButton>
         <AwButton href="/aw-dropdown">Route</AwButton>
         <AwButton href="//google.com">Google link</AwButton>
-        <AwButton icon="intelligence">With icon</AwButton>
+        <AwButton icon="intelligence">
+            <!-- With icon -->
+        </AwButton>
 
         <AwCodeSnippet v-text="codeDefault" class="my-3" />
 
         <h5>Sizes:</h5>
         <AwButton v-for="size in sizes" :size="size" :key="size" class="m-1">
-            {{ size }}
+            Button
         </AwButton>
 
         <AwCodeSnippet v-text="generateCode('size', sizes)" class="my-3" />

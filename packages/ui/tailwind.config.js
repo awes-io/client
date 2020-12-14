@@ -36,7 +36,7 @@ module.exports = {
             brand: '#fff',
             success: '#fff',
             info: '#fff',
-            warning: '#fff',
+            warning: '#0f1012',
             error: '#fff',
             link: '#fff'
         },
@@ -283,7 +283,9 @@ module.exports = {
             boxShadow: {
                 outline: '0 0 0 2px var(--c-info)',
                 'lg-top':
-                    '0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05)'
+                    '0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05)',
+                button: '2px 2px 4px rgba(0, 0, 0, 0.15)',
+                'button-active': '1px 1px 2px rgba(0, 0, 0, 0.15)'
             }
         }
     },
