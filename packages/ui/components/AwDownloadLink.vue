@@ -11,7 +11,7 @@
                 :color="buttonColor"
                 :size="buttonSize"
                 :disabled="loader"
-                content-class="flex items-center"
+                content-class="flex items-center justify-center p-2 md:py-1"
             >
                 <template #default>
                     <span class="sr-only md:not-sr-only">
@@ -23,23 +23,23 @@
                     <AwIcon
                         v-if="loader && isSpinner"
                         name="loader"
-                        class="animation-rotate mr-1"
+                        class="animation-rotate md:mr-1 w-5"
                     />
                     <!-- Slot for Icon -->
                     <slot name="icon">
                         <AwIcon
                             v-if="!loader && isIcon"
                             :name="_icon"
-                            width="20"
-                            height="20"
-                            class="fill-current inline mr-1"
+                            class="fill-current inline md:mr-1 w-5"
                         />
                     </slot>
                 </template>
             </AwButton>
 
             <span v-if="!isButton">
-                <span class="w-5 text-center inline-block text-disabled mr-1">
+                <span
+                    class="w-5 text-center inline-block text-disabled md:mr-1"
+                >
                     <AwIcon
                         v-if="loader && isSpinner"
                         name="loader"
@@ -51,9 +51,7 @@
                             v-if="!loader && isIcon"
                             :name="_icon"
                             :class="`text-${iconColor}`"
-                            width="20"
-                            height="20"
-                            class="fill-current inline"
+                            class="fill-current inline w-5"
                         />
                     </slot>
                 </span>

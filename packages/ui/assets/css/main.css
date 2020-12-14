@@ -40,3 +40,8 @@ pre[class*="language-"] {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+/* Reset styles */
+.content i {
+    font-style: normal;
+}
