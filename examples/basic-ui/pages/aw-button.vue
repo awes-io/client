@@ -2,11 +2,11 @@
     <AwPage :title="headline">
         <h5>Default button:</h5>
 
-        <AwButton>Button</AwButton>
-        <AwButton href="/aw-dropdown">Route</AwButton>
-        <AwButton href="//google.com">Google link</AwButton>
-        <AwButton icon="intelligence">
-            <!-- With icon -->
+        <AwButton class="mr-1 mb-1">Button</AwButton>
+        <AwButton href="/aw-dropdown" class="mr-1 mb-1">Route</AwButton>
+        <AwButton href="//google.com" class="mr-1 mb-1">Google link</AwButton>
+        <AwButton icon="intelligence" class="mr-1 mb-1">
+            With icon
         </AwButton>
 
         <AwCodeSnippet v-text="codeDefault" class="my-3" />
