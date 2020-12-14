@@ -65,8 +65,14 @@
 <script>
 const SUPPORTED_FORMATS = {
     pdf: 'application/pdf',
+    xls: 'application/excel',
     xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    doc: 'application/msword'
+    doc: 'application/msword',
+    docx:
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    jpeg: 'image/jpeg',
+    jpg: 'image/jpeg',
+    png: 'image/png'
 }
 
 export default {
@@ -185,7 +191,7 @@ export default {
     methods: {
         async download() {
             this.loader = true
-            await this.downloadFile(this.href, this.typeFile)
+            await this.downloadFile(this.href)
             this.loader = false
         },
         async downloadFile(url) {
@@ -199,9 +205,16 @@ export default {
                 console.log(resp.headers)
                 // Get Filename
                 const disposition = resp.headers['content-disposition']
-                const filename = disposition
+                const _type = `.${this.typeFile}`
+                let filename = disposition
                     ? disposition.split('filename=')[1].replace(/"/g, '')
                     : 'file'
+
+                const extension = filename.split('.').pop()
+                if (extension !== this.typeFile) {
+                    filename += _type
+                }
+                console.log(filename)
 
                 const file = resp.data
                 const blob = new Blob([file], {
