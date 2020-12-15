@@ -11,7 +11,7 @@ dayjs.extend(customParseFormat)
 dayjs.extend(localizedFormat)
 
 export default {
-    name: 'AwBirthdayDate',
+    name: 'AwDisplayDate',
 
     props: {
         // Date to parse. String or dayjs object
@@ -34,7 +34,7 @@ export default {
         },
 
         // If true - hide age in brackets
-        hideAge: {
+        showAge: {
             type: Boolean,
             default: false
         }
@@ -56,9 +56,9 @@ export default {
             const str = d.format(this.displayFormat)
             const age = now.diff(d, 'year')
 
-            return this.hideAge
-                ? str
-                : `${str} (${age} ${this.$t('AwBirthdayDate.years')})`
+            return this.showAge
+                ? `${str} (${age} ${this.$t('AwBirthdayDate.years')})`
+                : str
         }
     }
 }
