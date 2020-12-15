@@ -65,10 +65,10 @@ const configs = [
                     require('postcss-simple-vars'),
                     require('postcss-easings'),
                     require('tailwindcss'),
-                    require('postcss-custom-properties'),
                     require('postcss-color-function'),
                     require('postcss-discard-empty'),
                     require('autoprefixer'),
+                    require('postcss-custom-properties'),
                     require('postcss-calc'),
                     isProd ? require('cssnano')({ preset: 'default' }) : false
                 ],

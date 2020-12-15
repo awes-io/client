@@ -129,9 +129,9 @@
      */
 
     &.is-loading {
-    @apply opacity-50;
-    cursor: wait!important;
-    user-select: none!important;
+        @apply opacity-50;
+        cursor: wait!important;
+        user-select: none!important;
     }
 
     &.is-loading rect,
@@ -184,9 +184,6 @@
     &.theme-solid.color-default {
         @apply bg-surface;
     }
-
-    /* Outline */
-
 
     /* Link */
     &.theme-outline.color-default,
