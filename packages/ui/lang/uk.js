@@ -100,6 +100,10 @@ export const AwDownloadLink = {
     download: 'Завантажити'
 }
 
+export const AwBirthdayDate = {
+    years: 'років'
+}
+
 export default {
     AwButton,
     AwModal,
@@ -116,5 +120,6 @@ export default {
     AwSearch,
     AwUserMenu,
     AwBirthdayPicker,
-    AwDownloadLink
+    AwDownloadLink,
+    AwBirthdayDate
 }
