@@ -94,6 +94,26 @@
         height: theme('spacing.16');
     }
 
+    /* Mobile hidden text */
+
+    @media (max-width: 768px) {
+        &__content_xs&__content_no-text {
+            @apply p-0;
+        }
+
+        &__content_sm&__content_no-text {
+            @apply p-1;
+        }
+
+        &__content_md&__content_no-text {
+            @apply p-2;
+        }
+    
+        &__content_lg&__content_no-text {
+            @apply p-3;
+        }
+    }
+
     /**
      * Disabled style
      */
@@ -245,7 +265,7 @@
  * Button group
  */
 .aw-button-group {
-    @apply flex flex-wrap;
+    @apply flex;
 
     .aw-button {
         margin: 0;

@@ -18,25 +18,23 @@
             :class="[
                 elClasses.content,
                 `${elClasses.content}_${size}`,
+                { [`${elClasses.content}_no-text`]: mobileTextHidden },
                 { 'opacity-0': loading },
                 contentClass
             ]"
             tabindex="-1"
         >
             <slot name="icon">
-                <AwIcon
-                    v-if="icon"
-                    :name="icon"
-                    :class="{
-                        'mr-1': theme !== 'icon' && (text || $slots.default)
-                    }"
-                    class="flex-shrink-0"
-                />
+                <AwIcon v-if="icon" :name="icon" class="flex-shrink-0" />
             </slot>
 
             <span
                 :class="[
+                    { 'hidden lg:block': mobileTextHidden },
                     { 'sr-only': theme === 'icon' && icon },
+                    {
+                        'ml-1': icon && (text || $slots.default)
+                    },
                     elClasses.text
                 ]"
             >
@@ -103,7 +101,9 @@ export default {
         },
 
         // Active state
-        active: Boolean
+        active: Boolean,
+
+        mobileTextHidden: Boolean
     },
 
     data() {

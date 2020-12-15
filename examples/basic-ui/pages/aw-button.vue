@@ -204,6 +204,45 @@
             />
 
             <AwCodeSnippet v-text="codeCloseButton" class="my-3" />
+
+            <h5>Hidden text on mobile</h5>
+
+            <AwButton
+                mobile-text-hidden
+                size="xs"
+                icon="close"
+                color="success"
+                text="XS"
+                class="ml-4"
+            />
+
+            <AwButton
+                mobile-text-hidden
+                size="sm"
+                icon="close"
+                color="success"
+                text="SM"
+                class="ml-4"
+            />
+
+            <AwButton
+                icon="close"
+                color="success"
+                text="MD"
+                mobile-text-hidden
+                class="ml-4"
+            />
+
+            <AwButton
+                mobile-text-hidden
+                icon="close"
+                size="lg"
+                color="success"
+                text="LG"
+                class="ml-4"
+            />
+
+            <AwCodeSnippet v-text="codeHiddenText" class="my-3" />
         </section>
     </AwPage>
 </template>
@@ -253,6 +292,18 @@ export default {
                 '    theme="ghost"',
                 '    color="default"',
                 '    content-class="p-2"',
+                '/>'
+            ]
+            return arr.join('\n')
+        },
+
+        codeHiddenText() {
+            const arr = [
+                '<AwButton',
+                '    mobile-text-hidden',
+                '    icon="close"',
+                '    color="success"',
+                '    text="MD"',
                 '/>'
             ]
             return arr.join('\n')
