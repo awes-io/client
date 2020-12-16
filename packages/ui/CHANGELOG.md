@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.109.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.108.0...@awes-io/ui@1.109.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* removed comment ([5762552](https://github.com/awes-io/client/commit/576255202def8b7f260ff647699e04d3021c820c))
+
+
+### Features
+
+* add icons, select add not-equal listener ([426da60](https://github.com/awes-io/client/commit/426da60b34fda4be2d22d0f7305eec074e1ce66e))
+
+
+
+
+
 # [1.108.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.107.1...@awes-io/ui@1.108.0) (2020-12-16)
 
 
