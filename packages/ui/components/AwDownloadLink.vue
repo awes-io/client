@@ -21,7 +21,7 @@
                 <template #icon>
                     <span
                         v-if="loader && isSpinner"
-                        class="inline-flex justify-start w-5"
+                        class="inline-flex justify-start w-5 mr-1"
                     >
                         <AwIcon name="loader" class="animation-rotate" />
                     </span>
@@ -31,7 +31,7 @@
                         <slot name="icon">
                             <AwIcon
                                 :name="_icon"
-                                class="fill-current inline w-5 text-left"
+                                class="fill-current inline w-5 text-left mr-1"
                             />
                         </slot>
                     </template>
@@ -39,12 +39,10 @@
             </AwButton>
 
             <span v-if="!isButton">
-                <span
-                    class="w-5 text-center inline-block text-disabled md:mr-1"
-                >
+                <span class="w-5 text-center inline-block text-disabled">
                     <span
                         v-if="loader && isSpinner"
-                        class="inline-flex items-center justify-start w-5"
+                        class="inline-flex items-center justify-start w-5 mr-1"
                     >
                         <AwIcon name="loader" class="animation-rotate" />
                     </span>
@@ -55,7 +53,7 @@
                             <AwIcon
                                 :name="_icon"
                                 :class="`text-${iconColor}`"
-                                class="fill-current inline w-5"
+                                class="fill-current inline w-5 mr-1"
                             />
                         </slot>
                     </template>

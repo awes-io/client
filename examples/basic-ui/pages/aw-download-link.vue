@@ -8,28 +8,6 @@
                     text="Download file"
                 />
             </AwInfo>
-
-            <AwInfo label="test">
-                <AwDownloadLink
-                    href="https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_1MB.pdf"
-                    text="Download file"
-                >
-                    <template #icon>
-                        <AwIcon name="fas fa-bed" class="mr-1" />
-                    </template>
-                </AwDownloadLink>
-            </AwInfo>
-
-            <AwInfo label="test">
-                <AwDownloadLink
-                    href="https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_1MB.pdf"
-                    text="Download file"
-                >
-                    <template #icon>
-                        <AwIcon name="fas fa-user-circle" />
-                    </template>
-                </AwDownloadLink>
-            </AwInfo>
         </AwGrid>
 
         <AwCodeSnippet v-text="code" class="mt-8 shadow" :size="50" />
@@ -43,30 +21,6 @@
                     :file-type="file.type"
                     is-button
                 />
-            </AwInfo>
-
-            <AwInfo label="test">
-                <AwDownloadLink
-                    href="https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_1MB.pdf"
-                    text="Download file"
-                    is-button
-                >
-                    <template #icon>
-                        <AwIcon name="fas fa-bed" class="mr-1 w-5" />
-                    </template>
-                </AwDownloadLink>
-            </AwInfo>
-
-            <AwInfo label="test">
-                <AwDownloadLink
-                    href="https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_1MB.pdf"
-                    text="Download file"
-                    is-button
-                >
-                    <template #icon>
-                        <AwIcon name="fas fa-user-circle" class="mr-1 w-5" />
-                    </template>
-                </AwDownloadLink>
             </AwInfo>
         </AwGrid>
 
