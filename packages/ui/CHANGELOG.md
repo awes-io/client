@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.108.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.107.1...@awes-io/ui@1.108.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* AwInfo modal, AwDownloadLink ([83a01b6](https://github.com/awes-io/client/commit/83a01b6a00f9401b6b010f5442dd7e33a99a8179))
+* ios hidden /icon files ([ad6d6a2](https://github.com/awes-io/client/commit/ad6d6a27c7cbfe03bb3b72c16c343234e02b353e))
+* **AwButton:** loading icon ([def6f2c](https://github.com/awes-io/client/commit/def6f2cf32959c66903bafce83aa6edc79d31747))
+* refactor ([a325d8a](https://github.com/awes-io/client/commit/a325d8aaf23f8a0443bfc6c1e461e1fdf0403f79))
+* rename AwDisplayDate ([2e5b201](https://github.com/awes-io/client/commit/2e5b201adeba390f76a0b24d12ea8e557b98e33c))
+* **AwDownloadLink:** styles ([0e306b7](https://github.com/awes-io/client/commit/0e306b79e76f3942dbb2d0c8746b68dee5d353f7))
+
+
+### Features
+
+* add AwBirthdayDate component ([5742b2c](https://github.com/awes-io/client/commit/5742b2cba77f2bfb18a251121e8a0f2267da9462))
+* css improvements, awDisplayDate ([5ab2ea0](https://github.com/awes-io/client/commit/5ab2ea03086d15be310e1fc31c23d2e2be1a953b))
+* **AwButton:** add mobile-text-hidden props ([c05a37e](https://github.com/awes-io/client/commit/c05a37e28cbe0924c32c45a437ed3265cc04c672))
+* **AwDownloadLink:** add supported formats ([6a51afc](https://github.com/awes-io/client/commit/6a51afc743ed1cdc6af9fe48bd047e1d9b1760ba))
+* **AwDownloadLink:** docs, icons ([2bdca7d](https://github.com/awes-io/client/commit/2bdca7d8dc2a34790cdaf6ae02ddc6abba892382))
+* change button, add AwDownloadLink ([a4a72d9](https://github.com/awes-io/client/commit/a4a72d990a8827d62964e2db0d9247548af819c5))
+
+
+
+
+
 ## [1.107.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.107.0...@awes-io/ui@1.107.1) (2020-12-11)
 
 

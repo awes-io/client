@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.79.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.78.1...basic-ui@1.79.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* AwInfo modal, AwDownloadLink ([83a01b6](https://git.awescode.com/awes-io/client/commits/83a01b6a00f9401b6b010f5442dd7e33a99a8179))
+* rename AwDisplayDate ([2e5b201](https://git.awescode.com/awes-io/client/commits/2e5b201adeba390f76a0b24d12ea8e557b98e33c))
+
+
+### Features
+
+* add AwBirthdayDate component ([5742b2c](https://git.awescode.com/awes-io/client/commits/5742b2cba77f2bfb18a251121e8a0f2267da9462))
+* css improvements, awDisplayDate ([5ab2ea0](https://git.awescode.com/awes-io/client/commits/5ab2ea03086d15be310e1fc31c23d2e2be1a953b))
+* **AwButton:** add mobile-text-hidden props ([c05a37e](https://git.awescode.com/awes-io/client/commits/c05a37e28cbe0924c32c45a437ed3265cc04c672))
+* **AwDownloadLink:** add supported formats ([6a51afc](https://git.awescode.com/awes-io/client/commits/6a51afc743ed1cdc6af9fe48bd047e1d9b1760ba))
+* **AwDownloadLink:** docs, icons ([2bdca7d](https://git.awescode.com/awes-io/client/commits/2bdca7d8dc2a34790cdaf6ae02ddc6abba892382))
+* change button, add AwDownloadLink ([a4a72d9](https://git.awescode.com/awes-io/client/commits/a4a72d990a8827d62964e2db0d9247548af819c5))
+
+
+
+
+
 ## [1.78.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.78.0...basic-ui@1.78.1) (2020-12-11)
 
 **Note:** Version bump only for package basic-ui

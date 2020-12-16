@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.28](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.7.27...@awes-io/nuxt-admin@0.7.28) (2020-12-16)
+
+**Note:** Version bump only for package @awes-io/nuxt-admin
+
+
+
+
+
 ## [0.7.27](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.7.26...@awes-io/nuxt-admin@0.7.27) (2020-12-11)
 
 **Note:** Version bump only for package @awes-io/nuxt-admin
