@@ -43,5 +43,7 @@
 
 @import './uploader.css';
 
+@import './icon.css';
+
 /* last because of @keyframes lowers performance */
 @import './animation.css';

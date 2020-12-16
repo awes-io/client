@@ -11,28 +11,30 @@
                 :color="buttonColor"
                 :size="buttonSize"
                 :disabled="loader"
-                content-class="flex items-center justify-center p-2 md:py-1"
             >
                 <template #default>
-                    <span class="sr-only md:not-sr-only">
+                    <span class="whitespace-no-wrap inline-block">
                         {{ text }}
                     </span>
                 </template>
 
                 <template #icon>
-                    <AwIcon
+                    <span
                         v-if="loader && isSpinner"
-                        name="loader"
-                        class="animation-rotate md:mr-1 w-5"
-                    />
+                        class="inline-flex justify-start w-5"
+                    >
+                        <AwIcon name="loader" class="animation-rotate" />
+                    </span>
+
                     <!-- Slot for Icon -->
-                    <slot name="icon">
-                        <AwIcon
-                            v-if="!loader && isIcon"
-                            :name="_icon"
-                            class="fill-current inline md:mr-1 w-5"
-                        />
-                    </slot>
+                    <template v-if="!loader && isIcon">
+                        <slot name="icon">
+                            <AwIcon
+                                :name="_icon"
+                                class="fill-current inline w-5 text-left"
+                            />
+                        </slot>
+                    </template>
                 </template>
             </AwButton>
 
@@ -40,20 +42,23 @@
                 <span
                     class="w-5 text-center inline-block text-disabled md:mr-1"
                 >
-                    <AwIcon
+                    <span
                         v-if="loader && isSpinner"
-                        name="loader"
-                        class="animation-rotate"
-                    />
+                        class="inline-flex items-center justify-start w-5"
+                    >
+                        <AwIcon name="loader" class="animation-rotate" />
+                    </span>
+
                     <!-- Slot for Icon -->
-                    <slot name="icon">
-                        <AwIcon
-                            v-if="!loader && isIcon"
-                            :name="_icon"
-                            :class="`text-${iconColor}`"
-                            class="fill-current inline w-5"
-                        />
-                    </slot>
+                    <template v-if="!loader && isIcon">
+                        <slot name="icon">
+                            <AwIcon
+                                :name="_icon"
+                                :class="`text-${iconColor}`"
+                                class="fill-current inline w-5"
+                            />
+                        </slot>
+                    </template>
                 </span>
                 <AwLink :class="{ disabled: loader }">
                     <!-- The content of the link. -->
@@ -145,8 +150,8 @@ export default {
          */
         buttonSize: {
             type: String,
-            /* sm */
-            default: 'sm'
+            /* md */
+            default: 'md'
         },
         /**
          * Text of the button or link.
@@ -284,11 +289,12 @@ export default {
 
 <style lang="postcss">
 .download-link i {
+    @apply text-left;
     font-style: inherit !important;
 }
 
 .disabled {
-    @apply cursor-not-allowed;
+    @apply cursor-wait;
     text-decoration: none !important;
 }
 </style>

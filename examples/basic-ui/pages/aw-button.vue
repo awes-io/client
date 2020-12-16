@@ -178,13 +178,7 @@
             </AwButton>
         </div>
         <div class="aw-button-group mt-4">
-            <AwButton
-                v-for="i in 6"
-                color="gray"
-                :key="i"
-                theme="outline"
-                size="sm"
-            >
+            <AwButton v-for="i in 6" :key="i" theme="outline" size="sm">
                 button {{ i }}
             </AwButton>
         </div>
@@ -210,7 +204,7 @@
             <AwButton
                 mobile-text-hidden
                 size="xs"
-                icon="close"
+                icon="fas fa-user-circle"
                 color="success"
                 text="XS"
                 class="ml-4"
@@ -219,14 +213,14 @@
             <AwButton
                 mobile-text-hidden
                 size="sm"
-                icon="close"
+                icon="fas fa-user-circle"
                 color="success"
                 text="SM"
                 class="ml-4"
             />
 
             <AwButton
-                icon="close"
+                icon="fas fa-user-circle"
                 color="success"
                 text="MD"
                 mobile-text-hidden
@@ -235,7 +229,7 @@
 
             <AwButton
                 mobile-text-hidden
-                icon="close"
+                icon="fas fa-user-circle"
                 size="lg"
                 color="success"
                 text="LG"

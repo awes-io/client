@@ -1,6 +1,6 @@
 .aw-button {
     @apply inline-block cursor-pointer relative rounded; /* shape */
-    @apply text-center text-xs font-medium leading-loose tracking-wider no-underline; /* text */
+    @apply text-center text-xs font-medium no-underline; /* text */
     vertical-align: middle;
     transition: 100ms opacity;
 
@@ -10,17 +10,13 @@
     }
 
     &__overlay {
-        @apply absolute inset-0 overflow-hidden;
+        @apply absolute inset-0 overflow-hidden rounded;
     }
 
     &__overlay {
         @apply opacity-0;
         background-color: currentColor;
         transition: 100ms opacity;
-    }
-
-    &__overlay {
-        @apply rounded;
     }
 
 
@@ -58,7 +54,7 @@
      * Sizes
      */
     &__content_xs {
-        @apply px-4;
+        @apply px-1;
         font-size: 0.625rem;
     }
 
@@ -68,7 +64,7 @@
     }
 
     &__content_sm {
-        @apply px-5 py-1;
+        @apply px-2 py-1;
     }
 
     &.theme-icon &__content_sm {
@@ -77,7 +73,7 @@
     }
 
     &__content_md {
-        @apply px-6 py-2 text-sm;
+        @apply px-4 py-3 text-sm leading-4;
     }
 
     &.theme-icon &__content_md {
@@ -86,7 +82,7 @@
     }
 
     &__content_lg {
-        @apply px-8 py-3 text-sm;
+        @apply px-10 py-3 text-base;
     }
 
     &.theme-icon &__content_lg {
@@ -98,7 +94,7 @@
 
     @media (max-width: 768px) {
         &__content_xs&__content_no-text {
-            @apply p-0;
+            padding: 3px;
         }
 
         &__content_sm&__content_no-text {
@@ -158,22 +154,26 @@
         &.theme-solid.color-$(color) {
             @apply bg-$(color);
         }
-        
-        &.theme-outline.color-$(color) &__overlay {
-            @apply bg-$(color);
-        }
 
-        /* Outline */
         /* Link */
         &.theme-ghost.color-$(color) {
             @apply text-$(color);
         }
-    }
-}
 
-.aw-button {
-    &.theme-outline {
-        @apply text-on-muted-dark;
+        /* Outline */
+        &.theme-outline.color-$(color) > &__overlay {
+            @apply bg-$(color);
+        }
+
+        &.theme-outline.color-$(color):not(:disabled):hover,
+        &.theme-outline.color-$(color).is-loading:disabled {
+            @apply border-$(color);
+        }
+
+        &.theme-outline.color-$(color):not(:disabled):hover > &__content,
+        &.theme-outline.color-$(color).is-loading:disabled {
+            @apply text-on-$(color);
+        }
     }
 }
 
@@ -186,9 +186,17 @@
     }
 
     /* Link */
-    &.theme-outline.color-default,
     &.theme-ghost.color-default {
         @apply text-on-muted-dark;
+    }
+
+    /* Outline */
+    &.theme-outline.color-default:not(:disabled):hover {
+        @apply border-surface text-surface;
+    }
+
+    &.theme-outline.color-default:not(:disabled):hover &__content {
+        @apply text-on-surface;
     }
 }
 
@@ -208,12 +216,9 @@
         @apply bg-overlay;
     }
 
-    &.theme-solid &__content {
-        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
-    }
-
     &.theme-outline {
-        border: 1px solid currentColor
+        @apply text-disabled;
+        border: 1px solid theme('colors.disabled')
     }
 
     &.theme-ghost &__overlay {
@@ -246,7 +251,9 @@
         @apply opacity-40;
     }
 
-    &.theme-toggle.is-text-active &__content {
+    &.theme-toggle.is-text-active &__content,
+    &.theme-outline:not(:disabled):hover > &__overlay,
+    &.theme-outline.is-loading:disabled > &__overlay {
         @apply opacity-100;
     }
 
@@ -255,6 +262,10 @@
     &.theme-toggle:focus &__content,
     &.theme-icon:focus &__content {
         @apply opacity-90;
+    }
+
+    &.theme-outline > &__overlay {
+        @apply rounded-none;
     }
 }
 

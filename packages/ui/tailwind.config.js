@@ -18,12 +18,12 @@ module.exports = {
             grey: '#595d62',
             overlay: '#222',
             brand: '#313e4d',
-            success: '#7fc876',
+            success: '#5CB84B',
             link: '#1d6ec5',
-            info: '#45a4dc',
-            warning: '#ecab49',
+            info: '#45A4DC',
+            warning: '#EDC253',
             accent: '#f43e80',
-            error: '#e9555b'
+            error: '#E9555B'
         },
         onColors: {
             surface: '#0f1012',

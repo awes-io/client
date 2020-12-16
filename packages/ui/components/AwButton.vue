@@ -25,7 +25,12 @@
             tabindex="-1"
         >
             <slot name="icon">
-                <AwIcon v-if="icon" :name="icon" class="flex-shrink-0" />
+                <AwIcon
+                    v-if="icon"
+                    :name="icon"
+                    class="flex-shrink-0"
+                    :size="size"
+                />
             </slot>
 
             <span
@@ -35,7 +40,8 @@
                     {
                         'ml-1': icon && (text || $slots.default)
                     },
-                    elClasses.text
+                    elClasses.text,
+                    'whitespace-no-wrap'
                 ]"
             >
                 <slot>{{ text }}</slot>

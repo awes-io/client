@@ -3,15 +3,12 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
-import localizedFormat from 'dayjs/plugin/localizedFormat'
-
-dayjs.extend(customParseFormat)
-dayjs.extend(localizedFormat)
+import birthdayMixin from '../mixins/birthday.js'
 
 export default {
     name: 'AwDisplayDate',
+
+    mixins: [birthdayMixin],
 
     props: {
         // Date to parse. String or dayjs object
@@ -20,17 +17,16 @@ export default {
             required: true
         },
 
-        // For dayjs to parse string
-        parseFormat: {
-            type: String,
-            default: null
-        },
-
-        // Format to display without age.
+        // Format to display if year is present. Without age.
         // Full list of supported formats - https://day.js.org/docs/en/display/format#list-of-localized-formats
-        displayFormat: {
+        fullDisplayFormat: {
             type: String,
             default: 'LL'
+        },
+        // Format to display if year is not present. Without age.
+        shortDisplayFormat: {
+            type: String,
+            default: 'MMMM D'
         },
 
         // If true - hide age in brackets
@@ -46,17 +42,24 @@ export default {
                 return ''
             }
 
-            const _dayjs = this.$dayjs || dayjs
+            let age = null
+            const now = this.dayjs()
+            const date = this.toDayjs(this.date)
 
-            const now = dayjs()
-            const d =
-                this.parseFormat && typeof this.date === 'string'
-                    ? _dayjs(this.date, this.parseFormat)
-                    : _dayjs(this.date)
-            const str = d.format(this.displayFormat)
-            const age = now.diff(d, 'year')
+            const isYearPresent = this.getYearString(this.date).includes(
+                date.year()
+            )
+            const format = isYearPresent
+                ? this.fullDisplayFormat
+                : this.shortDisplayFormat
 
-            return this.showAge
+            const str = date.format(format)
+
+            if (this.showAge && isYearPresent) {
+                age = now.diff(date, 'year')
+            }
+
+            return age
                 ? `${str} (${age} ${this.$t('AwBirthdayDate.years')})`
                 : str
         }

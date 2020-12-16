@@ -1,17 +1,23 @@
 <template functional>
-    <div :class="`bg-${props.icon ? 'overlay' : props.type}`" class="aw-noty">
+    <div
+        :class="{
+            'bg-overlay': props.icon,
+            [`bg-${props.type}`]: !props.icon,
+            'aw-noty__has-text': props.text
+        }"
+        class="aw-noty"
+    >
         <!-- icon -->
         <Component
             :is="$options.components.AwIcon"
             v-if="typeof props.icon === 'string' && props.icon"
             :name="props.icon"
-            size="2xl"
             class="aw-noty__icon"
             :class="`text-${props.type}`"
         />
 
         <!-- content -->
-        <div class="aw-noty__content">
+        <div class="aw-noty__content" :class="{ 'has-text': props.text }">
             <div class="aw-noty__title">{{ props.title }}</div>
             <div
                 v-if="props.text"

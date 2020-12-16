@@ -6,7 +6,7 @@
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 
     &__icon {
-        margin-right: theme('spacing.4');
+        @apply mr-2 mt-1;
     }
 
     &__content {
@@ -16,11 +16,14 @@
     &__title {
         font-size: theme('fontSize.sm');
         line-height: theme('fontSize.2xl');
-        font-weight: bold;
     }
 
     &__text {
         font-size: theme('fontSize.xs');
+    }
+
+    &__has-text &__title {
+        @apply font-bold;
     }
 
     &__icon,
@@ -36,6 +39,7 @@
 }
 
 .aw-noty-container {
+    @apply flex flex-col;
     position: fixed;
     z-index: 999;
     overflow: hidden;
@@ -58,13 +62,29 @@
         left: 0
     }
 
+    &_right {
+        @apply items-end;
+    }
+
     &_center {
+        @apply items-center;
         right: 50%;
         transform: translateX(50%)
     }
 
     &__item {
         padding: theme('spacing.2')
+    }
+}
+
+@screen md {
+    .aw-noty-container {
+        width: auto;
+        max-width: theme('maxWidth.xs', 20rem);
+
+        &__item {
+            width: fit-content;
+        }
     }
 }
 

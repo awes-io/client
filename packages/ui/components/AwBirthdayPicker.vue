@@ -48,11 +48,8 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import birthdayMixin from '../mixins/birthday.js'
 import { isNil } from 'rambdax'
-
-dayjs.extend(customParseFormat)
 
 const DEFAULT_KEYS = {
     day: 'birthday_day',
@@ -63,28 +60,12 @@ const DEFAULT_KEYS = {
 export default {
     name: 'AwBirthdayPicker',
 
+    mixins: [birthdayMixin],
+
     props: {
         value: {
             type: [String, Date, Number, Object],
             default: null
-        },
-
-        /**
-         * Custom parse format for string dates with year,
-         * for example `YYYY-MM-DD[T]HH:mm:sszz`.
-         */
-        fullParseFormat: {
-            type: String,
-            default: ''
-        },
-
-        /**
-         * Custom parse format for string dates without year,
-         * for example `MM-DD`.
-         */
-        shortParseFormat: {
-            type: String,
-            default: ''
         },
 
         required: {
@@ -131,10 +112,6 @@ export default {
             return this.showYear || !this.isYearHidden
         },
 
-        dayjs() {
-            return this.$dayjs || dayjs
-        },
-
         _inputKeys() {
             return {
                 ...DEFAULT_KEYS,
@@ -176,60 +153,39 @@ export default {
         value: {
             immediate: true,
             handler(val) {
-                this.parseString(val)
+                const date = this.parseDate(val)
+                if (date) {
+                    this.month = date.month
+                    this.day = date.day
+                    this.year = date.year
+                    this.isYearHidden = !date.year
+                }
             }
         }
     },
 
     methods: {
-        toDayjs(input) {
-            if (typeof input !== 'string') {
-                return this.dayjs(input)
-            }
-
-            if (this.fullParseFormat) {
-                const dLong = this.dayjs(input, this.fullParseFormat)
-                if (dLong.isValid()) {
-                    return dLong
-                }
-            }
-
-            if (this.shortParseFormat) {
-                const dShort = this.dayjs(input, this.shortParseFormat)
-                if (dShort.isValid()) {
-                    return dShort
-                }
-            }
-
-            return this.dayjs(input)
-        },
-
         checkMaxDay() {
             const maxDay = this.daysList[this.daysList.length - 1]
             this.day = this.day > maxDay ? maxDay : this.day
             this.emit()
         },
 
-        parseString(str) {
-            if (!str) return
+        // parseString(str) {
+        //     if (!str) return
 
-            const d = this.toDayjs(str)
-            this.day = d.date()
-            this.month = d.month()
+        //     const d = this.toDayjs(str)
+        //     this.day = d.date()
+        //     this.month = d.month()
 
-            const y = d.year()
-            const yString = this.getYearString(str)
+        //     const y = d.year()
+        //     const yString = this.getYearString(str)
 
-            if (yString.includes(y)) {
-                this.year = y
-                this.isYearHidden = false
-            }
-        },
-
-        getYearString(date) {
-            if (typeof date === 'string') return date
-            return this.toDayjs(date).format()
-        },
+        //     if (yString.includes(y)) {
+        //         this.year = y
+        //         this.isYearHidden = false
+        //     }
+        // },
 
         emit() {
             if (!isNil(this.month) && this.day) {

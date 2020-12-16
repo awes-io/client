@@ -63,7 +63,7 @@ const DEFAULT_TYPE = 'info'
 
 const DEFAULT_TIMEOUT = 4000
 
-const DEFAULT_POSITION = 'right bottom'
+const DEFAULT_POSITION = 'center bottom'
 
 export default {
     name: 'Notify',

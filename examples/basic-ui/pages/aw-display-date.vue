@@ -1,6 +1,10 @@
 <template>
     <AwPage :title="headline">
-        <AwDisplayDate date="12.09.1995" parse-format="DD.MM.YYYY" />
+        <AwDisplayDate
+            date="12.12.1990"
+            full-parse-format="DD.MM.YYYY"
+            short-parse-format="DD.MM"
+        />
 
         <AwCodeSnippet v-text="codeDefault" class="mt-3" />
 
@@ -8,10 +12,12 @@
 
         <p>
             You can change display format of date by specifying a
-            <code>display-format</code> prop
+            <code>full-display-format</code> and
+            <code>short-display-format</code> prop
         </p>
 
-        <p>Default - <code>LL</code></p>
+        <p>Default full - <code>LL</code></p>
+        <p>Default short - <code>MMMM D</code></p>
 
         <p>
             Full list of supported formats can be found
@@ -20,10 +26,13 @@
             </AwLink>
         </p>
 
+        <h4 class="h4">Example</h4>
+
         <AwDisplayDate
             date="12.09.1995"
-            parse-format="DD.MM.YYYY"
-            display-format="L"
+            full-parse-format="DD.MM.YYYY"
+            short-parse-format="DD.MM"
+            full-display-format="L"
             class="block mt-4"
         />
 
@@ -32,6 +41,7 @@
         <h3>Show age</h3>
         Age can be shown by setting <code>show-age</code> prop to
         <code>true</code>
+        <h4 class="h4">Example</h4>
         <AwDisplayDate date="1995-10-10" show-age class="block mt-4" />
 
         <AwCodeSnippet v-text="codeHideAge" class="mt-3" />
@@ -51,15 +61,23 @@ export default {
 
     computed: {
         codeDefault() {
-            return '<AwDisplayDate date="12.09.1995" parse-format="DD.MM.YYYY" />'
+            const arr = [
+                '<AwDisplayDate',
+                '    date="12.09.1995"',
+                '    full-parse-format="DD.MM.YYYY"',
+                '    short-parse-format="DD.MM"',
+                '/>'
+            ]
+            return arr.join('\n')
         },
 
         codeFormat() {
             const arr = [
                 '<AwDisplayDate',
-                '    date="12.09.1995"',
-                '    parse-format="DD.MM.YYYY"',
-                '    display-format="L"',
+                '   date="12.09.1995"',
+                '   full-parse-format="DD.MM.YYYY"',
+                '   short-parse-format="DD.MM"',
+                '   full-display-format="L"',
                 '/>'
             ]
             return arr.join('\n')
