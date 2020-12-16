@@ -10,10 +10,10 @@
                 <!-- question-circle icon -->
                 <AwIcon
                     v-if="help"
-                    v-tooltip:right="help"
+                    v-tooltip:right.prepend="help"
                     class="px-1 py-0 opacity-50 hover:text-link hover:opacity-100"
-                    name="question-circle"
-                    size="xl"
+                    name="info-circle"
+                    size="md"
                 />
             </slot>
         </div>

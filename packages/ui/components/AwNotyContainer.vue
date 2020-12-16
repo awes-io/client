@@ -70,7 +70,11 @@ export default {
 
             item.remove = () => this.remove(id)
 
-            this.stack.push(item)
+            if (item.position && item.position.includes('top')) {
+                this.stack.unshift(item)
+            } else {
+                this.stack.push(item)
+            }
 
             return item.remove
         },

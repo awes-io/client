@@ -95,6 +95,14 @@ export const AwBirthdayPicker = {
     birthday: 'Geburtstag'
 }
 
+export const AwDownloadLink = {
+    download: 'Herunterladen'
+}
+
+export const AwBirthdayDate = {
+    years: 'Jahre'
+}
+
 export default {
     AwButton,
     AwModal,
@@ -110,5 +118,7 @@ export default {
     AwTableBuilder,
     AwSearch,
     AwUserMenu,
-    AwBirthdayPicker
+    AwBirthdayPicker,
+    AwDownloadLink,
+    AwBirthdayDate
 }

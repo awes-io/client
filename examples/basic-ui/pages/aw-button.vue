@@ -2,16 +2,18 @@
     <AwPage :title="headline">
         <h5>Default button:</h5>
 
-        <AwButton>Button</AwButton>
-        <AwButton href="/aw-dropdown">Route</AwButton>
-        <AwButton href="//google.com">Google link</AwButton>
-        <AwButton icon="intelligence">With icon</AwButton>
+        <AwButton class="mr-1 mb-1">Button</AwButton>
+        <AwButton href="/aw-dropdown" class="mr-1 mb-1">Route</AwButton>
+        <AwButton href="//google.com" class="mr-1 mb-1">Google link</AwButton>
+        <AwButton icon="intelligence" class="mr-1 mb-1">
+            With icon
+        </AwButton>
 
         <AwCodeSnippet v-text="codeDefault" class="my-3" />
 
         <h5>Sizes:</h5>
         <AwButton v-for="size in sizes" :size="size" :key="size" class="m-1">
-            {{ size }}
+            Button
         </AwButton>
 
         <AwCodeSnippet v-text="generateCode('size', sizes)" class="my-3" />
@@ -176,13 +178,7 @@
             </AwButton>
         </div>
         <div class="aw-button-group mt-4">
-            <AwButton
-                v-for="i in 6"
-                color="gray"
-                :key="i"
-                theme="outline"
-                size="sm"
-            >
+            <AwButton v-for="i in 6" :key="i" theme="outline" size="sm">
                 button {{ i }}
             </AwButton>
         </div>
@@ -202,6 +198,45 @@
             />
 
             <AwCodeSnippet v-text="codeCloseButton" class="my-3" />
+
+            <h5>Hidden text on mobile</h5>
+
+            <AwButton
+                mobile-text-hidden
+                size="xs"
+                icon="fas fa-user-circle"
+                color="success"
+                text="XS"
+                class="ml-4"
+            />
+
+            <AwButton
+                mobile-text-hidden
+                size="sm"
+                icon="fas fa-user-circle"
+                color="success"
+                text="SM"
+                class="ml-4"
+            />
+
+            <AwButton
+                icon="fas fa-user-circle"
+                color="success"
+                text="MD"
+                mobile-text-hidden
+                class="ml-4"
+            />
+
+            <AwButton
+                mobile-text-hidden
+                icon="fas fa-user-circle"
+                size="lg"
+                color="success"
+                text="LG"
+                class="ml-4"
+            />
+
+            <AwCodeSnippet v-text="codeHiddenText" class="my-3" />
         </section>
     </AwPage>
 </template>
@@ -251,6 +286,18 @@ export default {
                 '    theme="ghost"',
                 '    color="default"',
                 '    content-class="p-2"',
+                '/>'
+            ]
+            return arr.join('\n')
+        },
+
+        codeHiddenText() {
+            const arr = [
+                '<AwButton',
+                '    mobile-text-hidden',
+                '    icon="close"',
+                '    color="success"',
+                '    text="MD"',
                 '/>'
             ]
             return arr.join('\n')
