@@ -544,8 +544,8 @@ export default {
         _onBlur($event) {
             if (!this.$el.contains($event.relatedTarget)) {
                 if (
+                    this.$listeners['not-equal'] &&
                     this.isOpened &&
-                    this._isAjax &&
                     (this._showNotFound || this._showNotEqual)
                 ) {
                     if (confirm(this.createConfirmText)) {
