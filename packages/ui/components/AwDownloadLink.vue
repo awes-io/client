@@ -74,25 +74,25 @@
 const SUPPORTED_FORMATS = {
     pdf: {
         format: 'application/pdf',
-        icon: 'fas fa-file-pdf'
+        icon: 'file-pdf'
     },
     xls: {
         format: 'application/excel',
-        icon: 'fas fa-file-excel'
+        icon: 'file-excel'
     },
     xlsx: {
         format:
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        icon: 'fas fa-file-excel'
+        icon: 'file-excel'
     },
     doc: {
         format: 'application/msword',
-        icon: 'fas fa-file-word'
+        icon: 'file-word'
     },
     docx: {
         format:
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        icon: 'fas fa-file-word'
+        icon: 'file-word'
     },
     jpeg: {
         format: 'image/jpeg',
@@ -100,19 +100,19 @@ const SUPPORTED_FORMATS = {
     },
     jpg: {
         format: 'image/jpeg',
-        icon: 'fas fa-file-image'
+        icon: 'file-image'
     },
     png: {
         format: 'image/png',
-        icon: 'fas fa-file-image'
+        icon: 'file-image'
     },
     svg: {
         format: 'image/svg+xml',
-        icon: 'fas fa-file-image'
+        icon: 'file-image'
     },
     csv: {
         format: 'text/csv',
-        icon: 'fas fa-file-csv'
+        icon: 'file-csv'
     }
 }
 
