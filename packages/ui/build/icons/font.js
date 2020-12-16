@@ -7,12 +7,16 @@ const path = require('path')
 const webfontsGenerator = require('webfonts-generator')
 
 const ICONS_FOLDER = path.resolve(__dirname, '../../assets/svg/icon/')
-const files = fs.readdirSync(ICONS_FOLDER).map(filename => {
-    if (filename.indexOf('.svg') === -1) {
-        return
-    }
-    return path.resolve(ICONS_FOLDER, filename)
-})
+const files = fs
+    .readdirSync(ICONS_FOLDER)
+    .map(filename => {
+        if (!filename || filename.indexOf('.svg') === -1) {
+            return
+        }
+        return path.resolve(ICONS_FOLDER, filename)
+    })
+    .filter(Boolean)
+
 const dest = path.resolve(__dirname, '../../dist/fonts')
 const cssDest = path.resolve(__dirname, '../../dist/css/aw-icons.css')
 
