@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.110.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.109.0...@awes-io/ui@1.110.0) (2020-12-21)
+
+
+### Bug Fixes
+
+* css ios width flickering ([fb03b1c](https://github.com/awes-io/client/commit/fb03b1cf8853c9ef76d75a6e9d868f2faa7e9854))
+* css naming ([bc1c7b3](https://github.com/awes-io/client/commit/bc1c7b31afd5d817e43e3feffeb5f57ae08f5e50))
+* date min width ([8a0d9ef](https://github.com/awes-io/client/commit/8a0d9efeffeba62b418e54350a31b97794427a20))
+* filter month default width ([443280c](https://github.com/awes-io/client/commit/443280c69aa97d4e2080b2451aec97800b00e111))
+* ios css fix ([ce213ad](https://github.com/awes-io/client/commit/ce213ad3c94c090fc4dd4fc241a7082b0fc4304c))
+
+
+### Features
+
+* add aw-filter-month component ([2aac92e](https://github.com/awes-io/client/commit/2aac92e2946c850a8ce0c15a063e8c761545962d))
+
+
+
+
+
 # [1.109.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.108.0...@awes-io/ui@1.109.0) (2020-12-16)
 
 

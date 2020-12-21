@@ -1,6 +1,6 @@
 {
     "name": "example-admin",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "description": "@awes-io/admin installation example",
     "author": "",
     "private": true,
@@ -11,9 +11,9 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
-        "@awes-io/nuxt-admin": "^0.7.29",
-        "@awes-io/nuxt-auth": "^1.10.11",
-        "@awes-io/ui": "^1.109.0",
+        "@awes-io/nuxt-admin": "^0.7.30",
+        "@awes-io/nuxt-auth": "^1.10.12",
+        "@awes-io/ui": "^1.110.0",
         "@nuxtjs/axios": "^5.0.0",
         "express": "^4.17.1",
         "nuxt": "^2.0.0",

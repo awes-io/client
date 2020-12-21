@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.80.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.79.1...basic-ui@1.80.0) (2020-12-21)
+
+
+### Features
+
+* add aw-filter-month component ([2aac92e](https://git.awescode.com/awes-io/client/commits/2aac92e2946c850a8ce0c15a063e8c761545962d))
+
+
+
+
+
 ## [1.79.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.79.0...basic-ui@1.79.1) (2020-12-16)
 
 **Note:** Version bump only for package basic-ui
