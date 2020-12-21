@@ -12,7 +12,7 @@
     & &__date {
         @apply px-4 self-stretch leading-none flex flex-col justify-center border-t border-b;
         border-color: theme('borderColor.default');
-        min-width: 115px;
+        min-width: 113px;
     }
 
     & &__label {
