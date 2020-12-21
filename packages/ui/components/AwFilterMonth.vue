@@ -80,7 +80,7 @@ export default {
     },
 
     _config: {
-        baseClass: 'aw-filter-date'
+        baseClass: 'aw-filter-month'
     },
 
     data() {
