@@ -96,6 +96,7 @@ export const navigation = [
     { title: 'Dropdowns', url: '/aw-dropdown', description: '' },
     { title: 'Fetch data', url: '/aw-fetch-data', description: '' },
     { title: 'Form', url: '/aw-form', description: '' },
+    { title: 'Filter Month', url: '/aw-filter-month', description: '' },
     { title: 'Grid', url: '/aw-grid', description: '' },
     { title: 'Icon', url: '/aw-icon', description: '' },
     { title: 'Info', url: '/aw-info', description: '' },

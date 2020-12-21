@@ -92,3 +92,5 @@ export { default as AwBirthdayPicker } from './AwBirthdayPicker.vue'
 export { default as AwDisplayDate } from './AwDisplayDate.vue'
 
 export { default as AwDownloadLink } from './AwDownloadLink.vue'
+
+export { default as AwFilterMonth } from './AwFilterMonth.vue'

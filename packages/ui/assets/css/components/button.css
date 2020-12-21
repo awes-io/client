@@ -63,6 +63,10 @@
         height: theme('spacing.6');
     }
 
+    &.theme-system &__content_xs {
+        @apply p-1;
+    }
+
     &__content_sm {
         @apply px-2 py-1;
     }
@@ -70,6 +74,10 @@
     &.theme-icon &__content_sm {
         width: theme('spacing.8');
         height: theme('spacing.8');
+    }
+
+    &.theme-system &__content_sm {
+        @apply p-2;
     }
 
     &__content_md {
@@ -81,6 +89,10 @@
         height: theme('spacing.12');
     }
 
+    &.theme-system &__content_md {
+        @apply p-3;
+    }
+
     &__content_lg {
         @apply px-10 py-3 text-base;
     }
@@ -88,6 +100,10 @@
     &.theme-icon &__content_lg {
         width: theme('spacing.16');
         height: theme('spacing.16');
+    }
+
+    &.theme-system &__content_lg {
+        @apply p-4;
     }
 
     /* Mobile hidden text */
@@ -266,6 +282,28 @@
 
     &.theme-outline > &__overlay {
         @apply rounded-none;
+    }
+
+    /* System */
+    &.theme-system {
+        @apply text-disabled;
+        border: 1px solid theme('borderColor.default');
+    }
+
+    &.theme-system &__overlay {
+        @apply hidden;
+    }
+
+    &.theme-system:disabled {
+        @apply opacity-100;
+    }
+
+    &.theme-system:disabled &__content {
+        @apply opacity-50;
+    }
+
+    &.theme-system:not(:disabled):hover {
+        @apply text-on-surface;
     }
 }
 
