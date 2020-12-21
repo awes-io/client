@@ -24,7 +24,7 @@ export const DEFAULTS = {
     },
     addCss: true,
     offline: {
-        testUrl: 'http://httpbin.org/get',
+        testUrl: 'https://httpbin.org/get',
         interval: 5000,
         maxTries: Infinity
     },
