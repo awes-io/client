@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const testAxios = axios.create() // fresh instance without interceptor
 const getNuxt = () => Vue.prototype.$nuxt || { isOnline: true } // return mock for fallback
-const TEST_URL = '<%= options.testUrl || "http://httpbin.org/get" %>'
+const TEST_URL = '<%= options.testUrl || "https://httpbin.org/get" %>'
 const TEST_INTERVAL = parseInt('<%= options.interval %>') || 5000
 const MAX_TRIES = parseFloat('<%= options.maxTries %>') // parseFloat to support Infinity
 
