@@ -45,5 +45,7 @@
 
 @import './icon.css';
 
+@import './filter-month.css';
+
 /* last because of @keyframes lowers performance */
 @import './animation.css';

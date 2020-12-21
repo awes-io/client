@@ -1,0 +1,24 @@
+.aw-filter-month {
+    @apply inline-flex;
+
+    & > &__prev {
+        @apply rounded-r-none;
+    }
+
+    & > &__next {
+        @apply rounded-l-none;
+    }
+
+    & &__date {
+        @apply px-4 self-stretch leading-none flex flex-col justify-center border-t border-b;
+        border-color: theme('borderColor.default');
+    }
+
+    &.default &__date {
+        min-width: 114px;
+    }
+
+    & &__label {
+        @apply text-xs text-disabled;
+    }
+}
