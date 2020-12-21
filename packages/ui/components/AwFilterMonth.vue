@@ -1,5 +1,5 @@
 <template>
-    <div :class="_cssClasses.base">
+    <div :class="[_cssClasses.base, , { default: format === 'DD.MM.YYYY' }]">
         <AwButton
             :disabled="prevDisabled"
             :size="_size"
