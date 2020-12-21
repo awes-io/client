@@ -19,6 +19,6 @@
     }
 
     & &__label {
-        @apply text-xs text-disabled mb-1;
+        @apply text-xs text-disabled;
     }
 }

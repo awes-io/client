@@ -10,7 +10,10 @@
         />
         <slot :date="date">
             <div :class="_cssClasses.date">
-                <div v-if="label" :class="_cssClasses.label">
+                <div
+                    v-if="label"
+                    :class="[_cssClasses.label, { 'mb-1': _size !== 'sm' }]"
+                >
                     {{ label }}
                 </div>
 
