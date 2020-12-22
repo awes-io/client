@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.111.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.110.0...@awes-io/ui@1.111.0) (2020-12-22)
+
+
+### Bug Fixes
+
+* changed url to https ([058bca6](https://github.com/awes-io/client/commit/058bca6d77c4a909f6c88bd8f1deefe1971eb144))
+* test url ([210cea3](https://github.com/awes-io/client/commit/210cea34b2b64e88566d51b1e80451b309cab453))
+
+
+### Features
+
+* **aw-filter-month:** check for local dayjs instance ([73c9473](https://github.com/awes-io/client/commit/73c947368e5e991db8a4c784ebae7e554cbd0993))
+
+
+
+
+
 # [1.110.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.109.0...@awes-io/ui@1.110.0) (2020-12-21)
 
 

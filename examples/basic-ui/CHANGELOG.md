@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.81.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.80.0...basic-ui@1.81.0) (2020-12-22)
+
+
+### Features
+
+* **aw-filter-month:** check for local dayjs instance ([73c9473](https://git.awescode.com/awes-io/client/commits/73c947368e5e991db8a4c784ebae7e554cbd0993))
+
+
+
+
+
 # [1.80.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.79.1...basic-ui@1.80.0) (2020-12-21)
 
 
