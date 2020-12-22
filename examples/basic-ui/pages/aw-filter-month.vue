@@ -42,6 +42,14 @@
 
         <AwCodeSnippet v-text="codeFormat" class="mt-5" />
 
+        <h5>Format only display value</h5>
+
+        <div class="mt-4">
+            <AwFilterMonth display-format="ll" />
+        </div>
+
+        <AwCodeSnippet v-text="codeFormatDisplay" class="mt-5" />
+
         <h3>URL param</h3>
 
         <div class="mt-4">
@@ -95,6 +103,10 @@ export default {
 
         codeFormat() {
             return '<AwFilterMonth format="MM.YYYY" />'
+        },
+
+        codeFormatDisplay() {
+            return '<AwFilterMonth display-format="ll" />'
         },
 
         codeParam() {

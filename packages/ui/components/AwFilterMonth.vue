@@ -17,7 +17,7 @@
                     {{ label }}
                 </div>
 
-                {{ date.format(format) }}
+                {{ date.format(_displayFormat) }}
             </div>
         </slot>
         <AwButton
@@ -32,9 +32,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { isNil, omit } from 'rambdax'
 import dayjs from 'dayjs'
 import { getBemClasses } from '../assets/js/css'
+
+const _dayjs = Vue.prototype.$dayjs || dayjs
 
 export default {
     name: 'AwFilterMonth',
@@ -50,6 +53,11 @@ export default {
             default: 'DD.MM.YYYY'
         },
 
+        displayFormat: {
+            type: String,
+            default: null
+        },
+
         debounce: {
             type: Number,
             default: 500
@@ -59,7 +67,7 @@ export default {
             type: [String, Object, Number, Date],
             default: null,
             validator(val) {
-                return dayjs(val).isValid()
+                return _dayjs(val).isValid()
             }
         },
 
@@ -67,7 +75,7 @@ export default {
             type: [String, Object, Number, Date],
             default: null,
             validator(val) {
-                return dayjs(val).isValid()
+                return _dayjs(val).isValid()
             }
         },
 
@@ -88,7 +96,7 @@ export default {
 
     data() {
         return {
-            date: dayjs()
+            date: _dayjs()
         }
     },
 
@@ -108,7 +116,7 @@ export default {
         },
 
         paramValue() {
-            if (dayjs().isSame(this.date, 'month')) {
+            if (_dayjs().isSame(this.date, 'month')) {
                 return undefined
             } else {
                 return this.date.format(this.format)
@@ -125,6 +133,10 @@ export default {
 
         _size() {
             return this.size || (this.label ? 'lg' : 'md')
+        },
+
+        _displayFormat() {
+            return this.displayFormat || this.format
         }
     },
 
@@ -166,7 +178,7 @@ export default {
 
     created() {
         const _date = this.$route.query[this.param]
-        const date = dayjs(_date, this.format)
+        const date = _dayjs(_date, this.format)
 
         if (_date && date.isValid()) {
             this.date = this._clamp(date)
@@ -190,11 +202,11 @@ export default {
             let _value = value.clone()
 
             if (!isNil(this.min) && value.isBefore(this.min, 'month')) {
-                _value = dayjs(this.min)
+                _value = _dayjs(this.min)
             }
 
             if (!isNil(this.max) && value.isAfter(this.max, 'month')) {
-                _value = dayjs(this.max)
+                _value = _dayjs(this.max)
             }
 
             return _value
