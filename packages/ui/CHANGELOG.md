@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.111.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.111.0...@awes-io/ui@1.111.1) (2020-12-23)
+
+
+### Bug Fixes
+
+* **aw-filter-month:** take local dayjs ([8ce2ff1](https://github.com/awes-io/client/commit/8ce2ff1ef2a0cf4418b303da45bf1e524e9026cb))
+
+
+
+
+
 # [1.111.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.110.0...@awes-io/ui@1.111.0) (2020-12-22)
 
 

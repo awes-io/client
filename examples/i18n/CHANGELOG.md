@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.84](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.4.83...example-nuxt-i18n@1.4.84) (2020-12-23)
+
+
+### Bug Fixes
+
+* **aw-filter-month:** take local dayjs ([8ce2ff1](https://git.awescode.com/awes-io/client/commits/8ce2ff1ef2a0cf4418b303da45bf1e524e9026cb))
+
+
+
+
+
 ## [1.4.83](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.4.82...example-nuxt-i18n@1.4.83) (2020-12-22)
 
 **Note:** Version bump only for package example-nuxt-i18n
