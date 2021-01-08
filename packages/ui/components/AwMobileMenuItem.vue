@@ -1,0 +1,72 @@
+<template>
+    <Component
+        :is="_linkComponent"
+        v-bind="_linkAttrs"
+        class="aw-mobile-menu-item"
+    >
+        <slot v-bind="$props">
+            <span class="aw-mobile-menu-item__text">{{ text }}</span>
+            <AwIconSystem
+                v-if="!href"
+                name="angle"
+                rotate="180"
+                size="16"
+                class="aw-mobile-menu-item__arrow"
+            />
+        </slot>
+    </Component>
+</template>
+
+<script>
+import linkMixin from '../mixins/link'
+
+export default {
+    name: 'AwMobileMenuItem',
+
+    mixins: [linkMixin],
+
+    props: {
+        text: {
+            type: String,
+            required: true
+        },
+
+        href: {
+            type: [String, Object],
+            default: ''
+        }
+    }
+}
+</script>
+
+<style lang="postcss">
+.aw-mobile-menu-item {
+    @apply bg-surface py-4 px-6;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+        oultine: none;
+        text-decoration: none;
+    }
+
+    & + & {
+        border-top: 1px solid rgb(var(--c-mono-800));
+    }
+
+    &__icon {
+        @apply mr-3;
+    }
+
+    &__text {
+        @apply truncate;
+        flex-grow: 1;
+    }
+
+    &__arrow {
+        @apply ml-2;
+    }
+}
+</style>

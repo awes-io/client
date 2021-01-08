@@ -11,15 +11,15 @@
     }
 
     & &__title {
-        @apply flex justify-between items-center mb-1 mt-4 px-4 font-heading font-bold text-on-muted-dark leading-none tracking-wide;
+        @apply flex justify-between items-center mb-1 mt-4 px-4 font-heading font-bold text-mono-50 leading-none tracking-wide;
     }
 
     & &__subtitle {
-        @apply text-on-muted-dark leading-none tracking-wide px-4 text-sm mb-1;
+        @apply text-mono-400 leading-none tracking-wide px-4 text-sm mb-1;
     }
 
     & &__description {
-        @apply mb-0 px-4 text-disabled text-sm leading-snug font-body font-bold truncate;
+        @apply mb-0 px-4 text-mono-400 text-sm leading-snug font-body font-bold truncate;
     }
 
     & &__counter-wrapper {
@@ -36,7 +36,7 @@
     }
 
     & &__counter {
-        @apply flex items-center px-4 text-4xl leading-snug font-heading text-on-muted-dark font-bold;
+        @apply flex items-center px-4 text-4xl leading-snug font-heading text-mono-100 font-bold;
 
         .aw-icon {
             @apply text-2xl ml-3;

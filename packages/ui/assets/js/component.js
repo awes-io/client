@@ -1,4 +1,4 @@
-import { path, pathOr, mergeDeep, isValid } from 'rambdax'
+import { path, pathOr, mergeDeepRight, isValid } from 'rambdax'
 
 export const CONFIG_VAR = '$awesConfig'
 
@@ -23,14 +23,14 @@ export function conf(thisArg, val, def) {
 }
 
 export function setConfig(_vue, config = {}) {
-    _vue.prototype[CONFIG_VAR] = mergeDeep(
+    _vue.prototype[CONFIG_VAR] = mergeDeepRight(
         config,
         pathOr({}, CONFIG_PATH, _vue.prototype)
     )
 }
 
 export function validateBySchema(schema) {
-    return input => {
+    return (input) => {
         const valid = isValid({
             input: { input },
             schema: {

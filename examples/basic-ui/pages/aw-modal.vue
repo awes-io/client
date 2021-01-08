@@ -62,9 +62,7 @@
             <AwInput class="mt-2" label="Password" name="password" />
 
             <div class="mt-8">
-                <AwButton size="lg" class="w-full mb-1">
-                    Apply
-                </AwButton>
+                <AwButton size="lg" class="w-full mb-1"> Apply </AwButton>
                 <AwButton
                     color="default"
                     theme="ghost"
@@ -115,15 +113,11 @@
                 elit. Expedita quo reiciendis rerum corrupti architecto vero
             </div>
 
-            <AwButton class="hidden md:block mt-8" size="lg">
-                Save
-            </AwButton>
+            <AwButton class="hidden md:block mt-8" size="lg"> Save </AwButton>
 
             <template #buttons>
                 <div class="px-4 pt-4 bg-surface flex-1 md:hidden">
-                    <AwButton class="w-full" size="lg">
-                        Save
-                    </AwButton>
+                    <AwButton class="w-full" size="lg"> Save </AwButton>
                 </div>
             </template>
         </AwModal>
@@ -144,7 +138,7 @@
                     </AwButton>
                     <AwButton
                         class="rounded-none flex-1 border-t-1 border-muted-darker"
-                        content-class="text-grey"
+                        content-class="text-muted-dark"
                         size="lg"
                         color="default"
                         theme="ghost"
@@ -188,7 +182,7 @@ export default {
                 '        </AwButton>',
                 '        <AwButton',
                 '            class="rounded-none flex-1 border-t-1 border-muted-darker"',
-                '            content-class="text-grey"',
+                '            content-class="text-muted-dark"',
                 '            size="lg"',
                 '            color="default"',
                 '            theme="ghost"',

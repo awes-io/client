@@ -1,58 +1,72 @@
 import { navigation } from '../config/navigation'
-import { urlify } from '~/assets/js/url'
 
-export default function({ store, app }) {
-    const menuItems = [
-        {
-            key: 'examples',
+export default function({ store }) {
+    const menuItems = {
+        examples: {
             order: 0,
-            dropdown: true,
-            icon: false,
-            props: {
-                text: 'Examples',
-                href: '/',
-                icon: {
-                    component: 'AwBadge',
-                    props: {
-                        icon: 'bubble-text',
-                        color: 'info'
-                    }
+            text: 'Examples',
+            href: '/',
+            icon: 'university',
+            children: [
+                {
+                    text: 'Examples',
+                    href: '/'
                 }
-            }
+            ]
+        },
+        dashboard: {
+            order: 1,
+            text: 'Dashboard',
+            icon: 'plus-circle',
+            children: []
+        },
+        table: {
+            order: 1,
+            text: 'Table',
+            icon: 'duotone/list-alt',
+            children: []
         }
-    ]
+    }
 
     for (var i = 0; i < navigation.length; i++) {
         const item = navigation[i]
-        const key = urlify(item.title)
         const href = item.url
 
-        let children
+        let children = []
 
         if (Array.isArray(navigation[i].children)) {
-            children = navigation[i].children.map(child => ({
-                props: {
-                    text: child.title,
-                    href: child.url,
-                    badge: child.badge
-                }
+            children = navigation[i].children.map((child) => ({
+                text: child.title,
+                href: child.url
             }))
         }
 
-        menuItems.push({
-            key,
-            dropdown: i > 2,
-            props: {
+        if (href.startsWith('/dashboard')) {
+            menuItems.dashboard.children.push({
                 text: item.title,
                 href,
-                badge: item.badge,
-                icon: item.icon
-            },
+                children
+            })
+            continue
+        }
+
+        if (href.startsWith('/table')) {
+            menuItems.table.children.push({
+                text: item.title,
+                href,
+                children
+            })
+            continue
+        }
+
+        menuItems.examples.children.push({
+            text: item.title,
+            href,
             children
         })
     }
 
-    store.commit('awesIo/SET_MENU_ITEM', menuItems)
+    store.commit('awesIo/SET_MENU_ITEMS', menuItems)
 
     // mock user menu
     store.commit('awesIo/SET_USER_MENU_ITEM', {
@@ -62,7 +76,7 @@ export default function({ store, app }) {
             component: 'AwLink',
             props: {
                 text: 'Homepage',
-                href: app.localePath({ path: '/' }, app.i18n.locale)
+                href: '/'
             }
         }
     })

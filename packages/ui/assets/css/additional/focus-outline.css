@@ -1,0 +1,13 @@
+@layer utilities {
+    .focus-outline:focus {
+        outline: none;
+    }
+
+    .focus-outline > [tabindex="-1"]:focus {
+        outline: none;
+    }
+
+    .focus-outline:focus > [tabindex="-1"] {
+        outline: theme('focusOutline');
+    }
+}

@@ -15,6 +15,17 @@
             class="aw-noty__icon"
             :class="`text-${props.type}`"
         />
+        <svg
+            v-else-if="props.icon"
+            width="20"
+            height="20"
+            :class="`text-${props.type}`"
+            class="aw-noty__icon fill-current"
+        >
+            <path
+                d="M10 1.8a8.2 8.2 0 100 16.4 8.2 8.2 0 000-16.4zm4.1 6.5l-4.4 4.4a.7.7 0 01-1 0l-2.2-2.2a.7.7 0 111-1l1.7 1.8 4-4a.7.7 0 111 1zm0 0"
+            />
+        </svg>
 
         <!-- content -->
         <div class="aw-noty__content" :class="{ 'has-text': props.text }">
@@ -32,21 +43,26 @@
             @click="props.remove"
             class="aw-noty__button"
         >
-            <Component :is="$options.components.AwIcon" name="close" />
+            <Component
+                :is="$options.components.AwIconSystem"
+                name="close"
+                size="14"
+            />
         </button>
     </div>
 </template>
 
 <script>
-import { clone } from 'rambdax'
 import insane from 'insane'
-import AwIcon from './AwIcon.vue'
+import AwIcon from './global/AwIcon.vue'
+import AwIconSystem from './global/AwIconSystem.vue'
 
 export default {
     name: 'AwNoty',
 
     components: {
-        AwIcon: clone(AwIcon)
+        AwIcon,
+        AwIconSystem
     },
 
     props: {

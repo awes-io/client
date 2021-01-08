@@ -1,16 +1,17 @@
 <template>
     <AwPage :title="headline">
         <AwGrid :col="{ md: 4 }">
-            <AwCard background="transperent"
-                >Card #1<br /><small>Background: transperent</small></AwCard
-            >
+            <AwCard background="transperent">
+                Card #1<br />
+                <small>Background: transparent</small>
+            </AwCard>
             <AwCard title="Card #2"><small>Card with headline.</small></AwCard>
-            <AwCard title="Card #3" text="Short description"
-                ><small>With description and headline.</small></AwCard
-            >
-            <AwCard title="Card #3" text="Short description" link="/"
-                ><small>With description and headline as a link.</small></AwCard
-            >
+            <AwCard title="Card #3" text="Short description">
+                <small>With description and headline.</small>
+            </AwCard>
+            <AwCard title="Card #3" text="Short description" link="/">
+                <small>With description and headline as a link.</small>
+            </AwCard>
         </AwGrid>
 
         <h3>Example usage</h3>

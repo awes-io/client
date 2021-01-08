@@ -1,0 +1,73 @@
+.aw-tab-nav {
+    @apply border-b text-mono-700;
+    display: flex;
+    align-items: center;
+
+    &__toggler {
+        @apply text-mono-400;
+        display: flex;
+        align-items: center;
+        padding: theme('spacing.2') theme('spacing.3');
+        fontsize: theme('fontSize.sm');
+        whitespace: 'nowrap';
+    }
+
+    &__toggler > span {
+        height: 100%;
+        padding: theme('spacing.2') theme('spacing.1');
+        transition: color 300ms;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    &__toggler > span:before {
+        @apply border-l text-mono-700;
+        content: '';
+        left: calc(-1 * theme('spacing.3'));
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: theme('spacing.6');
+        display: block;
+    }
+
+    &__toggler > span:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: calc(-1 * theme('spacing.2'));
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: transparent;
+        transition: background-color 300ms;
+    }
+
+    &__toggler:first-child > span:before {
+        content: none;
+    }
+
+    &__toggler:hover {
+        @apply text-on-surface;
+    }
+
+    &__toggler:focus,
+    &__toggler > span:focus {
+        outline: none;
+    }
+
+    &__toggler:focus > span {
+        @apply text-on-surface;
+        outline: theme('focusOutline', none);
+    }
+
+    &__toggler_active > span {
+        @apply text-on-surface;
+    }
+
+    &__toggler_active > span:after {
+        @apply bg-mono-50;
+    }
+}

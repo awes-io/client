@@ -27,14 +27,14 @@
     }
 
     & > :not(img):not(&__no-img-icon) {
-        @apply bg-disabled text-on-overlay;
+        @apply bg-mono-400 text-on-overlay;
         text-align: center;
         font-size: var(--ui-avatar-font-size);
     }
 
     &__no-img-icon {
-        background-color: var(--c-text-on-overlay, 'white');
-        fill: var(--c-disabled, #999);
+        background-color: rgb(var(--c-text-on-overlay));
+        fill: rgb(var(--c-disabled));
     }
 
     &__loader {
@@ -46,7 +46,7 @@
         height: calc(100% + 2px);
 
         border-width: var(--ui-loading-width, calc(var(--ui-avatar-size, 2.25rem) / 16));
-        border-right-color: var(--c-transparent, transparent);
+        border-right-color: rgb(var(--c-transparent));
         backdrop-filter: blur(1px);
 
         animation: 1s aw-rotate linear infinite;

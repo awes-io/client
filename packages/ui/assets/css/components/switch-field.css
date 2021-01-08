@@ -94,7 +94,7 @@
     }
 
     &__toggle {
-        @apply bg-muted block relative;
+        @apply bg-mono-400 block relative;
         width: 1.25rem;
         height: 1.25rem;
         margin: -0.125rem 0 0 -0.125rem;

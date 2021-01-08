@@ -1,0 +1,83 @@
+.aw-icon-menu-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: theme('spacing.3');
+
+    color: inherit;
+
+    position: relative;
+
+    &--clip {
+        overflow: hidden;
+    }
+
+    &__icon-block {
+        display: block;
+        position: relative;
+        line-height: 1;
+    }
+
+    &__icon-badge {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 3px;
+        border-radius: theme('spacing.2');
+
+        font-size: theme('fontSize.xxs');
+        line-height: 1;
+
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &__icon-badge--with-text {
+        height: theme('spacing.4');
+        min-width: theme('spacing.4');
+        transform: translate(50%, -50%);
+    }
+
+    &__icon {
+        opacity: 0.5;
+        transition: 60ms opacity;
+    }
+
+    &:hover &__icon,
+    &__icon--highlight {
+        opacity: 1;
+    }
+
+    &__text {
+        @apply truncate text-xs;
+        display: block;
+        max-width: 100%;
+        margin: theme('spacing.1') auto 0;
+    }
+
+    &__tooltip {
+        @apply text-xs bg-mono-50 bg-opacity-80;
+        display: block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 2px;
+
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        z-index: 1;
+
+        pointer-events: none;
+
+        transform: translate(0, -50%);
+        opacity: 0;
+        transition: 120ms transform, 120ms opacity;
+    }
+
+    &:hover &__tooltip {
+        transform: translate(10px, -50%);
+        opacity: 1;
+    }
+}

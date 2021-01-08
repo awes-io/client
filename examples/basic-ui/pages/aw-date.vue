@@ -16,7 +16,7 @@
         <h2>Prefix / Postfix</h2>
         <AwDate name="date" v-model="datePrefix" :min="new Date()">
             <template #prefix>
-                <AwIcon name="far fa-calendar-alt" class="mx-4"></AwIcon>
+                <AwIcon name="duotone/gift" class="mx-4" />
             </template>
         </AwDate>
 
@@ -27,7 +27,7 @@
             class="mt-4"
         >
             <template #postfix>
-                <AwIcon name="far fa-calendar-times" class="mx-4" />
+                <AwIcon name="duotone/life-ring" class="mx-4" />
             </template>
         </AwDate>
 

@@ -18,7 +18,7 @@
 
             <!-- close mobile menu toggler -->
             <!-- <button class="block lg:hidden mr-4" @click="$emit('close')">
-                <AwIcon name="close" size="lg" />
+                <AwIconSystem name="close" size="lg" />
                 <span class="sr-only">
                     {{ $t('AwLayoutDefault.toggleMenu') }}
                 </span>

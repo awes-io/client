@@ -31,6 +31,6 @@
     "dependencies": {
         "@awes-io/nuxt-auth": "^1.10.9",
         "@awes-io/vue-mc": "^0.3.1",
-        "rambdax": "^3.5.0"
+        "rambdax": "^7.0.1"
     }
 }

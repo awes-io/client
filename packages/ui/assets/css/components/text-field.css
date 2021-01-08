@@ -73,7 +73,7 @@
 
             &:hover,
             &.open {
-                @apply bg-muted-dark;
+                @apply bg-mono-300;
             }
         }
 
@@ -112,7 +112,7 @@
             &:hover,
             &:focus {
                 outline: none;
-                @apply bg-muted-dark;
+                @apply bg-mono-300;
             }
         }
     }

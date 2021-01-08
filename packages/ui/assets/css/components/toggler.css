@@ -1,6 +1,6 @@
 .aw-toggler__content::before {
     content: '';
-    @apply absolute w-0 h-0 top-0 border-muted-dark;
+    @apply absolute w-0 h-0 top-0 border-mono-800;
     left: theme('spacing.3');
     border-left: theme('spacing.3') solid transparent;
     border-right: theme('spacing.3') solid transparent;

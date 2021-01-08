@@ -1,0 +1,50 @@
+.aw-page-headline {
+    display: flex;
+    align-items: center;
+    @apply py-6;
+
+    &__title {
+        @apply py-1 font-heading;
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: theme('fontSize.2xl');
+
+        svg {
+            @apply mr-1;
+            flex-shrink: 0;
+        }
+    }
+
+    &__title ~ * {
+        flex-shrink: 0;
+    }
+
+    &__back {
+        display: inline-flex;
+        align-items: center;
+        @apply text-mono-600;
+        transition: 120ms color;
+
+        &:hover,
+        &:focus-visible {
+            @apply text-link;
+            text-decoration: none;
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        &:after {
+            content: '·';
+            @apply mx-3;
+        }
+    }
+
+    &__heading {
+        @apply text-2xl;
+        margin: 0;
+    }
+}

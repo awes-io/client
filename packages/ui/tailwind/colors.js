@@ -9,12 +9,20 @@ const ON_DEFAULTS = {
     surface: '#222'
 }
 
+const getRootVars = cssRoot => (value, key) => {
+    const [r, g, b] = chroma(value).rgb()
+
+    cssRoot[`--c-${key}`] = [r, g, b].join(',')
+}
+
+const getColorVariables = (opacityVar, name, value) => {
+    const defaultOpacity = value ? chroma(value).get('rgba.a') : 1
+    return `rgba(var(--c-${name}), var(${opacityVar}, ${defaultOpacity}))`
+}
+
 module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
     const colors = theme('colors', DEFAULTS)
     const onColors = theme('onColors', ON_DEFAULTS)
-    const colorNames = _.keys(colors)
-    const colorSetsNames = _.keys(onColors)
-    const borderDefault = theme('borderColor.default', 'currentColor')
 
     // dark theme
     const darkColors = theme('darkTheme.colors', {})
@@ -24,95 +32,98 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
      * Add CSS variables
      */
     const cssRoot = {}
+
     const darkThemeCssRoot = {}
 
-    _.forEach(colors, (value, key) => {
-        cssRoot[`--c-${key}`] = value
-    })
+    _.forEach(colors, getRootVars(cssRoot))
 
-    _.forEach(onColors, (value, key) => {
-        cssRoot[`--c-on-${key}`] = value
-    })
-
-    _.forEach(onColors, (value, key) => {
-        cssRoot[`--c-fade-${key}`] = chroma(value)
-            .alpha(0.1)
-            .css()
-    })
+    _.forEach(onColors, (value, key) =>
+        getRootVars(cssRoot)(value, 'on-' + key)
+    )
 
     addComponents({ ':root': cssRoot })
 
-    _.forEach(darkColors, (value, key) => {
-        darkThemeCssRoot[`--c-${key}`] = value
-    })
+    _.forEach(darkColors, getRootVars(darkThemeCssRoot))
 
-    _.forEach(darkOnColors, (value, key) => {
-        darkThemeCssRoot[`--c-on-${key}`] = value
-    })
-
-    _.forEach(darkOnColors, (value, key) => {
-        darkThemeCssRoot[`--c-fade-${key}`] = chroma(value)
-            .alpha(0.1)
-            .css()
-    })
-
-    addComponents({ ':root[data-dark]': darkThemeCssRoot })
-
-    /*
-     * Add color sets
-     */
-    const colorSets = _.fromPairs(
-        _.flatten(
-            _.map(colorSetsNames, name => {
-                return [
-                    [
-                        `.${e(`bg-${name}`)}`,
-                        {
-                            background: `var(--c-${name})`,
-                            color: `var(--c-on-${name})`
-                        }
-                    ]
-                ]
-            })
-        )
+    _.forEach(darkOnColors, (value, key) =>
+        getRootVars(darkThemeCssRoot)(value, 'on-' + key)
     )
 
-    addUtilities(colorSets, variants('backgroundColor'))
+    addComponents({ ':root[data-dark="true"]': darkThemeCssRoot })
+
+    /*
+     * Add background colors
+     */
+    const background = _.fromPairs(
+        _.map(colors, (value, name) => [
+            `.${e(`bg-${name}`)}`,
+            {
+                'background-color': getColorVariables(
+                    '--bg-opacity',
+                    name,
+                    value
+                ),
+                color: getColorVariables(
+                    '--text-opacity',
+                    'on-' + name,
+                    onColors[name]
+                )
+            }
+        ])
+    )
+
+    addUtilities(background, variants('backgroundColor'))
+
+    addUtilities(
+        {
+            '.bg-current': { 'background-color': 'currentColor' },
+            '.bg-transparent': {
+                'background-color': 'rgba(var(--c-surface), 0)'
+            }
+        },
+        variants('backgroundColor')
+    )
 
     /*
      * Add text colors
      */
     const text = _.fromPairs(
-        _.flatten(
-            _.map(colorNames, name => {
-                return [
-                    [
-                        `.${e(`text-${name}`)}`,
-                        {
-                            color: `var(--c-${name})`
-                        }
-                    ],
-                    [
-                        `.${e(`text-on-${name}`)}`,
-                        {
-                            color: `var(--c-on-${name})`
-                        }
-                    ],
-                    [
-                        `.${e(`bg-on-${name}`)}`,
-                        {
-                            'background-color': `var(--c-on-${name})`
-                        }
-                    ]
-                ]
-            })
-        )
+        _.map(colors, (value, name) => {
+            return [
+                `.${e(`text-${name}`)}`,
+                {
+                    color: getColorVariables('--text-opacity', name, value)
+                }
+            ]
+        })
     )
 
     addUtilities(text, variants('textColor'))
 
+    const onText = _.fromPairs(
+        _.map(onColors, (value, name) => {
+            return [
+                `.${e(`text-on-${name}`)}`,
+                {
+                    color: getColorVariables(
+                        '--text-opacity',
+                        'on-' + name,
+                        value
+                    )
+                }
+            ]
+        })
+    )
+
+    addUtilities(onText, variants('textColor'))
+
     addUtilities(
-        { '.text-inherit': { color: 'inherit' } },
+        {
+            '.text-inherit': { color: 'inherit' },
+            '.text-transparent': {
+                color: ['transparent', 'rgba(var(--c-on-surface), 0)']
+            }
+        },
         variants('textColor')
     )
 
@@ -120,11 +131,15 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
      * Add border colors
      */
     const border = _.fromPairs(
-        _.map(colorNames, name => {
+        _.map(colors, (value, name) => {
             return [
                 `.${e(`border-${name}`)}`,
                 {
-                    'border-color': `var(--c-${name}, ${borderDefault})`
+                    'border-color': getColorVariables(
+                        '--border-opacity',
+                        name,
+                        value
+                    )
                 }
             ]
         })
@@ -133,25 +148,12 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
     addUtilities(border, variants('borderColor'))
 
     addUtilities(
-        { '.border-text': { 'border-color': 'currentColor' } },
+        {
+            '.border-current': { 'border-color': 'currentColor' },
+            '.border-transparent': {
+                'border-color': ['transparent', 'rgba(var(--c-surface), 0)']
+            }
+        },
         variants('borderColor')
-    )
-
-    const background = _.fromPairs(
-        _.map(colorNames, name => {
-            return [
-                `.${e(`bgcolor-${name}`)}`,
-                {
-                    background: `var(--c-${name})`
-                }
-            ]
-        })
-    )
-
-    addUtilities(background, variants('backgroundColor'))
-
-    addUtilities(
-        { '.bgcolor-text': { 'background-color': 'currentColor' } },
-        variants('backgroundColor')
     )
 }

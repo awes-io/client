@@ -4,7 +4,7 @@
     align-items: center;
 
     padding: theme('spacing.5', 1.25rem);
-    border: 1px dashed var(--c-muted-darker, #d7dbde);
+    border: 1px dashed rgb(var(--c-mono-400));
     border-radius: theme('borderRadius.md');
     cursor: pointer;
 
@@ -46,7 +46,7 @@
     }
 
     &__progress {
-        @apply bg-muted-dark;
+        @apply bg-mono-300;
         appearance: none;
 
         width: 100%;
@@ -63,7 +63,7 @@
         }
 
         &::-webkit-progress-bar {
-            @apply bg-muted-dark;
+            @apply bg-mono-300;
         }
 
         &::-webkit-progress-value {

@@ -8,7 +8,7 @@
                     number="$1 930"
                     description="This year"
                     footer="TOTAL VISITS: 20"
-                    icon="settings"
+                    icon="duotone/cog"
                     color="info"
                 >
                     <template #content>
@@ -250,7 +250,7 @@ export default {
                 '        number="$1 930"',
                 '        description="This year"',
                 '        footer="TOTAL VISITS: 20"',
-                '        icon="settings"',
+                '        icon="dotone/cog"',
                 '        color="info"',
                 '    >',
                 '        <template #content>',

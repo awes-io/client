@@ -1,6 +1,6 @@
 <template functional>
     <div
-        class="flex bg-muted-dark rounded-full overflow-hidden aw-chart"
+        class="flex bg-mono-300 rounded-full overflow-hidden aw-chart"
         :style="`height: ${props.height}px`"
     >
         <div

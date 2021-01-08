@@ -33,6 +33,7 @@
         "mixins/*",
         "assets/*",
         "docs/*",
+        "components/*",
         "tailwind.config.js"
     ],
     "main": "dist/js/ui.ssr.js",
@@ -47,6 +48,8 @@
         "test:watch": "jest -w"
     },
     "dependencies": {
+        "@nuxtjs/axios": "^5.12.4",
+        "@nuxtjs/svg-sprite": "^0.5.2",
         "@popperjs/core": "^2.0.5",
         "autosize": "^4.0.2",
         "axios": "^0.19.0",
@@ -62,15 +65,10 @@
         "marked": "^0.7.0",
         "postcss-color-function": "^4.1.0",
         "prismjs": "^1.17.1",
-        "rambdax": "^3.5.0",
-        "tailwindcss": "^1.0.6",
-        "tailwindcss-accessibility": "^1.0.0",
-        "tailwindcss-typography": "^2.2.0",
-        "vue": "^2.6.10",
+        "rambdax": "^7.0.1",
+        "tailwindcss": "^2.0.1",
         "vue-currency-input": "^1.22.3",
-        "vue-i18n": "^8.14.0",
-        "vue-router": "^3.1.2",
-        "vuex": "^3.1.1"
+        "vue-i18n": "^8.14.0"
     },
     "devDependencies": {
         "@babel/core": "^7.5.5",

@@ -56,8 +56,7 @@ export default {
             h(
                 'tr',
                 {
-                    staticClass:
-                        'bg-surface hover:bgcolor-muted hover:text-on-muted',
+                    staticClass: 'bg-surface hover:bg-mono-800',
                     class: { 'cursor-pointer': hasRowClickListener },
                     attrs: {
                         [TABLE_INDEX_ATTR]: hasRowClickListener ? index : null

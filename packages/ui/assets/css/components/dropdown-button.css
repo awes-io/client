@@ -32,7 +32,7 @@
     /* Default color */
     &_default {
         &:hover {
-            @apply bgcolor-muted;
+            @apply bg-mono-800;
         }
     }
 }
@@ -41,12 +41,10 @@
 /* Color modifiers */
 @each $color in (success, warning, error) {
     .aw-dropdown-button_$(color) {
-        $currentColor: theme('colors.$(color)');
-
-        color: $currentColor;
+        color: rgb(var(--c-$(color)));
 
         &:hover {
-            background-color: color($currentColor alpha(10%));
+            background-color: rgba(var(--c-$(color)), 0.1);
         }
     }
 }

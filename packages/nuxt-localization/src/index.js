@@ -1,4 +1,4 @@
-import { pathOr, mergeDeep } from 'rambdax'
+import { pathOr, mergeDeepRight } from 'rambdax'
 import { resolve, join } from 'path'
 import { hasAwesIoUiModule } from './utils/options'
 
@@ -21,9 +21,9 @@ const DEFAULT_OPTIONS = {
 
 function AwesIoNuxtLocalization(_options = {}) {
     const options = pathOr({}, 'awesIo.nuxtLocalization', this.options)
-    const mergedOptions = mergeDeep(
+    const mergedOptions = mergeDeepRight(
         DEFAULT_OPTIONS,
-        mergeDeep(options, _options)
+        mergeDeepRight(options, _options)
     )
 
     // trailing slash

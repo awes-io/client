@@ -1,14 +1,13 @@
 <template>
     <div class="container">
         <div>
-            <NLink
+            <button
                 v-for="{ code, iso } in $i18n.locales"
                 :key="code"
-                :to="switchLocalePath(code)"
-                target="_self"
+                @click="$i18n.setLocale(code)"
             >
                 {{ iso }}
-            </NLink>
+            </button>
         </div>
         <strong>Test:</strong> {{ $t('passwords.reset') }}
         <br />

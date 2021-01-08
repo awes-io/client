@@ -64,7 +64,7 @@ function toggleEvents(el, on = false, $events = EVENTS) {
     const useMethod = on ? 'addEventListener' : 'removeEventListener'
 
     $events.forEach(({ names, handler }) => {
-        names.forEach(name => {
+        names.forEach((name) => {
             el[useMethod](name, handler)
         })
     })

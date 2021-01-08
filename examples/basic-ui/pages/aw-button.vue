@@ -190,12 +190,9 @@
 
             <h5>Close button</h5>
 
-            <AwButton
-                icon="close"
-                theme="ghost"
-                color="default"
-                content-class="p-2"
-            />
+            <AwButton theme="ghost" color="default" content-class="p-2">
+                <AwIconSystem name="close" />
+            </AwButton>
 
             <AwCodeSnippet v-text="codeCloseButton" class="my-3" />
 
@@ -204,7 +201,7 @@
             <AwButton
                 mobile-text-hidden
                 size="xs"
-                icon="fas fa-user-circle"
+                icon="plus-circle"
                 color="success"
                 text="XS"
                 class="ml-4"
@@ -213,14 +210,14 @@
             <AwButton
                 mobile-text-hidden
                 size="sm"
-                icon="fas fa-user-circle"
+                icon="plus-circle"
                 color="success"
                 text="SM"
                 class="ml-4"
             />
 
             <AwButton
-                icon="fas fa-user-circle"
+                icon="plus-circle"
                 color="success"
                 text="MD"
                 mobile-text-hidden
@@ -229,7 +226,7 @@
 
             <AwButton
                 mobile-text-hidden
-                icon="fas fa-user-circle"
+                icon="plus-circle"
                 size="lg"
                 color="success"
                 text="LG"
@@ -281,12 +278,9 @@ export default {
 
         codeCloseButton() {
             const arr = [
-                '<AwButton',
-                '    icon="close"',
-                '    theme="ghost"',
-                '    color="default"',
-                '    content-class="p-2"',
-                '/>'
+                '<AwButton theme="ghost" color="default" content-class="p-2">',
+                '    <AwIconSystem name="close" />',
+                '</AwButton>'
             ]
             return arr.join('\n')
         },
@@ -295,7 +289,7 @@ export default {
             const arr = [
                 '<AwButton',
                 '    mobile-text-hidden',
-                '    icon="close"',
+                '    icon="plus-circle"',
                 '    color="success"',
                 '    text="MD"',
                 '/>'
@@ -314,7 +308,7 @@ export default {
             const tabText = tab ? '    ' : ''
 
             const base = attrVals.map(
-                val =>
+                (val) =>
                     `${tabText}<AwButton${propText} ${attrName}="${val}">Button</AwButton>`
             )
             return base.join('\n')

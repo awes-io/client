@@ -25,6 +25,10 @@ export const AwCropper = {
     baseClass: 'aw-cropper'
 }
 
+export const AwDate = {
+    format: 'll'
+}
+
 export const AwDropdown = {
     tag: 'div',
     baseClass: 'aw-dropdown',
@@ -72,7 +76,7 @@ export const AwForm = {
     setErrors(errors) {
         const unsetErrors = {}
 
-        Object.keys(errors).forEach(fieldName => {
+        Object.keys(errors).forEach((fieldName) => {
             const field = this.$el[fieldName]
             let text = errors[fieldName]
 
@@ -120,12 +124,12 @@ export const AwForm = {
 
         return this.$axios
             .request(request)
-            .then(response => {
+            .then((response) => {
                 this.$emit('sended', response)
 
                 return response
             })
-            .catch(err => {
+            .catch((err) => {
                 // set errors
                 const errors = pathOr({}, 'response.data.errors', err)
 
@@ -165,13 +169,12 @@ export const AwMoney = {
     }
 }
 
-export const AwIcon = {
+export const AwIconSystem = {
     baseClass: 'aw-icon',
-    size: 'base'
+    size: 16
 }
 
 export const AwPage = {
-    baseClass: 'aw-page',
     titleTag: 'h1'
 }
 
@@ -185,12 +188,14 @@ export const AwMenu = {
     iconColor: 'currentColor'
 }
 
-export const AwTableBuilder = {
-    param: 'orderBy', // <-- GET-param name in browser query string
-    ascTemplate: '%s', // <-- template, where '%s' is replaced with column name
-    descTemplate: '%s_desc',
-    // field: 'description',
-    default: false
+export const AwTable = {
+    orderable: {
+        param: 'orderBy', // <-- GET-param name in browser query string
+        ascTemplate: '%s', // <-- template, where '%s' is replaced with column name
+        descTemplate: '%s_desc',
+        // field: 'description',
+        default: false
+    }
 }
 
 export const AwTags = {
@@ -202,14 +207,15 @@ export default {
     AwButton,
     AwLink,
     AwCropper,
+    AwDate,
     AwDropdown,
     AwCode,
     AwForm,
     AwInput,
     AwMoney,
-    AwIcon,
+    AwIconSystem,
     AwPage,
     AwModal,
-    AwTableBuilder,
+    AwTable,
     AwTags
 }

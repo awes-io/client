@@ -13,7 +13,7 @@ function _containsTargets(targetTags = [], $event) {
     let contains = false
     let eventTarget = $event.target
 
-    const match = el => targetTags.includes(el.tagName)
+    const match = (el) => targetTags.includes(el.tagName)
 
     while (!contains && eventTarget) {
         if (match(eventTarget)) contains = true

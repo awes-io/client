@@ -1,8 +1,4 @@
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { pathOr, startsWith, anyPass, F } from 'rambdax'
-
-dayjs.extend(customParseFormat)
 
 export const TIMESTAMP_ATTR = 'data-time'
 
@@ -163,13 +159,13 @@ export default {
             const fns = [this.disabledDays]
 
             if (this._minDayjs) {
-                fns.push(date =>
+                fns.push((date) =>
                     this._minDayjs.isAfter(this._toDayjs(date), 'days')
                 )
             }
 
             if (this._maxDayjs) {
-                fns.push(date =>
+                fns.push((date) =>
                     this._maxDayjs.isBefore(this._toDayjs(date), 'days')
                 )
             }
@@ -182,7 +178,7 @@ export default {
                 const verifiers = []
 
                 if (this._startDayjs) {
-                    verifiers.push(date => {
+                    verifiers.push((date) => {
                         return this._startDayjs.isSame(
                             this._toDayjs(date),
                             'day'
@@ -191,24 +187,26 @@ export default {
                 }
 
                 if (this._endDayjs) {
-                    verifiers.push(date => {
+                    verifiers.push((date) => {
                         return this._endDayjs.isSame(this._toDayjs(date), 'day')
                     })
                 }
 
                 return anyPass(verifiers)
             } else {
-                return date => {
+                return (date) => {
                     const _date = this._toDayjs(date)
                     return this._isMultiple
-                        ? this._valueDayjs.some(val => val.isSame(_date, 'day'))
+                        ? this._valueDayjs.some((val) =>
+                              val.isSame(_date, 'day')
+                          )
                         : this._valueDayjs.isSame(_date, 'day')
                 }
             }
         },
 
         _isRangeStart() {
-            return date => {
+            return (date) => {
                 return (
                     this._startDayjs &&
                     this._startDayjs.isSame(this._toDayjs(date), 'day')
@@ -217,7 +215,7 @@ export default {
         },
 
         _isRangeEnd() {
-            return date => {
+            return (date) => {
                 return (
                     this._endDayjs &&
                     this._endDayjs.isSame(this._toDayjs(date), 'day')
@@ -226,7 +224,7 @@ export default {
         },
 
         _inRange() {
-            return date => {
+            return (date) => {
                 if (this._startDayjs && this._endDayjs) {
                     const dayjs = this._toDayjs(date)
 
@@ -242,14 +240,14 @@ export default {
 
         _getDayClass() {
             if (this.range) {
-                return date => ({
+                return (date) => ({
                     'aw-calendar__day_active': this._isActive(date),
                     'aw-date__range': this._inRange(date),
                     'aw-date__range-start': this._isRangeStart(date),
                     'aw-date__range-end': this._isRangeEnd(date)
                 })
             } else {
-                return date => ({
+                return (date) => ({
                     'aw-calendar__day_active': this._isActive(date)
                 })
             }
@@ -261,11 +259,11 @@ export default {
 
         _fromDayjs() {
             if (this.outputFormat === 'toDayjs') {
-                return _dayjs => _dayjs
+                return (_dayjs) => _dayjs
             } else if (startsWith('to', this.outputFormat)) {
-                return _dayjs => _dayjs[this.outputFormat]()
+                return (_dayjs) => _dayjs[this.outputFormat]()
             } else {
-                return _dayjs => _dayjs.format(this.outputFormat)
+                return (_dayjs) => _dayjs.format(this.outputFormat)
             }
         }
     },
@@ -305,13 +303,11 @@ export default {
         },
 
         _toDayjs(input) {
-            const _dayjs = this.$dayjs || dayjs
-
             if (this._stringFormat && typeof input === 'string') {
-                return _dayjs(input, this._stringFormat)
+                return this.$dayjs(input, this._stringFormat)
             }
 
-            return _dayjs(input)
+            return this.$dayjs(input)
         },
 
         _getDateFromEvent: getDateFromEvent,
@@ -364,7 +360,7 @@ export default {
 
         _getNonRangeValue(dayjs) {
             if (this._isMultiple) {
-                const index = this._valueDayjs.findIndex(val =>
+                const index = this._valueDayjs.findIndex((val) =>
                     val.isSame(dayjs)
                 )
                 if (index === -1) {

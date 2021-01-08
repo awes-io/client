@@ -75,6 +75,6 @@ export default {
         }
     },
 
-    render: h => h('td', {}, 'stub')
+    render: (h) => h('td', {}, 'stub')
 }
 </script>

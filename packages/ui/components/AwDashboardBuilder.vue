@@ -35,11 +35,10 @@
                         <div :class="_cssClasses.counter">
                             <slot name="counter">
                                 {{ data.total }}
-                                <AwIcon
+                                <AwIconSystem
                                     v-if="data.total_diff"
-                                    :name="
-                                        _isArrowPositive ? 'arrow-u' : 'arrow-d'
-                                    "
+                                    name="arrow"
+                                    :rotate="_isArrowPositive ? 90 : -90"
                                     :class="
                                         _isArrowPositive
                                             ? 'text-success'
@@ -166,7 +165,7 @@ export default {
         },
 
         chartData() {
-            return this.legendData.filter(el => el.on_chart)
+            return this.legendData.filter((el) => el.on_chart)
         },
 
         template() {

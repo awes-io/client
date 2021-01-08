@@ -20,7 +20,7 @@
         .cr-viewport,
         .cr-resizer {
             border: none;
-            box-shadow: 0 0 2000px 2000px var(--c-muted);
+            box-shadow: 0 0 2000px 2000px rgb(var(--c-mono-600));
         }
 
         .cr-slider-wrap {

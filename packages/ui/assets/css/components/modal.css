@@ -10,7 +10,7 @@ $modal-aside-width-large: 75vw;
 .aw-modal {
     @apply z-100 fixed inset-0;
     overflow: auto;
-    padding: 0!important;
+    padding: 0 !important;
 
     &:focus {
         outline: none;
@@ -41,7 +41,7 @@ $modal-aside-width-large: 75vw;
 
     &.is-fullscreen &__content,
     &.is-bottom &__content {
-        max-width: var(--ui-container-width, $container-width)
+        max-width: var(--ui-container-width, $container-width);
     }
 
     &__content--buttons {
@@ -54,7 +54,7 @@ $modal-aside-width-large: 75vw;
         height: $button-height;
         width: $button-height;
         line-height: $button-height - $gap;
-        opacity: .5;
+        opacity: 0.5;
         transition: 200ms opacity;
 
         > svg {
@@ -78,7 +78,7 @@ $modal-aside-width-large: 75vw;
     }
 
     &__subtitle {
-        @apply px-6 text-sm truncate font-body text-grey;
+        @apply px-6 text-sm truncate font-body text-mono-300;
     }
 
     &__buttons {
@@ -98,16 +98,16 @@ $modal-aside-width-large: 75vw;
     }
 
     &.is-default &__header {
-        @apply pb-0
+        @apply pb-0;
     }
 
     &.is-fullscreen &__container,
-    &[class*="is-aside"] &__container {
+    &[class*='is-aside'] &__container {
         @apply p-0 overflow-hidden;
     }
 
     &.is-fullscreen &,
-    &[class*="is-aside"] & {
+    &[class*='is-aside'] & {
         &__dialog {
             @apply flex flex-col w-full max-w-full p-0 h-full min-h-screen overflow-hidden;
         }
@@ -118,16 +118,16 @@ $modal-aside-width-large: 75vw;
         }
     }
 
-    &[class*="is-aside"] {
+    &[class*='is-aside'] {
         left: auto;
         min-width: $modal-aside-width;
         width: $modal-aside-width;
         max-width: 100vw;
         z-index: 99;
-        box-shadow: 0 0 20px rgba(0,0,0,.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
-    &[class*="is-aside"] &__back {
+    &[class*='is-aside'] &__back {
         @apply hidden;
     }
 
@@ -168,21 +168,18 @@ $modal-aside-width-large: 75vw;
 
 @media (max-width: theme('sceens.sm')) {
     .aw-modal {
-
         &.is-fullscreen &__title {
             text-align: center;
         }
 
-        &[class*="is-aside"] &__back {
+        &[class*='is-aside'] &__back {
             display: none;
         }
     }
 }
 
 @screen md {
-
     .aw-modal {
-
         &:not(.is-aside) &__header {
             @apply items-start justify-center px-8;
         }
@@ -250,7 +247,6 @@ $modal-aside-width-large: 75vw;
 $modal-t-dur: 250ms;
 
 .modal-transition-default {
-
     &-enter,
     &-leave-to {
         opacity: 0;
@@ -260,9 +256,8 @@ $modal-t-dur: 250ms;
     &-leave-active {
         pointer-events: none;
         backface-visibility: hidden;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
     }
-
 
     &-enter-active {
         transition: $modal-t-dur opacity ease-out-quart;
@@ -275,7 +270,6 @@ $modal-t-dur: 250ms;
 
 @screen md {
     .modal-transition-default {
-
         &-enter,
         &-leave-to {
             .aw-modal__dialog {
@@ -288,12 +282,14 @@ $modal-t-dur: 250ms;
             transition: calc($modal-t-dur * 1.5) opacity;
 
             .aw-modal__dialog {
-                transition: $modal-t-dur transform calc($modal-t-dur * .5) ease-out-quart, calc($modal-t-dur * .5) opacity calc($modal-t-dur * .5);
+                transition: $modal-t-dur transform calc($modal-t-dur * 0.5)
+                        ease-out-quart,
+                    calc($modal-t-dur * 0.5) opacity calc($modal-t-dur * 0.5);
             }
         }
 
         &-leave-active {
-            transition: $modal-t-dur opacity calc($modal-t-dur * .5);
+            transition: $modal-t-dur opacity calc($modal-t-dur * 0.5);
 
             .aw-modal__dialog {
                 transition: $modal-t-dur transform, $modal-t-dur opacity;
@@ -302,10 +298,8 @@ $modal-t-dur: 250ms;
     }
 }
 
-
 /* fullscreen */
 .modal-transition-fullscreen {
-
     &-enter,
     &-leave-to {
         transform: scale(1.1);
@@ -313,18 +307,18 @@ $modal-t-dur: 250ms;
     }
 
     &-enter-active {
-        transition: $modal-t-dur transform ease-out-quart, $modal-t-dur opacity ease-out-quart;
+        transition: $modal-t-dur transform ease-out-quart,
+            $modal-t-dur opacity ease-out-quart;
     }
 
     &-leave-active {
-        transition: $modal-t-dur transform, calc($modal-t-dur * .67) opacity calc($modal-t-dur * .33);
+        transition: $modal-t-dur transform,
+            calc($modal-t-dur * 0.67) opacity calc($modal-t-dur * 0.33);
     }
 }
 
-
 /* aside */
 .modal-transition-aside {
-
     &-enter,
     &-leave-to {
         transform: translateX(100%);
@@ -339,10 +333,8 @@ $modal-t-dur: 250ms;
     }
 }
 
-
 .modal-transition-aside-medium,
 .modal-transition-aside-large {
-
     &-enter {
         transform: translateX($modal-aside-width);
         opacity: 0;
@@ -354,16 +346,17 @@ $modal-t-dur: 250ms;
     }
 
     &-enter-active {
-        transition: $modal-t-dur transform ease-out-quart, calc($modal-t-dur *.67) opacity ease-out-quart;
+        transition: $modal-t-dur transform ease-out-quart,
+            calc($modal-t-dur * 0.67) opacity ease-out-quart;
     }
 
     &-leave-active {
-        transition: $modal-t-dur transform, calc($modal-t-dur *.67) opacity calc($modal-t-dur *.33);
+        transition: $modal-t-dur transform,
+            calc($modal-t-dur * 0.67) opacity calc($modal-t-dur * 0.33);
     }
 }
 
 @screen md {
-
     .modal-transition-aside-medium,
     .modal-transition-aside-large {
         &-enter {
@@ -378,7 +371,6 @@ $modal-t-dur: 250ms;
 
 /* aside */
 .modal-transition-bottom {
-
     &-enter,
     &-leave-to {
         opacity: 0;

@@ -1,7 +1,10 @@
 /**
  * Tailwind reset and base styles
  */
-@import 'tailwindcss/base';
+/* @import 'tailwindcss/base'; */
+
+@import '@awes-io/ui/assets/css/base';
+@import '@awes-io/ui/assets/css/typography';
 
 /**
  * Tailwind components
@@ -27,13 +30,13 @@
  * Prism highlight
  */
 @import 'prismjs/themes/prism.css';
-[data-dark] {
+[data-dark="true"] {
     pre[class*="language-"] {
         background-color: theme('darkTheme.colors.surface');
     }
     code[class*="language-"] {
         color: theme('darkTheme.onColors.surface');
-        text-shadow: 0 1px theme('darkTheme.colors.muted');
+        text-shadow: 0 1px theme('darkTheme.colors.mono-500');
     }
 }
 pre[class*="language-"] {

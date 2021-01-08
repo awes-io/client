@@ -30,7 +30,7 @@
                     enter-skip
                 />
                 <AwLink
-                    :href="localePath({ path: '/forgot-password' })"
+                    href="/forgot-password"
                     :text="$t('AwesIoAuth.forgotPassword')"
                 />
             </div>
@@ -42,10 +42,7 @@
         <!-- registration notify -->
         <p v-if="$route.meta.register" class="mt-8 text-center">
             {{ $t('AwesIoAuth.noAccount') }}
-            <AwLink
-                :href="localePath({ path: '/register' })"
-                :text="$t('AwesIoAuth.register')"
-            />
+            <AwLink href="/register" :text="$t('AwesIoAuth.register')" />
         </p>
 
         <!-- social login -->
@@ -103,7 +100,7 @@ import { pathOr } from 'ramda'
 export default {
     name: 'PageLogin',
 
-    layout: 'LayoutFrameCenter',
+    layout: 'center',
 
     auth: 'guest',
 

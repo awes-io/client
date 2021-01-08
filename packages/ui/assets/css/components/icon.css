@@ -1,5 +1,5 @@
 /* Same size as AwButton */
-.aw-icon.text-xs,
-.external-icon.text-xs {
-    font-size: 0.625rem;
+.aw-icon {
+    color: inherit;
+    fill: currentColor;
 }
