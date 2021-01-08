@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.4...@awes-io/ui@2.0.5) (2021-01-08)
+
+
+### Bug Fixes
+
+* **i18n:** async translation fetching fixed ([f6aeef2](https://github.com/awes-io/client/commit/f6aeef2da643a1daf1bfcbfe30cc41cc20bb2353))
+
+
+
+
+
 ## [2.0.4](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.3...@awes-io/ui@2.0.4) (2021-01-08)
 
 

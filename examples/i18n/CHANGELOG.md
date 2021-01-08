@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.86](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.4.85...example-nuxt-i18n@1.4.86) (2021-01-08)
+
+
+### Bug Fixes
+
+* **i18n:** async translation fetching fixed ([f6aeef2](https://git.awescode.com/awes-io/client/commits/f6aeef2da643a1daf1bfcbfe30cc41cc20bb2353))
+
+
+
+
+
 ## [1.4.85](https://git.awescode.com/awes-io/client/compare/example-nuxt-i18n@1.4.84...example-nuxt-i18n@1.4.85) (2021-01-08)
 
 **Note:** Version bump only for package example-nuxt-i18n

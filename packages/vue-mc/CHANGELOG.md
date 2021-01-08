@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/awes-io/client/compare/@awes-io/vue-mc@0.3.2...@awes-io/vue-mc@0.3.3) (2021-01-08)
+
+
+### Bug Fixes
+
+* bump new version ([9c4cc0d](https://github.com/awes-io/client/commit/9c4cc0d6914b3011b122e99df0da47cd2b8acf2c))
+
+
+
+
+
 ## [0.3.2](https://github.com/awes-io/client/compare/@awes-io/vue-mc@0.3.1...@awes-io/vue-mc@0.3.2) (2021-01-08)
 
 **Note:** Version bump only for package @awes-io/vue-mc
