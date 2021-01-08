@@ -6,7 +6,7 @@ export class Notification {
     constructor(defaults) {
         this.defaults = {
             timeout: 5000,
-            icon: 'check-circle',
+            icon: true,
             type: 'info',
             ...defaults
         }

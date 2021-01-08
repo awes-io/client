@@ -49,13 +49,14 @@
 import { filter } from 'rambdax'
 
 const icons = [
+    true,
     false,
-    'check-circle',
-    'check-solid',
-    'close-circle',
+    'arrow-alt-right',
+    'coffee',
+    'cogs',
     'circle',
-    'location',
-    'search'
+    'duotone/map-marker-check',
+    'plus-circle'
 ]
 const DEFAULT_ICON = 'check-circle'
 

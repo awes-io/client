@@ -1,5 +1,5 @@
 export default {
-    ssr: true,
+    ssr: false,
 
     head: {
         title: 'Admin module example',
@@ -13,14 +13,14 @@ export default {
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
 
+    components: [],
+
     modules: [
-        '@nuxtjs/axios',
+        // '@nuxtjs/axios',
         '@awes-io/ui/nuxt',
         '@awes-io/nuxt-auth',
         '@awes-io/nuxt-profile',
-        // '@awes-io/nuxt-admin',
-        // '@awes-io/nuxt-i18n'
-        'nuxt-i18n'
+        '@awes-io/nuxt-admin'
     ],
 
     i18n: {

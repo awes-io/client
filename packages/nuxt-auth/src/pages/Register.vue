@@ -52,10 +52,7 @@
         <!-- registered notify -->
         <p class="mt-8 text-center">
             {{ $t('AwesIoAuth.haveAccount') }}
-            <AwLink
-                :href="localePath({ path: '/login' })"
-                :text="$t('AwesIoAuth.login')"
-            />
+            <AwLink href="/login" :text="$t('AwesIoAuth.login')" />
         </p>
 
         <!-- social register -->

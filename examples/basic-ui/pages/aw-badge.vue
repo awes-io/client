@@ -23,8 +23,8 @@
         </span>
 
         <h5>Badge icon:</h5>
-        <AwBadge icon="search">
-            Search
+        <AwBadge icon="duotone/cog">
+            Settings
         </AwBadge>
 
         <AwCodeSnippet v-text="iconCode" class="mt-3" />
@@ -86,7 +86,11 @@ export default {
         },
 
         iconCode() {
-            const code = ['<AwBadge icon="search">', '   Search', '</AwBadge>']
+            const code = [
+                '<AwBadge icon="duotone/cog">',
+                '   Settings',
+                '</AwBadge>'
+            ]
             return code.join('\n')
         }
     },

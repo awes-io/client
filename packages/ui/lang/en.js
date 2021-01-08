@@ -2,9 +2,17 @@ export const AwButton = {
     loading: 'Loading...'
 }
 
+export const AwBottomBar = {
+    menu: 'Menu'
+}
+
 export const AwModal = {
     back: 'Go Back',
     close: 'Close Window (ESC)'
+}
+
+export const AwMobileMenu = {
+    version: 'version v{version}'
 }
 
 export const AwCalendar = {
@@ -25,10 +33,6 @@ export const AwCalendar = {
     ]
 }
 
-export const AwDate = {
-    format: 'DD.MM.YYYY'
-}
-
 export const AwCropper = {
     rotate: 'Rotate 90°',
     save: 'Save Image'
@@ -47,7 +51,7 @@ export const AwLayoutDefault = {
     shrinkMenu: 'Shrink menu',
     toggleSubmenu: 'Toggle submenu',
     footer:
-        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-mono-400 underline">Awes.io Platform</a>'
 }
 
 export const AwLayoutError = {
@@ -57,7 +61,7 @@ export const AwLayoutError = {
 
 export const AwLayoutFrameCenter = {
     footer:
-        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-disabled underline">Awes.io Platform</a>'
+        '© 2020 - Proudly powered on <a href="https://www.awes.io" target="_blank" class="text-mono-400 underline">Awes.io Platform</a>'
 }
 
 export const AwMarkdownEditor = {
@@ -147,11 +151,12 @@ export const AwBirthdayDate = {
 
 export default {
     AwButton,
+    AwBottomBar,
     AwModal,
+    AwMobileMenu,
     AwCalendar,
     AwCropper,
     AwCodeSnippet,
-    AwDate,
     AwLayoutDefault,
     AwLayoutError,
     AwLayoutFrameCenter,

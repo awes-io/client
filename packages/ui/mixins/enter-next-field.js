@@ -13,7 +13,7 @@ const TAG_NAMES = FIELDS.map(({ tag }) => tag.toUpperCase())
 
 const FIELDS_SELECTOR = FIELDS.map(({ tag, exclude = [] }) => {
     const excludeRule = GLOBAL_EXCLUDE.concat(exclude)
-        .map(rule => `:not(${rule})`)
+        .map((rule) => `:not(${rule})`)
         .join('')
     return `${tag}${excludeRule}`
 }).join(', ')

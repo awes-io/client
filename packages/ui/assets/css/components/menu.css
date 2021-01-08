@@ -45,7 +45,8 @@
         overflow-x: hidden;
         overflow-y: auto;
         scrollbar-width: thin;
-        scrollbar-color: var(--c-fade-brand) transparent;
+        scrollbar-color: rgba(var(--c-on-brand), 0.2) transparent;
+
 
         &::-webkit-scrollbar {
             width: 6px;
@@ -54,7 +55,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: var(--c-fade-brand);
+            background-color: rgba(var(--c-on-brand), 0.2);
         }
     }
 
@@ -84,7 +85,7 @@
         }
 
         &__width-toggler {
-            @apply bgcolor-brand;
+            @apply bg-brand;
 
             display: flex;
             align-items: center;
@@ -101,7 +102,7 @@
             transition: 250ms transform ease-out;
 
             &:before {
-                @apply bgcolor-surface;
+                @apply bg-surface;
                 content: '';
 
                 position: absolute;

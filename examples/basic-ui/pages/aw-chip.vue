@@ -3,7 +3,7 @@
         <!-- minimal usage -->
         <h2>Simple</h2>
 
-        <AwChip icon="quote" />
+        <AwChip icon="duotone/clock" />
 
         <AwChip color="warning" text="With text" />
 
@@ -11,9 +11,9 @@
             <AwChip text="With loading (click to toggle)" :loading="loading" />
         </button>
 
-        <AwChip text="With text and icon" color="info" icon="search" />
+        <AwChip text="With text and icon" color="info" icon="duotone/cog" />
 
-        <AwChip text="With text and icon" color="error" icon="close" />
+        <AwChip text="With text and icon" color="error" icon="duotone/gift" />
 
         <!-- chips with background -->
         <h2>With background</h2>
@@ -21,7 +21,7 @@
         <AwChip
             text="With text, color and bg"
             color="error"
-            class="bgcolor-muted-dark mb-2"
+            class="bg-muted-dark mb-2"
         />
 
         <AwChip
@@ -38,7 +38,7 @@
             >
                 <template #right="{ color }">
                     <AwIcon
-                        name="close-circle"
+                        name="duotone/check-circle"
                         class="mr-1"
                         :class="{ [`text-${color}`]: color }"
                     />
@@ -50,11 +50,11 @@
             <AwChip
                 text="With text, color, bg and button"
                 class="bg-error mb-2"
-                icon="close-circle"
+                icon="duotone/check-circle"
             >
                 <template #right="{ color }">
                     <AwIcon
-                        name="close-circle"
+                        name="duotone/check-circle"
                         class="mr-1"
                         :class="{ [`text-${color}`]: color }"
                     />
@@ -64,7 +64,7 @@
 
         <!-- loading indicator example -->
         <h2>Loading</h2>
-        <AwChip class="bgcolor-muted-dark">
+        <AwChip class="bg-muted-dark">
             <AwSvgImage name="spinner" slot="left" class="h-5 w-5" />
             Loading
         </AwChip>
@@ -81,7 +81,7 @@
 
         <AwChip color="warning" text="Simple with text" />
 
-        <AwChip icon="eye" text="With icon" />
+        <AwChip icon="duotone/check-circle" text="With icon" />
 
         One more text
 
@@ -94,7 +94,7 @@
             >
                 <template #right="{ color }">
                     <AwIcon
-                        name="close-circle"
+                        name="duotone/check-circle"
                         class="mr-1"
                         :class="{ [`text-${color}`]: color }"
                     />
@@ -104,13 +104,13 @@
 
         <!-- rotating chips -->
         <h2>Rotating chips</h2>
-        <AwChip color="link" icon="progress" scale="0.85" rotate>
+        <AwChip color="link" icon="duotone/cog" filled rotate>
             In Progress
         </AwChip>
 
         <!-- Filled chips -->
         <h2>Filled chips</h2>
-        <AwChip color="warning" icon="pause" filled>
+        <AwChip color="warning" icon="duotone/palette" filled>
             Stop
         </AwChip>
     </AwPage>

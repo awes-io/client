@@ -3,8 +3,8 @@
         <AwGrid>
             <AwCard>
                 <AwIcon
-                    name="question-circle"
-                    size="xl"
+                    name="duotone/question-square"
+                    size="20"
                     class="mr-2 text-link"
                 />
                 Documenation and live edit for <code>&lt;AwInfo /&gt;</code> you
@@ -39,8 +39,8 @@
                     <template #icon>
                         <AwIcon
                             v-tooltip:top="'Custom icon'"
-                            name="question"
-                            size="sm"
+                            name="duotone/question-square"
+                            size="20"
                         />
                     </template>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

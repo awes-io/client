@@ -15,7 +15,7 @@
 
         <AwInput class="mt-2" label="Postfix" placeholder="Text input">
             <template #postfix>
-                <AwIcon name="location" class="mx-4" />
+                <AwIcon name="duotone/map-marker-check" class="mx-4" />
             </template>
         </AwInput>
 
@@ -30,7 +30,7 @@
             placeholder="Text input with icon"
         >
             <template #icon>
-                <AwIcon name="external" size="sm" class="m-4" />
+                <AwIcon name="duotone/university" size="14" class="m-4" />
             </template>
         </AwInput>
 
@@ -41,7 +41,11 @@
             placeholder="Text input with icon"
         >
             <template #icon>
-                <AwButton theme="icon" icon="copy" @click="copyToClipboard()" />
+                <AwButton
+                    theme="icon"
+                    icon="duotone/list-alt"
+                    @click="copyToClipboard()"
+                />
             </template>
         </AwInput>
         <AwPassword class="mt-2" label="Password" v-model="pass" />

@@ -1,4 +1,4 @@
-import { pathOr, mergeDeep, isType, toPairs, equals } from 'rambdax'
+import { pathOr, mergeDeepRight, isType, toPairs, equals } from 'rambdax'
 import { resolve, join } from 'path'
 import { moveSync, writeFileSync, removeSync } from 'fs-extra'
 
@@ -11,8 +11,8 @@ const DEFAULT_OPTIONS = {
 function AwesIoNuxtLaravel(_options = {}) {
     // Merge options
     const configOptions = pathOr({}, 'awesIo.nuxtLaravel', this.options)
-    const mergedOptions = mergeDeep(
-        mergeDeep(DEFAULT_OPTIONS, configOptions),
+    const mergedOptions = mergeDeepRight(
+        mergeDeepRight(DEFAULT_OPTIONS, configOptions),
         _options
     )
 
@@ -23,7 +23,7 @@ function AwesIoNuxtLaravel(_options = {}) {
     )
 
     // Include @nuxtjs/axios and configure proxy
-    this.options.axios = mergeDeep(pathOr({}, 'axios', this.options), {
+    this.options.axios = mergeDeepRight(pathOr({}, 'axios', this.options), {
         baseURL: '/',
         proxy: true
     })
@@ -93,9 +93,9 @@ function AwesIoNuxtLaravel(_options = {}) {
 
     // Configure work with Laravel
     if (this.options.dev) {
-        this.extendRoutes(routes => {
+        this.extendRoutes((routes) => {
             const index = routes.find(
-                route =>
+                (route) =>
                     route.path === '/' ||
                     (route.name && route.name.match(/^index-\w+$/))
             )

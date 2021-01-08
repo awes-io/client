@@ -8,7 +8,7 @@
         <AwDropdown ref="drop">
             <AwDropdownButton text="with icon">
                 <template #icon>
-                    <AwIcon name="check-solid" size="xs" />
+                    <AwIcon name="duotone/check-circle" size="12" />
                 </template>
             </AwDropdownButton>
             <AwDropdownButton color="success">

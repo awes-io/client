@@ -1,0 +1,61 @@
+@layer base {
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #e2e8f0;
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    main,
+    details {
+        display: block;
+    }
+
+    summary {
+        display: list-item;
+    }
+
+    template,
+    [hidden] {
+        display: none;
+    }
+
+    button {
+        appearance: none;
+        cursor: pointer;
+        text-align: inherit;
+        padding: 0;
+        line-height: inherit;
+        color: inherit;
+        background-color: transparent;
+        background-image: none;
+    }
+
+    html,
+    body,
+    #__nuxt,
+    #__layout {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    body,
+    #__nuxt,
+    #__layout,
+    #__layout > * {
+        flex-grow: 1;
+    }
+}

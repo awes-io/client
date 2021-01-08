@@ -31,9 +31,9 @@
             class="mt-1 lg:mt-0"
             style="width: 300px"
         >
-            <AwUserMenuContent v-bind="$props" v-on="$listeners">
-                <slot />
-            </AwUserMenuContent>
+            <!-- <AwUserMenuContent v-bind="$props" v-on="$listeners"> -->
+            <slot />
+            <!-- </AwUserMenuContent> -->
         </AwDropdown>
 
         <template v-else>
@@ -45,22 +45,20 @@
                 ></div>
             </Transition>
 
-            <AwUserMenuContent
+            <!-- <AwUserMenuContent
                 v-bind="$props"
                 v-on="$listeners"
                 :class="{ 'is-visible': isOpened }"
                 class="aw-usermenu-mobile z-20"
             >
                 <slot />
-            </AwUserMenuContent>
+            </AwUserMenuContent> -->
         </template>
     </div>
 </template>
 
 <script>
-import AwUserpic from './AwUserpic.vue'
-import AwDropdown from './AwDropdown.vue'
-import AwUserMenuContent from './AwUserMenuContent.vue'
+// import AwUserMenuContent from './AwUserMenuContent.vue'
 
 const debounce = 150
 let timeout = null
@@ -68,11 +66,9 @@ let timeout = null
 export default {
     name: 'AwUserMenu',
 
-    components: {
-        AwUserpic,
-        AwDropdown,
-        AwUserMenuContent
-    },
+    // components: {
+    //     AwUserMenuContent
+    // },
 
     props: {
         /**

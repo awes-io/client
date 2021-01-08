@@ -24,6 +24,6 @@
     "dependencies": {
         "@nuxtjs/axios": "^5.9.2",
         "fs-extra": "^8.1.0",
-        "rambdax": "^3.5.0"
+        "rambdax": "^7.0.1"
     }
 }

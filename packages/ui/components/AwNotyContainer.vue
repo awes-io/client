@@ -37,7 +37,7 @@ export default {
     },
 
     beforeDestroy() {
-        this.stack.forEach(item => {
+        this.stack.forEach((item) => {
             clearTimeout(item.timeout)
         })
         this.stack = []
@@ -49,7 +49,7 @@ export default {
                 ? this.$options.position
                       .split(' ')
                       .filter(Boolean)
-                      .map(cls => `aw-noty-container_${cls}`)
+                      .map((cls) => `aw-noty-container_${cls}`)
                 : null
         }
     },
@@ -80,7 +80,7 @@ export default {
         },
 
         remove(id) {
-            let i = this.stack.findIndex(item => item.id === id)
+            let i = this.stack.findIndex((item) => item.id === id)
 
             if (i > -1) {
                 clearTimeout(this.stack[i].timeout)

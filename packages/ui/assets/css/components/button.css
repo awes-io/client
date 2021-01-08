@@ -120,7 +120,7 @@
         &__content_md&__content_no-text {
             @apply p-2;
         }
-    
+
         &__content_lg&__content_no-text {
             @apply p-3;
         }
@@ -203,7 +203,7 @@
 
     /* Link */
     &.theme-ghost.color-default {
-        @apply text-on-muted-dark;
+        @apply text-mono-50;
     }
 
     /* Outline */
@@ -233,7 +233,7 @@
     }
 
     &.theme-outline {
-        @apply text-disabled;
+        @apply text-mono-400;
         border: 1px solid theme('colors.disabled')
     }
 

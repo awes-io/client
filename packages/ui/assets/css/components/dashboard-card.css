@@ -13,7 +13,7 @@
     & &__description,
     & &__subtitle,
     & &__footer {
-        @apply text-xs text-disabled m-0;
+        @apply text-xs text-mono-400 m-0;
     }
 
     & &__footer {

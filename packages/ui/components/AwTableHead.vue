@@ -1,15 +1,13 @@
 <template>
     <thead v-if="columns.length">
-        <tr class="bg-muted-dark border-b">
+        <tr class="bg-mono-700 border-b">
             <th
                 v-for="(column, key) in columns"
                 :key="key"
                 class="py-3 px-4 lg:py-5 lg:px-6 text-left font-normal"
                 :class="[
                     column.align,
-                    column.orderable
-                        ? 'hover:bg-muted-darker cursor-pointer'
-                        : ''
+                    column.orderable ? 'hover:bg-mono-600 cursor-pointer' : ''
                 ]"
                 @click="$listeners.click ? $listeners.click(column, key) : null"
             >

@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { filter, isFalsy } from 'rambdax'
+import { filter, isEmpty, isNil } from 'rambdax'
 
 const colors = ['surface', 'brand', 'success', 'warning', 'error']
 const colorsLength = colors.length
@@ -88,7 +88,7 @@ export default {
     computed: {
         colProp() {
             return this.responsive
-                ? filter(val => !isFalsy(val), this.resCol)
+                ? filter((val) => !isEmpty(val) && !isNil(val), this.resCol)
                 : this.col
         },
 

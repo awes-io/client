@@ -1,5 +1,5 @@
-export const camelCase = str => {
-    return str.replace(/[-_]([a-z])/g, m => m[1].toUpperCase())
+export const camelCase = (str) => {
+    return str.replace(/[-_]([a-z])/g, (m) => m[1].toUpperCase())
 }
 
 /**
@@ -11,7 +11,7 @@ export const camelCase = str => {
 export function getBemClasses(block, els = []) {
     let _cls = {}
 
-    els.forEach(el => {
+    els.forEach((el) => {
         _cls[camelCase(el)] = `${block}__${el}`
     })
 

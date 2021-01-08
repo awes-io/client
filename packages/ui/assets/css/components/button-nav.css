@@ -1,5 +1,5 @@
 .aw-button-nav {
-    @apply bgcolor-muted-dark text-on-surface;
+    @apply bg-mono-800;
     display: inline-flex;
     border-radius: theme('borderRadius.lg');
     font-size: theme('fontSize.sm');
@@ -31,7 +31,7 @@
     }
 
     &__toggler > span:before {
-        @apply bgcolor-muted-darker;
+        @apply bg-mono-700;
         content: '';
         position: absolute;
         left: 0;
@@ -54,18 +54,18 @@
     }
 
     &__toggler_active > span {
-        @apply bgcolor-surface;
+        @apply bg-surface;
         border-radius: theme('borderRadius.default');
         box-shadow: theme('boxShadow.default');
     }
 
     &__toggler:hover > span {
-        @apply bgcolor-muted;
+        @apply bg-mono-700;
     }
 
     &__toggler[disabled],
     &__toggler_disabled {
-        @apply text-disabled;
+        @apply text-mono-700;
         pointer-events: none;
         cursor: not-allowed;
     }

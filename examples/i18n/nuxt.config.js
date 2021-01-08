@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    ssr: false,
 
     head: {
         title: process.env.npm_package_name || '',
@@ -18,13 +18,9 @@ export default {
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
 
-    modules: [
-        '@nuxtjs/axios',
-        '@awes-io/dayjs',
-        '@awes-io/ui/nuxt',
-        '@awes-io/nuxt-localization',
-        '@awes-io/nuxt-i18n'
-    ],
+    components: [],
+
+    modules: ['@awes-io/ui/nuxt', '@awes-io/nuxt-localization'],
 
     plugins: ['~/plugins/menu'],
 

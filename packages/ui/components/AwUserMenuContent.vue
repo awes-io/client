@@ -7,7 +7,7 @@
 
             <p
                 v-if="info"
-                class="mb-0 mt-1 text-xs text-grey leading-snug"
+                class="mb-0 mt-1 text-xs text-muted-dark leading-snug"
                 v-html="info"
             ></p>
         </div>
@@ -62,14 +62,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AwSwitcher from './AwSwitcher.vue'
 
 export default {
     name: 'AwUserMenu',
-
-    components: {
-        AwSwitcher
-    },
 
     props: {
         /**

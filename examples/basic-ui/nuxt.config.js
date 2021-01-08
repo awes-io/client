@@ -20,29 +20,20 @@ export default {
         ]
     },
 
+    components: [],
+
     css: ['@fortawesome/fontawesome-free/css/all.css'],
 
-    modules: [
-        // ...
-        '@nuxtjs/axios',
-        [
-            '@awes-io/ui/nuxt',
-            {
-                // backgroundDarkFrameCenter: {
-                //     src: 'https://cdn.easyweek.io/website/bg_login_black.svg',
-                //     class: 'bg-cover bg-fixed bg-center'
-                // }
-            }
-        ],
-        // other @awes-io modules, which add custom routes should go before nuxt-i18n
-        'nuxt-i18n'
-    ],
+    // add awes-io/ui module
+    modules: ['@awes-io/ui/nuxt'],
+
     plugins: ['~/plugins/menu', '~/plugins/helper'],
+
     // add page default transition (if needed)
-    pageTransition: {
-        name: 'fade',
-        mode: 'out-in'
-    },
+    // pageTransition: {
+    //     name: 'fade',
+    //     mode: 'out-in'
+    // },
 
     // add nuxt-i18n basic config
     i18n: {
@@ -53,19 +44,20 @@ export default {
         locales: [{ code: 'en', iso: 'en-US' }],
         defaultLocale: 'en'
     },
-    awesIo: {
-        ui: {
-            components: {
-                AwTableBuilder: {
-                    // param: 'order'
-                },
-                AwMenu: {
-                    // iconColor: 'yellow'
-                }
-            }
-            // deafaultLayout: 'LayoutSimple'
-        }
-    },
+
+    // awesIo: {
+    //     ui: {
+    //         components: {
+    //             AwTableBuilder: {
+    //                 // param: 'order'
+    //             },
+    //             AwMenu: {
+    //                 // iconColor: 'yellow'
+    //             }
+    //         }
+    //         // deafaultLayout: 'LayoutSimple'
+    //     }
+    // },
 
     serverMiddleware: ['~/api/index.js']
 }

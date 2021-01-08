@@ -1,0 +1,336 @@
+@layer base {
+    html {
+        @apply bg-surface font-body;
+        line-height: 1.5;
+
+        scrollbar-color: rgba(var(--c-on-surface), 0.1) transparent;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+            background-color: transparent;
+        },
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(var(--c-on-surface), 0.1);
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: normal;
+        margin-top: theme('spacing.8', 2rem);
+        margin-bottom: theme('spacing.4', 1rem);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    h1,
+    h2 {
+        font-family: theme('fontFamily.heading');
+    }
+
+    h1 {
+        font-size: theme('fontSize.2xl');
+    }
+
+    h2 {
+        font-size: theme('fontSize.lg');
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: theme('fontSize.base');
+    }
+
+    p,
+    ol,
+    ul,
+    blockquote {
+        margin-top: theme('spacing.4', 1rem);
+        margin-bottom: theme('spacing.4', 1rem);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    blockquote {
+        padding: theme('spacing.4', 1rem);
+        margin-left: 0;
+        margin-right: 0;
+        border-left: .25rem solid rgb(var(--c-mono-600));
+    }
+
+    blockquote > *:last-child {
+        margin-bottom: 0;
+    }
+
+    i, em, cite {
+        font-style: italic;
+    }
+
+    hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+        border-top-width: 1px;
+        margin: theme('spacing.4') 0;
+    }
+
+    pre {
+        @apply bg-mono-900;
+        font-family: theme('fontFamily.monospace', monospace);
+        font-size: 1em;
+        padding: theme('spacing.4', 1rem);
+        border-radius: theme('borderRadius.sm', 0);
+        box-shadow: theme('boxShadow.inner');
+        overflow-x: auto;
+    }
+
+    code,
+    kbd,
+    samp {
+      font-family: theme('fontFamily.monospace', monospace);
+      font-size: 1em;
+    }
+
+    code {
+        @apply text-error bg-error bg-opacity-20;
+        padding: .1em .2em;
+        border-radius: theme('borderRadius.sm', 0);
+        color: theme('colors.error', 'tomato');
+    }
+
+    kbd {
+        @apply bg-mono-600 border-1;
+        border-radius: 2px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .1), 0 1px 0 0 rgb(var(--c-surface)) inset;
+        display: inline-block;
+        white-space: nowrap;
+        line-height: 1.5;
+        font-size: .75em;
+        margin: 0 .1em;
+        padding: 0 .6em;
+        text-shadow: 0 1px 0 rgb(var(--c-surface));
+    }
+
+    a {
+        background-color: transparent;
+        color: inherit;
+        text-decoration: inherit;
+        color: rgb(var(--c-link));
+
+        &:hover,
+        &:focus {
+            outline: none;
+            text-decoration: underline;
+        }
+    }
+
+    abbr[title] {
+        border-bottom: none;
+        text-decoration: underline;
+        text-decoration: underline dotted;
+    }
+
+    b,
+    strong {
+        font-weight: theme('fontWeight.bold', bolder);
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    sub {
+        bottom: -0.25em;
+    }
+
+    sup {
+        top: -0.5em;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font-family: inherit;
+        font-size: 100%;
+        /* line-height: 1.15;  */
+        margin: 0;
+    }
+
+    button,
+    input {
+        overflow: visible;
+    }
+
+
+    button,
+    select {
+        text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+        -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+
+    button:-moz-focusring,
+    [type="button"]:-moz-focusring,
+    [type="reset"]:-moz-focusring,
+    [type="submit"]:-moz-focusring {
+        outline: 1px dotted ButtonText;
+    }
+
+    button:focus {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+
+    fieldset {
+        /* padding: 0.35em 0.75em 0.625em; */
+        margin: 0;
+        padding: 0;
+    }
+
+    legend {
+        box-sizing: border-box;
+        color: inherit;
+        display: table;
+        max-width: 100%;
+        padding: 0;
+        white-space: normal;
+    }
+
+    progress {
+        vertical-align: baseline;
+    }
+
+    textarea {
+        overflow: auto;
+        resize: vertical;
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    [type="number"]::-webkit-inner-spin-button,
+    [type="number"]::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    [type="search"] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+    }
+
+    [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+    }
+
+
+    /**
+     * Removes the default spacing and border for appropriate elements.
+     */
+
+    /* blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+      margin: 0;
+    } */
+
+    /* ol,
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    } */
+
+    table {
+        border-collapse: collapse;
+    }
+
+    img,
+    /* svg, */
+    video,
+    canvas,
+    audio,
+    iframe,
+    embed,
+    object {
+      display: block;
+      vertical-align: middle;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+}
+
+/* 'ul:not([class])': {
+    listStyle: 'disc inside'
+},
+'ol:not([class])': {
+    listStyle: 'decimal inside'
+},
+'table:not([class])': {
+    width: '100%',
+    margin: '1rem 0'
+},
+'table:not([class]) td, table:not([class]) th': {
+    padding: '.25rem .5rem',
+    border: '1px solid var(--c-fade-surface)'
+},
+'table:not([class]) th': {
+    fontWeight: theme('fontWeight.bold')
+}
+ */

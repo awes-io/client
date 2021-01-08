@@ -1,16 +1,18 @@
 import { resolve, join } from 'path'
-import { copySync } from 'fs-extra'
 
 const meta = require('./package.json')
+const PROFILE_URL = '/profile'
 
 function AwesIoNuxtAuth() {
     // add es6 transpiling
     this.options.build.transpile.push('@awes-io/nuxt-profile')
 
     // Register routes
+    this.nuxt.options.publicRuntimeConfig.profileUrl = PROFILE_URL
+
     this.nuxt.hook('build:extendRoutes', (routes = []) => {
         routes.unshift({
-            path: '/profile',
+            path: PROFILE_URL,
             component: resolve(__dirname, './src/pages/Profile.vue'),
             children: [
                 {
@@ -42,20 +44,27 @@ function AwesIoNuxtAuth() {
         src: join(this.options.buildDir, dst)
     })
 
-    // Add localization
-    const langPlugin = this.addTemplate({
-        fileName: join('awes-io', 'profile-i18n-plugin.js'),
-        src: resolve(__dirname, '../ui/nuxt/i18n-plugin.js'),
-        options: { moduleName: meta.name }
-    })
-    this.options.plugins.push(join(this.options.buildDir, langPlugin.dst))
+    this.nuxt.hook('awesIo:staticTranslations', async () => {
+        for (const locale of this.options.awesIo.lang.locales) {
+            const code = locale.code || locale
 
-    // Copy avatar placeholder
-    copySync(
-        resolve(__dirname, './src/assets/img/avatar.jpg'),
-        resolve(this.options.srcDir, 'static/img/awes-io-avatar.jpg'),
-        { overwrite: false }
-    )
+            try {
+                const { default: translation } = await import(
+                    '@awes-io/nuxt-profile/lang/' + code
+                )
+
+                for (const key in translation) {
+                    this.options.awesIo.langStatic[code][key] = translation[key]
+                }
+            } catch (e) {
+                console.warn(
+                    'Awes.io/NuxtProfile: No default translation for ' +
+                        code +
+                        ' locale'
+                )
+            }
+        }
+    })
 }
 
 AwesIoNuxtAuth.meta = meta

@@ -59,13 +59,27 @@ function AwesIoNuxtAdmin() {
         ])
     })
 
-    // Add localization
-    const langPlugin = this.addTemplate({
-        fileName: join('awes-io', 'admin-i18n-plugin.js'),
-        src: resolve(__dirname, '../../ui/nuxt/i18n-plugin.js'),
-        options: { moduleName: meta.name }
+    this.nuxt.hook('awesIo:staticTranslations', async () => {
+        for (const locale of this.options.awesIo.lang.locales) {
+            const code = locale.code || locale
+
+            try {
+                const { default: translation } = await import(
+                    '@awes-io/nuxt-admin/lang/' + code
+                )
+
+                for (const key in translation) {
+                    this.options.awesIo.langStatic[code][key] = translation[key]
+                }
+            } catch (e) {
+                console.warn(
+                    'Awes.io/NuxtAdmin: No default translation for ' +
+                        code +
+                        ' locale'
+                )
+            }
+        }
     })
-    this.options.plugins.push(join(this.options.buildDir, langPlugin.dst))
 
     // Menu plugin
     const menuPlugin = this.addTemplate({

@@ -47,42 +47,36 @@ const EVENTS = [
 ]
 
 const statuses = [
-    { id: 1, text: 'New', color: 'info', icon: 'plus-solid' },
+    { id: 1, text: 'New', color: 'info', icon: 'duotone/clipboard-list-check' },
     {
         id: 2,
         text: 'Removed',
         color: 'error',
-        icon: 'close-solid'
+        icon: 'duotone/life-ring'
     },
     {
         id: 3,
         text: 'Active',
         color: 'success',
-        icon: 'check-solid'
+        icon: 'duotone/check-circle'
     },
     {
         id: 5,
         text: 'In Work',
         color: 'link',
-        icon: 'pie-chart-empty'
+        icon: 'duotone/clock'
     },
     {
         id: 6,
         text: 'Error',
         color: 'error',
-        icon: 'attention'
+        icon: 'duotone/question-square'
     },
     {
         id: 7,
-        text: 'Pause',
-        color: 'warning',
-        icon: 'pause'
-    },
-    {
-        id: 8,
         text: 'In progress',
         color: 'link',
-        icon: 'progress'
+        icon: 'duotone/cog'
     }
 ]
 
@@ -112,7 +106,7 @@ class Appointement extends BaseModel {
 
 const appointments = new BaseCollection()
 
-EVENTS.forEach(attributes => {
+EVENTS.forEach((attributes) => {
     const model = new Appointement(attributes)
 
     model.on('change', ({ attribute }) => {

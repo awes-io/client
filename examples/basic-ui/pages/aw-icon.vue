@@ -1,99 +1,47 @@
 <template>
-    <main>
-        <div class="flex flex-wrap">
+    <AwPage title="Icons">
+        <AwGrid :col="{ md: 2 }">
             <div
-                class="w-1/2 md:w-1/4 p-4 border text-center"
-                v-for="name in iconNames"
+                class="p-4 border text-center"
+                v-for="name in $options.iconNames"
                 :key="name"
             >
                 <code>&lt;AwIcon name="{{ name }}" /&gt;</code> <br />
-                <AwIcon :name="name" class="mt-4 mx-auto" size="2xl" />
+                <AwIcon :name="name" class="mt-4 mx-auto" size="32" />
             </div>
-        </div>
-    </main>
+        </AwGrid>
+    </AwPage>
 </template>
 
 <script>
 const iconNames = [
-    'arrow-d',
-    'arrow-l',
-    'arrow-r',
-    'arrow-u',
-    'attention',
-    'bed',
-    'bed-filled',
-    'bold',
-    'bookmark',
-    'bookmark-filled',
-    'briefcase',
-    'burger',
-    'bubble-sms',
-    'bubble-text',
-    'check',
-    'check-solid',
-    'chevron-d',
-    'chevron-l',
-    'chevron-r',
-    'chevron-u',
-    'circle',
-    'close',
-    'close-sircle',
-    'close-solid',
-    'cog',
-    'copy',
-    'drag',
-    'external',
-    'eye-no',
-    'eye',
-    'font-size',
-    'graph',
-    'graph-alt',
-    'home',
-    'intelligence',
-    'italic',
-    'key',
-    'key-small',
-    'letter',
-    'loader',
-    'location',
-    'lock',
-    'lock-filled',
-    'minus',
-    'more-v',
-    'more',
-    'pause',
-    'phone-text',
-    'phone-sms',
-    'phone-sms-big',
-    'pie-chart',
-    'pie-chart-empty',
-    'pie-chart-solid',
-    'plus',
-    'plus-solid',
-    'progress',
-    'quote',
-    'schedule',
-    'search',
-    'settings',
-    'speaker',
-    'speed',
-    'storage',
-    'triangle-d',
-    'triangle-l',
-    'triangle-r',
-    'triangle-u',
-    'triangle-solid-r',
-    'upload',
-    'user',
-    'user-dots',
-    'user-solid'
+    'duotone/align-justify.svg',
+    'duotone/analytics.svg',
+    'duotone/browser.svg',
+    'duotone/calendar-alt.svg',
+    'duotone/chart-network.svg',
+    'duotone/check-circle.svg',
+    'duotone/clipboard-list-check.svg',
+    'duotone/clock.svg',
+    'duotone/cog.svg',
+    'duotone/concierge-bell.svg',
+    'duotone/credit-card.svg',
+    'duotone/envelope-open-dollar.svg',
+    'duotone/gift.svg',
+    'duotone/gifts.svg',
+    'duotone/images.svg',
+    'duotone/life-ring.svg',
+    'duotone/list-alt.svg',
+    'duotone/map-marker-check.svg',
+    'duotone/mobile.svg',
+    'duotone/palette.svg',
+    'duotone/question-square.svg',
+    'duotone/university.svg',
+    'duotone/user-crown.svg',
+    'duotone/user-friends.svg'
 ]
 
 export default {
-    data() {
-        return {
-            iconNames
-        }
-    }
+    iconNames
 }
 </script>

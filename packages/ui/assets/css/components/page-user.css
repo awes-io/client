@@ -7,7 +7,7 @@
     padding: theme('spacing.4') 0;
 
     &__breadcrumb {
-        @apply text-disabled;
+        @apply text-mono-400;
         padding-right: theme('spacing.4');
 
         a:hover,

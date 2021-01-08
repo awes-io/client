@@ -23,7 +23,7 @@
             v-on="hasChildren ? { click: toggle } : {}"
             class="aw-menu-item__button"
         >
-            <AwIcon
+            <AwIconSystem
                 v-if="_iconType === 'string'"
                 :name="icon"
                 size="xl"
@@ -61,7 +61,7 @@
             @click.stop.prevent="toggle()"
             class="aw-menu-item__toggler"
         >
-            <AwIconCaret size="10" class="aw-menu-item__caret" />
+            <AwIconSystemCaret size="10" class="aw-menu-item__caret" />
         </button> -->
 
         <!-- submenu -->
@@ -94,10 +94,7 @@
 <script>
 import { isEmpty, isType, isNil, pathOr, partition, map } from 'rambdax'
 import { trimSlash } from '../assets/js/router'
-import AwIcon from './AwIcon.vue'
-import AwBadge from './AwBadge.vue'
 import AwIconCaret from '../assets/svg/components/caret.vue'
-import AwAccordionFold from './AwAccordionFold.vue'
 import { LINK_REGEX, SPECIAL_URL_REGEX } from './_config'
 
 const LOCALE_RE = /^\/([a-z]{2}(-[A-Z]{2})?)?\/?$/
@@ -108,10 +105,7 @@ export default {
     inheritAttrs: false,
 
     components: {
-        AwIcon,
-        AwBadge,
-        AwIconCaret,
-        AwAccordionFold
+        AwIconCaret
     },
 
     props: {

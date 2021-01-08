@@ -116,7 +116,6 @@ export const navigation = [
     { title: 'Table', url: '/table/', description: '' },
     { title: 'Table orderable', url: '/table/orderable', description: '' },
     { title: 'Table pagination', url: '/table/pagination', description: '' },
-    { title: 'Timeline builder', url: '/aw-timeline-builder', description: '' },
     { title: 'Toggler', url: '/aw-toggler', description: '' },
     { title: 'Tooltip', url: '/v-tooltip', description: '' },
     { title: 'Uploader', url: '/aw-uploader', description: '' },

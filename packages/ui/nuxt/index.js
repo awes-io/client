@@ -1,149 +1,288 @@
-import { resolve, join } from 'path'
-// import { readdirSync } from 'fs'
-import _ from 'lodash'
+import { mergeDeepRight, pick, omit, uniq, endsWith } from 'rambdax'
+import { existsSync, readdirSync, readFileSync } from 'fs'
+import { join, resolve } from 'path'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import {
+    default as configDefault,
+    dark,
+    lang as configLang,
+    dayjs as configDayjs
+} from './awes.config.js'
+import defaultTailwindConfig from '../tailwind.config.js'
 
-const meta = require('./../package.json')
+const configDark = mergeDeepRight(configDefault, dark)
 
-// const DARK_THEME_FILES = readdirSync(resolve(__dirname, './dark-theme/'))
+export const MODULE_DIR = 'awes-io'
 
-export const DEFAULTS = {
-    logo: {
-        src: 'https://static.awes.io/logo-blue.svg',
-        alt: 'Awes.io',
-        style: {
-            width: '70px'
-        }
-    },
-    backgroundFrameCenter: {
-        src: 'https://static.awes.io/demo/awes-background.svg',
-        class: 'bg-cover bg-fixed bg-center'
-    },
-    components: {},
-    permissions: {
-        storePath: 'auth.user.permissions'
-    },
-    addCss: true,
-    offline: {
-        testUrl: 'https://httpbin.org/get',
-        interval: 5000,
-        maxTries: Infinity
-    },
-    deafaultLayout: 'LayoutDefault'
-}
-
-function AwesIoUi(_options) {
-    // check store existance
+async function AwesIoUi() {
+    /**
+     * Check store existance
+     */
     if (!this.options.store) {
         throw new Error('Awes.io/UI: Vuex store is required')
     }
 
-    // add es6 transpiling
-    this.options.build.transpile.push('@awes-io/ui')
+    /**
+     * Check components enabled
+     */
+    if (!this.options.components) {
+        throw new Error('Awes.io/UI: Components should be enabled')
+    }
 
-    const options = _.merge(
-        {},
-        DEFAULTS,
-        _.get(this.options, 'awesIo.ui', {}),
-        _options
+    /**
+     * Check NODE_ENV exists (required for postCSS)
+     */
+    if (!process.env.NODE_ENV) {
+        process.env.NODE_ENV = this.nuxt.options.dev
+            ? 'development'
+            : 'production'
+    }
+
+    /**
+     * Check VERSION exists
+     */
+    this.nuxt.options.publicRuntimeConfig.VERSION =
+        this.nuxt.options.publicRuntimeConfig.VERSION ||
+        process.env.APP_VERSION ||
+        process.env.npm_package_version
+
+    /**
+     * Add transpiling
+     */
+    this.options.build.transpile.push(
+        '@awes-io/ui/store/awes.js',
+        '@awes-io/ui/directives/tooltip'
     )
 
-    // add plugin (dark theme switcher)
-    // NOTE! add before store, beacuse plugins adds with 'unshift'
-    this.addPlugin({
-        fileName: join('awes-io', 'dark-theme-plugin.js'),
-        src: resolve(join(__dirname, './dark-theme-plugin.js'))
-    })
+    /**
+     * Merge config
+     */
+    const projectConfigPath = join(this.options.srcDir, './awes.config.js')
 
-    // add plugin (register components and store)
-    this.addPlugin({
-        fileName: join('awes-io', 'ui-plugin.js'),
-        src: resolve(__dirname, './plugin.js'),
-        options
-    })
+    if (existsSync(projectConfigPath)) {
+        const {
+            default: _defaultConfig,
+            dark: _darkConfig,
+            lang: _langConfig,
+            dayjs: _dayjsConfig
+        } = require(projectConfigPath)
 
-    // add styles
-    if (options.addCss) {
-        this.options.css.push(
-            resolve(__dirname, '../dist/css/ui.css'),
-            resolve(__dirname, './icons.css')
+        this.options.awesIo = {
+            default: mergeDeepRight(configDefault, _defaultConfig || {}),
+            dark: mergeDeepRight(configDark, _darkConfig || {}),
+            lang: mergeDeepRight(configLang, _langConfig || {}),
+            dayjs: mergeDeepRight(configDayjs, _dayjsConfig || {})
+        }
+
+        if (this.nuxt.options.dev) {
+            this.nuxt.options.watch.push(projectConfigPath)
+        }
+    } else {
+        this.options.awesIo = {
+            default: configDefault,
+            dark: configDark,
+            lang: configLang,
+            dayjs: configDayjs
+        }
+    }
+
+    /**
+     * Add font
+     */
+    if (this.options.awesIo.default.googleFont) {
+        const head = this.options.head
+
+        head.link = head.link || []
+
+        head.link = uniq(
+            head.link.concat(
+                {
+                    rel: 'stylesheet',
+                    href: this.options.awesIo.default.googleFont
+                },
+                {
+                    rel: 'dns-prefetch',
+                    href: '//fonts.googleapis.com'
+                },
+                {
+                    rel: 'preconnect',
+                    href: '//fonts.googleapis.com'
+                },
+                {
+                    rel: 'dns-prefetch',
+                    href: '//fonts.gstatic.com'
+                },
+                {
+                    rel: 'preconnect',
+                    href: '//fonts.gstatic.com'
+                }
+            )
         )
     }
 
-    // register layouts
-    this.addTemplate({
-        fileName: join('awes-io', 'layout-mixin.js'),
-        src: resolve(join(__dirname, './layout-mixin.js'))
+    /**
+     * Add tailwind
+     */
+    this.nuxt.hook('build:before', async () => {
+        const { postcss } = this.nuxt.options.build
+        const { dev, rootDir, srcDir } = this.nuxt.options
+
+        const tailwindConfig = {
+            ...defaultTailwindConfig,
+            theme: {
+                ...defaultTailwindConfig.theme,
+                ...pick('colors,onColors', this.options.awesIo.default.style),
+                darkTheme: pick(
+                    'colors,onColors',
+                    this.options.awesIo.dark.style
+                )
+            },
+            extend: {
+                ...defaultTailwindConfig.extend,
+                ...omit('colors,onColors', this.options.awesIo.default.style)
+            },
+            purge: {
+                enabled: !dev,
+                content: [
+                    `${resolve(__dirname, '..', 'components')}/**/*.{vue,js}`,
+                    `${srcDir}/components/**/*.{vue,js}`,
+                    `${srcDir}/layouts/**/*.vue`,
+                    `${srcDir}/pages/**/*.vue`,
+                    `${srcDir}/plugins/**/*.{js,ts}`,
+                    `${rootDir}/nuxt.config.{js,ts}`
+                ]
+            }
+        }
+
+        this.options.awesIo.screens = resolveConfig(
+            tailwindConfig
+        ).theme.screens
+
+        this.nuxt.options.css.unshift(
+            resolve(__dirname, '..', 'assets', 'css', 'main.css')
+        )
+
+        postcss.preset.stage = 1
+        postcss.plugins = postcss.plugins || {}
+
+        postcss.plugins = mergeDeepRight(
+            {
+                'postcss-import': {},
+                'postcss-nested': {},
+                'postcss-each': {},
+                'postcss-simple-vars': {},
+                'postcss-easings': {}
+                // 'postcss-custom-properties': {}
+            },
+            postcss.plugins
+        )
+
+        postcss.plugins.tailwindcss = tailwindConfig
+
+        // include last
+        postcss['postcss-color-function'] = {}
     })
 
-    const LAYOUTS = ['LayoutDefault', 'LayoutSimple']
-    LAYOUTS.forEach(layout => {
+    /**
+     * Add modules
+     */
+    this.requireModule('@nuxtjs/axios')
+    this.requireModule('@nuxtjs/svg-sprite')
+
+    /**
+     * Add layouts
+     */
+    const layoutsPath = join(__dirname, '/layouts')
+
+    for (const file of readdirSync(layoutsPath)) {
+        if (
+            existsSync(
+                join(this.options.srcDir, this.options.dir.layouts, file)
+            )
+        )
+            continue
+
         this.addLayout(
             {
-                fileName: join('awes-io', `${layout}.vue`),
-                src: resolve(__dirname, `./layouts/${layout}.vue`)
+                src: resolve(layoutsPath, file),
+                fileName: join(MODULE_DIR, file)
             },
-            options.deafaultLayout === layout ? 'default' : layout
+            file.replace('.vue', '')
         )
-    })
-
-    this.addLayout({
-        fileName: join('awes-io', 'LayoutFrameScreen.vue'),
-        src: resolve(__dirname, './layouts/LayoutFrameScreen.vue')
-    })
-
-    this.addLayout({
-        fileName: join('awes-io', 'LayoutFrameCenter.vue'),
-        src: resolve(__dirname, './layouts/LayoutFrameCenter.vue'),
-        options: _.pick(options, [
-            'backgroundDarkFrameCenter',
-            'backgroundFrameCenter',
-            'logo'
-        ])
-    })
-
-    this.addLayout(
-        {
-            fileName: join('awes-io', 'LayoutError.vue'),
-            src: resolve(__dirname, './layouts/LayoutError.vue')
-        },
-        'error'
-    )
-
-    this.addLayout(
-        {
-            fileName: join('awes-io', 'LayoutEmpty.vue'),
-            src: resolve(__dirname, './layouts/LayoutEmpty.vue')
-        },
-        'empty'
-    )
-
-    // add axios offline interceptor
-    const offlinePlugin = this.addTemplate({
-        fileName: join('awes-io', 'ui-offline-plugin.js'),
-        src: resolve(__dirname, './offline-plugin.js'),
-        options: options.offline
-    })
-    this.options.plugins.push(join(this.options.buildDir, offlinePlugin.dst))
+    }
 
     // fix error path
     this.options.ErrorPage = resolve(
         this.options.rootDir,
         this.options.buildDir,
-        'awes-io',
-        'LayoutError.vue'
+        MODULE_DIR,
+        'error.vue'
     )
 
-    // add localization
-    _.set(this.options.i18n, 'vuex.syncLocale', true)
-
-    const langPlugin = this.addTemplate({
-        fileName: join('awes-io', 'ui-i18n-plugin.js'),
-        src: resolve(__dirname, './i18n-plugin.js'),
-        options: { moduleName: meta.name }
+    /**
+     * Register dynamic components
+     */
+    this.nuxt.hook('components:dirs', (dirs) => {
+        dirs.push(
+            {
+                path: resolve(__dirname, '..', 'components', 'global'),
+                pattern: '*.vue',
+                global: true
+            },
+            {
+                path: resolve(__dirname, '..', 'components', 'autoload'),
+                pattern: '*.vue'
+            },
+            {
+                path: resolve(__dirname, '..', 'components', 'layout'),
+                pattern: '*.vue'
+            }
+        )
     })
-    this.options.plugins.push(join(this.options.buildDir, langPlugin.dst))
+
+    /**
+     * Add static translations
+     */
+    this.options.awesIo.langStatic = this.options.awesIo.langStatic || {}
+
+    for (const locale of this.options.awesIo.lang.locales) {
+        const code = locale.code || locale
+
+        try {
+            const { default: translation } = await import(
+                '@awes-io/ui/lang/' + code
+            )
+            this.options.awesIo.langStatic[code] = translation || {}
+        } catch (e) {
+            console.warn(
+                'Awes.io/UI: No default translation for ' + code + ' locale'
+            )
+        }
+    }
+
+    /**
+     * Add plugins after modules loaded
+     */
+
+    this.nuxt.hook('modules:done', async () => {
+        await this.nuxt.callHook('awesIo:staticTranslations')
+
+        const templatesPath = join(__dirname, 'templates')
+
+        for (const file of readdirSync(templatesPath)) {
+            if (!endsWith('plugin.js', file)) continue
+
+            this.addPlugin({
+                src: resolve(templatesPath, file),
+                fileName: join(MODULE_DIR, file),
+                options: this.options.awesIo
+            })
+        }
+    })
 }
 
-AwesIoUi.meta = meta
+AwesIoUi.meta = JSON.parse(
+    readFileSync(resolve(__dirname, '..', 'package.json'), 'utf8')
+)
 
 export default AwesIoUi

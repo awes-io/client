@@ -18,6 +18,6 @@
     "main": "src/index.js",
     "dependencies": {
         "dayjs": "^1.8.26",
-        "rambdax": "^3.5.0"
+        "rambdax": "^7.0.1"
     }
 }

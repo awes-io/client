@@ -5,10 +5,10 @@
     }
 
     &--invert .aw-text-field__element {
-        @apply bg-muted-darker;
+        @apply bg-mono-100;
     }
 
     &--invert .aw-text-field__element:not(:focus) {
-        @apply border-muted-darker;
+        @apply border-mono-100;
     }
 }

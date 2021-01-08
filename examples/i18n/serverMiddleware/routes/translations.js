@@ -1,4 +1,4 @@
-import { pathOr, mergeDeep, includes } from 'rambdax'
+import { pathOr, mergeDeepRight, includes } from 'rambdax'
 import { Router, urlencoded } from 'express'
 import {
     LOCALES,
@@ -10,7 +10,7 @@ import {
 const localeDefault = LOCALES[LOCALE_DEFAULT]
 
 const findIndex = (value, param = 'id') =>
-    LOCALES_FLAT.findIndex(item => item[param] === value)
+    LOCALES_FLAT.findIndex((item) => item[param] === value)
 
 let maxId = Math.max(...LOCALES_FLAT.map(({ id }) => id))
 
@@ -29,7 +29,7 @@ route.get('/', (req, res) => {
     const translation = pathOr({}, locale, LOCALES)
 
     res.json({
-        data: mergeDeep(localeDefault, translation)
+        data: mergeDeepRight(localeDefault, translation)
     })
 })
 

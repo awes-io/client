@@ -34,13 +34,6 @@ function AwesIoNuxtAuth() {
     _.set(this.options, 'auth.strategies.twofactor', twofactor)
     _.set(this.options, 'auth.defaultStrategy', 'twofactor')
 
-    // Add i18n redirect
-    const authPlugins = _.get(this.options, 'auth.plugins', [])
-    authPlugins.unshift(
-        resolve(__dirname, './src/assets/js/auth-lang-redirect.js')
-    )
-    _.set(this.options, 'auth.plugins', authPlugins)
-
     // Load @nuxtjs/auth module
     this.requireModule('@nuxtjs/auth')
 
@@ -146,13 +139,27 @@ function AwesIoNuxtAuth() {
         this.options.plugins.splice(firstUserPluginIndex, 0, authPlugin)
     }
 
-    // Add localization
-    const langPlugin = this.addTemplate({
-        fileName: join('awes-io', 'auth-i18n-plugin.js'),
-        src: resolve(__dirname, '../ui/nuxt/i18n-plugin.js'),
-        options: { moduleName: meta.name }
+    this.nuxt.hook('awesIo:staticTranslations', async () => {
+        for (const locale of this.options.awesIo.lang.locales) {
+            const code = locale.code || locale
+
+            try {
+                const { default: translation } = await import(
+                    '@awes-io/nuxt-auth/lang/' + code
+                )
+
+                for (const key in translation) {
+                    this.options.awesIo.langStatic[code][key] = translation[key]
+                }
+            } catch (e) {
+                console.warn(
+                    'Awes.io/NuxtAuth: No default translation for ' +
+                        code +
+                        ' locale'
+                )
+            }
+        }
     })
-    this.options.plugins.push(join(this.options.buildDir, langPlugin.dst))
 }
 
 AwesIoNuxtAuth.meta = meta

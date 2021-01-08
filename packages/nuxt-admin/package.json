@@ -1,7 +1,7 @@
 {
     "name": "@awes-io/nuxt-admin",
-    "version": "0.7.32",
-    "description": "Administration of roles and permissions for Awes.io.",
+    "version": "0.7.27",
+    "description": "Administration of roles and permissions for Awes.io v1.",
     "homepage": "https://www.awes.io",
     "bugs": {
         "url": "https://github.com/awes-io/client/issues"
@@ -29,8 +29,8 @@
         "lang/*"
     ],
     "dependencies": {
-        "@awes-io/nuxt-auth": "^1.10.14",
+        "@awes-io/nuxt-auth": "^1.10.9",
         "@awes-io/vue-mc": "^0.3.1",
-        "rambdax": "^3.5.0"
+        "rambdax": "^7.0.1"
     }
 }

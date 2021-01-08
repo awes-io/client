@@ -3,10 +3,11 @@
         <AwButton
             v-show="$listeners['click:prev']"
             theme="icon"
-            icon="chevron-l"
             :disabled="disabledPrev"
             @click.stop="$emit('click:prev')"
-        />
+        >
+            <AwIconSystem name="angle" />
+        </AwButton>
         <div
             class="aw-calendar__nav-title"
             :class="{
@@ -25,10 +26,11 @@
         <AwButton
             v-show="$listeners['click:next']"
             theme="icon"
-            icon="chevron-r"
             :disabled="disabledNext"
             @click.stop="$emit('click:next')"
-        />
+        >
+            <AwIconSystem name="angle" rotate="180" />
+        </AwButton>
     </div>
 </template>
 

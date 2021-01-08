@@ -1,4 +1,4 @@
-import { isNil, mergeDeep, filter } from 'rambdax'
+import { isNil, mergeDeepRight, filter } from 'rambdax'
 
 /**
  * Removes nullish values from query object
@@ -6,7 +6,7 @@ import { isNil, mergeDeep, filter } from 'rambdax'
  * @param  {Object} dirty query
  * @return {Object} clean query
  */
-export const cleanRouteQuery = filter(val => !isNil(val) && val !== '')
+export const cleanRouteQuery = filter((val) => !isNil(val) && val !== '')
 
 /**
  * Returns merged query object without nullish values
@@ -17,7 +17,7 @@ export const cleanRouteQuery = filter(val => !isNil(val) && val !== '')
  * @return {Object} clean merged query
  */
 export function mergeQueries(acceptor, donor) {
-    return cleanRouteQuery(mergeDeep(donor, acceptor))
+    return cleanRouteQuery(mergeDeepRight(donor, acceptor))
 }
 
 /**
@@ -55,4 +55,12 @@ export function trimSlash(path = '') {
     const [_path, _query] = path.split('?')
 
     return _path.replace(/\/$/, '') + (_query ? `?${_query}` : '')
+}
+
+/**
+ * Get current path to compare
+ */
+export function getPath(href) {
+    const _path = ((href && href.path) || href || '').split('?')[0]
+    return _path === '/' ? _path : _path.replace(/\/$/, '')
 }

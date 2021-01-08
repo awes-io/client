@@ -7,6 +7,11 @@ export const state = () => ({
         //     type: 'error',
         //     text: 'Header notification text <b>bold text</b>'
         // },
-        avatar: '/img/icon.png'
+        avatar: '/img/icon.png',
+        profile: {
+            first_name: 'Test',
+            last_name: 'User',
+            position: 'description'
+        }
     }
 })

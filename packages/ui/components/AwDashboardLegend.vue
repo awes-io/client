@@ -1,5 +1,5 @@
 <template>
-    <div class="relative bg-muted overflow-hidden">
+    <div class="relative bg-mono-900 overflow-hidden">
         <ul ref="list" class="rounded dashboard__legend">
             <li
                 v-for="(item, index) in data"
@@ -18,7 +18,7 @@
                     {{ item.title }}
                 </span>
 
-                <div class="ml-auto flex items-center text-grey font-bold">
+                <div class="ml-auto flex items-center text-mono-200 font-bold">
                     {{ _getItemValue(item) }}
 
                     <span
@@ -33,8 +33,10 @@
                     >
                         {{ _getDiffValue(item) }}%
 
-                        <AwIcon
-                            :name="item.value_diff > 0 ? 'arrow-u' : 'arrow-d'"
+                        <AwIconSystem
+                            name="arrow"
+                            size="14"
+                            :rotate="item.value_diff > 0 ? 90 : -90"
                             :class="
                                 item.value_diff > 0
                                     ? 'text-success'
@@ -94,7 +96,7 @@ export default {
 
     computed: {
         isPercentShown() {
-            return this.data.some(el => el.value_diff)
+            return this.data.some((el) => el.value_diff)
         },
 
         topShadowStyle() {
