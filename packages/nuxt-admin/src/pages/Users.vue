@@ -38,7 +38,7 @@
             <AwTableCol :title="$t('AwesIoNuxtAdmin.employee')">
                 <template #default="{ cell }">
                     {{ cell.full_name }}<br />
-                    <span class="text-disabled">{{ cell.email }}</span>
+                    <span class="text-mono-400">{{ cell.email }}</span>
                 </template>
             </AwTableCol>
             <AwTableCol
@@ -139,7 +139,7 @@ export default {
         },
         async resetPassword(user) {
             if (!confirm(this.$t('AwesIoNuxtAdmin.confirm_reset_password'))) {
-                return;
+                return
             }
             try {
                 const res = await user.resetPassword()
@@ -155,7 +155,7 @@ export default {
         },
         async deleteUser(user) {
             if (!confirm(this.$t('AwesIoNuxtAdmin.confirm_user_delete'))) {
-                return;
+                return
             }
             try {
                 await user.delete()

@@ -4,7 +4,6 @@
     vertical-align: middle;
     transition: 100ms opacity;
 
-
     &:focus {
         outline: none;
     }
@@ -18,7 +17,6 @@
         background-color: currentColor;
         transition: 100ms opacity;
     }
-
 
     &__content {
         @apply relative;
@@ -132,8 +130,8 @@
 
     &[disabled] {
         @apply opacity-50;
-        cursor: not-allowed!important;
-        user-select: none!important;
+        cursor: not-allowed !important;
+        user-select: none !important;
     }
 
     /**
@@ -142,8 +140,8 @@
 
     &.is-loading {
         @apply opacity-50;
-        cursor: wait!important;
-        user-select: none!important;
+        cursor: wait !important;
+        user-select: none !important;
     }
 
     &.is-loading rect,
@@ -158,7 +156,6 @@
         transform: translate(-50%, -50%);
         max-width: 80%;
     }
-
 }
 
 /**
@@ -195,7 +192,6 @@
 
 /* default color */
 .aw-button {
-
     /* Solid */
     &.theme-solid.color-default {
         @apply bg-surface;
@@ -234,7 +230,7 @@
 
     &.theme-outline {
         @apply text-mono-400;
-        border: 1px solid theme('colors.disabled')
+        border: 1px solid theme('colors.mono-400');
     }
 
     &.theme-ghost &__overlay {
@@ -286,7 +282,7 @@
 
     /* System */
     &.theme-system {
-        @apply text-disabled;
+        @apply text-mono-400;
         border: 1px solid theme('borderColor.default');
     }
 
@@ -330,7 +326,6 @@
 
         /* Outlined group */
         &.theme-outline {
-
             &:hover {
                 @apply z-1;
             }
