@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.5...@awes-io/ui@2.0.6) (2021-01-08)
+
+
+### Bug Fixes
+
+* vertical align for buttons ([5daf459](https://github.com/awes-io/client/commit/5daf4599aafd78d231fc27be8f88caaced763224))
+
+
+
+
+
 ## [2.0.5](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.4...@awes-io/ui@2.0.5) (2021-01-08)
 
 
