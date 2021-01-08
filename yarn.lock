@@ -22,21 +22,6 @@
     "@nuxtjs/auth" "^4.9.1"
     rambdax "^6.2.0"
 
-"@awes-io/ui@^0.1.0":
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/@awes-io/ui/-/ui-0.1.4.tgz#c5ae73ecd17ee8ee0ff452cf60148f3a30c0c44d"
-  integrity sha512-fT/pfM6823X9wwydwCBqiyxr8wICCIxf+bowOwIb7zruMAO4VJqCjTW6+AsF2ztKGMrVx/7dMyX6EWFcngB3kg==
-  dependencies:
-    core-js "^2.6.5"
-    loadjs "^3.6.1"
-    popper.js "^1.15.0"
-    ramda "^0.26.1"
-    tailwindcss "^1.0.6"
-    tailwindcss-accessibility "^1.0.0"
-    vue "^2.6.10"
-    vue-i18n "^8.14.0"
-    vue-router "^3.1.2"
-
 "@awes-io/ui@^1.111.1":
   version "1.111.1"
   resolved "https://registry.npmjs.org/@awes-io/ui/-/ui-1.111.1.tgz#18e18e33608f72b2010b73fdd3837dbc6f44813e"
@@ -12693,11 +12678,6 @@ pn@^1.1.0:
   resolved "https://registry.npmjs.org/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
 
-popper.js@^1.15.0:
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
-
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -14024,11 +14004,6 @@ rambdax@^7.0.1:
   version "7.1.0"
   resolved "https://registry.npmjs.org/rambdax/-/rambdax-7.1.0.tgz#138bc13b3dbe445f635e1e3bd94bc6ae24827fe2"
   integrity sha512-U/fBKF2IrHTLaqCsshQ948fXNrigfU0aE4Cl18y/BqkGM4E/Yg8XYKuAzghlCVq1ybPDJdq8HbGCcnuS8c6CEg==
-
-ramda@^0.26.1:
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
-  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
