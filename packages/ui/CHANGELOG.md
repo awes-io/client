@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/awes-io/client/compare/@awes-io/ui@1.111.1...@awes-io/ui@2.0.0) (2021-01-08)
+
+
+* refactor!: design and system update ([1cb4b02](https://github.com/awes-io/client/commit/1cb4b02cbca10b02f500c6bd392eb98c7758470c))
+
+
+### BREAKING CHANGES
+
+* migration to awes.io v3
+
+
+
+
+
 ## [1.111.1](https://github.com/awes-io/client/compare/@awes-io/ui@1.111.0...@awes-io/ui@1.111.1) (2020-12-23)
 
 

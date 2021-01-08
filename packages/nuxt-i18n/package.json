@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-i18n",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "description": "Nuxt i18n module for loading translations from API endpoint",
     "homepage": "https://www.awes.io",
     "bugs": {

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.7.32...@awes-io/nuxt-admin@2.0.0) (2021-01-08)
+
+
+### Features
+
+* v2 ([d72fd86](https://github.com/awes-io/client/commit/d72fd86817284ac11de99007ae4f2fcea3e71ca1))
+
+
+* refactor!: design and system update ([d02921e](https://github.com/awes-io/client/commit/d02921e18f33a12b7b6dc6de8ef3fb7d1a92633b))
+* refactor!: design and system update ([1cb4b02](https://github.com/awes-io/client/commit/1cb4b02cbca10b02f500c6bd392eb98c7758470c))
+
+
+### BREAKING CHANGES
+
+* update to v2
+* migration to awes.io v3
+* migration to awes.io v3
+
+
+
+
+
 ## [0.7.32](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@0.7.31...@awes-io/nuxt-admin@0.7.32) (2020-12-23)
 
 **Note:** Version bump only for package @awes-io/nuxt-admin

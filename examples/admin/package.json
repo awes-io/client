@@ -1,6 +1,6 @@
 {
     "name": "example-admin",
-    "version": "1.4.6",
+    "version": "1.4.7",
     "description": "@awes-io/admin installation example",
     "author": "",
     "private": true,

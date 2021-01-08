@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.81.2](https://git.awescode.com/awes-io/client/compare/basic-ui@1.81.1...basic-ui@1.81.2) (2021-01-08)
+
+**Note:** Version bump only for package basic-ui
+
+
+
+
+
 ## [1.81.1](https://git.awescode.com/awes-io/client/compare/basic-ui@1.81.0...basic-ui@1.81.1) (2020-12-23)
 
 **Note:** Version bump only for package basic-ui

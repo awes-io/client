@@ -1,6 +1,6 @@
 {
   "name": "example-nuxt-i18n",
-  "version": "1.4.84",
+  "version": "1.4.85",
   "description": "Example of @awes-io/nuxt-i18n usage",
   "author": "illjah42",
   "private": true,
@@ -11,8 +11,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@awes-io/dayjs": "^0.3.3",
-    "@awes-io/nuxt-i18n": "^0.4.3",
+    "@awes-io/dayjs": "^0.3.4",
+    "@awes-io/nuxt-i18n": "^0.4.4",
     "@awes-io/ui": "^1.111.1",
     "express": "^4.17.1",
     "nuxt": "^2.0.0",
