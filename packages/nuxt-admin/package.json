@@ -29,6 +29,7 @@
         "lang/*"
     ],
     "dependencies": {
+        "@awes-io/ui": "^1.107.1",
         "@awes-io/nuxt-auth": "^1.10.9",
         "@awes-io/vue-mc": "^0.3.1",
         "rambdax": "^7.0.1"

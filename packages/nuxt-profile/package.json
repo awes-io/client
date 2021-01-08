@@ -64,7 +64,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@awes-io/ui": "^0.1.0"
+        "@awes-io/ui": "^1.107.1"
     },
     "devDependencies": {
         "@babel/core": "^7.5.5",
