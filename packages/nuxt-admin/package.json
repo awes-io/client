@@ -28,10 +28,68 @@
         "src/*",
         "lang/*"
     ],
+    "release": {
+        "extends": "@semantic-release/gitlab-config",
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogTitle": "Release Notes for Awes.io Admin"
+                }
+            ],
+            [
+                "@semantic-release/gitlab",
+                {
+                    "gitlabUrl": "https://git.awescode.com"
+                }
+            ],
+            "@semantic-release/npm",
+            [
+                "@semantic-release/git",
+                {
+                    "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+                }
+            ]
+        ]
+    },
     "dependencies": {
         "@awes-io/ui": "^1.107.1",
         "@awes-io/nuxt-auth": "^1.10.9",
         "@awes-io/vue-mc": "^0.3.1",
         "rambdax": "^7.0.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "@commitlint/cli": "^8.1.0",
+        "@commitlint/config-conventional": "^8.1.0",
+        "@semantic-release/changelog": "^3.0.4",
+        "@semantic-release/git": "^7.0.16",
+        "@semantic-release/gitlab-config": "^5.0.0",
+        "@vue/test-utils": "^1.0.0-beta.29",
+        "auto-changelog": "^1.14.1",
+        "babel-core": "7.0.0-bridge.0",
+        "babel-eslint": "^10.0.2",
+        "babel-jest": "^24.8.0",
+        "cross-env": "^5.2.0",
+        "eslint": "^6.5.1",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-config-standard": "^14.1.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-node": "^10.0.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslint-plugin-vue": "^5.2.3",
+        "husky": "^3.0.1",
+        "jest": "^24.8.0",
+        "jest-serializer-vue": "^2.0.2",
+        "jest-transform-stub": "^2.0.0",
+        "prettier": "^1.18.2",
+        "semantic-release": "^15.13.24",
+        "vue-jest": "^3.0.4",
+        "vue-template-compiler": "^2.6.10"
     }
 }
