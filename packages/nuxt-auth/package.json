@@ -1,6 +1,6 @@
 {
     "name": "@awes-io/nuxt-auth",
-    "description": "",
+    "description": "v2",
     "version": "1.10.9",
     "module": "index.js",
     "entry": "index.js",
