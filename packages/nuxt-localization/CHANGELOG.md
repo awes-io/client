@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.6.37...@awes-io/nuxt-localization@0.7.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* bump localization ([5e7b26b](https://github.com/awes-io/client/commit/5e7b26bf97896bcbe76009fdc649a31fd04508b8))
+
+
+
+
+
 ## [0.6.33](https://github.com/awes-io/client/compare/@awes-io/nuxt-localization@0.6.37...@awes-io/nuxt-localization@0.6.33) (2021-01-08)
 
 **Note:** Version bump only for package @awes-io/nuxt-localization
