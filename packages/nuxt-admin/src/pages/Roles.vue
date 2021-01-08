@@ -23,7 +23,7 @@
             <AwTableCol :title="$t('AwesIoNuxtAdmin.role')">
                 <template #default="{ cell }">
                     {{ cell.name }}
-                    <span class="text-disabled">{{
+                    <span class="text-mono-400">{{
                         cell.default_new
                             ? '(' + $t('AwesIoNuxtAdmin.default_new') + ')'
                             : ''
@@ -78,7 +78,7 @@ export default {
         },
         async deleteRole(role) {
             if (!confirm(this.$t('AwesIoNuxtAdmin.confirm_role_delete'))) {
-                return;
+                return
             }
             try {
                 await role.delete()

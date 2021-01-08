@@ -19,6 +19,6 @@
     }
 
     & &__label {
-        @apply text-xs text-disabled;
+        @apply text-xs text-mono-400;
     }
 }

@@ -8,7 +8,7 @@
         @removed="$auth.fetchUser()"
     >
         <template #subtitle>
-            <span v-if="userDescription" class="text-disabled">
+            <span v-if="userDescription" class="text-mono-400">
                 {{ userDescription }}
             </span>
         </template>

@@ -34,7 +34,7 @@
 <script>
 import { isNil, omit } from 'rambdax'
 import dayjs from 'dayjs'
-import { getBemClasses } from '../assets/js/css'
+import { getBemClasses } from '../../assets/js/css'
 
 export default {
     name: 'AwFilterMonth',
