@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@awes-io/nuxt-admin@^0.7.32":
+  version "0.7.32"
+  resolved "https://registry.npmjs.org/@awes-io/nuxt-admin/-/nuxt-admin-0.7.32.tgz#1fc9d27661b3d6e05a2055ea4089dec914510276"
+  integrity sha512-uypBYb4OiUys4tWXEFYtZZz+N2TijZdyKoB57GLhploiiFTXDSkKgUMsE8BdBFue1Yp4BwxqnoJwcQWsBaNjxw==
+  dependencies:
+    "@awes-io/nuxt-auth" "^1.10.14"
+    "@awes-io/vue-mc" "^0.3.1"
+    rambdax "^3.5.0"
+
+"@awes-io/nuxt-auth@^1.10.14":
+  version "1.10.14"
+  resolved "https://registry.npmjs.org/@awes-io/nuxt-auth/-/nuxt-auth-1.10.14.tgz#d6717c72dd7beec0ffb5198657b2c2ee02836eef"
+  integrity sha512-bWKZuKFgfrHKRgRiEqKSldFKzNpOGjNjiAMwx0Gr+uXycKI35mMRNmWoN+PoryY7O5VyMNqS2sA034J7sBNNKA==
+  dependencies:
+    "@awes-io/ui" "^1.111.1"
+    "@casl/ability" "^4.1.6"
+    "@casl/vue" "^1.1.1"
+    "@nuxtjs/auth" "^4.9.1"
+    rambdax "^6.2.0"
+
 "@awes-io/ui@^0.1.0":
   version "0.1.4"
   resolved "https://registry.npmjs.org/@awes-io/ui/-/ui-0.1.4.tgz#c5ae73ecd17ee8ee0ff452cf60148f3a30c0c44d"
@@ -16,6 +36,36 @@
     vue "^2.6.10"
     vue-i18n "^8.14.0"
     vue-router "^3.1.2"
+
+"@awes-io/ui@^1.111.1":
+  version "1.111.1"
+  resolved "https://registry.npmjs.org/@awes-io/ui/-/ui-1.111.1.tgz#18e18e33608f72b2010b73fdd3837dbc6f44813e"
+  integrity sha512-ewnedxK3B5qY6CPbdJMgHm5dC08xrQaozikI8pR/PTXeGLGYvfrB95Zy/6h/XM03IHVfSVVVMZ2n+GIcPmEGTg==
+  dependencies:
+    "@popperjs/core" "^2.0.5"
+    autosize "^4.0.2"
+    axios "^0.19.0"
+    body-scroll-lock "^2.6.4"
+    clipboard-copy "^3.1.0"
+    cookies "^0.8.0"
+    core-js "^2.6.5"
+    croppie "^2.6.5"
+    dayjs "^1.8.26"
+    insane "^2.6.2"
+    js-cookie "^2.2.1"
+    loadjs "^3.6.1"
+    marked "^0.7.0"
+    postcss-color-function "^4.1.0"
+    prismjs "^1.17.1"
+    rambdax "^3.5.0"
+    tailwindcss "^1.0.6"
+    tailwindcss-accessibility "^1.0.0"
+    tailwindcss-typography "^2.2.0"
+    vue "^2.6.10"
+    vue-currency-input "^1.22.3"
+    vue-i18n "^8.14.0"
+    vue-router "^3.1.2"
+    vuex "^3.1.1"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.5.5":
   version "7.10.4"
@@ -13960,6 +14010,16 @@ qw@~1.0.1:
   resolved "https://registry.npmjs.org/qw/-/qw-1.0.1.tgz#efbfdc740f9ad054304426acb183412cc8b996d4"
   integrity sha1-77/cdA+a0FQwRCassYNBLMi5ltQ=
 
+rambdax@^3.5.0:
+  version "3.7.0"
+  resolved "https://registry.npmjs.org/rambdax/-/rambdax-3.7.0.tgz#bc89ced092f95521555eb24fe0a29039807a4756"
+  integrity sha512-EaV46HD0sqoFGmm0BT7cMSUXJw0l+iMCH52CkhAuByJNLC+WXE13KgxRd5UsnwdLg/tEskgPADYacOuR0zVa9Q==
+
+rambdax@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/rambdax/-/rambdax-6.2.0.tgz#2b47446f4ab22a4116df24566aff244fd0f70bec"
+  integrity sha512-DA8c4dzhdnpRqaoqu0d3vmG8jKnwtJyPdTeu6aanZMe67o3pnzc8z96lk/ttG1N1FetW5HMdpohH7B1w3LGPAQ==
+
 rambdax@^7.0.1:
   version "7.1.0"
   resolved "https://registry.npmjs.org/rambdax/-/rambdax-7.1.0.tgz#138bc13b3dbe445f635e1e3bd94bc6ae24827fe2"
@@ -15906,6 +15966,13 @@ tailwindcss-accessibility@^1.0.0:
   resolved "https://registry.npmjs.org/tailwindcss-accessibility/-/tailwindcss-accessibility-1.0.0.tgz#3a1aeda1d46004e3dd69b85774d27a9d276e776a"
   integrity sha512-5bLincK3LVx6U7Wk19X7ZQDg59ZgulkNexlzUYU01mvXnKALv+xc8n+CH007A+YH5Wa6EuL64ay5Ci5+yqJPVQ==
 
+tailwindcss-typography@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/tailwindcss-typography/-/tailwindcss-typography-2.2.0.tgz#7e555f25f1870e39c0013eb746ce365761a9680f"
+  integrity sha512-/v+G9iXkR6Vfj7N2D8bWKrV+kh7mKxDpoTC/RX4+O5mxcJ/Jmep98MJe2Uh9uxHrH4Hh27qeOME7vtJBjpn6iA==
+  dependencies:
+    lodash "^4.17.15"
+
 tailwindcss@^1.0.6, tailwindcss@^1.3.4:
   version "1.8.13"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-1.8.13.tgz#ee57050a516d342bafc92cb74b4de6f92e44c189"
@@ -17025,6 +17092,11 @@ vue@^2.5.17, vue@^2.6.10, vue@^2.6.12:
   version "2.6.12"
   resolved "https://registry.npmjs.org/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
+
+vuex@^3.1.1:
+  version "3.6.0"
+  resolved "https://registry.npmjs.org/vuex/-/vuex-3.6.0.tgz#95efa56a58f7607c135b053350833a09e01aa813"
+  integrity sha512-W74OO2vCJPs9/YjNjW8lLbj+jzT24waTo2KShI8jLvJW8OaIkgb3wuAMA7D+ZiUxDOx3ubwSZTaJBip9G8a3aQ==
 
 vuex@^3.5.1:
   version "3.5.1"
