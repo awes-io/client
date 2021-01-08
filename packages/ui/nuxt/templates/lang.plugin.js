@@ -24,7 +24,7 @@ i18nOptions.messages = mergeDeepRight(messages, i18nOptions.messages || {})
 const beforeListeners = new Map()
 const afterListeners = new Map()
 
-export default async ({ app, $axios }) => {
+export default async ({ app }) => {
     const locales = langOptions.locales.slice().map(locale => {
         if (isType('String', locale)) {
             return { code: locale }
@@ -107,7 +107,7 @@ export default async ({ app, $axios }) => {
                 : { url: fetchTranslation }
 
             try {
-                const { data } = await $axios.request(requestConfig)
+                const { data } = await app.$axios.request(requestConfig)
                 loadedLocales[locale] = data
             } catch (e) {
                 console.log('Error fetching translation', e)
@@ -121,10 +121,10 @@ export default async ({ app, $axios }) => {
      * Global setLocale function
      */
     app.i18n.setLocale = async locale => {
-        // if (app.i18n.locale === locale) return
+        const oldLocale = app.i18n.locale
 
-        for (const beforeListener in beforeListeners.keys()) {
-            await beforeListener(app.i18n.locale, locale)
+        for (const beforeListener of beforeListeners.keys()) {
+            await beforeListener(locale, oldLocale)
         }
 
         const fetchedData = await fetchLocale(locale)
@@ -137,13 +137,17 @@ export default async ({ app, $axios }) => {
             JsCookie.set(langCookie, locale)
         }
 
-        for (const afterListener in beforeListeners.keys()) {
-            await afterListener(app.i18n.locale)
+        for (const afterListener of afterListeners.keys()) {
+            await afterListener(locale, oldLocale)
         }
     }
 
     /**
      * Set language on init
      */
-    await app.i18n.setLocale(app.i18n.locale)
+    if (app.$axios) {
+        await app.i18n.setLocale(app.i18n.locale)
+    } else {
+        window.onNuxtReady(() => app.i18n.setLocale(app.i18n.locale))
+    }
 }

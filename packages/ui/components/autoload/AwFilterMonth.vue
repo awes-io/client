@@ -4,10 +4,13 @@
             :disabled="prevDisabled"
             :size="_size"
             :class="_cssClasses.prev"
-            icon="arrow-l"
             theme="system"
             @click="prev"
-        />
+        >
+            <template #icon>
+                <AwIconSystem name="arrow" size="16" />
+            </template>
+        </AwButton>
         <slot :date="date">
             <div :class="_cssClasses.date">
                 <div
@@ -24,16 +27,18 @@
             :disabled="nextDisabled"
             :size="_size"
             :class="_cssClasses.next"
-            icon="arrow-r"
             theme="system"
             @click="next"
-        />
+        >
+            <template #icon>
+                <AwIconSystem name="arrow" rotate="180" size="16" />
+            </template>
+        </AwButton>
     </div>
 </template>
 
 <script>
 import { isNil, omit } from 'rambdax'
-import dayjs from 'dayjs'
 import { getBemClasses } from '../../assets/js/css'
 
 export default {
@@ -64,7 +69,7 @@ export default {
             type: [String, Object, Number, Date],
             default: null,
             validator(val) {
-                return dayjs(val).isValid()
+                return this.$dayjs(val).isValid()
             }
         },
 
@@ -72,7 +77,7 @@ export default {
             type: [String, Object, Number, Date],
             default: null,
             validator(val) {
-                return dayjs(val).isValid()
+                return this.$dayjs(val).isValid()
             }
         },
 
@@ -98,10 +103,6 @@ export default {
     },
 
     computed: {
-        _dayjs() {
-            return this.$dayjs || dayjs
-        },
-
         prevDisabled() {
             if (!this.date) return undefined
 
@@ -121,7 +122,7 @@ export default {
         paramValue() {
             if (!this.date) return undefined
 
-            if (this._dayjs().isSame(this.date, 'month')) {
+            if (this.$dayjs().isSame(this.date, 'month')) {
                 return undefined
             } else {
                 return this.date.format(this.format)
@@ -183,12 +184,12 @@ export default {
 
     created() {
         const _date = this.$route.query[this.param]
-        const date = this._dayjs(_date, this.format)
+        const date = this.$dayjs(_date, this.format)
 
         if (_date && date.isValid()) {
             this.date = this._clamp(date)
         } else {
-            this.date = this._dayjs()
+            this.date = this.$dayjs()
         }
     },
 
@@ -209,11 +210,11 @@ export default {
             let _value = value.clone()
 
             if (!isNil(this.min) && value.isBefore(this.min, 'month')) {
-                _value = this._dayjs(this.min)
+                _value = this.$dayjs(this.min)
             }
 
             if (!isNil(this.max) && value.isAfter(this.max, 'month')) {
-                _value = this._dayjs(this.max)
+                _value = this.$dayjs(this.max)
             }
 
             return _value

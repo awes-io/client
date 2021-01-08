@@ -1,15 +1,12 @@
 export default ({ app, store }) => {
-    store.commit('awesIo/SET_MENU_ITEM', [
-        {
-            key: 'mock',
+    store.commit('awesIo/SET_MENU_ITEMS', {
+        mock: {
             order: 1,
-            props: {
-                icon: 'home',
-                text: () => app.i18n.t('statuses.new'),
-                href: () => app.localePath({ path: '/' })
-            }
+            text: 'statuses.new',
+            icon: 'circle',
+            href: '/'
         }
-    ])
+    })
 
     store.commit('awesIo/SET_USER_MENU_ITEM', {
         key: 'mock',
