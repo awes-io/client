@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambdax'
 
 export default {
     name: 'PageLogin',

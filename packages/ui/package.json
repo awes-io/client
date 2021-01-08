@@ -34,6 +34,7 @@
         "assets/*",
         "docs/*",
         "components/*",
+        "store/*",
         "tailwind.config.js"
     ],
     "main": "dist/js/ui.ssr.js",

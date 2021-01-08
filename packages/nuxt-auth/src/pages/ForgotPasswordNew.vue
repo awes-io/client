@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { path, pathOr } from 'ramda'
+import { path, pathOr } from 'rambdax'
 
 export default {
     name: 'ForgotPassword',
