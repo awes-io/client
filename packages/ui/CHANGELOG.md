@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.3...@awes-io/ui@2.0.4) (2021-01-08)
+
+
+### Bug Fixes
+
+* rambdax included ([cc6ba02](https://github.com/awes-io/client/commit/cc6ba0282c6e64a492a68f7142c8ae0c3d886529))
+
+
+
+
+
 ## [2.0.3](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.2...@awes-io/ui@2.0.3) (2021-01-08)
 
 
