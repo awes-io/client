@@ -23,6 +23,11 @@
         "type": "git",
         "url": "git@git.awescode.com:awes-io/client.git"
     },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
     "scripts": {
         "dev:ui": "lerna run dev --scope @awes-io/ui --stream",
         "dev:ui-nuxt": "lerna run dev-nuxt --scope @awes-io/ui --stream",
@@ -38,7 +43,7 @@
             "@commitlint/config-conventional"
         ]
     },
-    "dependencies": {
+    "devDependencies": {
         "@commitlint/cli": "^8.1.0",
         "@commitlint/config-conventional": "^8.1.0",
         "@rollup/plugin-alias": "^3.0.0",
@@ -56,12 +61,12 @@
         "change-case": "^4.1.1",
         "esm": "^3.2.25",
         "fs-extra": "^8.1.0",
-        "lerna": "^3.16.4",
-        "sort-package-json": "^1.39.0"
+        "lerna": "^3.22",
+        "sort-package-json": "^1.39.0",
+        "husky": "^3.0.1"
     },
     "workspaces": [
         "packages/*",
         "examples/*"
-    ],
-    "devDependencies": {}
+    ]
 }
