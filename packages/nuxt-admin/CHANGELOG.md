@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@2.0.2...@awes-io/nuxt-admin@2.0.3) (2021-01-08)
+
+
+### Bug Fixes
+
+* merge issues ([2d7ab6e](https://github.com/awes-io/client/commit/2d7ab6e2bfbc66b7038c03ba85ba08de2502bd53))
+
+
+
+
+
 ## [2.0.2](https://github.com/awes-io/client/compare/@awes-io/nuxt-admin@2.0.0...@awes-io/nuxt-admin@2.0.2) (2021-01-08)
 
 
