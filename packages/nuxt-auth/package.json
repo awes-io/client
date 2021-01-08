@@ -1,7 +1,7 @@
 {
     "name": "@awes-io/nuxt-auth",
     "description": "v2.0",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "module": "index.js",
     "entry": "index.js",
     "author": "Awescode GmbH <info@awescode.de> (https://www.awescode.de)",
@@ -37,7 +37,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@awes-io/ui": "^2.0.0",
+        "@awes-io/ui": "^2.0.2",
         "@casl/ability": "^4.1.6",
         "@casl/vue": "^1.1.1",
         "@nuxtjs/auth": "^4.9.1",
