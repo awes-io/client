@@ -10,7 +10,7 @@
             <span class="aw-icon-menu-item__icon-block">
                 <AwIcon
                     :name="icon"
-                    :size="tooltip ? 20 : 30"
+                    :size="tooltip ? 20 : 24"
                     :class="{
                         'aw-icon-menu-item__icon--highlight': active,
                         'text-brand': !tooltip

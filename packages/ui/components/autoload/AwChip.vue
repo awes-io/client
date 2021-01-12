@@ -28,7 +28,7 @@
                     :is="$options.components.AwIcon"
                     v-if="props.icon"
                     :name="props.icon"
-                    size="16"
+                    size="14"
                     class="aw-chip__decor-icon"
                     :class="{
                         'aw-chip__decor-icon_color': props.color

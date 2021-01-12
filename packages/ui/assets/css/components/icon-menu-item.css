@@ -4,13 +4,13 @@
     justify-content: center;
     align-items: center;
     padding: theme('spacing.3');
-
     color: inherit;
 
     position: relative;
 
     &--clip {
         overflow: hidden;
+        padding: theme('spacing.2') theme('spacing.1') theme('spacing.1');
     }
 
     &__icon-block {
@@ -52,7 +52,8 @@
     }
 
     &__text {
-        @apply truncate text-xs;
+        @apply truncate;
+        font-size: 0.625rem;
         display: block;
         max-width: 100%;
         margin: theme('spacing.1') auto 0;
@@ -60,6 +61,7 @@
 
     &__tooltip {
         @apply text-xs bg-mono-50 bg-opacity-80;
+        white-space: nowrap;
         display: block;
         padding: 0.25rem 0.5rem;
         border-radius: 2px;

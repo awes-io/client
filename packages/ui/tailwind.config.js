@@ -79,7 +79,7 @@ module.exports = {
             },
             fontFamily: {
                 heading: ['Ubuntu', 'sans-serif'],
-                body: ['Open Sans', 'sans-serif']
+                body: ['Roboto', 'sans-serif']
             },
             fontSize: {
                 xxs: '0.5rem',

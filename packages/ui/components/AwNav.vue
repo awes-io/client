@@ -8,7 +8,10 @@
             <span :key="i" class="aw-nav__item">
                 <AwNavItem
                     :href="href"
-                    :class="{ 'aw-nav__child--no-icon': !icon }"
+                    :class="{
+                        'aw-nav__child--sub': !children || !children.length,
+                        'aw-nav__child--active': isActive(href)
+                    }"
                     class="aw-nav__child"
                     :[$options.TOGGLE_CHILDREN_ATTR]="href ? null : i"
                 >
@@ -122,92 +125,8 @@ export default {
         },
 
         isActive(href) {
-            return getPath(href) === this.currentPath
+            return this.currentPath.startsWith(getPath(href))
         }
     }
 }
 </script>
-
-<style lang="postcss">
-.aw-nav {
-    @apply py-8;
-
-    &__title {
-        @apply text-xl font-heading mb-5 px-8 truncate;
-    }
-
-    &__item {
-        display: flex;
-        align-items: center;
-
-        &:not(:first-child) {
-            @apply mt-2;
-        }
-    }
-
-    &__toggler {
-        @apply -ml-8 p-1;
-
-        svg {
-            transform: rotate(-180deg);
-            transition: 240ms transform;
-        }
-
-        &--open svg {
-            transform: rotate(-90deg);
-        }
-    }
-
-    &__child {
-        max-width: 100%;
-        color: inherit;
-        @apply flex items-center py-2 px-8;
-
-        & > svg {
-            @apply mr-2;
-        }
-
-        & > span {
-            @apply block truncate;
-        }
-
-        &--sub {
-            @apply text-sm text-mono-600;
-            position: relative;
-            transition: 120ms color;
-
-            &:hover,
-            &:focus-visible {
-                color: inherit;
-            }
-
-            &:before {
-                display: block;
-                width: 6px;
-                height: 6px;
-                margin-left: 5px;
-                margin-top: -3px;
-                border-radius: 50%;
-                background-color: theme('colors.success');
-
-                position: absolute;
-                left: theme('spacing.8');
-                top: 50%;
-            }
-        }
-
-        &--sub,
-        &--no-icon {
-            padding-left: calc(theme('spacing.10') + 16px);
-        }
-
-        &--active {
-            color: inherit;
-
-            &:before {
-                content: '';
-            }
-        }
-    }
-}
-</style>

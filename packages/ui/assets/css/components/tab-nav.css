@@ -1,5 +1,5 @@
 .aw-tab-nav {
-    @apply border-b text-mono-700;
+    @apply border-b border-mono-800 text-mono-700;
     display: flex;
     align-items: center;
 
@@ -8,7 +8,7 @@
         display: flex;
         align-items: center;
         padding: theme('spacing.2') theme('spacing.3');
-        fontsize: theme('fontSize.sm');
+        font-size: theme('fontSize.sm');
         whitespace: 'nowrap';
     }
 
@@ -22,7 +22,7 @@
     }
 
     &__toggler > span:before {
-        @apply border-l text-mono-700;
+        @apply border-l border-mono-800 text-mono-700;
         content: '';
         left: calc(-1 * theme('spacing.3'));
         position: absolute;

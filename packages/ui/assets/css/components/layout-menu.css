@@ -17,7 +17,7 @@
     }
 
     &__menu,
-    &__service-menu {
+    &__secondary-menu {
         display: flex;
         flex-direction: column;
     }
@@ -26,7 +26,7 @@
         align-self: start;
     }
 
-    &__service-menu {
+    &__secondary-menu {
         align-self: end;
     }
 
@@ -53,7 +53,7 @@
         }
     }
 
-    &__aw-user-menu {
+    &__user-menu {
         min-width: 250px;
         box-shadow: theme('boxShadow.default');
         border-radius: theme('borderRadius.md');
@@ -61,15 +61,17 @@
         position: absolute;
         left: 55px;
         bottom: 20px;
+        z-index: 1;
 
         opacity: 0;
+        visibility: hidden;
         transform: scaleY(0.8) translate(-15px, -15px);
         transform-origin: left bottom;
         transition: 60ms opacity, 120ms transform, 0ms visibility 120ms;
     }
 
-    &__user:focus + * > .aw-layout-menu__aw-user-menu,
-    &__aw-user-menu:focus-within {
+    &__user:focus + .aw-layout-menu__user-menu,
+    &__user-menu:focus-within {
         opacity: 1;
         transform: none;
         visibility: visible;

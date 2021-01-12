@@ -2,12 +2,13 @@
     <Component
         :is="_linkComponent"
         v-bind="_linkAttrs"
+        v-on="$listeners"
         class="aw-mobile-menu-item"
     >
         <slot v-bind="$props">
             <span class="aw-mobile-menu-item__text">{{ text }}</span>
             <AwIconSystem
-                v-if="!href"
+                v-if="arrow"
                 name="angle"
                 rotate="180"
                 size="16"
@@ -34,7 +35,9 @@ export default {
         href: {
             type: [String, Object],
             default: ''
-        }
+        },
+
+        arrow: Boolean
     }
 }
 </script>

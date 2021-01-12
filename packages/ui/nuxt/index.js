@@ -1,4 +1,4 @@
-import { mergeDeepRight, pick, omit, uniq, endsWith } from 'rambdax'
+import { mergeDeepRight, pick, omit, uniq, endsWith, partition } from 'rambdax'
 import { existsSync, readdirSync, readFileSync } from 'fs'
 import { join, resolve } from 'path'
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -258,6 +258,23 @@ async function AwesIoUi() {
                 'Awes.io/UI: No default translation for ' + code + ' locale'
             )
         }
+    }
+
+    /**
+     * Add plugins sorter (axios should be first)
+     */
+    const oldExtend = this.options.extendPlugins
+    this.options.extendPlugins = (plugins) => {
+        if (typeof oldExtend === 'function') {
+            plugins = oldExtend(plugins)
+        }
+
+        const sorted = partition((plugin) => {
+            const src = plugin.src || plugin || ''
+            return src.includes('axios')
+        }, plugins).flat()
+
+        return sorted
     }
 
     /**
