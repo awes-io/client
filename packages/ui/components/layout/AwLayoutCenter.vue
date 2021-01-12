@@ -2,11 +2,14 @@
     <div
         id="layout-frame-center"
         class="layout layout--frame-center"
-        :style="{ backgroundImage }"
-        :class="background.class"
+        v-bind="background"
     >
         <div class="layout__container mx-auto">
-            <img v-if="logo" v-bind="logo" class="hidden sm:block mt-auto" />
+            <img
+                v-if="logo"
+                v-bind="logo"
+                class="layout__center-logo hidden sm:block mt-auto"
+            />
 
             <div
                 class="layout__frame w-full my-auto"
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import { pathOr } from 'rambdax'
 import AwOfflineNotify from '../AwOfflineNotify.vue'
 
 export default {
@@ -36,23 +40,34 @@ export default {
         AwOfflineNotify
     },
 
-    props: {
-        logo: {
-            type: Object,
-            default: () => ({
-                src: '//placehold.it/70'
-            })
+    computed: {
+        isDark() {
+            return this.$store.getters['awesIo/isDarkTheme']
         },
 
-        background: {
-            type: Object,
-            default: () => ({})
-        }
-    },
+        logo() {
+            return pathOr(
+                null,
+                ['$awes', '_config', this.isDark ? 'dark' : 'default', 'logo'],
+                this
+            )
+        },
 
-    computed: {
-        backgroundImage() {
-            return this.background.src ? `url(${this.background.src})` : null
+        background() {
+            const { src, ...background } = pathOr(
+                {},
+                [
+                    '$awes',
+                    '_config',
+                    this.isDark ? 'dark' : 'default',
+                    'background'
+                ],
+                this
+            )
+
+            return src
+                ? { ...background, style: { backgroundImage: `url(${src})` } }
+                : background
         }
     }
 }

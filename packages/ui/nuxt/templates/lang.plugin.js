@@ -129,7 +129,10 @@ export default async ({ app }) => {
 
         const fetchedData = await fetchLocale(locale)
 
-        app.i18n.mergeLocaleMessage(locale, fetchedData)
+        app.i18n.setLocaleMessage(
+            locale,
+            mergeDeepRight(app.i18n.getLocaleMessage(locale), fetchedData)
+        )
 
         app.i18n.locale = locale
 

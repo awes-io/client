@@ -1,10 +1,11 @@
 <template>
     <div class="aw-bottom-bar">
-        <slot name="bottom-bar-items" v-bind="{ items, getIconProps }">
+        <slot name="bottom-bar-items">
             <AwIconMenuItem
-                v-for="item in items"
-                :key="item.key"
-                v-bind="getIconProps(item)"
+                v-for="(item, i) in items"
+                :key="i"
+                :active="item === activeMenuItem"
+                v-bind="item"
             />
         </slot>
 
@@ -18,7 +19,7 @@
                     <AwIconSystem
                         name="more"
                         class="aw-icon-menu-item__icon text-brand"
-                        size="30"
+                        size="24"
                     />
                     <span class="aw-icon-menu-item__text">
                         {{ text }}
@@ -30,7 +31,7 @@
 </template>
 
 <script>
-import { pick, keys } from 'rambdax'
+import { viewOr, lensProp } from 'rambdax'
 import AwIconMenuItem from './AwIconMenuItem.vue'
 
 export default {
@@ -40,15 +41,22 @@ export default {
         AwIconMenuItem
     },
 
-    props: {
-        items: {
-            type: Array,
-            default: () => []
+    inject: {
+        layoutProvider: {
+            default: null
         }
     },
 
-    methods: {
-        getIconProps: pick(keys(AwIconMenuItem.props))
+    computed: {
+        items() {
+            const items = viewOr([], lensProp('mainMenu'), this.layoutProvider)
+
+            return items.slice(0, 4)
+        },
+
+        activeMenuItem() {
+            return viewOr(null, lensProp('activeMenuItem'), this.layoutProvider)
+        }
     }
 }
 </script>
@@ -63,6 +71,7 @@ export default {
 
     position: sticky;
     bottom: 0;
+    min-height: 4rem;
 
     & > * {
         flex-basis: 100%;

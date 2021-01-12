@@ -1,0 +1,81 @@
+.aw-nav {
+    @apply py-8;
+
+    &__title {
+        @apply text-xl font-heading mb-5 px-8 truncate;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &:not(:first-child) {
+            @apply mt-2;
+        }
+    }
+
+    &__toggler {
+        @apply p-1;
+        margin-left: -1.75rem;
+
+        svg {
+            transform: rotate(-180deg);
+            transition: 240ms transform;
+        }
+
+        &--open svg {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &__child {
+        max-width: 100%;
+        color: inherit;
+        @apply flex items-center py-2 px-8;
+
+        & > svg {
+            @apply mr-2;
+        }
+
+        & > span {
+            @apply block truncate;
+        }
+
+        &--sub {
+            @apply text-sm text-mono-600;
+            position: relative;
+            transition: 120ms color;
+
+            &:hover,
+            &:focus-visible {
+                color: inherit;
+            }
+
+            &:before {
+                display: block;
+                width: 6px;
+                height: 6px;
+                margin-left: 5px;
+                margin-top: -3px;
+                border-radius: 50%;
+                background-color: theme('colors.success');
+
+                position: absolute;
+                left: theme('spacing.8');
+                top: 50%;
+            }
+        }
+
+        &--sub {
+            padding-left: calc(theme('spacing.10') + 16px);
+        }
+
+        &--active {
+            color: inherit;
+
+            &:before {
+                content: '';
+            }
+        }
+    }
+}

@@ -31,7 +31,7 @@
     }
 }
 
-/* .layout {
+.layout {
 
     &&--default,
     &&--simple {
@@ -112,6 +112,11 @@
     &__navbar-logo {
         height: 36px;
     }
+
+    &__center-logo {
+        width: 70px;
+        height: 70px;
+    }
 }
 
 @media (min-width: 35rem) {
@@ -183,4 +188,3 @@
         }
     }
 }
- */

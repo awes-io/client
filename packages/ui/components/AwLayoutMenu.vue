@@ -12,31 +12,41 @@
         </slot>
 
         <div class="aw-layout-menu__menu">
-            <slot name="menu" :menu="menu">
-                <AwIconMenuItem
-                    v-for="(item, i) in menu"
-                    :key="item.key"
-                    :active="i === activeIndex"
-                    v-bind="_getIconProps(item)"
-                    tooltip
-                />
+            <slot name="menu">
+                <template v-for="(item, i) in mainMenu">
+                    <!-- eslint-disable-next-line vue/require-component-is -->
+                    <Component v-if="item.is" :key="'cmp-' + i" v-bind="item" />
+                    <AwIconMenuItem
+                        v-else
+                        :key="i"
+                        v-bind="item"
+                        :active="item === activeMenuItem"
+                        tooltip
+                    />
+                </template>
             </slot>
         </div>
 
-        <div class="aw-layout-menu__service-menu">
-            <slot name="service-menu" :serviceMenu="serviceMenu">
-                <AwIconMenuItem
-                    v-for="{ key, ...props } in serviceMenu"
-                    :key="key"
-                    v-bind="props"
-                />
+        <div class="aw-layout-menu__secondary-menu">
+            <slot name="secondary-menu">
+                <template v-for="(item, i) in secondaryMenu">
+                    <!-- eslint-disable-next-line vue/require-component-is -->
+                    <Component v-if="item.is" :key="'cmp-' + i" v-bind="item" />
+                    <AwIconMenuItem
+                        v-else
+                        :key="i"
+                        v-bind="item"
+                        :active="item === activeMenuItem"
+                        tooltip
+                    />
+                </template>
             </slot>
         </div>
 
-        <slot name="user" v-bind="{ user, userMenu }">
+        <slot name="user">
             <span
                 v-if="user || hasUserMenu"
-                id="user-menu"
+                ref="userAvatar"
                 class="aw-layout-menu__user"
                 :tabindex="hasUserMenu ? 0 : null"
                 :role="hasUserMenu ? 'menuitem' : null"
@@ -46,25 +56,27 @@
             </span>
         </slot>
 
+        <slot name="user-menu" :userMenu="userMenu">
+            <div ref="userMenu" class="aw-layout-menu__user-menu">
+                <template v-for="(item, i) in userMenu">
+                    <!-- eslint-disable-next-line vue/require-component-is -->
+                    <Component v-if="item.is" :key="'cmp-' + i" v-bind="item" />
+                    <AwMobileMenuItem
+                        v-else
+                        :key="i"
+                        v-bind="item"
+                        :active="item === activeMenuItem"
+                    />
+                </template>
+            </div>
+        </slot>
+
         <!-- submenu -->
         <div
             class="aw-layout-menu__submenu"
             :class="{ 'aw-layout-menu__submenu--hidden': !hasSubmenu }"
         >
-            <slot name="user-menu" :userMenu="userMenu">
-                <AwUserMenu
-                    v-if="hasUserMenu"
-                    class="aw-layout-menu__aw-user-menu"
-                    aria-labelledby="user-menu"
-                    tabindex="-1"
-                />
-            </slot>
-
-            <slot
-                v-if="!hideAside"
-                name="submenu"
-                v-bind="{ submenuTitle, submenu }"
-            >
+            <slot v-if="!hideAside" name="submenu">
                 <AwNav
                     class="aw-layout-menu__aw-menu"
                     :class="{ 'aw-layout-menu__aw-menu--hidden': !hasSubmenu }"
@@ -77,9 +89,10 @@
 </template>
 
 <script>
-import { pathOr, keys, pick } from 'rambdax'
+import { mapGetters } from 'vuex'
+import { pathOr, viewOr, lensProp } from 'rambdax'
 import AwIconMenuItem from './AwIconMenuItem.vue'
-import AwUserMenu from './AwUserMenu.vue'
+import AwMobileMenuItem from './AwMobileMenuItem.vue'
 import AwNav from './AwNav.vue'
 
 export default {
@@ -87,47 +100,41 @@ export default {
 
     components: {
         AwIconMenuItem,
-        AwUserMenu,
+        AwMobileMenuItem,
         AwNav
     },
 
     props: {
-        logo: {
-            type: Object,
-            default: null
-        },
-
-        menu: {
-            type: Array,
-            default: () => []
-        },
-
-        activeIndex: {
-            type: Number,
-            default: null
-        },
-
-        serviceMenu: {
-            type: Array,
-            default: () => []
-        },
-
-        user: {
-            type: Object,
-            default: null
-        },
-
-        userMenu: {
-            type: Array,
-            default: () => []
-        },
-
         hideAside: Boolean
     },
 
+    inject: {
+        layoutProvider: {
+            default: null
+        }
+    },
+
     computed: {
+        ...mapGetters('awesIo', ['user']),
+
+        mainMenu() {
+            return viewOr([], lensProp('mainMenu'), this.layoutProvider)
+        },
+
+        secondaryMenu() {
+            return viewOr([], lensProp('secondaryMenu'), this.layoutProvider)
+        },
+
+        userMenu() {
+            return viewOr([], lensProp('userMenu'), this.layoutProvider)
+        },
+
+        activeMenuItem() {
+            return viewOr(null, lensProp('activeMenuItem'), this.layoutProvider)
+        },
+
         submenu() {
-            return pathOr([], [this.activeIndex, 'children'], this.menu)
+            return viewOr([], lensProp('children'), this.activeMenuItem)
         },
 
         hasSubmenu() {
@@ -136,7 +143,7 @@ export default {
 
         submenuTitle() {
             return this.hasSubmenu
-                ? pathOr('', [this.activeIndex, 'text'], this.menu)
+                ? pathOr('', 'text', this.activeMenuItem)
                 : ''
         },
 
@@ -144,13 +151,25 @@ export default {
             return this.userMenu.length
         },
 
-        menuVisible() {
-            return pathOr(true, 'state.awesIo.mobileMenuOpened', this.$store)
+        logo() {
+            return pathOr(null, '_config.default.logo', this.$awes)
         }
     },
 
-    methods: {
-        _getIconProps: pick(keys(AwIconMenuItem.props))
+    watch: {
+        '$route.path': {
+            handler() {
+                const activeElement = document.activeElement
+
+                if (
+                    activeElement &&
+                    (this.$refs.userAvatar === activeElement ||
+                        this.$refs.userMenu.contains(activeElement))
+                ) {
+                    activeElement.blur()
+                }
+            }
+        }
     }
 }
 </script>

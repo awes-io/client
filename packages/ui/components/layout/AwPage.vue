@@ -13,7 +13,7 @@
                 <AwPageHeadline
                     class="container-fluid"
                     :title="_title"
-                    :breadcrumb="_breadcrumb"
+                    :breadcrumb="breadcrumb"
                 >
                     <template
                         v-for="(index, name) in $scopedSlots"
@@ -27,14 +27,12 @@
             <!-- subnav -->
             <div>
                 <slot name="subnav" :subnav="subnav">
-                    <div v-if="subnav.length" class="border-b bg-mono-900">
-                        <div class="container">
-                            <div class="-mb-px -mx-4">
-                                <AwTabNav
-                                    :items="subnav"
-                                    class="border-transparent"
-                                />
-                            </div>
+                    <div v-if="subnav.length" class="container">
+                        <div class="-mb-px -mx-4">
+                            <AwTabNav
+                                :items="subnav"
+                                class="border-transparent"
+                            />
                         </div>
                     </div>
                 </slot>
@@ -102,8 +100,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { pathOr, isType } from 'rambdax'
+import { pathOr } from 'rambdax'
 import { getBemClasses } from '../../assets/js/css'
 import AwBottomBar from '../AwBottomBar.vue'
 import AwPageHeadline from '../AwPageHeadline.vue'
@@ -182,33 +179,13 @@ export default {
     },
 
     computed: {
-        ...mapGetters('awesIo', ['menu', 'activeMenu', 'currentPage']),
-
         bottomMenu() {
-            return this.menu.reduce((acc, item, i) => {
-                if (i > 2) return acc
-
-                return acc.concat({
-                    ...item,
-                    text: item.text && this.$t(item.text),
-                    active: item === this.activeMenu
-                })
-            }, [])
-        },
-
-        _breadcrumb() {
-            if (isType('Boolean', this.breadcrumb)) {
-                return this.breadcrumb ? this.currentPage.parent : null
-            }
-
-            return this.breadcrumb || this.currentPage.parent
+            return []
         },
 
         _title() {
-            return (
-                this.title ||
-                this.$t(pathOr('', 'current.text', this.currentPage))
-            )
+            return this.title
+            // this.$t(pathOr('', 'current.text', this.currentPage))
         },
 
         elClasses() {

@@ -67,18 +67,18 @@ export default {
 
         min: {
             type: [String, Object, Number, Date],
-            default: null,
-            validator(val) {
-                return this.$dayjs(val).isValid()
-            }
+            default: null
+            // validator(val) {
+            //     return this.$dayjs(val).isValid()
+            // }
         },
 
         max: {
             type: [String, Object, Number, Date],
-            default: null,
-            validator(val) {
-                return this.$dayjs(val).isValid()
-            }
+            default: null
+            // validator(val) {
+            //     return this.$dayjs(val).isValid()
+            // }
         },
 
         size: {

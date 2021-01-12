@@ -36,13 +36,13 @@ function AwesIoNuxtAuth() {
     })
 
     // Add nuxt plugin in the end
-    const { dst } = this.addTemplate({
-        src: resolve(__dirname, './src/assets/js/plugin.js'),
-        fileName: join('awes-io', 'profile-plugin.js')
-    })
-    this.options.plugins.push({
-        src: join(this.options.buildDir, dst)
-    })
+    // const { dst } = this.addTemplate({
+    //     src: resolve(__dirname, './src/assets/js/plugin.js'),
+    //     fileName: join('awes-io', 'profile-plugin.js')
+    // })
+    // this.options.plugins.push({
+    //     src: join(this.options.buildDir, dst)
+    // })
 
     this.nuxt.hook('awesIo:staticTranslations', async () => {
         for (const locale of this.options.awesIo.lang.locales) {

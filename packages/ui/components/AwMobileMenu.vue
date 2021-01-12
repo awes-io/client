@@ -1,16 +1,19 @@
 <template>
     <div class="aw-mobile-menu" :class="{ 'aw-mobile-menu--visible': show }">
-        <div class="aw-mobile-menu__header" :class="{ 'bg-surface': back }">
+        <div
+            class="aw-mobile-menu__header"
+            :class="{ 'bg-surface': submenuOpened }"
+        >
             <button
-                v-if="back"
+                v-if="submenuOpened"
                 class="inline-flex items-center"
-                @click="current = back.key"
+                @click="submenuOpened = false"
             >
                 <AwIconSystem name="angle" size="16" class="mr-2" />
-                {{ back.text }}
+                back
             </button>
             <!-- close button -->
-            <button class="aw-mobile-menu__close" @click="$emit('close')">
+            <button class="aw-mobile-menu__close" @click="show = false">
                 <AwIconSystem name="close" size="16" />
                 <span class="sr-only">
                     {{ $t('AwMobileMenu.close') }}
@@ -18,11 +21,8 @@
             </button>
         </div>
 
-        <div
-            v-if="user"
-            class="aw-mobile-menu__user"
-            :class="{ 'aw-mobile-menu__user--hidden': !!current }"
-        >
+        <!-- user -->
+        <div v-if="user" class="aw-mobile-menu__user">
             <AwAvatar :src="user.src" :name="user.name" size="148" />
             <span class="aw-mobile-menu__user-name">
                 <span class="truncate">{{ user.name }}</span>
@@ -42,39 +42,29 @@
             </span>
         </div>
 
-        <!-- levels -->
-        <TransitionGroup
-            tag="div"
-            name="aw-mobile-menu"
-            class="aw-mobile-menu__levels"
-            :class="{
-                'aw-mobile-menu--forward': direction > 0,
-                'aw-mobile-menu--back': direction < 0
-            }"
-            @click.native.capture="handleClick"
-        >
-            <!-- top level -->
-            <div v-show="!current" key="top">
-                <AwMobileMenuItem
-                    v-for="{ key, props } in _menu"
-                    :key="key"
-                    v-bind="props"
-                />
-            </div>
-
-            <!-- lower levels -->
-            <div
-                v-show="current === key"
-                v-for="{ key, items } in levels"
-                :key="key"
-            >
-                <AwMobileMenuItem
-                    v-for="{ key, props } in items"
-                    :key="key"
-                    v-bind="props"
-                />
-            </div>
-        </TransitionGroup>
+        <div v-if="submenuOpened" class="aw-mobile-menu__menu">
+            <template v-for="({ children, ...item }, i) in submenu">
+                <template v-if="children.length">
+                    <div :key="'title-' + i">{{ item.text }}</div>
+                    <AwMobileMenuItem
+                        v-for="(child, j) in children"
+                        :key="'child-' + i + j"
+                        v-bind="child"
+                    />
+                </template>
+                <AwMobileMenuItem v-else :key="'single-' + i" v-bind="item" />
+            </template>
+        </div>
+        <div v-else class="aw-mobile-menu__menu">
+            <AwMobileMenuItem
+                v-for="({ children, href, ...item }, i) in menu"
+                :key="i"
+                v-bind="item"
+                :href="children.length ? null : href"
+                :arrow="!!children.length"
+                v-on="children.length ? { click: () => showSubmenu(i) } : null"
+            />
+        </div>
 
         <!-- logo -->
         <slot name="logo" v-bind="logo">
@@ -92,72 +82,10 @@
 </template>
 
 <script>
-import { pick, keys, pathOr } from 'rambdax'
+import { mapGetters } from 'vuex'
+import { pathOr, viewOr, lensProp } from 'rambdax'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import AwMobileMenuItem from './AwMobileMenuItem.vue'
-import { getPath } from '../assets/js/router'
-
-const pickItemProps = pick(keys(AwMobileMenuItem.props))
-
-const PARENT_ATTR = 'data-parent'
-
-const BACK_ATTR = 'data-back'
-
-const MENU_PREFIX = 'm-'
-
-const USER_MENU_PREFIX = 'u-'
-
-const createTopLevel = (keyPrefix) => (item, i) => {
-    const props = pickItemProps(item)
-    const hasChildren = item.children && item.children.length
-
-    return {
-        key: keyPrefix + i,
-        props: {
-            ...props,
-            href: hasChildren ? null : props.href,
-            [PARENT_ATTR]: hasChildren ? keyPrefix + i : null
-        }
-    }
-}
-
-const collectChildLevels = (acc = [], _items, parent, keyPrefix) => {
-    for (const i in _items) {
-        const items = []
-        const current = parent ? parent + i : keyPrefix + i
-        const children = _items[i].children || []
-
-        if (!children.length) continue
-
-        for (const j in children) {
-            const props = pickItemProps(children[j])
-            const hasChildren =
-                children[j].children && children[j].children.length
-
-            items.push({
-                key: current + j,
-                props: {
-                    ...props,
-                    href: hasChildren ? null : props.href,
-                    [PARENT_ATTR]: hasChildren ? current + j : null
-                }
-            })
-        }
-
-        acc.push({
-            key: current,
-            back: {
-                key: parent || '',
-                text: _items[i].text
-            },
-            items
-        })
-
-        collectChildLevels(acc, children, current, _items[i].text)
-    }
-
-    return acc
-}
 
 export default {
     name: 'AwMobileMenu',
@@ -166,95 +94,64 @@ export default {
         AwMobileMenuItem
     },
 
-    props: {
-        show: Boolean,
-
-        logo: {
-            type: Object,
+    inject: {
+        layoutProvider: {
             default: null
-        },
-
-        menu: {
-            type: Array,
-            default: () => []
-        },
-
-        user: {
-            type: Object,
-            default: null
-        },
-
-        userMenu: {
-            type: Array,
-            default: () => []
         }
     },
 
     data() {
         return {
-            current: '',
-            direction: 1
+            submenuOpened: false,
+            submenu: []
         }
     },
 
     computed: {
-        _menu() {
-            return this.menu.map(createTopLevel(MENU_PREFIX))
-        },
+        ...mapGetters('awesIo', ['user']),
 
-        _userMenu() {
-            return this.userMenu.map(createTopLevel(USER_MENU_PREFIX))
-        },
-
-        // isDarkTheme: {
-        //     get() {
-        //         return this.$store.getters['awesIo/isDarkTheme']
-        //     },
-
-        //     set(val) {
-        //         this.$store.commit('awesIo/SET_DARK_THEME', val)
-        //     }
-        // },
-
-        levels() {
-            const levels = []
-
-            collectChildLevels(levels, this.menu, null, MENU_PREFIX)
-
-            // collectChildLevels(
-            //     levels,
-            //     this.userMenu,
-            //     null,
-            //     USER_MENU_PREFIX
-            // )
-
-            return levels
-        },
-
-        back() {
-            return pathOr(
-                null,
-                'back',
-                this.levels.find(({ key }) => key === this.current)
+        menu() {
+            const mainMenu = viewOr(
+                [],
+                lensProp('mainMenu'),
+                this.layoutProvider
             )
+            const secondaryMenu = viewOr(
+                [],
+                lensProp('secondaryMenu'),
+                this.layoutProvider
+            )
+            const userMenu = viewOr(
+                [],
+                lensProp('userMenu'),
+                this.layoutProvider
+            )
+
+            return mainMenu
+                .concat(secondaryMenu)
+                .concat(userMenu)
+                .filter(({ is }) => !is)
+        },
+
+        show: {
+            get() {
+                return this.$store.state.awesIo.mobileMenuOpened
+            },
+
+            set(val) {
+                this.$store.commit('awesIo/TOGGLE_MOBILE_MENU', val)
+            }
+        },
+
+        logo() {
+            return pathOr(null, '_config.default.logo', this.$awes)
         }
     },
 
     watch: {
         show: {
             handler(isVisible) {
-                const _path = getPath(this.$route)
-
                 if (isVisible) {
-                    this.current = pathOr(
-                        '',
-                        'key',
-                        this.levels.find(({ items }) =>
-                            items.some(
-                                ({ props }) => getPath(props.href) === _path
-                            )
-                        )
-                    )
                     this.$el &&
                         disableBodyScroll(this.$el, {
                             reserveScrollBarGap: true
@@ -272,30 +169,9 @@ export default {
     },
 
     methods: {
-        handleClick($event) {
-            const forward = $event.target.hasAttribute(PARENT_ATTR)
-                ? $event.target
-                : $event.target.closest('[' + PARENT_ATTR + ']')
-
-            if (forward) {
-                this.direction = 1
-                this.$nextTick(() => {
-                    this.current = forward.getAttribute(PARENT_ATTR)
-                })
-                return
-            }
-
-            const back = $event.target.hasAttribute(BACK_ATTR)
-                ? $event.target
-                : $event.target.closest('[' + BACK_ATTR + ']')
-
-            if (back) {
-                this.direction = -1
-                this.$nextTick(() => {
-                    this.current = back.getAttribute(BACK_ATTR)
-                })
-                return
-            }
+        showSubmenu(index) {
+            this.submenu = pathOr([], [index, 'children'], this.menu)
+            this.submenuOpened = !!this.submenu.length
         }
     }
 }
