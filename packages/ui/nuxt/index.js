@@ -225,13 +225,18 @@ async function AwesIoUi() {
     this.nuxt.hook('components:dirs', (dirs) => {
         dirs.push(
             {
-                path: resolve(__dirname, '..', 'components', 'global'),
+                path: resolve(__dirname, '..', 'components', 'atoms'),
                 pattern: '*.vue',
                 global: true
             },
             {
-                path: resolve(__dirname, '..', 'components', 'autoload'),
-                pattern: '*.vue'
+                path: resolve(__dirname, '..', 'components', 'molecules'),
+                pattern: '*.vue',
+                global: true
+            },
+            {
+                path: resolve(__dirname, '..', 'components', 'organisms'),
+                pattern: '**/Aw*.vue'
             },
             {
                 path: resolve(__dirname, '..', 'components', 'layout'),
