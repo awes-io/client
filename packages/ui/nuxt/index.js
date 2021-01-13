@@ -190,6 +190,33 @@ async function AwesIoUi() {
     this.requireModule('@nuxtjs/svg-sprite')
 
     /**
+     * Add extend webpack aliases
+     */
+    this.nuxt.hook('webpack:config', ($configs) => {
+        $configs[0].resolve.alias = {
+            ...$configs[0].resolve.alias,
+            '@AwConfig': resolve(__dirname, '..', 'components', '_config.js'),
+            '@AwMixins': resolve(__dirname, '..', 'mixins'),
+            '@AwUtils': resolve(__dirname, '..', 'assets', 'js'),
+            '@AwAtoms': resolve(__dirname, '..', 'components', '1_atoms'),
+            '@AwMolecules': resolve(
+                __dirname,
+                '..',
+                'components',
+                '2_molecules'
+            ),
+            '@AwOrganisms': resolve(
+                __dirname,
+                '..',
+                'components',
+                '3_organisms'
+            ),
+            '@AwPages': resolve(__dirname, '..', 'components', '4_pages'),
+            '@AwLayouts': resolve(__dirname, '..', 'components', '5_layouts')
+        }
+    })
+
+    /**
      * Add layouts
      */
     const layoutsPath = join(__dirname, '/layouts')
@@ -225,22 +252,26 @@ async function AwesIoUi() {
     this.nuxt.hook('components:dirs', (dirs) => {
         dirs.push(
             {
-                path: resolve(__dirname, '..', 'components', 'atoms'),
-                pattern: '*.vue',
+                path: resolve(__dirname, '..', 'components', '1_atoms'),
+                pattern: '**/Aw*.vue',
                 global: true
             },
             {
-                path: resolve(__dirname, '..', 'components', 'molecules'),
-                pattern: '*.vue',
+                path: resolve(__dirname, '..', 'components', '2_molecules'),
+                pattern: '**/Aw*.vue',
                 global: true
             },
             {
-                path: resolve(__dirname, '..', 'components', 'organisms'),
+                path: resolve(__dirname, '..', 'components', '3_organisms'),
                 pattern: '**/Aw*.vue'
             },
             {
-                path: resolve(__dirname, '..', 'components', 'layout'),
-                pattern: '*.vue'
+                path: resolve(__dirname, '..', 'components', '4_pages'),
+                pattern: '**/Aw*.vue'
+            },
+            {
+                path: resolve(__dirname, '..', 'components', '5_layouts'),
+                pattern: '**/Aw*.vue'
             }
         )
     })

@@ -1,32 +1,23 @@
 import { navigation } from '../config/navigation'
 
 export default function({ store }) {
-    const menuItems = {
-        examples: {
-            order: 0,
+    const menuItems = [
+        {
             text: 'Examples',
-            href: '/',
             icon: 'university',
             children: [
                 {
-                    text: 'Examples',
-                    href: '/'
+                    text: 'Overview',
+                    href: '/overview'
                 }
             ]
         },
-        dashboard: {
-            order: 1,
-            text: 'Dashboard',
-            icon: 'plus-circle',
-            children: []
-        },
-        table: {
-            order: 1,
+        {
             text: 'Table',
             icon: 'duotone/list-alt',
             children: []
         }
-    }
+    ]
 
     for (var i = 0; i < navigation.length; i++) {
         const item = navigation[i]
@@ -41,17 +32,8 @@ export default function({ store }) {
             }))
         }
 
-        if (href.startsWith('/dashboard')) {
-            menuItems.dashboard.children.push({
-                text: item.title,
-                href,
-                children
-            })
-            continue
-        }
-
         if (href.startsWith('/table')) {
-            menuItems.table.children.push({
+            menuItems[1].children.push({
                 text: item.title,
                 href,
                 children
@@ -59,53 +41,12 @@ export default function({ store }) {
             continue
         }
 
-        menuItems.examples.children.push({
+        menuItems[0].children.push({
             text: item.title,
             href,
             children
         })
     }
 
-    store.commit('awesIo/SET_MENU_ITEMS', menuItems)
-
-    // mock user menu
-    store.commit('awesIo/SET_USER_MENU_ITEM', {
-        key: 'mock',
-        order: 1,
-        item: {
-            component: 'AwLink',
-            props: {
-                text: 'Homepage',
-                href: '/'
-            }
-        }
-    })
-
-    //mock navbar/ Uncomment to enable navbar
-    // store.commit('awesIo/SET_NAVBAR_ITEM', [
-    //     {
-    //         key: 'icon1',
-    //         order: 1,
-    //         item: {
-    //             component: 'AwIcon',
-    //             props: {
-    //                 name: 'speaker',
-    //                 class: 'lg:text-surface',
-    //                 size: 'xl'
-    //             }
-    //         }
-    //     },
-    //     {
-    //         key: 'icon2',
-    //         order: 2,
-    //         item: {
-    //             component: 'AwIcon',
-    //             props: {
-    //                 name: 'location',
-    //                 class: 'lg:text-surface',
-    //                 size: 'xl'
-    //             }
-    //         }
-    //     }
-    // ])
+    store.commit('awesIo/SET_MENU_ITEMS', { main: menuItems })
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { pathOr, isType } from 'rambdax'
-import AwNotyContainer from '../../components/AwNotyContainer.vue'
+import AwNotyContainer from '@AwLayouts/_AwNotyContainer.vue'
 
 export class Notification {
     constructor(defaults) {

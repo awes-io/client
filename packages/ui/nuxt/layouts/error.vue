@@ -17,8 +17,6 @@
 </template>
 
 <script>
-// import layoutMixin from '../layout-mixin'
-
 export default {
     name: 'error',
 
@@ -27,8 +25,6 @@ export default {
             ? 'default'
             : 'LayoutFrameScreen'
     },
-
-    // mixins: [layoutMixin],
 
     props: {
         error: {

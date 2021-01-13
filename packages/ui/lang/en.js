@@ -98,7 +98,8 @@ export const AwPagination = {
 }
 
 export const AwSelect = {
-    notFound: 'Nothing found'
+    notFound: 'Nothing found',
+    newOne: 'Would you like to create new one?'
 }
 
 export const AwTableBuilder = {
