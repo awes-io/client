@@ -36,6 +36,7 @@
         "build:vue-mc": "lerna run build --scope @awes-io/vue-mc",
         "dev:eg:basic-ui": "lerna run dev --scope basic-ui --stream",
         "dev:eg:admin": "lerna run dev --scope example-admin --stream",
+        "dev": "lerna bootstrap && yarn dev:eg:basic-ui",
         "pkg": "yarn build:vue-mc && lerna publish"
     },
     "commitlint": {

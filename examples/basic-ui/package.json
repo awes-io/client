@@ -10,7 +10,7 @@
         "start": "nuxt start"
     },
     "dependencies": {
-        "@awes-io/ui": "^1.111.1",
+        "@awes-io/ui": "^2.x",
         "@awes-io/vue-mc": "^0.3.3",
         "@fortawesome/fontawesome-free": "^5.13.1",
         "@nuxtjs/axios": "^5.0.0",
