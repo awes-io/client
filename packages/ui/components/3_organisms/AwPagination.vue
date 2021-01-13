@@ -20,7 +20,7 @@
                 class="mr-1 lg:hidden"
                 content-class="p-3"
             >
-                <AwIconSystem name="arrow" size="16" />
+                <AwIconSystemMono name="arrow" size="16" />
             </AwButton>
             <AwButton
                 :data-page="prevPage"
@@ -29,7 +29,7 @@
                 size="sm"
                 class="hidden lg:inline-flex mr-1"
             >
-                <AwIconSystem name="arrow" size="16" />
+                <AwIconSystemMono name="arrow" size="16" />
             </AwButton>
 
             <span class="lg:hidden">
@@ -61,7 +61,7 @@
                 size="sm"
                 class="hidden lg:inline-flex ml-1"
             >
-                <AwIconSystem name="arrow" rotate="180" size="16" />
+                <AwIconSystemMono name="arrow" rotate="180" size="16" />
             </AwButton>
             <AwButton
                 :data-page="nextPage"
@@ -70,7 +70,7 @@
                 class="ml-1 lg:hidden"
                 content-class="p-3"
             >
-                <AwIconSystem name="arrow" rotate="180" size="16" />
+                <AwIconSystemMono name="arrow" rotate="180" size="16" />
             </AwButton>
         </div>
 
@@ -84,7 +84,7 @@
                         @click="limitsOpened = !limitsOpened"
                     >
                         {{ limit }}
-                        <AwIconSystem
+                        <AwIconSystemMono
                             name="triangle"
                             class="inline transition-200"
                             :class="{ 'rotate-180': limitsOpened }"

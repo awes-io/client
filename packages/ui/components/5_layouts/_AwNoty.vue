@@ -44,7 +44,7 @@
             class="aw-noty__button"
         >
             <Component
-                :is="$options.components.AwIconSystem"
+                :is="$options.components.AwIconSystemMono"
                 name="close"
                 size="14"
             />
@@ -54,15 +54,15 @@
 
 <script>
 import insane from 'insane'
-import AwIcon from '@AwAtoms/AwIcon.vue'
-import AwIconSystem from '@AwAtoms/AwIconSystem.vue'
+import AwIcon from '@AwAtoms/AwIcon/AwIcon.vue'
+import AwIconSystemMono from '@AwAtoms/AwIcon/AwIconSystemMono.vue'
 
 export default {
     name: 'AwNoty',
 
     components: {
         AwIcon,
-        AwIconSystem
+        AwIconSystemMono
     },
 
     props: {

@@ -25,7 +25,7 @@
                     :class="{ 'aw-nav__toggler--open': openedChildren[i] }"
                     :[$options.TOGGLE_CHILDREN_ATTR]="i"
                 >
-                    <AwIconSystem name="angle" size="16" />
+                    <AwIconSystemMono name="angle" size="16" />
                 </button>
             </span>
 

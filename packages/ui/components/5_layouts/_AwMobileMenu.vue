@@ -9,12 +9,12 @@
                 class="inline-flex items-center"
                 @click="submenuOpened = false"
             >
-                <AwIconSystem name="angle" size="16" class="mr-2" />
+                <AwIconSystemMono name="angle" size="16" class="mr-2" />
                 back
             </button>
             <!-- close button -->
             <button class="aw-mobile-menu__close" @click="show = false">
-                <AwIconSystem name="close" size="16" />
+                <AwIconSystemMono name="close" size="16" />
                 <span class="sr-only">
                     {{ $t('AwMobileMenu.close') }}
                 </span>
@@ -31,7 +31,7 @@
                     :to="$config.profileUrl"
                     class="aw-mobile-menu__user-edit"
                 >
-                    <AwIconSystem name="edit" size="32" />
+                    <AwIconSystemMono name="edit" size="32" />
                     <span class="sr-only">
                         {{ $t('AwMobileMenu.editProfile') }}
                     </span>

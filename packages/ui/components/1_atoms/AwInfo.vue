@@ -8,13 +8,13 @@
             <!-- Customization of help icon -->
             <slot name="icon">
                 <!-- question-circle icon -->
-                <AwIconSystem
-                    v-if="help"
-                    v-tooltip:right.prepend="help"
-                    class="px-1 py-0 opacity-50 hover:text-link hover:opacity-100"
-                    name="info-circle"
-                    size="md"
-                />
+                <span v-if="help" v-tooltip:right="help">
+                    <AwIconSystemMono
+                        class="px-1 py-0 text-mono-400 hover:text-info"
+                        name="info-circle"
+                        size="22"
+                    />
+                </span>
             </slot>
         </div>
         <slot v-if="hasSlot" />

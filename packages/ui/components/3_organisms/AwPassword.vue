@@ -7,8 +7,8 @@
                 @click="type = isShown ? 'password' : 'text'"
             >
                 <Transition name="fade-from-bottom" mode="out-in">
-                    <AwIconSystem v-if="isShown" key="hide" name="eye-no" />
-                    <AwIconSystem v-else key="show" name="eye" />
+                    <AwIconSystemMono v-if="isShown" key="hide" name="eye-no" />
+                    <AwIconSystemMono v-else key="show" name="eye" />
                 </Transition>
             </AwButton>
         </template>

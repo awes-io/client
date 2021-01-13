@@ -9,8 +9,9 @@
             width: 6px;
             height: 6px;
             background-color: transparent;
-        },
+        }
 
+        ,
         &::-webkit-scrollbar-thumb {
             background-color: rgba(var(--c-on-surface), 0.1);
         }
@@ -67,14 +68,16 @@
         padding: theme('spacing.4', 1rem);
         margin-left: 0;
         margin-right: 0;
-        border-left: .25rem solid rgb(var(--c-mono-600));
+        border-left: 0.25rem solid rgb(var(--c-mono-600));
     }
 
     blockquote > *:last-child {
         margin-bottom: 0;
     }
 
-    i, em, cite {
+    i,
+    em,
+    cite {
         font-style: italic;
     }
 
@@ -88,7 +91,7 @@
 
     pre {
         @apply bg-mono-900;
-        font-family: theme('fontFamily.monospace', monospace);
+        font-family: theme('fontFamily.body', monospace);
         font-size: 1em;
         padding: theme('spacing.4', 1rem);
         border-radius: theme('borderRadius.sm', 0);
@@ -99,28 +102,29 @@
     code,
     kbd,
     samp {
-      font-family: theme('fontFamily.monospace', monospace);
-      font-size: 1em;
+        font-family: theme('fontFamily.body', monospace);
+        font-size: 1em;
     }
 
     code {
         @apply text-error bg-error bg-opacity-20;
-        padding: .1em .2em;
+        padding: 0.125em 0.25em;
         border-radius: theme('borderRadius.sm', 0);
         color: theme('colors.error', 'tomato');
     }
 
     kbd {
-        @apply bg-mono-600 border-1;
+        @apply bg-mono-0 bg-opacity-20 align-middle;
         border-radius: 2px;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, .1), 0 1px 0 0 rgb(var(--c-surface)) inset;
         display: inline-block;
         white-space: nowrap;
-        line-height: 1.5;
-        font-size: .75em;
-        margin: 0 .1em;
-        padding: 0 .6em;
-        text-shadow: 0 1px 0 rgb(var(--c-surface));
+        line-height: 0.875em;
+        font-size: 0.625em;
+        padding: 4px;
+        min-width: 16px;
+        text-align: center;
+        margin: 0 1px;
+        text-shadow: 1px 1px 0 rgba(var(--c-mono-0), 0.15);
     }
 
     a {
@@ -134,7 +138,8 @@
         }
 
         &:not([class]):hover {
-            text-decoration: underline;
+            color: rgb(var(--c-mono-0));
+            text-decoration: none;
         }
 
         &:not([class]):focus-visible {
@@ -189,31 +194,30 @@
         overflow: visible;
     }
 
-
     button,
     select {
         text-transform: none;
     }
 
     button,
-    [type="button"],
-    [type="reset"],
-    [type="submit"] {
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
         -webkit-appearance: button;
     }
 
     button::-moz-focus-inner,
-    [type="button"]::-moz-focus-inner,
-    [type="reset"]::-moz-focus-inner,
-    [type="submit"]::-moz-focus-inner {
+    [type='button']::-moz-focus-inner,
+    [type='reset']::-moz-focus-inner,
+    [type='submit']::-moz-focus-inner {
         border-style: none;
         padding: 0;
     }
 
     button:-moz-focusring,
-    [type="button"]:-moz-focusring,
-    [type="reset"]:-moz-focusring,
-    [type="submit"]:-moz-focusring {
+    [type='button']:-moz-focusring,
+    [type='reset']:-moz-focusring,
+    [type='submit']:-moz-focusring {
         outline: 1px dotted ButtonText;
     }
 
@@ -249,23 +253,23 @@
         resize: vertical;
     }
 
-    [type="checkbox"],
-    [type="radio"] {
+    [type='checkbox'],
+    [type='radio'] {
         box-sizing: border-box;
         padding: 0;
     }
 
-    [type="number"]::-webkit-inner-spin-button,
-    [type="number"]::-webkit-outer-spin-button {
+    [type='number']::-webkit-inner-spin-button,
+    [type='number']::-webkit-outer-spin-button {
         height: auto;
     }
 
-    [type="search"] {
+    [type='search'] {
         -webkit-appearance: textfield;
         outline-offset: -2px;
     }
 
-    [type="search"]::-webkit-search-decoration {
+    [type='search']::-webkit-search-decoration {
         -webkit-appearance: none;
     }
 
@@ -273,7 +277,6 @@
         -webkit-appearance: button;
         font: inherit;
     }
-
 
     /**
      * Removes the default spacing and border for appropriate elements.
@@ -314,14 +317,14 @@
     iframe,
     embed,
     object {
-      display: block;
-      vertical-align: middle;
+        display: block;
+        vertical-align: middle;
     }
 
     img,
     video {
-      max-width: 100%;
-      height: auto;
+        max-width: 100%;
+        height: auto;
     }
 }
 

@@ -8,7 +8,7 @@
             @click="prev"
         >
             <template #icon>
-                <AwIconSystem name="arrow" size="16" />
+                <AwIconSystemMono name="arrow" size="16" />
             </template>
         </AwButton>
         <slot :date="date">
@@ -31,7 +31,7 @@
             @click="next"
         >
             <template #icon>
-                <AwIconSystem name="arrow" rotate="180" size="16" />
+                <AwIconSystemMono name="arrow" rotate="180" size="16" />
             </template>
         </AwButton>
     </div>

@@ -1,12 +1,12 @@
 <template>
     <div :class="'rounded shadow-md ' + backgroundCss">
         <div class="px-6 py-4">
-            <div class="text-xl mb-2" v-if="title != ''">
-                <div v-if="link == ''" class="font-bold">
+            <div class="text-md mb-2" v-if="title != ''">
+                <div v-if="link == ''">
                     {{ title }}
                 </div>
                 <div v-else>
-                    <AwLink :href="link" class="font-bold">{{ title }}</AwLink>
+                    <AwLink :href="link">{{ title }}</AwLink>
                 </div>
             </div>
             <p class="text-gray-700 text-base" v-if="text != ''">

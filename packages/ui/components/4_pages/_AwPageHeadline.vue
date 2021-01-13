@@ -9,7 +9,7 @@
                             class="aw-page-headline__back"
                             data-focus-visible
                         >
-                            <AwIconSystem name="angle" />
+                            <AwIconSystemMono name="angle" />
                             {{ breadcrumb.text }}
                         </NLink>
                     </template>

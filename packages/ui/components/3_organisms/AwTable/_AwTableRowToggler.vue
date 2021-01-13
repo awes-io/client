@@ -8,7 +8,7 @@
         v-bind="$options.dataAttrs(props)"
     >
         <Component
-            :is="$options.components.AwIconSystem"
+            :is="$options.components.AwIconSystemMono"
             name="angle"
             size="10"
             rotate="270"
@@ -20,13 +20,13 @@
 
 <script>
 import { TABLE_PRIORITY_ATTR, TABLE_TOGGLER_ATTR } from '@AwUtils/constants'
-import AwIconSystem from '@AwAtoms/AwIconSystem.vue'
+import AwIconSystemMono from '@AwAtoms/AwIcon/AwIconSystemMono.vue'
 
 export default {
     name: 'AwTableRowToggler',
 
     components: {
-        AwIconSystem
+        AwIconSystemMono
     },
 
     props: {

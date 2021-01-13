@@ -62,6 +62,9 @@ module.exports = {
                 '100': 100,
                 '110': 110
             },
+            cursor: {
+                help: 'help'
+            },
             borderWidth: {
                 '1': '1px'
             },

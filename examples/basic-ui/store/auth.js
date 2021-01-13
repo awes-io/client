@@ -1,17 +1,13 @@
 export const state = () => ({
     // mock authorized user
     user: {
-        name: 'User Name',
-        info: 'Standart until 10 November<br />5 users $500 per month',
-        // notification: {
-        //     type: 'error',
-        //     text: 'Header notification text <b>bold text</b>'
-        // },
-        avatar: '/img/icon.png',
+        name: 'John Doe',
+        info: 'Business Owner',
+        avatar: 'https://static.awes.io/noava.svg',
         profile: {
-            first_name: 'Test',
-            last_name: 'User',
-            position: 'description'
+            first_name: 'John',
+            last_name: 'Doe',
+            position: 'Business Owner'
         }
     }
 })

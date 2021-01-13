@@ -9,13 +9,13 @@
         @keydown.enter.prevent="_setSearchImmediate"
     >
         <template #icon>
-            <AwIconSystem
+            <AwIconSystemMono
                 v-if="!$route.query[param]"
                 name="search"
                 class="h-full w-10 p-3"
             />
             <button v-else class="focus:outline-none" @click="_clear">
-                <AwIconSystem name="close" class="h-full w-10 p-3" />
+                <AwIconSystemMono name="close" class="h-full w-10 p-3" />
             </button>
         </template>
     </AwInput>

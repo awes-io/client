@@ -42,7 +42,7 @@
         }
 
         &--sub {
-            @apply text-sm text-mono-600;
+            @apply text-sm text-mono-400;
             position: relative;
             transition: 120ms color;
 

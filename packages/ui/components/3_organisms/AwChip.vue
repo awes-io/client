@@ -13,11 +13,14 @@
                 class="aw-chip__decor"
                 :class="{
                     [`border-${props.color}`]: props.color,
-                    [`text-${props.color}`]: !props.filled && props.color,
+                    [`text-${props.color}`]: props.filled && props.color,
                     'border-text': !props.color && !props.image,
                     'aw-chip__decor_image': props.image,
-                    'animation-rotate-slow': props.rotate,
-                    [`bg-${props.color} `]: props.filled && props.color
+                    'animation-rotate-slow': props.rotate
+                        ? props.rotate
+                        : $options._config[props.icon] &&
+                          $options._config[props.icon].rotate,
+                    [`bg-${props.color} `]: !props.filled && props.color
                 }"
                 :style="{
                     backgroundImage: props.image ? `url(${props.image})` : null
@@ -26,9 +29,24 @@
             >
                 <Components
                     :is="$options.components.AwIcon"
-                    v-if="props.icon"
+                    v-if="
+                        !$options.computed.isSystemIcon(props.icon) &&
+                            props.icon
+                    "
                     :name="props.icon"
                     size="14"
+                    class="aw-chip__decor-icon"
+                    :class="{
+                        'aw-chip__decor-icon_color': props.color
+                    }"
+                />
+                <Components
+                    :is="$options.components.AwIconSystemMono"
+                    v-if="
+                        $options.computed.isSystemIcon(props.icon) && props.icon
+                    "
+                    :name="props.icon"
+                    size="20"
                     class="aw-chip__decor-icon"
                     :class="{
                         'aw-chip__decor-icon_color': props.color
@@ -55,13 +73,22 @@
 </template>
 
 <script>
-import AwIcon from '@AwAtoms/AwIcon.vue'
+import ICONS from '@AwUtils/icons/mono'
+import AwIcon from '@AwAtoms/AwIcon/AwIcon.vue'
+import AwIconSystemMono from '@AwAtoms/AwIcon/AwIconSystemMono.vue'
 
 export default {
     name: 'AwChip',
 
+    _config: {
+        progress: {
+            rotate: true
+        }
+    },
+
     components: {
-        AwIcon
+        AwIcon,
+        AwIconSystemMono
     },
 
     props: {
@@ -106,6 +133,14 @@ export default {
          * Toggles rotate animation
          */
         rotate: Boolean
+    },
+    computed: {
+        isSystemIcon(current) {
+            if (ICONS.hasOwnProperty(current)) {
+                return true
+            }
+            return false
+        }
     }
 }
 </script>

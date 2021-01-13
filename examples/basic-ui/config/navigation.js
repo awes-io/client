@@ -36,7 +36,7 @@ export const navigation = [
     //     url: 'https://www.google.com/'
     // },
     {
-        title: 'Additional',
+        title: 'Typography',
         url: '/additional',
         description: '',
         badge: { icon: 'more-v', color: 'success' }
@@ -59,38 +59,12 @@ export const navigation = [
     {
         title: 'ChipSelect',
         url: '/aw-chip-select',
-        description: 'Component for toggling statuses'
+        description: ''
     },
     { title: 'Code', url: '/aw-code', description: '' },
     { title: 'Context menu', url: '/aw-context-menu', description: '' },
     { title: 'Cropper', url: '/aw-cropper', description: '' },
     { title: 'Date', url: '/aw-date', description: '' },
-    {
-        title: 'Dashboard Card',
-        url: '/dashboard/card',
-        description: ''
-    },
-    {
-        title: 'Dashboard Donut',
-        url: '/dashboard/donut',
-        description: ''
-    },
-    { title: 'Dashboard Line', url: '/dashboard/line', description: '' },
-    {
-        title: 'Dashboard Progress',
-        url: '/dashboard/progress',
-        description: ''
-    },
-    {
-        title: 'Dashboard Section',
-        url: '/dashboard/section',
-        description: ''
-    },
-    {
-        title: 'Dashboard Speed',
-        url: '/dashboard/speed',
-        description: ''
-    },
     { title: 'Display Date', url: '/aw-display-date', description: '' },
     { title: 'Download Link', url: '/aw-download-link', description: '' },
     { title: 'Dropdowns', url: '/aw-dropdown', description: '' },

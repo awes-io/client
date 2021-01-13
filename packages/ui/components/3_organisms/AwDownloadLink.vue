@@ -23,13 +23,16 @@
                         v-if="loader && isSpinner"
                         class="inline-flex justify-start w-5"
                     >
-                        <AwIconSystem name="loader" class="animation-rotate" />
+                        <AwIconSystemMono
+                            name="loader"
+                            class="animation-rotate"
+                        />
                     </span>
 
                     <!-- Slot for Icon -->
                     <template v-if="!loader && isIcon">
                         <slot name="icon">
-                            <AwIconSystem
+                            <AwIconSystemMono
                                 :name="_icon"
                                 class="fill-current inline w-5 text-left"
                             />
@@ -46,13 +49,16 @@
                         v-if="loader && isSpinner"
                         class="inline-flex items-center justify-start w-5"
                     >
-                        <AwIconSystem name="loader" class="animation-rotate" />
+                        <AwIconSystemMono
+                            name="loader"
+                            class="animation-rotate"
+                        />
                     </span>
 
                     <!-- Slot for Icon -->
                     <template v-if="!loader && isIcon">
                         <slot name="icon">
-                            <AwIconSystem
+                            <AwIconSystemMono
                                 :name="_icon"
                                 :class="`text-${iconColor}`"
                                 class="fill-current inline w-5"

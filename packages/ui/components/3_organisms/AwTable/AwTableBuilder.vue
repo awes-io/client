@@ -12,7 +12,7 @@
                         <!-- Icon customization. Leave empty if you would like to remove. -->
                         <slot name="empty-icon">
                             <!-- Empty SVG icon -->
-                            <AwSvgImage
+                            <AwIconSystemColor
                                 name="empty"
                                 class="block m-auto mb-4"
                             />
@@ -45,7 +45,7 @@
                         <!-- Icon customization. Leave empty if you would like to remove. -->
                         <slot name="empty-filter-icon">
                             <!-- Empty SVG icon -->
-                            <AwSvgImage
+                            <AwIconSystemColor
                                 name="empty"
                                 class="block m-auto mb-4"
                             />
@@ -165,7 +165,11 @@
             <slot name="loading">
                 <!-- Default loading block -->
                 <AwChip class="bg-mono-300">
-                    <AwSvgImage name="spinner" slot="left" class="h-5 w-5" />
+                    <AwIconSystemColor
+                        name="spinner"
+                        slot="left"
+                        class="h-5 w-5"
+                    />
                     {{ $t('AwTableBuilder.loading') }}
                 </AwChip>
             </slot>

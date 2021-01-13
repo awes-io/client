@@ -47,36 +47,36 @@ const EVENTS = [
 ]
 
 const statuses = [
-    { id: 1, text: 'New', color: 'info', icon: 'duotone/clipboard-list-check' },
+    { id: 1, text: 'New', color: 'info', icon: 'pie-chart-empty' },
     {
         id: 2,
         text: 'Removed',
         color: 'error',
-        icon: 'duotone/life-ring'
+        icon: 'close-solid'
     },
     {
         id: 3,
         text: 'Active',
         color: 'success',
-        icon: 'duotone/check-circle'
+        icon: 'check-solid'
     },
     {
         id: 5,
         text: 'In Work',
         color: 'link',
-        icon: 'duotone/clock'
+        icon: 'triangle-solid-r'
     },
     {
         id: 6,
         text: 'Error',
         color: 'error',
-        icon: 'duotone/question-square'
+        icon: 'attention'
     },
     {
         id: 7,
         text: 'In progress',
         color: 'link',
-        icon: 'duotone/cog'
+        icon: 'progress'
     }
 ]
 

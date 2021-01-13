@@ -3,11 +3,11 @@ import { navigation } from '../config/navigation'
 export default function({ store }) {
     const menuItems = [
         {
-            text: 'Examples',
+            text: 'Awes.io UI v3',
             icon: 'university',
             children: [
                 {
-                    text: 'Overview',
+                    text: 'Components',
                     href: '/overview'
                 }
             ]

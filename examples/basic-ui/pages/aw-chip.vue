@@ -65,7 +65,7 @@
         <!-- loading indicator example -->
         <h2>Loading</h2>
         <AwChip class="bg-muted-dark">
-            <AwSvgImage name="spinner" slot="left" class="h-5 w-5" />
+            <AwIconSystemColor name="spinner" slot="left" class="h-5 w-5" />
             Loading
         </AwChip>
 

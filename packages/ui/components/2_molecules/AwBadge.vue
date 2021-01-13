@@ -2,7 +2,7 @@
     <span
         :class="[data.staticClass, data.class]"
         :style="[data.staticStyle, data.style]"
-        class="aw-badge inline-flex items-center bg-warning"
+        class="aw-badge inline-flex items-center"
     >
         <!-- Content passed to component -->
         <slot></slot>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import AwIcon from '@AwAtoms/AwIcon.vue'
+import AwIcon from '@AwAtoms/AwIcon/AwIcon.vue'
 
 export default {
     name: 'AwBadge',

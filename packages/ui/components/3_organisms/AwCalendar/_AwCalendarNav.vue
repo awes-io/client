@@ -6,7 +6,7 @@
             :disabled="disabledPrev"
             @click.stop="$emit('click:prev')"
         >
-            <AwIconSystem name="angle" />
+            <AwIconSystemMono name="angle" />
         </AwButton>
         <div
             class="aw-calendar__nav-title"
@@ -29,7 +29,7 @@
             :disabled="disabledNext"
             @click.stop="$emit('click:next')"
         >
-            <AwIconSystem name="angle" rotate="180" />
+            <AwIconSystemMono name="angle" rotate="180" />
         </AwButton>
     </div>
 </template>

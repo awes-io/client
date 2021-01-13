@@ -12,7 +12,11 @@
     >
         <span :class="elClasses.overlay"></span>
 
-        <AwSvgImage v-if="loading" :class="elClasses.loader" name="loader" />
+        <AwIconSystemColor
+            v-if="loading"
+            :class="elClasses.loader"
+            name="loader"
+        />
 
         <span
             :class="[

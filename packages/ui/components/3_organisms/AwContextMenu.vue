@@ -90,7 +90,7 @@ export default {
                     click: this.toggle
                 }
             },
-            [h('AwIconSystem', { props: { name: 'more' } })]
+            [h('AwIconSystemMono', { props: { name: 'more' } })]
         )
 
         return h(

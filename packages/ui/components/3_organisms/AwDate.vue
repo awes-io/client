@@ -16,7 +16,7 @@
                     @click="$emit('input', null)"
                     theme="icon"
                 >
-                    <AwIconSystem name="close" />
+                    <AwIconSystemMono name="close" />
                 </AwButton>
             </template>
 

@@ -12,7 +12,11 @@
                         :to="breadcrumb.href"
                         class="inline-flex items-center p-3 lg:p-0"
                     >
-                        <AwIconSystem name="chevron-l" size="sm" class="mr-1" />
+                        <AwIconSystemMono
+                            name="chevron-l"
+                            size="sm"
+                            class="mr-1"
+                        />
                         <span class="sr-only sm:not-sr-only" tabindex="-1">
                             {{ breadcrumb.title }}
                         </span>

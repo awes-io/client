@@ -67,7 +67,7 @@
                     @click="_onClearClick"
                     theme="icon"
                 >
-                    <AwIconSystem name="close" />
+                    <AwIconSystemMono name="close" />
                 </AwButton>
                 <AwButton
                     :size="$attrs.size || 'md'"
@@ -76,13 +76,13 @@
                     class="h-full"
                     @click="searchable ? toggleDropdown() : null"
                 >
-                    <AwSvgImage
+                    <AwIconSystemColor
                         v-if="isLoading"
                         key="loader"
                         name="spinner"
                         class="h-5 w-5"
                     />
-                    <AwIconSystem
+                    <AwIconSystemMono
                         v-if="!isLoading && optionsList.length"
                         key="arrow"
                         name="triangle"

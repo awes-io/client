@@ -1,5 +1,5 @@
 <template>
-    <AwPage title="Examples">
+    <AwPage title="Overview">
         <AwGrid :col="{ md: 4 }">
             <AwCard
                 v-for="example in examples"
@@ -15,7 +15,7 @@ import { navigation } from '../config/navigation'
 import { urlify } from '~/assets/js/url'
 
 export default {
-    name: 'Examples',
+    name: 'Overview',
 
     computed: {
         examples() {
@@ -27,6 +27,9 @@ export default {
                 })
             )
         }
+    },
+    asyncData({ env }) {
+        console.log(process.env)
     }
 }
 </script>

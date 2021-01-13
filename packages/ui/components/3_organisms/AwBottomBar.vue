@@ -1,7 +1,7 @@
 <template>
     <div class="aw-bottom-bar">
         <slot name="bottom-bar-items">
-            <AwIconMenuItem
+            <AwMenuItemIcon
                 v-for="(item, i) in items"
                 :key="i"
                 :active="item === activeMenuItem"
@@ -10,13 +10,13 @@
         </slot>
 
         <slot name="bottom-bar-toggler">
-            <AwIconMenuItem
+            <AwMenuItemIcon
                 :text="$t('AwBottomBar.menu')"
                 icon="menu"
                 @click="$store.commit('awesIo/TOGGLE_MOBILE_MENU')"
             >
                 <template #default="{ text }">
-                    <AwIconSystem
+                    <AwIconSystemMono
                         name="more"
                         class="aw-icon-menu-item__icon text-brand"
                         size="24"
@@ -25,20 +25,20 @@
                         {{ text }}
                     </span>
                 </template>
-            </AwIconMenuItem>
+            </AwMenuItemIcon>
         </slot>
     </div>
 </template>
 
 <script>
 import { viewOr, lensProp } from 'rambdax'
-import AwIconMenuItem from '@AwMolecules/AwIconMenuItem.vue'
+import AwMenuItemIcon from '@AwLayouts/_AwMenuItemIcon.vue'
 
 export default {
     name: 'AwBottomBar',
 
     components: {
-        AwIconMenuItem
+        AwMenuItemIcon
     },
 
     inject: {

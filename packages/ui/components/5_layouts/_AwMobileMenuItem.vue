@@ -7,11 +7,11 @@
     >
         <slot v-bind="$props">
             <span class="aw-mobile-menu-item__text">{{ text }}</span>
-            <AwIconSystem
+            <AwIconSystemMono
                 v-if="arrow"
                 name="angle"
                 rotate="180"
-                size="16"
+                size="32"
                 class="aw-mobile-menu-item__arrow"
             />
         </slot>

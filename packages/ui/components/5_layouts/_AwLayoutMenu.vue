@@ -16,7 +16,7 @@
                 <template v-for="(item, i) in mainMenu">
                     <!-- eslint-disable-next-line vue/require-component-is -->
                     <Component v-if="item.is" :key="'cmp-' + i" v-bind="item" />
-                    <AwIconMenuItem
+                    <AwMenuItemIcon
                         v-else
                         :key="i"
                         v-bind="item"
@@ -32,7 +32,7 @@
                 <template v-for="(item, i) in secondaryMenu">
                     <!-- eslint-disable-next-line vue/require-component-is -->
                     <Component v-if="item.is" :key="'cmp-' + i" v-bind="item" />
-                    <AwIconMenuItem
+                    <AwMenuItemIcon
                         v-else
                         :key="i"
                         v-bind="item"
@@ -91,7 +91,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { pathOr, viewOr, lensProp } from 'rambdax'
-import AwIconMenuItem from '@AwMolecules/AwIconMenuItem.vue'
+import AwMenuItemIcon from '@AwLayouts/_AwMenuItemIcon.vue'
 import AwMobileMenuItem from '@AwLayouts/_AwMobileMenuItem.vue'
 import AwNav from '@AwLayouts/_AwNav.vue'
 
@@ -99,7 +99,7 @@ export default {
     name: 'AwLayoutMenu',
 
     components: {
-        AwIconMenuItem,
+        AwMenuItemIcon,
         AwMobileMenuItem,
         AwNav
     },

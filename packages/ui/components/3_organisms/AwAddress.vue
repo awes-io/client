@@ -14,7 +14,7 @@
                 :key="place.place_id"
                 @click="select(place)"
             >
-                <AwIconSystem name="location" class="flex-shrink-0 mr-1" />
+                <AwIconSystemMono name="location" class="flex-shrink-0 mr-1" />
                 {{ place.description }}
             </AwDropdownButton>
 

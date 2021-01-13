@@ -20,7 +20,7 @@
                     class="px-0"
                     :class="{ 'opacity-50 cursor-not-allowed': loading }"
                 >
-                    <AwSvgImage
+                    <AwIconSystemColor
                         v-if="loading"
                         name="spinner"
                         slot="left"
@@ -28,7 +28,7 @@
                     />
 
                     <template #right>
-                        <AwIconSystem
+                        <AwIconSystemMono
                             v-if="!readonly"
                             name="triangle"
                             class="transition-200 flex-shrink-0 text-mono-400"

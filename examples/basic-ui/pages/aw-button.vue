@@ -191,7 +191,7 @@
             <h5>Close button</h5>
 
             <AwButton theme="ghost" color="default" content-class="p-2">
-                <AwIconSystem name="close" />
+                <AwIconSystemMono name="close" />
             </AwButton>
 
             <AwCodeSnippet v-text="codeCloseButton" class="my-3" />
@@ -279,7 +279,7 @@ export default {
         codeCloseButton() {
             const arr = [
                 '<AwButton theme="ghost" color="default" content-class="p-2">',
-                '    <AwIconSystem name="close" />',
+                '    <AwIconSystemMono name="close" />',
                 '</AwButton>'
             ]
             return arr.join('\n')

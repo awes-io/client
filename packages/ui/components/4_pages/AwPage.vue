@@ -69,7 +69,7 @@
                         content-class="rounded-b-none normal-case"
                         @click="toggleFullscreen(false)"
                     >
-                        <AwIconSystem name="close" class="mr-4" />
+                        <AwIconSystemMono name="close" class="mr-4" />
                         {{ $t('AwPage.exitFullscreen') }}
                     </AwButton>
                 </div>
