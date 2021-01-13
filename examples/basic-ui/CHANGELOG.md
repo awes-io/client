@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.82.0](https://git.awescode.com/awes-io/client/compare/basic-ui@1.81.3...basic-ui@1.82.0) (2021-01-13)
+
+
+### Bug Fixes
+
+* lerna init ([0abac15](https://git.awescode.com/awes-io/client/commits/0abac155e3f4c59481fe8692c123fa8e87141c41))
+* refactoring ([6ff9f08](https://git.awescode.com/awes-io/client/commits/6ff9f08bb7e45387b6736a9b253cdb6eabb95236))
+
+
+### Features
+
+* refactoring: icons, basic-ui ([bff25e0](https://git.awescode.com/awes-io/client/commits/bff25e01e7dfc62985f3306fceeee9faf7246d04))
+
+
+
+
+
 ## [1.81.3](https://git.awescode.com/awes-io/client/compare/basic-ui@1.81.2...basic-ui@1.81.3) (2021-01-08)
 
 **Note:** Version bump only for package basic-ui

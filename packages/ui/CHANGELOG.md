@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/awes-io/client/compare/@awes-io/ui@2.1.0...@awes-io/ui@2.2.0) (2021-01-13)
+
+
+### Bug Fixes
+
+* refactoring ([6ff9f08](https://github.com/awes-io/client/commit/6ff9f08bb7e45387b6736a9b253cdb6eabb95236))
+
+
+### Features
+
+* refactoring: icons, basic-ui ([bff25e0](https://github.com/awes-io/client/commit/bff25e01e7dfc62985f3306fceeee9faf7246d04))
+
+
+
+
+
 # [2.1.0](https://github.com/awes-io/client/compare/@awes-io/ui@2.0.6...@awes-io/ui@2.1.0) (2021-01-12)
 
 
