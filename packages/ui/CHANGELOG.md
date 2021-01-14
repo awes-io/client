@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/awes-io/client/compare/@awes-io/ui@2.2.0...@awes-io/ui@2.3.0) (2021-01-14)
+
+
+### Features
+
+* layout update ([d70d011](https://github.com/awes-io/client/commit/d70d011ff2f6d052bf2ee57ad1c4bae1aa58f605))
+
+
+
+
+
 # [2.2.0](https://github.com/awes-io/client/compare/@awes-io/ui@2.1.0...@awes-io/ui@2.2.0) (2021-01-13)
 
 
