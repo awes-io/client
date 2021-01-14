@@ -55,12 +55,22 @@ export default {
             surface: '#383838',
             brand: '#2a2a2a',
             link: '#2388f5',
-            warning: '#ffd25e'
+            warning: '#ffd25e',
+
+            'mono-900': '#2a2a2a',
+            'mono-800': '#252525',
+            'mono-700': '#333',
+            'mono-50': '#949792'
         },
 
         onColors: {
             surface: '#fff',
-            brand: '#fff'
+            brand: '#fff',
+
+            'mono-900': '#fff',
+            'mono-800': '#fff',
+            'mono-700': '#fff',
+            'mono-50': '#fff'
         }
     }
 }

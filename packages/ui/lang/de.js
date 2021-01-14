@@ -7,6 +7,11 @@ export const AwModal = {
     close: 'Fenster schließen (ESC)'
 }
 
+export const AwMobileMenu = {
+    back: 'Zurück',
+    version: 'Version v{version}'
+}
+
 export const AwCalendar = {
     weekdaysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     months: [
@@ -77,6 +82,17 @@ export const AwTableBuilder = {
     emptyFilter: 'Es wurden keine Ergebnisse für Ihre Anfrage gefunden'
 }
 
+export const AwUploader = {
+    drop: 'Dateien hier ziehen und ablegen',
+    format: 'Unterstützt nur {formatString} Dateiformate',
+    size: 'Maximale Dateigröße {sizeString}',
+    remove: 'Datei entfernen',
+    loading: 'Hochladen',
+    loaded: 'Fertig',
+    errorExtension: 'Datei {fileName} hat falsche Erweiterung',
+    errorSize: 'Datei {fileName} ist zu groß'
+}
+
 export const AwSearch = {
     text: 'Suche'
 }
@@ -84,7 +100,8 @@ export const AwSearch = {
 export const AwUserMenu = {
     openMenu: 'Menü öffnen',
     darkTheme: 'Dunkles Thema',
-    kioskMode: 'Kiosk-Modus'
+    kioskMode: 'Kiosk-Modus',
+    logout: 'Abmelden'
 }
 
 export const AwBirthdayPicker = {
@@ -116,6 +133,7 @@ export default {
     AwPagination,
     AwSelect,
     AwTableBuilder,
+    AwUploader,
     AwSearch,
     AwUserMenu,
     AwBirthdayPicker,

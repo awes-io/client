@@ -2,18 +2,21 @@
     <Component
         :is="_linkComponent"
         :class="{ 'aw-icon-menu-item--clip': !tooltip }"
-        class="aw-icon-menu-item"
+        class="aw-icon-menu-item focus-outline"
         v-bind="_linkAttrs"
         v-on="$listeners"
     >
         <slot v-bind="$props">
-            <span class="aw-icon-menu-item__icon-block">
+            <span
+                :class="{ 'aw-icon-menu-item__icon-block--clip': !tooltip }"
+                class="aw-icon-menu-item__icon-block"
+                tabindex="-1"
+            >
                 <AwIcon
                     :name="icon"
                     :size="tooltip ? 20 : 24"
                     :class="{
-                        'aw-icon-menu-item__icon--highlight': active,
-                        'text-brand': !tooltip
+                        'aw-icon-menu-item__icon--highlight': active
                     }"
                     class="aw-icon-menu-item__icon"
                 />

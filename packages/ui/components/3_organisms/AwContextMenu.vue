@@ -47,14 +47,7 @@ export default {
         const renderList = h(
             'ul',
             {
-                class: {
-                    'list-none': true,
-                    'mb-0': true,
-                    'aw-context-menu__list': true
-                },
-                style: {
-                    marginBottom: 0
-                }
+                staticClass: 'aw-context-menu__list'
             },
             slotContextList
         )
@@ -65,9 +58,7 @@ export default {
                 show: this.isOpened,
                 options: this.options
             },
-            class: {
-                'aw-context-menu__toggler': true
-            },
+            staticClass: 'aw-context-menu__toggler',
             scopedSlots: {
                 default: () => renderList
             },

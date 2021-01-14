@@ -15,7 +15,7 @@
     >
         <div
             v-if="prefix || $scopedSlots.prefix"
-            class="bg-mono-300er flex items-center rounded-l whitespace-no-wrap"
+            class="bg-mono-800 flex items-center rounded-l whitespace-no-wrap"
             :class="{ 'px-4': prefix }"
         >
             <slot name="prefix">{{ prefix }}</slot>
@@ -56,7 +56,7 @@
 
         <div
             v-if="postfix || $scopedSlots.postfix"
-            class="bg-mono-300er flex items-center rounded-r whitespace-no-wrap"
+            class="bg-mono-800 flex items-center rounded-r whitespace-no-wrap"
             :class="{ 'px-4': postfix }"
         >
             <slot name="postfix">{{ postfix }}</slot>

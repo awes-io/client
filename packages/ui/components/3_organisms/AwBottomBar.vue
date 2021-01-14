@@ -5,7 +5,7 @@
                 v-for="(item, i) in items"
                 :key="i"
                 :active="item === activeMenuItem"
-                v-bind="item"
+                v-bind="_pickItemProps(item)"
             />
         </slot>
 
@@ -16,11 +16,16 @@
                 @click="$store.commit('awesIo/TOGGLE_MOBILE_MENU')"
             >
                 <template #default="{ text }">
-                    <AwIconSystemMono
-                        name="more"
-                        class="aw-icon-menu-item__icon text-brand"
-                        size="24"
-                    />
+                    <span
+                        class="aw-icon-menu-item__icon-block aw-icon-menu-item__icon-block--clip"
+                        tabindex="-1"
+                    >
+                        <AwIconSystemMono
+                            name="more"
+                            class="aw-icon-menu-item__icon"
+                            size="24"
+                        />
+                    </span>
                     <span class="aw-icon-menu-item__text">
                         {{ text }}
                     </span>
@@ -31,7 +36,7 @@
 </template>
 
 <script>
-import { viewOr, lensProp } from 'rambdax'
+import { viewOr, lensProp, omit } from 'rambdax'
 import AwMenuItemIcon from '@AwLayouts/_AwMenuItemIcon.vue'
 
 export default {
@@ -57,26 +62,12 @@ export default {
         activeMenuItem() {
             return viewOr(null, lensProp('activeMenuItem'), this.layoutProvider)
         }
+    },
+
+    methods: {
+        _pickItemProps(props) {
+            return omit('children', props)
+        }
     }
 }
 </script>
-
-<style lang="postcss">
-.aw-bottom-bar {
-    display: flex;
-
-    color: black;
-    background: white;
-    box-shadow: 0 0 15px lightgray;
-
-    position: sticky;
-    bottom: 0;
-    min-height: 4rem;
-
-    & > * {
-        flex-basis: 100%;
-        flex-grow: 1;
-        flex-shrink: 1;
-    }
-}
-</style>

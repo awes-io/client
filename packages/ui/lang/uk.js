@@ -7,6 +7,11 @@ export const AwModal = {
     close: 'Закрити вікно (ESC)'
 }
 
+export const AwMobileMenu = {
+    back: 'Назад',
+    version: 'версія v{version}'
+}
+
 export const AwCalendar = {
     weekdaysShort: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
     months: [
@@ -68,6 +73,17 @@ export const AwPagination = {
     limit: 'по {limit} на сторінці'
 }
 
+export const AwUploader = {
+    drop: 'Перетягніть файли сюди',
+    format: 'Підтримує лише формати файлів {formatString}',
+    size: 'Максимальний розмір файлу {sizeString}',
+    remove: 'Видалити файл',
+    loading: 'Завантаження',
+    loaded: 'Готово',
+    errorExtension: 'Файл {fileName} має неправильне розширення',
+    errorSize: 'Файл {fileName} завеликий'
+}
+
 export const AwSelect = {
     notFound: 'Нічого не знайдено'
 }
@@ -85,7 +101,8 @@ export const AwSearch = {
 export const AwUserMenu = {
     openMenu: 'Відкрити меню',
     darkTheme: 'Темна тема',
-    kioskMode: 'Режим кіоску'
+    kioskMode: 'Режим кіоску',
+    logout: 'Вийти'
 }
 
 export const AwBirthdayPicker = {
@@ -117,6 +134,7 @@ export default {
     AwPagination,
     AwSelect,
     AwTableBuilder,
+    AwUploader,
     AwSearch,
     AwUserMenu,
     AwBirthdayPicker,

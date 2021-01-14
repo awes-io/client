@@ -2,13 +2,8 @@
     @apply bg-surface;
     box-shadow: 0 7px 15px -3px rgba(0,0,0,.1), 0 4px 6px 0px rgba(0,0,0,0.1);
     min-width: 160px;
-    max-height: 75vh;
     overflow: auto;
     scrollbar-width: thin;
-
-    @media (min-width: theme('screens.md')) {
-        max-height: 50vh;
-    }
 }
 
 /**

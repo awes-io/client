@@ -31,6 +31,8 @@
 
     /* Default color */
     &_default {
+        color: inherit;
+
         &:hover {
             @apply bg-mono-800;
         }
@@ -41,10 +43,10 @@
 /* Color modifiers */
 @each $color in (success, warning, error) {
     .aw-dropdown-button_$(color) {
-        color: rgb(var(--c-$(color)));
+        color: var(--c-$(color));
 
         &:hover {
-            background-color: rgba(var(--c-$(color)), 0.1);
+            background-color: rgba(var(--c-$(color)-rgb), 0.1);
         }
     }
 }

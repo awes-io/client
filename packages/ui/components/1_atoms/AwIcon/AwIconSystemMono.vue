@@ -34,6 +34,7 @@ export default {
 
     render(h, { data, props }) {
         const d = pathOr('', props.name, ICONS)
+        const transform = props.rotate ? `rotate(${props.rotate}deg)` : null
 
         return d
             ? h(
@@ -43,13 +44,10 @@ export default {
                           ...BASE_ATTRS,
                           width: props.size,
                           height: props.size,
-                          transform: props.rotate
-                              ? `rotate(${props.rotate})`
-                              : null,
                           ...data.attrs
                       },
                       class: ['aw-icon', data.staticClass, data.class],
-                      style: [data.staticStyle, data.style]
+                      style: [data.staticStyle, data.style, { transform }]
                   },
                   [h('path', { attrs: { d } })]
               )

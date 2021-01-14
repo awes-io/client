@@ -33,8 +33,8 @@
     }
 
     &__no-img-icon {
-        background-color: rgb(var(--c-text-on-overlay));
-        fill: rgb(var(--c-mono-400));
+        background-color: var(--c-text-on-overlay);
+        fill: var(--c-mono-400);
     }
 
     &__loader {
@@ -49,7 +49,7 @@
             --ui-loading-width,
             calc(var(--ui-avatar-size, 2.25rem) / 16)
         );
-        border-right-color: rgb(var(--c-transparent));
+        border-right-color: var(--c-transparent);
         backdrop-filter: blur(1px);
 
         animation: 1s aw-rotate linear infinite;

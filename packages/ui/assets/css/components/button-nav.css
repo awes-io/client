@@ -61,7 +61,7 @@
     }
 
     &__toggler:hover > span {
-        @apply text-mono-50;
+        @apply text-on-surface;
     }
 
     &__toggler[disabled],

@@ -9,24 +9,23 @@
 
         box-shadow: theme('boxShadow.default');
 
-        position: sticky;
+        position: fixed;
         top: 0;
-
-        transition: 240ms max-width;
+        left: 0;
+        bottom: 0;
 
         &.aw-layout-menu--no-submenu {
             max-width: 60px;
-            transition-delay: 120ms;
         }
 
         & ~ * {
             max-width: calc(100% - 290px);
-            transition: 240ms max-width;
+            margin-left: 290px;
         }
 
         &.aw-layout-menu--no-submenu ~ * {
             max-width: calc(100% - 60px);
-            transition-delay: 120ms;
+            margin-left: 60px;
         }
     }
 }

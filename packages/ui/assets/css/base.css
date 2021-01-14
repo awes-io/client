@@ -5,7 +5,7 @@
       box-sizing: border-box;
       border-width: 0;
       border-style: solid;
-      border-color: #e2e8f0;
+      border-color: theme('borderColor.default', rgba(0, 0, 0, 0.1));
     }
 
     html {

@@ -96,7 +96,7 @@
         <!-- options -->
         <AwDropdown
             ref="dropdown"
-            class="w-full"
+            class="aw-select__aw-dropdown"
             :show.sync="isOpened"
             :close-on-action="!multiple"
             :close-outside="false"

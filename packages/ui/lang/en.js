@@ -12,6 +12,7 @@ export const AwModal = {
 }
 
 export const AwMobileMenu = {
+    back: 'Back',
     version: 'version v{version}'
 }
 
@@ -131,7 +132,8 @@ export const AwSearch = {
 export const AwUserMenu = {
     openMenu: 'Open menu',
     darkTheme: 'Dark theme',
-    kioskMode: 'Kiosk mode'
+    kioskMode: 'Kiosk mode',
+    logout: 'Logout'
 }
 
 export const AwBirthdayPicker = {

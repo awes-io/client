@@ -3,8 +3,8 @@
     font-size: theme('fontSize.xs', 0.75rem);
     line-height: theme('leading.5', 1.25rem);
     border-radius: theme('borderRadius.default');
-    background-color: rgba(var(--c-on-surface), 0.8);
-    color: rgb(var(--c-surface));
+    background-color: rgba(var(--c-on-surface-rgb), 0.8);
+    color: var(--c-surface);
     display: none;
     max-width: 235px;
 

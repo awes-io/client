@@ -1,0 +1,29 @@
+.aw-mobile-menu-item {
+    @apply bg-surface;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+        oultine: none;
+        text-decoration: none;
+    }
+
+    & + & {
+        border-top: 1px solid var(--c-mono-800);
+    }
+
+    &__icon {
+        @apply mr-3;
+    }
+
+    &__text {
+        @apply py-4 px-6 truncate;
+        flex-grow: 1;
+    }
+
+    &__arrow {
+        @apply my-3 mr-3;
+    }
+}

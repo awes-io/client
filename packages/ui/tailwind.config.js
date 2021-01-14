@@ -8,7 +8,7 @@ module.exports = {
         },
         borderColor: (theme) => ({
             ...theme('colors'),
-            default: 'rgba(var(--c-mono-50), 0.1)'
+            default: 'rgba(var(--c-on-surface-rgb), 0.1)'
         }),
         focusOutline: (theme) => `2px dashed ${theme('colors.info')}`,
         borderRadius: {
@@ -38,20 +38,6 @@ module.exports = {
             '80': '0.8',
             '90': '0.9',
             '100': '1'
-        },
-        calendar: {
-            default: {
-                borderTop: '2px solid var(--c-success)'
-            },
-            nav: {
-                backgroundColor: 'var(--c-success)',
-                color: 'var(--c-on-success)',
-                marginTop: '-2px'
-            },
-            'day_active > span': {
-                backgroundColor: 'var(--c-success)',
-                color: 'var(--c-on-success)'
-            }
         },
         extend: {
             width: {
@@ -98,7 +84,7 @@ module.exports = {
                 '70vh': '70vh'
             },
             boxShadow: {
-                default: '0px 0px 5px rgba(0, 0, 0, 0.1)',
+                default: '0px 0px 4px rgba(0, 0, 0, 0.2)',
                 outline: '0 0 0 2px var(--c-info)',
                 'lg-top':
                     '0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05)',

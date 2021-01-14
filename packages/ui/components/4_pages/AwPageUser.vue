@@ -2,7 +2,7 @@
     <AwPage v-bind="pageProps">
         <template #heading="{ titleTag, elClasses }">
             <div
-                class="aw-user-heading"
+                class="aw-user-heading container-fluid"
                 v-on="managable ? { click: handleAvatarClick } : null"
             >
                 <!-- breadcrumb -->
@@ -12,11 +12,7 @@
                         :to="breadcrumb.href"
                         class="inline-flex items-center p-3 lg:p-0"
                     >
-                        <AwIconSystemMono
-                            name="chevron-l"
-                            size="sm"
-                            class="mr-1"
-                        />
+                        <AwIconSystemMono name="angle" size="12" class="mr-1" />
                         <span class="sr-only sm:not-sr-only" tabindex="-1">
                             {{ breadcrumb.title }}
                         </span>

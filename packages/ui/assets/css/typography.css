@@ -3,7 +3,7 @@
         @apply bg-surface font-body;
         line-height: 1.5;
 
-        scrollbar-color: rgba(var(--c-on-surface), 0.1) transparent;
+        scrollbar-color: rgba(var(--c-on-surface-rgb), 0.1) transparent;
 
         &::-webkit-scrollbar {
             width: 6px;
@@ -13,7 +13,7 @@
 
         ,
         &::-webkit-scrollbar-thumb {
-            background-color: rgba(var(--c-on-surface), 0.1);
+            background-color: rgba(var(--c-on-surface-rgb), 0.1);
         }
     }
 
@@ -68,7 +68,7 @@
         padding: theme('spacing.4', 1rem);
         margin-left: 0;
         margin-right: 0;
-        border-left: 0.25rem solid rgb(var(--c-mono-600));
+        border-left: 0.25rem solid var(--c-mono-600);
     }
 
     blockquote > *:last-child {
@@ -124,21 +124,21 @@
         min-width: 16px;
         text-align: center;
         margin: 0 1px;
-        text-shadow: 1px 1px 0 rgba(var(--c-mono-0), 0.15);
+        text-shadow: 1px 1px 0 rgba(var(--c-mono-0-rgb), 0.15);
     }
 
     a {
         background-color: transparent;
         color: inherit;
         text-decoration: inherit;
-        color: rgb(var(--c-link));
+        color: var(--c-link);
 
         &:focus {
             outline: none;
         }
 
         &:not([class]):hover {
-            color: rgb(var(--c-mono-0));
+            color: var(--c-mono-0);
             text-decoration: none;
         }
 

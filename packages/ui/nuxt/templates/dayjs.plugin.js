@@ -2,8 +2,7 @@ import Vue from 'vue'
 import dayjs from 'dayjs'
 
 /* eslint-disable */
-<% if (Array.isArray(options.dayjs.plugins)) { %>
-<% options.dayjs.plugins.forEach((plugin) => {
+<% ['dayjs/plugin/relativeTime', 'dayjs/plugin/customParseFormat', 'dayjs/plugin/localizedFormat'].concat(Array.isArray(options.dayjs.plugins) ? options.dayjs.plugins : []).forEach((plugin) => {
     const src = plugin.src || plugin
     const name = plugin.name || src.replace('dayjs/plugin/', '')
     const options = plugin.options || {}
@@ -11,7 +10,6 @@ import dayjs from 'dayjs'
 import <%=name%> from '<%=src%>'
 dayjs.extend(<%=name%>, <%=JSON.stringify(options)%>)
 <% }) %>
-<% } %>
 
 <% if (options.lang && Array.isArray(options.lang.locales)) { %>
     <% options.lang.locales.forEach((locale) => {

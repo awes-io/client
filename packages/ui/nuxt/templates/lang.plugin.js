@@ -5,6 +5,27 @@ import { omit, isType, prop, mergeDeepRight } from 'rambdax'
 
 Vue.use(VueI18n)
 
+const cyrillicPluralization = (choice, choicesLength) => {
+    if (choice === 0) {
+        return 0
+    }
+
+    const teen = choice > 10 && choice < 20
+    const endsWithOne = choice % 10 === 1
+
+    if (choicesLength < 4) {
+        return !teen && endsWithOne ? 1 : 2
+    }
+    if (!teen && endsWithOne) {
+        return 1
+    }
+    if (!teen && choice % 10 >= 2 && choice % 10 <= 4) {
+        return 2
+    }
+
+    return choicesLength < 4 ? 2 : 3
+}
+
 const langOptions = JSON.parse('<%= JSON.stringify(options.lang) %>')
 
 const messages = JSON.parse(`<%= JSON.stringify(options.langStatic).replace(/\\"/g, "'") %>`)
@@ -14,9 +35,17 @@ const fetchTranslation = <%= options.lang.fetchTranslation %>
 
 const langCookie = langOptions.langCookie
 
-const i18nOptions = omit(
-    ['locales', 'fetchTranslation', 'langCookie', 'static'],
-    langOptions
+const i18nOptions = mergeDeepRight(
+    {
+        pluralizationRules: {
+            ru: cyrillicPluralization,
+            uk: cyrillicPluralization
+        }
+    },
+    omit(
+        ['locales', 'fetchTranslation', 'langCookie', 'static'],
+        langOptions
+    )
 )
 
 i18nOptions.messages = mergeDeepRight(messages, i18nOptions.messages || {})

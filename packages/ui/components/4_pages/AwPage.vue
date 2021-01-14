@@ -27,7 +27,7 @@
             <!-- subnav -->
             <div>
                 <slot name="subnav" :subnav="subnav">
-                    <div v-if="subnav.length" class="container">
+                    <div v-if="subnav.length" class="container-fluid">
                         <div class="-mb-px -mx-4">
                             <AwTabNav
                                 :items="subnav"

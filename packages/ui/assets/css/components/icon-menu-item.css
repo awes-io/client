@@ -3,20 +3,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: theme('spacing.3');
     color: inherit;
 
     position: relative;
 
     &--clip {
         overflow: hidden;
-        padding: theme('spacing.2') theme('spacing.1') theme('spacing.1');
     }
 
     &__icon-block {
+        padding: theme('spacing.3');
         display: block;
+        width: 100%;
+        text-align: center;
         position: relative;
         line-height: 1;
+
+        &--clip {
+            overflow: hidden;
+            padding: theme('spacing.2') theme('spacing.1') theme('spacing.1');
+        }
     }
 
     &__icon-badge {
@@ -42,13 +48,13 @@
     }
 
     &__icon {
-        opacity: 0.5;
-        transition: 60ms opacity;
+        color: var(--icon-color, currentColor);
+        transition: 60ms color;
     }
 
     &:hover &__icon,
     &__icon--highlight {
-        opacity: 1;
+        color: var(--icon-color-active, currentColor);
     }
 
     &__text {

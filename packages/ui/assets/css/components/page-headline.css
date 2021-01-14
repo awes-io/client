@@ -24,7 +24,7 @@
     &__back {
         display: inline-flex;
         align-items: center;
-        @apply text-mono-600;
+        @apply text-mono-400;
         transition: 120ms color;
 
         &:hover,
@@ -35,11 +35,6 @@
 
         &:focus:not(:focus-visible) {
             outline: none;
-        }
-
-        &:after {
-            content: '·';
-            @apply mx-3;
         }
     }
 

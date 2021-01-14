@@ -3,10 +3,12 @@
         :is="_linkComponent"
         v-bind="_linkAttrs"
         v-on="$listeners"
-        class="aw-mobile-menu-item"
+        class="aw-mobile-menu-item focus-outline"
     >
         <slot v-bind="$props">
-            <span class="aw-mobile-menu-item__text">{{ text }}</span>
+            <span class="aw-mobile-menu-item__text" tabindex="-1">
+                {{ text }}
+            </span>
             <AwIconSystemMono
                 v-if="arrow"
                 name="angle"
@@ -41,35 +43,3 @@ export default {
     }
 }
 </script>
-
-<style lang="postcss">
-.aw-mobile-menu-item {
-    @apply bg-surface py-4 px-6;
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    &:hover,
-    &:focus {
-        oultine: none;
-        text-decoration: none;
-    }
-
-    & + & {
-        border-top: 1px solid rgb(var(--c-mono-800));
-    }
-
-    &__icon {
-        @apply mr-3;
-    }
-
-    &__text {
-        @apply truncate;
-        flex-grow: 1;
-    }
-
-    &__arrow {
-        @apply ml-2;
-    }
-}
-</style>

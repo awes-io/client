@@ -1,20 +1,24 @@
 <template>
-    <div class="aw-mobile-menu" :class="{ 'aw-mobile-menu--visible': show }">
-        <div
-            class="aw-mobile-menu__header"
-            :class="{ 'bg-surface': submenuOpened }"
-        >
+    <div
+        class="aw-mobile-menu"
+        :class="{ 'aw-mobile-menu--visible': show }"
+        @click="_closeOnLinkClick"
+    >
+        <div class="aw-mobile-menu__header">
             <button
                 v-if="submenuOpened"
-                class="inline-flex items-center"
+                class="inline-flex items-center focus-outline"
                 @click="submenuOpened = false"
             >
                 <AwIconSystemMono name="angle" size="16" class="mr-2" />
-                back
+                <span tabindex="-1">{{ $t('AwMobileMenu.back') }}</span>
             </button>
             <!-- close button -->
-            <button class="aw-mobile-menu__close" @click="show = false">
-                <AwIconSystemMono name="close" size="16" />
+            <button
+                class="aw-mobile-menu__close focus-outline"
+                @click="show = false"
+            >
+                <AwIconSystemMono name="close" size="16" tabindex="-1" />
                 <span class="sr-only">
                     {{ $t('AwMobileMenu.close') }}
                 </span>
@@ -29,9 +33,9 @@
                 <NLink
                     v-if="$config.profileUrl"
                     :to="$config.profileUrl"
-                    class="aw-mobile-menu__user-edit"
+                    class="aw-mobile-menu__user-edit focus-outline"
                 >
-                    <AwIconSystemMono name="edit" size="32" />
+                    <AwIconSystemMono name="edit" size="32" tabindex="-1" />
                     <span class="sr-only">
                         {{ $t('AwMobileMenu.editProfile') }}
                     </span>
@@ -152,6 +156,10 @@ export default {
         show: {
             handler(isVisible) {
                 if (isVisible) {
+                    // reset view
+                    this.submenuOpened = false
+                    this.submenu = []
+
                     this.$el &&
                         disableBodyScroll(this.$el, {
                             reserveScrollBarGap: true
@@ -165,6 +173,9 @@ export default {
     },
 
     beforeDestroy() {
+        if (typeof this._unwatch === 'function') {
+            this._unwatch()
+        }
         this.$el && enableBodyScroll(this.$el)
     },
 
@@ -172,6 +183,26 @@ export default {
         showSubmenu(index) {
             this.submenu = pathOr([], [index, 'children'], this.menu)
             this.submenuOpened = !!this.submenu.length
+        },
+
+        _closeOnLinkClick($event) {
+            const link = $event.target.matches('a')
+                ? $event.target
+                : $event.target.closest('a')
+
+            const { host, href } = window.location
+
+            if (link && link.host === host && link.href !== href) {
+                this._unwatch = this.$watch(
+                    '$route',
+                    () => {
+                        this.show = false
+                    },
+                    { deep: true }
+                )
+            } else if (link) {
+                this.show = false
+            }
         }
     }
 }

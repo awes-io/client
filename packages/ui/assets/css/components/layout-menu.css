@@ -1,6 +1,5 @@
 .aw-layout-menu {
-    color: theme('onColors.brand');
-    background-color: theme('colors.brand');
+    @apply bg-brand;
 
     display: grid;
     grid-template-columns: 60px auto;
@@ -9,7 +8,7 @@
     z-index: 1;
 
     &__logo,
-    &__user {
+    &__aw-user-menu {
         display: block;
         width: 100%;
         padding: theme('spacing.3');
@@ -18,6 +17,8 @@
 
     &__menu,
     &__secondary-menu {
+        --icon-color: rgba(var(--c-on-brand-rgb), 0.5);
+        --icon-color-active: rgba(var(--c-on-brand-rgb), 1);
         display: flex;
         flex-direction: column;
     }
@@ -31,63 +32,19 @@
     }
 
     &__submenu {
-        display: flex;
-        flex-direction: column;
+        @apply bg-surface;
         width: 230px;
+        max-height: 100vh;
 
         grid-column: 2;
         grid-row: 1 / 5;
-        align-self: stretch;
 
         overflow-y: auto;
-        color: theme('onColors.surface');
-        background-color: theme('colors.surface');
-
-        transition: 240ms width;
 
         scrollbar-width: thin;
 
         &--hidden {
             width: 0px;
-            transition-delay: 120ms;
-        }
-    }
-
-    &__user-menu {
-        min-width: 250px;
-        box-shadow: theme('boxShadow.default');
-        border-radius: theme('borderRadius.md');
-
-        position: absolute;
-        left: 55px;
-        bottom: 20px;
-        z-index: 1;
-
-        opacity: 0;
-        visibility: hidden;
-        transform: scaleY(0.8) translate(-15px, -15px);
-        transform-origin: left bottom;
-        transition: 60ms opacity, 120ms transform, 0ms visibility 120ms;
-    }
-
-    &__user:focus + .aw-layout-menu__user-menu,
-    &__user-menu:focus-within {
-        opacity: 1;
-        transform: none;
-        visibility: visible;
-        transition-delay: 0ms;
-        transition-timing-function: ease-out;
-    }
-
-    &__aw-menu {
-        opacity: 1;
-        visibility: visible;
-        transition: 120ms opacity 300ms, 0ms visibility;
-
-        &--hidden {
-            opacity: 0;
-            visibility: hidden;
-            transition: 120ms opacity, 0ms visibility 120ms;
         }
     }
 }

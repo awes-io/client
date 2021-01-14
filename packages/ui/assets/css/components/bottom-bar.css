@@ -1,0 +1,17 @@
+.aw-bottom-bar {
+    --icon-color: rgba(var(--c-on-surface-rgb), 0.5);
+    --icon-color-active: currentColor;
+    @apply bg-surface shadow;
+    display: flex;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+
+    position: sticky;
+    bottom: 0;
+    min-height: 4rem;
+
+    & > * {
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+}

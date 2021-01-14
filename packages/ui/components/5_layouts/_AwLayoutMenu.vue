@@ -19,7 +19,7 @@
                     <AwMenuItemIcon
                         v-else
                         :key="i"
-                        v-bind="item"
+                        v-bind="_getMenuItemProps(item)"
                         :active="item === activeMenuItem"
                         tooltip
                     />
@@ -35,7 +35,7 @@
                     <AwMenuItemIcon
                         v-else
                         :key="i"
-                        v-bind="item"
+                        v-bind="_getMenuItemProps(item)"
                         :active="item === activeMenuItem"
                         tooltip
                     />
@@ -43,33 +43,8 @@
             </slot>
         </div>
 
-        <slot name="user">
-            <span
-                v-if="user || hasUserMenu"
-                ref="userAvatar"
-                class="aw-layout-menu__user"
-                :tabindex="hasUserMenu ? 0 : null"
-                :role="hasUserMenu ? 'menuitem' : null"
-                :aria-haspopup="hasUserMenu ? 'true' : null"
-            >
-                <AwAvatar v-bind="user" />
-            </span>
-        </slot>
-
-        <slot name="user-menu" :userMenu="userMenu">
-            <div ref="userMenu" class="aw-layout-menu__user-menu">
-                <template v-for="(item, i) in userMenu">
-                    <!-- eslint-disable-next-line vue/require-component-is -->
-                    <Component v-if="item.is" :key="'cmp-' + i" v-bind="item" />
-                    <AwMobileMenuItem
-                        v-else
-                        :key="i"
-                        v-bind="item"
-                        :active="item === activeMenuItem"
-                    />
-                </template>
-            </div>
-        </slot>
+        <!-- user menu -->
+        <AwUserMenu class="aw-layout-menu__aw-user-menu" />
 
         <!-- submenu -->
         <div
@@ -77,12 +52,7 @@
             :class="{ 'aw-layout-menu__submenu--hidden': !hasSubmenu }"
         >
             <slot v-if="!hideAside" name="submenu">
-                <AwNav
-                    class="aw-layout-menu__aw-menu"
-                    :class="{ 'aw-layout-menu__aw-menu--hidden': !hasSubmenu }"
-                    :title="submenuTitle"
-                    :items="submenu"
-                />
+                <AwNav :title="submenuTitle" :items="submenu" />
             </slot>
         </div>
     </div>
@@ -90,9 +60,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { pathOr, viewOr, lensProp } from 'rambdax'
+import { pathOr, viewOr, lensProp, omit } from 'rambdax'
 import AwMenuItemIcon from '@AwLayouts/_AwMenuItemIcon.vue'
-import AwMobileMenuItem from '@AwLayouts/_AwMobileMenuItem.vue'
+import AwUserMenu from '@AwLayouts/_AwUserMenu.vue'
 import AwNav from '@AwLayouts/_AwNav.vue'
 
 export default {
@@ -100,7 +70,7 @@ export default {
 
     components: {
         AwMenuItemIcon,
-        AwMobileMenuItem,
+        AwUserMenu,
         AwNav
     },
 
@@ -125,10 +95,6 @@ export default {
             return viewOr([], lensProp('secondaryMenu'), this.layoutProvider)
         },
 
-        userMenu() {
-            return viewOr([], lensProp('userMenu'), this.layoutProvider)
-        },
-
         activeMenuItem() {
             return viewOr(null, lensProp('activeMenuItem'), this.layoutProvider)
         },
@@ -147,28 +113,14 @@ export default {
                 : ''
         },
 
-        hasUserMenu() {
-            return this.userMenu.length
-        },
-
         logo() {
             return pathOr(null, '_config.default.logo', this.$awes)
         }
     },
 
-    watch: {
-        '$route.path': {
-            handler() {
-                const activeElement = document.activeElement
-
-                if (
-                    activeElement &&
-                    (this.$refs.userAvatar === activeElement ||
-                        this.$refs.userMenu.contains(activeElement))
-                ) {
-                    activeElement.blur()
-                }
-            }
+    methods: {
+        _getMenuItemProps(props) {
+            return omit('children', props)
         }
     }
 }

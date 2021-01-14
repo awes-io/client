@@ -8,8 +8,7 @@
     }
 
     &__element {
-        @apply w-full rounded truncate block;
-        background-color: var(--c-surface, inherit);
+        @apply w-full rounded truncate block bg-surface;
 
         /* reset autofill (firefox)*/
         filter: none;

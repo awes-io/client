@@ -10,7 +10,6 @@
                             data-focus-visible
                         >
                             <AwIconSystemMono name="angle" />
-                            {{ breadcrumb.text }}
                         </NLink>
                     </template>
                 </slot>
@@ -43,22 +42,14 @@ export default {
         },
 
         breadcrumb: {
-            type: [Boolean, Object],
-            default: true
+            type: Object,
+            default: null
         },
 
         titleTag: {
             type: String,
             default() {
                 return conf(this, 'titleTag')
-            }
-        }
-    },
-
-    provide() {
-        return {
-            floating: {
-                disable: 'md'
             }
         }
     }

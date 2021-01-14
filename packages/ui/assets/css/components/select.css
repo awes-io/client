@@ -4,11 +4,24 @@
         @apply cursor-pointer;
     }
 
+    &__aw-dropdown {
+        width: 100%;
+        max-height: 75vh;
+    }
+
     &--invert .aw-text-field__element {
         @apply bg-mono-100;
     }
 
     &--invert .aw-text-field__element:not(:focus) {
         @apply border-mono-100;
+    }
+}
+
+@screen md {
+    .aw-select {
+        &__aw-dropdown {
+            max-height: 50vh;
+        }
     }
 }

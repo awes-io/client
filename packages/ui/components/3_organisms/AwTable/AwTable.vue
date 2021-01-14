@@ -255,10 +255,16 @@ export default {
 
         setResizeListener() {
             let resizeTm
+            let width = window.innerWidth
 
             const onResize = () => {
                 clearTimeout(resizeTm)
                 resizeTm = setTimeout(async () => {
+                    if (window.innerWidth === width) return
+
+                    // update width
+                    width = window.innerWidth
+
                     // reset indexes if needed and await DOM update
                     if (this.hiddenColsIndexes.length) {
                         this.hiddenColsIndexes = []

@@ -4,7 +4,8 @@
     grid-template-rows: 160px auto;
 
     width: 100%;
-    padding: theme('spacing.4') 0;
+    padding-top: theme('spacing.4');
+    padding-bottom: theme('spacing.4');
 
     &__breadcrumb {
         @apply text-mono-400;

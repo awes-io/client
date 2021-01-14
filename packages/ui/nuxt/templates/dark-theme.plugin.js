@@ -37,8 +37,8 @@ export default function({ store, app }) {
         (state) => state.awesIo.isDarkTheme,
         (isDark) => {
             JsCookie.set(COOKIE_NAME, isDark)
+            document.documentElement.setAttribute(ATTR, isDark)
+            app.head.htmlAttrs[ATTR] = isDark
         }
     )
-
-    // window.onNuxtReady(() => {})
 }

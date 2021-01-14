@@ -44,5 +44,5 @@ export const dayjs = {
         pattern: null,
         format: true
     },
-    plugins: ['dayjs/plugin/customParseFormat', 'dayjs/plugin/localizedFormat']
+    plugins: []
 }

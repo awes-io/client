@@ -6,7 +6,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { isType, defaultTo } from 'rambdax'
+import { isType, defaultTo, pick } from 'rambdax'
 import { getPath } from '@AwUtils/router'
 
 const withHref = (child) => child.href
@@ -128,19 +128,7 @@ export default {
             const getters = this.$store.getters
 
             return items.reduce(
-                (
-                    acc,
-                    {
-                        show,
-                        text,
-                        href,
-                        target,
-                        icon,
-                        children,
-                        expanded,
-                        component
-                    }
-                ) => {
+                (acc, { show, text, href, children, component, ...props }) => {
                     show = isType('Function', show)
                         ? show($can)
                         : defaultTo(true, show)
@@ -160,12 +148,10 @@ export default {
                     text = this.$t(text)
 
                     return acc.concat({
+                        ...pick('icon,class,expanded,target', props),
                         text,
                         href,
-                        target,
-                        icon,
-                        children,
-                        expanded
+                        children
                     })
                 },
                 []

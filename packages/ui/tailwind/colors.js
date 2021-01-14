@@ -9,15 +9,16 @@ const ON_DEFAULTS = {
     surface: '#222'
 }
 
-const getRootVars = cssRoot => (value, key) => {
+const getRootVars = (cssRoot) => (value, key) => {
     const [r, g, b] = chroma(value).rgb()
 
-    cssRoot[`--c-${key}`] = [r, g, b].join(',')
+    cssRoot[`--c-${key}`] = chroma([r, g, b]).hex()
+    cssRoot[`--c-${key}-rgb`] = [r, g, b].join(',')
 }
 
 const getColorVariables = (opacityVar, name, value) => {
     const defaultOpacity = value ? chroma(value).get('rgba.a') : 1
-    return `rgba(var(--c-${name}), var(${opacityVar}, ${defaultOpacity}))`
+    return `rgba(var(--c-${name}-rgb), var(${opacityVar}, ${defaultOpacity}))`
 }
 
 module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
@@ -78,7 +79,7 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
         {
             '.bg-current': { 'background-color': 'currentColor' },
             '.bg-transparent': {
-                'background-color': 'rgba(var(--c-surface), 0)'
+                'background-color': 'rgba(var(--c-surface-rgb), 0)'
             }
         },
         variants('backgroundColor')
@@ -121,7 +122,7 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
         {
             '.text-inherit': { color: 'inherit' },
             '.text-transparent': {
-                color: ['transparent', 'rgba(var(--c-on-surface), 0)']
+                color: ['transparent', 'rgba(var(--c-on-surface-rgb), 0)']
             }
         },
         variants('textColor')
@@ -151,7 +152,7 @@ module.exports = function({ addComponents, addUtilities, e, theme, variants }) {
         {
             '.border-current': { 'border-color': 'currentColor' },
             '.border-transparent': {
-                'border-color': ['transparent', 'rgba(var(--c-surface), 0)']
+                'border-color': ['transparent', 'rgba(var(--c-surface-rgb), 0)']
             }
         },
         variants('borderColor')

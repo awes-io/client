@@ -24,7 +24,7 @@ const $screen = new Vue.observable({
 })
 
 for (const i in matchers) {
-    matchers[i].matcher.addEventListener('change', (e) => {
+    matchers[i].matcher.addListener((e) => {
         $screen[matchers[i].name] = e.matches
     })
 }

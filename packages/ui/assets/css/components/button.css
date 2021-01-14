@@ -199,7 +199,7 @@
 
     /* Link */
     &.theme-ghost.color-default {
-        @apply text-mono-50;
+        @apply text-on-surface;
     }
 
     /* Outline */
@@ -230,7 +230,7 @@
 
     &.theme-outline {
         @apply text-mono-400;
-        border: 1px solid theme('colors.mono-400');
+        border: 1px solid var(--c-mono-400);
     }
 
     &.theme-ghost &__overlay {
