@@ -1,0 +1,40 @@
+.aw-page-buttons {
+    &--stacked {
+        display: flex;
+        gap: theme('spacing.4', 1rem);
+    }
+
+    &--fixed {
+        position: fixed;
+        right: theme('spacing.4', 1rem);
+        bottom: var(--page-buttons-bottom, theme('spacing.4', 1rem));
+        z-index: 2;
+    }
+
+    &__aw-context-menu {
+
+        & > .aw-button {
+            border-radius: 50%;
+            background: var(--c-mono-700);
+            color: var(--c-on-mono-700);
+            /* box-shadow: theme('boxShadow.default'); */
+        }
+
+        & > .aw-dropdown {
+            background: none;
+            box-shadow: none;
+            min-width: 0;
+
+            .aw-cm-item {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+        .aw-context-menu__list {
+            display: flex;
+            flex-direction: column;
+            gap-y:  theme('spacing.2', 0.5rem);
+        }
+    }
+}

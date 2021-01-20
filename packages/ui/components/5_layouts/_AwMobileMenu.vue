@@ -13,6 +13,11 @@
                 <AwIconSystemMono name="angle" size="16" class="mr-2" />
                 <span tabindex="-1">{{ $t('AwMobileMenu.back') }}</span>
             </button>
+            <AwSwitcher
+                v-else
+                v-model="isDarkTheme"
+                :label="$t('AwMobileMenu.darkTheme')"
+            />
             <!-- close button -->
             <button
                 class="aw-mobile-menu__close focus-outline"
@@ -26,49 +31,59 @@
         </div>
 
         <!-- user -->
-        <div v-if="user" class="aw-mobile-menu__user">
+        <div v-if="user" v-show="!submenuOpened" class="aw-mobile-menu__user">
             <AwAvatar :src="user.src" :name="user.name" size="148" />
-            <span class="aw-mobile-menu__user-name">
-                <span class="truncate">{{ user.name }}</span>
-                <NLink
-                    v-if="$config.profileUrl"
-                    :to="$config.profileUrl"
-                    class="aw-mobile-menu__user-edit focus-outline"
-                >
-                    <AwIconSystemMono name="edit" size="32" tabindex="-1" />
-                    <span class="sr-only">
-                        {{ $t('AwMobileMenu.editProfile') }}
-                    </span>
-                </NLink>
+            <span class="aw-mobile-menu__user-name truncate">
+                {{ user.name }}
             </span>
             <span class="aw-mobile-menu__user-desc truncate">
                 {{ user.description }}
             </span>
         </div>
 
-        <div v-if="submenuOpened" class="aw-mobile-menu__menu">
-            <template v-for="({ children, ...item }, i) in submenu">
-                <template v-if="children.length">
-                    <div :key="'title-' + i">{{ item.text }}</div>
+        <!-- top level menu -->
+        <AwMobileMenuNav
+            v-show="!submenuOpened"
+            :title="$t('AwMobileMenu.mainMenu')"
+            :items="mainMenu"
+            @click:submenu="(submenu) => showSubmenu(submenu)"
+        />
+
+        <AwMobileMenuNav
+            v-show="!submenuOpened"
+            :title="$t('AwMobileMenu.secondaryMenu')"
+            :items="secondaryMenu"
+            @click:submenu="(submenu) => showSubmenu(submenu)"
+        />
+
+        <AwMobileMenuNav
+            v-show="!submenuOpened"
+            :title="$t('AwMobileMenu.userMenu')"
+            :items="userMenu"
+            @click:submenu="(submenu) => showSubmenu(submenu)"
+        >
+            <template #after>
+                <li>
                     <AwMobileMenuItem
-                        v-for="(child, j) in children"
-                        :key="'child-' + i + j"
-                        v-bind="child"
+                        v-if="$auth.loggedIn"
+                        :text="$t('AwMobileMenu.logout')"
+                        @click="$auth.logout()"
                     />
-                </template>
-                <AwMobileMenuItem v-else :key="'single-' + i" v-bind="item" />
+                </li>
             </template>
-        </div>
-        <div v-else class="aw-mobile-menu__menu">
-            <AwMobileMenuItem
-                v-for="({ children, href, ...item }, i) in menu"
+        </AwMobileMenuNav>
+
+        <!-- submenu -->
+        <AwMobileMenuNav v-show="submenuOpened" :items="submenu" />
+
+        <template v-for="({ text, children }, i) in submenuDeep">
+            <AwMobileMenuNav
                 :key="i"
-                v-bind="item"
-                :href="children.length ? null : href"
-                :arrow="!!children.length"
-                v-on="children.length ? { click: () => showSubmenu(i) } : null"
+                v-show="submenuOpened"
+                :title="text"
+                :items="children"
             />
-        </div>
+        </template>
 
         <!-- logo -->
         <slot name="logo" v-bind="logo">
@@ -82,19 +97,27 @@
                 {{ $t('AwMobileMenu.version', { version: $config.VERSION }) }}
             </span>
         </slot>
+
+        <button
+            class="aw-mobile-menu__overlay"
+            aria-hidden="true"
+            @click="show = false"
+        ></button>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { pathOr, viewOr, lensProp } from 'rambdax'
+import { pathOr, viewOr, lensProp, partition } from 'rambdax'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import AwMobileMenuNav from '@AwLayouts/_AwMobileMenuNav.vue'
 import AwMobileMenuItem from '@AwLayouts/_AwMobileMenuItem.vue'
 
 export default {
     name: 'AwMobileMenu',
 
     components: {
+        AwMobileMenuNav,
         AwMobileMenuItem
     },
 
@@ -107,34 +130,32 @@ export default {
     data() {
         return {
             submenuOpened: false,
-            submenu: []
+            submenu: [],
+            submenuDeep: []
         }
     },
 
     computed: {
         ...mapGetters('awesIo', ['user']),
 
-        menu() {
-            const mainMenu = viewOr(
-                [],
-                lensProp('mainMenu'),
-                this.layoutProvider
+        mainMenu() {
+            return viewOr([], lensProp('mainMenu'), this.layoutProvider).filter(
+                ({ is }) => !is
             )
-            const secondaryMenu = viewOr(
+        },
+
+        secondaryMenu() {
+            return viewOr(
                 [],
                 lensProp('secondaryMenu'),
                 this.layoutProvider
-            )
-            const userMenu = viewOr(
-                [],
-                lensProp('userMenu'),
-                this.layoutProvider
-            )
+            ).filter(({ is }) => !is)
+        },
 
-            return mainMenu
-                .concat(secondaryMenu)
-                .concat(userMenu)
-                .filter(({ is }) => !is)
+        userMenu() {
+            return viewOr([], lensProp('userMenu'), this.layoutProvider).filter(
+                ({ is }) => !is
+            )
         },
 
         show: {
@@ -149,6 +170,16 @@ export default {
 
         logo() {
             return pathOr(null, '_config.default.logo', this.$awes)
+        },
+
+        isDarkTheme: {
+            get() {
+                return this.$store.getters['awesIo/isDarkTheme']
+            },
+
+            set(val) {
+                this.$store.commit('awesIo/SET_DARK_THEME', val)
+            }
         }
     },
 
@@ -159,6 +190,7 @@ export default {
                     // reset view
                     this.submenuOpened = false
                     this.submenu = []
+                    this.submenuDeep = []
 
                     this.$el &&
                         disableBodyScroll(this.$el, {
@@ -180,9 +212,19 @@ export default {
     },
 
     methods: {
-        showSubmenu(index) {
-            this.submenu = pathOr([], [index, 'children'], this.menu)
-            this.submenuOpened = !!this.submenu.length
+        showSubmenu(items) {
+            const [submenu, submenuDeep] = partition(
+                ({ children }) =>
+                    !Array.isArray(children) || children.length === 0,
+                items
+            )
+
+            this.submenu = submenu
+            this.submenuDeep = submenuDeep
+
+            this.submenuOpened = !!(
+                this.submenu.length || this.submenuDeep.length
+            )
         },
 
         _closeOnLinkClick($event) {

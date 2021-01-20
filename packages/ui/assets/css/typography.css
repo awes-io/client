@@ -127,7 +127,8 @@
         text-shadow: 1px 1px 0 rgba(var(--c-mono-0-rgb), 0.15);
     }
 
-    a {
+    a,
+    .link {
         background-color: transparent;
         color: inherit;
         text-decoration: inherit;
@@ -136,15 +137,17 @@
         &:focus {
             outline: none;
         }
+    }
 
-        &:not([class]):hover {
-            color: var(--c-mono-0);
-            text-decoration: none;
-        }
+    a:not([class]):hover,
+    .link:hover {
+        color: var(--c-mono-0);
+        text-decoration: none;
+    }
 
-        &:not([class]):focus-visible {
-            outline: theme('focusOutline');
-        }
+    a:not([class]):focus-visible,
+    .link:focus-visible {
+        outline: theme('focusOutline');
     }
 
     abbr[title] {

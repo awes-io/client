@@ -19,6 +19,7 @@
         </AwLayoutMenu>
 
         <!-- main -->
+        <AwHeaderNotification />
         <slot />
     </AwLayoutProvider>
 </template>
@@ -27,6 +28,7 @@
 import AwLayoutProvider from '@AwLayouts/_AwLayoutProvider.vue'
 import AwMobileMenu from '@AwLayouts/_AwMobileMenu.vue'
 import AwLayoutMenu from '@AwLayouts/_AwLayoutMenu.vue'
+import AwHeaderNotification from '@AwLayouts/_AwHeaderNotification.vue'
 
 export default {
     name: 'AwLayout',
@@ -34,11 +36,8 @@ export default {
     components: {
         AwLayoutProvider,
         AwMobileMenu,
-        AwLayoutMenu
-    },
-
-    provide() {
-        return { layout: 'default' }
+        AwLayoutMenu,
+        AwHeaderNotification
     }
 }
 </script>

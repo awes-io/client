@@ -4,7 +4,7 @@
             <AwMenuItemIcon
                 v-for="(item, i) in items"
                 :key="i"
-                :active="item === activeMenuItem"
+                :active="item === activeMenu"
                 v-bind="_pickItemProps(item)"
             />
         </slot>
@@ -59,8 +59,8 @@ export default {
             return items.slice(0, 4)
         },
 
-        activeMenuItem() {
-            return viewOr(null, lensProp('activeMenuItem'), this.layoutProvider)
+        activeMenu() {
+            return viewOr(null, lensProp('activeMenu'), this.layoutProvider)
         }
     },
 

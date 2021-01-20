@@ -37,6 +37,32 @@ const findHref = (children) => {
     return (child && child.href) || ''
 }
 
+// const flattenChildren = (menu, items) => {
+//     for (let i = menu.length - 1; i >= 0; i--) {
+//         const item = menu[i]
+
+//         if (item.children && item.children.length) {
+//             for (let j = item.children.length - 1; j >= 0; j--) {
+//                 const item2 = item.children[j]
+
+//                 if (item2.children && item2.children.length) {
+//                     for (let k = item2.children.length - 1; k >= 0; k--) {
+//                         items.push({
+//                             item: item2.children[k],
+//                             parent: item2,
+//                             top: menu
+//                         })
+//                     }
+//                 } else {
+//                     items.push({ item: item2, parent: item, top: menu })
+//                 }
+//             }
+//         } else {
+//             items.push({ item, parent: menu, top: menu })
+//         }
+//     }
+// }
+
 export default {
     name: 'AwLayoutProvider',
 
@@ -52,6 +78,7 @@ export default {
                 mainMenu: [],
                 secondaryMenu: [],
                 userMenu: [],
+                activeMenu: null,
                 activeMenuItem: null
             }
         }
@@ -59,6 +86,16 @@ export default {
 
     computed: {
         ...mapGetters('awesIo', ['mainMenu', 'secondaryMenu', 'userMenu']),
+
+        // _flatChildren() {
+        //     const items = []
+
+        //     flattenChildren(this.mainMenu, items)
+        //     flattenChildren(this.secondaryMenu, items)
+        //     flattenChildren(this.userMenu, items)
+
+        //     return items
+        // },
 
         _isCurrentPath() {
             const current = getPath(this.$route.path)
@@ -108,12 +145,19 @@ export default {
         '$route.path': {
             handler() {
                 const item =
-                    this._findActive(this.layoutProvider.mainMenu) ||
-                    this._findActive(this.layoutProvider.secondaryMenu) ||
-                    this._findActive(this.layoutProvider.userMenu) ||
+                    this._findActiveItem(this.layoutProvider.mainMenu) ||
+                    this._findActiveItem(this.layoutProvider.secondaryMenu) ||
+                    this._findActiveItem(this.layoutProvider.userMenu) ||
+                    null
+
+                const menu =
+                    this._findActiveMenu(this.layoutProvider.mainMenu) ||
+                    this._findActiveMenu(this.layoutProvider.secondaryMenu) ||
+                    this._findActiveMenu(this.layoutProvider.userMenu) ||
                     null
 
                 this.$set(this.layoutProvider, 'activeMenuItem', item)
+                this.$set(this.layoutProvider, 'activeMenu', menu)
             },
             immediate: true
         }
@@ -158,7 +202,24 @@ export default {
             )
         },
 
-        _findActive(items) {
+        _findActiveItem(items) {
+            let item = null
+            let i = 0
+            const max = items.length
+
+            while (!item && i < max) {
+                if (items[i].children && items[i].children.length) {
+                    item = this._findActiveItem(items[i].children)
+                } else if (this._isCurrentPath(items[i])) {
+                    item = items[i]
+                }
+                i++
+            }
+
+            return item
+        },
+
+        _findActiveMenu(items) {
             return items.find(
                 (item) =>
                     this._isCurrentPath(item) ||

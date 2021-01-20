@@ -58,6 +58,18 @@ export const getters = {
         return null
     },
 
+    headerNotification(state) {
+        const config = state.headerNotification || {}
+
+        return {
+            type: config.type || 'warning',
+            icon: config.icon || '',
+            text: config.text || '',
+            buttons: Array.isArray(config.buttons) ? config.buttons : [],
+            closable: config.closable || false
+        }
+    },
+
     isDarkTheme: pathOr(false, 'isDarkTheme')
 }
 

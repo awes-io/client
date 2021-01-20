@@ -28,6 +28,7 @@
 @import './filter-month.css';
 
 @import './bottom-bar.css';
+@import './header-notification.css';
 @import './layout.css';
 @import './layout-menu.css';
 @import './mobile-menu.css';
@@ -37,6 +38,7 @@
 @import './nav.css';
 @import './page.css';
 @import './page-user.css';
+@import './page-buttons.css';
 @import './page-headline.css';
 
 @import './modal.css';

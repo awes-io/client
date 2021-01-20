@@ -3,4 +3,9 @@
     color: inherit;
     fill: currentColor;
     vertical-align: middle;
+
+    &--size-text {
+        width: 1em;
+        height: 1em;
+    }
 }

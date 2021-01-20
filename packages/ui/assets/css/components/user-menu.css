@@ -1,33 +1,43 @@
 .aw-user-menu {
     position: relative;
+    font-size: theme('fontSize.sm', 0.875rem);
 
     &__user {
         cursor: pointer;
     }
 
+    &__header {
+        padding: theme('spacing.5', 1,25rem);
+        border-bottom-width: 1px;
+    }
+
+    &__theme-switcher {
+        padding: theme('spacing.3', 0,75rem) theme('spacing.5', 1,25rem);
+        border-bottom-width: 1px;
+    }
+
     &__menu {
-        @apply bg-surface;
+        background-color: var(--c-surface);
+        color: var(--c-on-surface);
         min-width: 250px;
         max-height: auto;
         box-shadow: theme('boxShadow.default');
         border-radius: theme('borderRadius.md');
-
-        /* position: absolute;
-        left: calc(100% - 5px);
-        bottom: 0;
-        z-index: 1; */
-
-        /* opacity: 0;
-        visibility: hidden;
-        transition: 60ms opacity, 0ms visibility 120ms; */
     }
 
-    /* &:hover &__menu
-    &__user:focus + &__menu,
-    &__menu:focus-within {
-        /* opacity: 1;
-        visibility: visible;
-        transition-delay: 0ms;
-        transition-timing-function: ease-out;
-    } */
+    &__nav-item {
+        @apply bg-surface;
+        padding: theme('spacing.3', 0,75rem) theme('spacing.5', 1,25rem);
+        display: block;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--c-mono-900);
+        }
+    }
 }

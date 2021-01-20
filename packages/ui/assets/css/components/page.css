@@ -63,9 +63,10 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    flex-grow: 1; /* full height in aw-layout */
 
     &__heading {
-        @apply bg-surface;
+        border-bottom-width: 1px;
     }
 
     &__subnav .aw-tab-nav {
@@ -80,10 +81,6 @@
 
 @screen lg {
     .aw-page {
-        &__heading--muted {
-            @apply bg-mono-900 border-b;
-        }
-
         &__content {
             @apply pt-10 pb-8;
         }

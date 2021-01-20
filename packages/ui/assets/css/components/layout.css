@@ -1,5 +1,6 @@
 .aw-layout {
     display: flex;
+    flex-direction: column;
 
     &__aw-layout-menu {
         max-width: 290px;

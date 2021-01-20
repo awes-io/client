@@ -1,6 +1,5 @@
 .aw-mobile-menu {
     @apply bg-mono-900;
-    padding: theme('spacing.2', 0.5rem);
     width: 400px;
     max-width: 100%;
 
@@ -26,26 +25,29 @@
     }
 
     &__header {
-        @apply bg-surface;
+        @apply bg-surface shadow;
         display: flex;
         align-items: center;
 
         padding: theme('spacing.1', 0.25rem) theme('spacing.2', 0.5rem);
-        margin: calc(-1 * theme('spacing.2', 0.5rem)) calc(-1 * theme('spacing.2', 0.5rem)) 0;
+        margin-bottom: theme('spacing.3', 0.75rem);
 
-        transition: 180ms background-color;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
     }
 
     &__user {
+        padding: 0 theme('spacing.2', 0.5rem);
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: theme('spacing.3', 0.75rem);
+        margin-bottom: theme('spacing.4', 1rem);
     }
 
     &__user-name {
-        display: flex;
-        align-items: center;
         max-width: 100%;
         margin-top: theme('spacing.2', 0.5rem);
 
@@ -92,18 +94,22 @@
         display: block;
         padding: theme('spacing.3') theme('spacing.4');
         margin-left: auto;
-        /* margin-right: theme('spacing.2'); */
+    }
 
-        &:after {
-            content: '';
-            display: block;
-            position: fixed;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            left: 400px;
-            background: theme('colors.overlay');
-            backdrop-filter: blur(3px);
+    &__overlay {
+        content: '';
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 400px;
+        width: calc(100% - 400px);
+        background: theme('colors.overlay');
+        backdrop-filter: blur(3px);
+
+        &:focus {
+            outline: none;
         }
     }
 
@@ -112,16 +118,29 @@
     }
 
     &__menu {
-        margin: theme('spacing.4', 1rem) 0 theme('spacing.6', 1.5rem);
-        border-radius: theme('borderRadius.md', 0.25rem);
-        box-shadow: theme('boxShadow.default');
+        font-size: theme('fontSize.lg', 1.125rem);
+        margin: 0 theme('spacing.2', 0.5rem) theme('spacing.10', 2.5rem);
 
-        overflow: hidden;
-        position: relative;
+        h3, h4 {
+            color: var(--c-mono-400);
+            font-size: inherit;
+            padding: 0 theme('spacing.4', 1rem);
+            margin-bottom: theme('spacing.4', 1rem);
+        }
 
-        /* transform: translateX(-50%); */
-        transition: 120ms transform;
-        will-change: transform;
+        ol, ul {
+            border-radius: theme('borderRadius.lg', 0.5rem);
+            box-shadow: theme('boxShadow.default');
+
+            overflow: hidden;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li + li {
+            border-top-width: 1px;
+        }
     }
 
     /**

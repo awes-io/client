@@ -2,14 +2,23 @@ export const AwButton = {
     loading: 'Загрузка...'
 }
 
+export const AwBottomBar = {
+    menu: 'Меню'
+}
+
 export const AwModal = {
     back: 'Назад',
     close: 'Закрыть окно (ESC)'
 }
 
 export const AwMobileMenu = {
+    darkTheme: 'Темная тема',
     back: 'Назад',
-    version: 'версия v{version}'
+    version: 'версия v{version}',
+    mainMenu: 'Главное меню',
+    secondaryMenu: 'Дополнительное меню',
+    userMenu: 'Меню пользователя',
+    logout: 'Выход'
 }
 
 export const AwCalendar = {
@@ -127,7 +136,9 @@ export const AwBirthdayDate = {
 
 export default {
     AwButton,
+    AwBottomBar,
     AwModal,
+    AwMobileMenu,
     AwCalendar,
     AwCropper,
     AwCodeSnippet,

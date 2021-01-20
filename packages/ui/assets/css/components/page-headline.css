@@ -12,7 +12,7 @@
         font-size: theme('fontSize.2xl');
 
         svg {
-            @apply mr-1;
+            @apply mr-3;
             flex-shrink: 0;
         }
     }
@@ -24,7 +24,7 @@
     &__back {
         display: inline-flex;
         align-items: center;
-        @apply text-mono-400;
+        @apply text-accent;
         transition: 120ms color;
 
         &:hover,

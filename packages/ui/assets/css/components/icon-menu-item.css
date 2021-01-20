@@ -62,7 +62,7 @@
         font-size: 0.625rem;
         display: block;
         max-width: 100%;
-        margin: theme('spacing.1') auto 0;
+        margin: 0 auto theme('spacing.1', 0.25rem);
     }
 
     &__tooltip {

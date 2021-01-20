@@ -1,6 +1,7 @@
 <template>
-    <Component :is="_linkComponent" v-bind="_linkAttrs">
+    <Component :is="_linkComponent" v-bind="_linkAttrs" v-on="$listeners">
         <slot />
+        <AwIconSystemMono v-if="_linkExternal" name="external" class="ml-1" />
     </Component>
 </template>
 

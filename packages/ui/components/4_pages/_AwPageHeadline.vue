@@ -22,18 +22,25 @@
             </slot>
         </div>
 
-        <slot name="buttons"></slot>
+        <AwPageButtons :breakpoint="buttonsBreakpoint">
+            <slot name="buttons"></slot>
+        </AwPageButtons>
     </div>
 </template>
 
 <script>
 import { AwPage as _config } from '@AwConfig'
 import { conf } from '@AwUtils/component'
+import AwPageButtons from '@AwPages/_AwPageButtons.vue'
 
 export default {
     name: 'AwPageHeadline',
 
     _config,
+
+    components: {
+        AwPageButtons
+    },
 
     props: {
         title: {
@@ -51,6 +58,11 @@ export default {
             default() {
                 return conf(this, 'titleTag')
             }
+        },
+
+        buttonsBreakpoint: {
+            type: String,
+            default: null
         }
     }
 }

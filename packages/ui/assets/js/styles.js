@@ -1,7 +1,8 @@
 export default {
     default: {
         colors: {
-            brand: '#202873',
+            brand: '#3a4372',
+            accent: '#3a4372',
             success: '#58c344',
             info: '#45a4dc',
             warning: '#edc253',
@@ -27,6 +28,7 @@ export default {
 
         onColors: {
             brand: '#fff',
+            accent: '#fff',
             success: '#fff',
             info: '#fff',
             warning: '#333',

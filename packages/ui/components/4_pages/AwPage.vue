@@ -1,19 +1,18 @@
 <template>
     <div class="aw-page">
-        <div
-            class="aw-page__heading"
-            :class="{
-                'aw-page__heading--muted': layout === 'default'
-            }"
-        >
+        <div class="aw-page__heading">
             <slot
                 name="heading"
                 v-bind="{ titleTag, title, breadcrumb, elClasses }"
             >
                 <AwPageHeadline
                     class="container-fluid"
+                    :style="{
+                        '--page-buttons-bottom': _hideBottomBar ? null : '5rem'
+                    }"
                     :title="_title"
                     :breadcrumb="breadcrumb"
+                    :buttons-breakpoint="buttonsBreakpoint"
                 >
                     <template
                         v-for="(index, name) in $scopedSlots"
@@ -25,18 +24,13 @@
             </slot>
 
             <!-- subnav -->
-            <div>
-                <slot name="subnav" :subnav="subnav">
-                    <div v-if="subnav.length" class="container-fluid">
-                        <div class="-mb-px -mx-4">
-                            <AwTabNav
-                                :items="subnav"
-                                class="border-transparent"
-                            />
-                        </div>
+            <slot name="subnav" :subnav="subnav">
+                <div v-if="subnav.length" class="container-fluid -mt-6">
+                    <div class="-mb-px -mx-4">
+                        <AwTabNav :items="subnav" class="border-transparent" />
                     </div>
-                </slot>
-            </div>
+                </div>
+            </slot>
         </div>
 
         <!-- content -->
@@ -86,8 +80,8 @@
         </div>
 
         <!-- bottom bar -->
-        <slot v-if="!hideBottomBar" name="bottom-bar">
-            <AwBottomBar class="aw-page__aw-bottom-bar" :items="bottomMenu">
+        <slot v-if="!_hideBottomBar" name="bottom-bar">
+            <AwBottomBar class="aw-page__aw-bottom-bar">
                 <template
                     v-for="(index, name) in $scopedSlots"
                     v-slot:[name]="data"
@@ -150,12 +144,14 @@ export default {
         fullscreen: Boolean,
 
         // Disable mobile bottom menu
-        hideBottomBar: Boolean
-    },
+        hideBottomBar: {
+            type: Boolean,
+            default: null
+        },
 
-    inject: {
-        layout: {
-            default: ''
+        buttonsBreakpoint: {
+            type: String,
+            default: 'lg'
         }
     },
 
@@ -179,13 +175,19 @@ export default {
     },
 
     computed: {
-        bottomMenu() {
-            return []
-        },
-
         _title() {
             return this.title
             // this.$t(pathOr('', 'current.text', this.currentPage))
+        },
+
+        _hasBreadcrumb() {
+            return this.breadcrumb ? !!this.breadcrumb.href : false
+        },
+
+        _hideBottomBar() {
+            return this.hideBottomBar === null
+                ? this._hasBreadcrumb
+                : this.hideBottomBar
         },
 
         elClasses() {
