@@ -69,7 +69,8 @@
         "rambdax": "^7.0.1",
         "tailwindcss": "^1.9.6",
         "vue-currency-input": "^1.22.3",
-        "vue-i18n": "^8.14.0"
+        "vue-i18n": "^8.14.0",
+        "vue-tel-input": "^5.0.2"
     },
     "devDependencies": {
         "@babel/core": "^7.5.5",

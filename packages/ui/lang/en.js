@@ -12,8 +12,13 @@ export const AwModal = {
 }
 
 export const AwMobileMenu = {
+    darkTheme: 'Dark theme',
     back: 'Back',
-    version: 'version v{version}'
+    version: 'version v{version}',
+    mainMenu: 'Main menu',
+    secondaryMenu: 'Secondary menu',
+    userMenu: 'User menu',
+    logout: 'Logout'
 }
 
 export const AwCalendar = {

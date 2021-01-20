@@ -1,5 +1,7 @@
 .aw-layout-menu {
     @apply bg-brand;
+    --gradient-color: rgba(var(--c-danger-rgb, 200,0,0), 0.05);
+    background-image: linear-gradient(var(--c-transparent, transparent), var(--gradient-color, transparent));
 
     display: grid;
     grid-template-columns: 60px auto;
@@ -25,6 +27,21 @@
 
     &__menu {
         align-self: start;
+    }
+
+    &__item {
+        &--triangle:after {
+            content: '';
+            display: block;
+            width: 0.5em;
+            height: 0.5em;
+            border: 0.25em solid transparent;
+            border-right-color: var(--c-surface, white);
+
+            position: absolute;
+            right: 0;
+            top: calc(50% - 0.25em);
+        }
     }
 
     &__secondary-menu {

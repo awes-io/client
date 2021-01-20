@@ -1,0 +1,17 @@
+.aw-header-notification {
+    display: flex;
+    align-items: flex-start;
+
+    &__content {
+        flex-grow: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: theme('spacing.3', 0.75rem);
+
+        padding-top: theme('spacing.3', 0.75rem);
+        padding-bottom: theme('spacing.3', 0.75rem);
+    }
+}

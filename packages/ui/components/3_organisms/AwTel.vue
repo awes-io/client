@@ -1,15 +1,38 @@
-<script>
-import loadjs from 'loadjs'
-import errorMixin from '@AwMixins/error'
+<template>
+    <div
+        class="aw-text-field is-tel relative"
+        :class="{ 'has-error': hasError }"
+        @invalid.capture="_onInvalid"
+    >
+        <VueTelInput
+            v-tooltip.show.prepend="errorTooltip"
+            v-bind="props"
+            v-on="listeners"
+        />
+    </div>
+</template>
 
-const LOADJS_ID = 'vue-tel-input'
+<script>
+import errorMixin from '@AwMixins/error'
+import fieldMixin from '@AwMixins/field'
 
 export default {
     name: 'AwTel',
 
     inheritAttrs: false,
 
-    mixins: [errorMixin],
+    components: {
+        VueTelInput: () =>
+            import('vue-tel-input').then(({ VueTelInput }) => VueTelInput)
+    },
+
+    mixins: [errorMixin, fieldMixin],
+
+    props: {
+        autoFormat: Boolean,
+
+        value: {}
+    },
 
     data() {
         return {
@@ -17,74 +40,31 @@ export default {
         }
     },
 
-    mounted() {
-        this.loadTelInput().then(() => {
-            this.VueTelInput = window.VueTelInput.VueTelInput
-            this.$nextTick(this.bindErrorListener)
-        })
-    },
+    computed: {
+        props() {
+            return {
+                autoFormat: this.autoFormat,
+                value: this.value,
+                inputOptions: {
+                    ...this.$attrs,
+                    ...this.skipAttr,
+                    id: this.id,
+                    type: 'tel',
+                    placeholder: this.label,
+                    styleClasses: 'aw-text-field__element p-3'
+                }
+            }
+        },
 
-    beforeDestroy() {
-        if (this.VueTelInput) {
-            this.bindErrorListener(false)
+        listeners() {
+            return {
+                ...this.$listeners,
+                input: this._onInputProxy
+            }
         }
     },
 
-    render(h) {
-        return this.VueTelInput
-            ? h(
-                  'div',
-                  {
-                      staticClass: 'aw-text-field is-tel',
-                      class: { 'has-error': this.hasError }
-                  },
-                  [
-                      h(this.VueTelInput, {
-                          props: {
-                              ...this.$attrs,
-                              placeholder:
-                                  this.$attrs.label || this.$attrs.placeholder,
-                              inputClasses: 'aw-text-field__element p-3'
-                          },
-                          on: {
-                              ...this.$listeners,
-                              input: this._onInputProxy
-                          },
-                          directives: [
-                              {
-                                  name: 'tooltip',
-                                  value: this.errorTooltip,
-                                  modifiers: {
-                                      show: true,
-                                      prepend: true
-                                  }
-                              }
-                          ]
-                      })
-                  ]
-              )
-            : h('AwInput', { attrs: { type: 'tel', ...this.$attrs } })
-    },
-
     methods: {
-        loadTelInput() {
-            if (loadjs.isDefined(LOADJS_ID)) {
-                return new Promise((resolve) => {
-                    loadjs.ready('vue-tel-input', resolve)
-                })
-            }
-
-            return loadjs(['https://unpkg.com/vue-tel-input'], LOADJS_ID, {
-                returnPromise: true
-            })
-        },
-
-        bindErrorListener(attach = true) {
-            const method = attach ? 'addEventListener' : 'removeEventListener'
-            const input = this._getElement()
-            input[method]('invalid', this._onInvalid)
-        },
-
         // overwrite element getter from error mixin
         _getElement() {
             return this.$el && this.$el.querySelector('input[type="tel"]')
@@ -94,7 +74,10 @@ export default {
             if (this.hasError && !!text) {
                 this.setError('')
             }
-            this.$emit('input', ...arguments)
+
+            if ((text || this.value) && this.value !== text) {
+                this.$emit('input', ...arguments)
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ export default {
                     return this.href ? 'NLink' : 'button'
                 case 'string':
                     return this.href
-                        ? /^(\/\/|\w+:)/.test(this.href)
+                        ? this._linkExternal
                             ? 'a'
                             : 'NLink'
                         : 'button'
@@ -33,6 +33,12 @@ export default {
                 default:
                     return this.$attrs
             }
+        },
+
+        _linkExternal() {
+            const h = this.href
+
+            return typeof h === 'string' && h && /^(\/\/|\w+:)/.test(h)
         }
     }
 }

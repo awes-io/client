@@ -1,18 +1,15 @@
-import { resolve, join } from 'path'
+import { resolve } from 'path'
 
 const meta = require('./package.json')
-const PROFILE_URL = '/profile'
 
 function AwesIoNuxtAuth() {
     // add es6 transpiling
     this.options.build.transpile.push('@awes-io/nuxt-profile')
 
     // Register routes
-    this.nuxt.options.publicRuntimeConfig.profileUrl = PROFILE_URL
-
     this.nuxt.hook('build:extendRoutes', (routes = []) => {
         routes.unshift({
-            path: PROFILE_URL,
+            path: '/profile',
             component: resolve(__dirname, './src/pages/Profile.vue'),
             children: [
                 {
@@ -34,15 +31,6 @@ function AwesIoNuxtAuth() {
             ]
         })
     })
-
-    // Add nuxt plugin in the end
-    // const { dst } = this.addTemplate({
-    //     src: resolve(__dirname, './src/assets/js/plugin.js'),
-    //     fileName: join('awes-io', 'profile-plugin.js')
-    // })
-    // this.options.plugins.push({
-    //     src: join(this.options.buildDir, dst)
-    // })
 
     this.nuxt.hook('awesIo:staticTranslations', async () => {
         for (const locale of this.options.awesIo.lang.locales) {

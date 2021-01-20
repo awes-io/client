@@ -42,6 +42,7 @@
                 "
             >
                 {{ text }}
+                <AwIconSystemMono v-if="_linkExternal" name="external" />
             </span>
         </slot>
     </Component>

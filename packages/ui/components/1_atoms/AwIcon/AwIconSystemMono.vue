@@ -23,7 +23,7 @@ export default {
 
         size: {
             type: [String, Number],
-            default: 20
+            default: null
         },
 
         rotate: {
@@ -46,7 +46,12 @@ export default {
                           height: props.size,
                           ...data.attrs
                       },
-                      class: ['aw-icon', data.staticClass, data.class],
+                      staticClass: 'aw-icon',
+                      class: [
+                          data.staticClass,
+                          data.class,
+                          { 'aw-icon--size-text': !props.size }
+                      ],
                       style: [data.staticStyle, data.style, { transform }]
                   },
                   [h('path', { attrs: { d } })]

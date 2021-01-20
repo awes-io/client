@@ -20,7 +20,11 @@
                         v-else
                         :key="i"
                         v-bind="_getMenuItemProps(item)"
-                        :active="item === activeMenuItem"
+                        :active="item === activeMenu"
+                        :class="{
+                            'aw-layout-menu__item--triangle':
+                                item === activeMenu
+                        }"
                         tooltip
                     />
                 </template>
@@ -36,7 +40,11 @@
                         v-else
                         :key="i"
                         v-bind="_getMenuItemProps(item)"
-                        :active="item === activeMenuItem"
+                        :active="item === activeMenu"
+                        :class="{
+                            'aw-layout-menu__item--triangle':
+                                item === activeMenu
+                        }"
                         tooltip
                     />
                 </template>
@@ -95,12 +103,12 @@ export default {
             return viewOr([], lensProp('secondaryMenu'), this.layoutProvider)
         },
 
-        activeMenuItem() {
-            return viewOr(null, lensProp('activeMenuItem'), this.layoutProvider)
+        activeMenu() {
+            return viewOr(null, lensProp('activeMenu'), this.layoutProvider)
         },
 
         submenu() {
-            return viewOr([], lensProp('children'), this.activeMenuItem)
+            return viewOr([], lensProp('children'), this.activeMenu)
         },
 
         hasSubmenu() {
@@ -108,9 +116,7 @@ export default {
         },
 
         submenuTitle() {
-            return this.hasSubmenu
-                ? pathOr('', 'text', this.activeMenuItem)
-                : ''
+            return this.hasSubmenu ? pathOr('', 'text', this.activeMenu) : ''
         },
 
         logo() {

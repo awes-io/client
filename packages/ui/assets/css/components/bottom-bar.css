@@ -1,6 +1,6 @@
 .aw-bottom-bar {
     --icon-color: rgba(var(--c-on-surface-rgb), 0.5);
-    --icon-color-active: currentColor;
+    --icon-color-active: var(--c-accent, currentColor);
     @apply bg-surface shadow;
     display: flex;
     padding-bottom: env(safe-area-inset-bottom, 0);

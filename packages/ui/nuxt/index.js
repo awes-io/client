@@ -150,7 +150,12 @@ async function AwesIoUi() {
                     `${srcDir}/pages/**/*.vue`,
                     `${srcDir}/plugins/**/*.{js,ts}`,
                     `${rootDir}/nuxt.config.{js,ts}`
-                ]
+                ],
+                options: {
+                    safelist: {
+                        standard: [/gap-/, /grid-cols-/, /col-span-/]
+                    }
+                }
             }
         }
 

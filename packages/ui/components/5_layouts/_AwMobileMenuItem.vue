@@ -2,10 +2,16 @@
     <Component
         :is="_linkComponent"
         v-bind="_linkAttrs"
-        v-on="$listeners"
+        :class="{ 'aw-mobile-menu-item--active': active }"
         class="aw-mobile-menu-item focus-outline"
+        v-on="$listeners"
     >
-        <slot v-bind="$props">
+        <slot>
+            <AwIcon
+                v-if="icon"
+                :name="icon"
+                class="aw-mobile-menu-item__icon"
+            />
             <span class="aw-mobile-menu-item__text" tabindex="-1">
                 {{ text }}
             </span>
@@ -39,7 +45,14 @@ export default {
             default: ''
         },
 
-        arrow: Boolean
+        icon: {
+            type: String,
+            default: ''
+        },
+
+        arrow: Boolean,
+
+        active: Boolean
     }
 }
 </script>

@@ -1,34 +1,26 @@
 <script>
-import { toPairs, path, pathOr } from 'rambdax'
+import { path } from 'rambdax'
 
-const isEmptyNode = ({ tag, text = '' }) => {
-    return !tag && !text.trim()
-}
+// const isEmptyNode = ({ tag, text = '' }) => {
+//     return !tag && !text.trim()
+// }
 
-const getResPrefix = (res) => {
-    return res === 'default' ? '' : `${res}:`
-}
+const makeClass = (base, option, defaultValue) => {
+    if (typeof option === 'object' && option !== null) {
+        let classes = base + '-' + (option.default || defaultValue)
 
-const getWidthFraction = (col, span = 1) => {
-    return span === col ? 'w-full' : `w-${span}/${col}`
-}
+        for (const key in option) {
+            if (key === 'default') continue
+            classes = classes.concat(' ' + key + ':' + base + '-' + option[key])
+        }
 
-// col = { default: 1, md: 4, lg: 4 } Must specify `lg`!!!
-// span = { lg: 2 }
-const makeWidthClass = (col, span = 1) => {
-    if (typeof col === 'number') {
-        return `${getWidthFraction(col, span)}`
-    } else if (col) {
-        return toPairs({ default: 1, ...col }).reduce((acc, [res, col]) => {
-            const _span = typeof span === 'object' ? pathOr(1, res, span) : span
-            return `${acc} ${getResPrefix(res)}${getWidthFraction(col, _span)}`
-        }, '')
+        return classes
+    } else if (option) {
+        return base + '-' + option
+    } else {
+        return base + '-' + defaultValue
     }
-    return ''
 }
-
-const makeColClass = (widthClass, gap) =>
-    `block ${widthClass} pt-${gap} pl-${gap}`
 
 export default {
     name: 'AwGrid',
@@ -42,51 +34,38 @@ export default {
         },
 
         gap: {
-            type: [Number],
+            type: [Number, Object],
             default: 4
         }
     },
 
     render(h, { props, children = [], data }) {
-        const { col, gap } = props
+        return h(
+            'div',
+            {
+                staticClass: data.staticClass,
+                class: [
+                    data.class,
+                    'grid',
+                    makeClass('grid-cols', props.col, 1),
+                    makeClass('gap', props.gap, 4)
+                ]
+            },
+            children.map((child) => {
+                const span = path('data.attrs.span', child)
 
-        const colClass = makeColClass(makeWidthClass(col), gap)
+                if (span) {
+                    delete child.data.attrs.span
 
-        return h('div', { staticClass: data.staticClass, class: data.calss }, [
-            h(
-                'div',
-                { staticClass: `flex flex-wrap -ml-${gap} -mt-${gap}` },
-                children.reduce((acc, child) => {
-                    if (isEmptyNode(child)) return acc
+                    const cls = child.data.staticClass || ''
 
-                    let span = path('data.attrs.span', child)
+                    child.data.staticClass =
+                        cls + (cls ? ' ' : '') + makeClass('col-span', span, 1)
+                }
 
-                    if (span) {
-                        span = isNaN(parseInt(span))
-                            ? new Object(span)
-                            : Number(span)
-
-                        // `span` DOM prop is applied, so no need to remove it
-                        delete child.data.attrs.span
-                    }
-
-                    return acc.concat(
-                        h(
-                            'div',
-                            {
-                                staticClass: span
-                                    ? makeColClass(
-                                          makeWidthClass(col, span),
-                                          gap
-                                      )
-                                    : colClass
-                            },
-                            [child]
-                        )
-                    )
-                }, [])
-            )
-        ])
+                return child
+            })
+        )
     }
 }
 </script>

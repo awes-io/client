@@ -14,7 +14,9 @@
         >
             {{ name }}
             <slot name="description">
-                <span class="text-mono-400">{{ description }}</span>
+                <span class="text-mono-400 leading-none">
+                    {{ description }}
+                </span>
             </slot>
         </span>
     </span>

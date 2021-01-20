@@ -10,12 +10,17 @@
         text-decoration: none;
     }
 
+    &--active {
+        color: var(--c-accent);
+        font-weight: bold;
+    }
+
     & + & {
         border-top: 1px solid var(--c-mono-800);
     }
 
     &__icon {
-        @apply mr-3;
+        @apply -mr-1 ml-6;
     }
 
     &__text {
@@ -25,5 +30,6 @@
 
     &__arrow {
         @apply my-3 mr-3;
+        color: var(--c-on-surface);
     }
 }
